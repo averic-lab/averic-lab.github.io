@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anbu — Informativa sulla Privacy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.8;
+      color: #1a1c1c;
+      background: #fafafa;
+      padding: 24px 16px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 32px 0 12px; color: #00796b; }
+    h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+    p, li { font-size: 15px; color: #333; }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+    th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+    th { background: #e0f2f1; font-weight: 600; }
+    .date { font-size: 14px; color: #666; margin-bottom: 24px; }
+    .highlight { background: #e0f2f1; padding: 16px; border-radius: 8px; margin: 12px 0; }
+    a { color: #00796b; }
+  </style>
+</head>
+<body>
+
+<h1>Informativa sulla Privacy</h1>
+<p class="date">Data di entrata in vigore: 27 aprile 2026 | Ultimo aggiornamento: 24 maggio 2026</p>
+
+<p>Anbu ("noi", "ci" o "nostro/a") si impegna a proteggere la tua privacy. La presente Informativa sulla Privacy spiega come raccogliamo, utilizziamo, conserviamo e proteggiamo le informazioni quando utilizzi l'applicazione mobile Anbu (il "Servizio"). Utilizzando il Servizio, accetti le pratiche descritte nella presente informativa.</p>
+
+<p>Abbiamo progettato Anbu con un approccio <strong>incentrato sulla privacy</strong>. Non raccogliamo informazioni personali quali nome, numero di telefono, indirizzo e-mail o posizione geografica. Il Servizio opera utilizzando esclusivamente identificativi a livello di dispositivo e dati sensoriali minimi necessari per la funzionalita di controllo del benessere.</p>
+
+<h2>1. Informazioni che raccogliamo</h2>
+
+<h3>1.1 Informazioni raccolte automaticamente</h3>
+<table>
+  <thead>
+    <tr><th>Categoria</th><th>Dati</th><th>Finalita</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Informazioni sul dispositivo</td>
+      <td>Identificativo del dispositivo (device_id), piattaforma (Android/iOS), versione del sistema operativo, fuso orario</td>
+      <td>Funzionamento del servizio e identificazione del dispositivo</td>
+    </tr>
+    <tr>
+      <td>Token Push</td>
+      <td>Token Firebase Cloud Messaging (FCM)</td>
+      <td>Invio di notifiche di controllo del benessere e avvisi</td>
+    </tr>
+    <tr>
+      <td>Dati sul benessere (Persona assistita)</td>
+      <td>Livello della batteria, orario di trasmissione del heartbeat</td>
+      <td>Determinazione dello stato di benessere e invio di avvisi al tutore</td>
+    </tr>
+    <tr>
+      <td>Istantanee dei sensori (Persona assistita)</td>
+      <td>Letture dell'accelerometro e del giroscopio (istantanee puntuali, non continue)</td>
+      <td>Rilevamento del movimento del dispositivo per valutare l'attivita</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>1.2 Informazioni raccolte con il tuo consenso</h3>
+<table>
+  <thead>
+    <tr><th>Categoria</th><th>Dati</th><th>Finalita</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Conteggio passi (Persona assistita)</td>
+      <td>Passi effettuati dall'ultimo heartbeat (steps_delta)</td>
+      <td>Verifica dell'attivita (non raccolti se l'autorizzazione viene negata)</td>
+    </tr>
+    <tr>
+      <td>Dati di localizzazione (Persona assistita &mdash; opzionale)</td>
+      <td>Latitudine, longitudine, precisione e orario di rilevamento</td>
+      <td>Trasmissione una tantum al/i tutore/i quando la persona assistita preme personalmente il pulsante [&#128680; Ho bisogno di aiuto]. Nessuna raccolta durante i normali controlli periodici di benessere. In caso di rifiuto dell'autorizzazione di localizzazione o di mancata acquisizione del segnale GPS, l'allerta di emergenza viene inviata senza informazioni di posizione.</td>
+    </tr>
+    <tr>
+      <td>Abbonamento (Tutore)</td>
+      <td>Ricevuta dell'acquisto in-app (Apple/Google)</td>
+      <td>Verifica dell'abbonamento e accesso al servizio</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+  <p><strong>Dati relativi al metodo di pagamento &mdash; non memorizzati sui nostri server</strong></p>
+  <p>Gli unici dati relativi al pagamento memorizzati sui nostri server sono il <strong>token di convalida della ricevuta emesso da Apple App Store o Google Play Store</strong>. Numeri di carta, dati del conto bancario, credenziali di pagamento e indirizzi di fatturazione vengono trattati esclusivamente all'interno dei sistemi di pagamento di Apple e Google e non sono accessibili ai nostri server. La conservazione dei dati di pagamento, la gestione dei rimborsi e la risoluzione di eventuali controversie di fatturazione sono interamente disciplinate dalle rispettive politiche di Apple e Google.</p>
+</div>
+
+<h3>1.3 Informazioni che NON raccogliamo</h3>
+<ul>
+  <li>Nome, numero di telefono, indirizzo e-mail o qualsiasi informazione di identificazione personale</li>
+  <li>Dati di localizzazione durante i normali controlli periodici di benessere (heartbeat) &mdash; non viene effettuato alcun tracciamento della posizione in background</li>
+  <li>Foto, contatti o altri dati memorizzati sul dispositivo</li>
+  <li>Registri delle chiamate, messaggi di testo o cronologia di navigazione</li>
+  <li>Dati sensoriali continui (effettuiamo solo brevi istantanee una volta al giorno)</li>
+  <li>Dati relativi al metodo di pagamento, come numeri di carta o dati del conto bancario &mdash; trattati esclusivamente dai sistemi di pagamento di Apple e Google</li>
+</ul>
+
+<h2>2. Come utilizziamo le tue informazioni</h2>
+<p>Utilizziamo le informazioni raccolte esclusivamente per le seguenti finalita:</p>
+<ol>
+  <li><strong>Servizio di controllo del benessere:</strong> Raccolta dei segnali heartbeat dal dispositivo della persona assistita e notifica ai tutori sullo stato di benessere.</li>
+  <li><strong>Notifiche di avviso:</strong> Invio di avvisi progressivi (Attenzione &rarr; Avvertimento &rarr; Urgente) ai tutori quando il heartbeat di una persona assistita non viene ricevuto.</li>
+  <li><strong>Gestione delle richieste di aiuto di emergenza:</strong> Quando la persona assistita preme personalmente il pulsante di emergenza, viene inviata immediatamente una notifica a tutti i tutori connessi. Se l'utente ha acconsentito alla condivisione della posizione, alla notifica viene allegata la posizione attuale (latitudine, longitudine e precisione).</li>
+  <li><strong>Monitoraggio dello stato del dispositivo:</strong> Informare i tutori in caso di batteria scarica, chiusura dell'app o altre condizioni che possono influire sui controlli del benessere.</li>
+  <li><strong>Gestione degli abbonamenti:</strong> Verifica delle ricevute degli acquisti in-app e gestione dell'accesso al servizio per i tutori.</li>
+  <li><strong>Miglioramento del servizio:</strong> Diagnosi degli errori e miglioramento dell'affidabilita del servizio.</li>
+</ol>
+
+<h2>3. Conservazione dei dati</h2>
+<table>
+  <thead>
+    <tr><th>Dati</th><th>Periodo di conservazione</th><th>Note</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Informazioni sul dispositivo, token FCM</td>
+      <td>Fino alla cancellazione dell'account</td>
+      <td>Eliminati immediatamente alla cancellazione dell'account</td>
+    </tr>
+    <tr>
+      <td>Log dei heartbeat</td>
+      <td>30 giorni</td>
+      <td>Eliminati automaticamente dopo 30 giorni</td>
+    </tr>
+    <tr>
+      <td>Registrazioni delle notifiche di avviso</td>
+      <td>Solo giornata corrente</td>
+      <td>Eliminati ogni giorno a mezzanotte (fuso orario locale della persona assistita)</td>
+    </tr>
+    <tr>
+      <td>Posizione allegata a una richiesta di aiuto di emergenza</td>
+      <td>Fino a 24 ore</td>
+      <td>Eliminata automaticamente a mezzanotte (fuso orario locale della persona assistita), insieme alle registrazioni delle notifiche</td>
+    </tr>
+    <tr>
+      <td>Informazioni sull'abbonamento</td>
+      <td>Fino alla scadenza dell'abbonamento o cancellazione dell'account</td>
+      <td>Eliminate immediatamente alla cancellazione dell'account</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. Condivisione dei dati</h2>
+<p>Non vendiamo, scambiamo ne cediamo le tue informazioni a terzi. Condividiamo le informazioni solo nelle seguenti circostanze limitate:</p>
+<ol>
+  <li><strong>Connessione tutore-persona assistita:</strong> Quando una persona assistita condivide il proprio codice di invito con un tutore, quest'ultimo riceve lo stato di benessere della persona assistita (heartbeat ricevuto/mancante, livello della batteria). Nessuna informazione personale viene condivisa — solo dati sul benessere a livello di dispositivo.</li>
+  <li><strong>Condivisione della posizione in caso di richiesta di aiuto di emergenza:</strong> Quando la persona assistita preme personalmente il pulsante [&#128680; Ho bisogno di aiuto] all'interno dell'app e ha acconsentito alla condivisione della posizione, la posizione attuale (latitudine, longitudine e precisione) viene trasmessa una sola volta a tutti i tutori connessi. In caso di rifiuto dell'autorizzazione di localizzazione o di impossibilita di acquisire il segnale GPS, l'allerta di emergenza viene comunque inviata, ma senza informazioni di posizione.</li>
+  <li><strong>Obblighi di legge:</strong> Quando richiesto dalla legge applicabile, da regolamenti o da un procedimento legale valido.</li>
+</ol>
+
+<h2>5. Fornitori di servizi terzi</h2>
+<p>Utilizziamo i seguenti servizi di terze parti per il funzionamento del Servizio:</p>
+<p>Per il trattamento degli acquisti in-app (Apple Inc., Google LLC) riceviamo da questi fornitori esclusivamente il token di convalida della ricevuta, al solo scopo di verificare lo stato dell'abbonamento. Non riceviamo n&eacute; trattiamo dati effettivi relativi al metodo di pagamento.</p>
+<table>
+  <thead>
+    <tr><th>Fornitore</th><th>Servizio</th><th>Informativa sulla privacy</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Google LLC (Firebase)</td>
+      <td>Notifiche push (FCM)</td>
+      <td><a href="https://firebase.google.com/support/privacy">Privacy di Firebase</a></td>
+    </tr>
+    <tr>
+      <td>Apple Inc.</td>
+      <td>Acquisti in-app, notifiche push (APNs)</td>
+      <td><a href="https://www.apple.com/privacy/">Privacy di Apple</a></td>
+    </tr>
+    <tr>
+      <td>Google LLC (Google Play)</td>
+      <td>Acquisti in-app</td>
+      <td><a href="https://policies.google.com/privacy">Privacy di Google</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>6. I tuoi diritti</h2>
+<p>Hai i seguenti diritti riguardo ai tuoi dati:</p>
+<ol>
+  <li><strong>Cancellazione dell'account:</strong> Puoi cancellare il tuo account e tutti i dati associati in qualsiasi momento tramite l'opzione "Cancella account" nelle impostazioni dell'app. La cancellazione e immediata e irreversibile.</li>
+  <li><strong>Revoca delle autorizzazioni:</strong> Puoi revocare le autorizzazioni per le notifiche o per il rilevamento del movimento in qualsiasi momento tramite le impostazioni del dispositivo.</li>
+  <li><strong>Richiesta di accesso ai dati:</strong> Puoi richiedere informazioni sui dati in nostro possesso contattandoci all'indirizzo e-mail indicato di seguito.</li>
+</ol>
+
+<h3>Per gli utenti nello Spazio Economico Europeo (SEE)</h3>
+<p>Ai sensi del Regolamento Generale sulla Protezione dei Dati (GDPR), hai inoltre il diritto di:</p>
+<ul>
+  <li>Richiedere l'accesso, la rettifica o la cancellazione dei tuoi dati personali</li>
+  <li>Opporti al trattamento dei tuoi dati o limitarlo</li>
+  <li>Portabilita dei dati</li>
+  <li>Presentare un reclamo all'autorita di protezione dei dati competente</li>
+</ul>
+<p>La nostra base giuridica per il trattamento e il <strong>legittimo interesse</strong> (fornire il servizio di controllo del benessere a cui hai aderito) e il <strong>consenso</strong> (per le autorizzazioni facoltative come il conteggio dei passi).</p>
+
+<h3>Per gli utenti in California (CCPA)</h3>
+<p>Ai sensi del California Consumer Privacy Act, i residenti in California hanno il diritto di:</p>
+<ul>
+  <li>Conoscere quali informazioni personali raccogliamo e come vengono utilizzate</li>
+  <li>Richiedere la cancellazione delle informazioni personali</li>
+  <li>Opporsi alla vendita delle informazioni personali — <strong>non vendiamo alcuna informazione personale</strong></li>
+  <li>Non subire discriminazioni per l'esercizio dei propri diritti sulla privacy</li>
+</ul>
+
+<h3>Privacy dei minori (COPPA)</h3>
+<p>Anbu non e rivolto a minori di 13 anni. Non raccogliamo consapevolmente informazioni da minori di 13 anni. Se ritieni che un minore ci abbia fornito dei dati, contattaci e provvederemo alla cancellazione immediata.</p>
+
+<div class="highlight">
+  <p><strong>Dati eliminati alla cancellazione dell'account:</strong></p>
+  <ul>
+    <li>Account utente e informazioni sul dispositivo</li>
+    <li>Tutti i log dei heartbeat</li>
+    <li>Registrazioni delle connessioni tutore-persona assistita</li>
+    <li>Informazioni sull'abbonamento</li>
+    <li>Registrazioni delle notifiche di avviso</li>
+    <li>Impostazioni delle notifiche</li>
+  </ul>
+</div>
+
+<h2>7. Sicurezza dei dati</h2>
+<p>Adottiamo le seguenti misure per proteggere i tuoi dati:</p>
+<ol>
+  <li><strong>Crittografia in transito:</strong> Tutte le comunicazioni tra l'app e i nostri server utilizzano HTTPS (TLS 1.2 o superiore).</li>
+  <li><strong>Controllo degli accessi:</strong> L'autenticazione basata su token del dispositivo garantisce che tu possa accedere solo ai tuoi dati.</li>
+  <li><strong>Minimizzazione dei dati:</strong> Raccogliamo solo le informazioni minime necessarie per fornire il Servizio.</li>
+  <li><strong>Cancellazione automatica:</strong> I dati che hanno superato il periodo di conservazione vengono automaticamente eliminati.</li>
+</ol>
+
+<h2>8. Archiviazione locale</h2>
+<p>Anbu non utilizza cookie ne tecnologie di tracciamento web. L'app memorizza le seguenti informazioni localmente sul tuo dispositivo (tramite SharedPreferences su Android / UserDefaults su iOS):</p>
+<ul>
+  <li>Token del dispositivo (per l'autenticazione con il server)</li>
+  <li>Codice di invito</li>
+  <li>Orario programmato del heartbeat</li>
+  <li>Orario dell'ultima trasmissione del heartbeat</li>
+</ul>
+<p>Questi dati vengono eliminati quando disinstalli l'app o cancelli il tuo account.</p>
+
+<h2>9. Trasferimenti internazionali di dati</h2>
+<p>I nostri server possono trovarsi al di fuori del tuo paese di residenza. Utilizzando il Servizio, acconsenti al trasferimento delle tue informazioni verso server in altre giurisdizioni. Ci assicuriamo che siano in atto adeguate garanzie per proteggere i tuoi dati in conformita con la presente Informativa sulla Privacy.</p>
+
+<h2>10. Modifiche alla presente informativa</h2>
+<p>Potremmo aggiornare periodicamente la presente Informativa sulla Privacy per riflettere modifiche alle nostre pratiche o alla legislazione applicabile. Ti notificheremo eventuali modifiche significative tramite l'app o questa pagina. L'uso continuato del Servizio dopo la pubblicazione delle modifiche costituisce accettazione dell'informativa aggiornata.</p>
+
+<h2>11. Contattaci</h2>
+<table>
+  <thead>
+    <tr><th>Voce</th><th>Dettagli</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Servizio</td><td>Anbu</td></tr>
+    <tr><td>E-mail</td><td>anbucheck1018@gmail.com</td></tr>
+  </tbody>
+</table>
+<p>Per qualsiasi domanda, dubbio o richiesta riguardante la presente Informativa sulla Privacy o le nostre pratiche relative ai dati, contattaci all'indirizzo e-mail sopra indicato.</p>
+
+</body>
+</html>

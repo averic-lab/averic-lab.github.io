@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anbu — Politique de confidentialit&eacute;</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.8;
+      color: #1a1c1c;
+      background: #fafafa;
+      padding: 24px 16px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 32px 0 12px; color: #00796b; }
+    h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+    p, li { font-size: 15px; color: #333; }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+    th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+    th { background: #e0f2f1; font-weight: 600; }
+    .date { font-size: 14px; color: #666; margin-bottom: 24px; }
+    .highlight { background: #e0f2f1; padding: 16px; border-radius: 8px; margin: 12px 0; }
+    a { color: #00796b; }
+  </style>
+</head>
+<body>
+
+<h1>Politique de confidentialit&eacute;</h1>
+<p class="date">Date d'entr&eacute;e en vigueur : 27 avril 2026 | Derni&egrave;re mise &agrave; jour : 24 mai 2026</p>
+
+<p>Anbu (&laquo; nous &raquo;, &laquo; notre &raquo; ou &laquo; nos &raquo;) s'engage &agrave; prot&eacute;ger votre vie priv&eacute;e. La pr&eacute;sente Politique de confidentialit&eacute; explique comment nous collectons, utilisons, conservons et prot&eacute;geons les informations lorsque vous utilisez l'application mobile Anbu (le &laquo; Service &raquo;). En utilisant le Service, vous acceptez les pratiques d&eacute;crites dans la pr&eacute;sente politique.</p>
+
+<p>Nous avons con&ccedil;u Anbu selon une <strong>approche privil&eacute;giant la confidentialit&eacute;</strong>. Nous ne collectons aucune donn&eacute;e personnelle telle que votre nom, num&eacute;ro de t&eacute;l&eacute;phone, adresse e-mail ou localisation. Le Service fonctionne uniquement &agrave; l'aide d'identifiants au niveau de l'appareil et de donn&eacute;es de capteurs minimales n&eacute;cessaires au fonctionnement de la v&eacute;rification de bien-&ecirc;tre.</p>
+
+<h2>1. Informations que nous collectons</h2>
+
+<h3>1.1 Informations collect&eacute;es automatiquement</h3>
+<table>
+  <thead>
+    <tr><th>Cat&eacute;gorie</th><th>Donn&eacute;es</th><th>Finalit&eacute;</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Informations sur l'appareil</td>
+      <td>Identifiant de l'appareil (device_id), plateforme (Android/iOS), version du syst&egrave;me d'exploitation, fuseau horaire</td>
+      <td>Fonctionnement du Service et identification de l'appareil</td>
+    </tr>
+    <tr>
+      <td>Jeton de notification</td>
+      <td>Jeton Firebase Cloud Messaging (FCM)</td>
+      <td>Envoi des notifications de v&eacute;rification de bien-&ecirc;tre et des alertes</td>
+    </tr>
+    <tr>
+      <td>Donn&eacute;es de bien-&ecirc;tre (Personne prot&eacute;g&eacute;e)</td>
+      <td>Niveau de batterie, heure de transmission du heartbeat</td>
+      <td>D&eacute;termination de l'&eacute;tat de bien-&ecirc;tre et envoi d'alertes au protecteur</td>
+    </tr>
+    <tr>
+      <td>Captures de capteurs (Personne prot&eacute;g&eacute;e)</td>
+      <td>Mesures de l'acc&eacute;l&eacute;rom&egrave;tre et du gyroscope (captures ponctuelles, non continues)</td>
+      <td>D&eacute;tection du mouvement de l'appareil pour &eacute;valuer l'activit&eacute;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>1.2 Informations collect&eacute;es avec votre autorisation</h3>
+<table>
+  <thead>
+    <tr><th>Cat&eacute;gorie</th><th>Donn&eacute;es</th><th>Finalit&eacute;</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Nombre de pas (Personne prot&eacute;g&eacute;e)</td>
+      <td>Pas effectu&eacute;s depuis le dernier heartbeat (steps_delta)</td>
+      <td>V&eacute;rification de l'activit&eacute; (non collect&eacute; si l'autorisation est refus&eacute;e)</td>
+    </tr>
+    <tr>
+      <td>Donn&eacute;es de localisation (Personne prot&eacute;g&eacute;e &mdash; facultatif)</td>
+      <td>Latitude, longitude, pr&eacute;cision et horodatage de la mesure</td>
+      <td>Transmission unique au(x) protecteur(s) lorsque la personne prot&eacute;g&eacute;e appuie elle-m&ecirc;me sur le bouton [&#128680; J'ai besoin d'aide]. Aucune collecte lors des v&eacute;rifications p&eacute;riodiques de bien-&ecirc;tre. En cas de refus de l'autorisation de localisation ou d'&eacute;chec du GPS, l'alerte d'urgence est envoy&eacute;e sans localisation.</td>
+    </tr>
+    <tr>
+      <td>Abonnement (Protecteur)</td>
+      <td>Re&ccedil;u d'achat int&eacute;gr&eacute; (Apple/Google)</td>
+      <td>V&eacute;rification de l'abonnement et acc&egrave;s au service</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+  <p><strong>Informations relatives au moyen de paiement &mdash; non stock&eacute;es sur nos serveurs</strong></p>
+  <p>Les seules donn&eacute;es de paiement stock&eacute;es sur nos serveurs sont le <strong>jeton de validation du re&ccedil;u &eacute;mis par l'App Store d'Apple ou le Google Play Store</strong>. Les num&eacute;ros de carte, les coordonn&eacute;es bancaires, les identifiants de paiement et les adresses de facturation sont trait&eacute;s exclusivement au sein des syst&egrave;mes de paiement d'Apple et de Google et restent inaccessibles &agrave; nos serveurs. La conservation des donn&eacute;es de paiement, le traitement des remboursements et la r&eacute;solution des litiges de facturation rel&egrave;vent enti&egrave;rement des politiques respectives d'Apple et de Google.</p>
+</div>
+
+<h3>1.3 Informations que nous ne collectons PAS</h3>
+<ul>
+  <li>Nom, num&eacute;ro de t&eacute;l&eacute;phone, adresse e-mail ou toute autre information permettant d'identifier une personne</li>
+  <li>Donn&eacute;es de localisation lors des v&eacute;rifications p&eacute;riodiques de bien-&ecirc;tre (heartbeat) &mdash; aucun suivi de localisation en arri&egrave;re-plan n'est effectu&eacute;</li>
+  <li>Photos, contacts ou autres donn&eacute;es stock&eacute;es sur votre appareil</li>
+  <li>Journaux d'appels, messages texte ou historique de navigation</li>
+  <li>Donn&eacute;es de capteurs en continu (nous effectuons uniquement de br&egrave;ves captures une fois par jour)</li>
+  <li>Donn&eacute;es relatives au moyen de paiement (num&eacute;ros de carte, coordonn&eacute;es bancaires, etc.) &mdash; trait&eacute;es exclusivement par les syst&egrave;mes de paiement d'Apple et de Google</li>
+</ul>
+
+<h2>2. Comment nous utilisons vos informations</h2>
+<p>Nous utilisons les informations collect&eacute;es uniquement aux fins suivantes :</p>
+<ol>
+  <li><strong>Service de v&eacute;rification de bien-&ecirc;tre :</strong> Collecte des signaux heartbeat depuis l'appareil de la personne prot&eacute;g&eacute;e et notification aux protecteurs de l'&eacute;tat de bien-&ecirc;tre.</li>
+  <li><strong>Notifications d'alerte :</strong> Envoi d'alertes progressives (Attention &rarr; Avertissement &rarr; Urgence) aux protecteurs lorsque le heartbeat d'une personne prot&eacute;g&eacute;e n'est pas re&ccedil;u.</li>
+  <li><strong>Traitement des demandes d'aide d'urgence :</strong> Lorsque la personne prot&eacute;g&eacute;e appuie elle-m&ecirc;me sur le bouton d'urgence, transmission imm&eacute;diate d'une notification &agrave; tous les protecteurs connect&eacute;s. Si l'utilisateur a consenti au partage de sa localisation, la position actuelle (latitude, longitude et pr&eacute;cision) est jointe &agrave; cette notification.</li>
+  <li><strong>Surveillance de l'&eacute;tat de l'appareil :</strong> Information des protecteurs en cas de batterie faible, de fermeture de l'application ou d'autres conditions susceptibles d'affecter les v&eacute;rifications de bien-&ecirc;tre.</li>
+  <li><strong>Gestion des abonnements :</strong> V&eacute;rification des re&ccedil;us d'achat int&eacute;gr&eacute; et gestion de l'acc&egrave;s au service pour les protecteurs.</li>
+  <li><strong>Am&eacute;lioration du service :</strong> Diagnostic des erreurs et am&eacute;lioration de la fiabilit&eacute; du service.</li>
+</ol>
+
+<h2>3. Conservation des donn&eacute;es</h2>
+<table>
+  <thead>
+    <tr><th>Donn&eacute;es</th><th>Dur&eacute;e de conservation</th><th>Remarques</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Informations sur l'appareil, jeton FCM</td>
+      <td>Jusqu'&agrave; la suppression du compte</td>
+      <td>Supprim&eacute;es imm&eacute;diatement lors de la suppression du compte</td>
+    </tr>
+    <tr>
+      <td>Journaux de heartbeat</td>
+      <td>30 jours</td>
+      <td>Automatiquement supprim&eacute;s apr&egrave;s 30 jours</td>
+    </tr>
+    <tr>
+      <td>Historique des notifications d'alerte</td>
+      <td>Jour en cours uniquement</td>
+      <td>Supprim&eacute; quotidiennement &agrave; minuit (fuseau horaire local de la personne prot&eacute;g&eacute;e)</td>
+    </tr>
+    <tr>
+      <td>Localisation jointe &agrave; une demande d'aide d'urgence</td>
+      <td>Jusqu'&agrave; 24 heures</td>
+      <td>Supprim&eacute;e automatiquement &agrave; minuit (fuseau horaire local de la personne prot&eacute;g&eacute;e), en m&ecirc;me temps que l'historique des notifications</td>
+    </tr>
+    <tr>
+      <td>Informations d'abonnement</td>
+      <td>Jusqu'&agrave; l'expiration de l'abonnement ou la suppression du compte</td>
+      <td>Supprim&eacute;es imm&eacute;diatement lors de la suppression du compte</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. Partage des donn&eacute;es</h2>
+<p>Nous ne vendons, n'&eacute;changeons ni ne louons vos informations &agrave; des tiers. Nous ne partageons des informations que dans les circonstances limit&eacute;es suivantes :</p>
+<ol>
+  <li><strong>Connexion Protecteur-Personne prot&eacute;g&eacute;e :</strong> Lorsqu'une personne prot&eacute;g&eacute;e partage son code d'invitation avec un protecteur, celui-ci re&ccedil;oit l'&eacute;tat de bien-&ecirc;tre de la personne prot&eacute;g&eacute;e (heartbeat re&ccedil;u/manqu&eacute;, niveau de batterie). Aucune information personnelle n'est partag&eacute;e &mdash; uniquement des donn&eacute;es de bien-&ecirc;tre au niveau de l'appareil.</li>
+  <li><strong>Partage de localisation lors d'une demande d'aide d'urgence :</strong> Lorsque la personne prot&eacute;g&eacute;e appuie elle-m&ecirc;me sur le bouton [&#128680; J'ai besoin d'aide] dans l'application et a consenti au partage de sa localisation, sa position actuelle (latitude, longitude et pr&eacute;cision) est transmise une seule fois &agrave; l'ensemble des protecteurs connect&eacute;s. En cas de refus de l'autorisation de localisation ou si le signal GPS ne peut &ecirc;tre obtenu, l'alerte d'urgence est transmise sans information de localisation.</li>
+  <li><strong>Obligations l&eacute;gales :</strong> Lorsque la loi, la r&eacute;glementation ou une proc&eacute;dure juridique valide l'exige.</li>
+</ol>
+
+<h2>5. Prestataires de services tiers</h2>
+<p>Nous utilisons les services tiers suivants pour faire fonctionner le Service :</p>
+<p>Concernant le traitement des achats int&eacute;gr&eacute;s (Apple Inc., Google LLC), nous recevons uniquement de ces prestataires le jeton de validation du re&ccedil;u, dans le seul but de v&eacute;rifier l'&eacute;tat de l'abonnement. Nous ne recevons ni ne traitons aucune donn&eacute;e r&eacute;elle relative au moyen de paiement.</p>
+<table>
+  <thead>
+    <tr><th>Prestataire</th><th>Service</th><th>Politique de confidentialit&eacute;</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Google LLC (Firebase)</td>
+      <td>Notifications push (FCM)</td>
+      <td><a href="https://firebase.google.com/support/privacy">Confidentialit&eacute; Firebase</a></td>
+    </tr>
+    <tr>
+      <td>Apple Inc.</td>
+      <td>Achats int&eacute;gr&eacute;s, notifications push (APNs)</td>
+      <td><a href="https://www.apple.com/privacy/">Confidentialit&eacute; Apple</a></td>
+    </tr>
+    <tr>
+      <td>Google LLC (Google Play)</td>
+      <td>Achats int&eacute;gr&eacute;s</td>
+      <td><a href="https://policies.google.com/privacy">Confidentialit&eacute; Google</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>6. Vos droits</h2>
+<p>Vous disposez des droits suivants concernant vos donn&eacute;es :</p>
+<ol>
+  <li><strong>Supprimer votre compte :</strong> Vous pouvez supprimer votre compte et toutes les donn&eacute;es associ&eacute;es &agrave; tout moment via l'option &laquo; Supprimer le compte &raquo; dans les param&egrave;tres de l'application. La suppression est imm&eacute;diate et irr&eacute;versible.</li>
+  <li><strong>R&eacute;voquer les autorisations :</strong> Vous pouvez r&eacute;voquer les autorisations de notification ou de mouvement &agrave; tout moment via les param&egrave;tres de votre appareil.</li>
+  <li><strong>Demander l'acc&egrave;s &agrave; vos donn&eacute;es :</strong> Vous pouvez demander des informations sur les donn&eacute;es que nous d&eacute;tenons &agrave; votre sujet en nous contactant &agrave; l'adresse e-mail ci-dessous.</li>
+</ol>
+
+<h3>Pour les utilisateurs de l'Espace &eacute;conomique europ&eacute;en (EEE)</h3>
+<p>En vertu du R&egrave;glement g&eacute;n&eacute;ral sur la protection des donn&eacute;es (RGPD), vous disposez &eacute;galement du droit de :</p>
+<ul>
+  <li>Demander l'acc&egrave;s, la rectification ou la suppression de vos donn&eacute;es personnelles</li>
+  <li>Vous opposer au traitement de vos donn&eacute;es ou en demander la limitation</li>
+  <li>La portabilit&eacute; des donn&eacute;es</li>
+  <li>D&eacute;poser une r&eacute;clamation aupr&egrave;s de votre autorit&eacute; locale de protection des donn&eacute;es</li>
+</ul>
+<p>Notre base juridique pour le traitement est l'<strong>int&eacute;r&ecirc;t l&eacute;gitime</strong> (fourniture du service de v&eacute;rification de bien-&ecirc;tre auquel vous avez souscrit) et le <strong>consentement</strong> (pour les autorisations facultatives comme le comptage des pas).</p>
+
+<h3>Pour les utilisateurs en Californie (CCPA)</h3>
+<p>En vertu du California Consumer Privacy Act, les r&eacute;sidents de Californie ont le droit de :</p>
+<ul>
+  <li>Savoir quelles informations personnelles nous collectons et comment elles sont utilis&eacute;es</li>
+  <li>Demander la suppression des informations personnelles</li>
+  <li>Refuser la vente d'informations personnelles &mdash; <strong>nous ne vendons aucune information personnelle</strong></li>
+  <li>Ne pas subir de discrimination pour l'exercice de vos droits en mati&egrave;re de vie priv&eacute;e</li>
+</ul>
+
+<h3>Protection de la vie priv&eacute;e des enfants (COPPA)</h3>
+<p>Anbu ne s'adresse pas aux enfants de moins de 13 ans. Nous ne collectons pas sciemment d'informations aupr&egrave;s d'enfants de moins de 13 ans. Si vous pensez qu'un enfant nous a fourni des donn&eacute;es, veuillez nous contacter et nous les supprimerons dans les meilleurs d&eacute;lais.</p>
+
+<div class="highlight">
+  <p><strong>Donn&eacute;es supprim&eacute;es lors de la suppression du compte :</strong></p>
+  <ul>
+    <li>Compte utilisateur et informations sur l'appareil</li>
+    <li>Tous les journaux de heartbeat</li>
+    <li>Enregistrements de connexion protecteur-personne prot&eacute;g&eacute;e</li>
+    <li>Informations d'abonnement</li>
+    <li>Historique des notifications d'alerte</li>
+    <li>Param&egrave;tres de notification</li>
+  </ul>
+</div>
+
+<h2>7. S&eacute;curit&eacute; des donn&eacute;es</h2>
+<p>Nous mettons en &oelig;uvre les mesures suivantes pour prot&eacute;ger vos donn&eacute;es :</p>
+<ol>
+  <li><strong>Chiffrement en transit :</strong> Toutes les communications entre l'application et nos serveurs utilisent le protocole HTTPS (TLS 1.2 ou sup&eacute;rieur).</li>
+  <li><strong>Contr&ocirc;le d'acc&egrave;s :</strong> L'authentification par jeton d'appareil garantit que vous ne pouvez acc&eacute;der qu'&agrave; vos propres donn&eacute;es.</li>
+  <li><strong>Minimisation des donn&eacute;es :</strong> Nous ne collectons que le minimum d'informations n&eacute;cessaires &agrave; la fourniture du Service.</li>
+  <li><strong>Suppression automatique :</strong> Les donn&eacute;es ayant d&eacute;pass&eacute; leur dur&eacute;e de conservation sont automatiquement supprim&eacute;es.</li>
+</ol>
+
+<h2>8. Stockage local</h2>
+<p>Anbu n'utilise pas de cookies ni de technologies de suivi web. L'application stocke les informations suivantes localement sur votre appareil (via SharedPreferences sur Android / UserDefaults sur iOS) :</p>
+<ul>
+  <li>Jeton d'appareil (pour l'authentification aupr&egrave;s du serveur)</li>
+  <li>Code d'invitation</li>
+  <li>Heure de programmation du heartbeat</li>
+  <li>Heure de la derni&egrave;re transmission du heartbeat</li>
+</ul>
+<p>Ces donn&eacute;es sont supprim&eacute;es lorsque vous d&eacute;sinstallez l'application ou supprimez votre compte.</p>
+
+<h2>9. Transferts internationaux de donn&eacute;es</h2>
+<p>Nos serveurs peuvent &ecirc;tre situ&eacute;s en dehors de votre pays de r&eacute;sidence. En utilisant le Service, vous consentez au transfert de vos informations vers des serveurs situ&eacute;s dans d'autres juridictions. Nous veillons &agrave; ce que des garanties appropri&eacute;es soient en place pour prot&eacute;ger vos donn&eacute;es conform&eacute;ment &agrave; la pr&eacute;sente Politique de confidentialit&eacute;.</p>
+
+<h2>10. Modifications de la pr&eacute;sente politique</h2>
+<p>Nous pouvons mettre &agrave; jour la pr&eacute;sente Politique de confidentialit&eacute; de temps &agrave; autre afin de refl&eacute;ter les &eacute;volutions de nos pratiques ou de la l&eacute;gislation applicable. Nous vous informerons de tout changement significatif via l'application ou cette page. La poursuite de votre utilisation du Service apr&egrave;s la publication des modifications vaut acceptation de la politique mise &agrave; jour.</p>
+
+<h2>11. Nous contacter</h2>
+<table>
+  <thead>
+    <tr><th>&Eacute;l&eacute;ment</th><th>D&eacute;tails</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Service</td><td>Anbu</td></tr>
+    <tr><td>E-mail</td><td>anbucheck1018@gmail.com</td></tr>
+  </tbody>
+</table>
+<p>Si vous avez des questions, des pr&eacute;occupations ou des demandes concernant la pr&eacute;sente Politique de confidentialit&eacute; ou nos pratiques en mati&egrave;re de donn&eacute;es, veuillez nous contacter &agrave; l'adresse e-mail ci-dessus.</p>
+
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anbu — 隱私權政策</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'PingFang TC', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.8;
+      color: #1a1c1c;
+      background: #fafafa;
+      padding: 24px 16px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 32px 0 12px; color: #00796b; }
+    h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+    p, li { font-size: 15px; color: #333; }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+    th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+    th { background: #e0f2f1; font-weight: 600; }
+    .date { font-size: 14px; color: #666; margin-bottom: 24px; }
+    .highlight { background: #e0f2f1; padding: 16px; border-radius: 8px; margin: 12px 0; }
+    a { color: #00796b; }
+  </style>
+</head>
+<body>
+
+<h1>隱私權政策</h1>
+<p class="date">生效日期：2026年4月27日 | 最後更新：2026年5月24日</p>
+
+<p>Anbu（以下簡稱「我們」）致力於保護您的隱私。本隱私權政策說明當您使用Anbu行動應用程式（以下簡稱「本服務」）時，我們如何收集、使用、儲存和保護資訊。使用本服務即表示您同意本政策中所述之做法。</p>
+
+<p>Anbu以<strong>隱私優先</strong>的理念設計。我們不收集您的姓名、電話號碼、電子郵件地址或位置等個人資訊。本服務僅使用裝置層級識別碼及安否確認功能所需之最少感測器資料來運作。</p>
+
+<h2>1. 我們收集的資訊</h2>
+
+<h3>1.1 自動收集的資訊</h3>
+<table>
+  <thead>
+    <tr><th>類別</th><th>資料</th><th>用途</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>裝置資訊</td>
+      <td>裝置識別碼（device_id）、平台（Android/iOS）、作業系統版本、時區</td>
+      <td>服務營運及裝置辨識</td>
+    </tr>
+    <tr>
+      <td>推播權杖</td>
+      <td>Firebase Cloud Messaging（FCM）權杖</td>
+      <td>傳送安否確認通知及警示</td>
+    </tr>
+    <tr>
+      <td>安否資料（受關注者）</td>
+      <td>電池電量、心跳傳送時間</td>
+      <td>判斷安否狀態並向關注者發送警示</td>
+    </tr>
+    <tr>
+      <td>感測器快照（受關注者）</td>
+      <td>加速度計及陀螺儀讀數（單次快照，非連續擷取）</td>
+      <td>偵測裝置移動以評估活動狀態</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>1.2 經您許可收集的資訊</h3>
+<table>
+  <thead>
+    <tr><th>類別</th><th>資料</th><th>用途</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>步數（受關注者）</td>
+      <td>自上次心跳以來的步數（steps_delta）</td>
+      <td>活動驗證（若拒絕權限則不收集）</td>
+    </tr>
+    <tr>
+      <td>位置資訊（受關注者，選擇性）</td>
+      <td>緯度、經度、精確度、擷取時間</td>
+      <td>僅在受關注者本人按下 [🚨 我需要幫助] 緊急求助按鈕請求協助時，向所有關聯的關注者一次性傳達。日常安否確認時不收集。位置權限被拒或GPS失敗時，僅傳送緊急通知而不附帶位置。</td>
+    </tr>
+    <tr>
+      <td>訂閱（關注者）</td>
+      <td>應用程式內購買收據（Apple/Google）</td>
+      <td>訂閱驗證及服務存取</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+  <p><strong>付款方式資訊 — 不儲存於我們的伺服器</strong></p>
+  <p>我們伺服器上儲存的付款相關資料僅為<strong>Apple App Store或Google Play發放的收據驗證權杖</strong>。信用卡號、銀行帳戶資訊、付款驗證資訊及帳單地址等均於Apple和Google的付款系統內處理，我們的伺服器無法存取。所有付款資料的保管、退款處理及帳單爭議完全遵循Apple和Google各自的政策。</p>
+</div>
+
+<h3>1.3 我們不收集的資訊</h3>
+<ul>
+  <li>姓名、電話號碼、電子郵件地址或任何可辨識個人身分的資訊</li>
+  <li>日常安否確認（heartbeat）期間不收集位置資訊——我們絕不進行背景位置追蹤</li>
+  <li>照片、聯絡人或裝置上儲存的其他資料</li>
+  <li>通話紀錄、簡訊或瀏覽紀錄</li>
+  <li>連續感測器資料（我們每天僅擷取一次短暫的快照）</li>
+  <li>信用卡號、銀行帳戶資訊等付款方式資訊 — 僅由Apple和Google的付款系統處理</li>
+</ul>
+
+<h3>1.4 收集方式</h3>
+<ul>
+  <li>裝置資訊及推播權杖：應用程式首次啟動時自動收集</li>
+  <li>安否資料及感測器快照：在預定的每日心跳時間自動收集</li>
+  <li>步數：在使用者授予活動辨識權限的前提下，與每日心跳一同收集</li>
+  <li>僅當受關注者本人按下緊急求助按鈕且授予位置權限時一次性收集（僅前景，無背景位置收集）</li>
+</ul>
+
+<h2>2. 資訊使用方式</h2>
+<p>我們僅將收集的資訊用於以下目的：</p>
+<ol>
+  <li><strong>安否確認服務：</strong>從受關注者的裝置收集心跳訊號，並將安否狀態通知關注者。</li>
+  <li><strong>警示通知：</strong>當未收到受關注者的心跳時，向關注者發送分級警示（注意→警告→緊急）。</li>
+  <li><strong>緊急求助請求處理：</strong>受關注者本人按下緊急按鈕時，立即通知所有關聯的關注者。若使用者同意分享位置，則隨附當前位置（緯度、經度、精確度）。</li>
+  <li><strong>裝置狀態監控：</strong>向關注者通知電池電量低、應用程式終止或其他可能影響安否確認的狀況。</li>
+  <li><strong>訂閱管理：</strong>驗證應用程式內購買收據並管理關注者的服務存取權限。</li>
+  <li><strong>服務改善：</strong>診斷錯誤並提升服務可靠性。</li>
+</ol>
+
+<h2>3. 資料保留</h2>
+<table>
+  <thead>
+    <tr><th>資料</th><th>保留期限</th><th>備註</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>裝置資訊、FCM權杖</td><td>直到帳戶刪除</td><td>帳戶刪除時立即刪除</td></tr>
+    <tr><td>心跳紀錄</td><td>30天</td><td>30天後自動刪除</td></tr>
+    <tr><td>警示通知紀錄</td><td>僅當天</td><td>每日午夜（受關注者當地時區）刪除</td></tr>
+    <tr><td>緊急求助請求位置資訊</td><td>最長24小時</td><td>於受關注者裝置時區的午夜與通知紀錄一同自動刪除</td></tr>
+    <tr><td>訂閱資訊</td><td>直到訂閱到期或帳戶刪除</td><td>帳戶刪除時立即刪除</td></tr>
+  </tbody>
+</table>
+
+<h2>4. 資料共享</h2>
+<p>我們不會向第三方出售、交換或出租您的資訊。我們僅在以下有限情況下共享資訊：</p>
+<ol>
+  <li><strong>關注者與受關注者的連結：</strong>當受關注者與關注者分享邀請碼時，關注者會收到受關注者的安否狀態（心跳接收/未接收、電池電量）。不會共享個人資訊——僅共享裝置層級的安否資料。</li>
+  <li><strong>緊急求助請求時的位置分享：</strong>受關注者本人按下應用程式內 [🚨] 緊急求助按鈕且同意分享位置資訊時，當前位置（緯度、經度、精確度）將一次性提供給所有關聯的關注者。位置權限被拒或無法接收GPS訊號時，僅傳達緊急通知而不含位置。</li>
+  <li><strong>法律要求：</strong>當適用法律、法規或有效的法律程序要求時。</li>
+</ol>
+
+<h2>5. 第三方服務提供者</h2>
+<p>我們使用以下第三方服務來營運本服務：</p>
+<p>就應用程式內購買處理（Apple Inc.、Google LLC）而言，我們僅從這些服務提供者處接收用於確認訂閱狀態的收據驗證權杖。我們不會接收或處理實際的付款方式資訊。</p>
+<table>
+  <thead>
+    <tr><th>提供者</th><th>服務</th><th>隱私權政策</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Google LLC（Firebase）</td><td>推播通知（FCM）</td><td><a href="https://firebase.google.com/support/privacy">Firebase Privacy</a></td></tr>
+    <tr><td>Apple Inc.</td><td>應用程式內購買、推播通知（APNs）</td><td><a href="https://www.apple.com/privacy/">Apple Privacy</a></td></tr>
+    <tr><td>Google LLC（Google Play）</td><td>應用程式內購買</td><td><a href="https://policies.google.com/privacy">Google Privacy</a></td></tr>
+  </tbody>
+</table>
+
+<h2>6. 您的權利</h2>
+<p>您對自己的資料享有以下權利：</p>
+<ol>
+  <li><strong>刪除帳戶：</strong>您可以隨時透過應用程式設定中的「刪除帳戶」選項刪除您的帳戶及所有相關資料。刪除是即時且不可逆的。</li>
+  <li><strong>撤銷權限：</strong>您可以隨時透過裝置設定撤銷通知或運動權限。</li>
+  <li><strong>請求資料存取：</strong>您可以透過以下電子郵件聯繫我們，請求了解我們持有的關於您的資料。</li>
+</ol>
+
+<h3>歐洲經濟區（EEA）使用者</h3>
+<p>根據《一般資料保護規範》（GDPR），您另有以下權利：</p>
+<ul>
+  <li>請求存取、更正或刪除您的個人資料</li>
+  <li>反對或限制資料處理</li>
+  <li>資料可攜性</li>
+  <li>向您所在地區的資料保護機關投訴</li>
+</ul>
+<p>我們處理資料的法律依據是<strong>合法利益</strong>（提供您選擇加入的安否確認服務）和<strong>同意</strong>（用於步數計量等選擇性權限）。</p>
+
+<h3>加州使用者（CCPA）</h3>
+<p>根據《加州消費者隱私法》，加州居民有權：</p>
+<ul>
+  <li>了解我們收集哪些個人資訊及其使用方式</li>
+  <li>請求刪除個人資訊</li>
+  <li>選擇退出個人資訊的出售——<strong>我們不出售任何個人資訊</strong></li>
+  <li>行使隱私權時不受歧視</li>
+</ul>
+
+<h3>兒童隱私（COPPA）</h3>
+<p>Anbu不以13歲以下兒童為對象。我們不會故意收集13歲以下兒童的資訊。如果您認為兒童向我們提供了資料，請聯繫我們，我們將及時刪除。</p>
+
+<div class="highlight">
+  <p><strong>帳戶刪除時將刪除的資料：</strong></p>
+  <ul>
+    <li>使用者帳戶及裝置資訊</li>
+    <li>所有心跳紀錄</li>
+    <li>關注者與受關注者的連結紀錄</li>
+    <li>訂閱資訊</li>
+    <li>警示通知紀錄</li>
+    <li>通知設定</li>
+  </ul>
+</div>
+
+<h2>7. 資料安全</h2>
+<p>我們採取以下措施保護您的資料：</p>
+<ol>
+  <li><strong>傳輸加密：</strong>應用程式與伺服器之間的所有通訊均使用HTTPS（TLS 1.2或更高版本）加密。</li>
+  <li><strong>存取控制：</strong>基於裝置權杖的身分驗證確保您只能存取自己的資料。</li>
+  <li><strong>資料最小化：</strong>我們僅收集提供服務所需的最少資訊。</li>
+  <li><strong>自動刪除：</strong>超過保留期限的資料將自動刪除。</li>
+</ol>
+
+<h2>8. 本機儲存</h2>
+<p>Anbu不使用Cookie或網路追蹤技術。應用程式在您的裝置上本機儲存以下資訊（Android使用SharedPreferences，iOS使用UserDefaults）：</p>
+<ul>
+  <li>裝置權杖（用於伺服器身分驗證）</li>
+  <li>邀請碼</li>
+  <li>心跳排程時間</li>
+  <li>最後心跳傳送時間</li>
+</ul>
+<p>解除安裝應用程式或刪除帳戶時，這些資料將全部刪除。</p>
+
+<h2>9. 國際資料傳輸</h2>
+<p>我們的伺服器可能位於您的居住國以外。使用本服務即表示您同意將您的資訊傳輸至其他司法管轄區的伺服器。我們確保根據本隱私權政策採取適當的保障措施來保護您的資料。</p>
+
+<h2>10. 政策變更</h2>
+<p>我們可能會不時更新本隱私權政策，以反映我們做法或適用法律的變更。重大變更將透過應用程式或本頁面通知您。變更發布後繼續使用本服務即表示您接受更新後的政策。</p>
+
+<h2>11. 聯繫我們</h2>
+<table>
+  <thead>
+    <tr><th>項目</th><th>詳情</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>服務</td><td>Anbu</td></tr>
+    <tr><td>電子郵件</td><td>anbucheck1018@gmail.com</td></tr>
+  </tbody>
+</table>
+<p>如您對本隱私權政策或我們的資料處理方式有任何疑問、疑慮或請求，請透過上述電子郵件聯繫我們。</p>
+
+</body>
+</html>

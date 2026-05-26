@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anbu — Integritetspolicy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.8;
+      color: #1a1c1c;
+      background: #fafafa;
+      padding: 24px 16px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 32px 0 12px; color: #00796b; }
+    h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+    p, li { font-size: 15px; color: #333; }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+    th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+    th { background: #e0f2f1; font-weight: 600; }
+    .date { font-size: 14px; color: #666; margin-bottom: 24px; }
+    .highlight { background: #e0f2f1; padding: 16px; border-radius: 8px; margin: 12px 0; }
+    a { color: #00796b; }
+  </style>
+</head>
+<body>
+
+<h1>Integritetspolicy</h1>
+<p class="date">Ikrafttr&auml;dande: 27 april 2026 | Senast uppdaterad: 24 maj 2026</p>
+
+<p>Anbu ("vi", "oss" eller "v&aring;r") &auml;r engagerade i att skydda din integritet. Denna integritetspolicy f&ouml;rklarar hur vi samlar in, anv&auml;nder, lagrar och skyddar information n&auml;r du anv&auml;nder mobilapplikationen Anbu ("Tj&auml;nsten"). Genom att anv&auml;nda Tj&auml;nsten godk&auml;nner du de rutiner som beskrivs i denna policy.</p>
+
+<p>Vi har utformat Anbu med ett <strong>integritetsfokuserat tillv&auml;gag&aring;ngss&auml;tt</strong>. Vi samlar inte in personuppgifter s&aring;som ditt namn, telefonnummer, e-postadress eller plats. Tj&auml;nsten fungerar enbart med enhetsidentifierare och minimala sensordata som &auml;r n&ouml;dv&auml;ndiga f&ouml;r h&auml;lsokontrollfunktionen.</p>
+
+<h2>1. Information vi samlar in</h2>
+
+<h3>1.1 Information som samlas in automatiskt</h3>
+<table>
+  <thead>
+    <tr><th>Kategori</th><th>Data</th><th>Syfte</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Enhetsinformation</td>
+      <td>Enhetsidentifierare (device_id), plattform (Android/iOS), OS-version, tidszon</td>
+      <td>Tj&auml;nstens drift och enhetsidentifiering</td>
+    </tr>
+    <tr>
+      <td>Push-token</td>
+      <td>Firebase Cloud Messaging (FCM)-token</td>
+      <td>Leverans av h&auml;lsokontrollaviseringar och varningar</td>
+    </tr>
+    <tr>
+      <td>H&auml;lsodata (Skyddad person)</td>
+      <td>Batteriniv&aring;, tidpunkt f&ouml;r heartbeat-&ouml;verf&ouml;ring</td>
+      <td>Bed&ouml;mning av h&auml;lsostatus och utskick av varningar till v&aring;rdgivare</td>
+    </tr>
+    <tr>
+      <td>Sensor&ouml;gonblicksbilder (Skyddad person)</td>
+      <td>Accelerometer- och gyroskopavl&auml;sningar (enstaka &ouml;gonblicksbilder, inte kontinuerliga)</td>
+      <td>Detektering av enhetsr&ouml;relse f&ouml;r att bed&ouml;ma aktivitet</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>1.2 Information som samlas in med ditt tillst&aring;nd</h3>
+<table>
+  <thead>
+    <tr><th>Kategori</th><th>Data</th><th>Syfte</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Stegr&auml;kning (Skyddad person)</td>
+      <td>Antal steg sedan senaste heartbeat (steps_delta)</td>
+      <td>Aktivitetsverifiering (samlas inte in om tillst&aring;nd nekas)</td>
+    </tr>
+    <tr>
+      <td>Platsdata (Skyddad person, frivilligt)</td>
+      <td>Latitud, longitud, noggrannhet och tidsst&auml;mpel f&ouml;r registreringen</td>
+      <td>Delas endast en g&aring;ng med anslutna v&aring;rdgivare n&auml;r den skyddade personen sj&auml;lv trycker p&aring; knappen [🚨 Jag beh&ouml;ver hj&auml;lp]. Ingen platsdata samlas in vid den ordinarie h&auml;lsokontrollen (heartbeat). Om platsbeh&ouml;righeten nekas eller om GPS-position inte kan fastst&auml;llas skickas n&ouml;daviseringen utan platsdata.</td>
+    </tr>
+    <tr>
+      <td>Prenumeration (V&aring;rdgivare)</td>
+      <td>Kvitto f&ouml;r k&ouml;p i appen (Apple/Google)</td>
+      <td>Prenumerationsverifiering och &aring;tkomst till tj&auml;nsten</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+  <p><strong>Betalmedelsuppgifter &mdash; lagras inte p&aring; v&aring;ra servrar</strong></p>
+  <p>De enda betalningsrelaterade uppgifter som lagras p&aring; v&aring;ra servrar &auml;r den <strong>kvittovalideringstoken som utf&auml;rdas av Apple App Store eller Google Play Butik</strong>. Kortnummer, bankkontouppgifter, betalningsbeh&ouml;righetsuppgifter och faktureringsadresser behandlas uteslutande inom Apples och Googles betalningssystem och &auml;r inte &aring;tkomliga f&ouml;r v&aring;ra servrar. Lagring av betalningsdata, hantering av &aring;terbetalningar och l&ouml;sning av faktureringstvister regleras helt av Apples respektive Googles policyer.</p>
+</div>
+
+<h3>1.3 Information vi INTE samlar in</h3>
+<ul>
+  <li>Namn, telefonnummer, e-postadress eller n&aring;gon annan personligt identifierbar information</li>
+  <li>Platsdata vid den ordinarie h&auml;lsokontrollen (heartbeat); vi utf&ouml;r aldrig n&aring;gon platssp&aring;rning i bakgrunden</li>
+  <li>Foton, kontakter eller andra data lagrade p&aring; din enhet</li>
+  <li>Samtalsloggar, textmeddelanden eller webbhistorik</li>
+  <li>Kontinuerliga sensordata (vi tar bara korta &ouml;gonblicksbilder en g&aring;ng per dag)</li>
+  <li>Betalmedelsuppgifter s&aring;som kortnummer eller bankkontouppgifter &mdash; behandlas uteslutande av Apples och Googles betalningssystem</li>
+</ul>
+
+<h3>1.4 Insamlingss&auml;tt</h3>
+<ul>
+  <li>Enhets- och h&auml;lsodata skickas automatiskt till v&aring;ra servrar vid varje heartbeat-&ouml;verf&ouml;ring.</li>
+  <li>Platsdata samlas in en enda g&aring;ng i f&ouml;rgrunden, och endast n&auml;r den skyddade personen sj&auml;lv trycker p&aring; knappen f&ouml;r n&ouml;dhj&auml;lp och platsbeh&ouml;righet har beviljats. Platsdata samlas aldrig in i bakgrunden.</li>
+</ul>
+
+<h2>2. Hur vi anv&auml;nder din information</h2>
+<p>Vi anv&auml;nder den insamlade informationen uteslutande f&ouml;r f&ouml;ljande syften:</p>
+<ol>
+  <li><strong>H&auml;lsokontrolltj&auml;nst:</strong> Insamling av heartbeat-signaler fr&aring;n den skyddade personens enhet och avisering av v&aring;rdgivare om h&auml;lsostatus.</li>
+  <li><strong>Varningsaviseringar:</strong> Utskick av stegvisa varningar (Observera &rarr; Varning &rarr; Akut) till v&aring;rdgivare n&auml;r en skyddad persons heartbeat inte mottas.</li>
+  <li><strong>Hantering av n&ouml;dhj&auml;lpsbeg&auml;ran:</strong> N&auml;r en skyddad person sj&auml;lv trycker p&aring; knappen [🚨 Jag beh&ouml;ver hj&auml;lp] vidarebefordrar vi aviseringen omedelbart till samtliga anslutna v&aring;rdgivare. Om anv&auml;ndaren har samtyckt till att dela platsdata skickas dessutom den aktuella positionen (latitud, longitud och noggrannhet).</li>
+  <li><strong>Enhetsstatusbevakning:</strong> Informera v&aring;rdgivare om l&aring;gt batteri, appavslutning eller andra f&ouml;rh&aring;llanden som kan p&aring;verka h&auml;lsokontroller.</li>
+  <li><strong>Prenumerationshantering:</strong> Verifiering av kvitton f&ouml;r k&ouml;p i appen och hantering av v&aring;rdgivares tj&auml;nst&aring;tkomst.</li>
+  <li><strong>Tj&auml;nstef&ouml;rb&auml;ttring:</strong> Fels&ouml;kning och f&ouml;rb&auml;ttring av tj&auml;nstens tillf&ouml;rlitlighet.</li>
+</ol>
+
+<h2>3. Datalagring</h2>
+<table>
+  <thead>
+    <tr><th>Data</th><th>Lagringsperiod</th><th>Anm&auml;rkning</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Enhetsinformation, FCM-token</td>
+      <td>Tills kontot raderas</td>
+      <td>Raderas omedelbart vid kontoradering</td>
+    </tr>
+    <tr>
+      <td>Heartbeat-loggar</td>
+      <td>30 dagar</td>
+      <td>Raderas automatiskt efter 30 dagar</td>
+    </tr>
+    <tr>
+      <td>Varningsaviseringsposter</td>
+      <td>Endast aktuell dag</td>
+      <td>Raderas dagligen vid midnatt (skyddad persons lokala tidszon)</td>
+    </tr>
+    <tr>
+      <td>Platsdata fr&aring;n n&ouml;dhj&auml;lpsbeg&auml;ran</td>
+      <td>Upp till 24 timmar</td>
+      <td>Raderas automatiskt tillsammans med tillh&ouml;rande aviseringsposter vid midnatt enligt den lokala tidszonen f&ouml;r den skyddade personens enhet</td>
+    </tr>
+    <tr>
+      <td>Prenumerationsinformation</td>
+      <td>Tills prenumerationen l&ouml;per ut eller kontot raderas</td>
+      <td>Raderas omedelbart vid kontoradering</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. Delning av data</h2>
+<p>Vi s&auml;ljer, byter eller hyr inte ut din information till tredje part. Vi delar information endast under f&ouml;ljande begr&auml;nsade omst&auml;ndigheter:</p>
+<ol>
+  <li><strong>Koppling mellan v&aring;rdgivare och skyddad person:</strong> N&auml;r en skyddad person delar sin inbjudningskod med en v&aring;rdgivare f&aring;r v&aring;rdgivaren den skyddade personens h&auml;lsostatus (heartbeat mottaget/uteblivet, batteriniv&aring;). Inga personuppgifter delas &mdash; bara h&auml;lsodata p&aring; enhetsniv&aring;.</li>
+  <li><strong>Delning av plats vid n&ouml;dhj&auml;lpsbeg&auml;ran:</strong> N&auml;r den skyddade personen sj&auml;lv trycker p&aring; knappen [🚨 Jag beh&ouml;ver hj&auml;lp] i appen och har samtyckt till att dela platsdata, delas den aktuella positionen (latitud, longitud och noggrannhet) en g&aring;ng med samtliga anslutna v&aring;rdgivare. Om platsbeh&ouml;righeten nekas eller om GPS-position inte kan fastst&auml;llas skickas n&ouml;daviseringen utan platsdata.</li>
+  <li><strong>R&auml;ttsliga krav:</strong> N&auml;r det kr&auml;vs enligt till&auml;mplig lag, f&ouml;rordning eller giltigt r&auml;ttsligt f&ouml;rfarande.</li>
+</ol>
+
+<h2>5. Tredjepartsleverant&ouml;rer</h2>
+<p>Vi anv&auml;nder f&ouml;ljande tredjepartstj&auml;nster f&ouml;r att driva Tj&auml;nsten:</p>
+<p>F&ouml;r hantering av k&ouml;p i appen (Apple Inc., Google LLC) tar vi endast emot kvittovalideringstoken fr&aring;n dessa leverant&ouml;rer, enbart i syfte att verifiera prenumerationsstatusen. Vi tar inte emot eller behandlar faktiska betalmedelsuppgifter.</p>
+<table>
+  <thead>
+    <tr><th>Leverant&ouml;r</th><th>Tj&auml;nst</th><th>Integritetspolicy</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Google LLC (Firebase)</td>
+      <td>Push-aviseringar (FCM)</td>
+      <td><a href="https://firebase.google.com/support/privacy">Firebase integritet</a></td>
+    </tr>
+    <tr>
+      <td>Apple Inc.</td>
+      <td>K&ouml;p i appen, push-aviseringar (APNs)</td>
+      <td><a href="https://www.apple.com/privacy/">Apple integritet</a></td>
+    </tr>
+    <tr>
+      <td>Google LLC (Google Play)</td>
+      <td>K&ouml;p i appen</td>
+      <td><a href="https://policies.google.com/privacy">Google integritet</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>6. Dina r&auml;ttigheter</h2>
+<p>Du har f&ouml;ljande r&auml;ttigheter g&auml;llande dina uppgifter:</p>
+<ol>
+  <li><strong>Radera ditt konto:</strong> Du kan radera ditt konto och alla tillh&ouml;rande uppgifter n&auml;r som helst via alternativet "Radera konto" i appens inst&auml;llningar. Raderingen &auml;r omedelbar och o&aring;terkallelig.</li>
+  <li><strong>&Aring;terkalla beh&ouml;righeter:</strong> Du kan &aring;terkalla aviserings- eller r&ouml;relsebeh&ouml;righeter n&auml;r som helst via enhetens inst&auml;llningar.</li>
+  <li><strong>Beg&auml;r &aring;tkomst till data:</strong> Du kan beg&auml;ra information om de uppgifter vi har om dig genom att kontakta oss p&aring; e-postadressen nedan.</li>
+</ol>
+
+<h3>F&ouml;r anv&auml;ndare inom Europeiska ekonomiska samarbetsomr&aring;det (EES)</h3>
+<p>Enligt den allm&auml;nna dataskyddsf&ouml;rordningen (GDPR) har du ocks&aring; r&auml;tt att:</p>
+<ul>
+  <li>Beg&auml;ra &aring;tkomst till, r&auml;ttelse av eller radering av dina personuppgifter</li>
+  <li>Inv&auml;nda mot eller begr&auml;nsa behandlingen av dina uppgifter</li>
+  <li>Dataportabilitet</li>
+  <li>L&auml;mna in ett klagom&aring;l till din lokala dataskyddsmyndighet</li>
+</ul>
+<p>V&aring;r r&auml;ttsliga grund f&ouml;r behandling &auml;r <strong>ber&auml;ttigat intresse</strong> (att tillhandah&aring;lla h&auml;lsokontrolltj&auml;nsten du har valt) och <strong>samtycke</strong> (f&ouml;r valfria beh&ouml;righeter som stegr&auml;kning).</p>
+
+<h3>F&ouml;r anv&auml;ndare i Kalifornien (CCPA)</h3>
+<p>Enligt California Consumer Privacy Act har inv&aring;nare i Kalifornien r&auml;tt att:</p>
+<ul>
+  <li>Veta vilka personuppgifter vi samlar in och hur de anv&auml;nds</li>
+  <li>Beg&auml;ra radering av personuppgifter</li>
+  <li>V&auml;lja bort f&ouml;rs&auml;ljning av personuppgifter &mdash; <strong>vi s&auml;ljer inga personuppgifter</strong></li>
+  <li>Icke-diskriminering vid ut&ouml;vande av dina integritetsr&auml;ttigheter</li>
+</ul>
+
+<h3>Barns integritet (COPPA)</h3>
+<p>Anbu riktar sig inte till barn under 13 &aring;r. Vi samlar inte medvetet in information fr&aring;n barn under 13 &aring;r. Om du tror att ett barn har l&auml;mnat uppgifter till oss, v&auml;nligen kontakta oss s&aring; raderar vi dem omg&aring;ende.</p>
+
+<div class="highlight">
+  <p><strong>Data som raderas vid kontoradering:</strong></p>
+  <ul>
+    <li>Anv&auml;ndarkonto och enhetsinformation</li>
+    <li>Alla heartbeat-loggar</li>
+    <li>Kopplingsposter mellan v&aring;rdgivare och skyddad person</li>
+    <li>Prenumerationsinformation</li>
+    <li>Varningsaviseringsposter</li>
+    <li>Aviseringsinst&auml;llningar</li>
+  </ul>
+</div>
+
+<h2>7. Datas&auml;kerhet</h2>
+<p>Vi vidtar f&ouml;ljande &aring;tg&auml;rder f&ouml;r att skydda dina uppgifter:</p>
+<ol>
+  <li><strong>Kryptering under &ouml;verf&ouml;ring:</strong> All kommunikation mellan appen och v&aring;ra servrar anv&auml;nder HTTPS (TLS 1.2 eller h&ouml;gre).</li>
+  <li><strong>&Aring;tkomstkontroll:</strong> Enhetstoken-baserad autentisering s&auml;kerst&auml;ller att du bara kan komma &aring;t dina egna uppgifter.</li>
+  <li><strong>Dataminimering:</strong> Vi samlar bara in den minsta m&auml;ngd information som beh&ouml;vs f&ouml;r att tillhandah&aring;lla Tj&auml;nsten.</li>
+  <li><strong>Automatisk radering:</strong> Data som &ouml;verskridit sin lagringsperiod raderas automatiskt.</li>
+</ol>
+
+<h2>8. Lokal lagring</h2>
+<p>Anbu anv&auml;nder inte cookies eller webbsp&aring;rningstekniker. Appen lagrar f&ouml;ljande information lokalt p&aring; din enhet (med SharedPreferences p&aring; Android / UserDefaults p&aring; iOS):</p>
+<ul>
+  <li>Enhetstoken (f&ouml;r serverautentisering)</li>
+  <li>Inbjudningskod</li>
+  <li>Schemalagd tid f&ouml;r heartbeat</li>
+  <li>Tidpunkt f&ouml;r senaste heartbeat-&ouml;verf&ouml;ring</li>
+</ul>
+<p>Dessa data raderas n&auml;r du avinstallerar appen eller raderar ditt konto.</p>
+
+<h2>9. Internationella data&ouml;verf&ouml;ringar</h2>
+<p>V&aring;ra servrar kan finnas utanf&ouml;r det land d&auml;r du &auml;r bosatt. Genom att anv&auml;nda Tj&auml;nsten samtycker du till &ouml;verf&ouml;ring av din information till servrar i andra jurisdiktioner. Vi s&auml;kerst&auml;ller att l&auml;mpliga skydds&aring;tg&auml;rder vidtas f&ouml;r att skydda dina uppgifter i enlighet med denna integritetspolicy.</p>
+
+<h2>10. &Auml;ndringar av denna policy</h2>
+<p>Vi kan uppdatera denna integritetspolicy fr&aring;n tid till annan f&ouml;r att &aring;terspegla &auml;ndringar i v&aring;ra rutiner eller till&auml;mplig lagstiftning. Vi meddelar dig om v&auml;sentliga &auml;ndringar via appen eller denna sida. Din fortsatta anv&auml;ndning av Tj&auml;nsten efter att &auml;ndringar har publicerats utg&ouml;r ditt godk&auml;nnande av den uppdaterade policyn.</p>
+
+<h2>11. Kontakta oss</h2>
+<table>
+  <thead>
+    <tr><th>Uppgift</th><th>Detaljer</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Tj&auml;nst</td><td>Anbu</td></tr>
+    <tr><td>E-post</td><td>anbucheck1018@gmail.com</td></tr>
+  </tbody>
+</table>
+<p>Om du har n&aring;gra fr&aring;gor, synpunkter eller &ouml;nskem&aring;l g&auml;llande denna integritetspolicy eller v&aring;r datahantering, v&auml;nligen kontakta oss p&aring; e-postadressen ovan.</p>
+
+</body>
+</html>

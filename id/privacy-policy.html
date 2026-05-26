@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anbu — Kebijakan Privasi</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.8;
+      color: #1a1c1c;
+      background: #fafafa;
+      padding: 24px 16px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 32px 0 12px; color: #00796b; }
+    h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+    p, li { font-size: 15px; color: #333; }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+    th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+    th { background: #e0f2f1; font-weight: 600; }
+    .date { font-size: 14px; color: #666; margin-bottom: 24px; }
+    .highlight { background: #e0f2f1; padding: 16px; border-radius: 8px; margin: 12px 0; }
+    a { color: #00796b; }
+  </style>
+</head>
+<body>
+
+<h1>Kebijakan Privasi</h1>
+<p class="date">Tanggal berlaku: 27 April 2026 | Pembaruan terakhir: 24 Mei 2026</p>
+
+<p>Anbu ("kami") berkomitmen untuk melindungi privasi Anda. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, menyimpan, dan melindungi informasi saat Anda menggunakan aplikasi seluler Anbu ("Layanan"). Dengan menggunakan Layanan, Anda menyetujui praktik yang dijelaskan dalam kebijakan ini.</p>
+
+<p>Kami merancang Anbu dengan <strong>pendekatan yang mengutamakan privasi</strong>. Kami tidak mengumpulkan informasi pribadi seperti nama, nomor telepon, alamat email, atau lokasi Anda. Layanan beroperasi hanya menggunakan pengenal tingkat perangkat dan data sensor minimal yang diperlukan untuk fungsi pemeriksaan kesejahteraan.</p>
+
+<h2>1. Informasi yang Kami Kumpulkan</h2>
+
+<h3>1.1 Informasi yang Dikumpulkan Secara Otomatis</h3>
+<table>
+  <thead>
+    <tr><th>Kategori</th><th>Data</th><th>Tujuan</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Informasi Perangkat</td>
+      <td>Pengenal perangkat (device_id), platform (Android/iOS), versi OS, zona waktu</td>
+      <td>Pengoperasian layanan dan identifikasi perangkat</td>
+    </tr>
+    <tr>
+      <td>Token Push</td>
+      <td>Token Firebase Cloud Messaging (FCM)</td>
+      <td>Mengirimkan notifikasi pemeriksaan kesejahteraan dan peringatan</td>
+    </tr>
+    <tr>
+      <td>Data Kesejahteraan (Orang yang Dilindungi)</td>
+      <td>Level baterai, waktu pengiriman heartbeat</td>
+      <td>Menentukan status kesejahteraan dan mengirim peringatan ke Pelindung</td>
+    </tr>
+    <tr>
+      <td>Cuplikan Sensor (Orang yang Dilindungi)</td>
+      <td>Pembacaan akselerometer dan giroskop (cuplikan satu titik, bukan berkelanjutan)</td>
+      <td>Mendeteksi pergerakan perangkat untuk menilai aktivitas</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>1.2 Informasi yang Dikumpulkan dengan Izin Anda</h3>
+<table>
+  <thead>
+    <tr><th>Kategori</th><th>Data</th><th>Tujuan</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Jumlah Langkah (Orang yang Dilindungi)</td>
+      <td>Langkah yang diambil sejak heartbeat terakhir (steps_delta)</td>
+      <td>Verifikasi aktivitas (tidak dikumpulkan jika izin ditolak)</td>
+    </tr>
+    <tr>
+      <td>Data Lokasi (Opsional — Orang yang Dilindungi)</td>
+      <td>Garis lintang (latitude), garis bujur (longitude), akurasi (accuracy), waktu pengambilan (timestamp)</td>
+      <td>Hanya dikirim satu kali kepada Pelindung ketika Orang yang Dilindungi menekan sendiri tombol permintaan bantuan darurat [🚨 Saya butuh bantuan]. Tidak dikumpulkan selama pemeriksaan heartbeat berkala. Jika izin lokasi ditolak atau GPS gagal, notifikasi darurat tetap dikirim tanpa lokasi.</td>
+    </tr>
+    <tr>
+      <td>Langganan (Pelindung)</td>
+      <td>Bukti pembelian dalam aplikasi (Apple/Google)</td>
+      <td>Verifikasi langganan dan akses layanan</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+  <p><strong>Informasi metode pembayaran &mdash; tidak disimpan di server kami</strong></p>
+  <p>Satu-satunya data terkait pembayaran yang disimpan di server kami adalah <strong>token validasi tanda terima yang diterbitkan oleh Apple App Store atau Google Play Store</strong>. Nomor kartu, informasi rekening bank, kredensial pembayaran, dan alamat penagihan diproses secara eksklusif di dalam sistem pembayaran Apple dan Google dan tidak dapat diakses oleh server kami. Penyimpanan data pembayaran, pemrosesan pengembalian dana, dan penyelesaian sengketa penagihan sepenuhnya tunduk pada kebijakan masing-masing Apple dan Google.</p>
+</div>
+
+<h3>1.3 Informasi yang TIDAK Kami Kumpulkan</h3>
+<ul>
+  <li>Nama, nomor telepon, alamat email, atau informasi pengenal pribadi apa pun</li>
+  <li>Data lokasi selama pemeriksaan kesejahteraan berkala (heartbeat) — kami sama sekali tidak melakukan pelacakan lokasi di latar belakang. Lokasi hanya dikumpulkan satu kali ketika Orang yang Dilindungi menekan sendiri tombol permintaan bantuan darurat [🚨 Saya butuh bantuan] (lihat Bagian 1.2).</li>
+  <li>Foto, kontak, atau data lain yang tersimpan di perangkat Anda</li>
+  <li>Log panggilan, pesan teks, atau riwayat penjelajahan</li>
+  <li>Data sensor berkelanjutan (kami hanya mengambil cuplikan singkat sekali sehari)</li>
+  <li>Informasi metode pembayaran seperti nomor kartu atau informasi rekening bank &mdash; hanya diproses oleh sistem pembayaran Apple dan Google</li>
+</ul>
+
+<h2>2. Bagaimana Kami Menggunakan Informasi Anda</h2>
+<p>Kami menggunakan informasi yang dikumpulkan semata-mata untuk tujuan berikut:</p>
+<ol>
+  <li><strong>Layanan Pemeriksaan Kesejahteraan:</strong> Mengumpulkan sinyal heartbeat dari perangkat Orang yang Dilindungi dan memberi tahu Pelindung tentang status kesejahteraan.</li>
+  <li><strong>Notifikasi Peringatan:</strong> Mengirim peringatan bertahap (Perhatian &rarr; Peringatan &rarr; Darurat) kepada Pelindung ketika heartbeat Orang yang Dilindungi tidak diterima.</li>
+  <li><strong>Pemrosesan Permintaan Bantuan Darurat:</strong> Ketika Orang yang Dilindungi menekan sendiri tombol bantuan darurat, sistem segera meneruskan notifikasi kepada seluruh Pelindung yang terhubung. Jika pengguna menyetujui untuk membagikan informasi lokasi, lokasi saat ini (garis lintang, garis bujur, akurasi) juga akan disertakan.</li>
+  <li><strong>Pemantauan Status Perangkat:</strong> Menginformasikan Pelindung tentang baterai rendah, penutupan aplikasi, atau kondisi lain yang dapat memengaruhi pemeriksaan kesejahteraan.</li>
+  <li><strong>Manajemen Langganan:</strong> Memverifikasi bukti pembelian dalam aplikasi dan mengelola akses layanan Pelindung.</li>
+  <li><strong>Peningkatan Layanan:</strong> Mendiagnosis kesalahan dan meningkatkan keandalan layanan.</li>
+</ol>
+
+<h2>3. Penyimpanan Data</h2>
+<table>
+  <thead>
+    <tr><th>Data</th><th>Periode Penyimpanan</th><th>Catatan</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Informasi perangkat, token FCM</td>
+      <td>Sampai penghapusan akun</td>
+      <td>Dihapus segera saat akun dihapus</td>
+    </tr>
+    <tr>
+      <td>Log heartbeat</td>
+      <td>30 hari</td>
+      <td>Dihapus secara otomatis setelah 30 hari</td>
+    </tr>
+    <tr>
+      <td>Catatan notifikasi peringatan</td>
+      <td>Hanya hari ini</td>
+      <td>Dihapus setiap tengah malam (zona waktu lokal Orang yang Dilindungi)</td>
+    </tr>
+    <tr>
+      <td>Informasi lokasi pada permintaan bantuan darurat</td>
+      <td>Maksimal 24 jam</td>
+      <td>Otomatis dihapus bersama dengan catatan notifikasi pada tengah malam berdasarkan zona waktu perangkat Orang yang Dilindungi</td>
+    </tr>
+    <tr>
+      <td>Informasi langganan</td>
+      <td>Sampai berakhirnya langganan atau penghapusan akun</td>
+      <td>Dihapus segera saat akun dihapus</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. Berbagi Data</h2>
+<p>Kami tidak menjual, memperdagangkan, atau menyewakan informasi Anda kepada pihak ketiga. Kami membagikan informasi hanya dalam keadaan terbatas berikut:</p>
+<ol>
+  <li><strong>Koneksi Pelindung-Orang yang Dilindungi:</strong> Ketika Orang yang Dilindungi membagikan Kode Undangan mereka kepada Pelindung, Pelindung menerima status kesejahteraan Orang yang Dilindungi (heartbeat diterima/tidak diterima, level baterai). Tidak ada informasi pribadi yang dibagikan &mdash; hanya data kesejahteraan tingkat perangkat.</li>
+  <li><strong>Pengiriman lokasi saat permintaan bantuan darurat:</strong> Hanya ketika Orang yang Dilindungi menekan sendiri tombol [🚨 Saya butuh bantuan] di dalam aplikasi dan menyetujui pembagian informasi lokasi, lokasi saat ini (garis lintang, garis bujur, akurasi) akan dikirimkan satu kali kepada seluruh Pelindung yang terhubung. Jika izin lokasi ditolak atau perangkat tidak menerima sinyal GPS, hanya notifikasi darurat yang dikirim tanpa lokasi.</li>
+  <li><strong>Persyaratan Hukum:</strong> Ketika diwajibkan oleh hukum, peraturan, atau proses hukum yang berlaku.</li>
+</ol>
+
+<h2>5. Penyedia Layanan Pihak Ketiga</h2>
+<p>Kami menggunakan layanan pihak ketiga berikut untuk mengoperasikan Layanan:</p>
+<p>Untuk pemrosesan pembelian dalam aplikasi (Apple Inc., Google LLC), kami hanya menerima token validasi tanda terima dari penyedia ini, semata-mata untuk tujuan memverifikasi status langganan. Kami tidak menerima atau memproses informasi metode pembayaran yang sebenarnya.</p>
+<table>
+  <thead>
+    <tr><th>Penyedia</th><th>Layanan</th><th>Kebijakan Privasi</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Google LLC (Firebase)</td>
+      <td>Notifikasi push (FCM)</td>
+      <td><a href="https://firebase.google.com/support/privacy">Privasi Firebase</a></td>
+    </tr>
+    <tr>
+      <td>Apple Inc.</td>
+      <td>Pembelian dalam aplikasi, notifikasi push (APNs)</td>
+      <td><a href="https://www.apple.com/privacy/">Privasi Apple</a></td>
+    </tr>
+    <tr>
+      <td>Google LLC (Google Play)</td>
+      <td>Pembelian dalam aplikasi</td>
+      <td><a href="https://policies.google.com/privacy">Privasi Google</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>6. Hak-Hak Anda</h2>
+<p>Anda memiliki hak-hak berikut terkait data Anda:</p>
+<ol>
+  <li><strong>Menghapus Akun Anda:</strong> Anda dapat menghapus akun dan semua data terkait kapan saja melalui opsi "Hapus Akun" di pengaturan aplikasi. Penghapusan bersifat langsung dan tidak dapat dibatalkan.</li>
+  <li><strong>Mencabut Izin:</strong> Anda dapat mencabut izin notifikasi atau gerakan kapan saja melalui pengaturan perangkat Anda.</li>
+  <li><strong>Meminta Akses Data:</strong> Anda dapat meminta informasi tentang data yang kami miliki tentang Anda dengan menghubungi kami di email di bawah ini.</li>
+</ol>
+
+<h3>Untuk Pengguna di Wilayah Ekonomi Eropa (EEA)</h3>
+<p>Berdasarkan Peraturan Perlindungan Data Umum (GDPR), Anda juga memiliki hak untuk:</p>
+<ul>
+  <li>Meminta akses, koreksi, atau penghapusan data pribadi Anda</li>
+  <li>Menolak atau membatasi pemrosesan data Anda</li>
+  <li>Portabilitas data</li>
+  <li>Mengajukan keluhan kepada otoritas perlindungan data setempat Anda</li>
+</ul>
+<p>Dasar hukum kami untuk pemrosesan adalah <strong>kepentingan sah</strong> (menyediakan layanan pemeriksaan kesejahteraan yang Anda ikuti) dan <strong>persetujuan</strong> (untuk izin opsional seperti penghitungan langkah).</p>
+
+<h3>Untuk Pengguna di California (CCPA)</h3>
+<p>Berdasarkan California Consumer Privacy Act, penduduk California memiliki hak untuk:</p>
+<ul>
+  <li>Mengetahui informasi pribadi apa yang kami kumpulkan dan bagaimana penggunaannya</li>
+  <li>Meminta penghapusan informasi pribadi</li>
+  <li>Menolak penjualan informasi pribadi &mdash; <strong>kami tidak menjual informasi pribadi apa pun</strong></li>
+  <li>Non-diskriminasi atas pelaksanaan hak privasi Anda</li>
+</ul>
+
+<h3>Privasi Anak-Anak (COPPA)</h3>
+<p>Anbu tidak ditujukan untuk anak-anak di bawah 13 tahun. Kami tidak secara sengaja mengumpulkan informasi dari anak-anak di bawah 13 tahun. Jika Anda yakin seorang anak telah memberikan data kepada kami, silakan hubungi kami dan kami akan segera menghapusnya.</p>
+
+<div class="highlight">
+  <p><strong>Data yang dihapus saat penghapusan akun:</strong></p>
+  <ul>
+    <li>Akun pengguna dan informasi perangkat</li>
+    <li>Semua log heartbeat</li>
+    <li>Catatan koneksi Pelindung-Orang yang Dilindungi</li>
+    <li>Informasi langganan</li>
+    <li>Catatan notifikasi peringatan</li>
+    <li>Pengaturan notifikasi</li>
+  </ul>
+</div>
+
+<h2>7. Keamanan Data</h2>
+<p>Kami menerapkan langkah-langkah berikut untuk melindungi data Anda:</p>
+<ol>
+  <li><strong>Enkripsi dalam Transit:</strong> Semua komunikasi antara aplikasi dan server kami menggunakan HTTPS (TLS 1.2 atau yang lebih tinggi).</li>
+  <li><strong>Kontrol Akses:</strong> Autentikasi berbasis token perangkat memastikan Anda hanya dapat mengakses data Anda sendiri.</li>
+  <li><strong>Minimalisasi Data:</strong> Kami hanya mengumpulkan informasi minimum yang diperlukan untuk menyediakan Layanan.</li>
+  <li><strong>Penghapusan Otomatis:</strong> Data yang telah melewati periode penyimpanannya akan dihapus secara otomatis.</li>
+</ol>
+
+<h2>8. Penyimpanan Lokal</h2>
+<p>Anbu tidak menggunakan cookie atau teknologi pelacakan web. Aplikasi menyimpan informasi berikut secara lokal di perangkat Anda (menggunakan SharedPreferences di Android / UserDefaults di iOS):</p>
+<ul>
+  <li>Token perangkat (untuk autentikasi server)</li>
+  <li>Kode Undangan</li>
+  <li>Jadwal waktu heartbeat</li>
+  <li>Waktu pengiriman heartbeat terakhir</li>
+</ul>
+<p>Data ini dihapus saat Anda menghapus instalasi aplikasi atau menghapus akun Anda.</p>
+
+<h2>9. Transfer Data Internasional</h2>
+<p>Server kami mungkin berlokasi di luar negara tempat tinggal Anda. Dengan menggunakan Layanan, Anda menyetujui transfer informasi Anda ke server di yurisdiksi lain. Kami memastikan bahwa perlindungan yang sesuai diterapkan untuk melindungi data Anda sesuai dengan Kebijakan Privasi ini.</p>
+
+<h2>10. Perubahan Kebijakan Ini</h2>
+<p>Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu untuk mencerminkan perubahan dalam praktik kami atau hukum yang berlaku. Kami akan memberi tahu Anda tentang perubahan signifikan melalui aplikasi atau halaman ini. Penggunaan Layanan secara berkelanjutan setelah perubahan diposting merupakan penerimaan Anda terhadap kebijakan yang diperbarui.</p>
+
+<h2>11. Hubungi Kami</h2>
+<table>
+  <thead>
+    <tr><th>Item</th><th>Detail</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Layanan</td><td>Anbu</td></tr>
+    <tr><td>Email</td><td>anbucheck1018@gmail.com</td></tr>
+  </tbody>
+</table>
+<p>Jika Anda memiliki pertanyaan, kekhawatiran, atau permintaan terkait Kebijakan Privasi ini atau praktik data kami, silakan hubungi kami di alamat email di atas.</p>
+
+</body>
+</html>

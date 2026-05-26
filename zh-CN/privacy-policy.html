@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anbu — 隐私政策</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'PingFang SC', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.8;
+      color: #1a1c1c;
+      background: #fafafa;
+      padding: 24px 16px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 32px 0 12px; color: #00796b; }
+    h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+    p, li { font-size: 15px; color: #333; }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+    th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+    th { background: #e0f2f1; font-weight: 600; }
+    .date { font-size: 14px; color: #666; margin-bottom: 24px; }
+    .highlight { background: #e0f2f1; padding: 16px; border-radius: 8px; margin: 12px 0; }
+    a { color: #00796b; }
+  </style>
+</head>
+<body>
+
+<h1>隐私政策</h1>
+<p class="date">生效日期：2026年4月27日 | 最后更新：2026年5月24日</p>
+
+<p>Anbu（以下简称"我们"）致力于保护您的隐私。本隐私政策说明了当您使用Anbu移动应用程序（以下简称"本服务"）时，我们如何收集、使用、存储和保护信息。使用本服务即表示您同意本政策中描述的做法。</p>
+
+<p>Anbu以<strong>隐私优先</strong>的理念进行设计。我们不收集您的姓名、电话号码、电子邮件地址或位置等个人信息。本服务仅使用设备级标识符和安否确认功能所需的最少传感器数据来运行。</p>
+
+<h2>1. 我们收集的信息</h2>
+
+<h3>1.1 自动收集的信息</h3>
+<table>
+  <thead>
+    <tr><th>类别</th><th>数据</th><th>用途</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>设备信息</td>
+      <td>设备标识符（device_id）、平台（Android/iOS）、操作系统版本、时区</td>
+      <td>服务运营和设备识别</td>
+    </tr>
+    <tr>
+      <td>推送令牌</td>
+      <td>Firebase Cloud Messaging（FCM）令牌</td>
+      <td>发送安否确认通知和警报</td>
+    </tr>
+    <tr>
+      <td>安否数据（被关注者）</td>
+      <td>电池电量、心跳发送时间</td>
+      <td>判断安否状态并向关注者发送警报</td>
+    </tr>
+    <tr>
+      <td>传感器快照（被关注者）</td>
+      <td>加速度计和陀螺仪读数（单次快照，非连续采集）</td>
+      <td>检测设备运动以评估活动状态</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>1.2 经您许可收集的信息</h3>
+<table>
+  <thead>
+    <tr><th>类别</th><th>数据</th><th>用途</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>步数（被关注者）</td>
+      <td>自上次心跳以来的步数（steps_delta）</td>
+      <td>活动验证（如拒绝权限则不收集）</td>
+    </tr>
+    <tr>
+      <td>位置信息（被关注者，可选）</td>
+      <td>纬度、经度、精度、采集时间</td>
+      <td>仅在被关注者本人按下 [🚨 我需要帮助] 紧急求助按钮请求帮助时，向所有关联的关注者一次性传达。日常安否确认时不收集。位置权限被拒或GPS失败时，仅发送紧急通知而不附带位置。</td>
+    </tr>
+    <tr>
+      <td>订阅（关注者）</td>
+      <td>应用内购买收据（Apple/Google）</td>
+      <td>订阅验证和服务访问</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+  <p><strong>支付方式信息 — 不存储于我们的服务器</strong></p>
+  <p>我们服务器上存储的与支付相关的数据仅为<strong>Apple App Store或Google Play发放的收据验证令牌</strong>。信用卡号、银行账户信息、支付凭证以及账单地址均在Apple和Google的支付系统内处理，我们的服务器无法访问。所有支付数据的保管、退款处理及账单争议均完全遵循Apple和Google各自的政策。</p>
+</div>
+
+<h3>1.3 我们不收集的信息</h3>
+<ul>
+  <li>姓名、电话号码、电子邮件地址或任何可识别个人身份的信息</li>
+  <li>日常安否确认（heartbeat）期间不收集位置信息——我们绝不进行后台位置追踪</li>
+  <li>照片、通讯录或设备上存储的其他数据</li>
+  <li>通话记录、短信或浏览历史</li>
+  <li>连续传感器数据（我们每天仅采集一次短暂的快照）</li>
+  <li>信用卡号、银行账户信息等支付方式信息 — 仅由Apple和Google的支付系统处理</li>
+</ul>
+
+<h3>1.4 收集方法</h3>
+<ul>
+  <li>设备信息及推送令牌：应用首次启动时自动收集</li>
+  <li>安否数据及传感器快照：在预定的每日心跳时间自动收集</li>
+  <li>步数：在用户授予活动识别权限的前提下，与每日心跳一同收集</li>
+  <li>仅当被关注者本人按下紧急求助按钮且授予位置权限时一次性收集（仅前台，无后台位置收集）</li>
+</ul>
+
+<h2>2. 信息使用方式</h2>
+<p>我们仅将收集的信息用于以下目的：</p>
+<ol>
+  <li><strong>安否确认服务：</strong>从被关注者的设备收集心跳信号，并将安否状态通知关注者。</li>
+  <li><strong>警报通知：</strong>当未收到被关注者的心跳时，向关注者发送分级警报（注意→警告→紧急）。</li>
+  <li><strong>紧急求助请求处理：</strong>被关注者本人按下紧急按钮时，立即通知所有关联的关注者。若用户同意共享位置，则随附当前位置（纬度、经度、精度）。</li>
+  <li><strong>设备状态监控：</strong>向关注者通知电池电量低、应用终止或其他可能影响安否确认的情况。</li>
+  <li><strong>订阅管理：</strong>验证应用内购买收据并管理关注者的服务访问权限。</li>
+  <li><strong>服务改进：</strong>诊断错误并提高服务可靠性。</li>
+</ol>
+
+<h2>3. 数据保留</h2>
+<table>
+  <thead>
+    <tr><th>数据</th><th>保留期限</th><th>备注</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>设备信息、FCM令牌</td>
+      <td>直到账户删除</td>
+      <td>账户删除时立即删除</td>
+    </tr>
+    <tr>
+      <td>心跳日志</td>
+      <td>30天</td>
+      <td>30天后自动删除</td>
+    </tr>
+    <tr>
+      <td>警报通知记录</td>
+      <td>仅当天</td>
+      <td>每日午夜（被关注者本地时区）删除</td>
+    </tr>
+    <tr>
+      <td>紧急求助请求位置信息</td>
+      <td>最长24小时</td>
+      <td>在被关注者设备时区的午夜与通知记录一并自动删除</td>
+    </tr>
+    <tr>
+      <td>订阅信息</td>
+      <td>直到订阅到期或账户删除</td>
+      <td>账户删除时立即删除</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. 数据共享</h2>
+<p>我们不会向第三方出售、交换或出租您的信息。我们仅在以下有限情况下共享信息：</p>
+<ol>
+  <li><strong>关注者与被关注者的连接：</strong>当被关注者与关注者共享邀请码时，关注者会收到被关注者的安否状态（心跳接收/未接收、电池电量）。不会共享个人信息——仅共享设备级安否数据。</li>
+  <li><strong>紧急求助请求时的位置共享：</strong>被关注者本人按下应用内 [🚨] 紧急求助按钮且同意共享位置信息时，当前位置（纬度、经度、精度）将一次性提供给所有关联的关注者。位置权限被拒或无法接收GPS信号时，仅传达紧急通知而不含位置。</li>
+  <li><strong>法律要求：</strong>当适用法律、法规或有效的法律程序要求时。</li>
+</ol>
+
+<h2>5. 第三方服务提供商</h2>
+<p>我们使用以下第三方服务来运营本服务：</p>
+<p>就应用内购买处理（Apple Inc.、Google LLC）而言，我们仅从这些服务提供商处接收用于核实订阅状态的收据验证令牌。我们不会接收或处理实际的支付方式信息。</p>
+<table>
+  <thead>
+    <tr><th>提供商</th><th>服务</th><th>隐私政策</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Google LLC（Firebase）</td>
+      <td>推送通知（FCM）</td>
+      <td><a href="https://firebase.google.com/support/privacy">Firebase Privacy</a></td>
+    </tr>
+    <tr>
+      <td>Apple Inc.</td>
+      <td>应用内购买、推送通知（APNs）</td>
+      <td><a href="https://www.apple.com/privacy/">Apple Privacy</a></td>
+    </tr>
+    <tr>
+      <td>Google LLC（Google Play）</td>
+      <td>应用内购买</td>
+      <td><a href="https://policies.google.com/privacy">Google Privacy</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>6. 您的权利</h2>
+<p>您对自己的数据享有以下权利：</p>
+<ol>
+  <li><strong>删除账户：</strong>您可以随时通过应用设置中的"删除账户"选项删除您的账户及所有相关数据。删除是即时且不可逆的。</li>
+  <li><strong>撤销权限：</strong>您可以随时通过设备设置撤销通知或运动权限。</li>
+  <li><strong>请求数据访问：</strong>您可以通过以下电子邮件联系我们，请求了解我们持有的关于您的数据信息。</li>
+</ol>
+
+<h3>欧洲经济区（EEA）用户</h3>
+<p>根据《通用数据保护条例》（GDPR），您还有权：</p>
+<ul>
+  <li>请求访问、更正或删除您的个人数据</li>
+  <li>反对或限制数据处理</li>
+  <li>数据可携带性</li>
+  <li>向您所在地区的数据保护机构投诉</li>
+</ul>
+<p>我们处理数据的法律依据是<strong>合法利益</strong>（提供您选择的安否确认服务）和<strong>同意</strong>（用于步数计量等可选权限）。</p>
+
+<h3>加利福尼亚州用户（CCPA）</h3>
+<p>根据《加利福尼亚消费者隐私法》，加利福尼亚州居民有权：</p>
+<ul>
+  <li>了解我们收集哪些个人信息以及如何使用</li>
+  <li>请求删除个人信息</li>
+  <li>选择退出个人信息的销售——<strong>我们不销售任何个人信息</strong></li>
+  <li>行使隐私权时不受歧视</li>
+</ul>
+
+<h3>儿童隐私（COPPA）</h3>
+<p>Anbu不面向13岁以下的儿童。我们不会故意收集13岁以下儿童的信息。如果您认为儿童向我们提供了数据，请联系我们，我们将及时删除。</p>
+
+<div class="highlight">
+  <p><strong>账户删除时将删除的数据：</strong></p>
+  <ul>
+    <li>用户账户和设备信息</li>
+    <li>所有心跳日志</li>
+    <li>关注者与被关注者的连接记录</li>
+    <li>订阅信息</li>
+    <li>警报通知记录</li>
+    <li>通知设置</li>
+  </ul>
+</div>
+
+<h2>7. 数据安全</h2>
+<p>我们采取以下措施保护您的数据：</p>
+<ol>
+  <li><strong>传输加密：</strong>应用与服务器之间的所有通信均使用HTTPS（TLS 1.2或更高版本）加密。</li>
+  <li><strong>访问控制：</strong>基于设备令牌的身份验证确保您只能访问自己的数据。</li>
+  <li><strong>数据最小化：</strong>我们仅收集提供服务所需的最少信息。</li>
+  <li><strong>自动删除：</strong>超过保留期限的数据将自动删除。</li>
+</ol>
+
+<h2>8. 本地存储</h2>
+<p>Anbu不使用Cookie或网络追踪技术。应用在您的设备上本地存储以下信息（Android使用SharedPreferences，iOS使用UserDefaults）：</p>
+<ul>
+  <li>设备令牌（用于服务器身份验证）</li>
+  <li>邀请码</li>
+  <li>心跳计划时间</li>
+  <li>最后心跳发送时间</li>
+</ul>
+<p>卸载应用或删除账户时，这些数据将全部删除。</p>
+
+<h2>9. 国际数据传输</h2>
+<p>我们的服务器可能位于您的居住国以外。使用本服务即表示您同意将您的信息传输到其他司法管辖区的服务器。我们确保根据本隐私政策采取适当的保障措施来保护您的数据。</p>
+
+<h2>10. 政策变更</h2>
+<p>我们可能会不时更新本隐私政策，以反映我们做法或适用法律的变化。重大变更将通过应用或本页面通知您。变更发布后继续使用本服务即表示您接受更新后的政策。</p>
+
+<h2>11. 联系我们</h2>
+<table>
+  <thead>
+    <tr><th>项目</th><th>详情</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>服务</td><td>Anbu</td></tr>
+    <tr><td>邮箱</td><td>anbucheck1018@gmail.com</td></tr>
+  </tbody>
+</table>
+<p>如您对本隐私政策或我们的数据处理方式有任何疑问、顾虑或请求，请通过上述邮箱联系我们。</p>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anbu — Datenschutzrichtlinie</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.8;
+      color: #1a1c1c;
+      background: #fafafa;
+      padding: 24px 16px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 32px 0 12px; color: #00796b; }
+    h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+    p, li { font-size: 15px; color: #333; }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+    th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+    th { background: #e0f2f1; font-weight: 600; }
+    .date { font-size: 14px; color: #666; margin-bottom: 24px; }
+    .highlight { background: #e0f2f1; padding: 16px; border-radius: 8px; margin: 12px 0; }
+    a { color: #00796b; }
+  </style>
+</head>
+<body>
+
+<h1>Datenschutzrichtlinie</h1>
+<p class="date">Gültig ab: 27. April 2026 | Letzte Aktualisierung: 24. Mai 2026</p>
+
+<p>Anbu ("wir", "uns" oder "unser") verpflichtet sich zum Schutz Ihrer Privatsphäre. Diese Datenschutzrichtlinie erläutert, wie wir Informationen erheben, verwenden, speichern und schützen, wenn Sie die mobile Anwendung Anbu (den "Dienst") nutzen. Durch die Nutzung des Dienstes stimmen Sie den in dieser Richtlinie beschriebenen Verfahren zu.</p>
+
+<p>Wir haben Anbu nach dem Grundsatz <strong>"Datenschutz durch Technikgestaltung" (Privacy by Design)</strong> entwickelt. Wir erheben keine personenbezogenen Daten wie Ihren Namen, Ihre Telefonnummer, E-Mail-Adresse oder Ihren Standort. Der Dienst arbeitet ausschließlich mit gerätebezogenen Kennungen und den für die Funktion der Wohlbefindensprüfung erforderlichen minimalen Sensordaten.</p>
+
+<h2>1. Von uns erhobene Daten</h2>
+
+<h3>1.1 Automatisch erhobene Daten</h3>
+<table>
+  <thead>
+    <tr><th>Kategorie</th><th>Daten</th><th>Zweck</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Geräteinformationen</td>
+      <td>Gerätekennung (device_id), Plattform (Android/iOS), Betriebssystemversion, Zeitzone</td>
+      <td>Dienstbetrieb und Geräteidentifizierung</td>
+    </tr>
+    <tr>
+      <td>Push-Token</td>
+      <td>Firebase Cloud Messaging (FCM)-Token</td>
+      <td>Zustellung von Wohlbefindensprüfungs-Benachrichtigungen und Warnungen</td>
+    </tr>
+    <tr>
+      <td>Wohlbefindensdaten (Betreute Person)</td>
+      <td>Akkustand, Heartbeat-Übertragungszeitpunkt</td>
+      <td>Bestimmung des Wohlbefindensstatus und Versand von Betreuer-Warnungen</td>
+    </tr>
+    <tr>
+      <td>Sensor-Momentaufnahmen (Betreute Person)</td>
+      <td>Beschleunigungssensor- und Gyroskop-Messwerte (einzelne Momentaufnahmen, keine kontinuierliche Erfassung)</td>
+      <td>Erkennung von Gerätebewegungen zur Aktivitätsbewertung</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>1.2 Mit Ihrer Einwilligung erhobene Daten</h3>
+<table>
+  <thead>
+    <tr><th>Kategorie</th><th>Daten</th><th>Zweck</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Schrittzahl (Betreute Person)</td>
+      <td>Seit dem letzten Heartbeat zurückgelegte Schritte (steps_delta)</td>
+      <td>Aktivitätsverifizierung (wird bei verweigerter Berechtigung nicht erhoben)</td>
+    </tr>
+    <tr>
+      <td>Standortdaten (Betreute Person, optional)</td>
+      <td>Breitengrad, Längengrad, Genauigkeit, Erfassungszeitpunkt</td>
+      <td>Übermittlung an die verbundenen Betreuer ausschließlich dann, wenn die betreute Person die Schaltfläche [🚨 Ich brauche Hilfe] selbst betätigt. Bei der regulären Wohlbefindensprüfung (Heartbeat) findet keine Erhebung statt. Verweigert die Nutzerin oder der Nutzer die Standortberechtigung oder kann kein GPS-Signal ermittelt werden, wird die Notfallbenachrichtigung ohne Standort versandt.</td>
+    </tr>
+    <tr>
+      <td>Abonnement (Betreuer)</td>
+      <td>In-App-Kaufbeleg (Apple/Google)</td>
+      <td>Abonnementverifizierung und Dienstzugang</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+  <p><strong>Zahlungsmitteldaten — werden nicht auf unseren Servern gespeichert</strong></p>
+  <p>Die einzigen zahlungsbezogenen Daten, die auf unseren Servern gespeichert werden, sind die <strong>vom Apple App Store oder Google Play Store ausgestellten Beleg-Validierungstoken</strong>. Kartennummern, Bankverbindungsdaten, Zahlungs­authentifizierungsdaten und Rechnungsadressen werden ausschließlich innerhalb der Zahlungssysteme von Apple und Google verarbeitet und sind für unsere Server nicht zugänglich. Die Speicherung von Zahlungsdaten, die Abwicklung von Rückerstattungen sowie die Bearbeitung von Abrechnungsstreitigkeiten unterliegen vollständig den jeweiligen Richtlinien von Apple und Google.</p>
+</div>
+
+<h3>1.3 Daten, die wir NICHT erheben</h3>
+<ul>
+  <li>Name, Telefonnummer, E-Mail-Adresse oder sonstige personenbezogene Daten</li>
+  <li>Standortdaten im Rahmen der regulären Wohlbefindensprüfung (Heartbeat); eine fortlaufende Standortverfolgung im Hintergrund findet zu keinem Zeitpunkt statt</li>
+  <li>Fotos, Kontakte oder sonstige auf Ihrem Gerät gespeicherte Daten</li>
+  <li>Anrufprotokolle, Textnachrichten oder Browserverlauf</li>
+  <li>Kontinuierliche Sensordaten (wir erstellen lediglich einmal täglich kurze Momentaufnahmen)</li>
+  <li>Zahlungsmitteldaten wie Kartennummern oder Bankverbindungsdaten — diese werden ausschließlich von den Zahlungssystemen von Apple und Google verarbeitet</li>
+</ul>
+
+<h3>1.4 Erhebungsmethoden</h3>
+<ul>
+  <li>Geräte- und Wohlbefindensdaten werden bei der Heartbeat-Übertragung automatisch an unsere Server gesendet.</li>
+  <li>Standortdaten werden ausschließlich einmalig im Vordergrund erfasst, wenn die betreute Person die Schaltfläche zur Anforderung von Notfallhilfe selbst betätigt und die Standortberechtigung erteilt hat. Eine Erhebung von Standortdaten im Hintergrund erfolgt zu keinem Zeitpunkt.</li>
+</ul>
+
+<h2>2. Verwendung Ihrer Daten</h2>
+<p>Wir verwenden die erhobenen Daten ausschließlich für folgende Zwecke:</p>
+<ol>
+  <li><strong>Wohlbefindensprüfungsdienst:</strong> Erfassung von Heartbeat-Signalen vom Gerät der betreuten Person und Benachrichtigung der Betreuer über den Wohlbefindensstatus.</li>
+  <li><strong>Warnbenachrichtigungen:</strong> Versand von stufenweisen Warnungen (Hinweis → Warnung → Dringend) an Betreuer, wenn kein Heartbeat einer betreuten Person empfangen wurde.</li>
+  <li><strong>Bearbeitung von Notfallhilfeersuchen:</strong> Wenn eine betreute Person die Schaltfläche [🚨 Ich brauche Hilfe] selbst betätigt, leiten wir die Benachrichtigung unverzüglich an alle verbundenen Betreuer weiter. Hat die Nutzerin oder der Nutzer der Übermittlung von Standortdaten zugestimmt, werden zusätzlich der aktuelle Standort (Breitengrad, Längengrad und Genauigkeit) übermittelt.</li>
+  <li><strong>Gerätestatusüberwachung:</strong> Information der Betreuer über niedrigen Akkustand, App-Beendigung oder andere Umstände, die die Wohlbefindensprüfung beeinträchtigen können.</li>
+  <li><strong>Abonnementverwaltung:</strong> Verifizierung von In-App-Kaufbelegen und Verwaltung des Dienstzugangs für Betreuer.</li>
+  <li><strong>Dienstverbesserung:</strong> Fehlerdiagnose und Verbesserung der Dienstzuverlässigkeit.</li>
+</ol>
+
+<h2>3. Datenspeicherung</h2>
+<table>
+  <thead>
+    <tr><th>Daten</th><th>Speicherdauer</th><th>Hinweise</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Geräteinformationen, FCM-Token</td>
+      <td>Bis zur Kontolöschung</td>
+      <td>Sofortige Löschung bei Kontolöschung</td>
+    </tr>
+    <tr>
+      <td>Heartbeat-Protokolle</td>
+      <td>30 Tage</td>
+      <td>Automatische Löschung nach 30 Tagen</td>
+    </tr>
+    <tr>
+      <td>Warnbenachrichtigungseinträge</td>
+      <td>Nur aktueller Tag</td>
+      <td>Tägliche Löschung um Mitternacht (lokale Zeitzone der betreuten Person)</td>
+    </tr>
+    <tr>
+      <td>Standortdaten aus Notfallhilfeersuchen</td>
+      <td>Bis zu 24 Stunden</td>
+      <td>Automatische Löschung gemeinsam mit den zugehörigen Benachrichtigungseinträgen um Mitternacht in der lokalen Zeitzone des Geräts der betreuten Person</td>
+    </tr>
+    <tr>
+      <td>Abonnementinformationen</td>
+      <td>Bis zum Ablauf des Abonnements oder zur Kontolöschung</td>
+      <td>Sofortige Löschung bei Kontolöschung</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. Datenweitergabe</h2>
+<p>Wir verkaufen, handeln oder vermieten Ihre Daten nicht an Dritte. Wir geben Daten nur unter den folgenden eingeschränkten Umständen weiter:</p>
+<ol>
+  <li><strong>Betreuer-Betreute-Person-Verbindung:</strong> Wenn eine betreute Person ihren Einladungscode mit einem Betreuer teilt, erhält der Betreuer den Wohlbefindensstatus der betreuten Person (Heartbeat empfangen/nicht empfangen, Akkustand). Es werden keine personenbezogenen Daten weitergegeben — ausschließlich gerätebezogene Wohlbefindensdaten.</li>
+  <li><strong>Standortübermittlung bei Notfallhilfeersuchen:</strong> Betätigt die betreute Person die in der App enthaltene Schaltfläche [🚨 Ich brauche Hilfe] selbst und stimmt der Übermittlung von Standortdaten zu, so wird der aktuelle Standort (Breitengrad, Längengrad und Genauigkeit) einmalig an sämtliche verbundenen Betreuer übermittelt. Verweigert die Nutzerin oder der Nutzer die Standortberechtigung oder kann kein GPS-Signal ermittelt werden, wird die Notfallbenachrichtigung ohne Standort versandt.</li>
+  <li><strong>Gesetzliche Anforderungen:</strong> Soweit dies nach geltendem Recht, Vorschriften oder aufgrund eines gültigen Rechtsverfahrens erforderlich ist.</li>
+</ol>
+
+<h2>5. Drittanbieter-Dienstleister</h2>
+<p>Wir nutzen die folgenden Drittanbieterdienste für den Betrieb des Dienstes:</p>
+<p>Bei der Verarbeitung von In-App-Käufen (Apple Inc., Google LLC) erhalten wir von diesen Anbietern ausschließlich den Beleg-Validierungstoken zum alleinigen Zweck der Überprüfung des Abonnementstatus. Wir erhalten oder verarbeiten keine tatsächlichen Zahlungsmitteldaten.</p>
+<table>
+  <thead>
+    <tr><th>Anbieter</th><th>Dienst</th><th>Datenschutzrichtlinie</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Google LLC (Firebase)</td>
+      <td>Push-Benachrichtigungen (FCM)</td>
+      <td><a href="https://firebase.google.com/support/privacy">Firebase-Datenschutz</a></td>
+    </tr>
+    <tr>
+      <td>Apple Inc.</td>
+      <td>In-App-Käufe, Push-Benachrichtigungen (APNs)</td>
+      <td><a href="https://www.apple.com/privacy/">Apple-Datenschutz</a></td>
+    </tr>
+    <tr>
+      <td>Google LLC (Google Play)</td>
+      <td>In-App-Käufe</td>
+      <td><a href="https://policies.google.com/privacy">Google-Datenschutz</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>6. Ihre Rechte</h2>
+<p>Sie haben die folgenden Rechte in Bezug auf Ihre Daten:</p>
+<ol>
+  <li><strong>Konto löschen:</strong> Sie können Ihr Konto und alle damit verbundenen Daten jederzeit über die Option "Konto löschen" in den App-Einstellungen löschen. Die Löschung erfolgt sofort und ist unwiderruflich.</li>
+  <li><strong>Berechtigungen widerrufen:</strong> Sie können Benachrichtigungs- oder Bewegungsberechtigungen jederzeit über Ihre Geräteeinstellungen widerrufen.</li>
+  <li><strong>Datenauskunft anfordern:</strong> Sie können Auskunft über die von uns gespeicherten Daten anfordern, indem Sie uns unter der unten angegebenen E-Mail-Adresse kontaktieren.</li>
+</ol>
+
+<h3>Für Nutzer im Europäischen Wirtschaftsraum (EWR)</h3>
+<p>Gemäß der Datenschutz-Grundverordnung (DSGVO) haben Sie zusätzlich das Recht auf:</p>
+<ul>
+  <li>Auskunft über, Berichtigung oder Löschung Ihrer personenbezogenen Daten</li>
+  <li>Widerspruch gegen oder Einschränkung der Verarbeitung Ihrer Daten</li>
+  <li>Datenübertragbarkeit</li>
+  <li>Beschwerde bei Ihrer zuständigen Datenschutzaufsichtsbehörde</li>
+</ul>
+<p>Unsere Rechtsgrundlage für die Verarbeitung ist das <strong>berechtigte Interesse</strong> (Bereitstellung des Wohlbefindensprüfungsdienstes, für den Sie sich entschieden haben) sowie die <strong>Einwilligung</strong> (für optionale Berechtigungen wie die Schrittzählung).</p>
+
+<h3>Für Nutzer in Kalifornien (CCPA)</h3>
+<p>Gemäß dem California Consumer Privacy Act haben Einwohner Kaliforniens das Recht:</p>
+<ul>
+  <li>Zu erfahren, welche personenbezogenen Daten wir erheben und wie sie verwendet werden</li>
+  <li>Die Löschung personenbezogener Daten zu verlangen</li>
+  <li>Dem Verkauf personenbezogener Daten zu widersprechen — <strong>wir verkaufen keine personenbezogenen Daten</strong></li>
+  <li>Bei Ausübung Ihrer Datenschutzrechte nicht benachteiligt zu werden</li>
+</ul>
+
+<h3>Datenschutz von Kindern (COPPA)</h3>
+<p>Anbu richtet sich nicht an Kinder unter 13 Jahren. Wir erheben wissentlich keine Daten von Kindern unter 13 Jahren. Sollten Sie der Ansicht sein, dass ein Kind uns Daten übermittelt hat, kontaktieren Sie uns bitte, und wir werden diese umgehend löschen.</p>
+
+<div class="highlight">
+  <p><strong>Bei Kontolöschung gelöschte Daten:</strong></p>
+  <ul>
+    <li>Benutzerkonto und Geräteinformationen</li>
+    <li>Sämtliche Heartbeat-Protokolle</li>
+    <li>Betreuer-Betreute-Person-Verbindungseinträge</li>
+    <li>Abonnementinformationen</li>
+    <li>Warnbenachrichtigungseinträge</li>
+    <li>Benachrichtigungseinstellungen</li>
+  </ul>
+</div>
+
+<h2>7. Datensicherheit</h2>
+<p>Wir setzen die folgenden Maßnahmen zum Schutz Ihrer Daten ein:</p>
+<ol>
+  <li><strong>Verschlüsselung bei der Übertragung:</strong> Die gesamte Kommunikation zwischen der App und unseren Servern erfolgt über HTTPS (TLS 1.2 oder höher).</li>
+  <li><strong>Zugangskontrolle:</strong> Die Authentifizierung auf Basis von Geräte-Token stellt sicher, dass Sie ausschließlich auf Ihre eigenen Daten zugreifen können.</li>
+  <li><strong>Datenminimierung:</strong> Wir erheben nur die für die Bereitstellung des Dienstes minimal erforderlichen Informationen.</li>
+  <li><strong>Automatische Löschung:</strong> Daten, deren Aufbewahrungsfrist abgelaufen ist, werden automatisch gelöscht.</li>
+</ol>
+
+<h2>8. Lokale Speicherung</h2>
+<p>Anbu verwendet keine Cookies oder Web-Tracking-Technologien. Die App speichert die folgenden Informationen lokal auf Ihrem Gerät (mittels SharedPreferences unter Android / UserDefaults unter iOS):</p>
+<ul>
+  <li>Geräte-Token (zur Serverauthentifizierung)</li>
+  <li>Einladungscode</li>
+  <li>Geplanter Heartbeat-Zeitpunkt</li>
+  <li>Zeitpunkt der letzten Heartbeat-Übertragung</li>
+</ul>
+<p>Diese Daten werden gelöscht, wenn Sie die App deinstallieren oder Ihr Konto löschen.</p>
+
+<h2>9. Internationale Datenübermittlung</h2>
+<p>Unsere Server können sich außerhalb Ihres Wohnsitzlandes befinden. Durch die Nutzung des Dienstes stimmen Sie der Übermittlung Ihrer Daten an Server in anderen Rechtsordnungen zu. Wir stellen sicher, dass angemessene Schutzmaßnahmen gemäß dieser Datenschutzrichtlinie zum Schutz Ihrer Daten bestehen.</p>
+
+<h2>10. Änderungen dieser Richtlinie</h2>
+<p>Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren, um Änderungen unserer Verfahren oder der geltenden Gesetze widerzuspiegeln. Über wesentliche Änderungen werden wir Sie über die App oder diese Seite informieren. Die fortgesetzte Nutzung des Dienstes nach Veröffentlichung von Änderungen gilt als Zustimmung zur aktualisierten Richtlinie.</p>
+
+<h2>11. Kontakt</h2>
+<table>
+  <thead>
+    <tr><th>Angabe</th><th>Details</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Dienst</td><td>Anbu</td></tr>
+    <tr><td>E-Mail</td><td>anbucheck1018@gmail.com</td></tr>
+  </tbody>
+</table>
+<p>Wenn Sie Fragen, Bedenken oder Anfragen zu dieser Datenschutzrichtlinie oder unseren Datenverarbeitungspraktiken haben, kontaktieren Sie uns bitte unter der oben angegebenen E-Mail-Adresse.</p>
+
+</body>
+</html>

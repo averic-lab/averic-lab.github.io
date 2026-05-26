@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anbu — Politica de Privacidade</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.8;
+      color: #1a1c1c;
+      background: #fafafa;
+      padding: 24px 16px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 32px 0 12px; color: #00796b; }
+    h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+    p, li { font-size: 15px; color: #333; }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+    th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+    th { background: #e0f2f1; font-weight: 600; }
+    .date { font-size: 14px; color: #666; margin-bottom: 24px; }
+    .highlight { background: #e0f2f1; padding: 16px; border-radius: 8px; margin: 12px 0; }
+    a { color: #00796b; }
+  </style>
+</head>
+<body>
+
+<h1>Politica de Privacidade</h1>
+<p class="date">Data de vigencia: 27 de abril de 2026 | Ultima atualizacao: 24 de maio de 2026</p>
+
+<p>O Anbu ("nos", "nosso" ou "nossa") tem o compromisso de proteger sua privacidade. Esta Politica de Privacidade explica como coletamos, usamos, armazenamos e protegemos informacoes quando voce utiliza o aplicativo movel Anbu (o "Servico"). Ao utilizar o Servico, voce concorda com as praticas descritas nesta politica.</p>
+
+<p>O Anbu foi projetado com uma abordagem de <strong>privacidade em primeiro lugar</strong>. Nao coletamos informacoes pessoais como nome, numero de telefone, endereco de e-mail ou localizacao. O Servico opera utilizando apenas identificadores em nivel de dispositivo e dados minimos de sensores necessarios para a funcionalidade de verificacao de bem-estar.</p>
+
+<h2>1. Informacoes que Coletamos</h2>
+
+<h3>1.1 Informacoes Coletadas Automaticamente</h3>
+<table>
+  <thead>
+    <tr><th>Categoria</th><th>Dados</th><th>Finalidade</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Informacoes do Dispositivo</td>
+      <td>Identificador do dispositivo (device_id), plataforma (Android/iOS), versao do sistema operacional, fuso horario</td>
+      <td>Operacao do servico e identificacao do dispositivo</td>
+    </tr>
+    <tr>
+      <td>Token de Notificacao</td>
+      <td>Token do Firebase Cloud Messaging (FCM)</td>
+      <td>Envio de notificacoes de verificacao de bem-estar e alertas</td>
+    </tr>
+    <tr>
+      <td>Dados de Bem-estar (Pessoa Protegida)</td>
+      <td>Nivel de bateria, horario de transmissao do heartbeat</td>
+      <td>Determinacao do estado de bem-estar e envio de alertas ao protetor</td>
+    </tr>
+    <tr>
+      <td>Leituras de Sensores (Pessoa Protegida)</td>
+      <td>Leituras do acelerometro e giroscopio (capturas pontuais, nao continuas)</td>
+      <td>Deteccao de movimentacao do dispositivo para avaliar atividade</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>1.2 Informacoes Coletadas com Sua Permissao</h3>
+<table>
+  <thead>
+    <tr><th>Categoria</th><th>Dados</th><th>Finalidade</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Contagem de Passos (Pessoa Protegida)</td>
+      <td>Passos dados desde o ultimo heartbeat (steps_delta)</td>
+      <td>Verificacao de atividade (nao coletado se a permissao for negada)</td>
+    </tr>
+    <tr>
+      <td>Dados de Localizacao (Pessoa Protegida &mdash; opcional)</td>
+      <td>Latitude, longitude, precisao e horario da captura</td>
+      <td>Transmissao unica ao(s) protetor(es) quando a pessoa protegida pressiona o proprio botao [&#128680; Preciso de ajuda]. Nao ha coleta durante as verificacoes periodicas de bem-estar. Se a permissao de localizacao for negada ou o GPS falhar, o alerta de emergencia e enviado sem informacoes de localizacao.</td>
+    </tr>
+    <tr>
+      <td>Assinatura (Protetor)</td>
+      <td>Comprovante de compra no aplicativo (Apple/Google)</td>
+      <td>Verificacao de assinatura e acesso ao servico</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+  <p><strong>Dados do meio de pagamento &mdash; nao sao armazenados em nossos servidores</strong></p>
+  <p>Os unicos dados relacionados a pagamento armazenados em nossos servidores sao o <strong>token de validacao do recibo emitido pela Apple App Store ou Google Play Store</strong>. Numeros de cartao, dados bancarios, credenciais de pagamento e enderecos de cobranca sao processados exclusivamente dentro dos sistemas de pagamento da Apple e da Google e nao podem ser acessados por nossos servidores. A guarda de dados de pagamento, o processamento de reembolsos e a resolucao de disputas de cobranca sao integralmente regidos pelas politicas respectivas da Apple e da Google.</p>
+</div>
+
+<h3>1.3 Informacoes que NAO Coletamos</h3>
+<ul>
+  <li>Nome, numero de telefone, endereco de e-mail ou qualquer informacao de identificacao pessoal</li>
+  <li>Dados de localizacao durante as verificacoes periodicas de bem-estar (heartbeat) &mdash; nao realizamos qualquer rastreamento de localizacao em segundo plano</li>
+  <li>Fotos, contatos ou outros dados armazenados em seu dispositivo</li>
+  <li>Registros de chamadas, mensagens de texto ou historico de navegacao</li>
+  <li>Dados continuos de sensores (realizamos apenas capturas breves uma vez por dia)</li>
+  <li>Dados do meio de pagamento, como numeros de cartao ou dados bancarios &mdash; processados exclusivamente pelos sistemas de pagamento da Apple e da Google</li>
+</ul>
+
+<h2>2. Como Utilizamos Suas Informacoes</h2>
+<p>Utilizamos as informacoes coletadas exclusivamente para as seguintes finalidades:</p>
+<ol>
+  <li><strong>Servico de Verificacao de Bem-estar:</strong> Coletar sinais de heartbeat do dispositivo da pessoa protegida e notificar os protetores sobre o estado de bem-estar.</li>
+  <li><strong>Notificacoes de Alerta:</strong> Enviar alertas progressivos (Atencao → Aviso → Urgente) aos protetores quando o heartbeat da pessoa protegida nao for recebido.</li>
+  <li><strong>Atendimento a Pedidos de Ajuda de Emergencia:</strong> Quando a pessoa protegida pressiona o proprio botao de emergencia, uma notificacao e enviada imediatamente a todos os protetores conectados. Caso o usuario tenha consentido com o compartilhamento de localizacao, a posicao atual (latitude, longitude e precisao) e anexada a essa notificacao.</li>
+  <li><strong>Monitoramento do Estado do Dispositivo:</strong> Informar os protetores sobre bateria baixa, encerramento do aplicativo ou outras condicoes que possam afetar as verificacoes de bem-estar.</li>
+  <li><strong>Gestao de Assinaturas:</strong> Verificar comprovantes de compras no aplicativo e gerenciar o acesso ao servico do protetor.</li>
+  <li><strong>Melhoria do Servico:</strong> Diagnosticar erros e melhorar a confiabilidade do servico.</li>
+</ol>
+
+<h2>3. Retencao de Dados</h2>
+<table>
+  <thead>
+    <tr><th>Dados</th><th>Periodo de Retencao</th><th>Observacoes</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Informacoes do dispositivo, token FCM</td>
+      <td>Ate a exclusao da conta</td>
+      <td>Excluidos imediatamente apos a exclusao da conta</td>
+    </tr>
+    <tr>
+      <td>Registros de heartbeat</td>
+      <td>30 dias</td>
+      <td>Excluidos automaticamente apos 30 dias</td>
+    </tr>
+    <tr>
+      <td>Registros de notificacoes de alerta</td>
+      <td>Somente o dia atual</td>
+      <td>Excluidos diariamente a meia-noite (fuso horario local da pessoa protegida)</td>
+    </tr>
+    <tr>
+      <td>Localizacao anexada a um pedido de ajuda de emergencia</td>
+      <td>Ate 24 horas</td>
+      <td>Excluida automaticamente a meia-noite (fuso horario local da pessoa protegida), juntamente com os registros de notificacoes</td>
+    </tr>
+    <tr>
+      <td>Informacoes de assinatura</td>
+      <td>Ate o vencimento da assinatura ou exclusao da conta</td>
+      <td>Excluidas imediatamente apos a exclusao da conta</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. Compartilhamento de Dados</h2>
+<p>Nao vendemos, negociamos ou alugamos suas informacoes a terceiros. Compartilhamos informacoes apenas nas seguintes circunstancias limitadas:</p>
+<ol>
+  <li><strong>Conexao Protetor-Pessoa Protegida:</strong> Quando uma pessoa protegida compartilha seu codigo de convite com um protetor, o protetor recebe o estado de bem-estar da pessoa protegida (heartbeat recebido/nao recebido, nivel de bateria). Nenhuma informacao pessoal e compartilhada — apenas dados de bem-estar em nivel de dispositivo.</li>
+  <li><strong>Compartilhamento de Localizacao em Pedido de Ajuda de Emergencia:</strong> Quando a pessoa protegida pressiona o proprio botao [&#128680; Preciso de ajuda] no aplicativo e consente com o compartilhamento de localizacao, sua posicao atual (latitude, longitude e precisao) e transmitida uma unica vez a todos os protetores conectados. Caso a permissao de localizacao seja negada ou nao seja possivel obter o sinal de GPS, o alerta de emergencia ainda assim e enviado, porem sem informacoes de localizacao.</li>
+  <li><strong>Requisitos Legais:</strong> Quando exigido por lei aplicavel, regulamentacao ou processo legal valido.</li>
+</ol>
+
+<h2>5. Provedores de Servicos Terceirizados</h2>
+<p>Utilizamos os seguintes servicos de terceiros para operar o Servico:</p>
+<p>Para o processamento de compras no aplicativo (Apple Inc., Google LLC), recebemos desses provedores apenas o token de validacao do recibo, com a unica finalidade de verificar o status da assinatura. Nao recebemos nem processamos dados reais do meio de pagamento.</p>
+<table>
+  <thead>
+    <tr><th>Provedor</th><th>Servico</th><th>Politica de Privacidade</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Google LLC (Firebase)</td>
+      <td>Notificacoes push (FCM)</td>
+      <td><a href="https://firebase.google.com/support/privacy">Privacidade Firebase</a></td>
+    </tr>
+    <tr>
+      <td>Apple Inc.</td>
+      <td>Compras no aplicativo, notificacoes push (APNs)</td>
+      <td><a href="https://www.apple.com/privacy/">Privacidade Apple</a></td>
+    </tr>
+    <tr>
+      <td>Google LLC (Google Play)</td>
+      <td>Compras no aplicativo</td>
+      <td><a href="https://policies.google.com/privacy">Privacidade Google</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>6. Seus Direitos</h2>
+<p>Voce possui os seguintes direitos em relacao aos seus dados:</p>
+<ol>
+  <li><strong>Excluir Sua Conta:</strong> Voce pode excluir sua conta e todos os dados associados a qualquer momento por meio da opcao "Excluir Conta" nas configuracoes do aplicativo. A exclusao e imediata e irreversivel.</li>
+  <li><strong>Revogar Permissoes:</strong> Voce pode revogar as permissoes de notificacao ou de movimento a qualquer momento por meio das configuracoes do seu dispositivo.</li>
+  <li><strong>Solicitar Acesso aos Dados:</strong> Voce pode solicitar informacoes sobre os dados que mantemos sobre voce entrando em contato conosco pelo e-mail abaixo.</li>
+</ol>
+
+<h3>Para Usuarios no Brasil (LGPD)</h3>
+<p>De acordo com a Lei Geral de Protecao de Dados (LGPD — Lei n.o 13.709/2018), voce tambem tem o direito de:</p>
+<ul>
+  <li>Confirmar a existencia de tratamento de seus dados pessoais</li>
+  <li>Acessar, corrigir ou solicitar a exclusao de seus dados pessoais</li>
+  <li>Solicitar a anonimizacao, bloqueio ou eliminacao de dados desnecessarios ou excessivos</li>
+  <li>Solicitar a portabilidade dos dados a outro fornecedor de servico</li>
+  <li>Ser informado sobre entidades publicas e privadas com as quais seus dados foram compartilhados</li>
+  <li>Revogar o consentimento a qualquer momento</li>
+  <li>Registrar reclamacao junto a Autoridade Nacional de Protecao de Dados (ANPD)</li>
+</ul>
+<p>Nossa base legal para o tratamento e o <strong>interesse legitimo</strong> (fornecimento do servico de verificacao de bem-estar ao qual voce aderiu) e o <strong>consentimento</strong> (para permissoes opcionais como contagem de passos).</p>
+
+<h3>Para Usuarios no Espaco Economico Europeu (EEE)</h3>
+<p>De acordo com o Regulamento Geral de Protecao de Dados (GDPR), voce tambem tem o direito de:</p>
+<ul>
+  <li>Solicitar acesso, correcao ou exclusao de seus dados pessoais</li>
+  <li>Opor-se ou restringir o processamento de seus dados</li>
+  <li>Portabilidade de dados</li>
+  <li>Registrar reclamacao junto a autoridade local de protecao de dados</li>
+</ul>
+<p>Nossa base legal para o processamento e o <strong>interesse legitimo</strong> (fornecimento do servico de verificacao de bem-estar ao qual voce aderiu) e o <strong>consentimento</strong> (para permissoes opcionais como contagem de passos).</p>
+
+<h3>Para Usuarios na California (CCPA)</h3>
+<p>De acordo com a Lei de Privacidade do Consumidor da California, residentes da California tem o direito de:</p>
+<ul>
+  <li>Saber quais informacoes pessoais coletamos e como sao utilizadas</li>
+  <li>Solicitar a exclusao de informacoes pessoais</li>
+  <li>Optar por nao participar da venda de informacoes pessoais — <strong>nos nao vendemos nenhuma informacao pessoal</strong></li>
+  <li>Nao sofrer discriminacao por exercer seus direitos de privacidade</li>
+</ul>
+
+<h3>Privacidade de Criancas (COPPA)</h3>
+<p>O Anbu nao e destinado a criancas menores de 13 anos. Nao coletamos intencionalmente informacoes de criancas menores de 13 anos. Se voce acredita que uma crianca nos forneceu dados, entre em contato conosco e os excluiremos prontamente.</p>
+
+<div class="highlight">
+  <p><strong>Dados excluidos apos a exclusao da conta:</strong></p>
+  <ul>
+    <li>Conta de usuario e informacoes do dispositivo</li>
+    <li>Todos os registros de heartbeat</li>
+    <li>Registros de conexao protetor-pessoa protegida</li>
+    <li>Informacoes de assinatura</li>
+    <li>Registros de notificacoes de alerta</li>
+    <li>Configuracoes de notificacao</li>
+  </ul>
+</div>
+
+<h2>7. Seguranca dos Dados</h2>
+<p>Implementamos as seguintes medidas para proteger seus dados:</p>
+<ol>
+  <li><strong>Criptografia em Transito:</strong> Toda comunicacao entre o aplicativo e nossos servidores utiliza HTTPS (TLS 1.2 ou superior).</li>
+  <li><strong>Controle de Acesso:</strong> A autenticacao baseada em token de dispositivo garante que voce so possa acessar seus proprios dados.</li>
+  <li><strong>Minimizacao de Dados:</strong> Coletamos apenas as informacoes minimas necessarias para fornecer o Servico.</li>
+  <li><strong>Exclusao Automatica:</strong> Dados que excederam seu periodo de retencao sao automaticamente excluidos.</li>
+</ol>
+
+<h2>8. Armazenamento Local</h2>
+<p>O Anbu nao utiliza cookies ou tecnologias de rastreamento na web. O aplicativo armazena as seguintes informacoes localmente em seu dispositivo (usando SharedPreferences no Android / UserDefaults no iOS):</p>
+<ul>
+  <li>Token do dispositivo (para autenticacao no servidor)</li>
+  <li>Codigo de convite</li>
+  <li>Horario programado do heartbeat</li>
+  <li>Horario da ultima transmissao de heartbeat</li>
+</ul>
+<p>Esses dados sao excluidos quando voce desinstala o aplicativo ou exclui sua conta.</p>
+
+<h2>9. Transferencias Internacionais de Dados</h2>
+<p>Nossos servidores podem estar localizados fora do seu pais de residencia. Ao utilizar o Servico, voce consente com a transferencia de suas informacoes para servidores em outras jurisdicoes. Garantimos que as salvaguardas apropriadas estejam em vigor para proteger seus dados de acordo com esta Politica de Privacidade e com a legislacao aplicavel, incluindo a LGPD.</p>
+
+<h2>10. Alteracoes nesta Politica</h2>
+<p>Podemos atualizar esta Politica de Privacidade periodicamente para refletir mudancas em nossas praticas ou na legislacao aplicavel. Notificaremos voce sobre alteracoes significativas por meio do aplicativo ou desta pagina. O uso continuado do Servico apos a publicacao das alteracoes constitui sua aceitacao da politica atualizada.</p>
+
+<h2>11. Fale Conosco</h2>
+<table>
+  <thead>
+    <tr><th>Item</th><th>Detalhes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Servico</td><td>Anbu</td></tr>
+    <tr><td>E-mail</td><td>anbucheck1018@gmail.com</td></tr>
+  </tbody>
+</table>
+<p>Se voce tiver duvidas, preocupacoes ou solicitacoes relacionadas a esta Politica de Privacidade ou nossas praticas de dados, entre em contato conosco pelo e-mail acima.</p>
+
+</body>
+</html>

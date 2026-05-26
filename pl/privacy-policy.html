@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anbu — Polityka prywatnosci</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.8;
+      color: #1a1c1c;
+      background: #fafafa;
+      padding: 24px 16px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 32px 0 12px; color: #00796b; }
+    h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+    p, li { font-size: 15px; color: #333; }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+    th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+    th { background: #e0f2f1; font-weight: 600; }
+    .date { font-size: 14px; color: #666; margin-bottom: 24px; }
+    .highlight { background: #e0f2f1; padding: 16px; border-radius: 8px; margin: 12px 0; }
+    a { color: #00796b; }
+  </style>
+</head>
+<body>
+
+<h1>Polityka prywatnosci</h1>
+<p class="date">Data wejscia w zycie: 27 kwietnia 2026 r. | Ostatnia aktualizacja: 24 maja 2026 r.</p>
+
+<p>Anbu ("my", "nas" lub "nasz") zobowiazuje sie do ochrony Twojej prywatnosci. Niniejsza Polityka prywatnosci wyjasnia, w jaki sposob zbieramy, wykorzystujemy, przechowujemy i chronimy informacje podczas korzystania z aplikacji mobilnej Anbu ("Usluga"). Korzystajac z Uslugi, wyrazasz zgode na praktyki opisane w niniejszej polityce.</p>
+
+<p>Anbu zostalo zaprojektowane zgodnie z zasada <strong>prywatnosci na pierwszym miejscu</strong>. Nie zbieramy danych osobowych, takich jak imie i nazwisko, numer telefonu, adres e-mail ani lokalizacja. Usluga dziala wylacznie na podstawie identyfikatorow urzadzen oraz minimalnych danych z czujnikow, niezbednych do funkcji kontroli samopoczucia.</p>
+
+<h2>1. Informacje, ktore zbieramy</h2>
+
+<h3>1.1 Informacje zbierane automatycznie</h3>
+<table>
+  <thead>
+    <tr><th>Kategoria</th><th>Dane</th><th>Cel</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Informacje o urzadzeniu</td>
+      <td>Identyfikator urzadzenia (device_id), platforma (Android/iOS), wersja systemu, strefa czasowa</td>
+      <td>Dzialanie uslugi i identyfikacja urzadzenia</td>
+    </tr>
+    <tr>
+      <td>Token push</td>
+      <td>Token Firebase Cloud Messaging (FCM)</td>
+      <td>Dostarczanie powiadomien o kontroli samopoczucia i alertow</td>
+    </tr>
+    <tr>
+      <td>Dane o samopoczuciu (Osoba chroniona)</td>
+      <td>Poziom baterii, czas wyslania heartbeat</td>
+      <td>Okreslanie stanu samopoczucia i wysylanie alertow do opiekunow</td>
+    </tr>
+    <tr>
+      <td>Odczyty czujnikow (Osoba chroniona)</td>
+      <td>Odczyty akcelerometru i zyroskopu (pojedyncze migawki, nie ciagly zapis)</td>
+      <td>Wykrywanie ruchu urzadzenia w celu oceny aktywnosci</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>1.2 Informacje zbierane za Twoja zgoda</h3>
+<table>
+  <thead>
+    <tr><th>Kategoria</th><th>Dane</th><th>Cel</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Liczba krokow (Osoba chroniona)</td>
+      <td>Kroki wykonane od ostatniego heartbeat (steps_delta)</td>
+      <td>Weryfikacja aktywnosci (nie zbierane w przypadku odmowy uprawnien)</td>
+    </tr>
+    <tr>
+      <td>Opcjonalne (Osoba chroniona)</td>
+      <td>Dane lokalizacyjne (szerokosc geograficzna, dlugosc geograficzna, dokladnosc, znacznik czasu pobrania)</td>
+      <td>Przekazywane opiekunom jednorazowo wylacznie wtedy, gdy osoba chroniona samodzielnie nacisnie przycisk pilnej prosby o pomoc [🚨 Potrzebuje pomocy]. Nie sa zbierane podczas zwyklych kontroli samopoczucia. W przypadku odmowy uprawnien lokalizacyjnych lub niepowodzenia odbioru sygnalu GPS alert pilny zostanie wyslany bez informacji o lokalizacji.</td>
+    </tr>
+    <tr>
+      <td>Subskrypcja (Opiekun)</td>
+      <td>Potwierdzenie zakupu w aplikacji (Apple/Google)</td>
+      <td>Weryfikacja subskrypcji i dostep do uslugi</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+  <p><strong>Dane metody platnosci &mdash; nie sa przechowywane na naszych serwerach</strong></p>
+  <p>Jedynymi danymi dotyczacymi platnosci przechowywanymi na naszych serwerach jest <strong>token weryfikacji paragonu wydawany przez Apple App Store lub Google Play Store</strong>. Numery kart, dane rachunkow bankowych, dane uwierzytelniajace platnosci oraz adresy do faktur sa przetwarzane wylacznie w systemach platnosci firm Apple i Google i sa niedostepne dla naszych serwerow. Przechowywanie danych platnosci, obsluga zwrotow oraz rozstrzyganie sporow rozliczeniowych podlegaja w pelni odpowiednim politykom firm Apple i Google.</p>
+</div>
+
+<h3>1.3 Informacje, ktorych NIE zbieramy</h3>
+<ul>
+  <li>Imie i nazwisko, numer telefonu, adres e-mail ani zadne inne dane umozliwiajace identyfikacje</li>
+  <li>Lokalizacja podczas zwyklych kontroli samopoczucia (heartbeat) — nie prowadzimy zadnego sledzenia lokalizacji w tle (Wi-Fi ani stacji bazowych nie wykorzystujemy do ustalania pozycji)</li>
+  <li>Zdjecia, kontakty ani inne dane przechowywane na urzadzeniu</li>
+  <li>Rejestry polaczen, wiadomosci tekstowe ani historia przegladania</li>
+  <li>Ciagly zapis danych z czujnikow (pobieramy jedynie krotkie migawki raz dziennie)</li>
+  <li>Dane metody platnosci, takie jak numery kart lub dane rachunkow bankowych &mdash; przetwarzane wylacznie przez systemy platnosci firm Apple i Google</li>
+</ul>
+
+<p><strong>Sposoby pozyskiwania danych:</strong></p>
+<ul>
+  <li>Automatyczna rejestracja po zainstalowaniu aplikacji (informacje o urzadzeniu, token FCM)</li>
+  <li>Migawki z czujnikow oraz liczba krokow podczas codziennej kontroli samopoczucia (steps_delta, poziom baterii)</li>
+  <li>Lokalizacja jest pobierana wylacznie jednorazowo w momencie samodzielnego nacisniecia przycisku pilnej prosby o pomoc, pod warunkiem, ze uprawnienie do lokalizacji zostalo udzielone (tylko w trybie pierwszoplanowym; nie zbieramy lokalizacji w tle)</li>
+</ul>
+
+<h2>2. W jaki sposob wykorzystujemy Twoje informacje</h2>
+<p>Zebrane informacje wykorzystujemy wylacznie w nastepujacych celach:</p>
+<ol>
+  <li><strong>Usluga kontroli samopoczucia:</strong> Zbieranie sygnalow heartbeat z urzadzenia osoby chronionej i powiadamianie opiekunow o stanie samopoczucia.</li>
+  <li><strong>Powiadomienia o alertach:</strong> Wysylanie stopniowanych alertow (Uwaga &rarr; Ostrzezenie &rarr; Pilne) do opiekunow w przypadku nieotrzymania heartbeat od osoby chronionej.</li>
+  <li><strong>Obsluga pilnych prosb o pomoc:</strong> Gdy osoba chroniona samodzielnie nacisnie przycisk pilnej prosby o pomoc, niezwlocznie powiadamiamy wszystkich powiazanych opiekunow. Jezeli uzytkownik wyrazi zgode na udostepnienie lokalizacji, wraz z alertem przekazujemy aktualna pozycje (szerokosc geograficzna, dlugosc geograficzna, dokladnosc).</li>
+  <li><strong>Monitorowanie stanu urzadzenia:</strong> Informowanie opiekunow o niskim poziomie baterii, zamknieciu aplikacji lub innych warunkach mogacych wplynac na kontrole samopoczucia.</li>
+  <li><strong>Zarzadzanie subskrypcja:</strong> Weryfikacja potwierdzen zakupow w aplikacji i zarzadzanie dostepem opiekunow do uslugi.</li>
+  <li><strong>Ulepszanie uslugi:</strong> Diagnozowanie bledow i poprawa niezawodnosci uslugi.</li>
+</ol>
+
+<h2>3. Przechowywanie danych</h2>
+<table>
+  <thead>
+    <tr><th>Dane</th><th>Okres przechowywania</th><th>Uwagi</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Informacje o urzadzeniu, token FCM</td>
+      <td>Do usuniecia konta</td>
+      <td>Usuwane natychmiast po usunieciu konta</td>
+    </tr>
+    <tr>
+      <td>Logi heartbeat</td>
+      <td>30 dni</td>
+      <td>Automatycznie usuwane po 30 dniach</td>
+    </tr>
+    <tr>
+      <td>Rekordy powiadomien o alertach</td>
+      <td>Tylko biezacy dzien</td>
+      <td>Usuwane codziennie o polnocy (lokalna strefa czasowa osoby chronionej)</td>
+    </tr>
+    <tr>
+      <td>Dane lokalizacyjne z pilnej prosby o pomoc</td>
+      <td>Do 24 godzin</td>
+      <td>Usuwane wraz z rekordami powiadomien automatycznie o polnocy w lokalnej strefie czasowej urzadzenia osoby chronionej</td>
+    </tr>
+    <tr>
+      <td>Informacje o subskrypcji</td>
+      <td>Do wygasniecia subskrypcji lub usuniecia konta</td>
+      <td>Usuwane natychmiast po usunieciu konta</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. Udostepnianie danych</h2>
+<p>Nie sprzedajemy, nie handlujemy ani nie wynajmujemy Twoich informacji osobom trzecim. Udostepniamy informacje wylacznie w nastepujacych ograniczonych okolicznosciach:</p>
+<ol>
+  <li><strong>Polaczenie Opiekun-Osoba chroniona:</strong> Gdy osoba chroniona udostepnia swoj kod zaproszenia opiekunowi, opiekun otrzymuje informacje o stanie samopoczucia osoby chronionej (heartbeat otrzymany/nieodebrany, poziom baterii). Zadne dane osobowe nie sa udostepniane — jedynie dane o samopoczuciu na poziomie urzadzenia.</li>
+  <li><strong>Przekazywanie lokalizacji w pilnej prosbie o pomoc:</strong> Gdy osoba chroniona samodzielnie nacisnie w aplikacji przycisk pilnej prosby o pomoc [🚨 Potrzebuje pomocy] i wyrazi zgode na udostepnienie informacji o lokalizacji, biezaca pozycja (szerokosc geograficzna, dlugosc geograficzna, dokladnosc) zostanie jednorazowo przekazana wszystkim powiazanym opiekunom. W przypadku odmowy uprawnien lokalizacyjnych lub niemoznosci uzyskania sygnalu GPS alert pilny zostanie wyslany bez informacji o lokalizacji.</li>
+  <li><strong>Wymogi prawne:</strong> Gdy jest to wymagane przez obowiazujace prawo, przepisy lub wazny proces prawny.</li>
+</ol>
+
+<h2>5. Zewnetrzni dostawcy uslug</h2>
+<p>Korzystamy z nastepujacych uslug stron trzecich w celu obslugi Uslugi:</p>
+<p>W odniesieniu do przetwarzania zakupow w aplikacji (Apple Inc., Google LLC) otrzymujemy od tych dostawcow wylacznie token weryfikacji paragonu, w jedynym celu weryfikacji statusu subskrypcji. Nie otrzymujemy ani nie przetwarzamy faktycznych danych metody platnosci.</p>
+<table>
+  <thead>
+    <tr><th>Dostawca</th><th>Usluga</th><th>Polityka prywatnosci</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Google LLC (Firebase)</td>
+      <td>Powiadomienia push (FCM)</td>
+      <td><a href="https://firebase.google.com/support/privacy">Prywatnosc Firebase</a></td>
+    </tr>
+    <tr>
+      <td>Apple Inc.</td>
+      <td>Zakupy w aplikacji, powiadomienia push (APNs)</td>
+      <td><a href="https://www.apple.com/privacy/">Prywatnosc Apple</a></td>
+    </tr>
+    <tr>
+      <td>Google LLC (Google Play)</td>
+      <td>Zakupy w aplikacji</td>
+      <td><a href="https://policies.google.com/privacy">Prywatnosc Google</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>6. Twoje prawa</h2>
+<p>Przysluguia Ci nastepujace prawa dotyczace Twoich danych:</p>
+<ol>
+  <li><strong>Usuniecie konta:</strong> Mozesz usunac swoje konto i wszystkie powiazane dane w dowolnym momencie za pomoca opcji "Usun konto" w ustawieniach aplikacji. Usuniecie jest natychmiastowe i nieodwracalne.</li>
+  <li><strong>Cofniecie uprawnien:</strong> Mozesz cofnac uprawnienia dotyczace powiadomien lub ruchu w dowolnym momencie w ustawieniach urzadzenia.</li>
+  <li><strong>Zadanie dostepu do danych:</strong> Mozesz poprosic o informacje na temat danych, ktore posiadamy na Twoj temat, kontaktujac sie z nami pod adresem e-mail podanym ponizej.</li>
+</ol>
+
+<h3>Dla uzytkownikow w Europejskim Obszarze Gospodarczym (EOG)</h3>
+<p>Zgodnie z Ogolnym rozporzadzeniem o ochronie danych (RODO) masz rowniez prawo do:</p>
+<ul>
+  <li>Zadania dostepu do swoich danych osobowych, ich sprostowania lub usuniecia</li>
+  <li>Sprzeciwu wobec przetwarzania danych lub ograniczenia przetwarzania</li>
+  <li>Przenoszenia danych</li>
+  <li>Zlozenia skargi do wlasciwego organu nadzorczego ds. ochrony danych</li>
+</ul>
+<p>Nasza podstawa prawna przetwarzania to <strong>prawnie uzasadniony interes</strong> (swiadczenie uslugi kontroli samopoczucia, na ktora wyrazono zgode) oraz <strong>zgoda</strong> (na opcjonalne uprawnienia, takie jak liczenie krokow).</p>
+
+<h3>Dla uzytkownikow w Kalifornii (CCPA)</h3>
+<p>Zgodnie z kalifornijska ustawa o ochronie prywatnosci konsumentow mieszkancy Kalifornii maja prawo do:</p>
+<ul>
+  <li>Informacji o tym, jakie dane osobowe zbieramy i jak je wykorzystujemy</li>
+  <li>Zadania usuniecia danych osobowych</li>
+  <li>Rezygnacji ze sprzedazy danych osobowych — <strong>nie sprzedajemy zadnych danych osobowych</strong></li>
+  <li>Niedyskryminacji z powodu korzystania ze swoich praw do prywatnosci</li>
+</ul>
+
+<h3>Prywatnosc dzieci (COPPA)</h3>
+<p>Anbu nie jest skierowane do dzieci ponizej 13 roku zycia. Swiadomie nie zbieramy informacji od dzieci ponizej 13 lat. Jesli uważasz, ze dziecko przekazalo nam swoje dane, prosimy o kontakt — niezwlocznie je usunniemy.</p>
+
+<div class="highlight">
+  <p><strong>Dane usuwane po usunieciu konta:</strong></p>
+  <ul>
+    <li>Konto uzytkownika i informacje o urzadzeniu</li>
+    <li>Wszystkie logi heartbeat</li>
+    <li>Rekordy polaczen Opiekun-Osoba chroniona</li>
+    <li>Informacje o subskrypcji</li>
+    <li>Rekordy powiadomien o alertach</li>
+    <li>Ustawienia powiadomien</li>
+  </ul>
+</div>
+
+<h2>7. Bezpieczenstwo danych</h2>
+<p>Stosujemy nastepujace srodki w celu ochrony Twoich danych:</p>
+<ol>
+  <li><strong>Szyfrowanie w tranzycie:</strong> Cala komunikacja miedzy aplikacja a naszymi serwerami odbywa sie za pomoca protokolu HTTPS (TLS 1.2 lub nowszy).</li>
+  <li><strong>Kontrola dostepu:</strong> Uwierzytelnianie oparte na tokenie urzadzenia zapewnia, ze masz dostep wylacznie do wlasnych danych.</li>
+  <li><strong>Minimalizacja danych:</strong> Zbieramy jedynie minimalna ilosc informacji niezbednych do swiadczenia Uslugi.</li>
+  <li><strong>Automatyczne usuwanie:</strong> Dane, ktorych okres przechowywania uplynal, sa automatycznie usuwane.</li>
+</ol>
+
+<h2>8. Przechowywanie lokalne</h2>
+<p>Anbu nie uzywa plikow cookie ani technologii sledzenia w sieci. Aplikacja przechowuje nastepujace informacje lokalnie na Twoim urzadzeniu (za pomoca SharedPreferences na Androidzie / UserDefaults na iOS):</p>
+<ul>
+  <li>Token urzadzenia (do uwierzytelniania na serwerze)</li>
+  <li>Kod zaproszenia</li>
+  <li>Zaplanowany czas heartbeat</li>
+  <li>Czas ostatniego wyslania heartbeat</li>
+</ul>
+<p>Dane te sa usuwane po odinstalowaniu aplikacji lub usunieciu konta.</p>
+
+<h2>9. Miedzynarodowe transfery danych</h2>
+<p>Nasze serwery moga znajdowac sie poza krajem Twojego zamieszkania. Korzystajac z Uslugi, wyrazasz zgode na transfer Twoich informacji na serwery w innych jurysdykcjach. Zapewniamy, ze stosowane sa odpowiednie zabezpieczenia w celu ochrony Twoich danych zgodnie z niniejsza Polityka prywatnosci.</p>
+
+<h2>10. Zmiany w niniejszej polityce</h2>
+<p>Mozemy od czasu do czasu aktualizowac niniejsza Polityke prywatnosci w celu odzwierciedlenia zmian w naszych praktykach lub obowiazujacym prawie. O istotnych zmianach powiadomimy Cie za posrednictwem aplikacji lub tej strony. Dalsze korzystanie z Uslugi po opublikowaniu zmian oznacza akceptacje zaktualizowanej polityki.</p>
+
+<h2>11. Kontakt</h2>
+<table>
+  <thead>
+    <tr><th>Pozycja</th><th>Szczegoly</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Usluga</td><td>Anbu</td></tr>
+    <tr><td>E-mail</td><td>anbucheck1018@gmail.com</td></tr>
+  </tbody>
+</table>
+<p>W przypadku pytan, watpliwosci lub prosb dotyczacych niniejszej Polityki prywatnosci lub naszych praktyk w zakresie danych, prosimy o kontakt pod powyzszym adresem e-mail.</p>
+
+</body>
+</html>

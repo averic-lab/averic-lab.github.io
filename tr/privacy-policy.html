@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anbu — Gizlilik Politikasi</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.8;
+      color: #1a1c1c;
+      background: #fafafa;
+      padding: 24px 16px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 32px 0 12px; color: #00796b; }
+    h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+    p, li { font-size: 15px; color: #333; }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+    th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+    th { background: #e0f2f1; font-weight: 600; }
+    .date { font-size: 14px; color: #666; margin-bottom: 24px; }
+    .highlight { background: #e0f2f1; padding: 16px; border-radius: 8px; margin: 12px 0; }
+    a { color: #00796b; }
+  </style>
+</head>
+<body>
+
+<h1>Gizlilik Politikasi</h1>
+<p class="date">Yururluk tarihi: 27 Nisan 2026 | Son guncelleme: 24 Mayis 2026</p>
+
+<p>Anbu ("biz" veya "bizim") gizliliginizi korumaya kararliyiz. Bu Gizlilik Politikasi, Anbu mobil uygulamasini ("Hizmet") kullandiginizda bilgilerinizi nasil topladigimizi, kullandigimizi, sakladigimizi ve korudugumuzu aciklar. Hizmeti kullanarak bu politikada aciklanan uygulamalari kabul etmis olursunuz.</p>
+
+<p>Anbu'yu <strong>gizlilik oncelikli bir yaklasimla</strong> tasarladik. Adiniz, telefon numaraniz, e-posta adresiniz veya konumunuz gibi kisisel bilgileri toplamiyoruz. Hizmet, yalnizca cihaz duzeyi tanimlayicilari ve saglik kontrolu islevi icin gerekli minimum sensor verileriyle calisir.</p>
+
+<h2>1. Topladigimiz Bilgiler</h2>
+
+<h3>1.1 Otomatik Olarak Toplanan Bilgiler</h3>
+<table>
+  <thead>
+    <tr><th>Kategori</th><th>Veri</th><th>Amac</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cihaz Bilgileri</td>
+      <td>Cihaz tanimlayicisi (device_id), platform (Android/iOS), isletim sistemi surumu, saat dilimi</td>
+      <td>Hizmet isletimi ve cihaz tanimlama</td>
+    </tr>
+    <tr>
+      <td>Push Jetonu</td>
+      <td>Firebase Cloud Messaging (FCM) jetonu</td>
+      <td>Saglik kontrolu bildirimleri ve uyarilarin iletilmesi</td>
+    </tr>
+    <tr>
+      <td>Saglik Verileri (Korunan Kisi)</td>
+      <td>Pil seviyesi, heartbeat iletim zamani</td>
+      <td>Saglik durumunun belirlenmesi ve koruyucu uyarilarinin gonderilmesi</td>
+    </tr>
+    <tr>
+      <td>Sensor Anlik Goruntuleri (Korunan Kisi)</td>
+      <td>Ivmeolcer ve jiroskop okumalari (surekli degil, tek noktali anlik goruntuler)</td>
+      <td>Aktiviteyi degerlendirmek icin cihaz hareketinin algilanmasi</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>1.2 Izninizle Toplanan Bilgiler</h3>
+<table>
+  <thead>
+    <tr><th>Kategori</th><th>Veri</th><th>Amac</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Adim Sayisi (Korunan Kisi)</td>
+      <td>Son heartbeat'ten bu yana atilan adimlar (steps_delta)</td>
+      <td>Aktivite dogrulamasi (izin reddedilirse toplanmaz)</td>
+    </tr>
+    <tr>
+      <td>Opsiyonel (Korunan Kisi)</td>
+      <td>Konum verileri (enlem, boylam, dogruluk, yakalama zamani)</td>
+      <td>Yalnizca korunan kisi [🚨 Yardima ihtiyacim var] acil yardim talebi dugmesine kendisi bastiginda koruyuculara tek seferlik iletilir. Olagan saglik kontrollerinde toplanmaz. Konum izninin reddedilmesi veya GPS sinyalinin alinamamasi durumunda acil uyari konum bilgisi olmadan gonderilir.</td>
+    </tr>
+    <tr>
+      <td>Abonelik (Koruyucu)</td>
+      <td>Uygulama ici satin alma makbuzu (Apple/Google)</td>
+      <td>Abonelik dogrulamasi ve hizmet erisimi</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+  <p><strong>Odeme yontemi bilgileri &mdash; sunucularimizda saklanmaz</strong></p>
+  <p>Sunucularimizda saklanan tek odeme ile ilgili veri, <strong>Apple App Store veya Google Play Store tarafindan duzenlenen makbuz dogrulama belirteci</strong>dir. Kart numaralari, banka hesap bilgileri, odeme kimlik bilgileri ve fatura adresleri yalnizca Apple ve Google'in odeme sistemleri icinde islenir ve sunucularimiz tarafindan erisilebilir degildir. Odeme verilerinin saklanmasi, iadelerin islenmesi ve faturalandirma anlasmazliklarinin cozumu tamamen Apple ve Google'in ilgili politikalarina tabidir.</p>
+</div>
+
+<h3>1.3 Toplamadigimiz Bilgiler</h3>
+<ul>
+  <li>Ad, telefon numarasi, e-posta adresi veya kisisel olarak tanimlanabilir herhangi bir bilgi</li>
+  <li>Olagan saglik kontrollerinde (heartbeat) konum verisi — arka planda hicbir konum takibi yapmiyoruz</li>
+  <li>Cihazinizda kayitli fotograflar, kisiler veya diger veriler</li>
+  <li>Arama kayitlari, kisa mesajlar veya tarama gecmisi</li>
+  <li>Surekli sensor verileri (gunde yalnizca bir kez kisa anlik goruntuler aliriz)</li>
+  <li>Kart numaralari veya banka hesap bilgileri gibi odeme yontemi bilgileri &mdash; yalnizca Apple ve Google'in odeme sistemleri tarafindan islenir</li>
+</ul>
+
+<p><strong>Veri toplama yontemleri:</strong></p>
+<ul>
+  <li>Uygulamanin yuklenmesinin ardindan otomatik kayit (cihaz bilgileri, FCM jetonu)</li>
+  <li>Gunluk saglik kontrolu sirasinda alinan sensor anlik goruntuleri ve adim sayisi (steps_delta, pil seviyesi)</li>
+  <li>Konum yalnizca korunan kisi acil yardim talebi dugmesine kendisi bastiginda ve konum izni verilmis ise tek seferlik toplanir (yalnizca on planda; arka planda konum toplanmaz)</li>
+</ul>
+
+<h2>2. Bilgilerinizi Nasil Kullaniriz</h2>
+<p>Toplanan bilgileri yalnizca asagidaki amaclarla kullaniriz:</p>
+<ol>
+  <li><strong>Saglik Kontrolu Hizmeti:</strong> Korunan kisinin cihazindan heartbeat sinyallerini toplayarak koruyuculara saglik durumunu bildirmek.</li>
+  <li><strong>Uyari Bildirimleri:</strong> Korunan kisinin heartbeat'i alinmadiginda koruyuculara kademeli uyarilar (Dikkat &rarr; Uyari &rarr; Acil) gondermek.</li>
+  <li><strong>Acil Yardim Taleplerinin Islenmesi:</strong> Korunan kisi acil yardim dugmesine kendisi bastiginda baglantili tum koruyuculari derhal bilgilendiririz. Kullanici konum bilgisinin paylasilmasina onay verdiyse, mevcut konum (enlem, boylam, dogruluk) bildirimle birlikte iletilir.</li>
+  <li><strong>Cihaz Durumu Izleme:</strong> Dusuk pil, uygulamanin kapatilmasi veya saglik kontrollerini etkileyebilecek diger durumlar hakkinda koruyuculari bilgilendirmek.</li>
+  <li><strong>Abonelik Yonetimi:</strong> Uygulama ici satin alma makbuzlarini dogrulamak ve koruyucu hizmet erisimini yonetmek.</li>
+  <li><strong>Hizmet Iyilestirme:</strong> Hatalari teshis etmek ve hizmet guvenilirligini artirmak.</li>
+</ol>
+
+<h2>3. Veri Saklama</h2>
+<table>
+  <thead>
+    <tr><th>Veri</th><th>Saklama Suresi</th><th>Notlar</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cihaz bilgileri, FCM jetonu</td>
+      <td>Hesap silinene kadar</td>
+      <td>Hesap silindiginde derhal silinir</td>
+    </tr>
+    <tr>
+      <td>Heartbeat kayitlari</td>
+      <td>30 gun</td>
+      <td>30 gun sonra otomatik olarak silinir</td>
+    </tr>
+    <tr>
+      <td>Uyari bildirim kayitlari</td>
+      <td>Yalnizca mevcut gun</td>
+      <td>Her gun gece yarisinda silinir (korunan kisinin yerel saat dilimine gore)</td>
+    </tr>
+    <tr>
+      <td>Acil yardim talebi konum verileri</td>
+      <td>24 saate kadar</td>
+      <td>Korunan kisinin cihaz saat dilimine gore gece yarisinda bildirim kayitlariyla birlikte otomatik olarak silinir</td>
+    </tr>
+    <tr>
+      <td>Abonelik bilgileri</td>
+      <td>Abonelik sona erene veya hesap silinene kadar</td>
+      <td>Hesap silindiginde derhal silinir</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. Veri Paylasimi</h2>
+<p>Bilgilerinizi ucuncu taraflara satmayiz, takas etmeyiz veya kiralamayiz. Bilgileri yalnizca asagidaki sinirli durumlarda paylasiyoruz:</p>
+<ol>
+  <li><strong>Koruyucu-Korunan Kisi Baglantisi:</strong> Korunan kisi davet kodunu bir koruyucuyla paylasitiginda, koruyucu korunan kisinin saglik durumunu (heartbeat alinip alinmadigi, pil seviyesi) alir. Kisisel bilgi paylasilmaz; yalnizca cihaz duzeyinde saglik verileri paylasilir.</li>
+  <li><strong>Acil yardim talebinde konum paylasimi:</strong> Korunan kisi uygulama icindeki [🚨 Yardima ihtiyacim var] acil yardim talebi dugmesine kendisi bastiginda ve konum bilgisinin paylasilmasina onay verdiginde, mevcut konumu (enlem, boylam, dogruluk) baglantili tum koruyuculara tek seferlik iletilir. Konum izninin reddedilmesi veya GPS sinyalinin alinamamasi durumunda acil bildirim konum bilgisi olmadan gonderilir.</li>
+  <li><strong>Yasal Gereklilikler:</strong> Yururlukteki yasa, yonetmelik veya gecerli yasal surec gerektirdiginde.</li>
+</ol>
+
+<h2>5. Ucuncu Taraf Hizmet Saglayicilari</h2>
+<p>Hizmeti isletmek icin asagidaki ucuncu taraf hizmetlerini kullaniyoruz:</p>
+<p>Uygulama ici satin alma islemleri icin (Apple Inc., Google LLC), bu saglayicilardan yalnizca makbuz dogrulama belirtecini abonelik durumunu dogrulama amaciyla aliyoruz. Gercek odeme yontemi bilgilerini almayiz veya islemiyoruz.</p>
+<table>
+  <thead>
+    <tr><th>Saglayici</th><th>Hizmet</th><th>Gizlilik Politikasi</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Google LLC (Firebase)</td>
+      <td>Push bildirimleri (FCM)</td>
+      <td><a href="https://firebase.google.com/support/privacy">Firebase Gizliligi</a></td>
+    </tr>
+    <tr>
+      <td>Apple Inc.</td>
+      <td>Uygulama ici satin almalar, push bildirimleri (APNs)</td>
+      <td><a href="https://www.apple.com/privacy/">Apple Gizliligi</a></td>
+    </tr>
+    <tr>
+      <td>Google LLC (Google Play)</td>
+      <td>Uygulama ici satin almalar</td>
+      <td><a href="https://policies.google.com/privacy">Google Gizliligi</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>6. Haklariniz</h2>
+<p>Verilerinizle ilgili asagidaki haklara sahipsiniz:</p>
+<ol>
+  <li><strong>Hesabinizi Silin:</strong> Uygulama ayarlarindaki "Hesabi Sil" secenegi araciligiyla istediginiz zaman hesabinizi ve ilgili tum verileri silebilirsiniz. Silme islemi aninda gerceklesir ve geri alinamaz.</li>
+  <li><strong>Izinleri Geri Alin:</strong> Bildirim veya hareket izinlerini istediginiz zaman cihaz ayarlarinizdan geri alabilirsiniz.</li>
+  <li><strong>Veri Erisimi Talebi:</strong> Hakkinizdaki veriler konusunda asagidaki e-posta adresi uzerinden bize ulasarak bilgi talep edebilirsiniz.</li>
+</ol>
+
+<h3>Avrupa Ekonomik Alani (AEA) Kullanicilari Icin</h3>
+<p>Genel Veri Koruma Yonetmeligi (GDPR) kapsaminda asagidaki haklara da sahipsiniz:</p>
+<ul>
+  <li>Kisisel verilerinize erisim, duzeltme veya silme talebi</li>
+  <li>Verilerinizin islenmesine itiraz etme veya kisitlama</li>
+  <li>Veri tasinabilirligi</li>
+  <li>Yerel veri koruma otoritenize sikayet basvurusu</li>
+</ul>
+<p>Isleme icin yasal dayanagimiz, <strong>mesru menfaat</strong> (tercih ettiginiz saglik kontrolu hizmetinin saglanmasi) ve <strong>rizadir</strong> (adim sayimi gibi istege bagli izinler icin).</p>
+
+<h3>Turkiye'deki Kullanicilar Icin (KVKK)</h3>
+<p>6698 Sayili Kisisel Verilerin Korunmasi Kanunu (KVKK) kapsaminda asagidaki haklara sahipsiniz:</p>
+<ul>
+  <li>Kisisel verilerinizin islenip islenmedigini ogrenme</li>
+  <li>Kisisel verileriniz islenmisse buna iliskin bilgi talep etme</li>
+  <li>Kisisel verilerinizin islenmis amacini ve bunlarin amacina uygun kullanilip kullanilmadigini ogrenme</li>
+  <li>Yurt icinde veya yurt disinda kisisel verilerinizin aktarildigi ucuncu kisileri bilme</li>
+  <li>Kisisel verilerinizin eksik veya yanlis islenmis olmasi halinde bunlarin duzeltilmesini isteme</li>
+  <li>KVKK'nin 7. maddesinde ongorulen sartlar cercevesinde kisisel verilerinizin silinmesini veya yok edilmesini isteme</li>
+  <li>Islenen verilerin mUnhasiran otomatik sistemler vasitasiyla analiz edilmesi suretiyle aleyhinize bir sonucun ortaya cikmasina itiraz etme</li>
+  <li>Kisisel verilerinizin kanuna aykiri olarak islenmesi sebebiyle zarara ugramaniz halinde zararin giderilmesini talep etme</li>
+</ul>
+<p>KVKK kapsamindaki basvurularinizi asagidaki iletisim bilgileri uzerinden yapabilirsiniz.</p>
+
+<h3>Kaliforniya'daki Kullanicilar Icin (CCPA)</h3>
+<p>Kaliforniya Tuketici Gizlilik Yasasi kapsaminda Kaliforniya sakinleri asagidaki haklara sahiptir:</p>
+<ul>
+  <li>Hangi kisisel bilgilerin toplandigini ve nasil kullanildigini bilme</li>
+  <li>Kisisel bilgilerin silinmesini talep etme</li>
+  <li>Kisisel bilgilerin satisini reddetme — <strong>hicbir kisisel bilgiyi satmiyoruz</strong></li>
+  <li>Gizlilik haklarinizi kullandiginiz icin ayrimciliga ugramama</li>
+</ul>
+
+<h3>Cocuklarin Gizliligi (COPPA)</h3>
+<p>Anbu, 13 yasindan kucuk cocuklara yonelik degildir. 13 yasindan kucuk cocuklardan bilerek bilgi toplamiyoruz. Bir cocugun bize veri sagladigina inaniyorsaniz, lutfen bizimle iletisime gecin; derhal silecegiz.</p>
+
+<div class="highlight">
+  <p><strong>Hesap silindiginde silinen veriler:</strong></p>
+  <ul>
+    <li>Kullanici hesabi ve cihaz bilgileri</li>
+    <li>Tum heartbeat kayitlari</li>
+    <li>Koruyucu-korunan kisi baglanti kayitlari</li>
+    <li>Abonelik bilgileri</li>
+    <li>Uyari bildirim kayitlari</li>
+    <li>Bildirim ayarlari</li>
+  </ul>
+</div>
+
+<h2>7. Veri Guvenligi</h2>
+<p>Verilerinizi korumak icin asagidaki onlemleri uyguluyoruz:</p>
+<ol>
+  <li><strong>Aktarim Sirasinda Sifreleme:</strong> Uygulama ile sunucularimiz arasindaki tum iletisim HTTPS (TLS 1.2 veya ustu) kullanir.</li>
+  <li><strong>Erisim Kontrolu:</strong> Cihaz jetonu tabanli kimlik dogrulama, yalnizca kendi verilerinize erismenizi saglar.</li>
+  <li><strong>Veri Minimizasyonu:</strong> Hizmeti saglamak icin yalnizca gerekli minimum bilgiyi topluyoruz.</li>
+  <li><strong>Otomatik Silme:</strong> Saklama suresini asan veriler otomatik olarak silinir.</li>
+</ol>
+
+<h2>8. Yerel Depolama</h2>
+<p>Anbu, cerez veya web izleme teknolojileri kullanmaz. Uygulama, asagidaki bilgileri cihazinizda yerel olarak depolar (Android'de SharedPreferences / iOS'ta UserDefaults kullanarak):</p>
+<ul>
+  <li>Cihaz jetonu (sunucu kimlik dogrulamasi icin)</li>
+  <li>Davet kodu</li>
+  <li>Heartbeat planlama zamani</li>
+  <li>Son heartbeat iletim zamani</li>
+</ul>
+<p>Bu veriler, uygulamayi kaldirdiginizda veya hesabinizi sildiginizde silinir.</p>
+
+<h2>9. Uluslararasi Veri Aktarimlari</h2>
+<p>Sunucularimiz ikamet ulkenizin disinda bulunabilir. Hizmeti kullanarak, bilgilerinizin baska yargi bolgelerindeki sunuculara aktarilmasina onay vermis olursunuz. Bu Gizlilik Politikasina uygun olarak verilerinizi korumak icin uygun guvencelerin mevcut olmasini sagliyoruz.</p>
+
+<h2>10. Bu Politikadaki Degisiklikler</h2>
+<p>Uygulamalarimizi veya yururlukteki yasalari yansitmak icin bu Gizlilik Politikasini zaman zaman guncelleyebiliriz. Onemli degisiklikleri uygulama veya bu sayfa araciligiyla size bildiririz. Degisiklikler yayinlandiktan sonra Hizmeti kullanmaya devam etmeniz, guncellenmis politikayi kabul ettiginiz anlamina gelir.</p>
+
+<h2>11. Bize Ulasin</h2>
+<table>
+  <thead>
+    <tr><th>Bilgi</th><th>Detaylar</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Hizmet</td><td>Anbu</td></tr>
+    <tr><td>E-posta</td><td>anbucheck1018@gmail.com</td></tr>
+  </tbody>
+</table>
+<p>Bu Gizlilik Politikasi veya veri uygulamalarimiz hakkinda herhangi bir sorunuz, endisenis veya talebiniz varsa, lutfen yukaridaki e-posta adresinden bize ulasin.</p>
+
+</body>
+</html>

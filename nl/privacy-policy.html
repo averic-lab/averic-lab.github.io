@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anbu — Privacybeleid</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.8;
+      color: #1a1c1c;
+      background: #fafafa;
+      padding: 24px 16px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 32px 0 12px; color: #00796b; }
+    h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+    p, li { font-size: 15px; color: #333; }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+    th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+    th { background: #e0f2f1; font-weight: 600; }
+    .date { font-size: 14px; color: #666; margin-bottom: 24px; }
+    .highlight { background: #e0f2f1; padding: 16px; border-radius: 8px; margin: 12px 0; }
+    a { color: #00796b; }
+  </style>
+</head>
+<body>
+
+<h1>Privacybeleid</h1>
+<p class="date">Ingangsdatum: 27 april 2026 | Laatst bijgewerkt: 24 mei 2026</p>
+
+<p>Anbu ("wij", "ons" of "onze") hecht groot belang aan de bescherming van uw privacy. Dit Privacybeleid legt uit hoe wij gegevens verzamelen, gebruiken, opslaan en beschermen wanneer u de mobiele applicatie Anbu (de "Dienst") gebruikt. Door de Dienst te gebruiken, stemt u in met de praktijken zoals beschreven in dit beleid.</p>
+
+<p>Wij hebben Anbu ontworpen met een <strong>privacy-first benadering</strong>. Wij verzamelen geen persoonlijke gegevens zoals uw naam, telefoonnummer, e-mailadres of locatie. De Dienst werkt uitsluitend met apparaat-identificatoren en minimale sensorgegevens die noodzakelijk zijn voor de welzijnscontrole.</p>
+
+<h2>1. Gegevens die wij verzamelen</h2>
+
+<h3>1.1 Automatisch verzamelde gegevens</h3>
+<table>
+  <thead>
+    <tr><th>Categorie</th><th>Gegevens</th><th>Doel</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Apparaatinformatie</td>
+      <td>Apparaat-ID (device_id), platform (Android/iOS), OS-versie, tijdzone</td>
+      <td>Werking van de Dienst en apparaatidentificatie</td>
+    </tr>
+    <tr>
+      <td>Push-token</td>
+      <td>Firebase Cloud Messaging (FCM) token</td>
+      <td>Bezorging van welzijnscontrole-meldingen en waarschuwingen</td>
+    </tr>
+    <tr>
+      <td>Welzijnsgegevens (Beschermde persoon)</td>
+      <td>Batterijniveau, tijdstip van heartbeat-verzending</td>
+      <td>Bepalen van welzijnsstatus en verzenden van waarschuwingen aan beschermers</td>
+    </tr>
+    <tr>
+      <td>Sensormomentopnamen (Beschermde persoon)</td>
+      <td>Versnellingsmeter- en gyroscoopmetingen (eenmalige momentopnamen, niet continu)</td>
+      <td>Detectie van apparaatbeweging om activiteit te beoordelen</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>1.2 Gegevens die met uw toestemming worden verzameld</h3>
+<table>
+  <thead>
+    <tr><th>Categorie</th><th>Gegevens</th><th>Doel</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Stappenteller (Beschermde persoon)</td>
+      <td>Aantal stappen sinds laatste heartbeat (steps_delta)</td>
+      <td>Activiteitsverificatie (wordt niet verzameld als toestemming wordt geweigerd)</td>
+    </tr>
+    <tr>
+      <td>Locatiegegevens (Beschermde persoon, optioneel)</td>
+      <td>Breedtegraad, lengtegraad, nauwkeurigheid, tijdstip van vastlegging</td>
+      <td>Wordt uitsluitend eenmalig gedeeld met de verbonden beschermers wanneer de beschermde persoon de knop [🚨 Ik heb hulp nodig] zelf indrukt. Tijdens de reguliere welzijnscontrole (heartbeat) worden geen locatiegegevens verzameld. Wanneer de locatiemachtiging wordt geweigerd of er geen GPS-fix beschikbaar is, wordt de noodmelding zonder locatie verzonden.</td>
+    </tr>
+    <tr>
+      <td>Abonnement (Beschermer)</td>
+      <td>In-app aankoop-ontvangstbewijs (Apple/Google)</td>
+      <td>Abonnementsverificatie en toegang tot de Dienst</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+  <p><strong>Betaalmiddelgegevens &mdash; worden niet op onze servers opgeslagen</strong></p>
+  <p>De enige betalingsgerelateerde gegevens die op onze servers worden opgeslagen zijn de <strong>bonvalidatietokens uitgegeven door de Apple App Store of Google Play Store</strong>. Kaartnummers, bankrekeninggegevens, betalingsgegevens en factuuradressen worden uitsluitend binnen de betalingssystemen van Apple en Google verwerkt en zijn niet toegankelijk voor onze servers. De bewaring van betalingsgegevens, de afhandeling van terugbetalingen en de behandeling van factuurgeschillen worden volledig beheerst door het beleid van Apple en Google.</p>
+</div>
+
+<h3>1.3 Gegevens die wij NIET verzamelen</h3>
+<ul>
+  <li>Naam, telefoonnummer, e-mailadres of andere persoonlijk identificeerbare informatie</li>
+  <li>Locatiegegevens tijdens de reguliere welzijnscontrole (heartbeat); wij voeren op geen enkel moment locatietracking op de achtergrond uit</li>
+  <li>Foto's, contacten of andere gegevens die op uw apparaat zijn opgeslagen</li>
+  <li>Oproeplogboeken, sms-berichten of browsegeschiedenis</li>
+  <li>Continue sensorgegevens (wij nemen slechts eenmaal per dag korte momentopnamen)</li>
+  <li>Betaalmiddelgegevens zoals kaartnummers of bankrekeninggegevens &mdash; deze worden uitsluitend verwerkt door de betalingssystemen van Apple en Google</li>
+</ul>
+
+<h3>1.4 Manier van verzamelen</h3>
+<ul>
+  <li>Apparaat- en welzijnsgegevens worden automatisch naar onze servers verzonden bij elke heartbeat-overdracht.</li>
+  <li>Locatiegegevens worden uitsluitend eenmalig op de voorgrond vastgelegd wanneer de beschermde persoon de knop voor noodhulp zelf indrukt en de locatiemachtiging is verleend. Op geen enkel moment worden locatiegegevens op de achtergrond verzameld.</li>
+</ul>
+
+<h2>2. Hoe wij uw gegevens gebruiken</h2>
+<p>Wij gebruiken de verzamelde gegevens uitsluitend voor de volgende doeleinden:</p>
+<ol>
+  <li><strong>Welzijnscontrole:</strong> Het verzamelen van heartbeat-signalen van het apparaat van de beschermde persoon en het informeren van beschermers over de welzijnsstatus.</li>
+  <li><strong>Waarschuwingsmeldingen:</strong> Het verzenden van stapsgewijze waarschuwingen (Let op → Waarschuwing → Urgent) aan beschermers wanneer er geen heartbeat van een beschermde persoon wordt ontvangen.</li>
+  <li><strong>Verwerking van noodhulpverzoeken:</strong> Wanneer een beschermde persoon de knop [🚨 Ik heb hulp nodig] zelf indrukt, sturen wij de melding onmiddellijk naar alle verbonden beschermers. Heeft de gebruiker toestemming gegeven voor het delen van locatiegegevens, dan worden tevens de huidige locatie (breedtegraad, lengtegraad en nauwkeurigheid) doorgegeven.</li>
+  <li><strong>Apparaatstatuscontrole:</strong> Het informeren van beschermers over een lage batterij, het afsluiten van de app of andere omstandigheden die welzijnscontroles kunnen beinvloeden.</li>
+  <li><strong>Abonnementsbeheer:</strong> Het verifieren van in-app aankoop-ontvangstbewijzen en het beheren van de toegang van beschermers tot de Dienst.</li>
+  <li><strong>Verbetering van de Dienst:</strong> Het diagnosticeren van fouten en het verbeteren van de betrouwbaarheid van de Dienst.</li>
+</ol>
+
+<h2>3. Bewaartermijnen</h2>
+<table>
+  <thead>
+    <tr><th>Gegevens</th><th>Bewaartermijn</th><th>Opmerkingen</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Apparaatinformatie, FCM-token</td>
+      <td>Tot verwijdering van het account</td>
+      <td>Wordt onmiddellijk verwijderd bij verwijdering van het account</td>
+    </tr>
+    <tr>
+      <td>Heartbeat-logboeken</td>
+      <td>30 dagen</td>
+      <td>Wordt automatisch verwijderd na 30 dagen</td>
+    </tr>
+    <tr>
+      <td>Waarschuwingsmeldingen</td>
+      <td>Alleen de huidige dag</td>
+      <td>Dagelijks om middernacht verwijderd (lokale tijdzone van de beschermde persoon)</td>
+    </tr>
+    <tr>
+      <td>Locatiegegevens uit noodhulpverzoeken</td>
+      <td>Maximaal 24 uur</td>
+      <td>Worden samen met de bijbehorende meldingen automatisch verwijderd om middernacht volgens de lokale tijdzone van het apparaat van de beschermde persoon</td>
+    </tr>
+    <tr>
+      <td>Abonnementsgegevens</td>
+      <td>Tot het verstrijken van het abonnement of verwijdering van het account</td>
+      <td>Wordt onmiddellijk verwijderd bij verwijdering van het account</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. Delen van gegevens</h2>
+<p>Wij verkopen, verhandelen of verhuren uw gegevens niet aan derden. Wij delen gegevens uitsluitend in de volgende beperkte omstandigheden:</p>
+<ol>
+  <li><strong>Verbinding tussen beschermer en beschermde persoon:</strong> Wanneer een beschermde persoon zijn of haar uitnodigingscode deelt met een beschermer, ontvangt de beschermer de welzijnsstatus van de beschermde persoon (heartbeat ontvangen/gemist, batterijniveau). Er wordt geen persoonlijke informatie gedeeld — uitsluitend welzijnsgegevens op apparaatniveau.</li>
+  <li><strong>Locatiedeling bij noodhulpverzoeken:</strong> Wanneer de beschermde persoon de knop [🚨 Ik heb hulp nodig] in de app zelf indrukt en toestemming heeft gegeven voor het delen van locatiegegevens, wordt de huidige locatie (breedtegraad, lengtegraad en nauwkeurigheid) eenmalig gedeeld met alle verbonden beschermers. Wanneer de locatiemachtiging wordt geweigerd of er geen GPS-fix beschikbaar is, wordt de noodmelding zonder locatiegegevens verzonden.</li>
+  <li><strong>Wettelijke vereisten:</strong> Wanneer dit vereist is op grond van toepasselijk recht, regelgeving of een geldige juridische procedure.</li>
+</ol>
+
+<h2>5. Externe dienstverleners</h2>
+<p>Wij maken gebruik van de volgende externe diensten voor de werking van de Dienst:</p>
+<p>Voor de verwerking van in-app aankopen (Apple Inc., Google LLC) ontvangen wij van deze aanbieders uitsluitend het bonvalidatietoken, met als enig doel het verifi&euml;ren van de abonnementsstatus. Wij ontvangen of verwerken geen feitelijke betaalmiddelgegevens.</p>
+<table>
+  <thead>
+    <tr><th>Aanbieder</th><th>Dienst</th><th>Privacybeleid</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Google LLC (Firebase)</td>
+      <td>Pushmeldingen (FCM)</td>
+      <td><a href="https://firebase.google.com/support/privacy">Firebase Privacy</a></td>
+    </tr>
+    <tr>
+      <td>Apple Inc.</td>
+      <td>In-app aankopen, pushmeldingen (APNs)</td>
+      <td><a href="https://www.apple.com/privacy/">Apple Privacy</a></td>
+    </tr>
+    <tr>
+      <td>Google LLC (Google Play)</td>
+      <td>In-app aankopen</td>
+      <td><a href="https://policies.google.com/privacy">Google Privacy</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>6. Uw rechten</h2>
+<p>U hebt de volgende rechten met betrekking tot uw gegevens:</p>
+<ol>
+  <li><strong>Account verwijderen:</strong> U kunt uw account en alle bijbehorende gegevens op elk moment verwijderen via de optie "Account verwijderen" in de app-instellingen. Verwijdering is onmiddellijk en onomkeerbaar.</li>
+  <li><strong>Toestemmingen intrekken:</strong> U kunt toestemmingen voor meldingen of bewegingssensoren op elk moment intrekken via de instellingen van uw apparaat.</li>
+  <li><strong>Toegang tot gegevens opvragen:</strong> U kunt informatie opvragen over de gegevens die wij over u bewaren door contact met ons op te nemen via het onderstaande e-mailadres.</li>
+</ol>
+
+<h3>Voor gebruikers in de Europese Economische Ruimte (EER)</h3>
+<p>Op grond van de Algemene Verordening Gegevensbescherming (AVG) hebt u tevens het recht om:</p>
+<ul>
+  <li>Toegang tot, correctie van of verwijdering van uw persoonsgegevens te verzoeken</li>
+  <li>Bezwaar te maken tegen of beperking te verzoeken van de verwerking van uw gegevens</li>
+  <li>Gegevensoverdraagbaarheid te verzoeken</li>
+  <li>Een klacht in te dienen bij uw lokale gegevensbeschermingsautoriteit</li>
+</ul>
+<p>Onze rechtsgrondslag voor verwerking is <strong>gerechtvaardigd belang</strong> (het leveren van de welzijnscontrole waarvoor u hebt gekozen) en <strong>toestemming</strong> (voor optionele machtigingen zoals het tellen van stappen).</p>
+
+<h3>Voor gebruikers in Californie (CCPA)</h3>
+<p>Op grond van de California Consumer Privacy Act hebben inwoners van Californie het recht om:</p>
+<ul>
+  <li>Te weten welke persoonsgegevens wij verzamelen en hoe deze worden gebruikt</li>
+  <li>Verwijdering van persoonsgegevens te verzoeken</li>
+  <li>Zich af te melden voor de verkoop van persoonsgegevens — <strong>wij verkopen geen persoonsgegevens</strong></li>
+  <li>Niet te worden gediscrimineerd vanwege het uitoefenen van privacyrechten</li>
+</ul>
+
+<h3>Privacy van kinderen (COPPA)</h3>
+<p>Anbu is niet gericht op kinderen jonger dan 13 jaar. Wij verzamelen niet bewust gegevens van kinderen jonger dan 13 jaar. Als u van mening bent dat een kind ons gegevens heeft verstrekt, neem dan contact met ons op en wij zullen deze onmiddellijk verwijderen.</p>
+
+<div class="highlight">
+  <p><strong>Gegevens die bij verwijdering van het account worden gewist:</strong></p>
+  <ul>
+    <li>Gebruikersaccount en apparaatinformatie</li>
+    <li>Alle heartbeat-logboeken</li>
+    <li>Verbindingsgegevens tussen beschermer en beschermde persoon</li>
+    <li>Abonnementsgegevens</li>
+    <li>Waarschuwingsmeldingen</li>
+    <li>Meldingsinstellingen</li>
+  </ul>
+</div>
+
+<h2>7. Gegevensbeveiliging</h2>
+<p>Wij treffen de volgende maatregelen om uw gegevens te beschermen:</p>
+<ol>
+  <li><strong>Versleuteling tijdens overdracht:</strong> Alle communicatie tussen de app en onze servers maakt gebruik van HTTPS (TLS 1.2 of hoger).</li>
+  <li><strong>Toegangscontrole:</strong> Authenticatie op basis van een apparaat-token waarborgt dat u uitsluitend toegang hebt tot uw eigen gegevens.</li>
+  <li><strong>Dataminimalisatie:</strong> Wij verzamelen uitsluitend de minimale gegevens die noodzakelijk zijn om de Dienst te leveren.</li>
+  <li><strong>Automatische verwijdering:</strong> Gegevens waarvan de bewaartermijn is verstreken, worden automatisch verwijderd.</li>
+</ol>
+
+<h2>8. Lokale opslag</h2>
+<p>Anbu maakt geen gebruik van cookies of webtrackingtechnologieen. De app slaat de volgende gegevens lokaal op uw apparaat op (via SharedPreferences op Android / UserDefaults op iOS):</p>
+<ul>
+  <li>Apparaat-token (voor serverauthenticatie)</li>
+  <li>Uitnodigingscode</li>
+  <li>Geplande heartbeat-tijd</li>
+  <li>Tijdstip van de laatste heartbeat-verzending</li>
+</ul>
+<p>Deze gegevens worden verwijderd wanneer u de app verwijdert of uw account opheft.</p>
+
+<h2>9. Internationale gegevensoverdrachten</h2>
+<p>Onze servers bevinden zich mogelijk buiten uw land van verblijf. Door de Dienst te gebruiken, stemt u in met de overdracht van uw gegevens naar servers in andere rechtsgebieden. Wij waarborgen dat passende beveiligingsmaatregelen worden getroffen om uw gegevens te beschermen in overeenstemming met dit Privacybeleid.</p>
+
+<h2>10. Wijzigingen in dit beleid</h2>
+<p>Wij kunnen dit Privacybeleid van tijd tot tijd bijwerken om wijzigingen in onze praktijken of toepasselijk recht weer te geven. Wij stellen u op de hoogte van belangrijke wijzigingen via de app of deze pagina. Uw voortgezet gebruik van de Dienst na het publiceren van wijzigingen houdt in dat u het bijgewerkte beleid aanvaardt.</p>
+
+<h2>11. Contact</h2>
+<table>
+  <thead>
+    <tr><th>Onderwerp</th><th>Gegevens</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Dienst</td><td>Anbu</td></tr>
+    <tr><td>E-mail</td><td>anbucheck1018@gmail.com</td></tr>
+  </tbody>
+</table>
+<p>Hebt u vragen, opmerkingen of verzoeken met betrekking tot dit Privacybeleid of onze gegevenspraktijken, neem dan contact met ons op via bovenstaand e-mailadres.</p>
+
+</body>
+</html>
