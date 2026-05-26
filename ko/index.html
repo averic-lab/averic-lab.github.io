@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>안부 — 우리는 언제나 혼자가 아닙니다 · Averic Lab</title>
+<meta name="description" content="말하지 않아도 닿는 한마디. 멀리 있어도, 바빠도 — 매일 자동으로 안부를 주고받는 따뜻한 연결. 안부(Anbu).">
+<meta name="theme-color" content="#0a0e2a">
+
+<link rel="canonical" href="https://averic.co.kr/ko/">
+<link rel="alternate" hreflang="ko" href="https://averic.co.kr/ko/">
+<link rel="alternate" hreflang="en" href="https://averic.co.kr/en/">
+<link rel="alternate" hreflang="x-default" href="https://averic.co.kr/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="안부 — 우리는 언제나 혼자가 아닙니다">
+<meta property="og:description" content="말하지 않아도 닿는 한마디. 매일 자동으로 안부를 주고받는 따뜻한 연결.">
+<meta property="og:url" content="https://averic.co.kr/ko/">
+<meta property="og:image" content="https://averic.co.kr/og-image.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="안부 — 우리는 언제나 혼자가 아닙니다">
+<meta name="twitter:description" content="말하지 않아도 닿는 한마디. 매일 자동으로 안부를 주고받는 따뜻한 연결.">
+<meta name="twitter:image" content="https://averic.co.kr/og-image.png">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23ff8a95'/%3E%3Cstop offset='1' stop-color='%23e54b5e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23g)' d='M50,86 C-10,52 12,8 50,32 C88,8 110,52 50,86 Z'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a class="site-logo" href="/ko/" aria-label="Averic Lab — 안부">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z" fill="#fff" opacity="0.95"/>
+        </svg>
+      </span>
+      <span class="logo-text">안부<span class="logo-sub"> · Averic Lab</span></span>
+    </a>
+    <nav class="header-nav" aria-label="주요 메뉴">
+      <a href="/ko/privacy-policy.html">개인정보</a>
+      <a href="/ko/terms-of-service.html">이용약관</a>
+      <button class="lang-toggle" id="langToggle" type="button" aria-haspopup="true" aria-expanded="false">
+        <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>
+        </svg>
+        <span class="lang-current">KO</span>
+        <svg class="caret" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+          <path d="M2 4l4 4 4-4z"/>
+        </svg>
+      </button>
+    </nav>
+  </div>
+  <div class="lang-menu" id="langMenu" role="menu" aria-hidden="true">
+    <a href="/ko/" class="lang-option active" role="menuitem" data-lang="ko">
+      <span class="lang-name">한국어</span><span class="lang-code">KO</span>
+    </a>
+    <a href="/en/" class="lang-option" role="menuitem" data-lang="en">
+      <span class="lang-name">English</span><span class="lang-code">EN</span>
+    </a>
+  </div>
+</header>
+
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="stars" id="stars" aria-hidden="true"></div>
+  <div class="fireflies" id="fireflies" aria-hidden="true"></div>
+
+  <svg class="connection" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+    <defs>
+      <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="#ffd9a8" stop-opacity="0.85"/>
+        <stop offset="40%" stop-color="#ffb88a" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="#ffb88a" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="halo2" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="#ffd0e0" stop-opacity="0.85"/>
+        <stop offset="40%" stop-color="#ff8a95" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#ff8a95" stop-opacity="0"/>
+      </radialGradient>
+      <path id="bridge"    d="M 180 580 Q 600 380 1020 240" />
+      <path id="bridgeRev" d="M 1020 240 Q 600 380 180 580" />
+    </defs>
+    <circle class="light-halo" cx="180"  cy="580" r="90" fill="url(#halo)"/>
+    <circle class="light-halo" cx="1020" cy="240" r="90" fill="url(#halo2)" style="animation-delay: 1.6s;"/>
+    <use href="#bridge" fill="none" stroke="#ffd9a8" stroke-width="1.2" stroke-dasharray="2 7" stroke-linecap="round" opacity="0.55"/>
+    <circle cx="180" cy="580" r="6" fill="#fff5dc">
+      <animate attributeName="r" values="5;7;5" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1020" cy="240" r="6" fill="#fff0e0">
+      <animate attributeName="r" values="5;7;5" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="5" fill="#fff8e0" opacity="0">
+      <animateMotion dur="5s" begin="0.5s" repeatCount="indefinite" rotate="auto"><mpath href="#bridge"/></animateMotion>
+      <animate attributeName="opacity" values="0;0.2;1;1;0.2;0" keyTimes="0;0.05;0.2;0.8;0.95;1" dur="5s" begin="0.5s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="3;6;6;3" keyTimes="0;0.2;0.8;1" dur="5s" begin="0.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="5" fill="#ffd0d6" opacity="0">
+      <animateMotion dur="5s" begin="3s" repeatCount="indefinite" rotate="auto"><mpath href="#bridgeRev"/></animateMotion>
+      <animate attributeName="opacity" values="0;0.2;1;1;0.2;0" keyTimes="0;0.05;0.2;0.8;0.95;1" dur="5s" begin="3s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="3;6;6;3" keyTimes="0;0.2;0.8;1" dur="5s" begin="3s" repeatCount="indefinite"/>
+    </circle>
+  </svg>
+
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="brand-mark">
+        <span class="brand-dot"></span>
+        <span>조용히, 매일</span>
+      </div>
+      <h1>우리는<br>언제나 <em>혼자가 아닙니다</em></h1>
+      <p class="hero-sub">말하지 않아도 닿는 한마디.<br>오늘도 어딘가에서 안부가 흐르고 있습니다.</p>
+    </div>
+
+    <div class="hero-cta">
+      <div class="eyebrow">함께 시작하기</div>
+      <h3>오늘부터 매일,<br><em>안부가 흐르도록.</em></h3>
+      <p class="lead">안부를 전하는 쪽은 완전 무료.<br>받는 쪽은 3개월 무료 체험 후 합리적인 연간 구독.</p>
+      <div class="badges">
+        <a class="badge" href="https://apps.apple.com/app/anbu" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-3.16 2.58-4.68 2.7-4.76-1.47-2.15-3.76-2.45-4.58-2.48-1.95-.2-3.81 1.15-4.8 1.15-1 0-2.52-1.12-4.15-1.09-2.13.03-4.1 1.24-5.19 3.15-2.22 3.85-.57 9.55 1.59 12.69 1.06 1.54 2.32 3.27 3.97 3.21 1.6-.07 2.2-1.03 4.13-1.03 1.92 0 2.47 1.03 4.16 1 1.72-.03 2.81-1.55 3.86-3.1 1.22-1.78 1.72-3.51 1.75-3.6-.04-.02-3.36-1.29-3.4-5.14zM14.04 3.5c.87-1.07 1.46-2.55 1.3-4.02-1.25.06-2.79.84-3.69 1.89-.81.94-1.52 2.45-1.33 3.89 1.4.11 2.83-.71 3.72-1.76z"/></svg>
+          <span class="l"><small>Download on the</small><span>App Store</span></span>
+        </a>
+        <a class="badge" href="https://play.google.com/store/apps/details?id=kr.co.anbucheck.live" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#34A853" d="M3.6 21.4c.4.4 1 .5 1.5.2L17 14.7l-3.4-3.4L3.6 21.4z"/>
+            <path fill="#FBBC04" d="M20.6 10.6L17 8.6 13.6 12l3.4 3.4 3.6-2c.9-.5.9-1.8 0-2.3z"/>
+            <path fill="#EA4335" d="M3.6 2.6c-.2.2-.3.5-.3.9v17c0 .4.1.7.3.9L13.6 12 3.6 2.6z"/>
+            <path fill="#4285F4" d="M5.1 2.4c-.5-.3-1.1-.2-1.5.2L13.6 12 17 8.6 5.1 2.4z"/>
+          </svg>
+          <span class="l"><small>GET IT ON</small><span>Google Play</span></span>
+        </a>
+      </div>
+      <div class="coming-soon">Coming Soon · 곧 만나요</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+
+<!-- ========== DAWN ========== -->
+<section class="dawn">
+  <div class="dawn-mist m1"></div>
+  <div class="dawn-mist m2"></div>
+  <div class="dawn-text">
+    <p class="q1 reveal">내가 아프거나 힘들 때,<br>가장 먼저 달려와 줄 사람은 <em>누구일까요.</em></p>
+    <span class="mark"></span>
+    <p class="q2 reveal">그리고 지금 이 순간,<br><em>그 사람의 하루는 괜찮았을까요.</em></p>
+  </div>
+</section>
+
+
+<!-- ========== INTRO ========== -->
+<section class="intro">
+  <div class="intro-inner">
+    <div class="heart-stage">
+      <div class="halo"></div>
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="heartGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%"  stop-color="#ff8a95"/>
+            <stop offset="100%" stop-color="#e54b5e"/>
+          </linearGradient>
+          <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+            <feOffset dx="0" dy="10" result="offsetblur"/>
+            <feComponentTransfer><feFuncA type="linear" slope="0.25"/></feComponentTransfer>
+            <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <path d="M150,260 C-30,160 30,30 150,100 C270,30 330,160 150,260 Z" fill="url(#heartGrad)" filter="url(#softShadow)"/>
+        <path d="M40,160 L100,160 L115,160 L125,140 L135,180 L145,90 L160,210 L175,140 L190,170 L205,160 L260,160"
+              fill="none" stroke="#ffffff" stroke-width="6"
+              stroke-linecap="round" stroke-linejoin="round"
+              stroke-dasharray="500" stroke-dashoffset="500">
+          <animate attributeName="stroke-dashoffset" values="500;0;-500" dur="3.5s" repeatCount="indefinite"/>
+        </path>
+      </svg>
+    </div>
+
+    <div class="eyebrow">안부 · ANBU</div>
+    <h2 class="section-title">말하지 않아도, <em>매일 닿는 한마디.</em></h2>
+    <p class="section-sub">
+      안부는 스마트폰이 매일 정해진 시각에 "오늘도 괜찮다"는 신호를<br>
+      자동으로 주고받는 따뜻한 연결입니다.
+    </p>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3>설치하고 그대로</h3>
+        <p>사용자는 아무것도 하지 않아도 됩니다. 앱을 열어둘 필요도, 누를 버튼도 없습니다.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h3>매일 자동으로 안부</h3>
+        <p>매일 정해진 시각에 안부 신호가 보호자에게 조용히 전해집니다. 걸음과 활동으로 자연스럽게.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h3>그리고 안심</h3>
+        <p>신호가 닿지 않으면 단계별로 알려드립니다. 정말 필요한 순간에만 연락이 닿도록.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== LEVELS ========== -->
+<section class="levels">
+  <div class="levels-inner">
+    <div class="eyebrow">단계별 신호</div>
+    <h2 class="section-title">필요한 순간에만, <em>꼭 필요한 만큼.</em></h2>
+    <p class="section-sub">모든 알림이 비상은 아닙니다. 안부는 다섯 단계로 상황을 차분히 전해드립니다.</p>
+    <div class="levels-row">
+      <div class="level lv-normal  reveal"><div class="dot"></div><div class="name">정상</div><div class="desc">오늘도 안녕히</div></div>
+      <div class="level lv-caution reveal"><div class="dot"></div><div class="name">주의</div><div class="desc">활동 기록이 없어요</div></div>
+      <div class="level lv-warning reveal"><div class="dot"></div><div class="name">경고</div><div class="desc">연속으로 신호가 없어요</div></div>
+      <div class="level lv-urgent  reveal"><div class="dot"></div><div class="name">긴급</div><div class="desc">지금 확인이 필요해요</div></div>
+      <div class="level lv-info    reveal"><div class="dot"></div><div class="name">정보</div><div class="desc">걸음수 · 배터리</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== PRIVACY ========== -->
+<section class="privacy">
+  <div class="privacy-inner">
+    <div class="eyebrow">개인정보 약속</div>
+    <h2 class="section-title">이름도, 전화번호도 <em>수집하지 않습니다.</em></h2>
+    <p class="section-sub">소중한 사람의 정보를 소중하게 지킵니다. 연결은 오직 앱이 발급한 한 줄의 코드로만.</p>
+    <ul class="privacy-bullets">
+      <li><strong>이름·전화번호·주소</strong>를 서버에 저장하지 않습니다.</li>
+      <li><strong>위치는 [도움이 필요해요]</strong> 버튼을 눌렀을 때만 보호자에게 전해집니다.</li>
+      <li><strong>통화 기록·사진 접근</strong>은 일절 없습니다.</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ========== CONTACT ========== -->
+<section class="contact">
+  <div class="contact-inner">
+    <div class="eyebrow">제휴 · 문의</div>
+    <h2 class="section-title">함께 하실 분을 <em>기다리고 있습니다.</em></h2>
+    <p class="section-sub">제휴, 협업, 또는 일반 문의 — 메시지를 남겨주시면 빠르게 답변드리겠습니다.</p>
+
+    <form class="contact-form" id="contactForm"
+          action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="access_key" value="8d67d09a-5acd-4d9a-88d3-d65048f1c2be">
+      <input type="hidden" name="subject"    value="[averic.co.kr] 새 제휴·문의">
+      <input type="hidden" name="from_name"  value="averic.co.kr 문의 폼">
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="cf-name">이름</label>
+          <input type="text" id="cf-name" name="name" required placeholder="홍길동">
+        </div>
+        <div class="form-field">
+          <label for="cf-email">이메일</label>
+          <input type="email" id="cf-email" name="email" required placeholder="you@example.com">
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="cf-message">내용</label>
+        <textarea id="cf-message" name="message" rows="6" required
+                  placeholder="제안하시는 내용이나 문의사항을 자유롭게 적어주세요."></textarea>
+        <span class="file-help">파일이 필요하시면 구글 드라이브·드롭박스 등 공유 링크를 메시지에 함께 적어 주세요.</span>
+      </div>
+      <button type="submit" class="submit-btn" data-sending="전송 중…">메시지 보내기</button>
+      <div class="form-status" id="formStatus"
+           data-success="메시지가 정상적으로 전송되었습니다. 가급적 빨리 답변드리겠습니다."
+           data-error="전송에 실패했습니다. 잠시 후 다시 시도해 주세요."></div>
+    </form>
+  </div>
+</section>
+
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand-block">
+      <a class="footer-logo" href="/ko/">
+        <span class="mark">A</span>
+        <span>Averic Lab · 에버릭랩</span>
+      </a>
+      <p>사용자의 일상에 의미 있는 가치를 더하는 모바일 애플리케이션을 기획·개발하는 스튜디오입니다.</p>
+    </div>
+    <div class="footer-col">
+      <h4>회사 정보</h4>
+      <div class="label">상호</div>
+      <div class="value">에버릭랩 · Averic Lab</div>
+      <div class="label">대표자</div>
+      <div class="value">이상봉 · Sangbong Lee</div>
+      <div class="label">사업자등록번호</div>
+      <div class="value">334-44-01264</div>
+    </div>
+    <div class="footer-col">
+      <h4>연락처 · 주소</h4>
+      <div class="label">이메일</div>
+      <div class="value"><a href="mailto:anbucheck1018@gmail.com">anbucheck1018@gmail.com</a></div>
+      <div class="label">소재지</div>
+      <div class="value">서울특별시 강동구 고덕로 47,<br>3층 301-352호 (05238)</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Averic Lab. All rights reserved.</div>
+    <div class="legal">
+      <a href="/ko/privacy-policy.html">개인정보처리방침</a>
+      <a href="/ko/terms-of-service.html">이용약관</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="/site.js"></script>
+</body>
+</html>

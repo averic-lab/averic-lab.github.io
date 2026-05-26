@@ -1,76 +1,160 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Averic Lab — 에버릭랩</title>
-<meta name="description" content="Averic Lab — 모바일 애플리케이션 개발 / 정보통신업 / 응용 소프트웨어 개발 및 공급업">
+<title>Anbu · Averic Lab</title>
+<meta name="description" content="Averic Lab — Anbu. A quiet, daily check-in for the people you love.">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#0a0e2a">
+
+<!-- hreflang map for crawlers (kept full so future locales appear automatically) -->
+<link rel="alternate" hreflang="ko"        href="https://averic.co.kr/ko/">
+<link rel="alternate" hreflang="en"        href="https://averic.co.kr/en/">
+<link rel="alternate" hreflang="x-default" href="https://averic.co.kr/en/">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23ff8a95'/%3E%3Cstop offset='1' stop-color='%23e54b5e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23g)' d='M50,86 C-10,52 12,8 50,32 C88,8 110,52 50,86 Z'/%3E%3C/svg%3E">
+
+<script>
+/* Locale router — picks the best available locale and redirects.
+   Order of precedence:
+     1. URL ?lang=xx
+     2. localStorage('anbu.lang') from previous visit
+     3. navigator.languages / navigator.language
+     4. fallback to /en/
+   Update SUPPORTED as new locale folders ship. */
+(function () {
+  var SUPPORTED = ['ko','en']; // grows as locales are added
+  var FALLBACK  = 'en';
+
+  function matchLang(raw) {
+    if (!raw) return null;
+    var code = String(raw).toLowerCase();
+
+    // exact (case-insensitive)
+    for (var i = 0; i < SUPPORTED.length; i++) {
+      if (SUPPORTED[i].toLowerCase() === code) return SUPPORTED[i];
+    }
+    // Chinese variants
+    if (code === 'zh' || code.indexOf('zh-cn') === 0 || code.indexOf('zh-hans') === 0 || code.indexOf('zh-sg') === 0) {
+      if (SUPPORTED.indexOf('zh-CN') !== -1) return 'zh-CN';
+    }
+    if (code.indexOf('zh-tw') === 0 || code.indexOf('zh-hk') === 0 || code.indexOf('zh-hant') === 0 || code.indexOf('zh-mo') === 0) {
+      if (SUPPORTED.indexOf('zh-TW') !== -1) return 'zh-TW';
+    }
+    // Portuguese — always map to pt-BR if supported
+    if (code.indexOf('pt') === 0 && SUPPORTED.indexOf('pt-BR') !== -1) return 'pt-BR';
+
+    // primary tag match (en-US → en, ja-JP → ja, etc.)
+    var base = code.split('-')[0];
+    for (var j = 0; j < SUPPORTED.length; j++) {
+      var supBase = SUPPORTED[j].toLowerCase().split('-')[0];
+      if (supBase === base) return SUPPORTED[j];
+    }
+    return null;
+  }
+
+  function pick() {
+    // 1. URL override
+    var m = location.search.match(/[?&]lang=([\w-]+)/);
+    if (m && m[1]) {
+      var fromUrl = matchLang(m[1]);
+      if (fromUrl) return fromUrl;
+    }
+    // 2. user's saved choice
+    try {
+      var saved = localStorage.getItem('anbu.lang');
+      if (saved) {
+        var fromStore = matchLang(saved);
+        if (fromStore) return fromStore;
+      }
+    } catch (e) {}
+    // 3. browser PRIMARY language only — secondary preferences are ignored.
+    //    While only ko/en are shipped, a user whose OS is (say) ja-JP with
+    //    'ko' as a secondary fallback must NOT be routed to /ko/. They go to
+    //    English. Revisit this policy once more locales are validated.
+    var primary = (navigator.languages && navigator.languages[0])
+                  || navigator.language
+                  || navigator.userLanguage
+                  || '';
+    var hit = matchLang(primary);
+    if (hit) return hit;
+
+    return FALLBACK;
+  }
+
+  var target = '/' + pick() + '/';
+  // Preserve any incoming hash (e.g. /#contact) so deep-links survive the redirect.
+  if (location.hash) target += location.hash;
+  location.replace(target);
+})();
+</script>
+
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; line-height: 1.6; color: #1a1c1c; background: #ffffff; -webkit-font-smoothing: antialiased; }
-.container { max-width: 720px; margin: 0 auto; padding: 64px 24px; }
-header { text-align: center; padding-bottom: 48px; border-bottom: 1px solid #e8e8e8; margin-bottom: 48px; }
-header h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.5px; }
-header p.tagline { font-size: 15px; color: #6b6b6b; margin-top: 8px; }
-section { margin-bottom: 40px; }
-section h2 { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
-section p { font-size: 15px; color: #4a4a4a; }
-.info-table { width: 100%; border-collapse: collapse; }
-.info-table tr { border-bottom: 1px solid #f0f0f0; }
-.info-table th, .info-table td { padding: 14px 0; text-align: left; vertical-align: top; font-size: 14px; }
-.info-table th { width: 160px; color: #6b6b6b; font-weight: 500; }
-.product-card { background: #f7f8fa; padding: 20px; border-radius: 12px; }
-.product-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
-.product-card p { font-size: 14px; color: #6b6b6b; }
-.product-link { display: inline-block; margin-top: 12px; color: #1a4fa0; text-decoration: none; font-size: 14px; }
-.product-link:hover { text-decoration: underline; }
-footer { margin-top: 64px; padding-top: 32px; border-top: 1px solid #e8e8e8; text-align: center; font-size: 13px; color: #8a8a8a; }
-footer a { color: #6b6b6b; text-decoration: none; margin: 0 8px; }
-footer a:hover { text-decoration: underline; color: #1a1c1c; }
-.address-en { color: #8a8a8a; font-size: 13px; display: block; margin-top: 2px; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background:
+      radial-gradient(ellipse at 70% 0%, #1f1d52 0%, transparent 55%),
+      radial-gradient(ellipse at 10% 100%, #2a1f55 0%, transparent 60%),
+      linear-gradient(180deg, #0a0e2a 0%, #161a47 60%, #2a2360 100%);
+    color: #fff8f0;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Helvetica Neue", Arial, sans-serif;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+  }
+  .splash { padding: 24px; }
+  .splash .mark {
+    width: 44px; height: 44px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #ff8a95, #e54b5e);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(229, 75, 94, 0.4);
+    display: flex; align-items: center; justify-content: center;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .splash .mark svg { width: 22px; height: 22px; }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1);    opacity: 0.95; }
+    50%      { transform: scale(1.06); opacity: 1; }
+  }
+  .splash .name {
+    font-size: 14px; letter-spacing: 4px;
+    color: #ffd9a8; opacity: 0.8;
+    text-transform: uppercase;
+  }
+  .splash .hint {
+    margin-top: 18px;
+    font-size: 12px;
+    color: rgba(255, 248, 240, 0.45);
+    letter-spacing: 0.5px;
+  }
+  .splash .links { margin-top: 28px; font-size: 13px; }
+  .splash .links a {
+    color: #ffd9a8;
+    text-decoration: none;
+    margin: 0 10px;
+    border-bottom: 1px solid rgba(255, 217, 168, 0.3);
+    padding-bottom: 2px;
+  }
+  .splash .links a:hover { border-bottom-color: rgba(255, 217, 168, 0.8); }
 </style>
 </head>
 <body>
-<div class="container">
-<header>
-<h1>Averic Lab</h1>
-<p class="tagline">에버릭랩 · 모바일 애플리케이션 개발</p>
-</header>
-
-<section>
-<h2>회사 소개</h2>
-<p>Averic Lab(에버릭랩)은 사용자의 일상에 의미 있는 가치를 더하는 모바일 애플리케이션을 기획·개발하는 스튜디오입니다. 정보통신업 등록 사업자로서 응용 소프트웨어 개발 및 공급을 주된 사업으로 합니다.</p>
-</section>
-
-<section>
-<h2>제품</h2>
-<div class="product-card">
-<h3>안부 — Anbu</h3>
-<p>독거노인·1인 가구의 안녕을 자동으로 확인하는 Android/iOS 안부 확인 앱. 사용자의 일상적 활동 패턴을 기반으로 안부 신호를 자동 전송하여, 가족·돌봄 제공자가 원격으로 안전을 모니터링할 수 있도록 돕습니다.</p>
-<a class="product-link" href="https://anbucheck.co.kr">anbucheck.co.kr →</a>
-</div>
-</section>
-
-<section>
-<h2>사업자 정보</h2>
-<table class="info-table">
-<tr><th>상호</th><td>에버릭랩 · Averic Lab</td></tr>
-<tr><th>대표자</th><td>이상봉 · Sangbong Lee</td></tr>
-<tr><th>사업자등록번호</th><td>334-44-01264</td></tr>
-<tr><th>업종</th><td>정보통신업 · 응용 소프트웨어 개발 및 공급업</td></tr>
-<tr><th>소재지</th><td>서울특별시 강동구 고덕로 47, 3층 301-352호 (05238)<span class="address-en">3F, 301-352ho, 47, Godeok-ro, Gangdong-gu, Seoul, Republic of Korea</span></td></tr>
-<tr><th>연락처</th><td><a href="mailto:anbucheck1018@gmail.com" style="color:#1a4fa0;text-decoration:none">anbucheck1018@gmail.com</a></td></tr>
-</table>
-</section>
-
-<footer>
-<p>© 2026 Averic Lab. All rights reserved.</p>
-<p style="margin-top:8px">
-<a href="/ko/privacy-policy.html">개인정보처리방침</a>
-·
-<a href="/ko/terms-of-service.html">이용약관</a>
-</p>
-</footer>
+<div class="splash">
+  <div class="mark" aria-hidden="true">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z" fill="#fff"/>
+    </svg>
+  </div>
+  <div class="name">Anbu · Averic Lab</div>
+  <div class="hint">Redirecting to your language…</div>
+  <noscript>
+    <div class="links">
+      <a href="/en/">Continue in English →</a>
+      <a href="/ko/">한국어로 계속 →</a>
+    </div>
+  </noscript>
 </div>
 </body>
 </html>
