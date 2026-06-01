@@ -9,8 +9,26 @@
 <meta name="theme-color" content="#0a0e2a">
 
 <!-- hreflang map for crawlers (kept full so future locales appear automatically) -->
-<link rel="alternate" hreflang="ko"        href="https://averic.co.kr/ko/">
 <link rel="alternate" hreflang="en"        href="https://averic.co.kr/en/">
+<link rel="alternate" hreflang="ko"        href="https://averic.co.kr/ko/">
+<link rel="alternate" hreflang="ja"        href="https://averic.co.kr/ja/">
+<link rel="alternate" hreflang="zh-Hans"   href="https://averic.co.kr/zh-CN/">
+<link rel="alternate" hreflang="zh-Hant"   href="https://averic.co.kr/zh-TW/">
+<link rel="alternate" hreflang="de"        href="https://averic.co.kr/de/">
+<link rel="alternate" hreflang="fr"        href="https://averic.co.kr/fr/">
+<link rel="alternate" hreflang="es"        href="https://averic.co.kr/es/">
+<link rel="alternate" hreflang="it"        href="https://averic.co.kr/it/">
+<link rel="alternate" hreflang="pt-BR"     href="https://averic.co.kr/pt-BR/">
+<link rel="alternate" hreflang="ru"        href="https://averic.co.kr/ru/">
+<link rel="alternate" hreflang="nl"        href="https://averic.co.kr/nl/">
+<link rel="alternate" hreflang="pl"        href="https://averic.co.kr/pl/">
+<link rel="alternate" hreflang="tr"        href="https://averic.co.kr/tr/">
+<link rel="alternate" hreflang="vi"        href="https://averic.co.kr/vi/">
+<link rel="alternate" hreflang="th"        href="https://averic.co.kr/th/">
+<link rel="alternate" hreflang="id"        href="https://averic.co.kr/id/">
+<link rel="alternate" hreflang="sv"        href="https://averic.co.kr/sv/">
+<link rel="alternate" hreflang="hi"        href="https://averic.co.kr/hi/">
+<link rel="alternate" hreflang="ar"        href="https://averic.co.kr/ar/">
 <link rel="alternate" hreflang="x-default" href="https://averic.co.kr/en/">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23ff8a95'/%3E%3Cstop offset='1' stop-color='%23e54b5e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23g)' d='M50,86 C-10,52 12,8 50,32 C88,8 110,52 50,86 Z'/%3E%3C/svg%3E">
@@ -24,7 +42,7 @@
      4. fallback to /en/
    Update SUPPORTED as new locale folders ship. */
 (function () {
-  var SUPPORTED = ['ko','en']; // grows as locales are added
+  var SUPPORTED = ['en','ko','ja','zh-CN','zh-TW','de','fr','es','it','pt-BR','ru','nl','pl','tr','vi','th','id','sv','hi','ar'];
   var FALLBACK  = 'en';
 
   function matchLang(raw) {
@@ -69,16 +87,17 @@
         if (fromStore) return fromStore;
       }
     } catch (e) {}
-    // 3. browser PRIMARY language only — secondary preferences are ignored.
-    //    While only ko/en are shipped, a user whose OS is (say) ja-JP with
-    //    'ko' as a secondary fallback must NOT be routed to /ko/. They go to
-    //    English. Revisit this policy once more locales are validated.
-    var primary = (navigator.languages && navigator.languages[0])
-                  || navigator.language
-                  || navigator.userLanguage
-                  || '';
-    var hit = matchLang(primary);
-    if (hit) return hit;
+    // 3. browser languages, in the user's own order of preference.
+    //    With 20 locales shipped we honor the full ordered list: the first
+    //    entry that maps to a supported locale wins; anything unmapped falls
+    //    through to English.
+    var langs = (navigator.languages && navigator.languages.length)
+                  ? navigator.languages
+                  : [navigator.language || navigator.userLanguage || ''];
+    for (var k = 0; k < langs.length; k++) {
+      var hit = matchLang(langs[k]);
+      if (hit) return hit;
+    }
 
     return FALLBACK;
   }
