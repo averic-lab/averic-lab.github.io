@@ -749,6 +749,7 @@ p.section-sub {
   color: #fff;
 }
 .privacy-bullets strong { color: var(--ink); font-weight: 600; }
+.privacy-bullets.cols-2 { grid-template-columns: repeat(2, 1fr); max-width: 720px; margin-left: auto; margin-right: auto; }
 
 /* ==================================================
    Store badges + coming-soon label — used inside .hero-cta
