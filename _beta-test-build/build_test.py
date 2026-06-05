@@ -50,6 +50,23 @@ HTML = r"""<!doctype html>
   .hero .intro b{color:var(--pink)}
   .platform{display:inline-flex;align-items:center;gap:7px;margin-top:14px;font-size:13px;font-weight:700;color:var(--teal)}
 
+  /* 핵심 요약 */
+  .summary{margin:26px 0 4px;border-radius:18px;padding:18px 20px;
+    background:linear-gradient(180deg,rgba(255,138,149,.11),rgba(255,207,107,.06));
+    border:1px solid rgba(255,138,149,.4);box-shadow:0 0 0 1px rgba(255,138,149,.16),0 14px 36px rgba(229,75,94,.12)}
+  .summary .s-h{font-weight:850;font-size:17px;margin-bottom:11px}
+  .summary .s-h span{font-weight:600;color:var(--tx3);font-size:13px}
+  .summary ol{margin:0;padding:0;list-style:none;counter-reset:sm}
+  .summary ol li{position:relative;padding:7px 0 7px 34px;color:var(--tx2);font-size:14.5px;line-height:1.55}
+  .summary ol li:before{counter-increment:sm;content:counter(sm);position:absolute;left:0;top:7px;
+    width:23px;height:23px;display:grid;place-items:center;border-radius:7px;font-size:12.5px;font-weight:800;
+    color:#0a0e2a;background:linear-gradient(180deg,var(--pink),var(--pink2))}
+  .summary ol li b{color:#fff}
+  .summary ol li.hi{color:var(--tx);margin:3px 0;padding:9px 12px 9px 42px;border-radius:11px;
+    background:rgba(255,207,107,.1);border:1px solid rgba(255,207,107,.32)}
+  .summary ol li.hi:before{left:11px;top:9px;background:linear-gradient(180deg,var(--amber),#ff9f43)}
+  .summary ol li.hi b{color:var(--amber)}
+
   /* steps */
   .step{margin-top:18px;background:var(--card);border:1px solid var(--card-bd);border-radius:18px;padding:18px 20px;
     display:flex;gap:16px;align-items:flex-start}
@@ -129,6 +146,16 @@ HTML = r"""<!doctype html>
     <p class="intro"><b>안부앱</b>은 멀리 있는 가족이나 혼자 사는 분의 안녕을, <b>별도 조작 없이 매일 자동으로</b> 전달·확인하는 앱입니다.</p>
     <p>아래 <b>1~7번</b> 순서대로 한 번만 설정한 뒤, <b>5번 ‘매일 루틴’</b>을 테스트 기간 동안 매일 반복하면 됩니다.</p>
     <div class="platform">🤖 Android · Google Play 비공개 테스트</div>
+  </div>
+
+  <div class="summary">
+    <div class="s-h">📌 테스트 핵심 요약 <span>— 이것만 지키면 됩니다</span></div>
+    <ol>
+      <li>설치 후 <b>‘안부 보호’ 활성화</b> + 다른 테스터와 <b>서로 코드 연결</b></li>
+      <li><b>안부시각</b>을 참여자 <b>전원 같은 시각</b>(오후 12~6시)으로 설정</li>
+      <li class="hi"><b>매일 딱 1회</b>만 앱 실행 → <b>알림 확인</b> → <b>스와이프로 완전 종료(kill)</b></li>
+      <li>그 외엔 <b>앱을 열지 마세요</b> — 앱을 여는 순간 내 안부가 전송됩니다</li>
+    </ol>
   </div>
 
   <!-- 1 -->
