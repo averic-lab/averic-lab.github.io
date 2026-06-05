@@ -10,6 +10,7 @@ imgs = {
     "__IMG_SAFETY__": "safety_home.jpg",
     "__IMG_DASH__": "dashboard.jpg",
     "__IMG_ADD__": "add_subject.jpg",
+    "__IMG_NOTI__": "notifications.jpg",
 }
 
 HTML = r"""<!doctype html>
@@ -76,6 +77,7 @@ HTML = r"""<!doctype html>
   .step h2{font-size:18px;margin:3px 0 7px;font-weight:800;letter-spacing:-.2px}
   .step p{margin:0 0 7px;color:var(--tx2);font-size:14.5px}
   .step p:last-child{margin-bottom:0}
+  .step .sub-t{font-weight:800;color:var(--pink);font-size:14.5px;margin:13px 0 5px}
   .step b,.step strong{color:#fff;font-weight:750}
   ul.do{list-style:none;margin:4px 0 0;padding:0}
   ul.do li{position:relative;padding:5px 0 5px 24px;color:var(--tx2);font-size:14.5px}
@@ -215,6 +217,9 @@ HTML = r"""<!doctype html>
         <li><b>참여자 전원이 같은 시각</b>으로 설정</li>
         <li>기본 18:00 — 너무 늦으면 <b>오후 12:00 ~ 6:00 사이</b>로 통일</li>
       </ul>
+      <div class="shots">
+        <figure class="shot"><img src="__IMG_SAFETY__" alt="내 안전 코드 화면"><figcaption><b>내 안전 코드</b> 화면 — <b>안부 푸시 알림 시각 변경</b></figcaption></figure>
+      </div>
     </div>
   </div>
 
@@ -225,10 +230,13 @@ HTML = r"""<!doctype html>
       <h2>매일 루틴<span class="hot">★ 핵심</span></h2>
       <p>앱을 <b>여러 번 열 필요 없습니다.</b> 하루에 <b>한 번만</b>:</p>
       <ul class="do">
-        <li><b>하루 1회</b> 앱 실행 (가급적 내 대상자들 안부가 모두 도착한 뒤)</li>
-        <li>하단 <span class="tag menu">알림</span> 페이지에서 <b>알림이 잘 왔는지만 확인</b></li>
+        <li><b>하루 1회</b> 앱 실행 (<b>중요</b> : 가급적 내 보호 대상자들 안부가 모두 도착한 뒤)</li>
+        <li>푸시 알림을 누르거나 그냥 앱을 실행하든지, 하단 <span class="tag menu">알림</span> 페이지에서 <b>알림이 잘 왔는지만 확인</b></li>
         <li>끝나면 앱을 <b>스와이프 + 완전 종료(kill)</b></li>
       </ul>
+      <div class="shots">
+        <figure class="shot"><img src="__IMG_NOTI__" alt="알림 페이지"><figcaption><b>알림</b> 페이지 — 알림이 잘 왔는지 확인</figcaption></figure>
+      </div>
       <div class="mini warn"><b>자주 열지 마세요.</b> 예약 시각 이후 앱을 열면 그 순간 내 안부가 전송되어, ‘내 안부 미전송’ 상황을 관찰할 수 없게 됩니다.</div>
       <div class="noti">
         <div class="box me"><div class="t">💗 “내 알림”이면</div><span class="m">안부 확인이 필요합니다</span> 가 오면 → <b>즉시</b> 내가 안부를 보내라는 뜻. <b>탭하거나 앱을 열어</b> 전송.</div>
@@ -247,6 +255,9 @@ HTML = r"""<!doctype html>
         <li>하단 <span class="tag menu">홈</span> → 경고 뜬 대상자 카드</li>
         <li>카드의 <span class="tag btnr">안전확인 완료</span> 버튼으로 해소</li>
       </ul>
+      <div class="shots">
+        <figure class="shot"><img src="__IMG_DASH__" alt="홈 화면"><figcaption><b>홈 화면</b> — 카드의 <b>안전확인 완료</b> 버튼</figcaption></figure>
+      </div>
     </div>
   </div>
 
@@ -254,8 +265,15 @@ HTML = r"""<!doctype html>
   <div class="step">
     <div class="n">7</div>
     <div class="c">
-      <h2>긴급 도움 요청 (선택)</h2>
+      <h2>긴급 도움 요청</h2>
+      <p class="sub-t">① 긴급 도움 요청 (전송)</p>
       <p><b>내 안전 코드</b> 화면 하단 <span class="tag btnr">도움이 필요해요</span> → 확인하면 나를 연결한 <b>보호자 전원</b>에게 긴급 알림이 즉시 전달됩니다.</p>
+      <p class="sub-t">② 긴급 도움 요청 (수신 확인)</p>
+      <p>받은 보호자는 하단 <span class="tag menu">알림</span> 페이지에서 도착한 긴급 알림 카드의 <span class="tag btn">🗺️ 위치 보기</span> 버튼을 눌러 대상자의 위치를 지도로 확인합니다.</p>
+      <div class="shots">
+        <figure class="shot"><img src="__IMG_SAFETY__" alt="내 안전 코드 화면"><figcaption><b>① 전송</b> — 내 안전 코드 화면의 <b>도움이 필요해요</b></figcaption></figure>
+        <figure class="shot"><img src="__IMG_NOTI__" alt="알림 페이지"><figcaption><b>② 수신 확인</b> — 알림 페이지의 <b>🗺️ 위치 보기</b></figcaption></figure>
+      </div>
     </div>
   </div>
 
@@ -263,7 +281,7 @@ HTML = r"""<!doctype html>
     <h3>🐞 문제·피드백 보고</h3>
     <p>버그나 이상 동작은 아래 메일로 보내 주세요.</p>
     <div class="mail">l10s18bok@naver.com</div>
-    <p><b>단말 기종 · Android 버전 · 발생 화면 스크린샷</b>을 함께 첨부해 주시면 좋습니다.</p>
+    <p>버그 및 이해가 안 가는 부분에 대해서 <b>Android 버전 · 발생 화면 스크린샷</b>을 함께 첨부해 주시면 좋습니다.</p>
   </div>
 
   <footer>
