@@ -85,8 +85,16 @@ HTML = r"""<!doctype html>
 
   .shots{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px}
   figure.shot{margin:0;width:158px}
-  figure.shot img{width:100%;display:block;border-radius:14px;border:1px solid var(--card-bd);box-shadow:0 10px 24px rgba(0,0,0,.4)}
+  figure.shot img{width:100%;display:block;border-radius:14px;border:1px solid var(--card-bd);box-shadow:0 10px 24px rgba(0,0,0,.4);cursor:zoom-in;transition:transform .12s}
+  figure.shot img:hover{transform:translateY(-2px)}
   figure.shot figcaption{margin-top:7px;text-align:center;font-size:11.5px;color:var(--tx2)}
+
+  /* 이미지 라이트박스 */
+  .lightbox{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;
+    background:rgba(0,0,0,.9);padding:22px;cursor:zoom-out;backdrop-filter:blur(4px)}
+  .lightbox.on{display:flex}
+  .lightbox img{max-width:100%;max-height:92vh;border-radius:14px;box-shadow:0 24px 70px rgba(0,0,0,.7)}
+  .lightbox .x{position:fixed;top:16px;right:20px;font-size:30px;color:#fff;opacity:.8;font-weight:300;line-height:1}
   figure.shot figcaption b{color:var(--pink)}
 
   .grades{margin-top:13px;display:flex;flex-wrap:wrap;gap:7px}
@@ -128,8 +136,8 @@ HTML = r"""<!doctype html>
 
   <div class="hero">
     <h1>말하지 않아도, <span class="hl">매일 닿는 안부</span></h1>
-    <p class="intro"><b>안부앱</b>은 멀리 있는 가족이나 혼자 사는 분의 안녕을, <b>별도 조작 없이 매일 자동으로</b> 전달·확인하는 안심 모니터링 앱입니다.</p>
-    <p class="lead">독거노인·1인 가구의 하루를, 부담 없이 지켜봅니다. 설치하고 나면 신경 쓸 것이 없습니다.</p>
+    <p class="intro"><b>안부앱</b>은 혼자 사는 분의 안부를 <b>매일 자동으로</b> 가족 및 지인들에게 전달하는 앱입니다.</p>
+    <p class="lead">독거노인, 멀리 떨어져 혼자 사는 자식·친척·지인 등의 건강과 안녕을 궁금해하는 사람들과 공유합니다.</p>
   </div>
 
   <!-- 핵심 가치 -->
@@ -232,6 +240,19 @@ HTML = r"""<!doctype html>
   </footer>
 
 </div>
+
+<div class="lightbox" id="lb"><span class="x">&times;</span><img id="lbimg" src="" alt="확대 이미지"></div>
+<script>
+(function(){
+  var lb=document.getElementById('lb'), im=document.getElementById('lbimg');
+  document.querySelectorAll('figure.shot img').forEach(function(el){
+    el.addEventListener('click',function(){ im.src=el.src; lb.classList.add('on'); document.body.style.overflow='hidden'; });
+  });
+  function close(){ lb.classList.remove('on'); document.body.style.overflow=''; }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
 </body>
 </html>
 """
