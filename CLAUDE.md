@@ -16,14 +16,15 @@ Jekyll은 front matter가 없는 `.md`도 **정적 파일로 그대로 복사**�
 
 - **내부 문서를 새로 추가할 때는 두 방법 중 하나를 쓴다** — `_` 접두 폴더 안에 두거나(권장), `_config.yml`의 `exclude`에 추가한다.
 - ⚠️ `exclude`를 지정하면 Jekyll **기본 제외 목록을 대체**한다. `_config.yml`에 기본값(`node_modules/`, `Gemfile` 등)을 함께 적어 둔 이유이니 지우지 말 것.
-- `.nojekyll`을 추가해 Jekyll을 끄는 방법은 **쓰지 않는다** — `_` 폴더 제외 규칙까지 사라져 `_beta-test-build/`(스크린샷·빌드 스크립트)가 통째로 공개된다.
+- `.nojekyll`을 추가해 Jekyll을 끄는 방법은 **쓰지 않는다** — `_` 폴더 제외 규칙까지 사라져 `_beta-test-build/`(스크린샷·빌드 스크립트)와 `_faq-build/`가 통째로 공개된다.
 - ⚠️ 이 저장소에 `_config.yml`이 생긴 것은 이번이 처음이라, Jekyll 빌드가 "암묵적 기본값"에서 "우리 설정"으로 바뀌었다. **push 후 `averic.co.kr/ko/`가 정상 렌더되는지, `averic.co.kr/CLAUDE.md`가 404인지 반드시 확인**할 것.
 
 ## 사이트 구조
 
 - `index.html` — 루트 스플래시(언어 자동 분기), `style.css`, `site.js`
-- `ko/`, `en/`, `ja/` … (20개 언어 폴더) — 각 언어별 `index.html` / `privacy-policy.html` / `terms-of-service.html`
-- `i18n/` — 다국어 페이지 빌드 도구(`build.py`, `template.html`, `translations.json`)
+- `ko/`, `en/`, `ja/` … (20개 언어 폴더) — 각 언어별 `index.html` / `privacy-policy.html` / `terms-of-service.html` / `faq.html`
+- `i18n/` — 다국어 랜딩 빌드 도구(`build.py`, `template.html`, `translations.json`) — **`index.html`만 생성**한다
+- `_faq-build/` — FAQ 빌드 도구 + `PRD-FAQ.md` (게시 제외). 상세는 아래 별도 절
 - `CNAME` — `averic.co.kr`
 
 ## 비공개 테스트 안내 페이지 (이 저장소에서 관리)
@@ -75,6 +76,29 @@ python3 build_preview.py   # preview/index.html 재생성
 - 경고 해소 버튼: **안전확인 완료**
 - 수동 보고: **지금 바로 안전 보고하기** / 긴급: **도움이 필요해요**
 - ⚠️ 제공된 설정 스크린샷은 **활성화 후** 상태("내 안전 코드 확인")라, 테스터가 처음 보는 "내 안전 코드 생성"과 다르다 — 두 페이지 모두 이 차이를 명시하고 있으니 유지할 것.
+
+## FAQ 페이지 (`_faq-build/`)
+
+앱 사용자용 FAQ를 20개 언어로 제공한다(`{lang}/faq.html`). **상세 명세는 [`_faq-build/PRD-FAQ.md`](_faq-build/PRD-FAQ.md)** — 아래는 요약이다.
+
+```
+_faq-build/                    # 게시 제외
+├── PRD-FAQ.md                 # 명세 (이 폴더의 권위)
+├── extract_strings.py         # 앱 저장소 번역 → JSON
+├── faq-strings.json           # 커밋됨. 손으로 고치지 말 것
+├── template.html              # 페이지 골격 + 목업 마크업
+└── build_faq.py               # JSON + 템플릿 → ../{lang}/faq.html × 20
+```
+
+- **스크린샷을 쓰지 않는다.** 앱 UI를 HTML/CSS로 재현하고, 문구는 앱 번역 파일에서 추출한다 — 20개 언어 번역이 공짜이고, 앱 문구가 바뀌어도 낡지 않는다(근거는 PRD §1).
+- **언어 목록은 `i18n/build.py`의 `META`/`ORDER`를 임포트해 쓴다.** 복제하면 어긋난다. `build.py`의 `patch_inplace()`는 `index.html`만 갱신하므로 **faq.html의 스위처는 `build_faq.py`가 직접 만들고 링크는 `/{code}/faq.html`로** 건다(홈으로 보내지 말 것).
+- `{lang}/faq.html`은 산출물 — 직접 수정 금지, 항상 재빌드.
+
+```bash
+cd _faq-build
+python3 extract_strings.py   # 앱 문구가 바뀌었을 때만 (실패 시 exit 1)
+python3 build_faq.py
+```
 
 ## 배포 (git push)
 
