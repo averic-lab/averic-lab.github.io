@@ -252,13 +252,13 @@ HTML = r"""<!doctype html>
     <div class="n">2</div>
     <div class="c">
       <h2>안부 보호 활성화</h2>
-      <p>하단 <b>설정</b> 탭에서 <b>나도 안부 보호 받기</b> 버튼을 누르면 안부 보호가 켜지고, <b>내 안전 코드</b>(공유용 코드)와 안부 보고 기능이 생깁니다.</p>
+      <p>하단 <b>설정</b> 탭에서 <b>내 안전 코드 생성</b> 버튼을 누르면 안부 보호가 켜지고, <b>내 안전 코드</b>(공유용 코드)와 안부 보고 기능이 생깁니다.</p>
       <ul class="do">
-        <li>하단 <span class="tag menu">설정</span> → <span class="tag menu">나도 안부 보호 받기</span> 탭</li>
+        <li>하단 <span class="tag menu">설정</span> → <span class="tag menu">내 안전 코드 생성</span> 탭</li>
         <li>안내창에서 <span class="tag btn">이해했습니다, 활성화</span> → <b>걸음수 권한 허용</b></li>
         <li>활성화되면 <b>내 안전 코드</b> 화면으로 이동</li>
       </ul>
-      <div class="mini warn"><b>스크린샷 주의</b> — 아래 설정 스크린샷은 <b>이미 활성화가 끝난 뒤</b> 모습이라 버튼이 <span class="tag menu">내 안전 코드 확인</span> 으로 보입니다. <b>여러분이 처음 보는 화면</b>에서는 같은 자리에 <span class="tag menu">나도 안부 보호 받기</span> 가 있으니, 그 버튼을 누르세요.</div>
+      <div class="mini warn"><b>스크린샷 주의</b> — 아래 설정 스크린샷은 <b>이미 활성화가 끝난 뒤</b> 모습이라 버튼이 <span class="tag menu">내 안전 코드 확인</span> 으로 보입니다. <b>여러분이 처음 보는 화면</b>에서는 같은 자리에 <span class="tag menu">내 안전 코드 생성</span> 이 있으니, 그 버튼을 누르세요.</div>
       <div class="shots">
         <figure class="shot"><img src="__IMG_SETTINGS__" alt="설정 (활성화 후)"><figcaption><b>설정</b> 화면 — <b>활성화 후</b> (버튼이 ‘내 안전 코드 확인’으로 바뀜)</figcaption></figure>
         <figure class="shot"><img src="__IMG_SAFETY__" alt="내 안전 코드"><figcaption><b>내 안전 코드</b> 화면</figcaption></figure>
