@@ -7,7 +7,17 @@
 | 도메인 | `averic.co.kr` (CNAME) |
 | 저장소 | `averic-lab/averic-lab.github.io` (branch `main`) |
 | 배포 | `main`에 push → GitHub Pages 자동 게시 |
-| 게시 엔진 | Jekyll(기본) — `_config.yml`·`.nojekyll` 없음. **`_` 로 시작하는 폴더는 게시에서 제외됨** |
+| 게시 엔진 | Jekyll(기본, `.nojekyll` 없음). **`_` 로 시작하는 폴더는 게시에서 제외됨** |
+| 게시 제외 | `_config.yml`의 `exclude` — 현재 `CLAUDE.md` |
+
+## 게시에서 제외하기 (`_config.yml`)
+
+Jekyll은 front matter가 없는 `.md`도 **정적 파일로 그대로 복사**한다. 그래서 루트의 `CLAUDE.md`가 실제로 `averic.co.kr/CLAUDE.md`로 공개되고 있었고(커밋 `dd6987d`), 이를 막으려고 `_config.yml`에 `exclude`를 추가했다.
+
+- **내부 문서를 새로 추가할 때는 두 방법 중 하나를 쓴다** — `_` 접두 폴더 안에 두거나(권장), `_config.yml`의 `exclude`에 추가한다.
+- ⚠️ `exclude`를 지정하면 Jekyll **기본 제외 목록을 대체**한다. `_config.yml`에 기본값(`node_modules/`, `Gemfile` 등)을 함께 적어 둔 이유이니 지우지 말 것.
+- `.nojekyll`을 추가해 Jekyll을 끄는 방법은 **쓰지 않는다** — `_` 폴더 제외 규칙까지 사라져 `_beta-test-build/`(스크린샷·빌드 스크립트)가 통째로 공개된다.
+- ⚠️ 이 저장소에 `_config.yml`이 생긴 것은 이번이 처음이라, Jekyll 빌드가 "암묵적 기본값"에서 "우리 설정"으로 바뀌었다. **push 후 `averic.co.kr/ko/`가 정상 렌더되는지, `averic.co.kr/CLAUDE.md`가 404인지 반드시 확인**할 것.
 
 ## 사이트 구조
 
@@ -72,12 +82,12 @@ GitHub Pages라 `main`에 push하면 자동 게시된다. **배포는 사용자�
 
 ```bash
 cd /Users/macmini/Project/Anbu/averic-lab
-git add CLAUDE.md test/ preview/ _beta-test-build/
-git commit -m "비공개 테스트/마케팅 안내 페이지 추가"
-git push        # → averic.co.kr/test/ · averic.co.kr/preview/ 자동 반영
+git add -A
+git commit -m "..."
+git push        # → averic.co.kr 자동 반영
 ```
 
-> **현재 상태(미배포):** `CLAUDE.md`, `test/`, `preview/`, `_beta-test-build/` 가 모두 **untracked(커밋 대기)** 다. 아직 averic.co.kr에 올라가 있지 않으며, 위 커밋·push를 해야 게시된다. (`_beta-test-build/`는 `_` 접두라 push해도 웹에는 노출되지 않고 저장소에만 보존됨.)
+`test/`·`preview/`·`_beta-test-build/`는 커밋 `dd6987d`로 이미 배포되어 있다. `_` 접두 폴더는 저장소에만 보존되고 웹에는 노출되지 않는다.
 
 ## 규칙
 
