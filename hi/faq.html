@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>जब कुशल-सूचना नहीं पहुँचती — Anbu</title>
+<meta name="description" content="जब सूचना देर से पहुँचे, या क़दम और स्थान उसके साथ न आएँ, तब क्या जाँचें।">
+<link rel="canonical" href="https://averic.co.kr/hi/faq.html">
+  <link rel="alternate" hreflang="en" href="https://averic.co.kr/en/faq.html">
+  <link rel="alternate" hreflang="ko" href="https://averic.co.kr/ko/faq.html">
+  <link rel="alternate" hreflang="ja" href="https://averic.co.kr/ja/faq.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://averic.co.kr/zh-CN/faq.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://averic.co.kr/zh-TW/faq.html">
+  <link rel="alternate" hreflang="de" href="https://averic.co.kr/de/faq.html">
+  <link rel="alternate" hreflang="fr" href="https://averic.co.kr/fr/faq.html">
+  <link rel="alternate" hreflang="es" href="https://averic.co.kr/es/faq.html">
+  <link rel="alternate" hreflang="it" href="https://averic.co.kr/it/faq.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://averic.co.kr/pt-BR/faq.html">
+  <link rel="alternate" hreflang="ru" href="https://averic.co.kr/ru/faq.html">
+  <link rel="alternate" hreflang="nl" href="https://averic.co.kr/nl/faq.html">
+  <link rel="alternate" hreflang="pl" href="https://averic.co.kr/pl/faq.html">
+  <link rel="alternate" hreflang="tr" href="https://averic.co.kr/tr/faq.html">
+  <link rel="alternate" hreflang="vi" href="https://averic.co.kr/vi/faq.html">
+  <link rel="alternate" hreflang="th" href="https://averic.co.kr/th/faq.html">
+  <link rel="alternate" hreflang="id" href="https://averic.co.kr/id/faq.html">
+  <link rel="alternate" hreflang="sv" href="https://averic.co.kr/sv/faq.html">
+  <link rel="alternate" hreflang="hi" href="https://averic.co.kr/hi/faq.html">
+  <link rel="alternate" hreflang="ar" href="https://averic.co.kr/ar/faq.html">
+<style>
+/* ── 사이트 팔레트(style.css :root)와 동일 톤 ── */
+:root{
+  --paper:#ffffff; --warm-paper:#fff8f3; --line:#f0e8e3;
+  --ink:#1a1c1c; --ink-soft:#4a4a4a; --ink-mute:#8a8a8a;
+  --pink-deep:#e54b5e; --teal:#00685e;
+  --sans:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR","Hiragino Sans","Microsoft YaHei","Segoe UI",Arial,sans-serif;
+  --serif:"Iowan Old Style","Apple Garamond",Charter,Georgia,"Times New Roman",serif;
+  /* 목업 전용 — 기기 화면처럼 보이도록 본문 폰트와 분리 */
+  --device:-apple-system,"Roboto","Noto Sans KR",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--warm-paper);color:var(--ink);font-family:var(--sans);
+  line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+
+/* 헤더 */
+.site-head{border-bottom:1px solid var(--line);background:var(--paper)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;
+  gap:16px;height:62px;flex-wrap:wrap}
+.site-logo{font-family:var(--serif);font-size:21px;letter-spacing:.01em;
+  text-decoration:none;font-weight:600}
+.lang-switch{display:flex;gap:4px;flex-wrap:wrap}
+.lang-switch a{font-size:13px;color:var(--ink-mute);text-decoration:none;
+  padding:4px 9px;border-radius:999px}
+.lang-switch a.active{color:var(--ink);background:var(--warm-paper);font-weight:600}
+.lang-switch a:hover{color:var(--ink)}
+
+/* 도입부 */
+.intro{padding:58px 0 34px}
+/* 한글은 uppercase가 적용되지 않으므로 크기·자간으로만 라벨임을 드러낸다.
+   자간은 키운 크기에 맞춰 조금 줄였다 — 그대로 두면 과하게 벌어진다. */
+.eyebrow{font-size:13.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--pink-deep);margin-bottom:15px}
+h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
+  letter-spacing:-.01em;font-weight:600;text-wrap:balance;margin-bottom:17px}
+.lead{font-size:16.5px;color:var(--ink-soft);max-width:62ch}
+.lead strong{color:var(--ink);font-weight:600}
+
+/* 본문 2단 */
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 373px;gap:44px;
+  align-items:start;padding-bottom:76px}
+@media(max-width:920px){.cols{grid-template-columns:1fr;gap:34px}
+  .sticky{position:static!important}}
+
+.topic{padding:26px 0;border-top:1px solid var(--line);scroll-margin-top:24px}
+.topic:first-child{border-top:0;padding-top:6px}
+.topic h2{font-size:20px;font-weight:700;letter-spacing:-.01em;margin-bottom:13px}
+.qa+.qa{margin-top:22px}
+.q{font-size:15.5px;font-weight:600;line-height:1.6;margin-bottom:9px;
+  padding-left:20px;position:relative}
+.q::before{content:"Q";position:absolute;left:0;top:0;font-size:12.5px;
+  font-weight:700;color:var(--pink-deep);line-height:1.95}
+.q+.q{margin-top:-4px}
+.a{color:var(--ink-soft);font-size:15px;padding-left:20px}
+.a p+p{margin-top:11px}
+.a strong{color:var(--ink);font-weight:600}
+.a b{color:var(--ink);font-weight:600}
+/* 제목 바로 아래. 텍스트가 아니라 누르는 것임이 보이도록 — 돋보기 + 알약형 테두리 + 채움
+   (제목과 같은 선에 맞추므로 Q/A 들여쓰기 20px을 적용하지 않는다) */
+.show-me{display:inline-flex;align-items:center;gap:7px;margin:0 0 20px;
+  font:inherit;font-size:13.5px;font-weight:600;color:var(--teal);background:var(--paper);
+  border:1px solid rgba(0,104,94,.32);border-radius:999px;padding:8px 15px;cursor:pointer;
+  transition:background .15s ease,border-color .15s ease,transform .1s ease}
+.show-me:hover{background:#e6f2f0;border-color:var(--teal)}
+.show-me:active{transform:translateY(1px)}
+.show-me[aria-expanded="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.show-me svg{width:15px;height:15px;fill:currentColor;flex:none}
+
+/* 경고를 탭했을 때 뜨는 다이얼로그 — 앱 모양 그대로. 문구만 나열하지 않는다. */
+.dlg-demo{margin-top:22px}
+.dlg-demo[hidden]{display:none}
+.dlg-lead{font-size:13.5px;color:var(--ink-soft);line-height:1.65;margin-bottom:12px}
+.dlg-lead strong{color:var(--ink);font-weight:600}
+.dlg-demo .scrim{background:rgba(26,28,28,.5);border-radius:16px;padding:22px 18px}
+.dlg-demo .dlg{max-width:340px;margin:0 auto}
+/* 위치 다이얼로그만 본문이 플랫폼별로 다르다 — 한 번에 하나만 보여준다 */
+.pf-tabs{display:flex;gap:5px;margin-bottom:10px}
+.pf-tab{font:inherit;font-size:12.5px;padding:5px 12px;border:1px solid var(--line);
+  border-radius:999px;background:var(--paper);color:var(--ink-mute);cursor:pointer}
+.pf-tab[aria-pressed="true"]{background:var(--ink);color:var(--paper);
+  border-color:var(--ink);font-weight:600}
+.pf-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.pf-body[hidden]{display:none}
+
+/* 목업 패널 */
+.sticky{position:sticky;top:20px}
+.chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.chip{font:inherit;font-size:12.5px;padding:5px 11px;border:1px solid var(--line);
+  border-radius:999px;background:var(--paper);color:var(--ink-mute);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);
+  border-color:var(--ink);font-weight:600}
+.chip:focus-visible,.show-me:focus-visible,.lang-switch a:focus-visible{
+  outline:2px solid var(--teal);outline-offset:2px}
+.caption{font-size:12.5px;color:var(--ink-mute);line-height:1.6;margin-top:13px}
+
+.stage{position:relative;width:373px;margin:0 auto}
+@media(max-width:420px){.stage,.device{width:100%!important}}
+
+/* ── 여기부터 앱 화면 복제. 값은 앱 소스와 동일 — 임의로 바꾸지 말 것 ── */
+.device{width:373px;box-sizing:border-box;margin:0 auto;border:1px solid var(--line);
+  border-radius:26px;background:#F9F9F9;overflow:hidden;
+  box-shadow:0 10px 30px rgba(80,50,40,.10)}
+.appbar{height:52px;display:flex;align-items:center;gap:14px;padding:0 16px;
+  background:#F9F9F9;font-family:var(--device)}
+.appbar svg{width:22px;height:22px;fill:#1A1C1C}
+.appbar .brand{font-size:18px;font-weight:700;color:#1A1C1C}
+.screen{font-family:var(--device);padding:0 27px 26px;background:#F9F9F9;line-height:normal}
+.gap-lg{height:16px}
+/* 경고 여백은 페이지가 아니라 위젯 자신이 갖는다 (AppSpacing.md = 12)
+   배터리는 아래, 걸음수·위치는 위 — 방향이 다르다 */
+.pad-top{padding-top:12px}
+.pad-bottom{padding-bottom:12px}
+
+.spot{border-radius:14px;transition:opacity .3s ease,filter .3s ease}
+.dimmed .spot:not(.on){opacity:.26;filter:grayscale(.75)}
+.spot.on{position:relative;z-index:2}
+.dimmed .spot.on .ring{position:relative}
+.dimmed .spot.on .ring::after{content:"";position:absolute;inset:-7px;
+  border-radius:16px;border:2px solid #00685E;pointer-events:none;
+  animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.42}}
+@media(prefers-reduced-motion:reduce){.dimmed .spot.on .ring::after{animation:none}
+  .modal{animation:none}}
+
+.hdr{font-size:20px;font-weight:600;line-height:1.4;color:#00685E;margin:0 0 8px}
+.warn-row{width:100%;min-height:48px;box-sizing:border-box;display:flex;
+  align-items:center;gap:8px;padding:8px 12px;border-radius:12px;border:1px solid;
+  font-size:12px;font-weight:600;line-height:1.33}
+.warn-row svg{flex:none;width:20px;height:20px}
+.warn-row .txt{flex:1}
+.w-batt{background:#FFF8E1;border-color:rgba(249,168,37,.4);color:#B75A00}
+.w-batt .ico{fill:#E65100}.w-batt .chev{fill:#B75A00}
+.w-perm{background:#FFEBEE;border-color:rgba(183,28,28,.3);color:#B71C1C}
+.w-perm .ico{fill:#B71C1C}
+
+.hero{position:relative;border-radius:16px;overflow:hidden;padding:16px 22px 20px;
+  background:linear-gradient(135deg,#123C63,#1D6FA5)}
+.hero .circ{position:absolute;border-radius:50%;background:rgba(255,255,255,.07)}
+.hero .c1{width:132px;height:132px;right:-34px;top:-46px}
+.hero .c2{width:118px;height:118px;right:46px;bottom:-56px;background:rgba(255,255,255,.05)}
+.hero .top{position:relative;display:flex;align-items:center;gap:8px}
+.hero .kicker{flex:1;font-size:11px;font-weight:700;letter-spacing:1.4px;
+  color:rgba(255,255,255,.75);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hero .cbtn{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.18);
+  border:1.2px solid rgba(255,255,255,.4);display:flex;align-items:center;
+  justify-content:center;flex:none}
+.hero .cbtn svg{width:20px;height:20px;fill:#fff}
+.hero .code{position:relative;margin-top:12px;font-size:42px;font-weight:800;
+  color:#fff;letter-spacing:3px;line-height:1.1;white-space:nowrap}
+
+.state{display:flex;border-radius:12px;overflow:hidden;background:#FFFFFF}
+.state .bar{width:5px;flex:none;background:#00685E}
+.state .in{flex:1;padding:16px;display:flex;align-items:center;gap:16px;min-width:0}
+.state .badge{width:28px;height:28px;border-radius:50%;background:#FDECEC;flex:none;
+  display:flex;align-items:center;justify-content:center}
+.state .badge svg{width:16px;height:16px;fill:#1A1C1C}
+.state .t{font-size:12px;line-height:1.33;color:#757575}
+.state .b{font-size:18px;line-height:1.44;font-weight:700;color:#00685E;margin-top:2px}
+
+.action{width:100%;box-sizing:border-box;min-height:68px;border-radius:12px;
+  display:flex;align-items:center;gap:12px;padding:12px;border:1px solid}
+.action .badge{width:40px;height:40px;border-radius:50%;flex:none;display:flex;
+  align-items:center;justify-content:center}
+.action .badge svg{width:24px;height:24px}
+.action .txt{flex:1;min-width:0}
+.action .lbl{font-size:18px;font-weight:700;line-height:1.44}
+.action .dsc{font-size:12px;font-weight:600;line-height:1.33;margin-top:2px}
+.action .chev{width:24px;height:24px;flex:none}
+.a-tonal{background:#E0F2F1;border-color:rgba(0,104,94,.28);color:#00685E}
+.a-tonal .badge{background:rgba(0,104,94,.12)}.a-tonal svg{fill:#00685E}
+.a-emg{background:linear-gradient(135deg,#6E2020,#C07878);border-color:#571818;color:#fff}
+.a-emg .badge{background:rgba(255,255,255,.9)}.a-emg .badge svg{fill:#8F3030}
+.a-emg .dsc{color:rgba(255,255,255,.85)}
+
+/* 휴면 다이얼로그 — 실제 앱처럼 화면 위에 겹친다.
+   배리어 rgba(0,0,0,.54) = Flutter 기본 Colors.black54
+   좌우 40 = AlertDialog 기본 insetPadding */
+.modal{position:absolute;inset:0;border-radius:26px;background:rgba(0,0,0,.54);
+  display:flex;align-items:center;justify-content:center;padding:24px 40px;
+  box-sizing:border-box;z-index:5;animation:fade .28s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.modal[hidden]{display:none}
+.dlg{width:100%;background:#fff;border-radius:16px;padding:24px 24px 8px;
+  font-family:var(--device);box-shadow:0 8px 28px rgba(0,0,0,.2);line-height:normal}
+.dlg-title{font-size:18px;font-weight:700;color:#1A1C1C;line-height:1.35;margin:0 0 16px}
+.dlg-title mark{background:none;color:#B71C1C;font-weight:700}
+.dlg-body{font-size:14px;color:#3F4948;line-height:1.5}
+.dlg-body p{margin:0 0 14px}.dlg-body p:last-child{margin:0}
+.dlg-actions{display:flex;justify-content:flex-end;gap:8px;margin:16px -12px 0;
+  padding-bottom:8px}
+.dlg-btn{font:inherit;font-size:14px;font-weight:500;color:#00685E;background:none;
+  border:0;padding:10px 12px;border-radius:8px;cursor:default}
+.dlg-btn[disabled]{opacity:1}
+
+[dir="rtl"] .warn-row,[dir="rtl"] .action{flex-direction:row-reverse}
+[dir="rtl"] .state{flex-direction:row-reverse}
+[dir="rtl"] .screen,[dir="rtl"] .appbar{text-align:right}
+[dir="rtl"] .dlg-actions{justify-content:flex-start}
+[dir="rtl"] .q{padding-left:0;padding-right:20px}
+[dir="rtl"] .q::before{left:auto;right:0}
+[dir="rtl"] .a{padding-left:0;padding-right:20px}
+
+footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0 34px}
+footer .wrap{display:flex;gap:18px;flex-wrap:wrap;align-items:center;
+  font-size:13px;color:var(--ink-mute)}
+footer a{color:var(--ink-soft);text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .copy{margin-left:auto}
+[dir="rtl"] footer .copy{margin-left:0;margin-right:auto}
+</style>
+</head>
+<body>
+
+<header class="site-head"><div class="wrap">
+  <a class="site-logo" href="/hi/">Anbu</a>
+  <nav class="lang-switch"><a href="/en/faq.html" class="lang-option">English</a><a href="/ko/faq.html" class="lang-option">한국어</a><a href="/ja/faq.html" class="lang-option">日本語</a><a href="/zh-CN/faq.html" class="lang-option">简体中文</a><a href="/zh-TW/faq.html" class="lang-option">繁體中文</a><a href="/de/faq.html" class="lang-option">Deutsch</a><a href="/fr/faq.html" class="lang-option">Français</a><a href="/es/faq.html" class="lang-option">Español</a><a href="/it/faq.html" class="lang-option">Italiano</a><a href="/pt-BR/faq.html" class="lang-option">Português</a><a href="/ru/faq.html" class="lang-option">Русский</a><a href="/nl/faq.html" class="lang-option">Nederlands</a><a href="/pl/faq.html" class="lang-option">Polski</a><a href="/tr/faq.html" class="lang-option">Türkçe</a><a href="/vi/faq.html" class="lang-option">Tiếng Việt</a><a href="/th/faq.html" class="lang-option">ไทย</a><a href="/id/faq.html" class="lang-option">Bahasa Indonesia</a><a href="/sv/faq.html" class="lang-option">Svenska</a><a href="/hi/faq.html" class="lang-option active">हिन्दी</a><a href="/ar/faq.html" class="lang-option">العربية</a></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="intro">
+    <p class="eyebrow">अक्सर पूछे जाने वाले प्रश्न</p>
+    <h1>जब कुशल-सूचना नहीं पहुँचती</h1>
+    <p class="lead">कभी-कभी सूचना देर से पहुँचती है, या क़दम और स्थान उसके साथ नहीं आते। ज़्यादातर मामलों में <strong>भेजने वाले के फ़ोन पर एक अनुमति चालू करने से</strong> समस्या हल हो जाती है।</p>
+  </div>
+
+  <div class="cols">
+    <main><section class="topic" id="battery" data-spot="battery"><h2>सूचना देर से पहुँचती है</h2><button class="show-me" type="button" data-show="battery" aria-expanded="false" data-open="स्क्रीन पर कहाँ है, देखें" data-close="बंद करें"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>स्क्रीन पर कहाँ है, देखें</span></button><div class="qa"><p class="q">मेरे फ़ोन पर अक्सर “💗 कुशल-जाँच आवश्यक है” सूचना आती है। लगता है ऐप खोलने पर ही सूचना भेजी जाती है।</p><p class="q">मेरे परिवार को <b>“सावधानी”</b> चेतावनी मिली जिसमें लिखा था <b>“आज की निर्धारित कुशलता जांच अभी तक प्राप्त नहीं हुई है। कृपया व्यक्तिगत रूप से जांचें।”</b></p><div class="a"><p>बैटरी बचाने के लिए Android कम इस्तेमाल होने वाले ऐप्स को धीमा कर देता है या रोक देता है। Anbu दिन में एक बार तय समय पर थोड़ी देर के लिए जागकर सूचना भेजता है, इसलिए यह प्रतिबंध लगने पर <strong>वह क्षण चूक जाता है और फ़ोन दोबारा इस्तेमाल होने तक कुछ नहीं भेजा जाता।</strong></p><p>यदि तय समय के <strong>दो घंटे बाद तक भी कोई सूचना नहीं पहुँचती</strong>, तो परिवार को ऊपर दी गई चेतावनी जाती है। ऐसा तब भी हो सकता है जब भेजने वाले व्यक्ति बिलकुल ठीक हों और केवल भेजने में देर हुई हो।</p><p>भेजने वाले के फ़ोन पर ऐप खोलें और स्क्रीन के ऊपरी भाग में देखें कि <b>“बैटरी उपयोग प्रतिबंध हटाना आवश्यक है”</b> वाली पीली सूचना है या नहीं। टैप करने पर सीधे सेटिंग्स खुल जाती हैं, और एक बार प्रतिबंध हटाने पर सूचना गायब हो जाती है।</p></div></div><div class="qa"><p class="q">केवल यही सूचना पीली क्यों है?</p><div class="a"><p>इसका अर्थ है कि सूचनाएँ पूरी तरह रुकी नहीं हैं, बल्कि <strong>केवल देर हो सकती है</strong>। लाल रंग की सूचनाएँ बताती हैं कि कोई सुविधा वास्तव में रुकी हुई है।</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">पीली सूचना पर टैप करते ही यह विंडो तुरंत खुल जाती है।</p><div class="scrim"><div class="dlg"><p class="dlg-title">बैटरी उपयोग प्रतिबंध हटाना</p><div class="dlg-body"><p>जब आपका फ़ोन पावर-सेविंग मोड में जाता है, तो आपके अभिभावक को सलामती संकेत देर से पहुँच सकते हैं या छूट सकते हैं।</p><p>नीचे [सेटिंग्स खोलें] पर टैप करने के बाद, "बैटरी" → "बिना प्रतिबंध" सेट करें। इस तरह सलामती संकेत हर दिन निर्धारित समय पर विश्वसनीय रूप से पहुँचेंगे।</p><p>※ सटीक शब्द डिवाइस निर्माता के अनुसार भिन्न हो सकते हैं।</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>बाद में</button><button class="dlg-btn" type="button" tabindex="-1" disabled>सेटिंग्स खोलें</button></div></div></div></div></section>
+<section class="topic" id="activity" data-spot="activity"><h2>क़दमों की संख्या नहीं दिखती</h2><button class="show-me" type="button" data-show="activity" aria-expanded="false" data-open="स्क्रीन पर कहाँ है, देखें" data-close="बंद करें"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>स्क्रीन पर कहाँ है, देखें</span></button><div class="qa"><p class="q">मेरे परिजन के क़दम नहीं दिखते। “आज N क़दम चले” वाली सूचना भी कभी नहीं आती।</p><div class="a"><p>कुशल-संकेत के साथ Anbu <strong>उस दिन के क़दमों की संख्या</strong> भी भेजता है ताकि परिवार देख सके कि कितनी गतिविधि हुई। यदि भेजने वाले के फ़ोन पर यह अनुमति बंद है, तो <strong>कुशल-संकेत पहले की तरह पहुँचता रहता है, केवल क़दमों की संख्या छूट जाती है।</strong></p><p>उस फ़ोन पर ऐप खोलें और सुरक्षा कोड के नीचे देखें कि <b>“कदम गिनने की अनुमति अस्वीकार की गई। अनुमति देने के लिए यहां टैप करें।”</b> वाली लाल सूचना है या नहीं। टैप करने पर अनुमति फिर से माँगी जाएगी।</p></div></div><div class="qa"><p class="q">क़दमों के अलावा और कुछ भी देखा जाता है?</p><div class="a"><p>केवल क़दमों की संख्या भेजी जाती है। कहाँ गए और कौन-से ऐप इस्तेमाल किए, यह हम नहीं देखते।</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">लाल सूचना पर टैप करने से <strong>Android की अपनी अनुमति-माँग</strong> सामने आती है। वहीं अनुमति दे देना ही पर्याप्त है।<br>लेकिन यदि पहले कई बार मना कर चुके हैं, तो Android वह माँग दिखाना बंद कर देता है। तब उसकी जगह नीचे वाली विंडो दिखती है।</p><div class="scrim"><div class="dlg"><p class="dlg-title">अनुमति आवश्यक</p><div class="dlg-body"><p>कृपया ऐप सेटिंग्स में शारीरिक गतिविधि (गति और फ़िटनेस) अनुमति दें।</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>रद्द करें</button><button class="dlg-btn" type="button" tabindex="-1" disabled>सेटिंग्स पर जाएं</button></div></div></div></div></section>
+<section class="topic" id="location" data-spot="location"><h2>आपात अनुरोध में स्थान नहीं आया</h2><button class="show-me" type="button" data-show="location" aria-expanded="false" data-open="स्क्रीन पर कहाँ है, देखें" data-close="बंद करें"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>स्क्रीन पर कहाँ है, देखें</span></button><div class="qa"><p class="q">मुझे आपातकालीन सहायता का अनुरोध मिला, पर सूचना में [🗺️ स्थान देखें] बटन नहीं है।</p><div class="a"><p>आपात बटन दबाने पर <strong>वर्तमान स्थान भी साथ भेजने के लिए</strong> स्थान की अनुमति आवश्यक है। अनुमति न होने पर भी आपात सूचना पूरे परिवार तक पहुँचती है, बस यह नहीं जाता कि वे कहाँ हैं।</p><p>भेजने वाले के फ़ोन पर ऐप खोलें और [मुझे मदद चाहिए] बटन के नीचे देखें कि कोई लाल सूचना है या नहीं। टैप करने पर अनुमति फिर से माँगी जाएगी।</p></div></div><div class="qa"><p class="q">क्या हर समय मेरा स्थान देखा जाता है?</p><div class="a"><p>नहीं। सामान्य स्थिति में हम कोई भी स्थान-जानकारी एकत्र नहीं करते। केवल [मुझे मदद चाहिए] दबाने पर <strong>उसी क्षण का स्थान एक बार</strong> लिया जाता है और परिवार तक पहुँचाया जाता है; यह जानकारी एक दिन बाद मिटा दी जाती है।</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">लाल सूचना पर टैप करने से <strong>Android की अपनी अनुमति-माँग</strong> सामने आती है। वहीं अनुमति दे देना ही पर्याप्त है।<br>लेकिन यदि पहले कई बार मना कर चुके हैं, तो Android वह माँग दिखाना बंद कर देता है। तब उसकी जगह नीचे वाली विंडो दिखती है।</p><div class="pf-tabs"><button class="pf-tab" type="button" data-pf="0" aria-pressed="true">Android</button><button class="pf-tab" type="button" data-pf="1" aria-pressed="false">iPhone</button></div><div class="scrim"><div class="dlg"><p class="dlg-title">स्थान अनुमति आवश्यक</p><div class="dlg-body"><div class="pf-body" data-pf="0"><p>"अनुमतियाँ" → "स्थान" चुनें, फिर "केवल ऐप का उपयोग करते समय अनुमति दें" चुनें।</p></div><div class="pf-body" data-pf="1" hidden><p>"Anbu" खोजकर चुनें, फिर "स्थान" में "ऐप का उपयोग करते समय" चुनें।</p></div></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>रद्द करें</button><button class="dlg-btn" type="button" tabindex="-1" disabled>सेटिंग्स पर जाएं</button></div></div></div></div></section>
+<section class="topic" id="hibernation" data-spot="hibernation"><h2>ऐप खोलते ही हर बार विंडो आती है</h2><button class="show-me" type="button" data-show="hibernation" aria-expanded="false" data-open="स्क्रीन पर कहाँ है, देखें" data-close="बंद करें"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>स्क्रीन पर कहाँ है, देखें</span></button><div class="qa"><p class="q">हर बार ऐप खोलने पर “स्वचालित अनुमति हटाना बंद करें” वाली विंडो आती है।</p><div class="a"><p>Android में एक सुविधा है जो लंबे समय तक न खोले गए ऐप्स की अनुमतियाँ अपने आप वापस ले लेती है। Anbu <strong>ऐसा ऐप है जो स्क्रीन खोले बिना भी काम करता है</strong>, इसलिए उल्टा यही उसे आसान निशाना बना देता है — और अनुमतियाँ हटते ही सूचना भेजना चुपचाप रुक जाता है।</p><p>[सेटिंग्स खोलें] पर टैप करके इसे एक बार बंद कर दें, फिर यह विंडो दोबारा नहीं आएगी।</p></div></div><div class="qa"><p class="q">हर बार आती है। क्या मैं बस [बाद में] दबा सकता हूँ?</p><div class="a"><p>जब तक आप वह सेटिंग बंद नहीं करते, यह हर बार ऐप खोलने पर आती रहेगी। सूचना भेजना रुक जाए तो पता चलना कठिन होता है, इसीलिए हम बार-बार याद दिलाते हैं।</p></div></div><div class="qa"><p class="q">मैं भी अपने परिवार की सूचनाएँ देखता हूँ, पर मुझे यह विंडो कभी नहीं दिखती।</p><div class="a"><p>जो व्यक्ति साथ-साथ अपने परिजनों का ध्यान भी रखता है, वह सूचनाएँ देखने के लिए ऐप बार-बार खोलता है, इसलिए अनुमतियाँ अपने आप हटने की स्थिति शायद ही बनती है। इसीलिए यह विंडो आपको नहीं दिखाई जाती।</p></div></div></section>
+<section class="topic" id="etc"><h2>अन्य</h2><div class="qa"><p class="q">मैंने सूचना पर टैप किया, पर सेटिंग्स स्क्रीन ठीक से नहीं खुली।</p><div class="a"><p>सेटिंग्स स्क्रीन का नाम और स्थान निर्माता के अनुसार थोड़ा अलग होता है। कृपया सेटिंग्स ऐप खोलकर <b>Anbu</b> ढूँढ़ें और अनुमतियों वाला भाग सीधे जाँचें।</p></div></div></section></main>
+
+    <aside class="sticky">
+      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">पूरी स्क्रीन</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">सूचना देर से</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">क़दम नहीं दिखते</button><button class="chip" type="button" data-spot="location" aria-pressed="false">स्थान नहीं है</button><button class="chip" type="button" data-spot="hibernation" aria-pressed="false">विंडो बार-बार आती है</button></div>
+      <div class="stage">
+        <div class="device" id="device">
+          <div class="appbar">
+            <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            <span class="brand" data-key="app_name"></span>
+          </div>
+          <div class="screen">
+            <p class="hdr" data-key="subject_home_share_title"></p>
+
+            <div class="spot pad-bottom" data-spot="battery">
+              <div class="warn-row w-batt ring">
+                <svg class="ico" viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V9h2v5z"/></svg>
+                <span class="txt" data-key="stability_battery_warning_short"></span>
+                <svg class="chev" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+              </div>
+            </div>
+
+            <div class="hero">
+              <div class="circ c1"></div><div class="circ c2"></div>
+              <div class="top">
+                <span class="kicker">SAFETY SHARE CODE</span>
+                <span class="cbtn"><svg viewBox="0 0 24 24"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></svg></span>
+                <span class="cbtn"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 1 0-3-3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 1 0 0 6c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65a2.92 2.92 0 1 0 2.92-2.92z"/></svg></span>
+              </div>
+              <div class="code">K7M-4PXR</div>
+            </div>
+
+            <div class="spot pad-top" data-spot="activity">
+              <div class="warn-row w-perm ring">
+                <svg class="ico" viewBox="0 0 24 24"><path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z"/></svg>
+                <span class="txt" data-key="gs_activity_permission_denied_warning"></span>
+              </div>
+            </div>
+            <div class="gap-lg"></div>
+
+            <div class="state">
+              <div class="bar"></div>
+              <div class="in">
+                <span class="badge"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                <div><div class="t" data-check-title></div><div class="b" data-check-body></div></div>
+              </div>
+            </div>
+            <div class="gap-lg"></div>
+
+            <div class="action a-tonal">
+              <span class="badge"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></span>
+              <div class="txt"><div class="lbl" data-key="heartbeat_schedule_change"></div>
+                <div class="dsc" data-daily-time></div></div>
+              <svg class="chev" viewBox="0 0 24 24" style="fill:#00685E"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            </div>
+            <div class="gap-lg"></div>
+
+            <div class="action a-tonal">
+              <span class="badge"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg></span>
+              <div class="txt"><div class="lbl" data-key="subject_home_report_button"></div>
+                <div class="dsc" data-key="subject_home_report_desc"></div></div>
+            </div>
+            <div class="gap-lg"></div>
+
+            <div class="action a-emg">
+              <span class="badge"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+              <div class="txt"><div class="lbl" data-key="subject_home_emergency_button"></div>
+                <div class="dsc" data-key="subject_home_emergency_desc"></div></div>
+            </div>
+
+            <div class="spot pad-top" data-spot="location">
+              <div class="warn-row w-perm ring">
+                <svg class="ico" viewBox="0 0 24 24"><path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z"/></svg>
+                <span class="txt" data-key="location_permission_warning"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="modal" hidden>
+          <div class="dlg">
+            <p class="dlg-title" data-dialog-title></p>
+            <div class="dlg-body" data-dialog-body></div>
+            <div class="dlg-actions">
+              <button class="dlg-btn" data-key="common_later" tabindex="-1"></button>
+              <button class="dlg-btn" data-key="permission_hibernation_go_to_settings" tabindex="-1"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="caption">समझाने के लिए यहाँ तीनों सूचनाएँ एक ही स्क्रीन पर एक साथ दिखाई गई हैं। वास्तव में वे एक-एक करके, केवल तभी दिखती हैं जब लागू हों, और समाधान के बाद हट जाती हैं।</p>
+    </aside>
+  </div>
+</div>
+
+<footer><div class="wrap">
+  <a href="/hi/">होम</a>
+  <a href="/hi/privacy-policy.html">गोपनीयता नीति</a>
+  <a href="/hi/terms-of-service.html">सेवा की शर्तें</a>
+  <span class="copy">© 2026 Averic Lab. All rights reserved.</span>
+</div></footer>
+
+<script>
+// 앱 번역 파일에서 추출한 실제 문구 (extract_strings.py)
+var S = {"stability_battery_warning_short": "बैटरी उपयोग प्रतिबंध हटाना आवश्यक है", "gs_activity_permission_denied_warning": "कदम गिनने की अनुमति अस्वीकार की गई। अनुमति देने के लिए यहां टैप करें।", "location_permission_warning": "आपातकालीन अनुरोध के साथ स्थान नहीं भेजा जाएगा। अनुमति देने के लिए टैप करें।", "permission_hibernation_title": "स्वचालित अनुमति हटाना बंद करें", "permission_hibernation_highlight": "स्वचालित अनुमति हटाना", "permission_hibernation_message": "Android लंबे समय तक उपयोग न किए गए ऐप्स की अनुमतियाँ स्वचालित रूप से हटा देता है। Anbu आमतौर पर बिना खोले चलता है, इसलिए यह सुविधा कुछ समय बाद अनुमतियों को गायब कर सकती है और सलामती संकेत भेजना बंद कर सकती है।\n\nनीचे [सेटिंग्स खोलें] पर टैप करें — संबंधित स्विच स्क्रीन सीधे दिखाई देगी। स्विच बंद कर दें।\n\n※ सटीक शब्द डिवाइस निर्माता के अनुसार भिन्न हो सकते हैं।", "permission_hibernation_go_to_settings": "सेटिंग्स खोलें", "common_later": "बाद में", "app_name": "Anbu", "subject_home_share_title": "अपना सुरक्षा कोड साझा करें", "subject_home_check_title_last": "अंतिम कुशलता जांच", "subject_home_check_body_reported": "@time पर रिपोर्ट किया गया", "heartbeat_schedule_change": "हालचाल का समय बदलें", "heartbeat_daily_time": "रोज @time पर", "subject_home_report_button": "अभी सुरक्षा रिपोर्ट करें", "subject_home_report_desc": "अपने अभिभावक को बताएं कि आप ठीक हैं", "subject_home_emergency_button": "मुझे मदद चाहिए", "subject_home_emergency_desc": "अभिभावकों को आपातकालीन अलर्ट भेजता है", "notifications_level_caution": "सावधानी", "noti_caution_missing_body": "आज की निर्धारित कुशलता जांच अभी तक प्राप्त नहीं हुई है। कृपया व्यक्तिगत रूप से जांचें।", "notifications_view_location": "🗺️ स्थान देखें", "stability_battery_dialog_title": "बैटरी उपयोग प्रतिबंध हटाना", "stability_battery_dialog_message": "जब आपका फ़ोन पावर-सेविंग मोड में जाता है, तो आपके अभिभावक को सलामती संकेत देर से पहुँच सकते हैं या छूट सकते हैं।\n\nनीचे [सेटिंग्स खोलें] पर टैप करने के बाद, \"बैटरी\" → \"बिना प्रतिबंध\" सेट करें। इस तरह सलामती संकेत हर दिन निर्धारित समय पर विश्वसनीय रूप से पहुँचेंगे।\n\n※ सटीक शब्द डिवाइस निर्माता के अनुसार भिन्न हो सकते हैं।", "gs_activity_permission_settings_title": "अनुमति आवश्यक", "gs_activity_permission_settings_body": "कृपया ऐप सेटिंग्स में शारीरिक गतिविधि (गति और फ़िटनेस) अनुमति दें।", "gs_activity_permission_settings_go": "सेटिंग्स पर जाएं", "location_permission_settings_title": "स्थान अनुमति आवश्यक", "location_permission_settings_body_android": "\"अनुमतियाँ\" → \"स्थान\" चुनें, फिर \"केवल ऐप का उपयोग करते समय अनुमति दें\" चुनें।", "location_permission_settings_body_ios": "\"Anbu\" खोजकर चुनें, फिर \"स्थान\" में \"ऐप का उपयोग करते समय\" चुनें।", "common_cancel": "रद्द करें"};
+
+document.querySelectorAll('[data-key]').forEach(function(el){
+  el.textContent = S[el.dataset.key] || '';
+});
+document.querySelector('[data-check-title]').textContent =
+  S.subject_home_check_title_last + ' : 2026-08-05';
+document.querySelector('[data-check-body]').textContent =
+  S.subject_home_check_body_reported.replace('@time','18:00');
+document.querySelector('[data-daily-time]').textContent =
+  S.heartbeat_daily_time.replace('@time','18:00');
+
+// 제목의 highlight 부분만 강조 — 앱 _buildHibernationTitle과 동일 규칙
+(function(){
+  var t = S.permission_hibernation_title, h = S.permission_hibernation_highlight;
+  var el = document.querySelector('[data-dialog-title]'), i = t.indexOf(h);
+  if (i < 0) { el.textContent = t; return; }
+  el.textContent = '';
+  el.append(t.slice(0, i));
+  var m = document.createElement('mark'); m.textContent = h; el.append(m);
+  el.append(t.slice(i + h.length));
+})();
+
+// 본문 \n\n → 문단
+(function(){
+  var body = document.querySelector('[data-dialog-body]');
+  S.permission_hibernation_message.split('\n\n').forEach(function(p){
+    var el = document.createElement('p'); el.textContent = p.trim(); body.append(el);
+  });
+})();
+
+// 스포트라이트
+var device = document.getElementById('device'), modal = document.getElementById('modal');
+var chips = document.querySelectorAll('.chip');
+
+function show(spot){
+  var isDialog = spot === 'hibernation';
+  // 다이얼로그일 때는 스크림이 화면을 덮으므로 별도 dim을 걸지 않는다
+  device.classList.toggle('dimmed', spot !== 'all' && !isDialog);
+  modal.hidden = !isDialog;
+  document.querySelectorAll('.spot').forEach(function(el){
+    el.classList.toggle('on', el.dataset.spot === spot);
+  });
+  chips.forEach(function(c){
+    c.setAttribute('aria-pressed', String(c.dataset.spot === spot));
+  });
+}
+
+var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+function scrollBehavior(){ return reduceMotion.matches ? 'auto' : 'smooth'; }
+
+chips.forEach(function(c){
+  c.addEventListener('click', function(){
+    // 칩으로 위치를 바꾸면 펼쳐 둔 다이얼로그는 접는다 — 상태가 어긋나지 않도록
+    collapseAll(null);
+    show(c.dataset.spot);
+
+    // 칩을 고르면 해당 FAQ 본문으로 함께 이동한다. 넓은 화면에서는 목업이
+    // sticky로 남아 밝아진 부분을 계속 보면서 설명을 읽을 수 있다.
+    // 좁은 화면에서는 칩이 목업 바로 위에 있어, 위로 스크롤하면 방금 밝힌
+    // 화면이 시야에서 사라지므로 이동하지 않는다.
+    if (window.matchMedia('(max-width:920px)').matches) return;
+    var target = c.dataset.spot === 'all'
+      ? document.querySelector('main')
+      : document.querySelector('.topic[data-spot="' + c.dataset.spot + '"]');
+    if (target) target.scrollIntoView({behavior: scrollBehavior(), block: 'start'});
+  });
+});
+// 버튼 하나가 두 가지를 한다: 오른쪽 목업에서 위치를 밝히고,
+// 그 경고를 탭했을 때 뜨는 다이얼로그를 섹션 아래에 펼친다.
+function collapseAll(except){
+  document.querySelectorAll('.show-me').forEach(function(b){
+    if (b === except) return;
+    b.setAttribute('aria-expanded','false');
+    b.querySelector('span').textContent = b.dataset.open;
+    var d = b.closest('.topic').querySelector('.dlg-demo');
+    if (d) d.hidden = true;
+  });
+}
+
+document.querySelectorAll('.show-me').forEach(function(b){
+  b.addEventListener('click', function(){
+    var open = b.getAttribute('aria-expanded') === 'true';
+    collapseAll(b);
+    b.setAttribute('aria-expanded', String(!open));
+    b.querySelector('span').textContent = open ? b.dataset.open : b.dataset.close;
+    var d = b.closest('.topic').querySelector('.dlg-demo');
+    if (d) d.hidden = open;
+    show(open ? 'all' : b.dataset.show);
+    if (!open && window.matchMedia('(max-width:920px)').matches) {
+      document.querySelector('.stage')
+        .scrollIntoView({behavior: scrollBehavior(), block: 'center'});
+    }
+  });
+});
+
+// 플랫폼별 본문 전환 (위치 다이얼로그 전용)
+document.querySelectorAll('.pf-tabs').forEach(function(tabs){
+  var demo = tabs.closest('.dlg-demo');
+  tabs.addEventListener('click', function(e){
+    var t = e.target.closest('.pf-tab');
+    if (!t) return;
+    tabs.querySelectorAll('.pf-tab').forEach(function(x){
+      x.setAttribute('aria-pressed', String(x === t));
+    });
+    demo.querySelectorAll('.pf-body').forEach(function(b){
+      b.hidden = b.dataset.pf !== t.dataset.pf;
+    });
+  });
+});
+
+show('all');
+</script>
+</body>
+</html>

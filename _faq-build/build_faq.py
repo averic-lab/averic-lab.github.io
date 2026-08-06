@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""copy.json + faq-strings.json → ../{lang}/faq.html
+"""copy/{lang}.json + faq-strings.json → ../{lang}/faq.html
 
     python3 build_faq.py
 
-**copy.json에 있는 언어만 생성한다.** 언어를 추가하려면 copy.json에 키를 넣기만
-하면 되고 이 스크립트는 고칠 필요가 없다. 현재는 한국어만 서비스한다.
+**copy/ 폴더에 파일이 있는 언어만 생성한다.** 언어를 추가하려면 copy/ko.json을
+복사해 번역하고 파일명을 언어 코드로 바꾸면 되고, 이 스크립트는 고칠 필요가 없다.
 
-언어 스위처는 copy.json에 실제로 존재하는 언어만 나열한다 — 없는 언어를 링크하면
+언어 스위처는 copy/에 실제로 존재하는 언어만 나열한다 — 없는 언어를 링크하면
 404가 되기 때문이다. 언어가 하나뿐이면 스위처 자체를 렌더하지 않는다.
 
 언어 목록(표시명·BCP47·RTL 여부)은 i18n/build.py의 META를 임포트해 쓴다.
@@ -23,7 +23,7 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(ROOT, "i18n"))
 from build import META, ORDER  # noqa: E402
 
-# copy.json의 언어 키(ko) → faq-strings.json의 키(ko_kr)
+# copy/ 파일명(ko) → faq-strings.json의 키(ko_kr)
 LANG_TO_STRINGS = {
     "en": "en_us", "ko": "ko_kr", "ja": "ja_jp", "zh-CN": "zh_cn", "zh-TW": "zh_tw",
     "de": "de_de", "fr": "fr_fr", "es": "es_es", "it": "it_it", "pt-BR": "pt_br",
@@ -37,6 +37,18 @@ def load(name):
         return json.load(f)
 
 
+def load_copy():
+    """copy/{lang}.json 전부 읽는다. 파일이 있는 언어만 생성 대상이 된다."""
+    d = os.path.join(HERE, "copy")
+    out = {}
+    for fn in sorted(os.listdir(d)):
+        if not fn.endswith(".json"):
+            continue
+        with open(os.path.join(d, fn), encoding="utf-8") as f:
+            out[fn[:-5]] = json.load(f)
+    return out
+
+
 def esc(s):
     """속성값용 이스케이프. 본문은 카피에 의도적 인라인 태그가 있어 그대로 쓴다."""
     return (s.replace("&", "&amp;").replace("<", "&lt;")
@@ -44,7 +56,7 @@ def esc(s):
 
 
 def switcher(active, available):
-    """copy.json에 있는 언어만. 하나뿐이면 렌더하지 않는다."""
+    """copy/에 있는 언어만. 하나뿐이면 렌더하지 않는다."""
     if len(available) < 2:
         return ""
     rows = []
@@ -204,13 +216,13 @@ def build(code, copy, app):
 
 
 def main():
-    copy_all = load("copy.json")
+    copy_all = load_copy()
     strings = load("faq-strings.json")
 
     global COPY_LANGS
-    COPY_LANGS = [k for k in copy_all if not k.startswith("_")]
+    COPY_LANGS = list(copy_all)
     if not COPY_LANGS:
-        sys.exit("오류: copy.json에 언어가 없습니다.")
+        sys.exit("오류: copy/ 폴더에 언어 파일이 없습니다.")
 
     for code in COPY_LANGS:
         if code not in META:
@@ -231,7 +243,7 @@ def main():
     print(f"\n완료 — {len(COPY_LANGS)}개 언어")
     if missing:
         print(f"미생성 {len(missing)}개: {', '.join(missing)}")
-        print("→ copy.json에 카피를 추가하면 자동으로 생성됩니다.")
+        print("→ copy/{lang}.json을 추가하면 자동으로 생성됩니다.")
 
 
 if __name__ == "__main__":

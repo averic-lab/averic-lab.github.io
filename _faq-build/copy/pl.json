@@ -1,0 +1,147 @@
+{
+  "lang_name": "Polski",
+  "meta_title": "Gdy znak życia nie dociera — Anbu",
+  "meta_desc": "Co sprawdzić, gdy znak życia przychodzi z opóźnieniem albo bez kroków i lokalizacji.",
+  "page_eyebrow": "Najczęstsze pytania",
+  "page_title": "Gdy znak życia nie dociera",
+  "page_lead": "Czasem znak życia przychodzi z opóźnieniem albo bez kroków i lokalizacji. W większości przypadków wystarczy <strong>włączyć jedno uprawnienie na telefonie osoby wysyłającej</strong>.",
+  "mockup_caption": "Dla wyjaśnienia wszystkie trzy komunikaty pokazano na jednym ekranie. W rzeczywistości pojawiają się pojedynczo, tylko gdy dotyczą sytuacji, i znikają po rozwiązaniu problemu.",
+  "mockup_hint": "Pokaż, gdzie to jest na ekranie",
+  "mockup_hint_close": "Zamknij",
+
+  "spot_all": "Cały ekran",
+  "spot_battery": "Znak życia się opóźnia",
+  "spot_activity": "Brak kroków",
+  "spot_location": "Brak lokalizacji",
+  "spot_hibernation": "Okno wciąż się pojawia",
+
+  "sections": [
+    {
+      "id": "battery",
+      "spot": "battery",
+      "heading": "Znak życia dociera z opóźnieniem",
+      "dialog": {
+        "lead": "Dotknięcie żółtego komunikatu od razu otwiera to okno.",
+        "title": "@stability_battery_dialog_title",
+        "body": "@stability_battery_dialog_message",
+        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+      },
+      "items": [
+        {
+          "q": "Na moim telefonie często pojawia się powiadomienie „💗 Wymagane sprawdzenie”. Wygląda na to, że wysyłka następuje dopiero po otwarciu aplikacji.",
+          "q2": "Rodzina otrzymała powiadomienie <b>„@notifications_level_caution”</b> o treści <b>„@noti_caution_missing_body”</b>",
+          "a": [
+            "Aby oszczędzać baterię, Android spowalnia lub zatrzymuje rzadko używane aplikacje. Anbu budzi się raz dziennie na chwilę o ustalonej godzinie, aby wysłać znak życia — przy takim ograniczeniu <strong>ten moment zostaje pominięty i nic nie zostaje wysłane, dopóki telefon nie zostanie ponownie użyty.</strong>",
+            "Jeśli w ciągu <strong>dwóch godzin po ustalonej godzinie</strong> nie nadejdzie żaden znak życia, rodzina otrzymuje powyższe powiadomienie. Może się to zdarzyć nawet wtedy, gdy z osobą wszystko jest w porządku, a opóźniła się jedynie wysyłka.",
+            "Na telefonie osoby wysyłającej otwórz aplikację i sprawdź u góry ekranu, czy widnieje żółty komunikat <b>„@stability_battery_warning_short”</b>. Dotknięcie prowadzi wprost do ustawień, a po jednorazowym zniesieniu ograniczenia komunikat znika."
+          ]
+        },
+        {
+          "q": "Dlaczego tylko ten komunikat jest żółty?",
+          "a": [
+            "Oznacza to, że znaki życia nie ustały całkowicie, lecz <strong>mogą się jedynie opóźniać</strong>. Komunikaty na czerwono oznaczają, że dana funkcja jest faktycznie zablokowana."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "activity",
+      "spot": "activity",
+      "heading": "Nie widać liczby kroków",
+      "dialog": {
+        "lead": "Dotknięcie czerwonego komunikatu wywołuje <strong>własne żądanie uprawnienia systemu Android</strong>. Wystarczy je tam zaakceptować.<br>Jeśli jednak wcześniej odmówiono kilkakrotnie, Android przestaje je pokazywać. Wtedy zamiast niego pojawia się okno poniżej.",
+        "title": "@gs_activity_permission_settings_title",
+        "body": "@gs_activity_permission_settings_body",
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Nie widzę liczby kroków bliskiej osoby. Powiadomienie „Dziś przeszedłeś N kroków” w ogóle nie przychodzi.",
+          "a": [
+            "Razem ze znakiem życia Anbu przesyła <strong>liczbę kroków z danego dnia</strong>, aby rodzina widziała, ile ruchu było. Jeśli na telefonie osoby wysyłającej uprawnienie jest wyłączone, <strong>znak życia nadal dociera, brakuje jedynie kroków.</strong>",
+            "Na tym telefonie otwórz aplikację i sprawdź pod kodem bezpieczeństwa, czy widnieje czerwony komunikat <b>„@gs_activity_permission_denied_warning”</b>. Dotknięcie ponownie poprosi o uprawnienie."
+          ]
+        },
+        {
+          "q": "Czy sprawdzacie coś poza krokami?",
+          "a": [
+            "Przesyłana jest wyłącznie liczba kroków. Nie sprawdzamy, gdzie ktoś był ani z jakich aplikacji korzystał."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "spot": "location",
+      "heading": "Prośba o pomoc przyszła bez lokalizacji",
+      "dialog": {
+        "lead": "Dotknięcie czerwonego komunikatu wywołuje <strong>własne żądanie uprawnienia systemu Android</strong>. Wystarczy je tam zaakceptować.<br>Jeśli jednak wcześniej odmówiono kilkakrotnie, Android przestaje je pokazywać. Wtedy zamiast niego pojawia się okno poniżej.",
+        "title": "@location_permission_settings_title",
+        "variants": [
+          { "label": "Android", "body": "@location_permission_settings_body_android" },
+          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+        ],
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Otrzymałem pilną prośbę o pomoc, ale w powiadomieniu nie ma przycisku [@notifications_view_location].",
+          "a": [
+            "Uprawnienie do lokalizacji jest potrzebne, <strong>aby wraz z naciśnięciem przycisku alarmowego wysłać bieżącą lokalizację</strong>. Bez niego samo powiadomienie alarmowe nadal dociera do całej rodziny, ale miejsce pobytu nie jest dołączane.",
+            "Na telefonie osoby wysyłającej otwórz aplikację i sprawdź pod przyciskiem [@subject_home_emergency_button], czy widnieje czerwony komunikat. Dotknięcie ponownie poprosi o uprawnienie."
+          ]
+        },
+        {
+          "q": "Czy moja lokalizacja jest śledzona przez cały czas?",
+          "a": [
+            "Nie. Na co dzień nie zbieramy żadnej lokalizacji. Dopiero po naciśnięciu [@subject_home_emergency_button] pobieramy <strong>jednorazowo lokalizację z tej chwili</strong> i przekazujemy ją rodzinie; te dane są usuwane po jednym dniu."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hibernation",
+      "spot": "hibernation",
+      "heading": "Za każdym otwarciem aplikacji pojawia się okno",
+      "items": [
+        {
+          "q": "Za każdym razem, gdy otwieram aplikację, pojawia się okno „@permission_hibernation_title”.",
+          "a": [
+            "Android ma funkcję, która automatycznie odbiera uprawnienia aplikacjom długo nieotwieranym. Anbu to <strong>aplikacja działająca bez otwierania ekranu</strong>, więc tym łatwiej staje się celem — a gdy uprawnienia znikną, wysyłanie znaków życia po cichu ustaje.",
+            "Dotknij [@permission_hibernation_go_to_settings] i wyłącz tę funkcję raz — okno przestanie się pojawiać."
+          ]
+        },
+        {
+          "q": "Pojawia się za każdym razem. Czy mogę po prostu dotykać [@common_later]?",
+          "a": [
+            "Dopóki nie wyłączysz tego ustawienia, będzie się pojawiać przy każdym otwarciu. Ponieważ przerwane wysyłanie trudno zauważyć, przypominamy o tym wielokrotnie."
+          ]
+        },
+        {
+          "q": "Ja także czuwam nad znakami życia rodziny, ale u mnie to okno się nie pojawia.",
+          "a": [
+            "Kto jednocześnie czuwa nad bliskimi, często otwiera aplikację, aby sprawdzić powiadomienia, więc rzadko dochodzi do sytuacji, w której uprawnienia zostają odebrane automatycznie. Dlatego to okno nie jest pokazywane."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etc",
+      "spot": null,
+      "heading": "Pozostałe",
+      "items": [
+        {
+          "q": "Dotknąłem komunikatu, ale ekran ustawień nie otworzył się poprawnie.",
+          "a": [
+            "Nazwa i położenie ekranu ustawień różnią się nieco w zależności od producenta. Otwórz Ustawienia, znajdź <b>Anbu</b> i sprawdź sekcję uprawnień bezpośrednio."
+          ]
+        }
+      ]
+    }
+  ],
+
+  "footer_home": "Strona główna",
+  "footer_privacy": "Polityka prywatności",
+  "footer_terms": "Warunki korzystania",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

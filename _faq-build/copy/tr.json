@@ -1,0 +1,147 @@
+{
+  "lang_name": "Türkçe",
+  "meta_title": "İyilik haberi ulaşmadığında — Anbu",
+  "meta_desc": "Haber geç ulaştığında ya da adım ve konum onunla birlikte gelmediğinde nelere bakmalı.",
+  "page_eyebrow": "Sık sorulan sorular",
+  "page_title": "İyilik haberi ulaşmadığında",
+  "page_lead": "Bazen haber geç ulaşır ya da adım ve konum onunla birlikte gelmez. Çoğu durumda <strong>haberi gönderen kişinin telefonunda tek bir izni açmak</strong> sorunu çözer.",
+  "mockup_caption": "Anlatım kolaylığı için üç uyarı burada tek ekranda toplanmıştır. Gerçekte yalnızca ilgili durumlarda birer birer görünür ve sorun giderildiğinde kaybolur.",
+  "mockup_hint": "Ekranda nerede olduğunu gör",
+  "mockup_hint_close": "Kapat",
+
+  "spot_all": "Tüm ekran",
+  "spot_battery": "Haber gecikiyor",
+  "spot_activity": "Adım yok",
+  "spot_location": "Konum yok",
+  "spot_hibernation": "Pencere sürekli çıkıyor",
+
+  "sections": [
+    {
+      "id": "battery",
+      "spot": "battery",
+      "heading": "Haber geç ulaşıyor",
+      "dialog": {
+        "lead": "Sarı uyarıya dokunmak bu pencereyi hemen açar.",
+        "title": "@stability_battery_dialog_title",
+        "body": "@stability_battery_dialog_message",
+        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+      },
+      "items": [
+        {
+          "q": "Telefonuma sık sık “💗 İyilik kontrolü gerekiyor” bildirimi geliyor. Sanki yalnızca uygulamayı açtığımda gönderiliyor.",
+          "q2": "Aileme <b>“@notifications_level_caution”</b> uyarısı ile <b>“@noti_caution_missing_body”</b> mesajı geldi.",
+          "a": [
+            "Pil tasarrufu için Android, seyrek kullanılan uygulamaları yavaşlatır veya durdurur. Anbu, haberi göndermek üzere günde bir kez belirlenen saatte kısa süreliğine uyanır; bu kısıtlama devredeyse <strong>o an kaçırılır ve telefon yeniden kullanılana kadar hiçbir şey gönderilmez.</strong>",
+            "Belirlenen saatten <strong>iki saat sonra da haber ulaşmazsa</strong> aileye yukarıdaki uyarı gider. Gönderen kişi gayet iyiyken yalnızca gönderim geciktiğinde de bu uyarı gidebilir.",
+            "Gönderen kişinin telefonunda uygulamayı açın ve ekranın üst kısmında <b>“@stability_battery_warning_short”</b> sarı uyarısının olup olmadığına bakın. Dokunduğunuzda doğrudan ayarlara gider; kısıtlamayı bir kez kaldırdığınızda uyarı kaybolur."
+          ]
+        },
+        {
+          "q": "Neden yalnızca bu uyarı sarı?",
+          "a": [
+            "Haberlerin tamamen durmadığı, yalnızca <strong>gecikebileceği</strong> anlamına gelir. Kırmızı gösterilen uyarılar bir işlevin gerçekten engellendiğini belirtir."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "activity",
+      "spot": "activity",
+      "heading": "Adım sayısı görünmüyor",
+      "dialog": {
+        "lead": "Kırmızı uyarıya dokunmak <strong>Android'in kendi izin isteğini</strong> açar. Orada izin vermek yeterlidir.<br>Ancak daha önce birkaç kez reddettiyseniz Android bu isteği artık göstermez. O durumda bunun yerine aşağıdaki pencere görünür.",
+        "title": "@gs_activity_permission_settings_title",
+        "body": "@gs_activity_permission_settings_body",
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Yakınımın adım sayısı görünmüyor. “Bugün N adım yürüdünüz” bildirimi hiç gelmiyor.",
+          "a": [
+            "Anbu, haber sinyaliyle birlikte <strong>o günün adım sayısını</strong> da gönderir; böylece aile ne kadar hareket edildiğini görebilir. Gönderen kişinin telefonunda izin kapalıysa <strong>haber sinyali yine ulaşır, yalnızca adım sayısı eksik kalır.</strong>",
+            "O telefonda uygulamayı açın ve güvenlik kodunun altında <b>“@gs_activity_permission_denied_warning”</b> kırmızı uyarısının olup olmadığına bakın. Dokunduğunuzda izin yeniden istenir."
+          ]
+        },
+        {
+          "q": "Adım dışında başka bir şeye bakılıyor mu?",
+          "a": [
+            "Yalnızca adım sayısı gönderilir. Nereye gidildiğini veya hangi uygulamaların kullanıldığını incelemeyiz."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "spot": "location",
+      "heading": "Acil yardım isteği konumsuz geldi",
+      "dialog": {
+        "lead": "Kırmızı uyarıya dokunmak <strong>Android'in kendi izin isteğini</strong> açar. Orada izin vermek yeterlidir.<br>Ancak daha önce birkaç kez reddettiyseniz Android bu isteği artık göstermez. O durumda bunun yerine aşağıdaki pencere görünür.",
+        "title": "@location_permission_settings_title",
+        "variants": [
+          { "label": "Android", "body": "@location_permission_settings_body_android" },
+          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+        ],
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Acil yardım isteği aldım ama bildirimde [@notifications_view_location] düğmesi yok.",
+          "a": [
+            "Acil düğmesine basıldığında <strong>mevcut konumun da gönderilebilmesi için</strong> konum izni gerekir. İzin yoksa acil bildirimin kendisi yine ailenin tamamına ulaşır, ancak nerede olunduğu bilgisi eklenmez.",
+            "Gönderen kişinin telefonunda uygulamayı açın ve [@subject_home_emergency_button] düğmesinin altında kırmızı bir uyarı olup olmadığına bakın. Dokunduğunuzda izin yeniden istenir."
+          ]
+        },
+        {
+          "q": "Konumum sürekli takip ediliyor mu?",
+          "a": [
+            "Hayır. Normal koşullarda hiçbir konum toplamıyoruz. Yalnızca [@subject_home_emergency_button] düğmesine basıldığında <strong>o anki konum bir kez</strong> alınır ve aileye iletilir; bu bilgi bir gün sonra silinir."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hibernation",
+      "spot": "hibernation",
+      "heading": "Uygulamayı her açtığımda bir pencere çıkıyor",
+      "items": [
+        {
+          "q": "Uygulamayı her açtığımda “@permission_hibernation_title” penceresi çıkıyor.",
+          "a": [
+            "Android'de, uzun süre açılmayan uygulamaların izinlerini otomatik olarak geri alan bir özellik vardır. Anbu <strong>ekranı açmadan da çalışan bir uygulama</strong> olduğu için tam da bu duruma düşmesi kolaydır; izinler kaybolduğunda haber gönderimi sessizce durur.",
+            "[@permission_hibernation_go_to_settings] düğmesine dokunup bir kez kapatırsanız bu pencere bir daha çıkmaz."
+          ]
+        },
+        {
+          "q": "Her seferinde çıkıyor. Sadece [@common_later] düğmesine dokunabilir miyim?",
+          "a": [
+            "Ayarı kapatana kadar uygulamayı her açtığınızda çıkmaya devam eder. Gönderimin durduğunu fark etmek zor olduğu için tekrar tekrar hatırlatıyoruz."
+          ]
+        },
+        {
+          "q": "Ben de ailemin haberlerini takip ediyorum ama bende bu pencere hiç çıkmıyor.",
+          "a": [
+            "Aynı zamanda yakınlarını gözeten kişi, bildirimleri görmek için uygulamayı sık açtığından izinlerin otomatik geri alındığı duruma nadiren düşer. Bu nedenle bu pencere size gösterilmez."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etc",
+      "spot": null,
+      "heading": "Diğer",
+      "items": [
+        {
+          "q": "Uyarıya dokundum ama ayarlar ekranı düzgün açılmadı.",
+          "a": [
+            "Ayarlar ekranının adı ve yeri üreticiye göre biraz değişir. Ayarlar uygulamasını açıp <b>Anbu</b>'yu bulun ve izinler bölümünü doğrudan kontrol edin."
+          ]
+        }
+      ]
+    }
+  ],
+
+  "footer_home": "Ana sayfa",
+  "footer_privacy": "Gizlilik Politikası",
+  "footer_terms": "Kullanım Koşulları",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

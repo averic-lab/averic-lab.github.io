@@ -1,0 +1,147 @@
+{
+  "lang_name": "English",
+  "meta_title": "When check-ins aren't getting through — Anbu",
+  "meta_desc": "What to check when a check-in arrives late, or steps and location don't come with it.",
+  "page_eyebrow": "Frequently asked",
+  "page_title": "When check-ins aren't getting through",
+  "page_lead": "Sometimes a check-in arrives late, or steps and location don't come with it. In most cases, <strong>turning on one permission on the sender's phone</strong> fixes it.",
+  "mockup_caption": "All three notices are shown together here for explanation. In reality they appear one at a time, only when they apply, and disappear once resolved.",
+  "mockup_hint": "See where this is on screen",
+  "mockup_hint_close": "Close",
+
+  "spot_all": "Whole screen",
+  "spot_battery": "Check-in is late",
+  "spot_activity": "No step count",
+  "spot_location": "No location",
+  "spot_hibernation": "A window keeps appearing",
+
+  "sections": [
+    {
+      "id": "battery",
+      "spot": "battery",
+      "heading": "Check-ins arrive late",
+      "dialog": {
+        "lead": "Tapping the yellow notice opens this window right away.",
+        "title": "@stability_battery_dialog_title",
+        "body": "@stability_battery_dialog_message",
+        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+      },
+      "items": [
+        {
+          "q": "I keep getting a “💗 Wellness check needed” notification on my phone. It seems the check-in is only sent when I open the app.",
+          "q2": "My family got a <b>“@notifications_level_caution”</b> alert saying <b>“@noti_caution_missing_body”</b>",
+          "a": [
+            "To save battery, Android slows down or stops apps you don't use often. Anbu wakes up briefly once a day at the set time to send your check-in, so if this restriction applies, <strong>it misses that moment and nothing is sent until you use your phone again.</strong>",
+            "If no check-in arrives within <strong>two hours past the set time</strong>, your family receives the alert above. This can happen even when the sender is perfectly fine and only the delivery was delayed.",
+            "On the sender's phone, open the app and look near the top for a yellow notice saying <b>“@stability_battery_warning_short”</b>. Tapping it goes straight to the settings screen, and once you lift the restriction the notice disappears."
+          ]
+        },
+        {
+          "q": "Why is this the only notice in yellow?",
+          "a": [
+            "It means check-ins are not stopped altogether — they <strong>may just be delayed</strong>. Notices shown in red mean a feature is actually blocked."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "activity",
+      "spot": "activity",
+      "heading": "Step count isn't showing",
+      "dialog": {
+        "lead": "Tapping the red notice brings up <strong>Android's own permission request</strong>. Allowing it there is all you need.<br>However, if you have already declined several times, Android stops showing that request. The window below appears instead.",
+        "title": "@gs_activity_permission_settings_title",
+        "body": "@gs_activity_permission_settings_body",
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "My family member's step count isn't showing. The “You walked N steps today” notification never arrives.",
+          "a": [
+            "Along with the check-in signal, Anbu sends <strong>that day's step count</strong> so family can see how much they moved. If the step permission is off on the sender's phone, <strong>the check-in still goes through, but the step count is left out.</strong>",
+            "On that phone, open the app and look below the safety code for a red notice saying <b>“@gs_activity_permission_denied_warning”</b>. Tapping it asks for the permission again."
+          ]
+        },
+        {
+          "q": "Do you look at anything besides steps?",
+          "a": [
+            "Only the step count is sent. We do not check where you have been or which apps you have used."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "spot": "location",
+      "heading": "An emergency request came without a location",
+      "dialog": {
+        "lead": "Tapping the red notice brings up <strong>Android's own permission request</strong>. Allowing it there is all you need.<br>However, if you have already declined several times, Android stops showing that request. The window below appears instead.",
+        "title": "@location_permission_settings_title",
+        "variants": [
+          { "label": "Android", "body": "@location_permission_settings_body_android" },
+          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+        ],
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "I received an emergency request, but there is no [@notifications_view_location] button on the alert.",
+          "a": [
+            "Location permission is required <strong>to send the current location along</strong> when the emergency button is pressed. Without it, the emergency alert still reaches everyone in the family, but where they are does not go with it.",
+            "On the sender's phone, open the app and look below the [@subject_home_emergency_button] button for a red notice. Tapping it asks for the permission again."
+          ]
+        },
+        {
+          "q": "Are you tracking my location all the time?",
+          "a": [
+            "No. We collect no location at all under normal circumstances. Only when [@subject_home_emergency_button] is pressed do we take <strong>a single reading at that moment</strong> and pass it to family, and that information is erased after a day."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hibernation",
+      "spot": "hibernation",
+      "heading": "A window appears every time I open the app",
+      "items": [
+        {
+          "q": "Every time I open the app, a window saying “@permission_hibernation_title” appears.",
+          "a": [
+            "Android has a feature that removes permissions from apps you haven't opened in a long time. Anbu is <strong>an app that works without you opening the screen</strong>, which actually makes it a likely target — and if the permissions go away, check-ins quietly stop.",
+            "Tap [@permission_hibernation_go_to_settings] and turn it off once, and this window will no longer appear."
+          ]
+        },
+        {
+          "q": "It shows up every time. Can I just tap [@common_later]?",
+          "a": [
+            "It will keep appearing every time you open the app until you turn the setting off. Because a stopped check-in is hard to notice, we keep reminding you."
+          ]
+        },
+        {
+          "q": "I also keep an eye on my family's check-ins, but I never see this window.",
+          "a": [
+            "If you are also watching over family, you open the app often to check alerts, so you rarely end up in a situation where permissions get removed automatically. That is why this window is not shown to you."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etc",
+      "spot": null,
+      "heading": "Anything else",
+      "items": [
+        {
+          "q": "I tapped the notice, but the settings screen didn't open properly.",
+          "a": [
+            "The name and location of the settings screen differ slightly by manufacturer. Please open your Settings app, find <b>Anbu</b>, and check the permissions section directly."
+          ]
+        }
+      ]
+    }
+  ],
+
+  "footer_home": "Home",
+  "footer_privacy": "Privacy Policy",
+  "footer_terms": "Terms of Service",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

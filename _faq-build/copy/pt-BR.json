@@ -1,0 +1,147 @@
+{
+  "lang_name": "Português",
+  "meta_title": "Quando o sinal de bem-estar não chega — Anbu",
+  "meta_desc": "O que verificar quando o sinal chega atrasado ou os passos e a localização não vêm junto.",
+  "page_eyebrow": "Perguntas frequentes",
+  "page_title": "Quando o sinal de bem-estar não chega",
+  "page_lead": "Às vezes o sinal chega atrasado, ou os passos e a localização não vêm junto. Na maioria dos casos, <strong>basta ativar uma permissão no celular de quem envia</strong>.",
+  "mockup_caption": "Para explicar, os três avisos aparecem juntos nesta tela. Na prática eles surgem um de cada vez, apenas quando se aplicam, e somem depois de resolvidos.",
+  "mockup_hint": "Ver onde fica na tela",
+  "mockup_hint_close": "Fechar",
+
+  "spot_all": "Tela inteira",
+  "spot_battery": "Sinal atrasado",
+  "spot_activity": "Sem passos",
+  "spot_location": "Sem localização",
+  "spot_hibernation": "Uma janela aparece sempre",
+
+  "sections": [
+    {
+      "id": "battery",
+      "spot": "battery",
+      "heading": "O sinal chega atrasado",
+      "dialog": {
+        "lead": "Ao tocar no aviso amarelo, esta janela abre na hora.",
+        "title": "@stability_battery_dialog_title",
+        "body": "@stability_battery_dialog_message",
+        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+      },
+      "items": [
+        {
+          "q": "Recebo com frequência a notificação “💗 É preciso confirmar o bem-estar” no meu celular. Parece que o envio só acontece quando abro o aplicativo.",
+          "q2": "Minha família recebeu um alerta <b>“@notifications_level_caution”</b> dizendo <b>“@noti_caution_missing_body”</b>",
+          "a": [
+            "Para economizar bateria, o Android desacelera ou interrompe aplicativos pouco usados. O Anbu acorda por um instante uma vez por dia, no horário definido, para enviar o sinal; com essa restrição ativa, <strong>esse momento é perdido e nada é enviado até o celular ser usado de novo.</strong>",
+            "Se nenhum sinal chegar <strong>duas horas após o horário definido</strong>, a família recebe o alerta acima. Isso pode acontecer mesmo quando a pessoa está perfeitamente bem e apenas o envio atrasou.",
+            "No celular de quem envia, abra o aplicativo e veja se na parte de cima aparece o aviso amarelo <b>“@stability_battery_warning_short”</b>. Ao tocar nele você vai direto para as configurações; depois de liberar uma vez, o aviso some."
+          ]
+        },
+        {
+          "q": "Por que só este aviso é amarelo?",
+          "a": [
+            "Significa que o sinal não parou por completo — ele <strong>pode apenas atrasar</strong>. Avisos em vermelho indicam que um recurso está de fato bloqueado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "activity",
+      "spot": "activity",
+      "heading": "Os passos não aparecem",
+      "dialog": {
+        "lead": "Ao tocar no aviso vermelho aparece <strong>o pedido de permissão do próprio Android</strong>. Basta permitir ali.<br>Porém, se você já recusou várias vezes, o Android deixa de exibir esse pedido. Nesse caso aparece a janela abaixo.",
+        "title": "@gs_activity_permission_settings_title",
+        "body": "@gs_activity_permission_settings_body",
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Os passos do meu familiar não aparecem. A notificação “Hoje você caminhou N passos” nunca chega.",
+          "a": [
+            "Junto com o sinal, o Anbu envia <strong>os passos do dia</strong> para que a família veja o quanto a pessoa se movimentou. Se a permissão estiver desativada no celular de quem envia, <strong>o sinal continua chegando, mas os passos ficam de fora.</strong>",
+            "Nesse celular, abra o aplicativo e veja se abaixo do código de segurança aparece o aviso vermelho <b>“@gs_activity_permission_denied_warning”</b>. Ao tocar nele, a permissão é pedida de novo."
+          ]
+        },
+        {
+          "q": "Vocês olham algo além dos passos?",
+          "a": [
+            "Somente os passos são enviados. Não verificamos por onde a pessoa andou nem quais aplicativos usou."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "spot": "location",
+      "heading": "O pedido de ajuda veio sem localização",
+      "dialog": {
+        "lead": "Ao tocar no aviso vermelho aparece <strong>o pedido de permissão do próprio Android</strong>. Basta permitir ali.<br>Porém, se você já recusou várias vezes, o Android deixa de exibir esse pedido. Nesse caso aparece a janela abaixo.",
+        "title": "@location_permission_settings_title",
+        "variants": [
+          { "label": "Android", "body": "@location_permission_settings_body_android" },
+          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+        ],
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Recebi um pedido de ajuda urgente, mas o alerta não tem o botão [@notifications_view_location].",
+          "a": [
+            "A permissão de localização é necessária <strong>para enviar a localização atual junto</strong> quando o botão de emergência é pressionado. Sem ela, o alerta de emergência continua chegando a toda a família, mas o local não vai junto.",
+            "No celular de quem envia, abra o aplicativo e veja se abaixo do botão [@subject_home_emergency_button] aparece um aviso vermelho. Ao tocar nele, a permissão é pedida de novo."
+          ]
+        },
+        {
+          "q": "Vocês acompanham minha localização o tempo todo?",
+          "a": [
+            "Não. No dia a dia não coletamos localização nenhuma. Apenas ao pressionar [@subject_home_emergency_button] é feita <strong>uma única leitura naquele instante</strong>, repassada à família; essa informação é apagada depois de um dia."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hibernation",
+      "spot": "hibernation",
+      "heading": "Aparece uma janela toda vez que abro o aplicativo",
+      "items": [
+        {
+          "q": "Toda vez que abro o aplicativo aparece uma janela dizendo “@permission_hibernation_title”.",
+          "a": [
+            "O Android tem um recurso que remove automaticamente as permissões de aplicativos que ficam muito tempo sem ser abertos. O Anbu é <strong>um aplicativo que funciona sem que você abra a tela</strong>, o que justamente o torna um alvo fácil — e, sem as permissões, o envio para silenciosamente.",
+            "Toque em [@permission_hibernation_go_to_settings] e desative uma vez: esta janela não aparecerá mais."
+          ]
+        },
+        {
+          "q": "Aparece toda vez. Posso simplesmente tocar em [@common_later]?",
+          "a": [
+            "Ela continuará aparecendo a cada abertura até você desativar a configuração. Como é difícil perceber que o envio parou, avisamos repetidamente."
+          ]
+        },
+        {
+          "q": "Eu também acompanho o bem-estar da minha família, mas para mim essa janela não aparece.",
+          "a": [
+            "Quem também cuida de familiares abre o aplicativo com frequência para ver os alertas, então raramente chega à situação em que as permissões são removidas automaticamente. Por isso essa janela não é exibida para você."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etc",
+      "spot": null,
+      "heading": "Outros casos",
+      "items": [
+        {
+          "q": "Toquei no aviso, mas a tela de configurações não abriu direito.",
+          "a": [
+            "O nome e o local da tela de configurações variam um pouco conforme o fabricante. Abra as Configurações, procure por <b>Anbu</b> e verifique diretamente a seção de permissões."
+          ]
+        }
+      ]
+    }
+  ],
+
+  "footer_home": "Início",
+  "footer_privacy": "Política de Privacidade",
+  "footer_terms": "Termos de Serviço",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

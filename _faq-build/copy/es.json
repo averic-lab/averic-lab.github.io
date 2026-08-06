@@ -1,0 +1,147 @@
+{
+  "lang_name": "Español",
+  "meta_title": "Cuando el aviso de bienestar no llega — Anbu",
+  "meta_desc": "Qué comprobar cuando el aviso llega tarde o los pasos y la ubicación no llegan con él.",
+  "page_eyebrow": "Preguntas frecuentes",
+  "page_title": "Cuando el aviso de bienestar no llega",
+  "page_lead": "A veces el aviso llega tarde, o los pasos y la ubicación no lo acompañan. En la mayoría de los casos, <strong>basta con activar un permiso en el teléfono de quien envía</strong>.",
+  "mockup_caption": "Para explicarlo, aquí se muestran los tres avisos en una misma pantalla. En realidad aparecen de uno en uno, solo cuando corresponde, y desaparecen una vez resuelto.",
+  "mockup_hint": "Ver dónde está en la pantalla",
+  "mockup_hint_close": "Cerrar",
+
+  "spot_all": "Pantalla completa",
+  "spot_battery": "El aviso llega tarde",
+  "spot_activity": "No hay pasos",
+  "spot_location": "No hay ubicación",
+  "spot_hibernation": "Una ventana aparece siempre",
+
+  "sections": [
+    {
+      "id": "battery",
+      "spot": "battery",
+      "heading": "El aviso llega tarde",
+      "dialog": {
+        "lead": "Al tocar el aviso amarillo se abre esta ventana de inmediato.",
+        "title": "@stability_battery_dialog_title",
+        "body": "@stability_battery_dialog_message",
+        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+      },
+      "items": [
+        {
+          "q": "Recibo con frecuencia la notificación «💗 Se necesita comprobar el bienestar» en mi teléfono. Parece que solo se envía cuando abro la aplicación.",
+          "q2": "Mi familia recibió un aviso <b>«@notifications_level_caution»</b> que decía <b>«@noti_caution_missing_body»</b>",
+          "a": [
+            "Para ahorrar batería, Android ralentiza o detiene las aplicaciones que se usan poco. Anbu se activa brevemente una vez al día a la hora fijada para enviar el aviso, así que si se aplica esta restricción, <strong>se pierde ese momento y no se envía nada hasta que se vuelve a usar el teléfono.</strong>",
+            "Si no llega ningún aviso <strong>pasadas dos horas de la hora fijada</strong>, la familia recibe la notificación anterior. Esto puede ocurrir incluso cuando la persona está perfectamente bien y solo se retrasó el envío.",
+            "En el teléfono de quien envía, abra la aplicación y compruebe si en la parte superior aparece el aviso amarillo <b>«@stability_battery_warning_short»</b>. Al tocarlo se va directamente a los ajustes y, una vez levantada la restricción, el aviso desaparece."
+          ]
+        },
+        {
+          "q": "¿Por qué solo este aviso es amarillo?",
+          "a": [
+            "Significa que los avisos no se han detenido del todo, sino que <strong>pueden retrasarse</strong>. Los avisos en rojo indican que una función está realmente bloqueada."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "activity",
+      "spot": "activity",
+      "heading": "No se ven los pasos",
+      "dialog": {
+        "lead": "Al tocar el aviso rojo aparece <strong>la solicitud de permiso propia de Android</strong>. Con aceptarla allí es suficiente.<br>Sin embargo, si ya se ha rechazado varias veces, Android deja de mostrarla. En ese caso aparece la ventana de abajo.",
+        "title": "@gs_activity_permission_settings_title",
+        "body": "@gs_activity_permission_settings_body",
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "No se ven los pasos de mi familiar. La notificación «Hoy ha caminado N pasos» nunca llega.",
+          "a": [
+            "Junto con la señal de bienestar, Anbu envía <strong>los pasos de ese día</strong> para que la familia vea cuánto se ha movido. Si el permiso está desactivado en el teléfono de quien envía, <strong>la señal sigue llegando, pero faltan los pasos.</strong>",
+            "En ese teléfono, abra la aplicación y compruebe si debajo del código de seguridad aparece el aviso rojo <b>«@gs_activity_permission_denied_warning»</b>. Al tocarlo se vuelve a solicitar el permiso."
+          ]
+        },
+        {
+          "q": "¿Se consulta algo más aparte de los pasos?",
+          "a": [
+            "Solo se envían los pasos. No comprobamos dónde ha estado ni qué aplicaciones ha utilizado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "spot": "location",
+      "heading": "La petición de ayuda llegó sin ubicación",
+      "dialog": {
+        "lead": "Al tocar el aviso rojo aparece <strong>la solicitud de permiso propia de Android</strong>. Con aceptarla allí es suficiente.<br>Sin embargo, si ya se ha rechazado varias veces, Android deja de mostrarla. En ese caso aparece la ventana de abajo.",
+        "title": "@location_permission_settings_title",
+        "variants": [
+          { "label": "Android", "body": "@location_permission_settings_body_android" },
+          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+        ],
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Recibí una petición de ayuda urgente, pero el aviso no tiene el botón [@notifications_view_location].",
+          "a": [
+            "Se necesita el permiso de ubicación <strong>para enviar la ubicación actual</strong> al pulsar el botón de emergencia. Sin él, el aviso de emergencia sigue llegando a toda la familia, pero no se adjunta dónde se encuentra la persona.",
+            "En el teléfono de quien envía, abra la aplicación y compruebe si debajo del botón [@subject_home_emergency_button] aparece un aviso rojo. Al tocarlo se vuelve a solicitar el permiso."
+          ]
+        },
+        {
+          "q": "¿Se está siguiendo mi ubicación en todo momento?",
+          "a": [
+            "No. En condiciones normales no recopilamos ninguna ubicación. Solo al pulsar [@subject_home_emergency_button] se toma <strong>una única lectura de ese momento</strong> y se transmite a la familia; esa información se borra al cabo de un día."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hibernation",
+      "spot": "hibernation",
+      "heading": "Aparece una ventana cada vez que abro la aplicación",
+      "items": [
+        {
+          "q": "Cada vez que abro la aplicación aparece una ventana que dice «@permission_hibernation_title».",
+          "a": [
+            "Android tiene una función que retira automáticamente los permisos de las aplicaciones que llevan mucho tiempo sin abrirse. Anbu es <strong>una aplicación que funciona sin necesidad de abrir la pantalla</strong>, lo que precisamente la convierte en candidata; y si los permisos desaparecen, el envío se detiene sin que se note.",
+            "Toque [@permission_hibernation_go_to_settings] y desactívelo una vez: esta ventana ya no volverá a aparecer."
+          ]
+        },
+        {
+          "q": "Aparece siempre. ¿Puedo tocar simplemente [@common_later]?",
+          "a": [
+            "Seguirá apareciendo cada vez que abra la aplicación hasta que desactive el ajuste. Como es difícil darse cuenta de que los avisos se han detenido, lo recordamos de forma repetida."
+          ]
+        },
+        {
+          "q": "Yo también sigo el bienestar de mi familia, pero a mí no me aparece esta ventana.",
+          "a": [
+            "Quien además vela por sus familiares abre la aplicación a menudo para consultar los avisos, así que rara vez llega a la situación en la que los permisos se retiran automáticamente. Por eso no le mostramos esta ventana."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etc",
+      "spot": null,
+      "heading": "Otras cuestiones",
+      "items": [
+        {
+          "q": "He tocado el aviso, pero la pantalla de ajustes no se abre correctamente.",
+          "a": [
+            "El nombre y la ubicación de la pantalla de ajustes varían ligeramente según el fabricante. Abra la aplicación de Ajustes, busque <b>Anbu</b> y consulte directamente el apartado de permisos."
+          ]
+        }
+      ]
+    }
+  ],
+
+  "footer_home": "Inicio",
+  "footer_privacy": "Política de privacidad",
+  "footer_terms": "Términos del servicio",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

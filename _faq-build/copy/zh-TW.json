@@ -1,0 +1,147 @@
+{
+  "lang_name": "繁體中文",
+  "meta_title": "問候未能順利送達時 — Anbu",
+  "meta_desc": "問候延遲送達，或步數、位置沒有一起送達時可以檢查的項目。",
+  "page_eyebrow": "常見問題",
+  "page_title": "問候未能順利送達時",
+  "page_lead": "有時問候會延遲送達，或者步數、位置沒有一起送達。多數情況下，<strong>在傳送問候一方的手機上開啟一項權限</strong>即可解決。",
+  "mockup_caption": "為方便說明，這裡將三種提示放在同一個畫面中。實際上只在符合情況時逐一出現，處理完成後就會消失。",
+  "mockup_hint": "查看在畫面中的位置",
+  "mockup_hint_close": "收合",
+
+  "spot_all": "整個畫面",
+  "spot_battery": "問候延遲",
+  "spot_activity": "沒有步數",
+  "spot_location": "沒有位置",
+  "spot_hibernation": "視窗反覆出現",
+
+  "sections": [
+    {
+      "id": "battery",
+      "spot": "battery",
+      "heading": "問候延遲送達",
+      "dialog": {
+        "lead": "點選黃色提示後會立即跳出這個視窗。",
+        "title": "@stability_battery_dialog_title",
+        "body": "@stability_battery_dialog_message",
+        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+      },
+      "items": [
+        {
+          "q": "自己的手機經常收到「💗 需要確認問候」的通知。似乎要打開應用程式，問候才會送出。",
+          "q2": "家人的手機收到了<b>「@notifications_level_caution」</b>提醒，內容是<b>「@noti_caution_missing_body」</b>",
+          "a": [
+            "為了節省電力，Android 會減緩或停止不常使用的應用程式。Anbu 每天只在設定的時刻短暫喚醒一次來傳送問候，若受到這項限制，<strong>就會錯過那個時刻，直到再次使用手機才會送出。</strong>",
+            "如果超過設定時刻<strong>兩個小時仍未收到問候</strong>，家人就會收到上面的提醒。即使傳送問候的人平安無事、只是傳送延遲，也可能收到這則提醒。",
+            "請在傳送問候一方的手機上打開應用程式，查看畫面上方是否有<b>「@stability_battery_warning_short」</b>這則黃色提示。點選後會直接進入設定畫面，解除一次後提示就會消失。"
+          ]
+        },
+        {
+          "q": "為什麼只有這則提示是黃色的？",
+          "a": [
+            "這表示問候並未完全中斷，只是<strong>可能會延遲</strong>，所以用黃色。當功能確實被阻擋時會顯示為紅色。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "activity",
+      "spot": "activity",
+      "heading": "看不到步數",
+      "dialog": {
+        "lead": "點選紅色提示後，會跳出 <strong>Android 本身的權限要求</strong>。在那裡允許即可完成。<br>不過，若先前已多次拒絕，Android 就不會再顯示該要求。這時會改為顯示下面的視窗。",
+        "title": "@gs_activity_permission_settings_title",
+        "body": "@gs_activity_permission_settings_body",
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "看不到家人的步數。「今天走了 N 步」的通知也沒有收到。",
+          "a": [
+            "Anbu 會在問候訊號之外一併傳送<strong>當天的步數</strong>，讓家人了解活動情形。若傳送問候一方的手機關閉了步數權限，<strong>問候訊號照常送達，只是步數會缺少。</strong>",
+            "請在那支手機上打開應用程式，查看安全碼下方是否有<b>「@gs_activity_permission_denied_warning」</b>這則紅色提示。點選後會重新要求權限。"
+          ]
+        },
+        {
+          "q": "除了步數還會查看其他資料嗎？",
+          "a": [
+            "只傳送步數。不會查看去過哪裡，也不會查看使用了哪些應用程式。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "spot": "location",
+      "heading": "緊急求助沒有附上位置",
+      "dialog": {
+        "lead": "點選紅色提示後，會跳出 <strong>Android 本身的權限要求</strong>。在那裡允許即可完成。<br>不過，若先前已多次拒絕，Android 就不會再顯示該要求。這時會改為顯示下面的視窗。",
+        "title": "@location_permission_settings_title",
+        "variants": [
+          { "label": "Android", "body": "@location_permission_settings_body_android" },
+          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+        ],
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "收到了緊急求助，但通知上沒有 [@notifications_view_location] 按鈕。",
+          "a": [
+            "按下緊急按鈕時<strong>要一併傳送目前位置</strong>需要位置權限。沒有權限時，緊急通知本身仍會照常送達所有家人，但不會附上所在位置。",
+            "請在傳送問候一方的手機上打開應用程式，查看 [@subject_home_emergency_button] 按鈕下方是否有紅色提示。點選後會重新要求權限。"
+          ]
+        },
+        {
+          "q": "平時也在查看我的位置嗎？",
+          "a": [
+            "不會。平時完全不收集位置資訊。只有在按下 [@subject_home_emergency_button] 時，才會<strong>取得那一刻的位置一次</strong>並轉達給家人，該資訊在一天後就會刪除。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hibernation",
+      "spot": "hibernation",
+      "heading": "每次打開應用程式都會跳出視窗",
+      "items": [
+        {
+          "q": "每次打開應用程式都會跳出「@permission_hibernation_title」的視窗。",
+          "a": [
+            "Android 有一項功能，會自動收回長期未開啟應用程式的權限。Anbu 是<strong>不打開畫面也會自行運作的應用程式</strong>，反而更容易成為對象，一旦權限消失，問候就會悄悄停止。",
+            "點選 [@permission_hibernation_go_to_settings] 關閉一次後，這個視窗就不會再出現。"
+          ]
+        },
+        {
+          "q": "每次都出現，可以直接按 [@common_later] 嗎？",
+          "a": [
+            "在關閉該設定之前，每次打開應用程式都會繼續出現。因為問候一旦停止很難察覺，所以我們會反覆提醒。"
+          ]
+        },
+        {
+          "q": "我同時也在關心家人的問候，但我這邊不會出現這個視窗。",
+          "a": [
+            "同時守護家人問候的情況下，為了查看提醒會經常打開應用程式，因此很少會遇到權限被自動收回的情形。所以不會向您顯示這個視窗。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etc",
+      "spot": null,
+      "heading": "其他",
+      "items": [
+        {
+          "q": "點選提示後設定畫面沒有正常開啟。",
+          "a": [
+            "設定畫面的名稱和位置因裝置製造商而略有不同。請在系統設定中找到 <b>Anbu</b>，直接查看權限項目。"
+          ]
+        }
+      ]
+    }
+  ],
+
+  "footer_home": "首頁",
+  "footer_privacy": "隱私權政策",
+  "footer_terms": "服務條款",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

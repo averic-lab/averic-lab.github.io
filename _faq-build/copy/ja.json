@@ -1,0 +1,147 @@
+{
+  "lang_name": "日本語",
+  "meta_title": "安否がうまく届かないとき — Anbu",
+  "meta_desc": "安否が遅れて届く、歩数や位置が一緒に届かないときに確認すること。",
+  "page_eyebrow": "よくある質問",
+  "page_title": "安否がうまく届かないとき",
+  "page_lead": "安否が遅れて届いたり、歩数や位置が一緒に届かないことがあります。ほとんどの場合、<strong>安否を送る方のスマホで権限を一つ有効にすれば</strong>解決します。",
+  "mockup_caption": "説明のため、3つのお知らせを1つの画面にまとめています。実際は該当する場合にのみ1つずつ表示され、対処が済むと消えます。",
+  "mockup_hint": "画面のどこにあるか見る",
+  "mockup_hint_close": "閉じる",
+
+  "spot_all": "画面全体",
+  "spot_battery": "安否が遅い",
+  "spot_activity": "歩数がない",
+  "spot_location": "位置がない",
+  "spot_hibernation": "ウィンドウが出続ける",
+
+  "sections": [
+    {
+      "id": "battery",
+      "spot": "battery",
+      "heading": "安否が遅れて届きます",
+      "dialog": {
+        "lead": "黄色のお知らせをタップすると、すぐにこのウィンドウが表示されます。",
+        "title": "@stability_battery_dialog_title",
+        "body": "@stability_battery_dialog_message",
+        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+      },
+      "items": [
+        {
+          "q": "自分のスマホに「💗 安否確認が必要です」の通知がよく届きます。アプリを開かないと安否が送られていないようです。",
+          "q2": "家族のスマホに<b>「@notifications_level_caution」</b>の通知で<b>「@noti_caution_missing_body」</b>と届きました。",
+          "a": [
+            "Android はバッテリーを節約するため、あまり使わないアプリの動作を遅らせたり止めたりします。Anbu は1日1回、決まった時刻に少しだけ起動して安否を送るアプリなので、この制限がかかると<strong>その時刻を逃し、スマホを再び使うまで送信されません。</strong>",
+            "決まった時刻から<strong>2時間過ぎても安否が届かない場合</strong>、家族に上記の通知が送られます。安否を送る方はご無事でも、送信が遅れただけでこの通知が届くことがあります。",
+            "安否を送る方のスマホでアプリを開き、画面の上部に<b>「@stability_battery_warning_short」</b>という黄色のお知らせがないか確認してください。タップすると設定画面へ直接移動し、一度解除するとお知らせは消えます。"
+          ]
+        },
+        {
+          "q": "このお知らせだけ黄色なのはなぜですか。",
+          "a": [
+            "安否が完全に止まったわけではなく、<strong>遅れる可能性がある</strong>という意味なので黄色です。機能が実際にふさがれているときは赤色で表示されます。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "activity",
+      "spot": "activity",
+      "heading": "歩数が表示されません",
+      "dialog": {
+        "lead": "赤いお知らせをタップすると、<strong>Android が表示する権限リクエスト</strong>が出ます。そこで許可すれば完了です。<br>ただし、以前に何度も拒否している場合、Android はそのリクエストを表示しなくなります。そのときは下のウィンドウが代わりに表示されます。",
+        "title": "@gs_activity_permission_settings_title",
+        "body": "@gs_activity_permission_settings_body",
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "家族の歩数が表示されません。「今日は何歩歩きました」の通知も届きません。",
+          "a": [
+            "Anbu は安否の信号と一緒に<strong>その日の歩数</strong>を送り、家族がどれくらい動いたか分かるようにしています。安否を送る方のスマホで歩数の権限がオフになっていると、<strong>安否の信号はそのまま届きますが、歩数だけが抜けます。</strong>",
+            "そのスマホでアプリを開き、安全コードの下に<b>「@gs_activity_permission_denied_warning」</b>という赤いお知らせがないか確認してください。タップすると権限を再度リクエストします。"
+          ]
+        },
+        {
+          "q": "歩数以外も見ていますか。",
+          "a": [
+            "歩数のみを送信します。どこへ行かれたか、どのアプリを使われたかは確認しません。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "spot": "location",
+      "heading": "緊急リクエストに位置がありません",
+      "dialog": {
+        "lead": "赤いお知らせをタップすると、<strong>Android が表示する権限リクエスト</strong>が出ます。そこで許可すれば完了です。<br>ただし、以前に何度も拒否している場合、Android はそのリクエストを表示しなくなります。そのときは下のウィンドウが代わりに表示されます。",
+        "title": "@location_permission_settings_title",
+        "variants": [
+          { "label": "Android", "body": "@location_permission_settings_body_android" },
+          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+        ],
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "緊急の助けを求める連絡を受け取りましたが、通知に [@notifications_view_location] ボタンがありません。",
+          "a": [
+            "緊急ボタンを押したときに<strong>現在地を一緒に送るには</strong>位置情報の権限が必要です。権限がオフでも緊急通知そのものは家族全員にそのまま届きますが、どこにいるかは一緒に届きません。",
+            "安否を送る方のスマホでアプリを開き、[@subject_home_emergency_button] ボタンの下に赤いお知らせがないか確認してください。タップすると権限を再度リクエストします。"
+          ]
+        },
+        {
+          "q": "普段も位置を見ていますか。",
+          "a": [
+            "いいえ。普段は位置情報を一切収集しません。[@subject_home_emergency_button] を押した<strong>その瞬間の位置を1回だけ</strong>確認して家族に伝え、この情報は1日経つと削除されます。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hibernation",
+      "spot": "hibernation",
+      "heading": "アプリを開くたびにウィンドウが出ます",
+      "items": [
+        {
+          "q": "アプリを開くたびに「@permission_hibernation_title」というウィンドウが表示されます。",
+          "a": [
+            "Android には、長く開いていないアプリの権限を自動的に取り消す機能があります。Anbu は<strong>画面を開かなくても動くアプリ</strong>なので、かえってその対象になりやすく、権限がなくなると安否の送信が静かに止まります。",
+            "[@permission_hibernation_go_to_settings] を押して一度オフにしていただければ、このウィンドウはもう表示されません。"
+          ]
+        },
+        {
+          "q": "毎回出ますが [@common_later] を押してもいいですか。",
+          "a": [
+            "オフにしていただくまで、アプリを開くたびに表示され続けます。安否が止まると気づきにくいため、繰り返しお知らせしています。"
+          ]
+        },
+        {
+          "q": "家族の安否も一緒に見ていますが、私にはこのウィンドウが出ません。",
+          "a": [
+            "家族の安否も見守っている場合は通知を確認するためにアプリをよく開くので、権限が自動的に取り消される状況になりにくいためです。そのためこのウィンドウは表示していません。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etc",
+      "spot": null,
+      "heading": "その他",
+      "items": [
+        {
+          "q": "お知らせをタップしましたが、設定画面がうまく開きません。",
+          "a": [
+            "端末メーカーによって設定画面の名称や場所が少しずつ異なります。設定アプリから <b>Anbu</b> を探して、権限の項目を直接ご確認ください。"
+          ]
+        }
+      ]
+    }
+  ],
+
+  "footer_home": "ホーム",
+  "footer_privacy": "プライバシーポリシー",
+  "footer_terms": "利用規約",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

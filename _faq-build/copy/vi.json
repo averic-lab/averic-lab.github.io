@@ -1,0 +1,147 @@
+{
+  "lang_name": "Tiếng Việt",
+  "meta_title": "Khi tin báo bình an không đến — Anbu",
+  "meta_desc": "Những điều cần kiểm tra khi tin báo đến muộn, hoặc số bước và vị trí không được gửi kèm.",
+  "page_eyebrow": "Câu hỏi thường gặp",
+  "page_title": "Khi tin báo bình an không đến",
+  "page_lead": "Đôi khi tin báo đến muộn, hoặc số bước và vị trí không được gửi kèm. Trong hầu hết trường hợp, chỉ cần <strong>bật một quyền trên điện thoại của người gửi</strong> là xong.",
+  "mockup_caption": "Để dễ giải thích, ba thông báo được đặt chung trên một màn hình. Trên thực tế, chúng chỉ xuất hiện từng cái một khi đúng trường hợp và sẽ biến mất sau khi xử lý xong.",
+  "mockup_hint": "Xem vị trí trên màn hình",
+  "mockup_hint_close": "Đóng",
+
+  "spot_all": "Toàn màn hình",
+  "spot_battery": "Tin báo đến muộn",
+  "spot_activity": "Không có số bước",
+  "spot_location": "Không có vị trí",
+  "spot_hibernation": "Cửa sổ hiện liên tục",
+
+  "sections": [
+    {
+      "id": "battery",
+      "spot": "battery",
+      "heading": "Tin báo đến muộn",
+      "dialog": {
+        "lead": "Chạm vào thông báo màu vàng sẽ mở ngay cửa sổ này.",
+        "title": "@stability_battery_dialog_title",
+        "body": "@stability_battery_dialog_message",
+        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+      },
+      "items": [
+        {
+          "q": "Điện thoại của tôi thường xuyên nhận thông báo “💗 Cần xác nhận bình an”. Có vẻ chỉ khi mở ứng dụng thì tin báo mới được gửi.",
+          "q2": "Gia đình tôi nhận được cảnh báo <b>“@notifications_level_caution”</b> với nội dung <b>“@noti_caution_missing_body”</b>",
+          "a": [
+            "Để tiết kiệm pin, Android làm chậm hoặc dừng các ứng dụng ít dùng. Anbu chỉ thức dậy trong chốc lát mỗi ngày một lần vào giờ đã đặt để gửi tin báo, nên nếu bị hạn chế này, <strong>khoảnh khắc đó sẽ bị bỏ lỡ và không có gì được gửi cho đến khi điện thoại được dùng lại.</strong>",
+            "Nếu <strong>quá hai giờ so với giờ đã đặt</strong> mà vẫn chưa có tin báo, gia đình sẽ nhận được cảnh báo ở trên. Điều này có thể xảy ra ngay cả khi người gửi hoàn toàn bình an và chỉ là việc gửi bị chậm.",
+            "Trên điện thoại của người gửi, hãy mở ứng dụng và xem phía trên màn hình có thông báo màu vàng <b>“@stability_battery_warning_short”</b> hay không. Chạm vào đó sẽ đi thẳng đến màn hình cài đặt; sau khi gỡ bỏ hạn chế một lần, thông báo sẽ biến mất."
+          ]
+        },
+        {
+          "q": "Vì sao chỉ thông báo này có màu vàng?",
+          "a": [
+            "Điều đó có nghĩa là tin báo chưa dừng hẳn, mà <strong>chỉ có thể bị chậm</strong>. Các thông báo màu đỏ cho biết một chức năng thực sự đang bị chặn."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "activity",
+      "spot": "activity",
+      "heading": "Không thấy số bước",
+      "dialog": {
+        "lead": "Chạm vào thông báo màu đỏ sẽ hiện <strong>yêu cầu cấp quyền của chính Android</strong>. Chỉ cần cho phép ở đó là xong.<br>Tuy nhiên, nếu trước đây đã từ chối nhiều lần, Android sẽ không hiện yêu cầu đó nữa. Khi ấy cửa sổ bên dưới sẽ xuất hiện thay thế.",
+        "title": "@gs_activity_permission_settings_title",
+        "body": "@gs_activity_permission_settings_body",
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Không thấy số bước của người thân. Thông báo “Hôm nay đã đi N bước” cũng không đến.",
+          "a": [
+            "Cùng với tín hiệu bình an, Anbu gửi kèm <strong>số bước của ngày hôm đó</strong> để gia đình biết đã vận động bao nhiêu. Nếu quyền bị tắt trên điện thoại của người gửi, <strong>tín hiệu bình an vẫn đến bình thường, chỉ thiếu số bước.</strong>",
+            "Trên điện thoại đó, hãy mở ứng dụng và xem bên dưới mã an toàn có thông báo màu đỏ <b>“@gs_activity_permission_denied_warning”</b> hay không. Chạm vào đó sẽ yêu cầu cấp quyền lại."
+          ]
+        },
+        {
+          "q": "Ngoài số bước còn xem gì khác không?",
+          "a": [
+            "Chỉ số bước được gửi đi. Chúng tôi không kiểm tra đã đi những đâu hay đã dùng ứng dụng nào."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "spot": "location",
+      "heading": "Yêu cầu khẩn cấp không kèm vị trí",
+      "dialog": {
+        "lead": "Chạm vào thông báo màu đỏ sẽ hiện <strong>yêu cầu cấp quyền của chính Android</strong>. Chỉ cần cho phép ở đó là xong.<br>Tuy nhiên, nếu trước đây đã từ chối nhiều lần, Android sẽ không hiện yêu cầu đó nữa. Khi ấy cửa sổ bên dưới sẽ xuất hiện thay thế.",
+        "title": "@location_permission_settings_title",
+        "variants": [
+          { "label": "Android", "body": "@location_permission_settings_body_android" },
+          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+        ],
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Tôi nhận được yêu cầu trợ giúp khẩn cấp nhưng trên thông báo không có nút [@notifications_view_location].",
+          "a": [
+            "Cần quyền vị trí <strong>để gửi kèm vị trí hiện tại</strong> khi nhấn nút khẩn cấp. Không có quyền này thì thông báo khẩn cấp vẫn đến với toàn bộ gia đình, nhưng nơi đang ở sẽ không được gửi kèm.",
+            "Trên điện thoại của người gửi, hãy mở ứng dụng và xem bên dưới nút [@subject_home_emergency_button] có thông báo màu đỏ hay không. Chạm vào đó sẽ yêu cầu cấp quyền lại."
+          ]
+        },
+        {
+          "q": "Bình thường có theo dõi vị trí của tôi không?",
+          "a": [
+            "Không. Bình thường chúng tôi hoàn toàn không thu thập vị trí. Chỉ khi nhấn [@subject_home_emergency_button], vị trí <strong>tại đúng thời điểm đó được lấy một lần</strong> và chuyển đến gia đình; thông tin này sẽ bị xóa sau một ngày."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hibernation",
+      "spot": "hibernation",
+      "heading": "Mỗi lần mở ứng dụng lại hiện cửa sổ",
+      "items": [
+        {
+          "q": "Mỗi lần mở ứng dụng lại hiện cửa sổ “@permission_hibernation_title”.",
+          "a": [
+            "Android có tính năng tự động thu hồi quyền của những ứng dụng lâu ngày không mở. Anbu là <strong>ứng dụng hoạt động mà không cần mở màn hình</strong>, nên lại càng dễ rơi vào diện này; khi quyền bị mất, việc gửi tin báo sẽ lặng lẽ dừng lại.",
+            "Chạm [@permission_hibernation_go_to_settings] và tắt một lần thì cửa sổ này sẽ không hiện nữa."
+          ]
+        },
+        {
+          "q": "Lần nào cũng hiện. Tôi chỉ chạm [@common_later] có được không?",
+          "a": [
+            "Cho đến khi bạn tắt cài đặt đó, cửa sổ vẫn sẽ hiện mỗi lần mở ứng dụng. Vì rất khó nhận ra khi việc gửi tin báo đã dừng, nên chúng tôi nhắc lại nhiều lần."
+          ]
+        },
+        {
+          "q": "Tôi cũng đang theo dõi tin báo của gia đình, nhưng tôi không thấy cửa sổ này.",
+          "a": [
+            "Người đồng thời dõi theo gia đình sẽ mở ứng dụng thường xuyên để xem thông báo, nên hiếm khi rơi vào tình huống quyền bị thu hồi tự động. Vì vậy cửa sổ này không hiện với bạn."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etc",
+      "spot": null,
+      "heading": "Khác",
+      "items": [
+        {
+          "q": "Tôi đã chạm vào thông báo nhưng màn hình cài đặt không mở đúng.",
+          "a": [
+            "Tên và vị trí của màn hình cài đặt hơi khác nhau tùy nhà sản xuất. Hãy mở ứng dụng Cài đặt, tìm <b>Anbu</b> và kiểm tra trực tiếp mục quyền."
+          ]
+        }
+      ]
+    }
+  ],
+
+  "footer_home": "Trang chủ",
+  "footer_privacy": "Chính sách bảo mật",
+  "footer_terms": "Điều khoản dịch vụ",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

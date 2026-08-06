@@ -1,0 +1,147 @@
+{
+  "lang_name": "Svenska",
+  "meta_title": "När livstecknet inte kommer fram — Anbu",
+  "meta_desc": "Vad du kan kontrollera när ett livstecken kommer försent, eller när steg och plats inte följer med.",
+  "page_eyebrow": "Vanliga frågor",
+  "page_title": "När livstecknet inte kommer fram",
+  "page_lead": "Ibland kommer livstecknet försent, eller så saknas steg och plats. I de flesta fall räcker det att <strong>slå på en behörighet i avsändarens telefon</strong>.",
+  "mockup_caption": "För tydlighetens skull visas alla tre meddelanden tillsammans på en och samma skärm. I verkligheten visas de ett i taget, bara när de gäller, och försvinner när saken är åtgärdad.",
+  "mockup_hint": "Visa var det finns på skärmen",
+  "mockup_hint_close": "Stäng",
+
+  "spot_all": "Hela skärmen",
+  "spot_battery": "Livstecknet dröjer",
+  "spot_activity": "Inga steg",
+  "spot_location": "Ingen plats",
+  "spot_hibernation": "Ett fönster återkommer",
+
+  "sections": [
+    {
+      "id": "battery",
+      "spot": "battery",
+      "heading": "Livstecknet kommer försent",
+      "dialog": {
+        "lead": "Ett tryck på det gula meddelandet öppnar det här fönstret direkt.",
+        "title": "@stability_battery_dialog_title",
+        "body": "@stability_battery_dialog_message",
+        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+      },
+      "items": [
+        {
+          "q": "Jag får ofta aviseringen ”💗 Kontroll av välbefinnande behövs” i telefonen. Det verkar som att sändningen sker först när jag öppnar appen.",
+          "q2": "Min familj fick en avisering <b>”@notifications_level_caution”</b> med texten <b>”@noti_caution_missing_body”</b>",
+          "a": [
+            "För att spara batteri saktar Android ner eller stoppar appar som används sällan. Anbu vaknar kort en gång om dagen vid den inställda tiden för att skicka livstecknet — gäller den här begränsningen <strong>missas det ögonblicket, och ingenting skickas förrän telefonen används igen.</strong>",
+            "Om inget livstecken kommit in <strong>två timmar efter den inställda tiden</strong> får familjen aviseringen ovan. Det kan inträffa även när avsändaren mår alldeles utmärkt och det bara var sändningen som blev försenad.",
+            "Öppna appen i avsändarens telefon och se efter högst upp om det gula meddelandet <b>”@stability_battery_warning_short”</b> står där. Ett tryck leder direkt till inställningarna, och när begränsningen väl är borttagen försvinner meddelandet."
+          ]
+        },
+        {
+          "q": "Varför är bara det här meddelandet gult?",
+          "a": [
+            "Det betyder att livstecknen inte har upphört helt, utan <strong>bara kan bli försenade</strong>. Meddelanden i rött betyder att en funktion verkligen är blockerad."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "activity",
+      "spot": "activity",
+      "heading": "Stegen visas inte",
+      "dialog": {
+        "lead": "Ett tryck på det röda meddelandet öppnar <strong>Androids egen behörighetsförfrågan</strong>. Det räcker att godkänna där.<br>Har du däremot redan nekat flera gånger visar Android inte längre den förfrågan. Då visas fönstret nedan i stället.",
+        "title": "@gs_activity_permission_settings_title",
+        "body": "@gs_activity_permission_settings_body",
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Min anhörigas steg visas inte. Aviseringen ”Du gick N steg i dag” kommer aldrig.",
+          "a": [
+            "Tillsammans med livstecknet skickar Anbu <strong>dagens antal steg</strong> så att familjen ser hur mycket rörelse det blivit. Är behörigheten avstängd i avsändarens telefon <strong>kommer livstecknet fram som vanligt, men stegen saknas.</strong>",
+            "Öppna appen i den telefonen och se efter under säkerhetskoden om det röda meddelandet <b>”@gs_activity_permission_denied_warning”</b> står där. Ett tryck begär behörigheten på nytt."
+          ]
+        },
+        {
+          "q": "Tittar ni på något mer än stegen?",
+          "a": [
+            "Endast antalet steg skickas. Vi kontrollerar varken var någon har varit eller vilka appar som använts."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "spot": "location",
+      "heading": "Nödanropet kom utan plats",
+      "dialog": {
+        "lead": "Ett tryck på det röda meddelandet öppnar <strong>Androids egen behörighetsförfrågan</strong>. Det räcker att godkänna där.<br>Har du däremot redan nekat flera gånger visar Android inte längre den förfrågan. Då visas fönstret nedan i stället.",
+        "title": "@location_permission_settings_title",
+        "variants": [
+          { "label": "Android", "body": "@location_permission_settings_body_android" },
+          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+        ],
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Jag fick ett nödanrop, men aviseringen har ingen knapp [@notifications_view_location].",
+          "a": [
+            "Platsbehörighet krävs <strong>för att den aktuella platsen ska skickas med</strong> när nödknappen trycks in. Utan den når nödaviseringen fortfarande hela familjen, men var personen befinner sig följer inte med.",
+            "Öppna appen i avsändarens telefon och se efter under knappen [@subject_home_emergency_button] om ett rött meddelande står där. Ett tryck begär behörigheten på nytt."
+          ]
+        },
+        {
+          "q": "Följs min plats hela tiden?",
+          "a": [
+            "Nej. Under normala förhållanden samlar vi inte in någon plats alls. Först när [@subject_home_emergency_button] trycks in hämtas <strong>platsen i just det ögonblicket en enda gång</strong> och förmedlas till familjen; den uppgiften raderas efter ett dygn."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hibernation",
+      "spot": "hibernation",
+      "heading": "Ett fönster visas varje gång jag öppnar appen",
+      "items": [
+        {
+          "q": "Varje gång jag öppnar appen visas ett fönster med texten ”@permission_hibernation_title”.",
+          "a": [
+            "Android har en funktion som automatiskt drar tillbaka behörigheter från appar som inte öppnats på länge. Anbu är <strong>en app som fungerar utan att du öppnar skärmen</strong> — just därför blir den lätt ett mål, och utan behörigheter upphör sändningen omärkligt.",
+            "Tryck på [@permission_hibernation_go_to_settings] och stäng av det en gång, så visas det här fönstret inte mer."
+          ]
+        },
+        {
+          "q": "Det kommer varje gång. Kan jag bara trycka på [@common_later]?",
+          "a": [
+            "Fönstret fortsätter visas vid varje öppning tills du stänger av inställningen. Eftersom det är svårt att märka att sändningen har upphört påminner vi upprepade gånger."
+          ]
+        },
+        {
+          "q": "Jag bevakar också min familjs livstecken, men jag ser aldrig det här fönstret.",
+          "a": [
+            "Den som samtidigt vakar över sina anhöriga öppnar appen ofta för att läsa aviseringar och hamnar därför sällan i läget att behörigheter dras tillbaka automatiskt. Därför visas fönstret inte för dig."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etc",
+      "spot": null,
+      "heading": "Övrigt",
+      "items": [
+        {
+          "q": "Jag tryckte på meddelandet, men inställningsskärmen öppnades inte som den ska.",
+          "a": [
+            "Inställningsskärmens namn och placering skiljer sig något mellan tillverkare. Öppna Inställningar, sök upp <b>Anbu</b> och kontrollera avsnittet för behörigheter direkt."
+          ]
+        }
+      ]
+    }
+  ],
+
+  "footer_home": "Hem",
+  "footer_privacy": "Integritetspolicy",
+  "footer_terms": "Användarvillkor",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

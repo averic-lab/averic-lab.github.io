@@ -1,0 +1,147 @@
+{
+  "lang_name": "Bahasa Indonesia",
+  "meta_title": "Ketika kabar keselamatan tidak sampai — Anbu",
+  "meta_desc": "Yang perlu diperiksa ketika kabar datang terlambat, atau langkah dan lokasi tidak ikut terkirim.",
+  "page_eyebrow": "Pertanyaan umum",
+  "page_title": "Ketika kabar keselamatan tidak sampai",
+  "page_lead": "Kadang kabar datang terlambat, atau langkah dan lokasi tidak ikut terkirim. Dalam sebagian besar kasus, <strong>cukup mengaktifkan satu izin di ponsel pengirim</strong> untuk mengatasinya.",
+  "mockup_caption": "Untuk penjelasan, ketiga pemberitahuan ditampilkan bersama dalam satu layar. Sebenarnya semuanya muncul satu per satu, hanya bila memang berlaku, dan hilang setelah diatasi.",
+  "mockup_hint": "Lihat letaknya di layar",
+  "mockup_hint_close": "Tutup",
+
+  "spot_all": "Seluruh layar",
+  "spot_battery": "Kabar terlambat",
+  "spot_activity": "Tidak ada langkah",
+  "spot_location": "Tidak ada lokasi",
+  "spot_hibernation": "Jendela muncul terus",
+
+  "sections": [
+    {
+      "id": "battery",
+      "spot": "battery",
+      "heading": "Kabar datang terlambat",
+      "dialog": {
+        "lead": "Menyentuh pemberitahuan kuning langsung membuka jendela ini.",
+        "title": "@stability_battery_dialog_title",
+        "body": "@stability_battery_dialog_message",
+        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+      },
+      "items": [
+        {
+          "q": "Ponsel saya sering menerima notifikasi “💗 Perlu pemeriksaan keselamatan”. Sepertinya kabar baru terkirim saat saya membuka aplikasi.",
+          "q2": "Keluarga saya menerima peringatan <b>“@notifications_level_caution”</b> yang berbunyi <b>“@noti_caution_missing_body”</b>",
+          "a": [
+            "Untuk menghemat baterai, Android memperlambat atau menghentikan aplikasi yang jarang dipakai. Anbu bangun sebentar sekali sehari pada waktu yang ditetapkan untuk mengirim kabar, sehingga bila pembatasan ini berlaku, <strong>momen tersebut terlewat dan tidak ada yang terkirim sampai ponsel digunakan lagi.</strong>",
+            "Jika <strong>dua jam setelah waktu yang ditetapkan</strong> kabar belum juga datang, keluarga akan menerima peringatan di atas. Ini bisa terjadi meskipun pengirim baik-baik saja dan hanya pengirimannya yang tertunda.",
+            "Di ponsel pengirim, buka aplikasi dan periksa bagian atas layar apakah ada pemberitahuan kuning <b>“@stability_battery_warning_short”</b>. Menyentuhnya langsung menuju layar pengaturan, dan setelah pembatasan dilepas sekali, pemberitahuan itu akan hilang."
+          ]
+        },
+        {
+          "q": "Mengapa hanya pemberitahuan ini yang berwarna kuning?",
+          "a": [
+            "Artinya kabar tidak berhenti sama sekali, melainkan <strong>hanya bisa tertunda</strong>. Pemberitahuan berwarna merah menandakan sebuah fungsi benar-benar terhalang."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "activity",
+      "spot": "activity",
+      "heading": "Jumlah langkah tidak muncul",
+      "dialog": {
+        "lead": "Menyentuh pemberitahuan merah akan memunculkan <strong>permintaan izin dari Android sendiri</strong>. Cukup izinkan di sana.<br>Namun bila sebelumnya sudah beberapa kali ditolak, Android tidak lagi menampilkan permintaan itu. Saat itu jendela di bawah muncul sebagai gantinya.",
+        "title": "@gs_activity_permission_settings_title",
+        "body": "@gs_activity_permission_settings_body",
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Jumlah langkah anggota keluarga saya tidak muncul. Notifikasi “Hari ini berjalan N langkah” juga tidak pernah datang.",
+          "a": [
+            "Bersama sinyal kabar, Anbu mengirimkan <strong>jumlah langkah hari itu</strong> agar keluarga tahu seberapa banyak bergerak. Jika izin dimatikan di ponsel pengirim, <strong>sinyal kabar tetap sampai, hanya jumlah langkahnya yang hilang.</strong>",
+            "Di ponsel tersebut, buka aplikasi dan periksa di bawah kode keselamatan apakah ada pemberitahuan merah <b>“@gs_activity_permission_denied_warning”</b>. Menyentuhnya akan meminta izin kembali."
+          ]
+        },
+        {
+          "q": "Apakah ada hal lain yang dilihat selain langkah?",
+          "a": [
+            "Hanya jumlah langkah yang dikirim. Kami tidak memeriksa ke mana seseorang pergi maupun aplikasi apa yang digunakan."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "spot": "location",
+      "heading": "Permintaan darurat datang tanpa lokasi",
+      "dialog": {
+        "lead": "Menyentuh pemberitahuan merah akan memunculkan <strong>permintaan izin dari Android sendiri</strong>. Cukup izinkan di sana.<br>Namun bila sebelumnya sudah beberapa kali ditolak, Android tidak lagi menampilkan permintaan itu. Saat itu jendela di bawah muncul sebagai gantinya.",
+        "title": "@location_permission_settings_title",
+        "variants": [
+          { "label": "Android", "body": "@location_permission_settings_body_android" },
+          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+        ],
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Saya menerima permintaan bantuan darurat, tetapi tidak ada tombol [@notifications_view_location] pada notifikasinya.",
+          "a": [
+            "Izin lokasi diperlukan <strong>agar lokasi saat itu ikut terkirim</strong> ketika tombol darurat ditekan. Tanpa izin tersebut, notifikasi darurat tetap sampai ke seluruh keluarga, tetapi keberadaannya tidak disertakan.",
+            "Di ponsel pengirim, buka aplikasi dan periksa di bawah tombol [@subject_home_emergency_button] apakah ada pemberitahuan merah. Menyentuhnya akan meminta izin kembali."
+          ]
+        },
+        {
+          "q": "Apakah lokasi saya dipantau sepanjang waktu?",
+          "a": [
+            "Tidak. Dalam keadaan biasa kami sama sekali tidak mengumpulkan lokasi. Hanya ketika [@subject_home_emergency_button] ditekan, lokasi <strong>pada saat itu diambil satu kali</strong> lalu diteruskan ke keluarga; informasi tersebut dihapus setelah satu hari."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hibernation",
+      "spot": "hibernation",
+      "heading": "Setiap membuka aplikasi muncul jendela",
+      "items": [
+        {
+          "q": "Setiap kali membuka aplikasi, muncul jendela bertuliskan “@permission_hibernation_title”.",
+          "a": [
+            "Android memiliki fitur yang otomatis mencabut izin aplikasi yang lama tidak dibuka. Anbu adalah <strong>aplikasi yang bekerja tanpa perlu membuka layar</strong>, justru karena itu mudah menjadi sasaran; dan bila izinnya hilang, pengiriman kabar berhenti tanpa disadari.",
+            "Sentuh [@permission_hibernation_go_to_settings] dan matikan sekali saja, maka jendela ini tidak akan muncul lagi."
+          ]
+        },
+        {
+          "q": "Muncul setiap kali. Bolehkah saya cukup menyentuh [@common_later]?",
+          "a": [
+            "Selama pengaturan itu belum dimatikan, jendela akan terus muncul setiap kali aplikasi dibuka. Karena berhentinya pengiriman sulit disadari, kami mengingatkan berulang kali."
+          ]
+        },
+        {
+          "q": "Saya juga memantau kabar keluarga, tetapi jendela ini tidak pernah muncul pada saya.",
+          "a": [
+            "Orang yang sekaligus menjaga keluarganya sering membuka aplikasi untuk memeriksa notifikasi, sehingga jarang berada dalam situasi izin dicabut secara otomatis. Karena itu jendela ini tidak ditampilkan kepada Anda."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etc",
+      "spot": null,
+      "heading": "Lainnya",
+      "items": [
+        {
+          "q": "Saya sudah menyentuh pemberitahuannya, tetapi layar pengaturan tidak terbuka dengan benar.",
+          "a": [
+            "Nama dan letak layar pengaturan sedikit berbeda tergantung produsen perangkat. Silakan buka aplikasi Pengaturan, cari <b>Anbu</b>, lalu periksa bagian izin secara langsung."
+          ]
+        }
+      ]
+    }
+  ],
+
+  "footer_home": "Beranda",
+  "footer_privacy": "Kebijakan Privasi",
+  "footer_terms": "Ketentuan Layanan",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

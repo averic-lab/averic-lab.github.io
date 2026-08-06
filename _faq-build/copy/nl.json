@@ -1,0 +1,147 @@
+{
+  "lang_name": "Nederlands",
+  "meta_title": "Als het teken van welzijn niet aankomt — Anbu",
+  "meta_desc": "Wat u kunt nagaan als een teken te laat binnenkomt of stappen en locatie ontbreken.",
+  "page_eyebrow": "Veelgestelde vragen",
+  "page_title": "Als het teken van welzijn niet aankomt",
+  "page_lead": "Soms komt een teken te laat binnen, of ontbreken de stappen en de locatie. Meestal is het opgelost door <strong>op de telefoon van de verzender één toestemming aan te zetten</strong>.",
+  "mockup_caption": "Ter uitleg staan de drie meldingen hier samen op één scherm. In werkelijkheid verschijnen ze één voor één, alleen wanneer ze van toepassing zijn, en verdwijnen ze zodra het is opgelost.",
+  "mockup_hint": "Laat zien waar dit staat",
+  "mockup_hint_close": "Sluiten",
+
+  "spot_all": "Hele scherm",
+  "spot_battery": "Teken komt laat",
+  "spot_activity": "Geen stappen",
+  "spot_location": "Geen locatie",
+  "spot_hibernation": "Venster blijft terugkomen",
+
+  "sections": [
+    {
+      "id": "battery",
+      "spot": "battery",
+      "heading": "Het teken komt te laat aan",
+      "dialog": {
+        "lead": "Op de gele melding tikken opent dit venster meteen.",
+        "title": "@stability_battery_dialog_title",
+        "body": "@stability_battery_dialog_message",
+        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+      },
+      "items": [
+        {
+          "q": "Ik krijg vaak de melding “💗 Welzijnscontrole nodig” op mijn telefoon. Het lijkt of er pas verzonden wordt als ik de app open.",
+          "q2": "Mijn familie kreeg een melding <b>“@notifications_level_caution”</b> met de tekst <b>“@noti_caution_missing_body”</b>",
+          "a": [
+            "Om accu te sparen vertraagt of stopt Android apps die weinig gebruikt worden. Anbu wordt eenmaal per dag op het ingestelde tijdstip even wakker om het teken te versturen; geldt die beperking, dan <strong>wordt dat moment gemist en gebeurt er niets tot de telefoon weer gebruikt wordt.</strong>",
+            "Komt er <strong>twee uur na het ingestelde tijdstip</strong> nog geen teken binnen, dan krijgt de familie bovenstaande melding. Dat kan ook gebeuren terwijl het met de verzender prima gaat en alleen de verzending vertraagd was.",
+            "Open op de telefoon van de verzender de app en kijk bovenaan of daar de gele melding <b>“@stability_battery_warning_short”</b> staat. Tikken brengt u direct naar de instellingen; zodra de beperking eenmaal is opgeheven, verdwijnt de melding."
+          ]
+        },
+        {
+          "q": "Waarom is alleen deze melding geel?",
+          "a": [
+            "Het betekent dat de tekens niet helemaal gestopt zijn, maar <strong>vertraging kunnen oplopen</strong>. Meldingen in rood betekenen dat een functie werkelijk geblokkeerd is."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "activity",
+      "spot": "activity",
+      "heading": "Het aantal stappen wordt niet getoond",
+      "dialog": {
+        "lead": "Op de rode melding tikken roept <strong>het toestemmingsverzoek van Android zelf</strong> op. Daar toestaan is genoeg.<br>Hebt u echter al meerdere keren geweigerd, dan toont Android dat verzoek niet meer. Dan verschijnt in plaats daarvan het venster hieronder.",
+        "title": "@gs_activity_permission_settings_title",
+        "body": "@gs_activity_permission_settings_body",
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "De stappen van mijn familielid worden niet getoond. De melding “Vandaag N stappen gelopen” komt nooit binnen.",
+          "a": [
+            "Samen met het teken stuurt Anbu <strong>het aantal stappen van die dag</strong>, zodat de familie ziet hoeveel er bewogen is. Staat de toestemming uit op de telefoon van de verzender, dan <strong>komt het teken nog steeds aan, maar ontbreken de stappen.</strong>",
+            "Open op die telefoon de app en kijk onder de veiligheidscode of daar de rode melding <b>“@gs_activity_permission_denied_warning”</b> staat. Tikken vraagt de toestemming opnieuw aan."
+          ]
+        },
+        {
+          "q": "Wordt er behalve stappen nog iets bekeken?",
+          "a": [
+            "Alleen het aantal stappen wordt doorgegeven. We kijken niet waar iemand is geweest of welke apps zijn gebruikt."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "spot": "location",
+      "heading": "Het noodverzoek kwam zonder locatie",
+      "dialog": {
+        "lead": "Op de rode melding tikken roept <strong>het toestemmingsverzoek van Android zelf</strong> op. Daar toestaan is genoeg.<br>Hebt u echter al meerdere keren geweigerd, dan toont Android dat verzoek niet meer. Dan verschijnt in plaats daarvan het venster hieronder.",
+        "title": "@location_permission_settings_title",
+        "variants": [
+          { "label": "Android", "body": "@location_permission_settings_body_android" },
+          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+        ],
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Ik kreeg een dringend hulpverzoek, maar er staat geen knop [@notifications_view_location] bij de melding.",
+          "a": [
+            "Locatietoestemming is nodig <strong>om de huidige locatie mee te sturen</strong> wanneer op de noodknop wordt gedrukt. Zonder die toestemming bereikt de noodmelding nog steeds de hele familie, maar gaat de verblijfplaats niet mee.",
+            "Open op de telefoon van de verzender de app en kijk onder de knop [@subject_home_emergency_button] of daar een rode melding staat. Tikken vraagt de toestemming opnieuw aan."
+          ]
+        },
+        {
+          "q": "Wordt mijn locatie voortdurend gevolgd?",
+          "a": [
+            "Nee. In gewone omstandigheden verzamelen we helemaal geen locatie. Alleen bij het indrukken van [@subject_home_emergency_button] wordt <strong>eenmalig de locatie van dat moment</strong> opgehaald en aan de familie doorgegeven; die gegevens worden na een dag gewist."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hibernation",
+      "spot": "hibernation",
+      "heading": "Elke keer dat ik de app open verschijnt een venster",
+      "items": [
+        {
+          "q": "Elke keer dat ik de app open verschijnt een venster met “@permission_hibernation_title”.",
+          "a": [
+            "Android heeft een functie die toestemmingen automatisch intrekt bij apps die lang niet geopend zijn. Anbu is <strong>een app die werkt zonder dat u het scherm opent</strong> — juist daardoor is het een gemakkelijk doelwit, en zonder toestemmingen stopt het versturen ongemerkt.",
+            "Tik op [@permission_hibernation_go_to_settings] en zet het één keer uit; daarna verschijnt dit venster niet meer."
+          ]
+        },
+        {
+          "q": "Het komt elke keer terug. Mag ik gewoon op [@common_later] tikken?",
+          "a": [
+            "Zolang u de instelling niet uitzet, blijft het bij elke opening verschijnen. Omdat een gestopte verzending moeilijk op te merken is, herinneren we u er herhaaldelijk aan."
+          ]
+        },
+        {
+          "q": "Ik houd ook het welzijn van mijn familie in de gaten, maar dit venster zie ik nooit.",
+          "a": [
+            "Wie ook over familieleden waakt, opent de app vaak om meldingen te bekijken en komt daardoor zelden in de situatie dat toestemmingen automatisch worden ingetrokken. Daarom wordt dit venster u niet getoond."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etc",
+      "spot": null,
+      "heading": "Overige",
+      "items": [
+        {
+          "q": "Ik heb op de melding getikt, maar het instellingenscherm opent niet goed.",
+          "a": [
+            "Naam en plaats van het instellingenscherm verschillen iets per fabrikant. Open Instellingen, zoek <b>Anbu</b> op en bekijk het onderdeel toestemmingen rechtstreeks."
+          ]
+        }
+      ]
+    }
+  ],
+
+  "footer_home": "Home",
+  "footer_privacy": "Privacybeleid",
+  "footer_terms": "Gebruiksvoorwaarden",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

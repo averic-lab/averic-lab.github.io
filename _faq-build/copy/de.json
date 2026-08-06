@@ -1,0 +1,147 @@
+{
+  "lang_name": "Deutsch",
+  "meta_title": "Wenn Lebenszeichen nicht ankommen — Anbu",
+  "meta_desc": "Was zu prüfen ist, wenn ein Lebenszeichen zu spät eintrifft oder Schritte und Standort nicht mitkommen.",
+  "page_eyebrow": "Häufige Fragen",
+  "page_title": "Wenn Lebenszeichen nicht ankommen",
+  "page_lead": "Manchmal trifft ein Lebenszeichen zu spät ein, oder Schritte und Standort fehlen. In den meisten Fällen genügt es, <strong>auf dem Telefon der sendenden Person eine Berechtigung zu aktivieren</strong>.",
+  "mockup_caption": "Zur Erklärung sind hier alle drei Hinweise gemeinsam abgebildet. Tatsächlich erscheinen sie einzeln und nur dann, wenn sie zutreffen — und verschwinden, sobald das Problem behoben ist.",
+  "mockup_hint": "Auf dem Bildschirm zeigen",
+  "mockup_hint_close": "Schließen",
+
+  "spot_all": "Ganzer Bildschirm",
+  "spot_battery": "Lebenszeichen verspätet",
+  "spot_activity": "Keine Schritte",
+  "spot_location": "Kein Standort",
+  "spot_hibernation": "Fenster erscheint immer wieder",
+
+  "sections": [
+    {
+      "id": "battery",
+      "spot": "battery",
+      "heading": "Lebenszeichen kommen verspätet an",
+      "dialog": {
+        "lead": "Ein Tippen auf den gelben Hinweis öffnet sofort dieses Fenster.",
+        "title": "@stability_battery_dialog_title",
+        "body": "@stability_battery_dialog_message",
+        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+      },
+      "items": [
+        {
+          "q": "Auf meinem Telefon erscheint oft die Mitteilung „💗 Lebenszeichen erforderlich“. Es wirkt, als würde erst beim Öffnen der App gesendet.",
+          "q2": "Meine Familie hat eine Meldung <b>„@notifications_level_caution“</b> mit dem Text <b>„@noti_caution_missing_body“</b> erhalten.",
+          "a": [
+            "Um Akku zu sparen, verlangsamt oder stoppt Android Apps, die selten genutzt werden. Anbu wacht einmal täglich zur eingestellten Zeit kurz auf, um das Lebenszeichen zu senden. Greift diese Einschränkung, <strong>wird dieser Moment verpasst und es wird erst gesendet, wenn das Telefon wieder benutzt wird.</strong>",
+            "Trifft <strong>zwei Stunden nach der eingestellten Zeit</strong> kein Lebenszeichen ein, erhält die Familie die obige Meldung. Das kann auch passieren, wenn es der sendenden Person gut geht und lediglich die Übertragung verzögert war.",
+            "Öffnen Sie die App auf dem Telefon der sendenden Person und prüfen Sie oben im Bildschirm, ob dort der gelbe Hinweis <b>„@stability_battery_warning_short“</b> steht. Ein Tippen führt direkt zu den Einstellungen; nach einmaligem Aufheben verschwindet der Hinweis."
+          ]
+        },
+        {
+          "q": "Warum ist nur dieser Hinweis gelb?",
+          "a": [
+            "Es bedeutet, dass die Lebenszeichen nicht ganz ausbleiben, sondern <strong>sich lediglich verzögern können</strong>. Rot dargestellte Hinweise bedeuten, dass eine Funktion tatsächlich blockiert ist."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "activity",
+      "spot": "activity",
+      "heading": "Die Schrittzahl wird nicht angezeigt",
+      "dialog": {
+        "lead": "Ein Tippen auf den roten Hinweis öffnet <strong>die Berechtigungsanfrage von Android</strong>. Dort zustimmen genügt.<br>Wurde die Anfrage jedoch bereits mehrmals abgelehnt, zeigt Android sie nicht mehr an. Dann erscheint stattdessen das Fenster unten.",
+        "title": "@gs_activity_permission_settings_title",
+        "body": "@gs_activity_permission_settings_body",
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Die Schrittzahl meines Angehörigen wird nicht angezeigt. Die Mitteilung „Heute N Schritte gegangen“ kommt nicht an.",
+          "a": [
+            "Zusammen mit dem Lebenszeichen sendet Anbu <strong>die Schrittzahl des Tages</strong>, damit die Familie sieht, wie viel Bewegung stattgefunden hat. Ist die Berechtigung auf dem Telefon der sendenden Person deaktiviert, <strong>kommt das Lebenszeichen weiterhin an, nur die Schrittzahl fehlt.</strong>",
+            "Öffnen Sie auf diesem Telefon die App und prüfen Sie unterhalb des Sicherheitscodes, ob dort der rote Hinweis <b>„@gs_activity_permission_denied_warning“</b> steht. Ein Tippen fordert die Berechtigung erneut an."
+          ]
+        },
+        {
+          "q": "Wird außer den Schritten noch etwas erfasst?",
+          "a": [
+            "Es wird ausschließlich die Schrittzahl übermittelt. Wir prüfen weder, wo jemand war, noch welche Apps genutzt wurden."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "spot": "location",
+      "heading": "Zum Notruf fehlt der Standort",
+      "dialog": {
+        "lead": "Ein Tippen auf den roten Hinweis öffnet <strong>die Berechtigungsanfrage von Android</strong>. Dort zustimmen genügt.<br>Wurde die Anfrage jedoch bereits mehrmals abgelehnt, zeigt Android sie nicht mehr an. Dann erscheint stattdessen das Fenster unten.",
+        "title": "@location_permission_settings_title",
+        "variants": [
+          { "label": "Android", "body": "@location_permission_settings_body_android" },
+          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+        ],
+        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+      },
+      "items": [
+        {
+          "q": "Ich habe einen Notruf erhalten, aber die Meldung hat keine Schaltfläche [@notifications_view_location].",
+          "a": [
+            "Damit beim Drücken der Notruftaste <strong>der aktuelle Standort mitgesendet wird</strong>, ist die Standortberechtigung nötig. Ohne sie erreicht der Notruf zwar weiterhin die gesamte Familie, der Aufenthaltsort wird jedoch nicht mitgeschickt.",
+            "Öffnen Sie die App auf dem Telefon der sendenden Person und prüfen Sie unterhalb der Schaltfläche [@subject_home_emergency_button], ob dort ein roter Hinweis steht. Ein Tippen fordert die Berechtigung erneut an."
+          ]
+        },
+        {
+          "q": "Wird mein Standort auch sonst verfolgt?",
+          "a": [
+            "Nein. Im Normalbetrieb erfassen wir überhaupt keinen Standort. Nur beim Drücken von [@subject_home_emergency_button] wird <strong>einmalig der Standort dieses Moments</strong> ermittelt und an die Familie weitergegeben; diese Angabe wird nach einem Tag gelöscht."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hibernation",
+      "spot": "hibernation",
+      "heading": "Bei jedem Öffnen der App erscheint ein Fenster",
+      "items": [
+        {
+          "q": "Jedes Mal, wenn ich die App öffne, erscheint das Fenster „@permission_hibernation_title“.",
+          "a": [
+            "Android entzieht Apps, die lange nicht geöffnet wurden, automatisch die Berechtigungen. Anbu ist <strong>eine App, die auch ohne Öffnen des Bildschirms arbeitet</strong> — gerade deshalb ist sie davon leicht betroffen, und ohne Berechtigungen enden die Lebenszeichen unbemerkt.",
+            "Tippen Sie auf [@permission_hibernation_go_to_settings] und schalten Sie es einmal ab; danach erscheint dieses Fenster nicht mehr."
+          ]
+        },
+        {
+          "q": "Es erscheint jedes Mal. Kann ich einfach [@common_later] antippen?",
+          "a": [
+            "Bis Sie die Einstellung abschalten, erscheint es bei jedem Öffnen der App weiterhin. Da ein ausgebliebenes Lebenszeichen schwer zu bemerken ist, weisen wir wiederholt darauf hin."
+          ]
+        },
+        {
+          "q": "Ich behalte auch die Lebenszeichen meiner Familie im Blick, sehe dieses Fenster aber nie.",
+          "a": [
+            "Wer zugleich über Angehörige wacht, öffnet die App häufig, um Meldungen zu prüfen, und gerät daher selten in die Lage, dass Berechtigungen automatisch entzogen werden. Deshalb wird Ihnen dieses Fenster nicht angezeigt."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etc",
+      "spot": null,
+      "heading": "Sonstiges",
+      "items": [
+        {
+          "q": "Ich habe den Hinweis angetippt, aber die Einstellungen öffnen sich nicht richtig.",
+          "a": [
+            "Name und Ort des Einstellungsbildschirms unterscheiden sich je nach Hersteller etwas. Öffnen Sie bitte die Einstellungen, suchen Sie <b>Anbu</b> und prüfen Sie den Bereich Berechtigungen direkt."
+          ]
+        }
+      ]
+    }
+  ],
+
+  "footer_home": "Startseite",
+  "footer_privacy": "Datenschutzerklärung",
+  "footer_terms": "Nutzungsbedingungen",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}
