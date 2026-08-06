@@ -69,7 +69,8 @@
   "footer_addr_value": "韩国首尔市江东区<br>高德路47号 3楼 301-352号<br>Republic of Korea",
   "footer_copyright": "© 2026 Averic Lab. 保留所有权利。",
   "footer_privacy": "隐私政策",
-  "footer_terms": "服务条款"
+  "footer_terms": "服务条款",
+  "nav_faq": "常见问题"
  },
  "fr": {
   "title": "Anbu — Vous n'êtes jamais seul · Averic Lab",
@@ -141,7 +142,8 @@
   "footer_addr_value": "3F, 301-352ho, 47, Godeok-ro,<br>Gangdong-gu, Séoul,<br>République de Corée",
   "footer_copyright": "© 2026 Averic Lab. Tous droits réservés.",
   "footer_privacy": "Politique de confidentialité",
-  "footer_terms": "Conditions d'utilisation"
+  "footer_terms": "Conditions d'utilisation",
+  "nav_faq": "FAQ"
  },
  "de": {
   "title": "Anbu — Du bist nie allein · Averic Lab",
@@ -213,7 +215,8 @@
   "footer_addr_value": "3F, 301-352ho, 47, Godeok-ro,<br>Gangdong-gu, Seoul,<br>Südkorea",
   "footer_copyright": "© 2026 Averic Lab. Alle Rechte vorbehalten.",
   "footer_privacy": "Datenschutzerklärung",
-  "footer_terms": "Nutzungsbedingungen"
+  "footer_terms": "Nutzungsbedingungen",
+  "nav_faq": "FAQ"
  },
  "pl": {
   "title": "Anbu — Nigdy nie jesteś sam · Averic Lab",
@@ -285,7 +288,8 @@
   "footer_addr_value": "3F, 301-352ho, 47, Godeok-ro,<br>Gangdong-gu, Seul,<br>Korea Południowa",
   "footer_copyright": "© 2026 Averic Lab. Wszelkie prawa zastrzeżone.",
   "footer_privacy": "Polityka prywatności",
-  "footer_terms": "Warunki korzystania z usługi"
+  "footer_terms": "Warunki korzystania z usługi",
+  "nav_faq": "FAQ"
  },
  "zh-TW": {
   "title": "Anbu — 你從不孤單 · Averic Lab",
@@ -357,7 +361,8 @@
   "footer_addr_value": "47, Godeok-ro, 301-352ho, 3F,<br>Gangdong-gu, 首爾,<br>韓國",
   "footer_copyright": "© 2026 Averic Lab. 版權所有。",
   "footer_privacy": "隱私政策",
-  "footer_terms": "服務條款"
+  "footer_terms": "服務條款",
+  "nav_faq": "常見問題"
  },
  "es": {
   "title": "Anbu — Nunca estás solo · Averic Lab",
@@ -429,7 +434,8 @@
   "footer_addr_value": "3F, 301-352ho, 47, Godeok-ro,<br>Gangdong-gu, Seúl,<br>República de Corea",
   "footer_copyright": "© 2026 Averic Lab. Todos los derechos reservados.",
   "footer_privacy": "Política de privacidad",
-  "footer_terms": "Condiciones de uso"
+  "footer_terms": "Condiciones de uso",
+  "nav_faq": "FAQ"
  },
  "ja": {
   "title": "Anbu — あなたはひとりじゃない · Averic Lab",
@@ -501,7 +507,8 @@
   "footer_addr_value": "3F, 301-352号, 47, Godeok-ro,<br>Gangdong-gu, Seoul,<br>大韓民国",
   "footer_copyright": "© 2026 Averic Lab. All rights reserved.",
   "footer_privacy": "プライバシーポリシー",
-  "footer_terms": "利用規約"
+  "footer_terms": "利用規約",
+  "nav_faq": "よくある質問"
  },
  "nl": {
   "title": "Anbu — Je bent nooit alleen · Averic Lab",
@@ -573,7 +580,8 @@
   "footer_addr_value": "3F, 301-352ho, 47, Godeok-ro,<br>Gangdong-gu, Seoul,<br>Zuid-Korea",
   "footer_copyright": "© 2026 Averic Lab. Alle rechten voorbehouden.",
   "footer_privacy": "Privacybeleid",
-  "footer_terms": "Algemene voorwaarden"
+  "footer_terms": "Algemene voorwaarden",
+  "nav_faq": "FAQ"
  },
  "it": {
   "title": "Anbu — Non sei mai solo · Averic Lab",
@@ -645,7 +653,8 @@
   "footer_addr_value": "3F, 301-352ho, 47, Godeok-ro,<br>Gangdong-gu, Seoul,<br>Repubblica di Corea",
   "footer_copyright": "© 2026 Averic Lab. Tutti i diritti riservati.",
   "footer_privacy": "Informativa sulla Privacy",
-  "footer_terms": "Termini di Servizio"
+  "footer_terms": "Termini di Servizio",
+  "nav_faq": "FAQ"
  },
  "pt-BR": {
   "title": "Anbu — Você nunca está sozinho · Averic Lab",
@@ -717,7 +726,8 @@
   "footer_addr_value": "3F, 301-352ho, 47, Godeok-ro,<br>Gangdong-gu, Seul,<br>República da Coreia",
   "footer_copyright": "© 2026 Averic Lab. Todos os direitos reservados.",
   "footer_privacy": "Política de Privacidade",
-  "footer_terms": "Termos de Serviço"
+  "footer_terms": "Termos de Serviço",
+  "nav_faq": "FAQ"
  },
  "tr": {
   "title": "Anbu — Hiçbir zaman yalnız değilsin · Averic Lab",
@@ -789,7 +799,8 @@
   "footer_addr_value": "3F, 301-352ho, 47, Godeok-ro,<br>Gangdong-gu, Seul,<br>Kore Cumhuriyeti",
   "footer_copyright": "© 2026 Averic Lab. Tüm hakları saklıdır.",
   "footer_privacy": "Gizlilik Politikası",
-  "footer_terms": "Kullanım Koşulları"
+  "footer_terms": "Kullanım Koşulları",
+  "nav_faq": "SSS"
  },
  "ru": {
   "title": "Anbu — Ты никогда не одинок · Averic Lab",
@@ -861,7 +872,8 @@
   "footer_addr_value": "3F, 301-352ho, 47, Godeok-ro,<br>Gangdong-gu, Seoul,<br>Republic of Korea",
   "footer_copyright": "© 2026 Averic Lab. Все права защищены.",
   "footer_privacy": "Политика конфиденциальности",
-  "footer_terms": "Условия использования"
+  "footer_terms": "Условия использования",
+  "nav_faq": "Вопросы"
  },
  "hi": {
   "title": "Anbu — आप कभी अकेले नहीं · Averic Lab",
@@ -933,7 +945,8 @@
   "footer_addr_value": "3F, 301-352ho, 47, Godeok-ro,<br>Gangdong-gu, Seoul,<br>Republic of Korea",
   "footer_copyright": "© 2026 Averic Lab. सर्वाधिकार सुरक्षित।",
   "footer_privacy": "गोपनीयता नीति",
-  "footer_terms": "सेवा की शर्तें"
+  "footer_terms": "सेवा की शर्तें",
+  "nav_faq": "सामान्य प्रश्न"
  },
  "vi": {
   "title": "Anbu — Bạn không bao giờ đơn độc · Averic Lab",
@@ -1005,7 +1018,8 @@
   "footer_addr_value": "Tầng 3, phòng 301-352, số 47, đường Godeok,<br>quận Gangdong, Seoul,<br>Hàn Quốc",
   "footer_copyright": "© 2026 Averic Lab. Bảo lưu mọi quyền.",
   "footer_privacy": "Chính sách quyền riêng tư",
-  "footer_terms": "Điều khoản dịch vụ"
+  "footer_terms": "Điều khoản dịch vụ",
+  "nav_faq": "Hỏi đáp"
  },
  "id": {
   "title": "Anbu — Kamu tidak pernah sendiri · Averic Lab",
@@ -1077,7 +1091,8 @@
   "footer_addr_value": "3F, 301-352ho, 47, Godeok-ro,<br>Gangdong-gu, Seoul,<br>Republik Korea",
   "footer_copyright": "© 2026 Averic Lab. Semua hak dilindungi.",
   "footer_privacy": "Kebijakan Privasi",
-  "footer_terms": "Ketentuan Layanan"
+  "footer_terms": "Ketentuan Layanan",
+  "nav_faq": "FAQ"
  },
  "th": {
   "title": "Anbu — คุณไม่เคยอยู่คนเดียว · Averic Lab",
@@ -1149,7 +1164,8 @@
   "footer_addr_value": "3F, 301-352ho, 47, Godeok-ro,<br>Gangdong-gu, Seoul,<br>Republic of Korea",
   "footer_copyright": "© 2026 Averic Lab. สงวนลิขสิทธิ์ทุกประการ",
   "footer_privacy": "นโยบายความเป็นส่วนตัว",
-  "footer_terms": "ข้อกำหนดการใช้งาน"
+  "footer_terms": "ข้อกำหนดการใช้งาน",
+  "nav_faq": "คำถามที่พบบ่อย"
  },
  "sv": {
   "title": "Anbu — Du är aldrig ensam · Averic Lab",
@@ -1221,7 +1237,8 @@
   "footer_addr_value": "3F, 301-352ho, 47, Godeok-ro,<br>Gangdong-gu, Seoul,<br>Republic of Korea",
   "footer_copyright": "© 2026 Averic Lab. Med ensamrätt.",
   "footer_privacy": "Integritetspolicy",
-  "footer_terms": "Användarvillkor"
+  "footer_terms": "Användarvillkor",
+  "nav_faq": "Frågor"
  },
  "ar": {
   "title": "Anbu — لستَ وحدك أبدًا · Averic Lab",
@@ -1293,6 +1310,7 @@
   "footer_addr_value": "الطابق الثالث، غرفة 301-352، رقم 47، طريق Godeok،<br>Gangdong-gu، سيول،<br>جمهورية كوريا",
   "footer_copyright": "© 2026 Averic Lab. جميع الحقوق محفوظة.",
   "footer_privacy": "سياسة الخصوصية",
-  "footer_terms": "شروط الخدمة"
+  "footer_terms": "شروط الخدمة",
+  "nav_faq": "الأسئلة الشائعة"
  }
 }
