@@ -62,8 +62,17 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 .whose .dot{width:9px;height:9px;border-radius:50%;background:var(--teal);flex:none}
 .whose.family .dot{background:var(--pink-deep)}
 
+/* 플랫폼 전환 (확인 창 단계에서만 의미가 있다) */
+.pf{display:flex;gap:5px;margin-top:12px;visibility:hidden}
+.pf.on{visibility:visible}
+.pf-tab{font:inherit;font-size:12.5px;padding:5px 12px;border:1px solid var(--line);
+  border-radius:999px;background:var(--paper);color:var(--ink-mute);cursor:pointer}
+.pf-tab[aria-pressed="true"]{background:var(--ink);color:var(--paper);
+  border-color:var(--ink);font-weight:600}
+.pf-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
 /* 재생 컨트롤 */
-.ctrl{display:flex;align-items:center;gap:8px;margin-top:14px}
+.ctrl{display:flex;align-items:center;gap:8px;margin-top:12px}
 .ctrl button{font:inherit;font-size:13px;font-weight:600;color:var(--ink-soft);
   background:var(--paper);border:1px solid var(--line);border-radius:999px;
   padding:7px 13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
@@ -292,6 +301,14 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
   line-height:1.43;color:#1A1C1C;box-shadow:0 4px 16px rgba(0,0,0,.18);z-index:6}
 .snack[hidden]{display:none}
 
+/* iOS 확인 창의 주황 경고 카드 — 배경 #FFF3E0, 왼쪽 보더 #E65100 4px,
+   제목 bodyLarge 16/w700, 본문 bodyMedium 14 (_showEnableConfirmIOS) */
+.ios-warn{margin-top:16px;padding:12px;background:#FFF3E0;border-radius:12px;
+  border-left:4px solid #E65100}
+.ios-warn .t{margin:0;font-size:16px;font-weight:700;line-height:1.5;color:#E65100}
+.ios-warn .b{margin:8px 0 0;font-size:14px;line-height:1.43;color:#3F4948}
+[dir="rtl"] .ios-warn{border-left:0;border-right:4px solid #E65100}
+
 [dir="rtl"] .fld .caret{margin-left:0;margin-right:1px}
 [dir="rtl"] .terms .lnk,[dir="rtl"] .row-card{flex-direction:row-reverse}
 [dir="rtl"] .terms .head,[dir="rtl"] .sub-top,[dir="rtl"] .fld-info{
@@ -493,9 +510,11 @@ footer .copy{margin-left:auto}
 
         </div>
 
-        <!-- 안전 코드 생성 확인 다이얼로그 (Android 경로) -->
+        <!-- 안전 코드 생성 확인 다이얼로그. iOS는 주황 경고 카드가 더 붙고 확인
+             버튼 문구도 다르다 (_showEnableConfirm / _showEnableConfirmIOS).
+             iOS에서는 이 기능이 대상자 기능의 유일한 경로라 경고를 생략할 수 없다. -->
         <div class="modal" id="modal" hidden>
-          <div class="dlg">
+          <div class="dlg" data-pf="and">
             <p class="dlg-title" data-key="gs_enable_dialog_title"></p>
             <div class="dlg-body"><p data-key="gs_enable_dialog_body"></p></div>
             <div class="dlg-actions">
@@ -505,10 +524,31 @@ footer .copy{margin-left:auto}
                 style="color:#4355B9;font-weight:700" data-key="gs_enable_confirm"></button>
             </div>
           </div>
+          <div class="dlg" data-pf="ios" hidden>
+            <p class="dlg-title" data-key="gs_enable_dialog_title"></p>
+            <div class="dlg-body"><p data-key="gs_enable_dialog_body"></p></div>
+            <div class="ios-warn">
+              <p class="t" data-key="gs_enable_dialog_ios_warning_title"></p>
+              <p class="b" data-key="gs_enable_dialog_ios_warning_body"></p>
+            </div>
+            <div class="dlg-actions">
+              <button class="dlg-btn" type="button" tabindex="-1" disabled
+                style="color:#3F4948" data-key="common_cancel"></button>
+              <button class="dlg-btn" type="button" tabindex="-1" disabled
+                style="color:#E65100;font-weight:700" data-key="gs_enable_dialog_ios_confirm"></button>
+            </div>
+          </div>
         </div>
 
         <!-- 코드 복사 스낵바 -->
         <div class="snack" id="snack" hidden data-key="subject_home_code_copied"></div>
+      </div>
+
+      <!-- 확인 창이 플랫폼별로 다른 단계에서만 쓰인다. 자리는 늘 잡아 둬(visibility)
+           단계를 넘길 때 아래 컨트롤이 튀지 않게 한다. -->
+      <div class="pf" id="pf">
+        <button class="pf-tab" type="button" data-pf="and" aria-pressed="true">Android</button>
+        <button class="pf-tab" type="button" data-pf="ios" aria-pressed="false">iPhone</button>
       </div>
 
       <div class="ctrl">
@@ -528,7 +568,7 @@ footer .copy{margin-left:auto}
 
     <main>
       <ol class="steps" id="steps"><li><button class="step" type="button"><span class="n">1</span><span><span class="h">설정에서 [내 안전 코드 생성]을 누릅니다</span><span class="d">보호자 화면 아래 <b>설정</b> 탭으로 들어가면 맨 위에 있습니다. 가족을 지켜보기만 하던 상태에서, <b>내 안부도 함께 전하는</b> 상태로 바뀝니다.</span></span></button></li>
-<li><button class="step" type="button"><span class="n">2</span><span><span class="h">확인 창에서 [생성]을 누릅니다</span><span class="d">활성화하면 안전 코드가 발급됩니다. 다른 보호자에게 내 "안전 코드"를 알려주세요.</span></span></button></li>
+<li><button class="step" type="button"><span class="n">2</span><span><span class="h">확인 창에서 활성화를 누릅니다</span><span class="d">활성화하면 안전 코드가 발급됩니다. 다른 보호자에게 내 "안전 코드"를 알려주세요.<br><b>iPhone은 안내가 하나 더 붙습니다</b> — 정해진 시각에 오는 알림을 탭하거나 직접 앱을 열어야 안부가 전송됩니다. 화면 아래 [iPhone]을 눌러 비교해 보세요.</span></span></button></li>
 <li><button class="step" type="button"><span class="n">3</span><span><span class="h">안전 코드가 만들어집니다</span><span class="d">비어 있던 자리에 <b>7자리 코드</b>가 채워집니다. 이 코드는 기기마다 하나씩 발급되며, 앱을 지웠다 다시 깔아도 같은 코드가 돌아옵니다.</span></span></button></li>
 <li><button class="step" type="button"><span class="n">4</span><span><span class="h">코드를 복사하거나 공유해 가족에게 알려줍니다</span><span class="d">왼쪽 단추는 복사, 오른쪽 단추는 공유입니다. 복사하면 <b>코드가 복사되었습니다</b>라고 안내가 뜹니다. 문자·메신저로 보내도 되고, 7자리라 전화로 불러 줘도 됩니다.</span></span></button></li>
 <li><button class="step" type="button"><span class="n">5</span><span><span class="h">여기서부터는 가족의 폰입니다</span><span class="d">코드를 받은 가족이 자기 앱에서 <b>연결</b> 탭을 열고 [<b>새로운 보호 대상자 추가</b>]를 누르면 이 화면이 나옵니다. 아래 세 칸을 채우면 됩니다.</span></span></button></li>
@@ -551,7 +591,7 @@ footer .copy{margin-left:auto}
 
 <script>
 // 앱 번역 파일에서 추출한 실제 문구 (extract_strings.py)
-var S = {"stability_battery_warning_short": "배터리 사용 제한 해제가 필요해요", "gs_activity_permission_denied_warning": "걸음수 권한이 거부되어 있습니다. 여기를 눌러 허용해 주세요.", "location_permission_warning": "긴급 요청 시 위치가 전달되지 않습니다. 탭하여 허용.", "permission_hibernation_title": "자동 권한 해제를 꺼주세요", "permission_hibernation_highlight": "자동 권한 해제", "permission_hibernation_message": "Android는 오랫동안 사용하지 않은 앱의 권한을 자동으로 해제합니다. 안부 확인 앱은 평소에 화면을 열지 않는 경우가 많아, 이 기능이 켜져 있으면 시간이 지난 뒤 권한이 사라져 안부 신호 전송이 중단될 수 있습니다.\n\n아래 [설정 열기]를 누르면 해당 토글 화면이 바로 나타납니다. 토글을 꺼주세요.\n\n※ 기기 제조사에 따라 화면 표기는 조금씩 다를 수 있습니다.", "permission_hibernation_go_to_settings": "설정 열기", "common_later": "나중에", "app_name": "안부", "subject_home_share_title": "나의 안전 코드를 공유해 주세요", "subject_home_check_title_last": "마지막 안부 확인", "subject_home_check_body_reported": "@time 정상 보고됨", "heartbeat_schedule_change": "안부 시간 변경", "heartbeat_daily_time": "매일 @time", "subject_home_report_button": "지금 바로 안전 보고하기", "subject_home_report_desc": "보호자에게 걱정 말라고 알려주세요", "subject_home_emergency_button": "도움이 필요해요", "subject_home_emergency_desc": "보호자에게 긴급 상황을 알립니다", "notifications_level_caution": "주의", "noti_caution_missing_body": "오늘 예정된 안부 확인이 아직 없습니다. 직접 확인해 주세요.", "notifications_view_location": "🗺️ 위치 보기", "stability_battery_dialog_title": "배터리 사용 제한 해제", "stability_battery_dialog_message": "폰이 절전 모드에 들어가면 보호자에게 안부 신호가 늦게 도착하거나 누락될 수 있습니다.\n\n아래 [설정 열기]를 누르신 뒤, '배터리' → '제한 없음'으로 설정해 주세요. 매일 정확한 시각에 안부가 안정적으로 전달됩니다.\n\n※ 기기 제조사에 따라 표기는 조금씩 다를 수 있습니다.", "gs_activity_permission_settings_title": "권한 설정 필요", "gs_activity_permission_settings_body": "앱 설정에서 신체 활동(피트니스) 권한을 허용해 주세요.", "gs_activity_permission_settings_go": "설정으로 이동", "location_permission_settings_title": "위치 권한 설정 필요", "location_permission_settings_body_android": "'권한' → '위치' 순서로 선택한 뒤 '앱 사용 중에만 허용'을 선택해 주세요.", "location_permission_settings_body_ios": "'안부'를 찾아 선택한 뒤, '위치' 항목에서 '앱을 사용하는 동안'을 선택해 주세요.", "common_cancel": "취소", "settings_title": "설정", "gs_enable_button": "내 안전 코드 생성", "gs_enable_button_desc": "내 안부도 가족이 확인할 수 있어요", "settings_subscription_service": "구독 및 서비스", "settings_current_membership": "현재 멤버십", "settings_free_trial": "무료 체험 중", "subscription_subscribe": "구독하기", "subscription_restore": "구독 복원", "settings_notification": "알림 설정", "settings_terms_section": "약관", "settings_privacy_policy": "개인정보처리방침", "settings_terms": "이용약관", "gs_enable_dialog_title": "내 안전 코드 생성", "gs_enable_dialog_body": "활성화하면 안전 코드가 발급됩니다. 다른 보호자에게 내 \"안전 코드\"를 알려주세요.", "gs_enable_confirm": "생성", "subject_home_code_copied": "코드가 복사되었습니다", "add_subject_title": "보호 대상자 연결", "add_subject_button": "새로운 보호 대상자 추가", "add_subject_guide_title": "연결할 보호 대상자의 고유 코드와 별칭을 입력해주세요.", "add_subject_guide_subtitle": "보호 대상자의 앱을 연결하여 실시간 건강 상태 및 활동을 확인할 수 있습니다.", "add_subject_code_label": "고유 코드 (7자리)", "add_subject_code_info": "고유 코드는 보호 대상자 앱에서 확인할 수 있습니다.", "add_subject_alias_label": "보호 대상자 별칭", "add_subject_alias_hint": "예: 어머니, 아버지", "add_subject_phone_label": "연락처", "add_subject_phone_hint": "01012345678", "add_subject_phone_info": "필수 입력 사항이 아니며, 입력한 연락처는 외부에 저장되지 않고 이 기기에만 보관됩니다.", "add_subject_connect": "연결하기", "nav_home": "홈", "nav_connection": "연결", "nav_notification": "알림", "nav_settings": "설정"};
+var S = {"stability_battery_warning_short": "배터리 사용 제한 해제가 필요해요", "gs_activity_permission_denied_warning": "걸음수 권한이 거부되어 있습니다. 여기를 눌러 허용해 주세요.", "location_permission_warning": "긴급 요청 시 위치가 전달되지 않습니다. 탭하여 허용.", "permission_hibernation_title": "자동 권한 해제를 꺼주세요", "permission_hibernation_highlight": "자동 권한 해제", "permission_hibernation_message": "Android는 오랫동안 사용하지 않은 앱의 권한을 자동으로 해제합니다. 안부 확인 앱은 평소에 화면을 열지 않는 경우가 많아, 이 기능이 켜져 있으면 시간이 지난 뒤 권한이 사라져 안부 신호 전송이 중단될 수 있습니다.\n\n아래 [설정 열기]를 누르면 해당 토글 화면이 바로 나타납니다. 토글을 꺼주세요.\n\n※ 기기 제조사에 따라 화면 표기는 조금씩 다를 수 있습니다.", "permission_hibernation_go_to_settings": "설정 열기", "common_later": "나중에", "app_name": "안부", "subject_home_share_title": "나의 안전 코드를 공유해 주세요", "subject_home_check_title_last": "마지막 안부 확인", "subject_home_check_body_reported": "@time 정상 보고됨", "heartbeat_schedule_change": "안부 시간 변경", "heartbeat_daily_time": "매일 @time", "subject_home_report_button": "지금 바로 안전 보고하기", "subject_home_report_desc": "보호자에게 걱정 말라고 알려주세요", "subject_home_emergency_button": "도움이 필요해요", "subject_home_emergency_desc": "보호자에게 긴급 상황을 알립니다", "notifications_level_caution": "주의", "noti_caution_missing_body": "오늘 예정된 안부 확인이 아직 없습니다. 직접 확인해 주세요.", "notifications_view_location": "🗺️ 위치 보기", "stability_battery_dialog_title": "배터리 사용 제한 해제", "stability_battery_dialog_message": "폰이 절전 모드에 들어가면 보호자에게 안부 신호가 늦게 도착하거나 누락될 수 있습니다.\n\n아래 [설정 열기]를 누르신 뒤, '배터리' → '제한 없음'으로 설정해 주세요. 매일 정확한 시각에 안부가 안정적으로 전달됩니다.\n\n※ 기기 제조사에 따라 표기는 조금씩 다를 수 있습니다.", "gs_activity_permission_settings_title": "권한 설정 필요", "gs_activity_permission_settings_body": "앱 설정에서 신체 활동(피트니스) 권한을 허용해 주세요.", "gs_activity_permission_settings_go": "설정으로 이동", "location_permission_settings_title": "위치 권한 설정 필요", "location_permission_settings_body_android": "'권한' → '위치' 순서로 선택한 뒤 '앱 사용 중에만 허용'을 선택해 주세요.", "location_permission_settings_body_ios": "'안부'를 찾아 선택한 뒤, '위치' 항목에서 '앱을 사용하는 동안'을 선택해 주세요.", "common_cancel": "취소", "settings_title": "설정", "gs_enable_button": "내 안전 코드 생성", "gs_enable_button_desc": "내 안부도 가족이 확인할 수 있어요", "settings_subscription_service": "구독 및 서비스", "settings_current_membership": "현재 멤버십", "settings_free_trial": "무료 체험 중", "subscription_subscribe": "구독하기", "subscription_restore": "구독 복원", "settings_notification": "알림 설정", "settings_terms_section": "약관", "settings_privacy_policy": "개인정보처리방침", "settings_terms": "이용약관", "gs_enable_dialog_title": "내 안전 코드 생성", "gs_enable_dialog_body": "활성화하면 안전 코드가 발급됩니다. 다른 보호자에게 내 \"안전 코드\"를 알려주세요.", "gs_enable_confirm": "생성", "gs_enable_dialog_ios_warning_title": "⚠ 안부 전송 방식 안내", "gs_enable_dialog_ios_warning_body": "매일 정해진 시각에 \"안부 푸시 알림\"이 표시됩니다. 알림을 탭하거나 알림 전후로 직접 앱을 열어야 안부가 전송됩니다. 앱을 열지 않으면 보호자에게 미수신 경고가 발생할 수 있습니다.", "gs_enable_dialog_ios_confirm": "이해했습니다, 활성화", "subject_home_code_copied": "코드가 복사되었습니다", "add_subject_title": "보호 대상자 연결", "add_subject_button": "새로운 보호 대상자 추가", "add_subject_guide_title": "연결할 보호 대상자의 고유 코드와 별칭을 입력해주세요.", "add_subject_guide_subtitle": "보호 대상자의 앱을 연결하여 실시간 건강 상태 및 활동을 확인할 수 있습니다.", "add_subject_code_label": "고유 코드 (7자리)", "add_subject_code_info": "고유 코드는 보호 대상자 앱에서 확인할 수 있습니다.", "add_subject_alias_label": "보호 대상자 별칭", "add_subject_alias_hint": "예: 어머니, 아버지", "add_subject_phone_label": "연락처", "add_subject_phone_hint": "01012345678", "add_subject_phone_info": "필수 입력 사항이 아니며, 입력한 연락처는 외부에 저장되지 않고 이 기기에만 보관됩니다.", "add_subject_connect": "연결하기", "nav_home": "홈", "nav_connection": "연결", "nav_notification": "알림", "nav_settings": "설정"};
 var WHO = ["내 폰 — 코드를 만드는 쪽", "가족의 폰 — 나를 지켜보는 쪽"];          // 어느 폰인지 라벨 2개
 var DEMO = {"code": "K7M-4PXR", "alias": "어머니", "phone": "010-1234-5678"};        // 목업에 채워 넣는 예시값 (코드·별칭·연락처)
 
@@ -559,8 +599,15 @@ document.querySelectorAll('[data-key]').forEach(function(el){
   el.textContent = S[el.dataset.key] || '';
 });
 // @time 자리표시자는 템플릿이 채운다 (extract_strings.py의 PLACEHOLDER_OK)
-document.querySelector('[data-check-title]').textContent =
-  S.subject_home_check_title_last + ' : 2026-08-05';
+// 날짜는 **오늘**이어야 한다 — 이 화면은 안전 코드를 방금 만든 직후에 나오고,
+// enableSubjectFeature()가 그때 첫 안부를 바로 보내므로 어제 날짜면 사실과 다르다.
+// 고정값으로 박으면 시간이 지나 저절로 틀려지기도 한다.
+(function(){
+  var d = new Date(), p = function(n){ return (n < 10 ? '0' : '') + n; };
+  var today = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+  document.querySelector('[data-check-title]').textContent =
+    S.subject_home_check_title_last + ' : ' + today;
+})();
 document.querySelector('[data-check-body]').textContent =
   S.subject_home_check_body_reported.replace('@time','18:00');
 document.querySelector('[data-daily-time]').textContent =
@@ -589,7 +636,7 @@ var FILLS = [
   {el:'fld-phone', val:function(){ return DEMO.phone; }}
 ];
 
-var idx = 0, timer = null, typer = null, playing = !reduce.matches;
+var idx = 0, timer = null, typer = null, playing = !reduce.matches, platform = 'and';
 var stepBtns = Array.prototype.slice.call(document.querySelectorAll('.step'));
 
 function setField(i, text, caret){
@@ -619,6 +666,10 @@ function render(i){
   $('whose').querySelector('.who-txt').textContent = WHO[s.who];
 
   $('modal').hidden = !s.dialog;
+  $('pf').classList.toggle('on', !!s.dialog);
+  document.querySelectorAll('.modal .dlg').forEach(function(d){
+    d.hidden = d.dataset.pf !== platform;
+  });
   $('snack').hidden = !s.snack;
   $('code').textContent = s.code ? DEMO.code : '---  ----';
   $('code').style.color = s.code ? '#fff' : 'rgba(255,255,255,.35)';
@@ -681,6 +732,17 @@ function schedule(){
 }
 
 function stop(){ playing = false; clearTimeout(timer); }
+
+$('pf').addEventListener('click', function(e){
+  var t = e.target.closest('.pf-tab');
+  if (!t) return;
+  platform = t.dataset.pf;
+  $('pf').querySelectorAll('.pf-tab').forEach(function(x){
+    x.setAttribute('aria-pressed', String(x === t));
+  });
+  stop();          // 창을 비교해 보는 중이니 자동으로 넘어가지 않는다
+  render(idx);
+});
 
 $('prev').addEventListener('click', function(){ go(idx - 1, true); });
 $('next').addEventListener('click', function(){ go(idx + 1, true); });

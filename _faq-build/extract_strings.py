@@ -91,6 +91,12 @@ KEYS = [
     "gs_enable_dialog_title",
     "gs_enable_dialog_body",
     "gs_enable_confirm",
+    # iOS는 확인 창에 주황 경고 카드가 더 붙고 확인 버튼 문구도 다르다
+    # (_showEnableConfirmIOS). iOS에서는 G+S가 대상자 기능의 유일한 경로라
+    # 이 경고를 빼면 정작 필요한 사람에게 설명이 닿지 않는다.
+    "gs_enable_dialog_ios_warning_title",
+    "gs_enable_dialog_ios_warning_body",
+    "gs_enable_dialog_ios_confirm",
     # 코드 복사 시 뜨는 스낵바
     "subject_home_code_copied",
     # 보호 대상자 연결 화면

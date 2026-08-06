@@ -89,6 +89,14 @@
   line-height:1.43;color:#1A1C1C;box-shadow:0 4px 16px rgba(0,0,0,.18);z-index:6}
 .snack[hidden]{display:none}
 
+/* iOS 확인 창의 주황 경고 카드 — 배경 #FFF3E0, 왼쪽 보더 #E65100 4px,
+   제목 bodyLarge 16/w700, 본문 bodyMedium 14 (_showEnableConfirmIOS) */
+.ios-warn{margin-top:16px;padding:12px;background:#FFF3E0;border-radius:12px;
+  border-left:4px solid #E65100}
+.ios-warn .t{margin:0;font-size:16px;font-weight:700;line-height:1.5;color:#E65100}
+.ios-warn .b{margin:8px 0 0;font-size:14px;line-height:1.43;color:#3F4948}
+[dir="rtl"] .ios-warn{border-left:0;border-right:4px solid #E65100}
+
 [dir="rtl"] .fld .caret{margin-left:0;margin-right:1px}
 [dir="rtl"] .terms .lnk,[dir="rtl"] .row-card{flex-direction:row-reverse}
 [dir="rtl"] .terms .head,[dir="rtl"] .sub-top,[dir="rtl"] .fld-info{
