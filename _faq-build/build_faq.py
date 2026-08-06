@@ -66,23 +66,94 @@ def head_links(active, available):
     return "\n  ".join(lines)
 
 
-def render_sections(copy):
+def interpolate(text, app):
+    """카피 안의 @키를 앱 실제 문구로 치환한다.
+
+    앱이 실제로 보여주는 알림·버튼 문구를 카피에서 인용할 때 쓴다. 번역가가
+    인용문까지 옮기면 앱 화면과 어긋나므로, 인용은 추출된 문구를 그대로 쓴다.
+    긴 키부터 치환해야 `@noti_caution_missing_body`가 `@noti_caution`으로
+    잘못 잡히지 않는다.
+    """
+    for key in sorted(app, key=len, reverse=True):
+        text = text.replace("@" + key, app[key])
+    return text
+
+
+def render_dialog(sec, copy, app):
+    """경고를 탭했을 때 실제로 뜨는 다이얼로그를 앱 모양 그대로 렌더한다.
+
+    문구만 나열하지 않고 앱과 같은 카드(흰 배경·radius 16·제목 18/w700·본문 14·
+    우측 정렬 텍스트 버튼)로 그려, 사용자가 폰에서 본 것과 대조할 수 있게 한다.
+    본문의 \\n\\n은 문단으로 나눈다 — 앱 AlertDialog도 그렇게 보인다.
+    """
+    dlg = sec.get("dialog")
+    if not dlg:
+        return ""
+
+    def paras(raw):
+        return "".join(f"<p>{p.strip()}</p>"
+                       for p in interpolate(raw, app).split("\n\n") if p.strip())
+
+    # 위치 다이얼로그만 본문이 플랫폼별로 다르다 — 두 창을 나열하면 거의 같은
+    # 것이 반복되므로, 전환 버튼으로 한 번에 하나만 보여준다(앱과 동일하게).
+    if dlg.get("variants"):
+        tabs = "".join(
+            f'<button class="pf-tab" type="button" data-pf="{i}" '
+            f'aria-pressed="{"true" if i == 0 else "false"}">{esc(v["label"])}</button>'
+            for i, v in enumerate(dlg["variants"]))
+        body = "".join(
+            f'<div class="pf-body" data-pf="{i}"{"" if i == 0 else " hidden"}>'
+            f'{paras(v["body"])}</div>'
+            for i, v in enumerate(dlg["variants"]))
+        tabs = f'<div class="pf-tabs">{tabs}</div>'
+    else:
+        tabs = ""
+        body = paras(dlg["body"])
+
+    buttons = "".join(
+        f'<button class="dlg-btn" type="button" tabindex="-1" disabled>'
+        f'{interpolate(b, app)}</button>' for b in dlg["buttons"])
+    # lead는 다이얼로그 **위**에 온다. 걸음수·위치는 우리 창이 아니라 안드로이드
+    # 권한 팝업이 먼저 뜨는 것이 보통이라, 그 사실을 창을 보기 전에 알려야 한다.
+    return (
+        f'<div class="dlg-demo" hidden>'
+        f'<p class="dlg-lead">{interpolate(dlg["lead"], app)}</p>'
+        f'{tabs}'
+        f'<div class="scrim"><div class="dlg">'
+        f'<p class="dlg-title">{interpolate(dlg["title"], app)}</p>'
+        f'<div class="dlg-body">{body}</div>'
+        f'<div class="dlg-actions">{buttons}</div>'
+        f'</div></div>'
+        f'</div>')
+
+
+def render_sections(copy, app):
     out = []
     for sec in copy["sections"]:
         spot = sec.get("spot")
         attr = f' data-spot="{spot}"' if spot else ""
         items = []
         for it in sec["items"]:
-            qs = f'<p class="q">{it["q"]}</p>'
+            qs = f'<p class="q">{interpolate(it["q"], app)}</p>'
             if it.get("q2"):
-                qs += f'<p class="q">{it["q2"]}</p>'
-            body = "".join(f"<p>{p}</p>" for p in it["a"])
+                qs += f'<p class="q">{interpolate(it["q2"], app)}</p>'
+            body = "".join(f"<p>{interpolate(p, app)}</p>" for p in it["a"])
             items.append(f'<div class="qa">{qs}<div class="a">{body}</div></div>')
-        link = (f'<button class="show-me" type="button" data-show="{spot}">'
-                f'{copy["mockup_hint"]}</button>') if spot else ""
+        # 돋보기 아이콘 — 텍스트가 아니라 누르는 것임을 드러낸다
+        icon = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79'
+                'l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 '
+                '4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 '
+                '9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>')
+        # 제목 바로 아래에 둔다 — 어떤 주제인지 알자마자 화면에서 위치를 찾을 수 있도록
+        link = (f'<button class="show-me" type="button" data-show="{spot}" '
+                f'aria-expanded="false" '
+                f'data-open="{esc(copy["mockup_hint"])}" '
+                f'data-close="{esc(copy["mockup_hint_close"])}">'
+                f'{icon}<span>{copy["mockup_hint"]}</span></button>') if spot else ""
         out.append(
             f'<section class="topic" id="{sec["id"]}"{attr}>'
-            f'<h2>{sec["heading"]}</h2>{"".join(items)}{link}</section>')
+            f'<h2>{sec["heading"]}</h2>{link}{"".join(items)}'
+            f'{render_dialog(sec, copy, app)}</section>')
     return "\n".join(out)
 
 
@@ -114,7 +185,7 @@ def build(code, copy, app):
         "TITLE": copy["page_title"],
         "LEAD": copy["page_lead"],
         "CHIPS": render_chips(copy, None),
-        "SECTIONS": render_sections(copy),
+        "SECTIONS": render_sections(copy, app),
         "MOCKUP_CAPTION": copy["mockup_caption"],
         "APP_STRINGS": json.dumps(app, ensure_ascii=False),
         "FOOTER_HOME": copy["footer_home"],

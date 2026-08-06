@@ -54,6 +54,24 @@ KEYS = [
     "subject_home_report_desc",
     "subject_home_emergency_button",
     "subject_home_emergency_desc",
+    # 보호자가 받는 미수신 경고 (안부 예약시각 +2h) — 카피에서 @키로 인용한다
+    "notifications_level_caution",
+    "noti_caution_missing_body",
+    # 보호자 알림 목록의 위치 보기 버튼 (긴급 알림에 위치가 있을 때만 표시)
+    "notifications_view_location",
+    # 경고를 탭했을 때 뜨는 다이얼로그 3종
+    # 배터리는 항상, 걸음수·위치는 영구 거부일 때만 표시된다
+    "stability_battery_dialog_title",
+    "stability_battery_dialog_message",
+    "gs_activity_permission_settings_title",
+    "gs_activity_permission_settings_body",
+    "gs_activity_permission_settings_go",
+    "location_permission_settings_title",
+    # 위치 다이얼로그 본문만 플랫폼 분기가 있다 (base_controller의 Platform.isIOS 삼항)
+    # — 걸음수·배터리 다이얼로그는 분기 없음
+    "location_permission_settings_body_android",
+    "location_permission_settings_body_ios",
+    "common_cancel",
 ]
 
 # 'key': 뒤 (같은 줄 또는 다음 줄) 문자열 리터럴. 양쪽 따옴표 + 이스케이프 허용.

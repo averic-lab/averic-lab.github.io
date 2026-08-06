@@ -38,7 +38,9 @@ a{color:inherit}
 
 /* 도입부 */
 .intro{padding:58px 0 34px}
-.eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+/* 한글은 uppercase가 적용되지 않으므로 크기·자간으로만 라벨임을 드러낸다.
+   자간은 키운 크기에 맞춰 조금 줄였다 — 그대로 두면 과하게 벌어진다. */
+.eyebrow{font-size:13.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
   color:var(--pink-deep);margin-bottom:15px}
 h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
   letter-spacing:-.01em;font-weight:600;text-wrap:balance;margin-bottom:17px}
@@ -51,9 +53,9 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 @media(max-width:920px){.cols{grid-template-columns:1fr;gap:34px}
   .sticky{position:static!important}}
 
-.topic{padding:26px 0;border-top:1px solid var(--line)}
+.topic{padding:26px 0;border-top:1px solid var(--line);scroll-margin-top:24px}
 .topic:first-child{border-top:0;padding-top:6px}
-.topic h2{font-size:20px;font-weight:700;letter-spacing:-.01em;margin-bottom:18px}
+.topic h2{font-size:20px;font-weight:700;letter-spacing:-.01em;margin-bottom:13px}
 .qa+.qa{margin-top:22px}
 .q{font-size:15.5px;font-weight:600;line-height:1.6;margin-bottom:9px;
   padding-left:20px;position:relative}
@@ -64,10 +66,32 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 .a p+p{margin-top:11px}
 .a strong{color:var(--ink);font-weight:600}
 .a b{color:var(--ink);font-weight:600}
-.show-me{display:inline-block;margin-top:15px;margin-left:20px;font:inherit;
-  font-size:13.5px;color:var(--teal);background:none;border:0;padding:5px 0;
-  border-bottom:1px solid currentColor;cursor:pointer}
-.show-me:hover{opacity:.7}
+/* 제목 바로 아래. 텍스트가 아니라 누르는 것임이 보이도록 — 돋보기 + 알약형 테두리 + 채움
+   (제목과 같은 선에 맞추므로 Q/A 들여쓰기 20px을 적용하지 않는다) */
+.show-me{display:inline-flex;align-items:center;gap:7px;margin:0 0 20px;
+  font:inherit;font-size:13.5px;font-weight:600;color:var(--teal);background:var(--paper);
+  border:1px solid rgba(0,104,94,.32);border-radius:999px;padding:8px 15px;cursor:pointer;
+  transition:background .15s ease,border-color .15s ease,transform .1s ease}
+.show-me:hover{background:#e6f2f0;border-color:var(--teal)}
+.show-me:active{transform:translateY(1px)}
+.show-me[aria-expanded="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.show-me svg{width:15px;height:15px;fill:currentColor;flex:none}
+
+/* 경고를 탭했을 때 뜨는 다이얼로그 — 앱 모양 그대로. 문구만 나열하지 않는다. */
+.dlg-demo{margin-top:22px}
+.dlg-demo[hidden]{display:none}
+.dlg-lead{font-size:13.5px;color:var(--ink-soft);line-height:1.65;margin-bottom:12px}
+.dlg-lead strong{color:var(--ink);font-weight:600}
+.dlg-demo .scrim{background:rgba(26,28,28,.5);border-radius:16px;padding:22px 18px}
+.dlg-demo .dlg{max-width:340px;margin:0 auto}
+/* 위치 다이얼로그만 본문이 플랫폼별로 다르다 — 한 번에 하나만 보여준다 */
+.pf-tabs{display:flex;gap:5px;margin-bottom:10px}
+.pf-tab{font:inherit;font-size:12.5px;padding:5px 12px;border:1px solid var(--line);
+  border-radius:999px;background:var(--paper);color:var(--ink-mute);cursor:pointer}
+.pf-tab[aria-pressed="true"]{background:var(--ink);color:var(--paper);
+  border-color:var(--ink);font-weight:600}
+.pf-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.pf-body[hidden]{display:none}
 
 /* 목업 패널 */
 .sticky{position:sticky;top:20px}
@@ -177,6 +201,7 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
   padding-bottom:8px}
 .dlg-btn{font:inherit;font-size:14px;font-weight:500;color:#00685E;background:none;
   border:0;padding:10px 12px;border-radius:8px;cursor:default}
+.dlg-btn[disabled]{opacity:1}
 
 [dir="rtl"] .warn-row,[dir="rtl"] .action{flex-direction:row-reverse}
 [dir="rtl"] .state{flex-direction:row-reverse}
@@ -184,7 +209,7 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 [dir="rtl"] .dlg-actions{justify-content:flex-start}
 [dir="rtl"] .q{padding-left:0;padding-right:20px}
 [dir="rtl"] .q::before{left:auto;right:0}
-[dir="rtl"] .a,[dir="rtl"] .show-me{padding-left:0;padding-right:20px;margin-left:0}
+[dir="rtl"] .a{padding-left:0;padding-right:20px}
 
 footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0 34px}
 footer .wrap{display:flex;gap:18px;flex-wrap:wrap;align-items:center;
@@ -361,15 +386,66 @@ function show(spot){
   });
 }
 
+var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+function scrollBehavior(){ return reduceMotion.matches ? 'auto' : 'smooth'; }
+
 chips.forEach(function(c){
-  c.addEventListener('click', function(){ show(c.dataset.spot); });
+  c.addEventListener('click', function(){
+    // 칩으로 위치를 바꾸면 펼쳐 둔 다이얼로그는 접는다 — 상태가 어긋나지 않도록
+    collapseAll(null);
+    show(c.dataset.spot);
+
+    // 칩을 고르면 해당 FAQ 본문으로 함께 이동한다. 넓은 화면에서는 목업이
+    // sticky로 남아 밝아진 부분을 계속 보면서 설명을 읽을 수 있다.
+    // 좁은 화면에서는 칩이 목업 바로 위에 있어, 위로 스크롤하면 방금 밝힌
+    // 화면이 시야에서 사라지므로 이동하지 않는다.
+    if (window.matchMedia('(max-width:920px)').matches) return;
+    var target = c.dataset.spot === 'all'
+      ? document.querySelector('main')
+      : document.querySelector('.topic[data-spot="' + c.dataset.spot + '"]');
+    if (target) target.scrollIntoView({behavior: scrollBehavior(), block: 'start'});
+  });
 });
+// 버튼 하나가 두 가지를 한다: 오른쪽 목업에서 위치를 밝히고,
+// 그 경고를 탭했을 때 뜨는 다이얼로그를 섹션 아래에 펼친다.
+function collapseAll(except){
+  document.querySelectorAll('.show-me').forEach(function(b){
+    if (b === except) return;
+    b.setAttribute('aria-expanded','false');
+    b.querySelector('span').textContent = b.dataset.open;
+    var d = b.closest('.topic').querySelector('.dlg-demo');
+    if (d) d.hidden = true;
+  });
+}
+
 document.querySelectorAll('.show-me').forEach(function(b){
   b.addEventListener('click', function(){
-    show(b.dataset.show);
-    if (window.matchMedia('(max-width:920px)').matches) {
-      document.querySelector('.stage').scrollIntoView({behavior:'smooth', block:'center'});
+    var open = b.getAttribute('aria-expanded') === 'true';
+    collapseAll(b);
+    b.setAttribute('aria-expanded', String(!open));
+    b.querySelector('span').textContent = open ? b.dataset.open : b.dataset.close;
+    var d = b.closest('.topic').querySelector('.dlg-demo');
+    if (d) d.hidden = open;
+    show(open ? 'all' : b.dataset.show);
+    if (!open && window.matchMedia('(max-width:920px)').matches) {
+      document.querySelector('.stage')
+        .scrollIntoView({behavior: scrollBehavior(), block: 'center'});
     }
+  });
+});
+
+// 플랫폼별 본문 전환 (위치 다이얼로그 전용)
+document.querySelectorAll('.pf-tabs').forEach(function(tabs){
+  var demo = tabs.closest('.dlg-demo');
+  tabs.addEventListener('click', function(e){
+    var t = e.target.closest('.pf-tab');
+    if (!t) return;
+    tabs.querySelectorAll('.pf-tab').forEach(function(x){
+      x.setAttribute('aria-pressed', String(x === t));
+    });
+    demo.querySelectorAll('.pf-body').forEach(function(b){
+      b.hidden = b.dataset.pf !== t.dataset.pf;
+    });
   });
 });
 
