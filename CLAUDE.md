@@ -17,7 +17,7 @@ Jekyll은 front matter가 없는 `.md`도 **정적 파일로 그대로 복사**�
 - **내부 문서를 새로 추가할 때는 두 방법 중 하나를 쓴다** — `_` 접두 폴더 안에 두거나(권장), `_config.yml`의 `exclude`에 추가한다.
 - ⚠️ `exclude`를 지정하면 Jekyll **기본 제외 목록을 대체**한다. `_config.yml`에 기본값(`node_modules/`, `Gemfile` 등)을 함께 적어 둔 이유이니 지우지 말 것.
 - `.nojekyll`을 추가해 Jekyll을 끄는 방법은 **쓰지 않는다** — `_` 폴더 제외 규칙까지 사라져 `_beta-test-build/`(스크린샷·빌드 스크립트)와 `_faq-build/`가 통째로 공개된다.
-- ⚠️ 이 저장소에 `_config.yml`이 생긴 것은 이번이 처음이라, Jekyll 빌드가 "암묵적 기본값"에서 "우리 설정"으로 바뀌었다. **push 후 `averic.co.kr/ko/`가 정상 렌더되는지, `averic.co.kr/CLAUDE.md`가 404인지 반드시 확인**할 것.
+- ⚠️ **`_config.yml`을 고칠 때마다 배포 후 직접 확인할 것.** 이 파일이 잘못되면 문서가 아니라 사이트 전체가 깨진다. 확인 항목: `averic.co.kr/ko/` 정상 렌더 · `averic.co.kr/CLAUDE.md` 404 · `/test/`·`/preview/` 회귀 없음. (2026-08-06 커밋 `bd38607` 배포에서 전부 통과 확인)
 
 ## 사이트 구조
 
@@ -85,13 +85,18 @@ python3 build_preview.py   # preview/index.html 재생성
 _faq-build/                    # 게시 제외
 ├── PRD-FAQ.md                 # 명세 (이 폴더의 권위)
 ├── extract_strings.py         # 앱 저장소 번역 → JSON
-├── faq-strings.json           # 커밋됨. 손으로 고치지 말 것
+├── faq-strings.json           # 앱 화면 문구. 손으로 고치지 말 것
+├── copy/{lang}.json           # FAQ 질문·답변 (언어당 1개, 직접 작성)
+├── copy/README.md             # 번역 시 지켜야 할 것
 ├── template.html              # 페이지 골격 + 목업 마크업
-└── build_faq.py               # JSON + 템플릿 → ../{lang}/faq.html × 20
+└── build_faq.py               # copy/ + JSON + 템플릿 → ../{lang}/faq.html
 ```
 
-- **스크린샷을 쓰지 않는다.** 앱 UI를 HTML/CSS로 재현하고, 문구는 앱 번역 파일에서 추출한다 — 20개 언어 번역이 공짜이고, 앱 문구가 바뀌어도 낡지 않는다(근거는 PRD §1).
+- **스크린샷을 쓰지 않는다.** 앱 UI를 HTML/CSS로 재현하고, 앱 화면 문구는 앱 번역 파일에서 추출한다 — 20개 언어가 공짜이고, 앱 문구가 바뀌어도 낡지 않는다(근거는 PRD §1).
+- **문장이 두 종류다.** 앱 화면 문구는 `faq-strings.json`(추출), FAQ 질문·답변은 `copy/{lang}.json`(직접 작성). 카피에서 앱 문구를 인용할 때는 **`@키`**를 쓰며 **번역하지 않는다** — 번역하면 앱 화면과 어긋난다.
 - **언어 목록은 `i18n/build.py`의 `META`/`ORDER`를 임포트해 쓴다.** 복제하면 어긋난다. `build.py`의 `patch_inplace()`는 `index.html`만 갱신하므로 **faq.html의 스위처는 `build_faq.py`가 직접 만들고 링크는 `/{code}/faq.html`로** 건다(홈으로 보내지 말 것).
+- **언어 추가는 `copy/`에 파일을 넣는 것으로 끝난다** — `build_faq.py`는 폴더에 있는 언어만 생성하며 스크립트를 고칠 필요가 없다. 스위처·`hreflang`도 같은 기준이라 없는 언어를 링크해 404를 내지 않는다.
+- **홈 헤더의 FAQ 링크는 세 곳을 함께 고쳐야 한다** — 18개 생성 언어는 `i18n/template.html`+`translations.json`(`nav_faq`), `ko/index.html`과 `en/index.html`은 직접 수정(`patch_inplace()`가 본문을 건드리지 않으므로). ⚠️ `translations.json`은 `indent=1`이라 스크립트로 키를 추가할 때 형식을 유지하지 않으면 diff가 2600줄로 부푼다.
 - `{lang}/faq.html`은 산출물 — 직접 수정 금지, 항상 재빌드.
 
 ```bash
