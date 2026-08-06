@@ -1,0 +1,95 @@
+/* ── 사용설명 페이지가 추가로 쓰는 앱 화면 복제 ──
+   mockup.css(FAQ와 공용)에 없는 위젯만 여기 있다: 보호자 설정 화면, 보호 대상자
+   연결 화면, 하단 네비게이션, 스낵바.
+   값은 전부 앱 소스에서 읽은 것이다 — 임의로 바꾸지 말 것.
+     설정      guardian_settings_page.dart
+     연결      guardian_add_subject_page.dart
+     하단네비  core/widgets/guardian_bottom_nav.dart
+     스낵바    core/utils/app_snackbar.dart
+     간격/글꼴 core/theme/app_spacing.dart, app_text_theme.dart */
+
+/* AppSpacing: sm 8 / md 12 / lg 16 / xl 20 / sp4 22 / sp6 32 */
+.gap-sm{height:8px}.gap-md{height:12px}.gap-xl{height:20px}.gap-sp6{height:32px}
+
+/* 설정 화면 AppBar는 아이콘과 제목 간격이 8 (safety_home은 14) */
+.appbar.tight{gap:8px}
+.appbar .grow{flex:1}
+.appbar .act{width:24px;height:24px;fill:#3F4948}
+.appbar .back{width:20px;height:20px;fill:#1A1C1C}
+
+/* 섹션 라벨 — labelMedium 14/w600, textTertiary */
+.sec-label{font-size:14px;font-weight:600;line-height:1.43;color:#757575;margin:0}
+
+/* 구독 카드 — free_trial(회색 그라데이션). padding sp4=22, radius 20
+   ※ 일수 배지·가격은 뺐다: 배지는 앱에서도 days>0일 때만 보이고,
+     그 문구(@days)는 자리표시자라 페이지에 그대로 그릴 수 없다 */
+.sub-card{border-radius:20px;padding:22px;
+  background:linear-gradient(135deg,#607D8B,#90A4AE)}
+.sub-top{display:flex;align-items:center;gap:6px}
+.sub-top svg{width:18px;height:18px;fill:rgba(255,255,255,.7);flex:none}
+.sub-top span{font-size:11px;font-weight:600;line-height:1.45;color:rgba(255,255,255,.7)}
+.sub-title{margin:12px 0 0;font-size:20px;font-weight:700;line-height:1.4;color:#fff}
+.sub-btn{margin-top:16px;padding:10px;border-radius:24px;text-align:center;
+  font-size:14px;font-weight:700;line-height:1.43}
+.sub-btn.filled{background:#fff;color:#4355B9}
+.sub-btn.outline{margin-top:8px;border:1px solid rgba(255,255,255,.54);color:#fff}
+
+/* 흰 카드 행 (알림 설정) — padding lg=16, radius 16 */
+.row-card{background:#fff;border-radius:16px;padding:16px;display:flex;
+  align-items:center;gap:12px}
+.row-card>svg{width:22px;height:22px;fill:#3F4948;flex:none}
+.row-card .lbl{flex:1;font-size:16px;font-weight:600;line-height:1.5;color:#1A1C1C}
+
+/* 약관 카드 */
+.terms{background:#fff;border-radius:16px;padding:16px}
+.terms .head{display:flex;align-items:center;gap:12px}
+.terms .head svg{width:20px;height:20px;fill:#3F4948;flex:none}
+.terms .head span{font-size:16px;font-weight:600;line-height:1.5;color:#1A1C1C}
+.terms .lnk{display:flex;align-items:center;justify-content:space-between;gap:8px;
+  font-size:14px;line-height:1.43;color:#3F4948}
+.terms .lnk svg{width:18px;height:18px;fill:#3F4948;flex:none}
+
+/* 하단 네비게이션 — 상단만 radius 20, 위로 뜨는 그림자 */
+.bnav{background:#fff;border-radius:20px 20px 0 0;
+  box-shadow:0 -2px 8px rgba(0,0,0,.06);display:flex;padding:10px 0 12px}
+.bnav .tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;
+  font-family:var(--device);font-size:12px;line-height:1.2;color:#BEC9C7}
+.bnav .tab svg{width:24px;height:24px;fill:#BEC9C7}
+.bnav .tab.on{color:#1A1C1C;font-weight:600}
+.bnav .tab.on svg{fill:#1A1C1C}
+
+/* 보호 대상자 연결 화면 */
+.add-h{font-size:24px;font-weight:600;line-height:1.35;color:#1A1C1C;margin:0}
+.add-sub{font-size:14px;line-height:1.43;color:#757575;margin:0}
+.fld-label{font-size:14px;font-weight:600;line-height:1.43;color:#1A1C1C;margin:0}
+/* TextField: filled #FFFFFF, radius 12, 테두리 outlineVariant 30%,
+   포커스 시 #4355B9 2px. 본문 bodyLarge 16, 힌트 textTertiary */
+.fld{min-height:56px;border-radius:12px;background:#fff;
+  border:1px solid rgba(190,201,199,.3);display:flex;align-items:center;
+  padding:0 12px;font-size:16px;line-height:1.5;color:#1A1C1C;
+  transition:border-color .2s ease}
+.fld.on{border:2px solid #4355B9;padding:0 11px}
+.fld .ph{color:#757575}
+.fld .caret{display:inline-block;width:2px;height:20px;background:#4355B9;
+  margin-left:1px;vertical-align:-4px;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.fld-info{display:flex;align-items:flex-start;gap:4px;font-size:12px;
+  line-height:1.33;color:#757575}
+.fld-info svg{width:14px;height:14px;fill:#757575;flex:none;margin-top:1px}
+/* 연결하기 — 입력이 다 차기 전에는 30% 불투명 (앱의 disabledBackgroundColor) */
+.connect{min-height:56px;border-radius:16px;background:rgba(67,85,185,.3);
+  color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;
+  font-size:16px;font-weight:600;line-height:1.5;transition:background .25s ease}
+.connect.ready{background:#4355B9}
+.connect svg{width:20px;height:20px;fill:#fff;flex:none}
+
+/* 스낵바 — 흰 배경 고정(다크모드 무관), radius 12, margin h16 v8, 하단 */
+.snack{position:absolute;left:16px;right:16px;bottom:8px;background:#fff;
+  border-radius:12px;padding:16px;font-family:var(--device);font-size:14px;
+  line-height:1.43;color:#1A1C1C;box-shadow:0 4px 16px rgba(0,0,0,.18);z-index:6}
+.snack[hidden]{display:none}
+
+[dir="rtl"] .fld .caret{margin-left:0;margin-right:1px}
+[dir="rtl"] .terms .lnk,[dir="rtl"] .row-card{flex-direction:row-reverse}
+[dir="rtl"] .terms .head,[dir="rtl"] .sub-top,[dir="rtl"] .fld-info{
+  flex-direction:row-reverse}

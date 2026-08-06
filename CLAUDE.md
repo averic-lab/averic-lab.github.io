@@ -77,32 +77,46 @@ python3 build_preview.py   # preview/index.html 재생성
 - 수동 보고: **지금 바로 안전 보고하기** / 긴급: **도움이 필요해요**
 - ⚠️ 제공된 설정 스크린샷은 **활성화 후** 상태("내 안전 코드 확인")라, 테스터가 처음 보는 "내 안전 코드 생성"과 다르다 — 두 페이지 모두 이 차이를 명시하고 있으니 유지할 것.
 
-## FAQ 페이지 (`_faq-build/`)
+## FAQ · 사용설명 페이지 (`_faq-build/`)
 
-앱 사용자용 FAQ를 20개 언어로 제공한다(`{lang}/faq.html`). **상세 명세는 [`_faq-build/PRD-FAQ.md`](_faq-build/PRD-FAQ.md)** — 아래는 요약이다.
+앱 사용자용 페이지 **두 종**을 만든다 — `{lang}/faq.html`(문제 해결)과 `{lang}/guide.html`(안전 코드로 가족과 연결하는 방법, 애니메이션). **상세 명세는 [`_faq-build/PRD-FAQ.md`](_faq-build/PRD-FAQ.md)** — 아래는 요약이다.
+
+> ⚠️ 폴더 이름이 `_faq-build`지만 **두 페이지를 함께 만든다.** 나누지 않은 이유는 앱 문구 추출(`app-strings.json`)·언어 목록·앱 화면 복제 CSS(`mockup.css`)를 공유하기 때문이다 — 폴더를 나누면 그 셋이 두 벌이 되어 어긋나고, 그건 FAQ가 스크린샷을 버린 이유와 같은 문제다.
 
 ```
 _faq-build/                    # 게시 제외
 ├── PRD-FAQ.md                 # 명세 (이 폴더의 권위)
 ├── extract_strings.py         # 앱 저장소 번역 → JSON
-├── faq-strings.json           # 앱 화면 문구. 손으로 고치지 말 것
-├── copy/{lang}.json           # FAQ 질문·답변 (언어당 1개, 직접 작성)
-├── copy/README.md             # 번역 시 지켜야 할 것
-├── template.html              # 페이지 골격 + 목업 마크업
-└── build_faq.py               # copy/ + JSON + 템플릿 → ../{lang}/faq.html
+├── app-strings.json           # 앱 화면 문구. 손으로 고치지 말 것
+├── common.py                  # 두 빌더 공용 (언어 메타·@키 치환·CSS 로딩)
+├── base.css / footer.css      # 사이트 공통 (팔레트·헤더·푸터)
+├── mockup.css                 # 앱 화면 복제 — 두 페이지 공용. 값은 앱 소스와 동일
+├── guide-mockup.css           # 사용설명 전용 복제 (설정·연결 화면, 하단네비, 스낵바)
+├── copy/{lang}.json           # FAQ 질문·답변        + copy/README.md
+├── guide-copy/{lang}.json     # 사용설명 단계 설명
+├── template.html              # FAQ 골격 + 목업
+├── guide-template.html        # 사용설명 골격 + 목업 3종 + 애니메이션 JS
+├── build_faq.py               # → ../{lang}/faq.html
+└── build_guide.py             # → ../{lang}/guide.html
 ```
+
+- **CSS를 나눠 둔 이유**: 앱 화면 복제 값(기기 폭 373, `#00685E`, 코드 42px 등)이 두 템플릿에 복붙되면 한쪽만 고쳐져 어긋난다. 각 템플릿은 자기 **본문 마크업**만 갖고 CSS는 같은 파일을 인라인한다.
+- **`mockup.css`를 고칠 때는 FAQ도 함께 재빌드해 확인할 것** — 두 페이지가 공유한다.
+- **사용설명 단계 수는 `guide-template.html`의 `STEPS`(JS)가 정한다.** `guide-copy`의 `steps` 배열 길이가 다르면 `build_guide.py`가 exit 1 한다(번호와 화면이 따로 놀기 때문).
 
 - **스크린샷을 쓰지 않는다.** 앱 UI를 HTML/CSS로 재현하고, 앱 화면 문구는 앱 번역 파일에서 추출한다 — 20개 언어가 공짜이고, 앱 문구가 바뀌어도 낡지 않는다(근거는 PRD §1).
 - **문장이 두 종류다.** 앱 화면 문구는 `faq-strings.json`(추출), FAQ 질문·답변은 `copy/{lang}.json`(직접 작성). 카피에서 앱 문구를 인용할 때는 **`@키`**를 쓰며 **번역하지 않는다** — 번역하면 앱 화면과 어긋난다.
 - **언어 목록은 `i18n/build.py`의 `META`/`ORDER`를 임포트해 쓴다.** 복제하면 어긋난다. `build.py`의 `patch_inplace()`는 `index.html`만 갱신하므로 **faq.html의 스위처는 `build_faq.py`가 직접 만들고 링크는 `/{code}/faq.html`로** 건다(홈으로 보내지 말 것).
-- **언어 추가는 `copy/`에 파일을 넣는 것으로 끝난다** — `build_faq.py`는 폴더에 있는 언어만 생성하며 스크립트를 고칠 필요가 없다. 스위처·`hreflang`도 같은 기준이라 없는 언어를 링크해 404를 내지 않는다.
-- **홈 헤더의 FAQ 링크는 세 곳을 함께 고쳐야 한다** — 18개 생성 언어는 `i18n/template.html`+`translations.json`(`nav_faq`), `ko/index.html`과 `en/index.html`은 직접 수정(`patch_inplace()`가 본문을 건드리지 않으므로). ⚠️ `translations.json`은 `indent=1`이라 스크립트로 키를 추가할 때 형식을 유지하지 않으면 diff가 2600줄로 부푼다.
-- `{lang}/faq.html`은 산출물 — 직접 수정 금지, 항상 재빌드.
+- **언어 추가는 `copy/`·`guide-copy/`에 파일을 넣는 것으로 끝난다** — 빌더는 폴더에 있는 언어만 생성하며 스크립트를 고칠 필요가 없다. 스위처·`hreflang`도 같은 기준이라 없는 언어를 링크해 404를 내지 않는다.
+- **홈 헤더 링크는 세 곳을 함께 고쳐야 한다** — 18개 생성 언어는 `i18n/template.html`+`translations.json`(`nav_faq`/`nav_guide`), `ko/index.html`과 `en/index.html`은 직접 수정(`patch_inplace()`가 본문을 건드리지 않으므로). ⚠️ `translations.json`은 `{언어: {키: 값}}` 구조에 `indent=1`이라, 스크립트로 키를 추가할 때 형식을 유지하지 않으면 diff가 2600줄로 부푼다.
+- ⚠️ **헤더 링크는 그 언어의 페이지가 실제로 있을 때만 넣는다.** 20개 언어 헤더에 먼저 링크를 걸면 아직 카피가 없는 언어가 404가 된다. 사용설명은 현재 **한국어만** 있어 `ko/index.html`에만 링크되어 있다.
+- `{lang}/faq.html`·`{lang}/guide.html`은 산출물 — 직접 수정 금지, 항상 재빌드.
 
 ```bash
 cd _faq-build
 python3 extract_strings.py   # 앱 문구가 바뀌었을 때만 (실패 시 exit 1)
 python3 build_faq.py
+python3 build_guide.py
 ```
 
 ## 배포 (git push)

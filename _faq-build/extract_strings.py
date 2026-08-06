@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""안부 앱 번역 파일에서 FAQ에 필요한 문구만 추출해 faq-strings.json으로 저장한다.
+"""안부 앱 번역 파일에서 두 페이지(FAQ·사용설명)에 필요한 문구만 추출해 app-strings.json으로 저장한다.
 
     python3 extract_strings.py
-    git diff faq-strings.json   # 무엇이 바뀌었는지 확인 후 커밋
+    git diff app-strings.json   # 무엇이 바뀌었는지 확인 후 커밋
 
 앱 저장소를 빌드 시점에 읽지 않고 JSON을 중간에 두는 이유는 PRD-FAQ.md §3 참조.
 
@@ -72,7 +72,59 @@ KEYS = [
     "location_permission_settings_body_android",
     "location_permission_settings_body_ios",
     "common_cancel",
+
+    # ── 아래부터 사용설명 페이지(build_guide.py)가 쓰는 문구 ──
+    # 보호자 설정 화면
+    "settings_title",
+    "gs_enable_button",
+    "gs_enable_button_desc",
+    "settings_subscription_service",
+    "settings_current_membership",
+    "settings_free_trial",
+    "subscription_subscribe",
+    "subscription_restore",
+    "settings_notification",
+    "settings_terms_section",
+    "settings_privacy_policy",
+    "settings_terms",
+    # 안전 코드 생성 확인 다이얼로그 (Android 경로 — iOS는 주황 경고 카드가 더 붙는다)
+    "gs_enable_dialog_title",
+    "gs_enable_dialog_body",
+    "gs_enable_confirm",
+    # 코드 복사 시 뜨는 스낵바
+    "subject_home_code_copied",
+    # 보호 대상자 연결 화면
+    "add_subject_title",
+    "add_subject_button",
+    "add_subject_guide_title",
+    "add_subject_guide_subtitle",
+    "add_subject_code_label",
+    "add_subject_code_info",
+    "add_subject_alias_label",
+    "add_subject_alias_hint",
+    "add_subject_phone_label",
+    "add_subject_phone_hint",
+    "add_subject_phone_info",
+    "add_subject_connect",
+    # 하단 네비게이션 (설정·연결 화면에 보인다)
+    "nav_home",
+    "nav_connection",
+    "nav_notification",
+    "nav_settings",
 ]
+
+# 값에 '@'(앱이 trParams로 채우는 자리표시자)가 들어가도 되는 키. 여기 있는 것만
+# 허용하며, 템플릿이 **직접 채워야 한다** — 예: template.html의
+# `S.heartbeat_daily_time.replace('@time','18:00')`.
+#
+# 목록에 없는 키가 '@'를 갖고 있으면 아래 main()이 exit 1 한다. 채우는 쪽을 아무도
+# 안 만들면 사용자에게 '@days'가 그대로 보이기 때문이다
+# (`settings_days_until_trial_end`, `settings_app_version`이 그런 예 — 추출하지 않고
+#  목업에서 그 요소를 뺐다. 앱에서도 조건부로만 보인다: 일수 배지는 days>0일 때만).
+PLACEHOLDER_OK = {
+    "subject_home_check_body_reported",  # @time — 템플릿이 18:00으로 채운다
+    "heartbeat_daily_time",              # @time — 위와 동일
+}
 
 # 'key': 뒤 (같은 줄 또는 다음 줄) 문자열 리터럴. 양쪽 따옴표 + 이스케이프 허용.
 VALUE_RE = r"""(?:'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)")"""
@@ -118,6 +170,14 @@ def main():
         if missing:
             problems.append(f"{lang}: 누락 {missing}")
 
+        # 아무도 채우지 않는 자리표시자가 페이지에 그대로 나가는 것을 막는다
+        stray = [k for k, v in vals.items() if "@" in v and k not in PLACEHOLDER_OK]
+        if stray:
+            problems.append(
+                f"{lang}: 값에 '@'가 들어갔는데 PLACEHOLDER_OK에 없는 키 {stray} — "
+                f"템플릿이 직접 채우게 하고 목록에 넣거나, KEYS에서 빼고 목업에서 "
+                f"해당 요소를 제거할 것.")
+
         # 앱의 _buildHibernationTitle이 title.indexOf(highlight)로 강조 범위를 찾고
         # 못 찾으면 강조 없이 표시한다. 목업도 같아야 하므로 여기서 확인한다.
         t = vals.get("permission_hibernation_title", "")
@@ -129,7 +189,7 @@ def main():
 
         data[lang] = vals
 
-    out = os.path.join(HERE, "faq-strings.json")
+    out = os.path.join(HERE, "app-strings.json")
     with open(out, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
         f.write("\n")

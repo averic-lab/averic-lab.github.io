@@ -1,15 +1,27 @@
-# PRD — averic.co.kr FAQ 페이지
+# PRD — averic.co.kr 사용자 페이지 (FAQ · 사용설명)
 
-안부(Anbu) 앱 사용자용 FAQ를 **20개 언어**로 제공한다. 앱 화면을 스크린샷 대신 **HTML/CSS로 재현**하고, 설명 대상만 밝히는 스포트라이트 방식으로 보여준다.
+안부(Anbu) 앱 사용자용 페이지 **두 종**을 만든다. 둘 다 앱 화면을 스크린샷 대신 **HTML/CSS로 재현**한다.
 
-| 항목 | 값 |
+| | FAQ | 사용설명 |
+| --- | --- | --- |
+| 산출물 | `{lang}/faq.html` × 20 | `{lang}/guide.html` |
+| 다루는 것 | 신호가 늦거나 걸음수·위치가 비어 보일 때 (문제 해결) | 안전 코드를 만들어 가족에게 알려주고, 가족이 그 코드로 연결하기까지 (첫 사용) |
+| 보여주는 법 | safety_home 한 화면 + 스포트라이트 | 화면 3종(설정 → 안전 홈 → 연결) 9단계 애니메이션 |
+| 카피 | `copy/{lang}.json` | `guide-copy/{lang}.json` |
+| 템플릿 | `template.html` | `guide-template.html` |
+| 빌더 | `build_faq.py` | `build_guide.py` |
+| 상태 | **20개 언어 배포 완료** (2026-08-06, `bd38607`) | **한국어만** — 카피 확정 후 19개 언어 확장 |
+
+| 공통 항목 | 값 |
 | --- | --- |
-| 산출물 | `{lang}/faq.html` × 20 |
 | 소스 | `_faq-build/` (이 폴더 — `_` 접두라 웹 게시 제외) |
-| 문구 출처 | 앱 화면 문구 = `faq-strings.json`(추출) · FAQ 질문·답변 = `copy/{lang}.json`(직접 작성) |
+| 앱 화면 문구 | `app-strings.json` (`extract_strings.py`가 앱 저장소에서 추출) |
+| 공용 코드 | `common.py` (언어 메타·`@키` 치환·CSS 로딩) |
+| 공용 CSS | `base.css`(팔레트·헤더) · `mockup.css`(앱 화면 복제) · `footer.css` |
 | 이미지 | **없음** — 앱 UI를 HTML/CSS로 재현 |
-| 진입점 | 각 언어 홈 헤더의 FAQ 링크(§6) |
-| 상태 | **20개 언어 배포 완료** (2026-08-06, `bd38607`) |
+| 진입점 | 각 언어 홈 헤더 링크(§6) |
+
+> **폴더 이름이 `_faq-build`인데 두 페이지를 만든다.** 나누지 않은 이유: 앱 문구 추출·언어 목록·앱 화면 복제 CSS를 공유하기 때문이다. 폴더를 나누면 그 셋이 두 벌이 되어 어긋나며, 그건 §1이 스크린샷을 버린 이유와 같은 문제다. 이름은 낡았지만 중복보다 낫다.
 
 
 ## 1. 왜 스크린샷을 쓰지 않는가
@@ -44,12 +56,13 @@ safety_home 화면의 권한 관련 안내 4가지. **이 범위를 넓히지 �
     앱 저장소 lib/app/core/translations/*.dart (20개)
         │  extract_strings.py
         ▼
-    _faq-build/faq-strings.json   ← 커밋됨
-[2] 생성 (수동 실행)
-    faq-strings.json  +  copy/{lang}.json  +  template.html
-        │  build_faq.py  (언어 목록은 i18n/build.py에서 임포트)
+    _faq-build/app-strings.json   ← 커밋됨
+[2] 생성 (수동 실행) — 두 페이지가 같은 JSON·같은 공용 CSS를 쓴다
+    app-strings.json + 공용 CSS + copy/{lang}.json      + template.html
+                                + guide-copy/{lang}.json + guide-template.html
+        │  build_faq.py / build_guide.py  (언어 목록·공용 함수는 common.py)
         ▼
-[3] 산출  {ko,en,…}/faq.html × 20  →  git push  →  GitHub Pages
+[3] 산출  {ko,en,…}/faq.html × 20 · {ko}/guide.html  →  git push  →  GitHub Pages
 ```
 
 **앱 저장소를 빌드 시점에 직접 읽지 않는다.** JSON을 중간에 두는 이유:
@@ -102,8 +115,8 @@ safety_home 화면의 권한 관련 안내 4가지. **이 범위를 넓히지 �
 
 ### 실행
 ```bash
-cd _faq-build && python3 extract_strings.py   # → faq-strings.json 갱신
-git diff faq-strings.json                     # 무엇이 바뀌었는지 확인 후 커밋
+cd _faq-build && python3 extract_strings.py   # → app-strings.json 갱신
+git diff app-strings.json                     # 무엇이 바뀌었는지 확인 후 커밋
 ```
 
 
@@ -227,8 +240,11 @@ from build import META, ORDER   # 단일 출처
 cd _faq-build
 python3 extract_strings.py   # 앱 문구가 바뀌었을 때만
 python3 build_faq.py         # → ../{lang}/faq.html × 20
+python3 build_guide.py       # → ../{lang}/guide.html
 cd .. && git add -A && git commit -m "..." && git push
 ```
+
+`mockup.css`(두 페이지 공용)를 고쳤으면 **둘 다 재빌드**한다. 공용 CSS를 처음 분리할 때는 FAQ 20개 페이지를 재생성해 `git diff`가 비는지로 안전을 확인했다 — 같은 리팩터를 또 할 일이 있으면 그 방법을 쓸 것.
 
 ### 배포 후 확인 (2026-08-06 검증 완료)
 
@@ -246,16 +262,18 @@ cd .. && git add -A && git commit -m "..." && git push
 
 **20개 언어 전부 서비스 중이다.** 구조상 언어를 늘리거나 줄이는 비용이 낮다.
 
-- `build_faq.py`는 **`copy/` 폴더에 파일이 있는 언어만** 생성한다. 언어를 늘리려면 `copy/ko.json`을 복사해 번역하고 파일명을 언어 코드로 바꾸면 되고 **스크립트는 고칠 필요가 없다.**
-- **언어 스위처와 `hreflang`도 `copy/`에 실제로 있는 언어만 나열**한다. 없는 언어를 링크하면 404가 되기 때문이며, 언어가 하나뿐이면 스위처 자체를 렌더하지 않는다.
+- 각 빌더는 **자기 카피 폴더(`copy/` · `guide-copy/`)에 파일이 있는 언어만** 생성한다. 언어를 늘리려면 `ko.json`을 복사해 번역하고 파일명을 언어 코드로 바꾸면 되고 **스크립트는 고칠 필요가 없다.**
+- **언어 스위처와 `hreflang`도 그 폴더에 실제로 있는 언어만 나열**한다. 없는 언어를 링크하면 404가 되기 때문이며, 언어가 하나뿐이면 스위처 자체를 렌더하지 않는다.
+- **사용설명은 현재 한국어만이다.** 그래서 홈 헤더의 사용설명 링크도 `ko/index.html`에만 있다 — 20개 언어 헤더에 먼저 링크를 걸면 19개가 404가 된다. 카피 확정 후 19개 언어를 채울 때 `i18n/translations.json`의 `nav_guide`와 `en/index.html`을 함께 추가한다.
+- 사용설명 번역 시 주의: **"왼쪽 단추는 복사, 오른쪽은 공유"** 같은 좌우 표현은 RTL(아랍어)에서 뒤집힌다. 방향 대신 아이콘이나 동작으로 표현할 것.
 - 카피는 **언어당 한 파일**로 나눈다. 한 파일에 20개 언어를 넣으면 3000줄이 넘어 검토·수정이 불가능하다.
-- 앱 문구(`faq-strings.json`)는 20개 언어가 이미 다 있으므로, 언어 추가 시 필요한 것은 **FAQ 질문·답변 번역뿐**이다.
+- 앱 문구(`app-strings.json`)는 20개 언어가 이미 다 있으므로, 언어 추가 시 필요한 것은 **FAQ 질문·답변 번역뿐**이다.
 
 ### 두 종류의 문장을 혼동하지 말 것
 
 | | 출처 | 갱신 방법 |
 | --- | --- | --- |
-| 앱 화면 문구 (`.tr` 키) | `faq-strings.json` — **추출** | `extract_strings.py` 재실행 |
+| 앱 화면 문구 (`.tr` 키) | `app-strings.json` — **추출** | `extract_strings.py` 재실행 |
 | FAQ 질문·답변 | `copy/{lang}.json` — **직접 작성** | 손으로 수정·번역 |
 
 카피 안에서 앱 문구를 인용할 때는 `@키`를 쓴다(§3).
@@ -273,8 +291,12 @@ cd .. && git add -A && git commit -m "..." && git push
 
 1. `{lang}/faq.html`은 **산출물**이다. 직접 수정하지 말고 `_faq-build/`의 스크립트를 고쳐 재생성한다.
 2. 언어 목록은 `i18n/build.py`의 `META`/`ORDER`가 단일 출처다. 복제하지 말 것.
-3. `faq-strings.json`은 손으로 고치지 말 것. `extract_strings.py`로만 갱신한다.
+3. `app-strings.json`은 손으로 고치지 말 것. `extract_strings.py`로만 갱신한다.
 4. 추출 스크립트는 키가 하나라도 없으면 **실패해야 한다**. 폴백으로 넘어가지 말 것.
 5. 카피 안의 `@키`는 **번역하지 않는다**. 앱 문구로 치환되는 자리다.
 6. 재현 범위는 §2의 4개 주제로 한정한다.
 7. 내부 문서를 새로 추가할 때는 `_` 접두 폴더에 두거나 `_config.yml`의 `exclude`에 추가한다(상세는 저장소 `CLAUDE.md`).
+8. **앱 화면 복제 CSS는 한 벌만 둔다.** 두 템플릿은 각자 **본문 마크업**만 갖고, 기기 폭·색·글꼴 크기 같은 재현 값은 `mockup.css`(공용) / `guide-mockup.css`(사용설명 전용 위젯)를 인라인해 쓴다. 값을 템플릿에 복붙하면 한쪽만 고쳐져 어긋난다. `mockup.css`를 고쳤으면 **두 페이지를 모두 재빌드해 확인**한다.
+9. **`@`가 든 앱 문구를 그냥 추출하지 않는다.** 앱이 `trParams`로 채우는 자리표시자(`@days`, `@version`)라 페이지에 그대로 나가면 사용자가 `@days`를 본다. 템플릿이 직접 채울 것만 `extract_strings.py`의 `PLACEHOLDER_OK`에 넣고, 나머지는 추출하지 않고 목업에서 그 요소를 뺀다(앱에서도 조건부로만 보이는 것들이다). 검사는 `extract_strings.py`가 한다.
+10. **사용설명의 단계 수는 `guide-template.html`의 `STEPS`(JS)가 정한다.** 카피의 `steps` 길이가 다르면 `build_guide.py`가 실패한다 — 번호와 화면이 따로 놀기 때문이다.
+11. **카피가 앱 동작을 단정할 때는 코드를 확인한다.** 실제로 틀렸던 것 둘: 안전 코드는 `^[A-Z0-9]{3}-[A-Z0-9]{4}$`라 **하이픈이 필수**이고(생략 가능이라 썼다가 정정), `연결` 탭은 연결관리 화면으로 가므로 거기서 [`add_subject_button`]을 한 번 더 눌러야 연결 화면이 나온다(바로 나온다고 썼다가 정정).

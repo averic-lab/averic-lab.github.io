@@ -11,84 +11,18 @@
 
 언어 목록(표시명·BCP47·RTL 여부)은 i18n/build.py의 META를 임포트해 쓴다.
 복제하면 두 벌이 되어 어긋난다 — PRD-FAQ.md §6.
+
+언어 메타·앱 문구 로딩·@키 치환·공용 CSS는 common.py가 갖고 있다. 같은 폴더의
+build_guide.py(사용설명 페이지)와 공유한다.
 """
 import json
 import os
 import sys
 
+from common import (META, ORDER, ROOT, LANG_TO_STRINGS, css, esc, head_links,
+                    interpolate, load, load_copy, switcher)
+
 HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = os.path.dirname(HERE)
-
-# 언어 메타는 랜딩 빌더와 공유한다 (import 부작용 없음 — main()은 __main__ 가드 안)
-sys.path.insert(0, os.path.join(ROOT, "i18n"))
-from build import META, ORDER  # noqa: E402
-
-# copy/ 파일명(ko) → faq-strings.json의 키(ko_kr)
-LANG_TO_STRINGS = {
-    "en": "en_us", "ko": "ko_kr", "ja": "ja_jp", "zh-CN": "zh_cn", "zh-TW": "zh_tw",
-    "de": "de_de", "fr": "fr_fr", "es": "es_es", "it": "it_it", "pt-BR": "pt_br",
-    "ru": "ru_ru", "nl": "nl_nl", "pl": "pl_pl", "tr": "tr_tr", "vi": "vi_vn",
-    "th": "th_th", "id": "id_id", "sv": "sv_se", "hi": "hi_in", "ar": "ar_sa",
-}
-
-
-def load(name):
-    with open(os.path.join(HERE, name), encoding="utf-8") as f:
-        return json.load(f)
-
-
-def load_copy():
-    """copy/{lang}.json 전부 읽는다. 파일이 있는 언어만 생성 대상이 된다."""
-    d = os.path.join(HERE, "copy")
-    out = {}
-    for fn in sorted(os.listdir(d)):
-        if not fn.endswith(".json"):
-            continue
-        with open(os.path.join(d, fn), encoding="utf-8") as f:
-            out[fn[:-5]] = json.load(f)
-    return out
-
-
-def esc(s):
-    """속성값용 이스케이프. 본문은 카피에 의도적 인라인 태그가 있어 그대로 쓴다."""
-    return (s.replace("&", "&amp;").replace("<", "&lt;")
-             .replace(">", "&gt;").replace('"', "&quot;"))
-
-
-def switcher(active, available):
-    """copy/에 있는 언어만. 하나뿐이면 렌더하지 않는다."""
-    if len(available) < 2:
-        return ""
-    rows = []
-    for code in ORDER:
-        if code not in available:
-            continue
-        native = META[code][4]
-        cls = "lang-option active" if code == active else "lang-option"
-        rows.append(f'<a href="/{code}/faq.html" class="{cls}">{esc(native)}</a>')
-    return '<nav class="lang-switch">' + "".join(rows) + "</nav>"
-
-
-def head_links(active, available):
-    lines = [f'<link rel="canonical" href="https://averic.co.kr/{active}/faq.html">']
-    for code in available:
-        bcp = META[code][0]
-        lines.append(f'<link rel="alternate" hreflang="{bcp}" '
-                     f'href="https://averic.co.kr/{code}/faq.html">')
-    return "\n  ".join(lines)
-
-
-def interpolate(text, app):
-    """카피 안의 @키를 앱 실제 문구로 치환한다.
-
-    앱이 실제로 보여주는 알림·버튼 문구를 카피에서 인용할 때 쓴다. 번역가가
-    인용문까지 옮기면 앱 화면과 어긋나므로, 인용은 추출된 문구를 그대로 쓴다.
-    긴 키부터 치환해야 `@noti_caution_missing_body`가 `@noti_caution`으로
-    잘못 잡히지 않는다.
-    """
-    for key in sorted(app, key=len, reverse=True):
-        text = text.replace("@" + key, app[key])
-    return text
 
 
 def render_dialog(sec, copy, app):
@@ -186,13 +120,16 @@ def build(code, copy, app):
 
     available = [c for c in ORDER if c in COPY_LANGS]
     repl = {
+        "CSS_BASE": css("base.css"),
+        "CSS_MOCKUP": css("mockup.css"),
+        "CSS_FOOTER": css("footer.css"),
         "HTML_LANG": bcp,
         "DIR_ATTR": ' dir="rtl"' if direction == "rtl" else "",
         "PATH": f"/{code}/",
         "META_TITLE": esc(copy["meta_title"]),
         "META_DESC": esc(copy["meta_desc"]),
-        "HEAD_LINKS": head_links(code, available),
-        "SWITCHER": switcher(code, available),
+        "HEAD_LINKS": head_links(code, available, "faq.html"),
+        "SWITCHER": switcher(code, available, "faq.html"),
         "EYEBROW": copy["page_eyebrow"],
         "TITLE": copy["page_title"],
         "LEAD": copy["page_lead"],
@@ -216,8 +153,8 @@ def build(code, copy, app):
 
 
 def main():
-    copy_all = load_copy()
-    strings = load("faq-strings.json")
+    copy_all = load_copy("copy")
+    strings = load("app-strings.json")
 
     global COPY_LANGS
     COPY_LANGS = list(copy_all)
@@ -229,7 +166,7 @@ def main():
             sys.exit(f"오류: 알 수 없는 언어 코드 '{code}' — i18n/build.py의 META에 없습니다.")
         skey = LANG_TO_STRINGS.get(code)
         if not skey or skey not in strings:
-            sys.exit(f"오류: '{code}'의 앱 문구가 faq-strings.json에 없습니다. "
+            sys.exit(f"오류: '{code}'의 앱 문구가 app-strings.json에 없습니다. "
                      f"extract_strings.py를 먼저 실행하세요.")
 
         page = build(code, copy_all[code], strings[skey])
