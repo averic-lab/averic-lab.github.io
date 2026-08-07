@@ -36,10 +36,17 @@
 <script>
 /* Locale router — picks the best available locale and redirects.
    Order of precedence:
-     1. URL ?lang=xx
-     2. localStorage('anbu.lang') from previous visit
+     1. URL ?lang=xx      (선택을 저장까지 한다 — 교정 링크로 쓸 수 있게)
+     2. 저장된 선택 (90일 만료)
      3. navigator.languages / navigator.language
      4. fallback to /en/
+
+   ⚠️ 저장된 선택은 기기 언어를 덮어쓴다. 예전에는 만료도 없고 되돌릴 UI도 없어서,
+   스위처에서 언어를 한 번 누르면 그 브라우저에서는 **영원히** 그 언어로 열렸다
+   (한국어 폰인데 일본어로 뜨는 현상). 그래서 셋을 고쳤다:
+     · ?lang= 이 저장값도 갱신 → averic.co.kr/?lang=ko 링크 하나로 영구 교정
+     · 90일 만료
+     · 예전 형식(코드 문자열만, 시각 없음)은 읽는 즉시 폐기 → 이미 갇힌 사용자도 자동 복구
    Update SUPPORTED as new locale folders ship. */
 (function () {
   var SUPPORTED = ['en','ko','ja','zh-CN','zh-TW','de','fr','es','it','pt-BR','ru','nl','pl','tr','vi','th','id','sv','hi','ar'];
@@ -72,21 +79,40 @@
     return null;
   }
 
+  var STORE_KEY  = 'anbu.lang';
+  var MAX_AGE_MS = 90 * 24 * 60 * 60 * 1000;   // 90일
+
+  function saveChoice(code) {
+    try {
+      localStorage.setItem(STORE_KEY, JSON.stringify({ code: code, t: Date.now() }));
+    } catch (e) {}
+  }
+
+  function readSaved() {
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      if (!raw) return null;
+      // 예전 형식은 코드 문자열만이라 만료 시각이 없다 → 영구 고착의 원인이었다. 폐기한다.
+      if (raw.charAt(0) !== '{') { localStorage.removeItem(STORE_KEY); return null; }
+      var o = JSON.parse(raw);
+      if (!o || !o.code || !o.t || (Date.now() - o.t) > MAX_AGE_MS) {
+        localStorage.removeItem(STORE_KEY);
+        return null;
+      }
+      return matchLang(o.code);
+    } catch (e) { return null; }
+  }
+
   function pick() {
-    // 1. URL override
+    // 1. URL override — 저장까지 갱신해야 다음 방문에도 유지된다
     var m = location.search.match(/[?&]lang=([\w-]+)/);
     if (m && m[1]) {
       var fromUrl = matchLang(m[1]);
-      if (fromUrl) return fromUrl;
+      if (fromUrl) { saveChoice(fromUrl); return fromUrl; }
     }
-    // 2. user's saved choice
-    try {
-      var saved = localStorage.getItem('anbu.lang');
-      if (saved) {
-        var fromStore = matchLang(saved);
-        if (fromStore) return fromStore;
-      }
-    } catch (e) {}
+    // 2. user's saved choice (90일 만료)
+    var fromStore = readSaved();
+    if (fromStore) return fromStore;
     // 3. browser languages, in the user's own order of preference.
     //    With 20 locales shipped we honor the full ordered list: the first
     //    entry that maps to a supported locale wins; anything unmapped falls

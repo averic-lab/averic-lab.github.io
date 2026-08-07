@@ -47,7 +47,11 @@
     opt.addEventListener('click', function () {
       var code = opt.getAttribute('data-lang');
       if (!code) return;
-      try { localStorage.setItem('anbu.lang', code); } catch (e) {}
+      // 루트 index.html 의 라우터와 같은 형식이어야 한다 — 시각이 없으면
+      // 만료 판정이 안 돼 그 브라우저에서 영원히 이 언어로 열린다.
+      try {
+        localStorage.setItem('anbu.lang', JSON.stringify({ code: code, t: Date.now() }));
+      } catch (e) {}
     });
   });
 
