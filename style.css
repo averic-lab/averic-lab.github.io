@@ -536,6 +536,10 @@ em { font-style: normal; }
 .codecard .cb { width: 32px; height: 32px; flex: 0 0 32px; border-radius: 50%;
   background: rgba(255,255,255,.16); display: flex; align-items: center; justify-content: center; }
 .codecard .cb svg { width: 15px; height: 15px; fill: #fff; }
+/* 코드 본문 — 카드의 주인공이라 크게. 앱은 42px(375 기준)이고 여기 카드 폭이
+   300px이라 카드 안쪽(268px)에 딱 차는 크기로 잡는다 */
+.codecard .val { font-size: 44px; font-weight: 800; letter-spacing: 2.5px;
+  color: #fff; line-height: 1.1; white-space: nowrap; }
 
 /* 점선 설명 — 버튼 중심에서 위로 뻗고, 선 끝의 점 오른쪽에 라벨이 붙는다.
    ⚠️ .co 는 **width:0** 이어야 한다. 폭을 가지면 inset-inline-end 가 점선이 아니라
