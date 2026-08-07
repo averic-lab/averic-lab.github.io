@@ -123,6 +123,7 @@ def build(code, copy, app):
         "CSS_BASE": css("base.css"),
         "CSS_MOCKUP": css("mockup.css"),
         "CSS_FOOTER": css("footer.css"),
+        "BRAND": esc(app["app_name"]),   # 한국어만 "안부", 나머지 "Anbu"
         "HTML_LANG": bcp,
         "DIR_ATTR": ' dir="rtl"' if direction == "rtl" else "",
         "PATH": f"/{code}/",

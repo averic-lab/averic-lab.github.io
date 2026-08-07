@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Build localized landing pages from a fixed template + per-language translations.
 
-- 18 translation locales are generated from template.html + translations.json.
-- ko/en already have final bespoke pages; only their language menu + hreflang
-  block are patched in place so every page shares the same 20-language switcher.
+- 20개 언어 **전부** template.html + translations.json 에서 생성한다.
+- 예전에는 ko/en 만 손으로 쓴 페이지였고 언어 메뉴·hreflang 만 제자리 패치했다.
+  본문을 고칠 때 세 곳(ko, en, 템플릿)을 따로 고쳐야 해서 조용히 어긋났기 때문에
+  ko/en 카피를 translations.json 으로 옮기고 단일 출처로 통합했다.
 """
 import json
 import os
@@ -41,8 +42,23 @@ META = {
 ORDER = ["en", "ko", "ja", "zh-CN", "zh-TW", "de", "fr", "es", "it", "pt-BR",
          "ru", "nl", "pl", "tr", "vi", "th", "id", "sv", "hi", "ar"]
 
-# locales generated from the template (ko/en are patched in place instead)
-GENERATED = [c for c in ORDER if c not in ("en", "ko")]
+# 사이트 언어 코드(ko) → 앱 번역 파일 코드(ko_kr).
+# _faq-build/common.py 가 이 모듈을 임포트하므로 여기가 단일 출처다
+# (반대로 build.py 가 common.py 를 임포트하면 순환이 된다).
+LANG_TO_STRINGS = {
+    "en": "en_us", "ko": "ko_kr", "ja": "ja_jp", "zh-CN": "zh_cn", "zh-TW": "zh_tw",
+    "de": "de_de", "fr": "fr_fr", "es": "es_es", "it": "it_it", "pt-BR": "pt_br",
+    "ru": "ru_ru", "nl": "nl_nl", "pl": "pl_pl", "tr": "tr_tr", "vi": "vi_vn",
+    "th": "th_th", "id": "id_id", "sv": "sv_se", "hi": "hi_in", "ar": "ar_sa",
+}
+
+# 히어로 폰 목업이 쓰는 앱 화면 문구. FAQ·사용설명과 같은 파이프라인으로
+# 앱 번역 파일에서 추출해 쓴다 — 20개 언어가 공짜이고 앱 문구가 바뀌어도 낡지 않는다
+# (근거는 _faq-build/PRD-FAQ.md §1).
+APP_STRINGS = os.path.join(ROOT, "_faq-build", "app-strings.json")
+
+# 20개 언어 전부 템플릿에서 생성한다 (예외 없음 — 단일 출처)
+GENERATED = list(ORDER)
 
 
 def switcher(active):
@@ -67,7 +83,37 @@ def head_links(active):
     return "\n".join(lines)
 
 
-def build_page(code, strings, template):
+def app_tokens(code, app_all):
+    """폰 목업에 넣을 앱 문구를 APP_* 토큰으로 만든다. 자리표시자는 여기서 채운다."""
+    a = app_all[LANG_TO_STRINGS[code]]
+    checking = a["guardian_checking_subjects"].replace("@count", "2")
+    last = a["guardian_last_check_hours"].replace("@hours", "2")
+    return {
+        "APP_NAME": a["app_name"],
+        "APP_CHECKING": checking.replace("\n", "<br>"),
+        "APP_TODAY_SUMMARY": a["guardian_today_summary"],
+        "APP_ST_NORMAL": a["guardian_status_normal"],
+        "APP_ST_CAUTION": a["guardian_status_caution"],
+        "APP_ST_CONFIRMED": a["guardian_status_confirmed"],
+        "APP_SUBJECT_LIST": a["guardian_subject_list"],
+        "APP_ACTIVITY": f'{a["guardian_activity_prefix"]}: {a["guardian_activity_active"]}',
+        "APP_LAST_CHECK": last,
+        "APP_STEPS": a["guardian_chart_y_axis_steps"],
+        "APP_LAST_7": a["guardian_chart_x_axis_last_7_days"],
+        "APP_ADD_SUBJECT": a["add_subject_button"],
+        "APP_SAFETY_NEEDED": a["guardian_safety_needed"],
+        "APP_CALL_NOW": a["guardian_call_now"],
+        "APP_CONFIRM_SAFETY": a["guardian_confirm_safety"],
+        "APP_PUSH_TITLE": a["notifications_level_caution"],
+        "APP_PUSH_BODY": a["noti_caution_missing_body"],
+        "APP_NAV_HOME": a["nav_home"],
+        "APP_NAV_CONNECTION": a["nav_connection"],
+        "APP_NAV_NOTIFICATION": a["nav_notification"],
+        "APP_NAV_SETTINGS": a["nav_settings"],
+    }
+
+
+def build_page(code, strings, template, app_all):
     bcp, direction, og_locale, label, native = META[code]
     page = template
     repl = {
@@ -79,6 +125,7 @@ def build_page(code, strings, template):
         "SWITCHER": switcher(code),
         "HEAD_LINKS": head_links(code),
     }
+    repl.update(app_tokens(code, app_all))
     repl.update(strings)
     for key, val in repl.items():
         page = page.replace("{{" + key + "}}", val)
@@ -86,7 +133,10 @@ def build_page(code, strings, template):
 
 
 def patch_inplace(code):
-    """Update lang-menu + canonical/hreflang block of an existing ko/en page."""
+    """(미사용) 예전에 손으로 쓴 ko/en 페이지의 언어 메뉴·hreflang 만 갱신하던 함수.
+
+    지금은 20개 언어를 모두 템플릿에서 생성하므로 호출되지 않는다.
+    _faq-build 가 이 모듈의 META/ORDER 를 임포트하므로 삭제하지 않고 남겨 둔다."""
     path = os.path.join(ROOT, code, "index.html")
     with open(path, encoding="utf-8") as f:
         html = f.read()
@@ -117,6 +167,11 @@ def main():
         en = json.load(f)
     with open(os.path.join(I18N, "translations.json"), encoding="utf-8") as f:
         translations = json.load(f)
+    if not os.path.exists(APP_STRINGS):
+        sys.exit("오류: _faq-build/app-strings.json 이 없습니다. "
+                 "먼저 _faq-build/extract_strings.py 를 실행하세요.")
+    with open(APP_STRINGS, encoding="utf-8") as f:
+        app_all = json.load(f)
 
     problems = []
     for code in GENERATED:
@@ -126,7 +181,7 @@ def main():
             continue
         merged = dict(en)
         merged.update({k: v for k, v in t.items() if v})  # en fallback for blanks
-        page = build_page(code, merged, template)
+        page = build_page(code, merged, template, app_all)
         leftovers = re.findall(r"\{\{[A-Za-z0-9_]+\}\}", page)
         if leftovers:
             problems.append(f"{code}: unresolved tokens {set(leftovers)}")
@@ -135,10 +190,6 @@ def main():
         with open(os.path.join(ROOT, code, "index.html"), "w", encoding="utf-8") as f:
             f.write(page)
         print(f"  generated /{code}/index.html  ({len(page)} bytes)")
-
-    for code in ("ko", "en"):
-        n_menu, n_head = patch_inplace(code)
-        print(f"  patched   /{code}/index.html  (menu={n_menu}, head={n_head})")
 
     if problems:
         print("\nPROBLEMS:")

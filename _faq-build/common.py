@@ -20,15 +20,9 @@ ROOT = os.path.dirname(HERE)
 
 # 언어 메타는 랜딩 빌더와 공유한다 (import 부작용 없음 — main()은 __main__ 가드 안)
 sys.path.insert(0, os.path.join(ROOT, "i18n"))
-from build import META, ORDER  # noqa: E402,F401
+from build import META, ORDER, LANG_TO_STRINGS  # noqa: E402,F401
 
-# copy 파일명(ko) → app-strings.json의 키(ko_kr)
-LANG_TO_STRINGS = {
-    "en": "en_us", "ko": "ko_kr", "ja": "ja_jp", "zh-CN": "zh_cn", "zh-TW": "zh_tw",
-    "de": "de_de", "fr": "fr_fr", "es": "es_es", "it": "it_it", "pt-BR": "pt_br",
-    "ru": "ru_ru", "nl": "nl_nl", "pl": "pl_pl", "tr": "tr_tr", "vi": "vi_vn",
-    "th": "th_th", "id": "id_id", "sv": "sv_se", "hi": "hi_in", "ar": "ar_sa",
-}
+# LANG_TO_STRINGS(사이트 코드 → 앱 번역 파일 코드)는 build.py 가 단일 출처다.
 
 
 def load(name):

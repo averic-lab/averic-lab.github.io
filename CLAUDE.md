@@ -22,10 +22,31 @@ Jekyll은 front matter가 없는 `.md`도 **정적 파일로 그대로 복사**�
 ## 사이트 구조
 
 - `index.html` — 루트 스플래시(언어 자동 분기), `style.css`, `site.js`
+- `og-image.png` — 공유 미리보기(1200×630). 20개 언어가 이 한 장을 공유하므로 **문구는 언어 중립**으로 둔다(브랜드 + 도메인). 없으면 카톡·SNS 링크가 그림 없이 나간다
 - `ko/`, `en/`, `ja/` … (20개 언어 폴더) — 각 언어별 `index.html` / `privacy-policy.html` / `terms-of-service.html` / `faq.html` / `guide.html`
-- `i18n/` — 다국어 랜딩 빌드 도구(`build.py`, `template.html`, `translations.json`) — **`index.html`만 생성**한다
+- `i18n/` — 다국어 랜딩 빌드 도구(`build.py`, `template.html`, `translations.json`) — **20개 언어 `index.html` 전부를 생성**한다(단일 출처)
 - `_faq-build/` — FAQ·사용설명 빌드 도구 + `PRD-FAQ.md` (게시 제외). 상세는 아래 별도 절
 - `CNAME` — `averic.co.kr`
+
+## 홈 히어로 — 폰 목업 (2026-08-07)
+
+히어로 오른쪽의 3D 폰 목업은 **앱 화면을 HTML/CSS로 재현**한 것이다. 스크린샷을 쓰지 않는 이유는 FAQ·사용설명과 같다(`_faq-build/PRD-FAQ.md` §1).
+
+**폰 안의 문구는 전부 앱 번역 파일에서 추출한 값이다.** `i18n/build.py`가 `_faq-build/app-strings.json`을 읽어 `APP_*` 토큰으로 넣는다 — 20개 언어가 공짜이고, 앱 문구가 바뀌면 `extract_strings.py` 재실행 한 번으로 따라온다.
+
+```
+앱 저장소 translations/*.dart
+   → _faq-build/extract_strings.py → app-strings.json
+       ├→ build_faq.py / build_guide.py   (FAQ·사용설명)
+       └→ i18n/build.py                    (홈 히어로 목업)   ← 2026-08-07 추가
+```
+
+- `LANG_TO_STRINGS`(사이트 코드 → 앱 파일 코드)의 **단일 출처는 `i18n/build.py`**다. `_faq-build/common.py`가 `build.py`를 임포트하므로 반대 방향은 순환이 된다 — 옮기지 말 것.
+- 자리표시자(`@count`, `@hours`)는 `build.py`의 `app_tokens()`가 직접 채운다(2명 / 2시간). 채우지 않으면 사용자에게 `@count`가 그대로 보인다.
+- ⚠️ **목업 좌표는 실측값이다.** 떠오른 카드(`.pop` / `.pop2` / `.codecard`)의 `left`/`top`은 폰 **352×722** 기준으로 원래 자리(`.slot`/`.slot2`)를 측정해 박아 둔 값이다. 폰 크기를 직접 바꾸면 카드가 제자리를 벗어난다 — 좁은 화면에서는 **`.pwrap`을 통째로 `scale()`** 하고 남는 세로 공간을 음수 margin으로 회수한다(반응형 블록 참조).
+- 떠오른 카드가 남긴 자리는 **같은 내용 + 반투명 유리(`.glass`)**로 덮는다. "어디서 나왔는지"를 보여주는 장치이므로 유리를 지우지 말 것.
+- `.push`(푸시 알림)는 고정 헤더(`z-index:100`, 높이 64px)를 가리지 않도록 `top:78px`로 내려 두었다. 위로 올리면 20개 언어 전부에서 헤더 메뉴를 덮는다.
+- 폰 목업은 `aria-hidden="true"`다 — 스크린리더에는 장식이다.
 
 ## 비공개 테스트 안내 페이지 (이 저장소에서 관리)
 
@@ -106,9 +127,9 @@ _faq-build/                    # 게시 제외
 
 - **스크린샷을 쓰지 않는다.** 앱 UI를 HTML/CSS로 재현하고, 앱 화면 문구는 앱 번역 파일에서 추출한다 — 20개 언어가 공짜이고, 앱 문구가 바뀌어도 낡지 않는다(근거는 PRD §1).
 - **문장이 두 종류다.** 앱 화면 문구는 `app-strings.json`(추출), 질문·답변과 단계 설명은 `copy/`·`guide-copy/{lang}.json`(직접 작성). 카피에서 앱 문구를 인용할 때는 **`@키`**를 쓰며 **번역하지 않는다** — 번역하면 앱 화면과 어긋난다.
-- **언어 목록은 `i18n/build.py`의 `META`/`ORDER`를 임포트해 쓴다.** 복제하면 어긋난다. `build.py`의 `patch_inplace()`는 `index.html`만 갱신하므로 **faq.html의 스위처는 `build_faq.py`가 직접 만들고 링크는 `/{code}/faq.html`로** 건다(홈으로 보내지 말 것).
+- **언어 목록은 `i18n/build.py`의 `META`/`ORDER`를 임포트해 쓴다.** 복제하면 어긋난다. **faq.html·guide.html의 스위처는 `build_faq.py`/`build_guide.py`가 직접 만들고 링크는 `/{code}/faq.html`로** 건다(홈으로 보내지 말 것). (`build.py`의 `patch_inplace()`는 홈 단일화 이후 미사용이다.)
 - **언어 추가는 `copy/`·`guide-copy/`에 파일을 넣는 것으로 끝난다** — 빌더는 폴더에 있는 언어만 생성하며 스크립트를 고칠 필요가 없다. 스위처·`hreflang`도 같은 기준이라 없는 언어를 링크해 404를 내지 않는다.
-- **홈 헤더 링크는 세 곳을 함께 고쳐야 한다** — 18개 생성 언어는 `i18n/template.html`+`translations.json`(`nav_faq`/`nav_guide`), `ko/index.html`과 `en/index.html`은 직접 수정(`patch_inplace()`가 본문을 건드리지 않으므로). ⚠️ `translations.json`은 `{언어: {키: 값}}` 구조에 `indent=1`이라, 스크립트로 키를 추가할 때 형식을 유지하지 않으면 diff가 2600줄로 부푼다.
+- **홈 본문은 이제 한 곳만 고친다** — `i18n/template.html`(마크업) + `i18n/translations.json`(문구) → `python3 i18n/build.py`. 예전에는 ko/en이 손으로 쓴 페이지라 세 곳을 따로 고쳐야 했고, 그래서 조용히 어긋났다(예: `nav_guide` 링크). 2026-08-07에 ko/en 카피를 `translations.json`으로 옮겨 20개 언어를 모두 템플릿에서 생성하도록 통합했다 — 이주 직후 en은 손으로 쓴 원본과 **바이트 단위로 동일**했고 18개 언어도 무변화였다. ⚠️ **`{lang}/index.html`은 산출물이다 — 직접 수정 금지.** ⚠️ `translations.json`은 `{언어: {키: 값}}` 구조에 `indent=1`이라, 스크립트로 키를 추가할 때 형식을 유지하지 않으면 diff가 2600줄로 부푼다.
 - ⚠️ **헤더 링크는 그 언어의 페이지가 실제로 있을 때만 넣는다.** 20개 언어 헤더에 먼저 링크를 걸면 아직 카피가 없는 언어가 404가 된다. FAQ·사용설명 모두 현재 20개 언어가 다 있다.
 - `{lang}/faq.html`·`{lang}/guide.html`은 산출물 — 직접 수정 금지, 항상 재빌드.
 

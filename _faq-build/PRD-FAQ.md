@@ -65,6 +65,8 @@ safety_home 화면의 권한 관련 안내 4가지. **이 범위를 넓히지 �
 [3] 산출  {ko,en,…}/faq.html × 20 · {ko}/guide.html  →  git push  →  GitHub Pages
 ```
 
+> ⚠️ **`app-strings.json`의 소비자는 이제 셋이다** — `build_faq.py` · `build_guide.py` · **`i18n/build.py`(홈 히어로 폰 목업, 2026-08-07 추가)**. `KEYS`에서 키를 빼면 홈까지 깨지므로, 제거 전에 세 빌더를 모두 확인할 것.
+
 **앱 저장소를 빌드 시점에 직접 읽지 않는다.** JSON을 중간에 두는 이유:
 - 두 저장소가 빌드 시점에 결합되지 않는다(어느 한쪽을 옮겨도 빌드가 깨지지 않음)
 - 앱 문구가 바뀌었을 때 **JSON diff로 무엇이 바뀌었는지 보인다**
@@ -190,7 +192,7 @@ git diff app-strings.json                     # 무엇이 바뀌었는지 확인
 
 ### 언어 스위처 — 반드시 처리할 것
 
-`i18n/build.py`의 `patch_inplace()`는 정규식이 `{code}/index.html`만 대상으로 하므로 **`faq.html`의 스위처를 영원히 갱신하지 않는다.** 그대로 두면 조용히 낡는다. 또한 기존 스위처는 `/{code}/`(홈)를 가리켜, 한국어 FAQ에서 언어를 바꾸면 **영어 홈**으로 간다.
+`i18n/build.py`는 홈(`{code}/index.html`)만 생성하므로 **`faq.html`의 스위처는 갱신해 주지 않는다.** 그대로 두면 조용히 낡는다. 또한 홈 스위처를 그대로 복사하면 `/{code}/`(홈)를 가리켜, 한국어 FAQ에서 언어를 바꾸면 **영어 홈**으로 간다.
 
 **결정: `build_faq.py`가 스위처를 직접 생성하고, 링크는 `/{code}/faq.html`로 한다.**
 
@@ -203,13 +205,9 @@ from build import META, ORDER   # 단일 출처
 
 ### 홈에서 FAQ로 가는 진입점
 
-각 언어 홈 헤더에 FAQ 링크를 둔다. **세 곳을 함께 고쳐야 20개 언어가 다 맞는다** — 랜딩 페이지는 생성 방식이 셋으로 갈리기 때문이다.
+각 언어 홈 헤더에 FAQ 링크를 둔다. **이제 한 곳만 고치면 20개 언어가 다 맞는다** — `i18n/template.html`에 링크를 넣고 `i18n/translations.json`에 `nav_faq`/`nav_guide`를 채운 뒤 `python3 i18n/build.py`를 돌린다.
 
-| 대상 | 방법 |
-| --- | --- |
-| 18개 생성 언어 | `i18n/template.html`에 링크 + `i18n/translations.json`에 `nav_faq` → `i18n/build.py` 재실행 |
-| `ko/index.html` | **직접 수정** — `build.py`의 `patch_inplace()`는 언어 메뉴와 hreflang만 패치하고 본문은 건드리지 않는다 |
-| `en/index.html` | 위와 동일 |
+> 예전에는 ko/en이 손으로 쓴 페이지라 세 곳(템플릿·ko·en)을 따로 고쳐야 했고 실제로 어긋났다. 2026-08-07에 ko/en 카피를 `translations.json`으로 이주해 단일 출처로 통합했다. `{lang}/index.html`은 산출물이므로 **직접 수정 금지**.
 
 라벨은 기존 `nav_privacy`가 축약형(`プライバシー`)인 규칙에 맞춰 짧게 잡는다. 유럽어권은 `FAQ`가 실제 관용 표기이고, CJK·태국어·힌디어·아랍어는 자국어 표기를 쓴다.
 
@@ -291,7 +289,7 @@ cd .. && git add -A && git commit -m "..." && git push
 
 1. `{lang}/faq.html`은 **산출물**이다. 직접 수정하지 말고 `_faq-build/`의 스크립트를 고쳐 재생성한다.
 2. 언어 목록은 `i18n/build.py`의 `META`/`ORDER`가 단일 출처다. 복제하지 말 것.
-3. `app-strings.json`은 손으로 고치지 말 것. `extract_strings.py`로만 갱신한다.
+3. `app-strings.json`은 손으로 고치지 말 것. `extract_strings.py`로만 갱신한다. 소비자가 셋(`build_faq` · `build_guide` · `i18n/build`)이므로 키를 뺄 때는 셋 다 확인한다.
 4. 추출 스크립트는 키가 하나라도 없으면 **실패해야 한다**. 폴백으로 넘어가지 말 것.
 5. 카피 안의 `@키`는 **번역하지 않는다**. 앱 문구로 치환되는 자리다.
 6. 재현 범위는 §2의 4개 주제로 한정한다.

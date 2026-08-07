@@ -140,45 +140,12 @@
 
 
 <!-- ========== HERO ========== -->
+<!-- 폰 목업 안의 문구는 전부 앱 번역 파일에서 추출한 값이다(APP_* 토큰).
+     스크린샷을 쓰지 않는 이유는 _faq-build/PRD-FAQ.md §1 참조. -->
 <section class="hero">
   <div class="stars" id="stars" aria-hidden="true"></div>
-  <div class="fireflies" id="fireflies" aria-hidden="true"></div>
-
-  <svg class="connection" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-    <defs>
-      <radialGradient id="halo" cx="50%" cy="50%" r="50%">
-        <stop offset="0%"  stop-color="#ffd9a8" stop-opacity="0.85"/>
-        <stop offset="40%" stop-color="#ffb88a" stop-opacity="0.35"/>
-        <stop offset="100%" stop-color="#ffb88a" stop-opacity="0"/>
-      </radialGradient>
-      <radialGradient id="halo2" cx="50%" cy="50%" r="50%">
-        <stop offset="0%"  stop-color="#ffd0e0" stop-opacity="0.85"/>
-        <stop offset="40%" stop-color="#ff8a95" stop-opacity="0.3"/>
-        <stop offset="100%" stop-color="#ff8a95" stop-opacity="0"/>
-      </radialGradient>
-      <path id="bridge"    d="M 180 580 Q 600 380 1020 240" />
-      <path id="bridgeRev" d="M 1020 240 Q 600 380 180 580" />
-    </defs>
-    <circle class="light-halo" cx="180"  cy="580" r="90" fill="url(#halo)"/>
-    <circle class="light-halo" cx="1020" cy="240" r="90" fill="url(#halo2)" style="animation-delay: 1.6s;"/>
-    <use href="#bridge" fill="none" stroke="#ffd9a8" stroke-width="1.2" stroke-dasharray="2 7" stroke-linecap="round" opacity="0.55"/>
-    <circle cx="180" cy="580" r="6" fill="#fff5dc">
-      <animate attributeName="r" values="5;7;5" dur="3s" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="1020" cy="240" r="6" fill="#fff0e0">
-      <animate attributeName="r" values="5;7;5" dur="3s" begin="1.5s" repeatCount="indefinite"/>
-    </circle>
-    <circle r="5" fill="#fff8e0" opacity="0">
-      <animateMotion dur="5s" begin="0.5s" repeatCount="indefinite" rotate="auto"><mpath href="#bridge"/></animateMotion>
-      <animate attributeName="opacity" values="0;0.2;1;1;0.2;0" keyTimes="0;0.05;0.2;0.8;0.95;1" dur="5s" begin="0.5s" repeatCount="indefinite"/>
-      <animate attributeName="r" values="3;6;6;3" keyTimes="0;0.2;0.8;1" dur="5s" begin="0.5s" repeatCount="indefinite"/>
-    </circle>
-    <circle r="5" fill="#ffd0d6" opacity="0">
-      <animateMotion dur="5s" begin="3s" repeatCount="indefinite" rotate="auto"><mpath href="#bridgeRev"/></animateMotion>
-      <animate attributeName="opacity" values="0;0.2;1;1;0.2;0" keyTimes="0;0.05;0.2;0.8;0.95;1" dur="5s" begin="3s" repeatCount="indefinite"/>
-      <animate attributeName="r" values="3;6;6;3" keyTimes="0;0.2;0.8;1" dur="5s" begin="3s" repeatCount="indefinite"/>
-    </circle>
-  </svg>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-glow2" aria-hidden="true"></div>
 
   <div class="hero-inner">
     <div class="hero-text">
@@ -187,13 +154,26 @@
         <span>بهدوء، كل يوم</span>
       </div>
       <h1>لستَ<br>وحدك <em>أبدًا.</em></h1>
-      <p class="hero-sub">كلمة تصل دون أن تُنطق.<br>في مكان ما الآن، تفقُّد هادئ يسري.</p>
-    </div>
+      <p class="hero-sub">كل يوم في الوقت المحدّد تُرسل إشارة الاطمئنان تلقائيًا.<br>اتّصل أو زُر فقط عند الحاجة الفعلية.</p>
 
-    <div class="hero-cta">
-      <div class="eyebrow">ابدأ الآن</div>
-      <h3>من اليوم،<br>دَع التفقُّد <em>يسري كل يوم.</em></h3>
-      <p class="lead">مجاني لمن يُرسل الإشارة.<br>تجربة مجانية لثلاثة أشهر، ثم $9.99 سنويًا لمن يتلقّى الرعاية.</p>
+      <ul class="hero-feat">
+        <li>
+          <span class="fic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h3l2.5-6 3.5 12 3-8 2 4h4"/></svg></span>
+          <span><b>يوم تقرأه من الخطوات</b><span>نشاط اليوم يمنحك فكرة لطيفة عن الحالة الصحية.</span></span>
+        </li>
+        <li>
+          <span class="fic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10.5 20a2 2 0 0 0 3 0"/></svg></span>
+          <span><b>مرة واحدة كل يوم</b><span>ستعرف في أي مستوى يقع اليوم.</span><span class="lvchips"><i class="dt n"></i>طبيعي<i class="dt c"></i>تنبيه<i class="dt w"></i>تحذير<i class="dt u"></i>عاجل</span></span>
+        </li>
+        <li>
+          <span class="fic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.3-2.9 7.9-7 9.5-4.1-1.6-7-5.2-7-9.5V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg></span>
+          <span><b>يكفي تثبيت التطبيق</b><span>رمز أمان واحد من 7 خانات يربط بينكما — لا شيء غير ذلك.</span></span>
+        </li>
+      </ul>
+
       <div class="badges">
         <a class="badge" href="https://apps.apple.com/us/app/anbu-daily-wellness-check/id6762031850" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-3.16 2.58-4.68 2.7-4.76-1.47-2.15-3.76-2.45-4.58-2.48-1.95-.2-3.81 1.15-4.8 1.15-1 0-2.52-1.12-4.15-1.09-2.13.03-4.1 1.24-5.19 3.15-2.22 3.85-.57 9.55 1.59 12.69 1.06 1.54 2.32 3.27 3.97 3.21 1.6-.07 2.2-1.03 4.13-1.03 1.92 0 2.47 1.03 4.16 1 1.72-.03 2.81-1.55 3.86-3.1 1.22-1.78 1.72-3.51 1.75-3.6-.04-.02-3.36-1.29-3.4-5.14zM14.04 3.5c.87-1.07 1.46-2.55 1.3-4.02-1.25.06-2.79.84-3.69 1.89-.81.94-1.52 2.45-1.33 3.89 1.4.11 2.83-.71 3.72-1.76z"/></svg>
@@ -209,6 +189,87 @@
           <span class="l"><small>GET IT ON</small><span>Google Play</span></span>
         </a>
       </div>
+      <p class="price-note">مجاني لمن يُرسل الإشارة.<br>تجربة مجانية لثلاثة أشهر، ثم $9.99 سنويًا لمقدّم الرعاية.</p>
+    </div>
+
+    <div class="stage" aria-hidden="true">
+     <div class="pwrap">
+      <div class="phone">
+        <div class="screen">
+          <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+          <div class="appbar">Anbu Guardian</div>
+          <div class="pbody">
+            <div class="phead">يتم حالياً متابعة<br>2 شخص/أشخاص.</div>
+            <div class="psum">ملخص اليوم</div>
+            <div class="plegend"><span><i></i>آمن: 1</span><span><i class="c"></i>تنبيه: 1</span></div>
+            <div class="plist">قائمة المتابَعين</div>
+
+            <div class="cards">
+              <div class="scard">
+                <div class="r1"><span class="nm">A<span class="bat">85%</span></span><span class="pill">✅ آمن</span></div>
+                <div class="r2"><span class="act">النشاط: نشيط</span></div>
+                <div class="slot">
+                  <div class="ghost">
+                    <div class="chd"><span>الخطوات</span><b class="peak">6,240</b></div>
+                    <div class="plot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="today"></i></div>
+                    <div class="xlab">آخر 7 أيام</div>
+                  </div>
+                  <div class="glass"></div>
+                </div>
+                <div class="last">آخر اطمئنان: منذ 2 ساعة</div>
+              </div>
+              <div class="scard c2">
+                <div class="r1"><span class="nm">B</span><span class="pill">تنبيه</span></div>
+                <div class="slot2">
+                  <div class="ghost2">
+                    <div class="warn">مطلوب التحقق من السلامة</div>
+                    <div class="pbtn">اتصل الآن</div>
+                    <div class="pbtn o">تأكيد السلامة</div>
+                  </div>
+                  <div class="glass"></div>
+                </div>
+                <div class="last">آخر اطمئنان: منذ 2 ساعة</div>
+              </div>
+            </div>
+            <div class="dots"><i class="on"></i><i></i></div>
+            <div class="addbtn"><span class="circle">+</span><span class="t">إضافة متابَع جديد</span></div>
+          </div>
+          <div class="pnav">
+            <div class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/></svg>الرئيسية</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9.5 14.5 14.5 9.5"/><path d="M11 7 13 5a4 4 0 0 1 6 6l-2 2"/><path d="M13 17l-2 2a4 4 0 0 1-6-6l2-2"/></svg>الاتصال</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10.5 20a2 2 0 0 0 3 0"/></svg>التنبيهات</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5" stroke-linecap="round"/></svg>الإعدادات</div>
+          </div>
+        </div>
+
+        <!-- 화면 밖으로 떠오른 조각들 (.screen 바깥이라 잘리지 않는다) -->
+        <div class="push">
+          <div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z"/></svg></span><span class="app">Anbu</span></div>
+          <div class="ti">تنبيه</div>
+          <div class="bo">لم يتم استلام فحص الاطمئنان المجدول لليوم بعد. يرجى التحقق شخصياً.</div>
+        </div>
+
+        <div class="codecard">
+          <div class="c1"></div><div class="c2"></div>
+          <div class="in">
+            <div class="top"><span class="lb">SAFETY SHARE CODE</span></div>
+            <div class="val">K7M-4PXR</div>
+          </div>
+        </div>
+
+        <div class="pop">
+          <div class="chd"><span>الخطوات</span><b class="peak">6,240</b></div>
+          <div class="plot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="today"></i></div>
+          <div class="xlab">آخر 7 أيام</div>
+        </div>
+
+        <div class="pop2">
+          <div class="warn">مطلوب التحقق من السلامة</div>
+          <div class="pbtn">اتصل الآن</div>
+          <div class="pbtn o">تأكيد السلامة</div>
+        </div>
+      </div>
+     </div>
     </div>
   </div>
 

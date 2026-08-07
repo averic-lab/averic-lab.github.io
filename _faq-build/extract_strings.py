@@ -116,6 +116,7 @@ KEYS = [
     "guardian_today_summary",
     "guardian_checking_subjects",
     "guardian_subject_list",
+    "guardian_status_normal",
     "guardian_status_caution",
     "guardian_status_confirmed",
     "guardian_safety_needed",
