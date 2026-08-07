@@ -1232,10 +1232,16 @@ p.section-sub {
   font-size: 15px; font-weight: 700; }
 .fmaphead .back { font-size: 20px; color: #4355B9; }
 .fmapview { position: relative; height: 300px; background: #DCE7F0; overflow: hidden; }
-/* 미국 본토 윤곽 — Natural Earth 110m 를 알버스 등적 원추도법으로 투영한 실제 좌표.
-   기억으로 손그림하지 말 것(윤곽은 틀리면 바로 티가 난다) */
-.fusmap { position: absolute; inset: 0; width: 100%; height: 100%; }
-.fusmap path { fill: #E4EDE3; stroke: #B7C7BC; stroke-width: 1; }
+/* 거리 수준 지도 — 정확도 12 m 표시와 축척이 맞아야 한다(국가 지도는 안 맞았다).
+   격자만 그리면 표처럼 읽히므로 대각 대로와 강을 넣었고, 강은 건물 위·도로 아래에
+   깔아 교차부가 다리처럼 보이게 순서를 잡았다. 이 순서를 바꾸면 물이 조각난다 */
+.fmapsvg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mland  { fill: #EFEAE0; }
+.mpark  { fill: #C4E1C5; }
+.mblk   { fill: #DED7C9; }
+.mriver { stroke: #A6CFE8; fill: none; }
+.mcase  { stroke: #D8D0C0; stroke-linecap: round; }
+.mroad  { stroke: #fff; stroke-linecap: round; }
 /* 핀은 SVG 안에 둔다 — 지도와 같이 스케일되므로 화면 크기가 바뀌어도 위치가 안 어긋난다 */
 .fpin { fill: #E53935; stroke: #fff; stroke-width: 3; }
 .fhalo { fill: rgba(229,57,53,.35); transform-box: fill-box; transform-origin: center;
