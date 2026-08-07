@@ -550,9 +550,14 @@ em { font-style: normal; }
    상자의 끝을 잡아서, 점선이 라벨 폭의 절반만큼 왼쪽으로 밀린다(언어마다 다르게).
    좌우·텍스트 방향은 전부 논리 속성이라 아랍어에서 통째로 반대편으로 넘어간다. */
 .codecard .co { position: absolute; width: 0; bottom: calc(100% - 10px); pointer-events: none; }
+/* 점선을 border-dashed 로 그리면 좁은 화면에서 .pwrap 이 0.55배로 줄 때
+   1.5px → 0.8px 미만이 되어 Safari 가 아예 그리지 않는다(실기기 확인).
+   배경 패턴으로 그리면 축소돼도 살아남는다. */
 .codecard .coline {
-  position: absolute; bottom: 0; inset-inline-start: 0; width: 0;
-  border-left: 1.5px dashed rgba(255, 217, 168, .85);
+  position: absolute; bottom: 0; inset-inline-start: 0;
+  width: 2px; margin-inline-start: -1px;
+  background-image: repeating-linear-gradient(to bottom,
+    rgba(255, 217, 168, .9) 0 5px, transparent 5px 10px);
 }
 .codecard .cohead {
   position: absolute; inset-inline-start: -4px; transform: translateY(50%);
@@ -583,8 +588,10 @@ em { font-style: normal; }
    ⚠️ 여기서만 물리 속성(left)을 쓴다 — 꺾이는 방향은 화면 기준이라 논리 속성과 섞으면 뒤집힌다. */
 .codecard .coelbow { display: none; }
 [dir="rtl"] .codecard .coelbow {
-  display: block; position: absolute; height: 0; left: 0;
-  border-top: 1.5px dashed rgba(255, 217, 168, .85);
+  display: block; position: absolute; left: 0;
+  height: 2px; margin-top: -1px;
+  background-image: repeating-linear-gradient(to right,
+    rgba(255, 217, 168, .9) 0 5px, transparent 5px 10px);
 }
 [dir="rtl"] .codecard .cohead {
   /* RTL 컨테이너 안에서는 flex row 도 오른쪽→왼쪽이라 라벨이 폰 위로 되뻗는다.
