@@ -771,6 +771,11 @@ h2.section-title {
   line-height: 1.35;
   margin-bottom: 24px;
   color: var(--ink);
+  /* 한국어·일본어·중국어는 글자 단위로 아무 데서나 줄바꿈된다 —
+     "단계별로" 가 "단계 / 별로" 로 쪼개지는 것을 막는다.
+     라틴 문자는 기존대로 공백에서 끊기므로 영향 없다. */
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 h2.section-title em {
   color: var(--pink-deep);
@@ -915,7 +920,8 @@ p.section-sub {
 .ncard { border-radius: 16px; padding: 12px 14px 14px; }
 .nrow { display: flex; align-items: center; gap: 10px; }
 .nic { width: 30px; height: 30px; flex: 0 0 30px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; }
+  display: flex; align-items: center; justify-content: center; }
+.nic svg { width: 17px; height: 17px; fill: currentColor; }
 .nrow b { flex: 1; font-size: 13px; font-weight: 900; }
 .nrow em { font-style: normal; font-size: 12px; font-weight: 500; color: #4355B9; }
 .nbody { margin-top: 8px; padding-top: 10px; font-size: 12px; line-height: 1.5; color: #1A1C1C;
@@ -943,9 +949,10 @@ p.section-sub {
 .np2 { top: 214px; left: 152px;  animation-delay: .5s; }
 .np3 { top: 336px; left: -104px; animation-delay: 1s; }
 .np4 { top: 458px; left: 152px;  animation-delay: 1.5s; }
+.np5 { top: 556px; left: -104px; animation-delay: 2s; }
 /* 왼쪽 카드는 왼쪽으로, 오른쪽 카드는 오른쪽으로 더 벌어졌다 돌아온다 */
 @keyframes npopFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-.np1, .np3 { animation-name: npopLeft; }
+.np1, .np3, .np5 { animation-name: npopLeft; }
 .np2, .np4 { animation-name: npopRight; }
 @keyframes npopLeft  { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-12px, -7px); } }
 @keyframes npopRight { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(12px, -7px); } }
@@ -958,8 +965,6 @@ p.section-sub {
   backdrop-filter: blur(2.5px); -webkit-backdrop-filter: blur(2.5px);
   box-shadow: inset 0 -3px 12px rgba(10,14,40,.1);
 }
-.nlist .nc-info::after { content: none; }   /* 정보 카드는 튀어나오지 않으므로 그대로 둔다 */
-
 /* 반응형 — 튀어나온 카드까지 합치면 가로 508px(폰 300 + 좌우 104씩)이 필요하다.
    두 칸으로는 1080px 아래부터 그 폭이 안 나오므로 세로로 쌓고, 더 좁아지면
    .nwrap 을 통째로 축소한다(카드 좌표가 고정값이라 개별로 줄이면 어긋난다). */

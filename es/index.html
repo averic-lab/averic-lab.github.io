@@ -371,15 +371,15 @@
 <section class="levels">
   <div class="levels-inner">
     <div class="levels-copy">
-      <div class="eyebrow">SEÑALES GRADUALES</div>
-      <h2 class="section-title">Solo cuando hace falta, <em>solo lo que hace falta.</em></h2>
-      <p class="section-sub">No toda alerta es una emergencia. Anbu comunica la situación en cinco niveles tranquilos.</p>
+      <div class="eyebrow">AVISOS POR NIVELES</div>
+      <h2 class="section-title">Incluso lo que hay que revisar <em>llega por niveles.</em></h2>
+      <p class="section-sub">Anbu comunica la situación en cinco niveles tranquilos.</p>
       <ul class="levels-list">
-        <li class="lv-normal"><span class="dot"></span><b>Normal</b><span>Todo en calma hoy</span></li>
-        <li class="lv-caution"><span class="dot"></span><b>Precaución</b><span>Aún sin actividad</span></li>
-        <li class="lv-warning"><span class="dot"></span><b>Aviso</b><span>Sin señales desde hace un rato</span></li>
+        <li class="lv-normal"><span class="dot"></span><b>Normal</b><span>Hoy todo en orden</span></li>
+        <li class="lv-caution"><span class="dot"></span><b>Precaución</b><span>Aún sin señal, o sin actividad detectada</span></li>
+        <li class="lv-warning"><span class="dot"></span><b>Aviso</b><span>Varios días sin señal ni actividad</span></li>
         <li class="lv-urgent"><span class="dot"></span><b>Urgente</b><span>Por favor, comprueba ahora</span></li>
-        <li class="lv-info"><span class="dot"></span><b>Info</b><span>Pasos · Batería</span></li>
+        <li class="lv-info"><span class="dot"></span><b>Info</b><span>Pasos · Nivel de batería</span></li>
       </ul>
     </div>
 
@@ -390,18 +390,19 @@
           <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
           <div class="ntitle">Notificaciones</div>
           <div class="nlist">
-            <div class="ncard nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>Normal</b><em>18:00</em></div><div class="nbody">La verificación de bienestar se recibió correctamente.</div></div>
-            <div class="ncard nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>Precaución</b><em>20:00</em></div><div class="nbody">La verificación de bienestar programada para hoy aún no se ha recibido. Por favor, verifique en persona.</div></div>
-            <div class="ncard nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>Alerta</b><em>20:00</em></div><div class="nbody">Las verificaciones de bienestar se han perdido consecutivamente. Por favor, verifique en persona.</div></div>
-            <div class="ncard nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>Urgente</b><em>09:00</em></div><div class="nbody">Sin verificación de bienestar durante 3 día(s). Se requiere verificación inmediata.</div></div>
-            <div class="ncard nc-info"><div class="nrow"><span class="nic">&#8599;</span><b>Información</b></div><div class="nbody">3,482 pasos caminados hoy.</div></div>
+            <div class="ncard nc-normal"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.2 14.2-4-4 1.4-1.4 2.6 2.6 5.6-5.6 1.4 1.4-7 7z"/></svg></span><b>Normal</b><em>18:00</em></div><div class="nbody">La verificación de bienestar se recibió correctamente.</div></div>
+            <div class="ncard nc-caution"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></span><b>Precaución</b><em>20:00</em></div><div class="nbody">La verificación de bienestar programada para hoy aún no se ha recibido. Por favor, verifique en persona.</div></div>
+            <div class="ncard nc-warning"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 4.3 2.6 20.5h18.8L12 4.3zm1 12.7h-2v-2h2v2zm0-4h-2V9.5h2V13z"/></svg></span><b>Alerta</b><em>20:00</em></div><div class="nbody">Las verificaciones de bienestar se han perdido consecutivamente. Por favor, verifique en persona.</div></div>
+            <div class="ncard nc-urgent"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></span><b>Urgente</b><em>09:00</em></div><div class="nbody">Sin verificación de bienestar durante 3 día(s). Se requiere verificación inmediata.</div></div>
+            <div class="ncard nc-info"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M13.5 5.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM9.8 8.9 7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3A7.3 7.3 0 0 0 19 13v-2c-1.8 0-3.3-1-4.1-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5 0-.8.2L6 7.7V12h2V9l1.8-.1z"/></svg></span><b>Información</b></div><div class="nbody">3,482 pasos caminados hoy.</div></div>
           </div>
         </div>
         <!-- 좌·우로 번갈아 튀어나오는 알림 카드 (.nscreen 바깥이라 잘리지 않는다) -->
-        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>Normal</b><em>18:00</em></div><div class="nbody">La verificación de bienestar se recibió correctamente.</div></div>
-        <div class="npop np2 nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>Precaución</b><em>20:00</em></div><div class="nbody">La verificación de bienestar programada para hoy aún no se ha recibido. Por favor, verifique en persona.</div></div>
-        <div class="npop np3 nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>Alerta</b><em>20:00</em></div><div class="nbody">Las verificaciones de bienestar se han perdido consecutivamente. Por favor, verifique en persona.</div></div>
-        <div class="npop np4 nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>Urgente</b><em>09:00</em></div><div class="nbody">Sin verificación de bienestar durante 3 día(s). Se requiere verificación inmediata.</div></div>
+        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.2 14.2-4-4 1.4-1.4 2.6 2.6 5.6-5.6 1.4 1.4-7 7z"/></svg></span><b>Normal</b><em>18:00</em></div><div class="nbody">La verificación de bienestar se recibió correctamente.</div></div>
+        <div class="npop np2 nc-caution"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></span><b>Precaución</b><em>20:00</em></div><div class="nbody">La verificación de bienestar programada para hoy aún no se ha recibido. Por favor, verifique en persona.</div></div>
+        <div class="npop np3 nc-warning"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 4.3 2.6 20.5h18.8L12 4.3zm1 12.7h-2v-2h2v2zm0-4h-2V9.5h2V13z"/></svg></span><b>Alerta</b><em>20:00</em></div><div class="nbody">Las verificaciones de bienestar se han perdido consecutivamente. Por favor, verifique en persona.</div></div>
+        <div class="npop np4 nc-urgent"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></span><b>Urgente</b><em>09:00</em></div><div class="nbody">Sin verificación de bienestar durante 3 día(s). Se requiere verificación inmediata.</div></div>
+        <div class="npop np5 nc-info"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M13.5 5.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM9.8 8.9 7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3A7.3 7.3 0 0 0 19 13v-2c-1.8 0-3.3-1-4.1-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5 0-.8.2L6 7.7V12h2V9l1.8-.1z"/></svg></span><b>Información</b></div><div class="nbody">3,482 pasos caminados hoy.</div></div>
       </div>
      </div>
     </div>
