@@ -13,6 +13,11 @@
 exclude:
   # 내부 문서 (이 파일의 존재 이유)
   - CLAUDE.md
+  # 빌드 도구 — `_` 로 시작하지 않아 Jekyll 기본 제외에 안 걸린다.
+  # 빼기 전에는 averic.co.kr/i18n/build.py 와 translations.json 이 200 으로
+  # 공개돼 있었다(2026-08-07 확인). 산출물은 {lang}/index.html 이므로
+  # 제외해도 사이트 동작에 영향이 없다.
+  - i18n/
   # ── 아래는 Jekyll 기본 제외 목록 (exclude 지정 시 사라지므로 재명시) ──
   - .sass-cache/
   - .jekyll-cache/

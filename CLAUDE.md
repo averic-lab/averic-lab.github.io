@@ -19,12 +19,35 @@ Jekyll은 front matter가 없는 `.md`도 **정적 파일로 그대로 복사**�
 - `.nojekyll`을 추가해 Jekyll을 끄는 방법은 **쓰지 않는다** — `_` 폴더 제외 규칙까지 사라져 `_beta-test-build/`(스크린샷·빌드 스크립트)와 `_faq-build/`가 통째로 공개된다.
 - ⚠️ **`_config.yml`을 고칠 때마다 배포 후 직접 확인할 것.** 이 파일이 잘못되면 문서가 아니라 사이트 전체가 깨진다. 확인 항목: `averic.co.kr/ko/` 정상 렌더 · `averic.co.kr/CLAUDE.md` 404 · `/test/`·`/preview/` 회귀 없음. (2026-08-06 커밋 `bd38607` 배포에서 전부 통과 확인)
 
+## 검색 색인 (SEO) — 2026-08-07 점검
+
+Search Console 「적절한 표준 태그가 포함된 대체 페이지 12건」을 계기로 전면 점검한 결과다.
+
+**그 12건은 버그가 아니었다** — 전부 `http://averic.co.kr/{lang}/` 였고, GitHub Pages의 **Enforce HTTPS가 꺼져 있어** http 가 200으로 내용을 내주고 있었다. 페이지의 canonical 이 `https://` 를 가리켜 Google 이 그대로 존중한 정상 동작이다. **조치는 코드가 아니라 저장소 설정** — Settings → Pages → Enforce HTTPS 체크(2026-08-07 적용, `http://` → 301 확인). 같은 증상이 다시 보이면 코드를 뒤지기 전에 이 설정부터 확인할 것.
+
+같이 발견해 고친 진짜 문제:
+
+- **`sitemap.xml`·`robots.txt`가 아예 없었다.** 발행 100개 중 Google 이 찾은 건 71개뿐이었다. `python3 _seo/gen_sitemap.py`로 생성한다. **색인 대상만 넣는다** — noindex 페이지(루트 라우터·`preview/`·`test/`)는 넣지 않는다. 사이트맵에 넣고 noindex 로 막으면 모순된 신호가 된다. `lastmod`는 git 커밋 시각을 쓴다(파일 mtime 은 clone 마다 바뀌어 매번 전체가 갱신된 것처럼 보인다).
+- **`privacy-policy.html`·`terms-of-service.html` 40개에 canonical·hreflang 이 하나도 없었다.** 이 둘만 손으로 쓴 페이지라 빌더가 없어서 빠져 있었다. `python3 _seo/patch_legal.py`로 넣는다 — **멱등**이라(기존 `<!-- seo:begin -->` 블록을 지우고 다시 넣음) 페이지를 새로 쓰거나 언어를 추가한 뒤 다시 돌리면 된다. 앱이 `/{locale}/privacy-policy.html`을 직접 열기 때문에 스토어 심사에서도 쓰이는 페이지다.
+- **FAQ·사용설명에 `x-default`가 없었다.** `_faq-build/common.py`의 `head_links()`에 추가했다(홈과 같이 `en`을 가리킨다).
+
+⚠️ **언어 목록·hreflang 코드는 `i18n/build.py`의 `ORDER`/`META`가 유일한 출처**다. `_seo/`의 두 스크립트도 그것을 import 한다 — 여기서 다시 정의하면 두 곳이 조용히 어긋난다.
+
+**루트 `index.html`은 `noindex,follow`다(의도).** 언어 분기용 JS 라우터라 색인할 내용이 없다. `follow` + hreflang 이 있어 언어 페이지 발견에는 지장이 없지만, 그 결과 **맨몸 도메인 `averic.co.kr` 자체는 검색에 안 잡힌다**. 바꾸려면 라우터가 아니라 실제 내용을 가진 루트가 필요하다.
+
+**페이지를 추가·수정한 뒤 확인** (100개 페이지 + 사이트맵 정합성):
+- 각 페이지의 canonical 이 자기 자신을 가리키는가
+- hreflang 20개 + `x-default`가 다 있고, 자기 자신을 상호 참조하는가
+- 사이트맵의 URL 집합이 실제 파일 집합과 정확히 일치하는가
+
 ## 사이트 구조
 
 - `index.html` — 루트 스플래시(언어 자동 분기), `style.css`, `site.js`
 - `og-image.png` — 공유 미리보기(1200×630). 20개 언어가 이 한 장을 공유하므로 **문구는 언어 중립**으로 둔다(브랜드 + 도메인). 없으면 카톡·SNS 링크가 그림 없이 나간다
 - `ko/`, `en/`, `ja/` … (20개 언어 폴더) — 각 언어별 `index.html` / `privacy-policy.html` / `terms-of-service.html` / `faq.html` / `guide.html`
-- `i18n/` — 다국어 랜딩 빌드 도구(`build.py`, `template.html`, `translations.json`) — **20개 언어 `index.html` 전부를 생성**한다(단일 출처)
+- `i18n/` — 다국어 랜딩 빌드 도구(`build.py`, `template.html`, `translations.json`) — **20개 언어 `index.html` 전부를 생성**한다(단일 출처). `_` 접두가 아니라 Jekyll 기본 제외에 안 걸리므로 `_config.yml`의 `exclude`에 명시했다(2026-08-07 이전에는 `averic.co.kr/i18n/build.py`가 200으로 공개돼 있었다)
+- `_seo/` — SEO 도구(게시 제외). `patch_legal.py`(법적 페이지 canonical·hreflang), `gen_sitemap.py`(sitemap.xml). 상세는 아래 별도 절
+- `sitemap.xml` · `robots.txt` — **산출물이다. 직접 수정 금지**
 - `_faq-build/` — FAQ·사용설명 빌드 도구 + `PRD-FAQ.md` (게시 제외). 상세는 아래 별도 절
 - `CNAME` — `averic.co.kr`
 

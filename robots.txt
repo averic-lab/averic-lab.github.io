@@ -1,0 +1,10 @@
+# averic.co.kr
+#
+# preview/ 와 test/ 는 Disallow 하지 않는다 — 두 페이지는 meta noindex 로
+# 막고 있는데, robots.txt 로 크롤링까지 막으면 크롤러가 그 noindex 를 읽지
+# 못해 오히려 색인될 수 있다. 색인을 막으려면 크롤링은 허용해야 한다.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://averic.co.kr/sitemap.xml

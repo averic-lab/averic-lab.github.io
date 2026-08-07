@@ -74,6 +74,12 @@ def head_links(active, available, page):
         bcp = META[code][0]
         lines.append(f'<link rel="alternate" hreflang="{bcp}" '
                      f'href="https://averic.co.kr/{code}/{page}">')
+    # x-default — 어느 언어에도 안 맞는 방문자가 갈 곳. 없으면 Google 이 임의로 고른다.
+    # 홈(i18n/build.py)이 en 을 x-default 로 쓰므로 여기서도 en 으로 맞춘다.
+    fallback = "en" if "en" in available else next(
+        (c for c in ORDER if c in available), active)
+    lines.append('<link rel="alternate" hreflang="x-default" '
+                 f'href="https://averic.co.kr/{fallback}/{page}">')
     return "\n  ".join(lines)
 
 
