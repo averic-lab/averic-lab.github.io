@@ -12,6 +12,12 @@
 
 lastmod 는 git 이 기록한 그 파일의 마지막 커밋 시각이다. 파일 mtime 은
 clone 할 때마다 바뀌어 매번 사이트맵 전체가 갱신된 것처럼 보인다.
+
+⚠️ **내용 변경을 먼저 커밋하고, 그다음 이 스크립트를 돌려 별도 커밋으로 올릴 것.**
+git 기록을 읽으므로, 아직 커밋되지 않은 변경은 lastmod 에 반영되지 않는다.
+2026-08-07 에 법적 페이지 40개를 고치면서 이 순서를 어겨, 방금 바뀐 페이지의
+lastmod 가 두 달 전 날짜로 나갔다 — 재크롤링이 필요한 바로 그 페이지들에
+"5월 이후 안 바뀜"이라고 알리는 셈이었다. 아래 경고가 이 실수를 잡는다.
 """
 import subprocess
 import sys
@@ -40,8 +46,16 @@ def lastmod(path):
     return r.stdout.strip() or None
 
 
+def dirty():
+    """커밋 안 된 변경이 있는 파일 목록 — 있으면 lastmod 가 낡은 값으로 나간다."""
+    r = subprocess.run(["git", "status", "--porcelain"],
+                       cwd=ROOT, capture_output=True, text=True)
+    return {ln[3:].strip().strip('"') for ln in r.stdout.splitlines() if ln[3:]}
+
+
 def main():
     rows, missing = [], []
+    pending = dirty()
     for code in ORDER:
         for fname, urlpath, prio in PAGES:
             f = ROOT / code / fname
@@ -49,7 +63,10 @@ def main():
                 missing.append(f"{code}/{fname}")
                 continue
             loc = f"{SITE}/{code}/{urlpath}"
-            d = lastmod(f.relative_to(ROOT))
+            rel = str(f.relative_to(ROOT))
+            if rel in pending:
+                print(f"  ⚠ 커밋 안 됨 — lastmod 가 낡은 값이 된다: {rel}")
+            d = lastmod(rel)
             rows.append("  <url>\n"
                         f"    <loc>{escape(loc)}</loc>\n"
                         + (f"    <lastmod>{d}</lastmod>\n" if d else "")

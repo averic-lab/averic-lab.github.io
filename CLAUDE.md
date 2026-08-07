@@ -27,7 +27,7 @@ Search Console 「적절한 표준 태그가 포함된 대체 페이지 12건」
 
 같이 발견해 고친 진짜 문제:
 
-- **`sitemap.xml`·`robots.txt`가 아예 없었다.** 발행 100개 중 Google 이 찾은 건 71개뿐이었다. `python3 _seo/gen_sitemap.py`로 생성한다. **색인 대상만 넣는다** — noindex 페이지(루트 라우터·`preview/`·`test/`)는 넣지 않는다. 사이트맵에 넣고 noindex 로 막으면 모순된 신호가 된다. `lastmod`는 git 커밋 시각을 쓴다(파일 mtime 은 clone 마다 바뀌어 매번 전체가 갱신된 것처럼 보인다).
+- **`sitemap.xml`·`robots.txt`가 아예 없었다.** 발행 100개 중 Google 이 찾은 건 71개뿐이었다. `python3 _seo/gen_sitemap.py`로 생성한다. ⚠️ **내용 변경을 먼저 커밋하고 그다음 사이트맵을 별도 커밋으로 올릴 것** — git 기록을 읽으므로 아직 커밋 안 된 변경은 `lastmod`에 안 잡힌다. 2026-08-07에 이 순서를 어겨 방금 고친 법적 페이지 40개의 `lastmod`가 두 달 전 날짜로 나갔다(재크롤링이 필요한 바로 그 페이지에 "5월 이후 안 바뀜"이라고 알리는 셈). 지금은 커밋 안 된 파일이 있으면 스크립트가 경고한다. **색인 대상만 넣는다** — noindex 페이지(루트 라우터·`preview/`·`test/`)는 넣지 않는다. 사이트맵에 넣고 noindex 로 막으면 모순된 신호가 된다. `lastmod`는 git 커밋 시각을 쓴다(파일 mtime 은 clone 마다 바뀌어 매번 전체가 갱신된 것처럼 보인다).
 - **`privacy-policy.html`·`terms-of-service.html` 40개에 canonical·hreflang 이 하나도 없었다.** 이 둘만 손으로 쓴 페이지라 빌더가 없어서 빠져 있었다. `python3 _seo/patch_legal.py`로 넣는다 — **멱등**이라(기존 `<!-- seo:begin -->` 블록을 지우고 다시 넣음) 페이지를 새로 쓰거나 언어를 추가한 뒤 다시 돌리면 된다. 앱이 `/{locale}/privacy-policy.html`을 직접 열기 때문에 스토어 심사에서도 쓰이는 페이지다.
 - **FAQ·사용설명에 `x-default`가 없었다.** `_faq-build/common.py`의 `head_links()`에 추가했다(홈과 같이 `en`을 가리킨다).
 
