@@ -410,16 +410,84 @@
 </section>
 
 
-<!-- ========== PRIVACY ========== -->
-<section class="privacy">
-  <div class="privacy-inner">
-    <div class="eyebrow">En varsam distans</div>
-    <h2 class="section-title">Nära i hjärtat, <em>men inte varje detalj i din dag.</em></h2>
-    <p class="section-sub">Vi vill gärna veta att allt är bra — och Anbu förmedlar just det, på enklast möjliga sätt, inget mer.</p>
-    <ul class="privacy-bullets cols-2">
-      <li>Bandet mellan dig och dina nära är <strong>en unik 7-teckens kod</strong> som appen skapar.</li>
-      <li><strong>Din plats delas bara</strong> när du trycker på [Jag behöver hjälp] — och når då alla som är anslutna till dig.</li>
-    </ul>
+<!-- ========== HELP (긴급 요청 흐름) ========== -->
+<!-- 설명 없이 흐름만 보여준다 — 대상자 홈 → 확인 창 → 보호자 알림 → 위치 지도.
+     화면 문구는 전부 앱 번역 파일에서 온다(APP_SOS_* / APP_MAP_*). -->
+<section class="help">
+  <div class="help-inner">
+    <div class="eyebrow">NÖDANROP</div>
+    <h2 class="section-title">En knapp — <em>platsen följer med.</em></h2>
+
+    <div class="flow" aria-hidden="true">
+      <div class="fwrap">
+        <div class="fphone">
+          <div class="fscreen">
+
+            <!-- ① 대상자 홈 -->
+            <div class="fr fr1">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="fmini">Dela din sakerhetskod</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">Rapportera sakerhet nu</div>
+                <div class="fsos"><b>Jag behöver hjälp</b><span>Skickar ett nödlarm till dina vårdgivare</span>
+                  <i class="tap"></i></div>
+              </div>
+            </div>
+
+            <!-- ② 확인 창 -->
+            <div class="fr fr2">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad dim">
+                <div class="fmini">Dela din sakerhetskod</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">Rapportera sakerhet nu</div>
+                <div class="fsos"><b>Jag behöver hjälp</b><span>Skickar ett nödlarm till dina vårdgivare</span></div>
+              </div>
+              <div class="fscrim"></div>
+              <div class="fdlg">
+                <b>Nödhjälpbegäran</b>
+                <p>Ett nödlarm kommer att skickas till alla vårdgivare.<br>Din nuvarande plats delas också.<br>Vill du verkligen be om hjälp?</p>
+                <div class="fin">Lägg till ett meddelande (valfritt)</div>
+                <div class="fbtns"><span>Avbryt</span><em>Skicka nödbegäran</em></div>
+              </div>
+            </div>
+
+            <!-- ③ 보호자 알림 -->
+            <div class="fr fr3">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="ftitle">Aviseringar</div>
+                <div class="ncard nc-urgent">
+                  <div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></span><b>Bradskande</b><em>14:20</em></div>
+                  <div class="nbody">Den skyddade personen har direkt begärt hjälp. Kontrollera omedelbart.</div>
+                  <div class="fmap"><span>🗺️ Visa plats</span><i class="tap"></i></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ④ 위치 지도 -->
+            <div class="fr fr4">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fmaphead"><span class="back">&#8249;</span>Nödplats</div>
+              <div class="fmapview">
+                <span class="road r1"></span><span class="road r2"></span>
+                <span class="road r3"></span><span class="road r4"></span>
+                <span class="blk b1"></span><span class="blk b2"></span><span class="blk b3"></span>
+                <span class="pin"></span><span class="halo"></span>
+              </div>
+              <div class="fmapinfo">
+                <div><span>Skyddad person</span><b>A</b></div>
+                <div><span>Noggrannhet</span><b>12 m</b></div>
+                <div class="ext">Öppna i extern kartapp</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="fdots"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
   </div>
 </section>
 

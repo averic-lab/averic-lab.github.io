@@ -991,71 +991,6 @@ p.section-sub {
 }
 
 /* ==================================================
-   PRIVACY — our promise
-   ================================================== */
-.privacy {
-  position: relative;
-  padding: 120px 24px;
-  background: var(--paper);
-  text-align: center;
-}
-.privacy-inner {
-  max-width: 880px;
-  margin: 0 auto;
-  background: linear-gradient(135deg, #fff8f5 0%, #fff2f3 100%);
-  border-radius: 32px;
-  padding: 88px 48px;
-  border: 1px solid var(--line);
-  position: relative;
-  overflow: hidden;
-}
-.privacy-inner::before {
-  content: "";
-  position: absolute;
-  top: -100px; right: -100px;
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(255, 138, 149, 0.12) 0%, transparent 70%);
-  border-radius: 50%;
-}
-.privacy-bullets {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-top: 48px;
-  text-align: left;
-  position: relative;
-  z-index: 1;
-}
-.privacy-bullets li {
-  font-size: 15px;
-  font-weight: 400;
-  color: var(--ink-soft);
-  line-height: 1.75;
-  padding-left: 32px;
-  position: relative;
-}
-.privacy-bullets li::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 8px;
-  width: 18px; height: 18px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--pink) 0%, var(--pink-deep) 100%);
-  box-shadow: 0 4px 12px rgba(229, 75, 94, 0.25);
-}
-.privacy-bullets li::after {
-  content: "✓";
-  position: absolute;
-  left: 4px; top: 5px;
-  font-size: 12px;
-  font-weight: 700;
-  color: #fff;
-}
-.privacy-bullets strong { color: var(--ink); font-weight: 600; }
-.privacy-bullets.cols-2 { grid-template-columns: repeat(2, 1fr); max-width: 720px; margin-left: auto; margin-right: auto; }
-
-/* ==================================================
    Store badges + coming-soon label — used inside .hero-cta
    ================================================== */
 .badges {
@@ -1090,6 +1025,151 @@ p.section-sub {
   letter-spacing: 2px;
   color: var(--ink-mute);
   text-transform: uppercase;
+}
+
+/* ==================================================
+   HELP — 긴급 요청 흐름. 설명 없이 화면 4장이 순환한다.
+   ① 대상자 홈 → ② 확인 창 → ③ 보호자 알림 → ④ 위치 지도
+   전환은 CSS 애니메이션만 쓴다(JS 없음). 한 장당 3.4초 × 4 = 13.6초 주기.
+   ================================================== */
+.help {
+  position: relative; padding: 120px 24px;
+  background: linear-gradient(180deg, var(--warm-rose) 0%, var(--warm-paper) 100%);
+  text-align: center; overflow: hidden;
+}
+.help-inner { max-width: 900px; margin: 0 auto; }
+.flow { margin-top: 52px; display: flex; justify-content: center; }
+.fwrap { position: relative; transform-origin: 50% 0; }
+.fphone {
+  position: relative; width: 300px; height: 620px; margin: 0 auto;
+  border-radius: 42px; background: #0d0f1f; padding: 9px;
+  box-shadow: 0 0 0 1.5px rgba(255,255,255,.1), 0 0 0 7px #14162c,
+    0 30px 64px -20px rgba(20,24,60,.42);
+}
+.fscreen {
+  position: relative; width: 100%; height: 100%; border-radius: 34px; overflow: hidden;
+  background: #F7F9F8; color: #1A1C1C; text-align: start;
+  font-family: -apple-system, "Roboto", "Noto Sans KR", system-ui, sans-serif;
+}
+/* 화면 4장 순환 — 각 장이 13.6초 주기에서 자기 구간에만 보인다 */
+.fr { position: absolute; inset: 0; opacity: 0; animation: fcycle 13.6s ease-in-out infinite; }
+.fr1 { animation-delay: 0s; }
+.fr2 { animation-delay: 3.4s; }
+.fr3 { animation-delay: 6.8s; }
+.fr4 { animation-delay: 10.2s; }
+@keyframes fcycle {
+  0%    { opacity: 0; transform: translateX(14px); }
+  3%    { opacity: 1; transform: translateX(0); }
+  22%   { opacity: 1; transform: translateX(0); }
+  26%   { opacity: 0; transform: translateX(-14px); }
+  100%  { opacity: 0; transform: translateX(-14px); }
+}
+.fbar { display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 20px 2px; font-size: 11.5px; font-weight: 600; }
+.fpad { padding: 12px 16px; }
+.fpad.dim { filter: saturate(.85); }
+.ftitle { font-size: 17px; font-weight: 700; margin: 4px 2px 12px; }
+.fmini { font-size: 12.5px; font-weight: 700; color: #00685E; margin-bottom: 8px; }
+
+/* 안전 코드 카드(앱 값 축약) */
+.fcode { border-radius: 14px; padding: 13px 14px 16px;
+  background: linear-gradient(135deg, #123C63 0%, #1D6FA5 100%); }
+.fcode span { display: block; font-size: 8.5px; font-weight: 700; letter-spacing: 1.2px;
+  color: rgba(255,255,255,.75); margin-bottom: 6px; }
+.fcode b { font-size: 26px; font-weight: 800; letter-spacing: 2px; color: #fff; }
+.frow { margin-top: 10px; border-radius: 12px; background: #E0F2F1; color: #00685E;
+  font-size: 12px; font-weight: 700; padding: 12px 14px; }
+
+/* 긴급 버튼 — 앱 값(그라데이션 #6E2020→#C07878, 테두리 #571818) */
+.fsos { position: relative; margin-top: 10px; border-radius: 14px; padding: 13px 14px;
+  background: linear-gradient(135deg, #6E2020, #C07878); border: 1px solid #571818; }
+.fsos b { display: block; font-size: 14px; font-weight: 800; color: #fff; }
+.fsos span { display: block; font-size: 10.5px; color: rgba(255,255,255,.78); margin-top: 2px; }
+
+/* 탭 표시 — 손끝이 닿는 순간을 원으로 */
+.tap { position: absolute; right: 16px; top: 50%; width: 26px; height: 26px;
+  margin-top: -13px; border-radius: 50%; background: rgba(255,255,255,.55);
+  box-shadow: 0 0 0 0 rgba(255,255,255,.5); animation: tapPulse 3.4s ease-out infinite; }
+@keyframes tapPulse {
+  0%, 55%  { transform: scale(.4); opacity: 0; }
+  62%      { transform: scale(1);  opacity: 1; }
+  78%, 100%{ transform: scale(1.6); opacity: 0; }
+}
+
+/* 확인 창 — 앱 값(배리어 black54 / 좌우 40 / radius 16) */
+.fscrim { position: absolute; inset: 0; background: rgba(0,0,0,.54); }
+.fdlg { position: absolute; left: 28px; right: 28px; top: 50%; transform: translateY(-50%);
+  background: #fff; border-radius: 16px; padding: 18px 18px 12px; }
+.fdlg b { display: block; font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.fdlg p { font-size: 11.5px; line-height: 1.6; color: #3F4948; }
+.fin { margin-top: 12px; border: 1px solid #DFE3E8; border-radius: 10px;
+  padding: 9px 10px; font-size: 11px; color: #9AA0AE; }
+.fbtns { display: flex; justify-content: flex-end; gap: 16px; margin-top: 12px;
+  font-size: 12.5px; font-weight: 600; }
+.fbtns span { color: #757575; }
+.fbtns em { font-style: normal; color: #B71C1C; font-weight: 700; }
+
+/* 보호자 알림 카드 안의 위치 보기 버튼 */
+.fmap { position: relative; margin-top: 10px; border-radius: 10px; background: #fff;
+  border: 1px solid rgba(229,57,53,.3); padding: 9px 12px;
+  font-size: 11.5px; font-weight: 700; color: #E53935; }
+.fmap .tap { right: 10px; background: rgba(229,57,53,.35); }
+
+/* 위치 지도 */
+.fmaphead { display: flex; align-items: center; gap: 8px; padding: 8px 16px 10px;
+  font-size: 15px; font-weight: 700; }
+.fmaphead .back { font-size: 20px; color: #4355B9; }
+.fmapview { position: relative; height: 300px; background: #E8EDE7; overflow: hidden; }
+.fmapview .road { position: absolute; background: #fff; }
+.r1 { left: 0; right: 0; top: 88px; height: 13px; }
+.r2 { left: 0; right: 0; top: 196px; height: 9px; }
+.r3 { top: 0; bottom: 0; left: 78px; width: 12px; }
+.r4 { top: 0; bottom: 0; left: 196px; width: 8px; }
+.fmapview .blk { position: absolute; background: #DCE4DA; border-radius: 3px; }
+.b1 { left: 14px; top: 20px; width: 52px; height: 54px; }
+.b2 { left: 104px; top: 116px; width: 78px; height: 64px; }
+.b3 { left: 216px; top: 26px; width: 62px; height: 48px; }
+.pin { position: absolute; left: 50%; top: 150px; width: 16px; height: 16px;
+  margin-left: -8px; border-radius: 50%; background: #E53935;
+  box-shadow: 0 0 0 4px #fff, 0 4px 10px rgba(0,0,0,.3); z-index: 2; }
+.fmapview .halo { position: absolute; left: 50%; top: 150px; width: 16px; height: 16px;
+  margin-left: -8px; border-radius: 50%; background: rgba(229,57,53,.35);
+  animation: mapPulse 2.2s ease-out infinite; }
+@keyframes mapPulse {
+  0%   { transform: scale(1); opacity: .55; }
+  100% { transform: scale(5); opacity: 0; }
+}
+.fmapinfo { padding: 12px 16px; }
+.fmapinfo div { display: flex; justify-content: space-between; font-size: 11.5px;
+  padding: 6px 0; border-bottom: 1px solid #EDEFF2; }
+.fmapinfo div span { color: #757575; }
+.fmapinfo div b { font-weight: 700; }
+.fmapinfo .ext { display: block; margin-top: 12px; border: 0; text-align: center;
+  border-radius: 10px; background: #EEF0FA; color: #4355B9; font-weight: 700; padding: 11px 0; }
+
+/* 진행 표시 — 4장에 맞춰 같은 주기로 켜진다 */
+.fdots { display: flex; justify-content: center; gap: 7px; margin-top: 22px; }
+.fdots i { width: 7px; height: 7px; border-radius: 999px; background: rgba(67,85,185,.22);
+  animation: dotCycle 13.6s ease-in-out infinite; }
+.fdots i:nth-child(1) { animation-delay: 0s; }
+.fdots i:nth-child(2) { animation-delay: 3.4s; }
+.fdots i:nth-child(3) { animation-delay: 6.8s; }
+.fdots i:nth-child(4) { animation-delay: 10.2s; }
+@keyframes dotCycle {
+  0%, 2%   { width: 7px;  background: rgba(67,85,185,.22); }
+  4%, 22%  { width: 22px; background: #4355B9; }
+  26%,100% { width: 7px;  background: rgba(67,85,185,.22); }
+}
+
+@media (max-width: 560px) { .help { padding: 90px 18px; } .flow { margin-top: 40px; } }
+@media (max-width: 380px) { .fwrap { transform: scale(.88); margin-bottom: -74px; } }
+
+@media (prefers-reduced-motion: reduce) {
+  /* 움직임을 끄면 순환이 멈춰 첫 화면만 남는다 — 흐름은 못 보여도 화면은 온전하다 */
+  .fr { animation: none; opacity: 0; }
+  .fr1 { opacity: 1; }
+  .tap, .fmapview .halo, .fdots i { animation: none; }
+  .fdots i:nth-child(1) { width: 22px; background: #4355B9; }
 }
 
 /* ==================================================
@@ -1221,10 +1301,7 @@ footer {
   .dawn { padding: 100px 24px 120px; }
   .intro { padding: 100px 20px 80px; }
   .steps { grid-template-columns: 1fr; gap: 16px; margin-top: 56px; }
-  .levels { padding: 90px 20px; }
-  .privacy { padding: 80px 20px; }
-  .privacy-inner { padding: 56px 28px; border-radius: 24px; }
-  .privacy-bullets { grid-template-columns: 1fr; gap: 18px; }
+  .help { padding: 90px 20px; }
   .footer-inner { grid-template-columns: 1fr; gap: 40px; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
   .footer-bottom .legal a { margin-left: 0; margin-right: 16px; }
@@ -1384,10 +1461,6 @@ footer {
 [dir="rtl"] .lang-menu  { left: 28px; right: auto; }
 [dir="rtl"] .step       { text-align: right; }
 [dir="rtl"] .plat b     { margin-right: 0; margin-left: 7px; }
-[dir="rtl"] .privacy-bullets li { padding-left: 0; padding-right: 32px; }
-[dir="rtl"] .privacy-bullets li::before,
-[dir="rtl"] .privacy-bullets li::after { left: auto; right: 0; }
-[dir="rtl"] .privacy-bullets li::after { right: 4px; }
 [dir="rtl"] .badge .l { text-align: right; }
 
 @media (prefers-reduced-motion: reduce) {

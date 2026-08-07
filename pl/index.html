@@ -410,16 +410,84 @@
 </section>
 
 
-<!-- ========== PRIVACY ========== -->
-<section class="privacy">
-  <div class="privacy-inner">
-    <div class="eyebrow">Dyskretna odległość</div>
-    <h2 class="section-title">Blisko sercem, <em>nie każdym szczegółem dnia.</em></h2>
-    <p class="section-sub">Anbu przekazuje tylko tyle, ile potrzeba — spokojnie i z szacunkiem, nic ponad to.</p>
-    <ul class="privacy-bullets cols-2">
-      <li>Więź między tobą a bliskimi tworzy <strong>unikalny 7-znakowy kod</strong> generowany przez aplikację.</li>
-      <li><strong>Lokalizacja jest udostępniana wyłącznie</strong> po naciśnięciu [Potrzebuję pomocy] — i trafia do wszystkich połączonych z tobą osób.</li>
-    </ul>
+<!-- ========== HELP (긴급 요청 흐름) ========== -->
+<!-- 설명 없이 흐름만 보여준다 — 대상자 홈 → 확인 창 → 보호자 알림 → 위치 지도.
+     화면 문구는 전부 앱 번역 파일에서 온다(APP_SOS_* / APP_MAP_*). -->
+<section class="help">
+  <div class="help-inner">
+    <div class="eyebrow">WEZWANIE POMOCY</div>
+    <h2 class="section-title">Jeden przycisk — <em>lokalizacja też leci.</em></h2>
+
+    <div class="flow" aria-hidden="true">
+      <div class="fwrap">
+        <div class="fphone">
+          <div class="fscreen">
+
+            <!-- ① 대상자 홈 -->
+            <div class="fr fr1">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="fmini">Udostepnij swoj kod bezpieczenstwa</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">Zglos bezpieczenstwo teraz</div>
+                <div class="fsos"><b>Potrzebuję pomocy</b><span>Wysyła alarm awaryjny do opiekunów</span>
+                  <i class="tap"></i></div>
+              </div>
+            </div>
+
+            <!-- ② 확인 창 -->
+            <div class="fr fr2">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad dim">
+                <div class="fmini">Udostepnij swoj kod bezpieczenstwa</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">Zglos bezpieczenstwo teraz</div>
+                <div class="fsos"><b>Potrzebuję pomocy</b><span>Wysyła alarm awaryjny do opiekunów</span></div>
+              </div>
+              <div class="fscrim"></div>
+              <div class="fdlg">
+                <b>Prośba o pomoc awaryjną</b>
+                <p>Alarm awaryjny zostanie wysłany do wszystkich opiekunów.<br>Twoja obecna lokalizacja również zostanie udostępniona.<br>Czy na pewno chcesz poprosić o pomoc?</p>
+                <div class="fin">Dodaj wiadomość (opcjonalnie)</div>
+                <div class="fbtns"><span>Anuluj</span><em>Wyślij prośbę awaryjną</em></div>
+              </div>
+            </div>
+
+            <!-- ③ 보호자 알림 -->
+            <div class="fr fr3">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="ftitle">Powiadomienia</div>
+                <div class="ncard nc-urgent">
+                  <div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></span><b>Pilne</b><em>14:20</em></div>
+                  <div class="nbody">Osoba pod opieką bezpośrednio poprosiła o pomoc. Proszę natychmiast sprawdzić.</div>
+                  <div class="fmap"><span>🗺️ Pokaż lokalizację</span><i class="tap"></i></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ④ 위치 지도 -->
+            <div class="fr fr4">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fmaphead"><span class="back">&#8249;</span>Lokalizacja alarmowa</div>
+              <div class="fmapview">
+                <span class="road r1"></span><span class="road r2"></span>
+                <span class="road r3"></span><span class="road r4"></span>
+                <span class="blk b1"></span><span class="blk b2"></span><span class="blk b3"></span>
+                <span class="pin"></span><span class="halo"></span>
+              </div>
+              <div class="fmapinfo">
+                <div><span>Podopieczny</span><b>A</b></div>
+                <div><span>Dokładność</span><b>12 m</b></div>
+                <div class="ext">Otwórz w zewnętrznej aplikacji map</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="fdots"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
   </div>
 </section>
 

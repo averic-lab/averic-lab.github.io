@@ -410,16 +410,84 @@
 </section>
 
 
-<!-- ========== PRIVACY ========== -->
-<section class="privacy">
-  <div class="privacy-inner">
-    <div class="eyebrow">Una distancia cariñosa</div>
-    <h2 class="section-title">Cerca en el corazón, <em>pero no en cada detalle de tu día.</em></h2>
-    <p class="section-sub">Nos encantaría saber cómo va cada jornada — por eso Anbu lo transmite de la forma más sencilla, nada más.</p>
-    <ul class="privacy-bullets cols-2">
-      <li>El vínculo entre tú y tus seres queridos es <strong>un código único de 7 caracteres</strong> que crea la app.</li>
-      <li><strong>Tu ubicación solo se comparte</strong> cuando pulsas [Necesito ayuda] — llegando a todas las personas conectadas contigo.</li>
-    </ul>
+<!-- ========== HELP (긴급 요청 흐름) ========== -->
+<!-- 설명 없이 흐름만 보여준다 — 대상자 홈 → 확인 창 → 보호자 알림 → 위치 지도.
+     화면 문구는 전부 앱 번역 파일에서 온다(APP_SOS_* / APP_MAP_*). -->
+<section class="help">
+  <div class="help-inner">
+    <div class="eyebrow">PETICIÓN DE AYUDA</div>
+    <h2 class="section-title">Un botón — <em>y la ubicación va contigo.</em></h2>
+
+    <div class="flow" aria-hidden="true">
+      <div class="fwrap">
+        <div class="fphone">
+          <div class="fscreen">
+
+            <!-- ① 대상자 홈 -->
+            <div class="fr fr1">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="fmini">Comparta su código de seguridad</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">Reportar bienestar ahora</div>
+                <div class="fsos"><b>Necesito ayuda</b><span>Envía una alerta de emergencia a sus guardianes</span>
+                  <i class="tap"></i></div>
+              </div>
+            </div>
+
+            <!-- ② 확인 창 -->
+            <div class="fr fr2">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad dim">
+                <div class="fmini">Comparta su código de seguridad</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">Reportar bienestar ahora</div>
+                <div class="fsos"><b>Necesito ayuda</b><span>Envía una alerta de emergencia a sus guardianes</span></div>
+              </div>
+              <div class="fscrim"></div>
+              <div class="fdlg">
+                <b>Solicitud de ayuda de emergencia</b>
+                <p>Se enviará una alerta de emergencia a todos los cuidadores.<br>También se compartirá tu ubicación actual.<br>¿Realmente quieres solicitar ayuda?</p>
+                <div class="fin">Añadir un mensaje (opcional)</div>
+                <div class="fbtns"><span>Cancelar</span><em>Enviar solicitud de emergencia</em></div>
+              </div>
+            </div>
+
+            <!-- ③ 보호자 알림 -->
+            <div class="fr fr3">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="ftitle">Notificaciones</div>
+                <div class="ncard nc-urgent">
+                  <div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></span><b>Urgente</b><em>14:20</em></div>
+                  <div class="nbody">La persona protegida ha solicitado ayuda directamente. Por favor, verifique de inmediato.</div>
+                  <div class="fmap"><span>🗺️ Ver ubicación</span><i class="tap"></i></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ④ 위치 지도 -->
+            <div class="fr fr4">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fmaphead"><span class="back">&#8249;</span>Ubicación de emergencia</div>
+              <div class="fmapview">
+                <span class="road r1"></span><span class="road r2"></span>
+                <span class="road r3"></span><span class="road r4"></span>
+                <span class="blk b1"></span><span class="blk b2"></span><span class="blk b3"></span>
+                <span class="pin"></span><span class="halo"></span>
+              </div>
+              <div class="fmapinfo">
+                <div><span>Persona protegida</span><b>A</b></div>
+                <div><span>Precisión</span><b>12 m</b></div>
+                <div class="ext">Abrir en la aplicación de mapas externa</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="fdots"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
   </div>
 </section>
 

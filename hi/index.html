@@ -410,16 +410,84 @@
 </section>
 
 
-<!-- ========== PRIVACY ========== -->
-<section class="privacy">
-  <div class="privacy-inner">
-    <div class="eyebrow">एक कोमल दूरी</div>
-    <h2 class="section-title">दिल से करीब, <em>पर हर पल की ख़बर ज़रूरी नहीं।</em></h2>
-    <p class="section-sub">हर दिन कैसा गुज़रा — बस इतना जानना काफ़ी है। Anbu यही बात सबसे सादे तरीके से पहुँचाता है, इससे ज़्यादा कुछ नहीं।</p>
-    <ul class="privacy-bullets cols-2">
-      <li>आपके और आपके अपनों के बीच का रिश्ता एक <strong>7 अक्षरों के ख़ास कोड</strong> से जुड़ता है, जो ऐप ख़ुद बनाता है।</li>
-      <li><strong>आपकी लोकेशन सिर्फ़ तभी साझा होती है</strong> जब आप [मुझे मदद चाहिए] दबाते हैं — और यह आपसे जुड़े सभी लोगों तक पहुँचती है।</li>
-    </ul>
+<!-- ========== HELP (긴급 요청 흐름) ========== -->
+<!-- 설명 없이 흐름만 보여준다 — 대상자 홈 → 확인 창 → 보호자 알림 → 위치 지도.
+     화면 문구는 전부 앱 번역 파일에서 온다(APP_SOS_* / APP_MAP_*). -->
+<section class="help">
+  <div class="help-inner">
+    <div class="eyebrow">आपातकालीन मदद</div>
+    <h2 class="section-title">एक बटन — <em>लोकेशन भी चली जाती है।</em></h2>
+
+    <div class="flow" aria-hidden="true">
+      <div class="fwrap">
+        <div class="fphone">
+          <div class="fscreen">
+
+            <!-- ① 대상자 홈 -->
+            <div class="fr fr1">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="fmini">अपना सुरक्षा कोड साझा करें</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">अभी सुरक्षा रिपोर्ट करें</div>
+                <div class="fsos"><b>मुझे मदद चाहिए</b><span>अभिभावकों को आपातकालीन अलर्ट भेजता है</span>
+                  <i class="tap"></i></div>
+              </div>
+            </div>
+
+            <!-- ② 확인 창 -->
+            <div class="fr fr2">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad dim">
+                <div class="fmini">अपना सुरक्षा कोड साझा करें</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">अभी सुरक्षा रिपोर्ट करें</div>
+                <div class="fsos"><b>मुझे मदद चाहिए</b><span>अभिभावकों को आपातकालीन अलर्ट भेजता है</span></div>
+              </div>
+              <div class="fscrim"></div>
+              <div class="fdlg">
+                <b>आपातकालीन सहायता अनुरोध</b>
+                <p>सभी अभिभावकों को आपातकालीन अलर्ट भेजा जाएगा।<br>आपकी वर्तमान स्थिति भी साझा की जाएगी।<br>क्या आप वास्तव में सहायता का अनुरोध करना चाहते हैं?</p>
+                <div class="fin">संदेश जोड़ें (वैकल्पिक)</div>
+                <div class="fbtns"><span>रद्द करें</span><em>आपातकालीन अनुरोध भेजें</em></div>
+              </div>
+            </div>
+
+            <!-- ③ 보호자 알림 -->
+            <div class="fr fr3">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="ftitle">सूचनाएं</div>
+                <div class="ncard nc-urgent">
+                  <div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></span><b>अत्यावश्यक</b><em>14:20</em></div>
+                  <div class="nbody">संरक्षित व्यक्ति ने सीधे मदद का अनुरोध किया है। कृपया तुरंत जांचें।</div>
+                  <div class="fmap"><span>🗺️ स्थान देखें</span><i class="tap"></i></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ④ 위치 지도 -->
+            <div class="fr fr4">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fmaphead"><span class="back">&#8249;</span>आपातकालीन स्थान</div>
+              <div class="fmapview">
+                <span class="road r1"></span><span class="road r2"></span>
+                <span class="road r3"></span><span class="road r4"></span>
+                <span class="blk b1"></span><span class="blk b2"></span><span class="blk b3"></span>
+                <span class="pin"></span><span class="halo"></span>
+              </div>
+              <div class="fmapinfo">
+                <div><span>देखभाल प्राप्तकर्ता</span><b>A</b></div>
+                <div><span>सटीकता</span><b>12 m</b></div>
+                <div class="ext">बाहरी मानचित्र ऐप में खोलें</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="fdots"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
   </div>
 </section>
 

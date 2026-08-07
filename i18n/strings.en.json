@@ -10,10 +10,7 @@
  "hero_brandmark": "Quietly, every day",
  "hero_h1_html": "Someone you love lives alone.<br><em>Do you worry every day?</em>",
  "hero_sub_html": "Every day at a set time, a check-in is sent automatically.<br>Call or visit only when you actually need to.",
- "cta_eyebrow": "GET STARTED",
- "cta_h3_html": "Starting today,<br>let a check-in <em>flow every day.</em>",
  "cta_lead_html": "Free for the one sharing.<br>A 3-month free trial, then $9.99/year for the caregiver.",
- "coming_soon": "Coming Soon · See you very soon",
  "scroll_hint": "SCROLL",
  "dawn_q1_html": "When you are hurting, or unwell —<br>who would <em>be the first to come?</em>",
  "dawn_q2_html": "And right at this moment,<br><em>has their day been all right?</em>",
@@ -40,11 +37,6 @@
  "lv_urgent_desc": "Please check now",
  "lv_info_name": "Info",
  "lv_info_desc": "Steps · Battery level",
- "privacy_eyebrow": "A gentle distance",
- "privacy_title_html": "Close at heart, <em>but not every detail of your day.</em>",
- "privacy_sub": "We'd love to know how every day goes — so Anbu conveys it in the simplest way, nothing more.",
- "privacy_b1_html": "The bond between you and your loved ones is <strong>a unique 7-character code</strong> the app creates.",
- "privacy_b2_html": "<strong>Your location is shared only</strong> when you press [I need help] — reaching everyone connected to you.",
  "contact_eyebrow": "PARTNERSHIPS · INQUIRIES",
  "contact_title_html": "We're <em>open to working together.</em>",
  "contact_sub": "Partnership, collaboration, or a general question — leave a message and we'll reply as soon as we can.",
@@ -88,5 +80,7 @@
  "code_copy_label": "Copy the code",
  "code_share_label": "Share the code",
  "code_copy_short": "Copy",
- "code_share_short": "Share"
+ "code_share_short": "Share",
+ "help_eyebrow": "EMERGENCY HELP",
+ "help_title_html": "One button — <em>your location goes too.</em>"
 }

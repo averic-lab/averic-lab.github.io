@@ -127,6 +127,16 @@ KEYS = [
     "guardian_activity_active",
     "guardian_chart_y_axis_steps",
     "guardian_chart_x_axis_last_7_days",
+    # 홈 "도움이 필요해요" 섹션 — 긴급 요청 흐름 목업 (i18n/build.py 가 쓴다)
+    "subject_home_emergency_confirm_title",
+    "subject_home_emergency_confirm_body",
+    "subject_home_emergency_confirm_send",
+    "emergency_message_hint",
+    "noti_emergency_body",
+    "emergency_map_title",
+    "emergency_map_subject_label",
+    "emergency_map_accuracy_label",
+    "emergency_map_open_external",
     # 홈 "단계별 신호" 섹션의 알림 페이지 목업 (i18n/build.py 가 쓴다)
     "notifications_title",
     "notifications_level_health",

@@ -410,16 +410,84 @@
 </section>
 
 
-<!-- ========== PRIVACY ========== -->
-<section class="privacy">
-  <div class="privacy-inner">
-    <div class="eyebrow">ห่วงใยในระยะที่พอดี</div>
-    <h2 class="section-title">ใกล้ชิดกันในใจ <em>แต่ไม่จำเป็นต้องรู้ทุกรายละเอียดของวันของคุณ</em></h2>
-    <p class="section-sub">เพียงรู้ว่าวันนี้เป็นอย่างไร — Anbu จะบอกแค่สิ่งที่จำเป็น ไม่มากไปกว่านั้น</p>
-    <ul class="privacy-bullets cols-2">
-      <li>ความสัมพันธ์ระหว่างคุณกับคนที่รัก ผูกพันกันด้วย <strong>รหัส 7 ตัวอักษรเฉพาะของคุณ</strong> ที่แอปสร้างขึ้น</li>
-      <li><strong>ตำแหน่งของคุณจะถูกแชร์ก็ต่อเมื่อ</strong>คุณกด [ฉันต้องการความช่วยเหลือ] เท่านั้น — และจะส่งถึงทุกคนที่เชื่อมต่อกับคุณ</li>
-    </ul>
+<!-- ========== HELP (긴급 요청 흐름) ========== -->
+<!-- 설명 없이 흐름만 보여준다 — 대상자 홈 → 확인 창 → 보호자 알림 → 위치 지도.
+     화면 문구는 전부 앱 번역 파일에서 온다(APP_SOS_* / APP_MAP_*). -->
+<section class="help">
+  <div class="help-inner">
+    <div class="eyebrow">ขอความช่วยเหลือฉุกเฉิน</div>
+    <h2 class="section-title">ปุ่มเดียว <em>ส่งตำแหน่งไปด้วย</em></h2>
+
+    <div class="flow" aria-hidden="true">
+      <div class="fwrap">
+        <div class="fphone">
+          <div class="fscreen">
+
+            <!-- ① 대상자 홈 -->
+            <div class="fr fr1">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="fmini">แชร์รหัสความปลอดภัยของคุณ</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">รายงานความปลอดภัยตอนนี้</div>
+                <div class="fsos"><b>ฉันต้องการความช่วยเหลือ</b><span>ส่งการแจ้งเตือนฉุกเฉินไปยังผู้ดูแล</span>
+                  <i class="tap"></i></div>
+              </div>
+            </div>
+
+            <!-- ② 확인 창 -->
+            <div class="fr fr2">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad dim">
+                <div class="fmini">แชร์รหัสความปลอดภัยของคุณ</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">รายงานความปลอดภัยตอนนี้</div>
+                <div class="fsos"><b>ฉันต้องการความช่วยเหลือ</b><span>ส่งการแจ้งเตือนฉุกเฉินไปยังผู้ดูแล</span></div>
+              </div>
+              <div class="fscrim"></div>
+              <div class="fdlg">
+                <b>ขอความช่วยเหลือฉุกเฉิน</b>
+                <p>จะส่งการแจ้งเตือนฉุกเฉินไปยังผู้ดูแลทุกคน<br>ตำแหน่งปัจจุบันของคุณจะถูกแชร์ไปด้วย<br>คุณต้องการขอความช่วยเหลือจริงหรือ?</p>
+                <div class="fin">เพิ่มข้อความ (ไม่บังคับ)</div>
+                <div class="fbtns"><span>ยกเลิก</span><em>ส่งคำขอฉุกเฉิน</em></div>
+              </div>
+            </div>
+
+            <!-- ③ 보호자 알림 -->
+            <div class="fr fr3">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="ftitle">การแจ้งเตือน</div>
+                <div class="ncard nc-urgent">
+                  <div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></span><b>เร่งด่วน</b><em>14:20</em></div>
+                  <div class="nbody">ผู้ถูกดูแลขอความช่วยเหลือโดยตรง กรุณาตรวจสอบทันที</div>
+                  <div class="fmap"><span>🗺️ ดูตำแหน่ง</span><i class="tap"></i></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ④ 위치 지도 -->
+            <div class="fr fr4">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fmaphead"><span class="back">&#8249;</span>ตำแหน่งฉุกเฉิน</div>
+              <div class="fmapview">
+                <span class="road r1"></span><span class="road r2"></span>
+                <span class="road r3"></span><span class="road r4"></span>
+                <span class="blk b1"></span><span class="blk b2"></span><span class="blk b3"></span>
+                <span class="pin"></span><span class="halo"></span>
+              </div>
+              <div class="fmapinfo">
+                <div><span>ผู้ได้รับการดูแล</span><b>A</b></div>
+                <div><span>ความแม่นยำ</span><b>12 m</b></div>
+                <div class="ext">เปิดในแอปแผนที่ภายนอก</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="fdots"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
   </div>
 </section>
 

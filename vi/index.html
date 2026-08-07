@@ -410,16 +410,84 @@
 </section>
 
 
-<!-- ========== PRIVACY ========== -->
-<section class="privacy">
-  <div class="privacy-inner">
-    <div class="eyebrow">Khoảng cách dịu dàng</div>
-    <h2 class="section-title">Gần gũi trong lòng, <em>nhưng không cần biết từng khoảnh khắc trong ngày của bạn.</em></h2>
-    <p class="section-sub">Chỉ cần biết bạn vẫn ổn — Anbu chuyển tải điều đó theo cách đơn giản nhất, không hơn không kém.</p>
-    <ul class="privacy-bullets cols-2">
-      <li>Sợi dây kết nối giữa bạn và người thân là <strong>một mã riêng tư gồm 7 ký tự</strong> do ứng dụng tạo ra.</li>
-      <li><strong>Vị trí của bạn chỉ được chia sẻ</strong> khi bạn nhấn [Tôi cần giúp đỡ] — và chỉ đến những người thân đang kết nối với bạn.</li>
-    </ul>
+<!-- ========== HELP (긴급 요청 흐름) ========== -->
+<!-- 설명 없이 흐름만 보여준다 — 대상자 홈 → 확인 창 → 보호자 알림 → 위치 지도.
+     화면 문구는 전부 앱 번역 파일에서 온다(APP_SOS_* / APP_MAP_*). -->
+<section class="help">
+  <div class="help-inner">
+    <div class="eyebrow">YÊU CẦU TRỢ GIÚP</div>
+    <h2 class="section-title">Một nút bấm — <em>vị trí cũng được gửi đi.</em></h2>
+
+    <div class="flow" aria-hidden="true">
+      <div class="fwrap">
+        <div class="fphone">
+          <div class="fscreen">
+
+            <!-- ① 대상자 홈 -->
+            <div class="fr fr1">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="fmini">Chia se ma an toan cua ban</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">Bao cao an toan ngay</div>
+                <div class="fsos"><b>Tôi cần giúp đỡ</b><span>Gửi cảnh báo khẩn cấp đến người giám hộ</span>
+                  <i class="tap"></i></div>
+              </div>
+            </div>
+
+            <!-- ② 확인 창 -->
+            <div class="fr fr2">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad dim">
+                <div class="fmini">Chia se ma an toan cua ban</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">Bao cao an toan ngay</div>
+                <div class="fsos"><b>Tôi cần giúp đỡ</b><span>Gửi cảnh báo khẩn cấp đến người giám hộ</span></div>
+              </div>
+              <div class="fscrim"></div>
+              <div class="fdlg">
+                <b>Yêu cầu trợ giúp khẩn cấp</b>
+                <p>Cảnh báo khẩn cấp sẽ được gửi đến tất cả người giám hộ.<br>Vị trí hiện tại của bạn cũng sẽ được chia sẻ.<br>Bạn có thực sự muốn yêu cầu trợ giúp không?</p>
+                <div class="fin">Thêm lời nhắn (tùy chọn)</div>
+                <div class="fbtns"><span>Huy</span><em>Gửi yêu cầu khẩn cấp</em></div>
+              </div>
+            </div>
+
+            <!-- ③ 보호자 알림 -->
+            <div class="fr fr3">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="ftitle">Thong bao</div>
+                <div class="ncard nc-urgent">
+                  <div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></span><b>Khan cap</b><em>14:20</em></div>
+                  <div class="nbody">Người được bảo vệ đã trực tiếp yêu cầu giúp đỡ. Vui lòng kiểm tra ngay.</div>
+                  <div class="fmap"><span>🗺️ Xem vị trí</span><i class="tap"></i></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ④ 위치 지도 -->
+            <div class="fr fr4">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fmaphead"><span class="back">&#8249;</span>Vị trí khẩn cấp</div>
+              <div class="fmapview">
+                <span class="road r1"></span><span class="road r2"></span>
+                <span class="road r3"></span><span class="road r4"></span>
+                <span class="blk b1"></span><span class="blk b2"></span><span class="blk b3"></span>
+                <span class="pin"></span><span class="halo"></span>
+              </div>
+              <div class="fmapinfo">
+                <div><span>Người được chăm sóc</span><b>A</b></div>
+                <div><span>Độ chính xác</span><b>12 m</b></div>
+                <div class="ext">Mở trong ứng dụng bản đồ bên ngoài</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="fdots"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
   </div>
 </section>
 

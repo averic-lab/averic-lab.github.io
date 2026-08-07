@@ -122,6 +122,22 @@ def app_tokens(code, app_all):
         "APP_NOTI_WARNING": a["noti_warning_body"],
         "APP_NOTI_URGENT": a["noti_urgent_body"].replace("@days", "3"),
         "APP_NOTI_STEPS": a["noti_steps_body"].replace("@steps", "3,482"),
+        # "도움이 필요해요" 섹션 — 긴급 요청 흐름
+        "APP_SOS_BTN": a["subject_home_emergency_button"],
+        "APP_SOS_DESC": a["subject_home_emergency_desc"],
+        "APP_SOS_TITLE": a["subject_home_emergency_confirm_title"],
+        "APP_SOS_BODY": a["subject_home_emergency_confirm_body"].replace("\n", "<br>"),
+        "APP_SOS_HINT": a["emergency_message_hint"],
+        "APP_SOS_SEND": a["subject_home_emergency_confirm_send"],
+        "APP_SOS_CANCEL": a["common_cancel"],
+        "APP_SOS_NOTI": a["noti_emergency_body"],
+        "APP_SOS_VIEWMAP": a["notifications_view_location"],
+        "APP_MAP_TITLE": a["emergency_map_title"],
+        "APP_MAP_SUBJECT": a["emergency_map_subject_label"],
+        "APP_MAP_ACCURACY": a["emergency_map_accuracy_label"],
+        "APP_MAP_EXTERNAL": a["emergency_map_open_external"],
+        "APP_SHARE_TITLE": a["subject_home_share_title"],
+        "APP_REPORT_BTN": a["subject_home_report_button"],
     }
 
 

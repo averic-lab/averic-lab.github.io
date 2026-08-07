@@ -410,16 +410,84 @@
 </section>
 
 
-<!-- ========== PRIVACY ========== -->
-<section class="privacy">
-  <div class="privacy-inner">
-    <div class="eyebrow">温柔的距离</div>
-    <h2 class="section-title">心中有你，<em>却不必知道你每天的每一件事。</em></h2>
-    <p class="section-sub">我们希望知道你过得好不好——所以 Anbu 用最简单的方式传递这份安心，仅此而已。</p>
-    <ul class="privacy-bullets cols-2">
-      <li>你与家人之间的连接，是一组<strong>独一无二的 7 位专属码</strong>。</li>
-      <li><strong>只有当你按下</strong>[我需要帮助]，你的位置才会共享给所有与你相连的人。</li>
-    </ul>
+<!-- ========== HELP (긴급 요청 흐름) ========== -->
+<!-- 설명 없이 흐름만 보여준다 — 대상자 홈 → 확인 창 → 보호자 알림 → 위치 지도.
+     화면 문구는 전부 앱 번역 파일에서 온다(APP_SOS_* / APP_MAP_*). -->
+<section class="help">
+  <div class="help-inner">
+    <div class="eyebrow">紧急求助</div>
+    <h2 class="section-title">一个按钮，<em>连位置一起送达。</em></h2>
+
+    <div class="flow" aria-hidden="true">
+      <div class="fwrap">
+        <div class="fphone">
+          <div class="fscreen">
+
+            <!-- ① 대상자 홈 -->
+            <div class="fr fr1">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="fmini">请分享您的安全码</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">立即报告安全</div>
+                <div class="fsos"><b>我需要帮助</b><span>向监护人发送紧急警报</span>
+                  <i class="tap"></i></div>
+              </div>
+            </div>
+
+            <!-- ② 확인 창 -->
+            <div class="fr fr2">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad dim">
+                <div class="fmini">请分享您的安全码</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">立即报告安全</div>
+                <div class="fsos"><b>我需要帮助</b><span>向监护人发送紧急警报</span></div>
+              </div>
+              <div class="fscrim"></div>
+              <div class="fdlg">
+                <b>紧急求助</b>
+                <p>将向所有监护人发送紧急警报。<br>当前位置也将一同共享。<br>确定要请求帮助吗？</p>
+                <div class="fin">附言（可选）</div>
+                <div class="fbtns"><span>取消</span><em>发送紧急请求</em></div>
+              </div>
+            </div>
+
+            <!-- ③ 보호자 알림 -->
+            <div class="fr fr3">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="ftitle">通知</div>
+                <div class="ncard nc-urgent">
+                  <div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></span><b>紧急</b><em>14:20</em></div>
+                  <div class="nbody">被监护人直接请求了帮助。请立即确认。</div>
+                  <div class="fmap"><span>🗺️ 查看位置</span><i class="tap"></i></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ④ 위치 지도 -->
+            <div class="fr fr4">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fmaphead"><span class="back">&#8249;</span>紧急位置</div>
+              <div class="fmapview">
+                <span class="road r1"></span><span class="road r2"></span>
+                <span class="road r3"></span><span class="road r4"></span>
+                <span class="blk b1"></span><span class="blk b2"></span><span class="blk b3"></span>
+                <span class="pin"></span><span class="halo"></span>
+              </div>
+              <div class="fmapinfo">
+                <div><span>对象</span><b>A</b></div>
+                <div><span>精度</span><b>12 m</b></div>
+                <div class="ext">在外部地图应用中打开</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="fdots"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
   </div>
 </section>
 

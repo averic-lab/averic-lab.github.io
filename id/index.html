@@ -410,16 +410,84 @@
 </section>
 
 
-<!-- ========== PRIVACY ========== -->
-<section class="privacy">
-  <div class="privacy-inner">
-    <div class="eyebrow">Jarak yang nyaman</div>
-    <h2 class="section-title">Dekat di hati, <em>tanpa harus tahu setiap detail harimu.</em></h2>
-    <p class="section-sub">Kami ingin tahu kabarmu setiap hari — maka Anbu menyampaikannya dengan cara paling sederhana, tidak lebih dari itu.</p>
-    <ul class="privacy-bullets cols-2">
-      <li>Hubungan antara kamu dan orang-orang terkasihmu terjaga lewat <strong>kode unik 7 karakter</strong> yang dibuat oleh aplikasi.</li>
-      <li><strong>Lokasimu hanya dibagikan</strong> saat kamu menekan [Saya butuh bantuan] — dan langsung menjangkau semua orang yang terhubung denganmu.</li>
-    </ul>
+<!-- ========== HELP (긴급 요청 흐름) ========== -->
+<!-- 설명 없이 흐름만 보여준다 — 대상자 홈 → 확인 창 → 보호자 알림 → 위치 지도.
+     화면 문구는 전부 앱 번역 파일에서 온다(APP_SOS_* / APP_MAP_*). -->
+<section class="help">
+  <div class="help-inner">
+    <div class="eyebrow">PERMINTAAN BANTUAN</div>
+    <h2 class="section-title">Satu tombol — <em>lokasi ikut terkirim.</em></h2>
+
+    <div class="flow" aria-hidden="true">
+      <div class="fwrap">
+        <div class="fphone">
+          <div class="fscreen">
+
+            <!-- ① 대상자 홈 -->
+            <div class="fr fr1">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="fmini">Bagikan kode keselamatan Anda</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">Laporkan Keselamatan Sekarang</div>
+                <div class="fsos"><b>Saya butuh bantuan</b><span>Mengirim peringatan darurat ke wali Anda</span>
+                  <i class="tap"></i></div>
+              </div>
+            </div>
+
+            <!-- ② 확인 창 -->
+            <div class="fr fr2">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad dim">
+                <div class="fmini">Bagikan kode keselamatan Anda</div>
+                <div class="fcode"><span>SAFETY SHARE CODE</span><b>K7M-4PXR</b></div>
+                <div class="frow">Laporkan Keselamatan Sekarang</div>
+                <div class="fsos"><b>Saya butuh bantuan</b><span>Mengirim peringatan darurat ke wali Anda</span></div>
+              </div>
+              <div class="fscrim"></div>
+              <div class="fdlg">
+                <b>Permintaan bantuan darurat</b>
+                <p>Peringatan darurat akan dikirim ke semua wali.<br>Lokasi Anda saat ini juga akan dibagikan.<br>Yakin ingin meminta bantuan?</p>
+                <div class="fin">Tambahkan pesan (opsional)</div>
+                <div class="fbtns"><span>Batal</span><em>Kirim permintaan darurat</em></div>
+              </div>
+            </div>
+
+            <!-- ③ 보호자 알림 -->
+            <div class="fr fr3">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fpad">
+                <div class="ftitle">Notifikasi</div>
+                <div class="ncard nc-urgent">
+                  <div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></span><b>Mendesak</b><em>14:20</em></div>
+                  <div class="nbody">Orang yang dilindungi langsung meminta bantuan. Harap segera periksa.</div>
+                  <div class="fmap"><span>🗺️ Lihat lokasi</span><i class="tap"></i></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ④ 위치 지도 -->
+            <div class="fr fr4">
+              <div class="fbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+              <div class="fmaphead"><span class="back">&#8249;</span>Lokasi darurat</div>
+              <div class="fmapview">
+                <span class="road r1"></span><span class="road r2"></span>
+                <span class="road r3"></span><span class="road r4"></span>
+                <span class="blk b1"></span><span class="blk b2"></span><span class="blk b3"></span>
+                <span class="pin"></span><span class="halo"></span>
+              </div>
+              <div class="fmapinfo">
+                <div><span>Orang yang dilindungi</span><b>A</b></div>
+                <div><span>Akurasi</span><b>12 m</b></div>
+                <div class="ext">Buka di aplikasi peta eksternal</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="fdots"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
   </div>
 </section>
 
