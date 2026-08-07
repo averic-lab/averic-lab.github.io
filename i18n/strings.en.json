@@ -86,5 +86,7 @@
  "feat3_h": "Just install the app",
  "feat3_p": "One 7-character safety code connects you both — nothing else needed.",
  "code_copy_label": "Copy the code",
- "code_share_label": "Share the code"
+ "code_share_label": "Share the code",
+ "code_copy_short": "Copy",
+ "code_share_short": "Share"
 }

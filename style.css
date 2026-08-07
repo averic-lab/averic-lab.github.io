@@ -562,6 +562,8 @@ em { font-style: normal; }
   width: 8px; height: 8px; flex: 0 0 8px; border-radius: 50%;
   background: #ffd9a8; box-shadow: 0 0 10px rgba(255, 217, 168, .9);
 }
+/* 넓은 화면은 긴 라벨, 좁은 화면은 짧은 라벨. 둘 다 출력해 두고 폭으로 바꾼다 */
+.codecard .cotext .sm { display: none; }
 .codecard .cotext {
   font-size: 11.5px; font-weight: 600; color: #ffd9a8;
   background: rgba(8, 11, 34, .68); padding: 3px 9px; border-radius: 999px;
@@ -1248,13 +1250,13 @@ footer {
 
 @media (max-width: 640px) {
   .hero-inner { padding: 80px 18px 72px; }
-  /* 좁은 화면에는 점선 라벨이 들어갈 가로 공간이 없다 — 폰을 더 왼쪽으로 밀어도
-     컨테이너에 걸려 더 안 움직인다. 라벨은 설명용 장식이므로 숨기고 버튼만 남긴다 */
-  .codecard .co { display: none; }
-  .pwrap { transform: scale(.66); margin: -123px 16px -123px 0; }
+  /* 좁은 화면에서는 긴 라벨이 화면 밖으로 나간다 — 짧은 쪽으로 바꾼다 */
+  .codecard .cotext .lg { display: none; }
+  .codecard .cotext .sm { display: inline; }
+  .pwrap { transform: translateX(-34px) scale(.66); margin: -123px 16px -123px 0; }
 }
 @media (max-width: 400px) {
-  .pwrap { transform: scale(.55); margin: -162px 10px -162px 0; }
+  .pwrap { transform: translateX(-64px) scale(.55); margin: -162px 10px -162px 0; }
 }
 
 @media (max-width: 720px) {

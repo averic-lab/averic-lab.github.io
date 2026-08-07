@@ -79,7 +79,9 @@
   "feat3_h": "只需安装应用",
   "feat3_p": "凭生成的 7 位安全码，就能彼此确认安好。",
   "code_copy_label": "复制安全码",
-  "code_share_label": "分享到社交"
+  "code_share_label": "分享到社交",
+  "code_copy_short": "复制",
+  "code_share_short": "分享"
  },
  "fr": {
   "title": "Anbu — Vous n'êtes jamais seul · Averic Lab",
@@ -161,7 +163,9 @@
   "feat3_h": "Il suffit d'installer l'application",
   "feat3_p": "Un seul code de sécurité à 7 caractères vous relie — rien d'autre.",
   "code_copy_label": "Copier le code",
-  "code_share_label": "Partager le code"
+  "code_share_label": "Partager le code",
+  "code_copy_short": "Copier",
+  "code_share_short": "Partager"
  },
  "de": {
   "title": "Anbu — Du bist nie allein · Averic Lab",
@@ -243,7 +247,9 @@
   "feat3_h": "Einfach die App installieren",
   "feat3_p": "Ein 7-stelliger Sicherheitscode verbindet Sie beide — mehr braucht es nicht.",
   "code_copy_label": "Code kopieren",
-  "code_share_label": "Code teilen"
+  "code_share_label": "Code teilen",
+  "code_copy_short": "Kopieren",
+  "code_share_short": "Teilen"
  },
  "pl": {
   "title": "Anbu — Nigdy nie jesteś sam · Averic Lab",
@@ -325,7 +331,9 @@
   "feat3_h": "Wystarczy zainstalować aplikację",
   "feat3_p": "Jeden 7-znakowy kod bezpieczeństwa łączy Was — nic więcej.",
   "code_copy_label": "Skopiuj kod",
-  "code_share_label": "Udostępnij kod"
+  "code_share_label": "Udostępnij kod",
+  "code_copy_short": "Kopiuj",
+  "code_share_short": "Udostępnij"
  },
  "zh-TW": {
   "title": "Anbu — 你從不孤單 · Averic Lab",
@@ -407,7 +415,9 @@
   "feat3_h": "只要安裝應用程式",
   "feat3_p": "憑產生的 7 位安全碼，就能彼此確認安好。",
   "code_copy_label": "複製安全碼",
-  "code_share_label": "分享到社群"
+  "code_share_label": "分享到社群",
+  "code_copy_short": "複製",
+  "code_share_short": "分享"
  },
  "es": {
   "title": "Anbu — Nunca estás solo · Averic Lab",
@@ -489,7 +499,9 @@
   "feat3_h": "Solo instale la aplicación",
   "feat3_p": "Un único código de seguridad de 7 caracteres les conecta; nada más.",
   "code_copy_label": "Copiar código",
-  "code_share_label": "Compartir código"
+  "code_share_label": "Compartir código",
+  "code_copy_short": "Copiar",
+  "code_share_short": "Compartir"
  },
  "ja": {
   "title": "Anbu — あなたはひとりじゃない · Averic Lab",
@@ -571,7 +583,9 @@
   "feat3_h": "アプリを入れるだけ",
   "feat3_p": "発行される7桁の安全コードひとつで、お互いの安否を確認できます。",
   "code_copy_label": "コードをコピー",
-  "code_share_label": "SNSで共有"
+  "code_share_label": "SNSで共有",
+  "code_copy_short": "コピー",
+  "code_share_short": "共有"
  },
  "nl": {
   "title": "Anbu — Je bent nooit alleen · Averic Lab",
@@ -653,7 +667,9 @@
   "feat3_h": "Alleen de app installeren",
   "feat3_p": "Eén veiligheidscode van 7 tekens verbindt u beiden — meer niet.",
   "code_copy_label": "Code kopiëren",
-  "code_share_label": "Code delen"
+  "code_share_label": "Code delen",
+  "code_copy_short": "Kopiëren",
+  "code_share_short": "Delen"
  },
  "it": {
   "title": "Anbu — Non sei mai solo · Averic Lab",
@@ -735,7 +751,9 @@
   "feat3_h": "Basta installare l'app",
   "feat3_p": "Un solo codice di sicurezza di 7 caratteri vi collega, nient'altro.",
   "code_copy_label": "Copia codice",
-  "code_share_label": "Condividi codice"
+  "code_share_label": "Condividi codice",
+  "code_copy_short": "Copia",
+  "code_share_short": "Condividi"
  },
  "pt-BR": {
   "title": "Anbu — Você nunca está sozinho · Averic Lab",
@@ -817,7 +835,9 @@
   "feat3_h": "Basta instalar o app",
   "feat3_p": "Um único código de segurança de 7 caracteres conecta vocês — nada mais.",
   "code_copy_label": "Copiar código",
-  "code_share_label": "Compartilhar código"
+  "code_share_label": "Compartilhar código",
+  "code_copy_short": "Copiar",
+  "code_share_short": "Compartilhar"
  },
  "tr": {
   "title": "Anbu — Hiçbir zaman yalnız değilsin · Averic Lab",
@@ -899,7 +919,9 @@
   "feat3_h": "Uygulamayı kurmanız yeterli",
   "feat3_p": "Oluşturulan 7 karakterlik güvenlik kodu ikinizi bağlar; başka bir şey gerekmez.",
   "code_copy_label": "Kodu kopyala",
-  "code_share_label": "Kodu paylaş"
+  "code_share_label": "Kodu paylaş",
+  "code_copy_short": "Kopyala",
+  "code_share_short": "Paylaş"
  },
  "ru": {
   "title": "Anbu — Ты никогда не одинок · Averic Lab",
@@ -981,7 +1003,9 @@
   "feat3_h": "Достаточно установить приложение",
   "feat3_p": "Один 7-значный код безопасности связывает вас — больше ничего не нужно.",
   "code_copy_label": "Скопировать код",
-  "code_share_label": "Поделиться кодом"
+  "code_share_label": "Поделиться кодом",
+  "code_copy_short": "Копировать",
+  "code_share_short": "Поделиться"
  },
  "hi": {
   "title": "Anbu — आप कभी अकेले नहीं · Averic Lab",
@@ -1063,7 +1087,9 @@
   "feat3_h": "बस ऐप इंस्टॉल कीजिए",
   "feat3_p": "बना हुआ 7 अक्षरों का सुरक्षा कोड ही दोनों को जोड़ देता है।",
   "code_copy_label": "कोड कॉपी करें",
-  "code_share_label": "कोड शेयर करें"
+  "code_share_label": "कोड शेयर करें",
+  "code_copy_short": "कॉपी",
+  "code_share_short": "शेयर"
  },
  "vi": {
   "title": "Anbu — Bạn không bao giờ đơn độc · Averic Lab",
@@ -1145,7 +1171,9 @@
   "feat3_h": "Chỉ cần cài ứng dụng",
   "feat3_p": "Một mã an toàn 7 ký tự kết nối hai người — không cần gì thêm.",
   "code_copy_label": "Sao chép mã",
-  "code_share_label": "Chia sẻ mã"
+  "code_share_label": "Chia sẻ mã",
+  "code_copy_short": "Sao chép",
+  "code_share_short": "Chia sẻ"
  },
  "id": {
   "title": "Anbu — Kamu tidak pernah sendiri · Averic Lab",
@@ -1227,7 +1255,9 @@
   "feat3_h": "Cukup pasang aplikasinya",
   "feat3_p": "Satu kode keamanan 7 karakter menghubungkan kalian — tidak perlu yang lain.",
   "code_copy_label": "Salin kode",
-  "code_share_label": "Bagikan kode"
+  "code_share_label": "Bagikan kode",
+  "code_copy_short": "Salin",
+  "code_share_short": "Bagikan"
  },
  "th": {
   "title": "Anbu — คุณไม่เคยอยู่คนเดียว · Averic Lab",
@@ -1309,7 +1339,9 @@
   "feat3_h": "แค่ติดตั้งแอป",
   "feat3_p": "รหัสความปลอดภัย 7 ตัวอักษรเพียงรหัสเดียวก็เชื่อมถึงกันได้",
   "code_copy_label": "คัดลอกรหัส",
-  "code_share_label": "แชร์รหัส"
+  "code_share_label": "แชร์รหัส",
+  "code_copy_short": "คัดลอก",
+  "code_share_short": "แชร์"
  },
  "sv": {
   "title": "Anbu — Du är aldrig ensam · Averic Lab",
@@ -1391,7 +1423,9 @@
   "feat3_h": "Installera bara appen",
   "feat3_p": "En enda 7-teckens säkerhetskod knyter ihop er — inget mer behövs.",
   "code_copy_label": "Kopiera koden",
-  "code_share_label": "Dela koden"
+  "code_share_label": "Dela koden",
+  "code_copy_short": "Kopiera",
+  "code_share_short": "Dela"
  },
  "ar": {
   "title": "Anbu — لستَ وحدك أبدًا · Averic Lab",
@@ -1473,7 +1507,9 @@
   "feat3_h": "يكفي تثبيت التطبيق",
   "feat3_p": "رمز أمان واحد من 7 خانات يربط بينكما — لا شيء غير ذلك.",
   "code_copy_label": "نسخ الرمز",
-  "code_share_label": "مشاركة الرمز"
+  "code_share_label": "مشاركة الرمز",
+  "code_copy_short": "نسخ",
+  "code_share_short": "مشاركة"
  },
  "ko": {
   "title": "안부 — 우리는 언제나 혼자가 아닙니다 · Averic Lab",
@@ -1562,7 +1598,9 @@
   "feat3_h": "앱만 설치하시면",
   "feat3_p": "생성된 7자리 안전 코드 하나로 서로의 안부를 확인하실 수 있습니다.",
   "code_copy_label": "안전 코드 복사",
-  "code_share_label": "안전 코드 SNS 공유"
+  "code_share_label": "안전 코드 SNS 공유",
+  "code_copy_short": "복사",
+  "code_share_short": "공유"
  },
  "en": {
   "title": "Anbu — You are never alone · Averic Lab",
@@ -1652,6 +1690,8 @@
   "feat3_h": "Just install the app",
   "feat3_p": "One 7-character safety code connects you both — nothing else needed.",
   "code_copy_label": "Copy the code",
-  "code_share_label": "Share the code"
+  "code_share_label": "Share the code",
+  "code_copy_short": "Copy",
+  "code_share_short": "Share"
  }
 }
