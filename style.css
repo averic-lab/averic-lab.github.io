@@ -106,10 +106,27 @@ em { font-style: normal; }
   margin-left: 2px;
 }
 
+/* 메뉴 링크는 가로 스크롤, 언어 버튼은 고정.
+   독일어처럼 단어가 긴 언어에서 좁은 화면일 때 메뉴가 넘쳐 **언어 버튼이 잘렸다**.
+   줄 전체를 스크롤시키면 정작 필요한 언어 버튼이 화면 밖에 남으므로,
+   스크롤은 링크에만 걸고 버튼은 항상 보이게 둔다. */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  min-width: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links > a { white-space: nowrap; }
+
 .header-nav {
   display: flex;
   align-items: center;
   gap: 22px;
+  min-width: 0;
   font-size: 13px;
   font-weight: 500;
 }
@@ -198,14 +215,19 @@ em { font-style: normal; }
   .logo-mark { width: 20px; height: 20px; border-radius: 6px; }
   .logo-mark svg { width: 11px; height: 11px; }
   .logo-sub { display: none; }
-  .header-nav { gap: 14px; font-size: 12px; }
-  .lang-toggle { padding: 5px 10px 5px 9px; font-size: 11px; gap: 5px; }
+  .header-nav { gap: 12px; font-size: 12px; }
+  .nav-links { gap: 14px; }
+  /* 오른쪽 끝을 흐리게 해 더 있다는 걸 알린다 */
+  .nav-links { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 18px), transparent);
+               mask-image: linear-gradient(to right, #000 calc(100% - 18px), transparent); }
+  .lang-toggle { flex: 0 0 auto; padding: 5px 10px 5px 9px; font-size: 11px; gap: 5px; }
   .lang-toggle .globe { width: 12px; height: 12px; }
   .lang-menu { right: 18px; min-width: 220px; }
 }
 @media (max-width: 420px) {
   .header-inner { padding: 12px 14px; gap: 8px; }
-  .header-nav { gap: 10px; font-size: 11.5px; }
+  .header-nav { gap: 8px; font-size: 11.5px; }
+  .nav-links { gap: 10px; }
   .lang-toggle { padding: 5px 9px; font-size: 10.5px; }
   .lang-toggle .globe { width: 11px; height: 11px; }
 }
