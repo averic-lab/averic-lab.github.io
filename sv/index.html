@@ -366,17 +366,44 @@
 
 
 <!-- ========== LEVELS ========== -->
+<!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
+     히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
 <section class="levels">
   <div class="levels-inner">
-    <div class="eyebrow">STEGVISA SIGNALER</div>
-    <h2 class="section-title">Bara när det behövs, <em>bara så mycket som behövs.</em></h2>
-    <p class="section-sub">Inte varje varning är en nödsituation. Anbu förmedlar läget i fem stilla steg.</p>
-    <div class="levels-row">
-      <div class="level lv-normal  reveal"><div class="dot"></div><div class="name">Normalt</div><div class="desc">Allt lugnt idag</div></div>
-      <div class="level lv-caution reveal"><div class="dot"></div><div class="name">Försiktighet</div><div class="desc">Ingen aktivitet ännu</div></div>
-      <div class="level lv-warning reveal"><div class="dot"></div><div class="name">Varning</div><div class="desc">Inga signaler på ett tag</div></div>
-      <div class="level lv-urgent  reveal"><div class="dot"></div><div class="name">Brådskande</div><div class="desc">Vänligen kontrollera nu</div></div>
-      <div class="level lv-info    reveal"><div class="dot"></div><div class="name">Info</div><div class="desc">Steg · Batteri</div></div>
+    <div class="levels-copy">
+      <div class="eyebrow">STEGVISA SIGNALER</div>
+      <h2 class="section-title">Bara när det behövs, <em>bara så mycket som behövs.</em></h2>
+      <p class="section-sub">Inte varje varning är en nödsituation. Anbu förmedlar läget i fem stilla steg.</p>
+      <ul class="levels-list">
+        <li class="lv-normal"><span class="dot"></span><b>Normalt</b><span>Allt lugnt idag</span></li>
+        <li class="lv-caution"><span class="dot"></span><b>Försiktighet</b><span>Ingen aktivitet ännu</span></li>
+        <li class="lv-warning"><span class="dot"></span><b>Varning</b><span>Inga signaler på ett tag</span></li>
+        <li class="lv-urgent"><span class="dot"></span><b>Brådskande</b><span>Vänligen kontrollera nu</span></li>
+        <li class="lv-info"><span class="dot"></span><b>Info</b><span>Steg · Batteri</span></li>
+      </ul>
+    </div>
+
+    <div class="levels-stage" aria-hidden="true">
+     <div class="nwrap">
+      <div class="nphone">
+        <div class="nscreen">
+          <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+          <div class="ntitle">Aviseringar</div>
+          <div class="nlist">
+            <div class="ncard nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>Normal</b><em>18:00</em></div><div class="nbody">Valmaendekontrollen mottogs utan problem.</div></div>
+            <div class="ncard nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>Forsiktighet</b><em>20:00</em></div><div class="nbody">Dagens schemalagda valmaendekontroll har inte mottagits an. Kontrollera personligen.</div></div>
+            <div class="ncard nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>Varning</b><em>20:00</em></div><div class="nbody">Valmaendekontroller har missats i foljd. Verifiera personligen.</div></div>
+            <div class="ncard nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>Bradskande</b><em>09:00</em></div><div class="nbody">Ingen valmaendekontroll pa 3 dag(ar). Omedelbar verifiering kravs.</div></div>
+            <div class="ncard nc-info"><div class="nrow"><span class="nic">&#8599;</span><b>Info</b></div><div class="nbody">3,482 steg gått idag.</div></div>
+          </div>
+        </div>
+        <!-- 좌·우로 번갈아 튀어나오는 알림 카드 (.nscreen 바깥이라 잘리지 않는다) -->
+        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>Normal</b><em>18:00</em></div><div class="nbody">Valmaendekontrollen mottogs utan problem.</div></div>
+        <div class="npop np2 nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>Forsiktighet</b><em>20:00</em></div><div class="nbody">Dagens schemalagda valmaendekontroll har inte mottagits an. Kontrollera personligen.</div></div>
+        <div class="npop np3 nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>Varning</b><em>20:00</em></div><div class="nbody">Valmaendekontroller har missats i foljd. Verifiera personligen.</div></div>
+        <div class="npop np4 nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>Bradskande</b><em>09:00</em></div><div class="nbody">Ingen valmaendekontroll pa 3 dag(ar). Omedelbar verifiering kravs.</div></div>
+      </div>
+     </div>
     </div>
   </div>
 </section>

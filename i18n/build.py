@@ -110,6 +110,18 @@ def app_tokens(code, app_all):
         "APP_NAV_CONNECTION": a["nav_connection"],
         "APP_NAV_NOTIFICATION": a["nav_notification"],
         "APP_NAV_SETTINGS": a["nav_settings"],
+        # "단계별 신호" 섹션의 알림 페이지 목업
+        "APP_NOTI_TITLE": a["notifications_title"],
+        "APP_LV_NORMAL": a["notifications_level_health"],
+        "APP_LV_CAUTION": a["guardian_status_caution"],
+        "APP_LV_WARNING": a["notifications_level_warning"],
+        "APP_LV_URGENT": a["notifications_level_urgent"],
+        "APP_LV_INFO": a["notifications_level_info"],
+        "APP_NOTI_NORMAL": a["noti_auto_report_body"],
+        "APP_NOTI_CAUTION": a["noti_caution_missing_body"],
+        "APP_NOTI_WARNING": a["noti_warning_body"],
+        "APP_NOTI_URGENT": a["noti_urgent_body"].replace("@days", "3"),
+        "APP_NOTI_STEPS": a["noti_steps_body"].replace("@steps", "3,482"),
     }
 
 

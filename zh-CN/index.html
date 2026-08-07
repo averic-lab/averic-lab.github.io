@@ -366,17 +366,44 @@
 
 
 <!-- ========== LEVELS ========== -->
+<!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
+     히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
 <section class="levels">
   <div class="levels-inner">
-    <div class="eyebrow">分级信号</div>
-    <h2 class="section-title">只在需要时，<em>只传递必要的信息。</em></h2>
-    <p class="section-sub">并非每一条提示都是紧急情况。Anbu 以五个静默等级呈现实际状况。</p>
-    <div class="levels-row">
-      <div class="level lv-normal  reveal"><div class="dot"></div><div class="name">正常</div><div class="desc">今天一切安好</div></div>
-      <div class="level lv-caution reveal"><div class="dot"></div><div class="name">注意</div><div class="desc">暂无活动记录</div></div>
-      <div class="level lv-warning reveal"><div class="dot"></div><div class="name">警告</div><div class="desc">已有一段时间无信号</div></div>
-      <div class="level lv-urgent  reveal"><div class="dot"></div><div class="name">紧急</div><div class="desc">请立即确认情况</div></div>
-      <div class="level lv-info    reveal"><div class="dot"></div><div class="name">提示</div><div class="desc">步数 · 电量</div></div>
+    <div class="levels-copy">
+      <div class="eyebrow">分级信号</div>
+      <h2 class="section-title">只在需要时，<em>只传递必要的信息。</em></h2>
+      <p class="section-sub">并非每一条提示都是紧急情况。Anbu 以五个静默等级呈现实际状况。</p>
+      <ul class="levels-list">
+        <li class="lv-normal"><span class="dot"></span><b>正常</b><span>今天一切安好</span></li>
+        <li class="lv-caution"><span class="dot"></span><b>注意</b><span>暂无活动记录</span></li>
+        <li class="lv-warning"><span class="dot"></span><b>警告</b><span>已有一段时间无信号</span></li>
+        <li class="lv-urgent"><span class="dot"></span><b>紧急</b><span>请立即确认情况</span></li>
+        <li class="lv-info"><span class="dot"></span><b>提示</b><span>步数 · 电量</span></li>
+      </ul>
+    </div>
+
+    <div class="levels-stage" aria-hidden="true">
+     <div class="nwrap">
+      <div class="nphone">
+        <div class="nscreen">
+          <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+          <div class="ntitle">通知</div>
+          <div class="nlist">
+            <div class="ncard nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>正常</b><em>18:00</em></div><div class="nbody">问安已正常收到。</div></div>
+            <div class="ncard nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>注意</b><em>20:00</em></div><div class="nbody">今天预定的问安尚未收到。请亲自确认。</div></div>
+            <div class="ncard nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>警告</b><em>20:00</em></div><div class="nbody">问安已连续未收到。请亲自核实。</div></div>
+            <div class="ncard nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>紧急</b><em>09:00</em></div><div class="nbody">已3天未收到问安。需要立即确认。</div></div>
+            <div class="ncard nc-info"><div class="nrow"><span class="nic">&#8599;</span><b>信息</b></div><div class="nbody">今天共走了3,482步。</div></div>
+          </div>
+        </div>
+        <!-- 좌·우로 번갈아 튀어나오는 알림 카드 (.nscreen 바깥이라 잘리지 않는다) -->
+        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>正常</b><em>18:00</em></div><div class="nbody">问安已正常收到。</div></div>
+        <div class="npop np2 nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>注意</b><em>20:00</em></div><div class="nbody">今天预定的问安尚未收到。请亲自确认。</div></div>
+        <div class="npop np3 nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>警告</b><em>20:00</em></div><div class="nbody">问安已连续未收到。请亲自核实。</div></div>
+        <div class="npop np4 nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>紧急</b><em>09:00</em></div><div class="nbody">已3天未收到问安。需要立即确认。</div></div>
+      </div>
+     </div>
     </div>
   </div>
 </section>

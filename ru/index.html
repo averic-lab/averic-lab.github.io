@@ -366,17 +366,44 @@
 
 
 <!-- ========== LEVELS ========== -->
+<!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
+     히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
 <section class="levels">
   <div class="levels-inner">
-    <div class="eyebrow">УРОВНИ СИГНАЛОВ</div>
-    <h2 class="section-title">Только когда нужно, <em>только столько, сколько нужно.</em></h2>
-    <p class="section-sub">Не каждый сигнал — тревога. Anbu передаёт ситуацию в пяти тихих уровнях.</p>
-    <div class="levels-row">
-      <div class="level lv-normal  reveal"><div class="dot"></div><div class="name">Норма</div><div class="desc">Всё спокойно</div></div>
-      <div class="level lv-caution reveal"><div class="dot"></div><div class="name">Внимание</div><div class="desc">Активности пока нет</div></div>
-      <div class="level lv-warning reveal"><div class="dot"></div><div class="name">Предупреждение</div><div class="desc">Сигналов давно не было</div></div>
-      <div class="level lv-urgent  reveal"><div class="dot"></div><div class="name">Срочно</div><div class="desc">Проверьте сейчас</div></div>
-      <div class="level lv-info    reveal"><div class="dot"></div><div class="name">Информация</div><div class="desc">Шаги · Заряд батареи</div></div>
+    <div class="levels-copy">
+      <div class="eyebrow">УРОВНИ СИГНАЛОВ</div>
+      <h2 class="section-title">Только когда нужно, <em>только столько, сколько нужно.</em></h2>
+      <p class="section-sub">Не каждый сигнал — тревога. Anbu передаёт ситуацию в пяти тихих уровнях.</p>
+      <ul class="levels-list">
+        <li class="lv-normal"><span class="dot"></span><b>Норма</b><span>Всё спокойно</span></li>
+        <li class="lv-caution"><span class="dot"></span><b>Внимание</b><span>Активности пока нет</span></li>
+        <li class="lv-warning"><span class="dot"></span><b>Предупреждение</b><span>Сигналов давно не было</span></li>
+        <li class="lv-urgent"><span class="dot"></span><b>Срочно</b><span>Проверьте сейчас</span></li>
+        <li class="lv-info"><span class="dot"></span><b>Информация</b><span>Шаги · Заряд батареи</span></li>
+      </ul>
+    </div>
+
+    <div class="levels-stage" aria-hidden="true">
+     <div class="nwrap">
+      <div class="nphone">
+        <div class="nscreen">
+          <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+          <div class="ntitle">Уведомления</div>
+          <div class="nlist">
+            <div class="ncard nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>Норма</b><em>18:00</em></div><div class="nbody">Проверка самочувствия успешно получена.</div></div>
+            <div class="ncard nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>Внимание</b><em>20:00</em></div><div class="nbody">Запланированная на сегодня проверка самочувствия ещё не получена. Пожалуйста, проверьте лично.</div></div>
+            <div class="ncard nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>Предупреждение</b><em>20:00</em></div><div class="nbody">Проверки самочувствия пропущены подряд. Необходима личная проверка.</div></div>
+            <div class="ncard nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>Срочно</b><em>09:00</em></div><div class="nbody">Нет проверки самочувствия 3 дн. Требуется немедленная проверка.</div></div>
+            <div class="ncard nc-info"><div class="nrow"><span class="nic">&#8599;</span><b>Информация</b></div><div class="nbody">Сегодня пройдено 3,482 шагов.</div></div>
+          </div>
+        </div>
+        <!-- 좌·우로 번갈아 튀어나오는 알림 카드 (.nscreen 바깥이라 잘리지 않는다) -->
+        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>Норма</b><em>18:00</em></div><div class="nbody">Проверка самочувствия успешно получена.</div></div>
+        <div class="npop np2 nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>Внимание</b><em>20:00</em></div><div class="nbody">Запланированная на сегодня проверка самочувствия ещё не получена. Пожалуйста, проверьте лично.</div></div>
+        <div class="npop np3 nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>Предупреждение</b><em>20:00</em></div><div class="nbody">Проверки самочувствия пропущены подряд. Необходима личная проверка.</div></div>
+        <div class="npop np4 nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>Срочно</b><em>09:00</em></div><div class="nbody">Нет проверки самочувствия 3 дн. Требуется немедленная проверка.</div></div>
+      </div>
+     </div>
     </div>
   </div>
 </section>

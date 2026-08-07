@@ -856,54 +856,126 @@ p.section-sub {
 }
 
 /* ==================================================
-   LEVELS — five stepped signals
+   LEVELS — 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업
+   히어로와 달리 폰은 **정면**이다(3D 회전 없음). 알림 카드가 좌·우로 번갈아
+   튀어나오며, 떠난 자리는 히어로와 같은 방식으로 유리가 덮는다.
    ================================================== */
 .levels {
   position: relative;
   padding: 120px 24px;
-  background: var(--warm-rose);
-  text-align: center;
+  background: linear-gradient(180deg, var(--warm-paper) 0%, var(--warm-rose) 100%);
   overflow: hidden;
 }
-.levels-inner { max-width: 1080px; margin: 0 auto; }
-.levels-row {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
-  margin-top: 72px;
+.levels-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 40px;
 }
-.level {
-  padding: 32px 16px 28px;
-  background: var(--paper);
-  border-radius: 20px;
-  border: 1px solid rgba(0,0,0,0.04);
-  transition: transform .25s ease;
-  opacity: 0;
-  transform: translateY(20px);
-}
-.level.in-view { opacity: 1; transform: translateY(0); transition: opacity 0.7s ease, transform 0.7s ease; }
-.level:nth-child(1).in-view { transition-delay: 0s; }
-.level:nth-child(2).in-view { transition-delay: 0.1s; }
-.level:nth-child(3).in-view { transition-delay: 0.2s; }
-.level:nth-child(4).in-view { transition-delay: 0.3s; }
-.level:nth-child(5).in-view { transition-delay: 0.4s; }
-.level:hover { transform: translateY(-4px); }
-.level .dot {
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  margin: 0 auto 16px;
-}
-.level .name { font-size: 14px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.2px; }
-.level .desc { font-size: 12.5px; color: var(--ink-mute); line-height: 1.6; }
+.levels-copy { max-width: 460px; }
+.levels-copy .section-title, .levels-copy .section-sub { text-align: left; }
+.levels-copy .section-sub { margin-left: 0; }
 
-.lv-normal  .dot { background: #4caf50; box-shadow: 0 0 0 5px rgba(76,175,80,0.12); }
-.lv-caution .dot { background: #f9a825; box-shadow: 0 0 0 5px rgba(249,168,37,0.12); }
-.lv-warning .dot { background: #fb8c00; box-shadow: 0 0 0 5px rgba(251,140,0,0.12); }
-.lv-urgent  .dot { background: #e53935; box-shadow: 0 0 0 5px rgba(229,57,53,0.12); animation: urgentPulse 1.8s ease-in-out infinite; }
-.lv-info    .dot { background: #1976d2; box-shadow: 0 0 0 5px rgba(25,118,210,0.12); }
+.levels-list { list-style: none; margin-top: 34px; display: flex; flex-direction: column; gap: 14px; }
+.levels-list li { display: flex; align-items: baseline; gap: 10px; font-size: 14.5px; }
+.levels-list .dot { width: 10px; height: 10px; flex: 0 0 10px; border-radius: 50%; align-self: center; }
+.levels-list b { font-weight: 700; color: var(--ink); min-width: 4.5em; }
+.levels-list span:last-child { color: var(--ink-mute); font-size: 13.5px; }
+.lv-normal  .dot { background: #43A047; }
+.lv-caution .dot { background: #FFC107; }
+.lv-warning .dot { background: #FF9800; }
+.lv-urgent  .dot { background: #E53935; animation: urgentPulse 1.8s ease-in-out infinite; }
+.lv-info    .dot { background: #4355B9; }
 @keyframes urgentPulse {
-  0%, 100% { box-shadow: 0 0 0 5px rgba(229,57,53,0.12); }
-  50%      { box-shadow: 0 0 0 10px rgba(229,57,53,0.04); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(229,57,53,.45); }
+  50%      { box-shadow: 0 0 0 7px rgba(229,57,53,0); }
+}
+
+/* ── 오른쪽 폰 (정면) ── */
+.levels-stage { display: flex; align-items: center; justify-content: center; }
+.nwrap { position: relative; width: 300px; height: 620px; transform-origin: 50% 50%; }
+.nphone {
+  position: relative; width: 300px; height: 620px;
+  border-radius: 42px; background: #0d0f1f; padding: 9px;
+  box-shadow:
+    0 0 0 1.5px rgba(255,255,255,.1),
+    0 0 0 7px #14162c,
+    0 26px 60px -18px rgba(20,24,60,.45);
+}
+.nscreen {
+  width: 100%; height: 100%; border-radius: 34px; overflow: hidden;
+  background: #F7F9F8; color: #1A1C1C; text-align: start;
+  font-family: -apple-system, "Roboto", "Noto Sans KR", system-ui, sans-serif;
+}
+.nscreen .statusbar { display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 20px 2px; font-size: 11.5px; font-weight: 600; }
+.ntitle { padding: 8px 18px 12px; font-size: 17px; font-weight: 700; }
+.nlist { padding: 0 16px; display: flex; flex-direction: column; gap: 10px; }
+
+/* 알림 카드 — 앱 값(radius 16 / 배지 36 · 색 15% / 라벨 w900 / 구분선 색 20%) */
+.ncard { border-radius: 16px; padding: 12px 14px 14px; }
+.nrow { display: flex; align-items: center; gap: 10px; }
+.nic { width: 30px; height: 30px; flex: 0 0 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; }
+.nrow b { flex: 1; font-size: 13px; font-weight: 900; }
+.nrow em { font-style: normal; font-size: 12px; font-weight: 500; color: #4355B9; }
+.nbody { margin-top: 8px; padding-top: 10px; font-size: 12px; line-height: 1.5; color: #1A1C1C;
+  border-top: 1px solid currentColor; }
+.nc-normal  { background: #E8F5E9; } .nc-normal  .nic, .nc-normal  .nrow b { color: #43A047; }
+.nc-caution { background: #FFF9C4; } .nc-caution .nic, .nc-caution .nrow b { color: #B58900; }
+.nc-warning { background: #FFE0B2; } .nc-warning .nic, .nc-warning .nrow b { color: #FF9800; }
+.nc-urgent  { background: #FFEBEE; } .nc-urgent  .nic, .nc-urgent  .nrow b { color: #E53935; }
+.nc-info    { background: #E3F2FD; } .nc-info    .nic, .nc-info    .nrow b { color: #4355B9; }
+.ncard .nic { background: currentColor; }
+.nc-normal  .nic { background: rgba(67,160,71,.15); }
+.nc-caution .nic { background: rgba(181,137,0,.15); }
+.nc-warning .nic { background: rgba(255,152,0,.15); }
+.nc-urgent  .nic { background: rgba(229,57,53,.15); }
+.nc-info    .nic { background: rgba(67,85,185,.15); }
+.ncard .nbody { border-top-color: rgba(26,28,28,.14); }
+
+/* ── 좌·우로 번갈아 튀어나오는 카드 ── */
+.npop {
+  position: absolute; width: 252px; border-radius: 16px; padding: 12px 14px 14px;
+  box-shadow: 0 20px 44px -14px rgba(20,24,60,.42);
+  animation: npopFloat 7s ease-in-out infinite;
+}
+.np1 { top: 92px;  left: -104px; animation-delay: 0s; }
+.np2 { top: 214px; left: 152px;  animation-delay: .5s; }
+.np3 { top: 336px; left: -104px; animation-delay: 1s; }
+.np4 { top: 458px; left: 152px;  animation-delay: 1.5s; }
+/* 왼쪽 카드는 왼쪽으로, 오른쪽 카드는 오른쪽으로 더 벌어졌다 돌아온다 */
+@keyframes npopFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.np1, .np3 { animation-name: npopLeft; }
+.np2, .np4 { animation-name: npopRight; }
+@keyframes npopLeft  { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-12px, -7px); } }
+@keyframes npopRight { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(12px, -7px); } }
+
+/* 떠난 자리 — 히어로와 같은 규칙(같은 내용 위에 반투명 유리) */
+.nlist .ncard { position: relative; }
+.nlist .ncard::after {
+  content: ""; position: absolute; inset: 0; border-radius: 16px;
+  background: linear-gradient(150deg, rgba(255,255,255,.66) 0%, rgba(240,244,255,.5) 100%);
+  backdrop-filter: blur(2.5px); -webkit-backdrop-filter: blur(2.5px);
+  box-shadow: inset 0 -3px 12px rgba(10,14,40,.1);
+}
+.nlist .nc-info::after { content: none; }   /* 정보 카드는 튀어나오지 않으므로 그대로 둔다 */
+
+/* 반응형 — 튀어나온 카드까지 합치면 가로 508px(폰 300 + 좌우 104씩)이 필요하다.
+   두 칸으로는 1080px 아래부터 그 폭이 안 나오므로 세로로 쌓고, 더 좁아지면
+   .nwrap 을 통째로 축소한다(카드 좌표가 고정값이라 개별로 줄이면 어긋난다). */
+@media (max-width: 1080px) {
+  .levels-inner { grid-template-columns: 1fr; gap: 52px; justify-items: center; }
+  .levels-copy { max-width: 560px; }
+}
+@media (max-width: 560px) {
+  .levels { padding: 90px 18px; }
+  .nwrap { transform: scale(.82); margin: -56px 0; }
+}
+@media (max-width: 430px) {
+  .nwrap { transform: scale(.68); margin: -99px 0; }
+}
+@media (max-width: 380px) {
+  .nwrap { transform: scale(.6); margin: -124px 0; }
 }
 
 /* ==================================================
@@ -1132,11 +1204,7 @@ footer {
   .dawn { padding: 100px 24px 120px; }
   .intro { padding: 100px 20px 80px; }
   .steps { grid-template-columns: 1fr; gap: 16px; margin-top: 56px; }
-  .levels { padding: 80px 20px; }
-  .levels-row { grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 48px; }
-  .level { padding: 18px 6px 16px; border-radius: 14px; }
-  .level .desc { display: none; }
-  .level .name { font-size: 12px; }
+  .levels { padding: 90px 20px; }
   .privacy { padding: 80px 20px; }
   .privacy-inner { padding: 56px 28px; border-radius: 24px; }
   .privacy-bullets { grid-template-columns: 1fr; gap: 18px; }

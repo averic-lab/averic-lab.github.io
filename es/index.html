@@ -366,17 +366,44 @@
 
 
 <!-- ========== LEVELS ========== -->
+<!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
+     히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
 <section class="levels">
   <div class="levels-inner">
-    <div class="eyebrow">SEÑALES GRADUALES</div>
-    <h2 class="section-title">Solo cuando hace falta, <em>solo lo que hace falta.</em></h2>
-    <p class="section-sub">No toda alerta es una emergencia. Anbu comunica la situación en cinco niveles tranquilos.</p>
-    <div class="levels-row">
-      <div class="level lv-normal  reveal"><div class="dot"></div><div class="name">Normal</div><div class="desc">Todo en calma hoy</div></div>
-      <div class="level lv-caution reveal"><div class="dot"></div><div class="name">Precaución</div><div class="desc">Aún sin actividad</div></div>
-      <div class="level lv-warning reveal"><div class="dot"></div><div class="name">Aviso</div><div class="desc">Sin señales desde hace un rato</div></div>
-      <div class="level lv-urgent  reveal"><div class="dot"></div><div class="name">Urgente</div><div class="desc">Por favor, comprueba ahora</div></div>
-      <div class="level lv-info    reveal"><div class="dot"></div><div class="name">Info</div><div class="desc">Pasos · Batería</div></div>
+    <div class="levels-copy">
+      <div class="eyebrow">SEÑALES GRADUALES</div>
+      <h2 class="section-title">Solo cuando hace falta, <em>solo lo que hace falta.</em></h2>
+      <p class="section-sub">No toda alerta es una emergencia. Anbu comunica la situación en cinco niveles tranquilos.</p>
+      <ul class="levels-list">
+        <li class="lv-normal"><span class="dot"></span><b>Normal</b><span>Todo en calma hoy</span></li>
+        <li class="lv-caution"><span class="dot"></span><b>Precaución</b><span>Aún sin actividad</span></li>
+        <li class="lv-warning"><span class="dot"></span><b>Aviso</b><span>Sin señales desde hace un rato</span></li>
+        <li class="lv-urgent"><span class="dot"></span><b>Urgente</b><span>Por favor, comprueba ahora</span></li>
+        <li class="lv-info"><span class="dot"></span><b>Info</b><span>Pasos · Batería</span></li>
+      </ul>
+    </div>
+
+    <div class="levels-stage" aria-hidden="true">
+     <div class="nwrap">
+      <div class="nphone">
+        <div class="nscreen">
+          <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+          <div class="ntitle">Notificaciones</div>
+          <div class="nlist">
+            <div class="ncard nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>Normal</b><em>18:00</em></div><div class="nbody">La verificación de bienestar se recibió correctamente.</div></div>
+            <div class="ncard nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>Precaución</b><em>20:00</em></div><div class="nbody">La verificación de bienestar programada para hoy aún no se ha recibido. Por favor, verifique en persona.</div></div>
+            <div class="ncard nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>Alerta</b><em>20:00</em></div><div class="nbody">Las verificaciones de bienestar se han perdido consecutivamente. Por favor, verifique en persona.</div></div>
+            <div class="ncard nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>Urgente</b><em>09:00</em></div><div class="nbody">Sin verificación de bienestar durante 3 día(s). Se requiere verificación inmediata.</div></div>
+            <div class="ncard nc-info"><div class="nrow"><span class="nic">&#8599;</span><b>Información</b></div><div class="nbody">3,482 pasos caminados hoy.</div></div>
+          </div>
+        </div>
+        <!-- 좌·우로 번갈아 튀어나오는 알림 카드 (.nscreen 바깥이라 잘리지 않는다) -->
+        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>Normal</b><em>18:00</em></div><div class="nbody">La verificación de bienestar se recibió correctamente.</div></div>
+        <div class="npop np2 nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>Precaución</b><em>20:00</em></div><div class="nbody">La verificación de bienestar programada para hoy aún no se ha recibido. Por favor, verifique en persona.</div></div>
+        <div class="npop np3 nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>Alerta</b><em>20:00</em></div><div class="nbody">Las verificaciones de bienestar se han perdido consecutivamente. Por favor, verifique en persona.</div></div>
+        <div class="npop np4 nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>Urgente</b><em>09:00</em></div><div class="nbody">Sin verificación de bienestar durante 3 día(s). Se requiere verificación inmediata.</div></div>
+      </div>
+     </div>
     </div>
   </div>
 </section>

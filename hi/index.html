@@ -366,17 +366,44 @@
 
 
 <!-- ========== LEVELS ========== -->
+<!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
+     히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
 <section class="levels">
   <div class="levels-inner">
-    <div class="eyebrow">क्रमिक संकेत</div>
-    <h2 class="section-title">जब ज़रूरत हो तभी, <em>जितनी ज़रूरत हो उतनी।</em></h2>
-    <p class="section-sub">हर सूचना कोई आपात स्थिति नहीं होती। Anbu पाँच ख़ामोश चरणों में स्थिति बताता है।</p>
-    <div class="levels-row">
-      <div class="level lv-normal  reveal"><div class="dot"></div><div class="name">सामान्य</div><div class="desc">आज सब ठीक है</div></div>
-      <div class="level lv-caution reveal"><div class="dot"></div><div class="name">सतर्कता</div><div class="desc">अभी तक कोई हलचल नहीं</div></div>
-      <div class="level lv-warning reveal"><div class="dot"></div><div class="name">चेतावनी</div><div class="desc">काफ़ी देर से कोई संकेत नहीं</div></div>
-      <div class="level lv-urgent  reveal"><div class="dot"></div><div class="name">तत्काल</div><div class="desc">अभी देखें</div></div>
-      <div class="level lv-info    reveal"><div class="dot"></div><div class="name">जानकारी</div><div class="desc">क़दम · बैटरी</div></div>
+    <div class="levels-copy">
+      <div class="eyebrow">क्रमिक संकेत</div>
+      <h2 class="section-title">जब ज़रूरत हो तभी, <em>जितनी ज़रूरत हो उतनी।</em></h2>
+      <p class="section-sub">हर सूचना कोई आपात स्थिति नहीं होती। Anbu पाँच ख़ामोश चरणों में स्थिति बताता है।</p>
+      <ul class="levels-list">
+        <li class="lv-normal"><span class="dot"></span><b>सामान्य</b><span>आज सब ठीक है</span></li>
+        <li class="lv-caution"><span class="dot"></span><b>सतर्कता</b><span>अभी तक कोई हलचल नहीं</span></li>
+        <li class="lv-warning"><span class="dot"></span><b>चेतावनी</b><span>काफ़ी देर से कोई संकेत नहीं</span></li>
+        <li class="lv-urgent"><span class="dot"></span><b>तत्काल</b><span>अभी देखें</span></li>
+        <li class="lv-info"><span class="dot"></span><b>जानकारी</b><span>क़दम · बैटरी</span></li>
+      </ul>
+    </div>
+
+    <div class="levels-stage" aria-hidden="true">
+     <div class="nwrap">
+      <div class="nphone">
+        <div class="nscreen">
+          <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+          <div class="ntitle">सूचनाएं</div>
+          <div class="nlist">
+            <div class="ncard nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>सामान्य</b><em>18:00</em></div><div class="nbody">कुशलता जांच सफलतापूर्वक प्राप्त हुई।</div></div>
+            <div class="ncard nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>सावधानी</b><em>20:00</em></div><div class="nbody">आज की निर्धारित कुशलता जांच अभी तक प्राप्त नहीं हुई है। कृपया व्यक्तिगत रूप से जांचें।</div></div>
+            <div class="ncard nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>चेतावनी</b><em>20:00</em></div><div class="nbody">कुशलता जांच लगातार छूट रही है। कृपया व्यक्तिगत रूप से सत्यापित करें।</div></div>
+            <div class="ncard nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>अत्यावश्यक</b><em>09:00</em></div><div class="nbody">3 दिनों से कुशलता जांच नहीं हुई। तत्काल सत्यापन आवश्यक है।</div></div>
+            <div class="ncard nc-info"><div class="nrow"><span class="nic">&#8599;</span><b>जानकारी</b></div><div class="nbody">आज 3,482 कदम चले।</div></div>
+          </div>
+        </div>
+        <!-- 좌·우로 번갈아 튀어나오는 알림 카드 (.nscreen 바깥이라 잘리지 않는다) -->
+        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>सामान्य</b><em>18:00</em></div><div class="nbody">कुशलता जांच सफलतापूर्वक प्राप्त हुई।</div></div>
+        <div class="npop np2 nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>सावधानी</b><em>20:00</em></div><div class="nbody">आज की निर्धारित कुशलता जांच अभी तक प्राप्त नहीं हुई है। कृपया व्यक्तिगत रूप से जांचें।</div></div>
+        <div class="npop np3 nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>चेतावनी</b><em>20:00</em></div><div class="nbody">कुशलता जांच लगातार छूट रही है। कृपया व्यक्तिगत रूप से सत्यापित करें।</div></div>
+        <div class="npop np4 nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>अत्यावश्यक</b><em>09:00</em></div><div class="nbody">3 दिनों से कुशलता जांच नहीं हुई। तत्काल सत्यापन आवश्यक है।</div></div>
+      </div>
+     </div>
     </div>
   </div>
 </section>

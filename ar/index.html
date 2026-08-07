@@ -366,17 +366,44 @@
 
 
 <!-- ========== LEVELS ========== -->
+<!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
+     히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
 <section class="levels">
   <div class="levels-inner">
-    <div class="eyebrow">إشارات متدرِّجة</div>
-    <h2 class="section-title">فقط حين يلزم، <em>وبقدر ما يلزم.</em></h2>
-    <p class="section-sub">ليس كل تنبيه حالة طوارئ. يُشارك Anbu الوضع في خمس خطوات هادئة.</p>
-    <div class="levels-row">
-      <div class="level lv-normal  reveal"><div class="dot"></div><div class="name">طبيعي</div><div class="desc">كل شيء على ما يرام اليوم</div></div>
-      <div class="level lv-caution reveal"><div class="dot"></div><div class="name">تنبيه</div><div class="desc">لا نشاط حتى الآن</div></div>
-      <div class="level lv-warning reveal"><div class="dot"></div><div class="name">تحذير</div><div class="desc">لا إشارات منذ فترة</div></div>
-      <div class="level lv-urgent  reveal"><div class="dot"></div><div class="name">عاجل</div><div class="desc">يرجى التحقق الآن</div></div>
-      <div class="level lv-info    reveal"><div class="dot"></div><div class="name">معلومات</div><div class="desc">الخطوات · البطارية</div></div>
+    <div class="levels-copy">
+      <div class="eyebrow">إشارات متدرِّجة</div>
+      <h2 class="section-title">فقط حين يلزم، <em>وبقدر ما يلزم.</em></h2>
+      <p class="section-sub">ليس كل تنبيه حالة طوارئ. يُشارك Anbu الوضع في خمس خطوات هادئة.</p>
+      <ul class="levels-list">
+        <li class="lv-normal"><span class="dot"></span><b>طبيعي</b><span>كل شيء على ما يرام اليوم</span></li>
+        <li class="lv-caution"><span class="dot"></span><b>تنبيه</b><span>لا نشاط حتى الآن</span></li>
+        <li class="lv-warning"><span class="dot"></span><b>تحذير</b><span>لا إشارات منذ فترة</span></li>
+        <li class="lv-urgent"><span class="dot"></span><b>عاجل</b><span>يرجى التحقق الآن</span></li>
+        <li class="lv-info"><span class="dot"></span><b>معلومات</b><span>الخطوات · البطارية</span></li>
+      </ul>
+    </div>
+
+    <div class="levels-stage" aria-hidden="true">
+     <div class="nwrap">
+      <div class="nphone">
+        <div class="nscreen">
+          <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+          <div class="ntitle">الإشعارات</div>
+          <div class="nlist">
+            <div class="ncard nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>طبيعي</b><em>18:00</em></div><div class="nbody">تم استلام فحص الاطمئنان بنجاح.</div></div>
+            <div class="ncard nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>تنبيه</b><em>20:00</em></div><div class="nbody">لم يتم استلام فحص الاطمئنان المجدول لليوم بعد. يرجى التحقق شخصياً.</div></div>
+            <div class="ncard nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>تحذير</b><em>20:00</em></div><div class="nbody">تم تفويت فحوصات الاطمئنان بشكل متتالٍ. يرجى التحقق شخصياً.</div></div>
+            <div class="ncard nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>عاجل</b><em>09:00</em></div><div class="nbody">لا يوجد فحص اطمئنان منذ 3 يوم/أيام. التحقق الفوري مطلوب.</div></div>
+            <div class="ncard nc-info"><div class="nrow"><span class="nic">&#8599;</span><b>معلومات</b></div><div class="nbody">تم قطع 3,482 خطوة اليوم.</div></div>
+          </div>
+        </div>
+        <!-- 좌·우로 번갈아 튀어나오는 알림 카드 (.nscreen 바깥이라 잘리지 않는다) -->
+        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>طبيعي</b><em>18:00</em></div><div class="nbody">تم استلام فحص الاطمئنان بنجاح.</div></div>
+        <div class="npop np2 nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>تنبيه</b><em>20:00</em></div><div class="nbody">لم يتم استلام فحص الاطمئنان المجدول لليوم بعد. يرجى التحقق شخصياً.</div></div>
+        <div class="npop np3 nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>تحذير</b><em>20:00</em></div><div class="nbody">تم تفويت فحوصات الاطمئنان بشكل متتالٍ. يرجى التحقق شخصياً.</div></div>
+        <div class="npop np4 nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>عاجل</b><em>09:00</em></div><div class="nbody">لا يوجد فحص اطمئنان منذ 3 يوم/أيام. التحقق الفوري مطلوب.</div></div>
+      </div>
+     </div>
     </div>
   </div>
 </section>

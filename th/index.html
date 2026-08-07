@@ -366,17 +366,44 @@
 
 
 <!-- ========== LEVELS ========== -->
+<!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
+     히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
 <section class="levels">
   <div class="levels-inner">
-    <div class="eyebrow">สัญญาณแบบขั้นบันได</div>
-    <h2 class="section-title">เมื่อจำเป็น <em>เท่าที่จำเป็น</em></h2>
-    <p class="section-sub">ไม่ใช่ทุกการแจ้งเตือนจะเป็นเหตุฉุกเฉิน Anbu แบ่งสถานการณ์ออกเป็น 5 ระดับอย่างเบาๆ</p>
-    <div class="levels-row">
-      <div class="level lv-normal  reveal"><div class="dot"></div><div class="name">ปกติ</div><div class="desc">วันนี้ทุกอย่างเรียบร้อยดี</div></div>
-      <div class="level lv-caution reveal"><div class="dot"></div><div class="name">ระวัง</div><div class="desc">ยังไม่มีความเคลื่อนไหว</div></div>
-      <div class="level lv-warning reveal"><div class="dot"></div><div class="name">เตือน</div><div class="desc">ไม่มีสัญญาณมาสักพักแล้ว</div></div>
-      <div class="level lv-urgent  reveal"><div class="dot"></div><div class="name">เร่งด่วน</div><div class="desc">กรุณาตรวจสอบทันที</div></div>
-      <div class="level lv-info    reveal"><div class="dot"></div><div class="name">ข้อมูล</div><div class="desc">ก้าวเดิน · แบตเตอรี่</div></div>
+    <div class="levels-copy">
+      <div class="eyebrow">สัญญาณแบบขั้นบันได</div>
+      <h2 class="section-title">เมื่อจำเป็น <em>เท่าที่จำเป็น</em></h2>
+      <p class="section-sub">ไม่ใช่ทุกการแจ้งเตือนจะเป็นเหตุฉุกเฉิน Anbu แบ่งสถานการณ์ออกเป็น 5 ระดับอย่างเบาๆ</p>
+      <ul class="levels-list">
+        <li class="lv-normal"><span class="dot"></span><b>ปกติ</b><span>วันนี้ทุกอย่างเรียบร้อยดี</span></li>
+        <li class="lv-caution"><span class="dot"></span><b>ระวัง</b><span>ยังไม่มีความเคลื่อนไหว</span></li>
+        <li class="lv-warning"><span class="dot"></span><b>เตือน</b><span>ไม่มีสัญญาณมาสักพักแล้ว</span></li>
+        <li class="lv-urgent"><span class="dot"></span><b>เร่งด่วน</b><span>กรุณาตรวจสอบทันที</span></li>
+        <li class="lv-info"><span class="dot"></span><b>ข้อมูล</b><span>ก้าวเดิน · แบตเตอรี่</span></li>
+      </ul>
+    </div>
+
+    <div class="levels-stage" aria-hidden="true">
+     <div class="nwrap">
+      <div class="nphone">
+        <div class="nscreen">
+          <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+          <div class="ntitle">การแจ้งเตือน</div>
+          <div class="nlist">
+            <div class="ncard nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>ปกติ</b><em>18:00</em></div><div class="nbody">การตรวจสอบความเป็นอยู่ได้รับเรียบร้อยแล้ว</div></div>
+            <div class="ncard nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>ระวัง</b><em>20:00</em></div><div class="nbody">การตรวจสอบความเป็นอยู่ที่กำหนดไว้วันนี้ยังไม่ได้รับ กรุณาตรวจสอบด้วยตนเอง</div></div>
+            <div class="ncard nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>เตือน</b><em>20:00</em></div><div class="nbody">การตรวจสอบความเป็นอยู่ถูกพลาดติดต่อกัน กรุณายืนยันด้วยตนเอง</div></div>
+            <div class="ncard nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>เร่งด่วน</b><em>09:00</em></div><div class="nbody">ไม่มีการตรวจสอบความเป็นอยู่เป็นเวลา 3 วัน จำเป็นต้องยืนยันทันที</div></div>
+            <div class="ncard nc-info"><div class="nrow"><span class="nic">&#8599;</span><b>ข้อมูล</b></div><div class="nbody">วันนี้เดิน 3,482 ก้าว</div></div>
+          </div>
+        </div>
+        <!-- 좌·우로 번갈아 튀어나오는 알림 카드 (.nscreen 바깥이라 잘리지 않는다) -->
+        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>ปกติ</b><em>18:00</em></div><div class="nbody">การตรวจสอบความเป็นอยู่ได้รับเรียบร้อยแล้ว</div></div>
+        <div class="npop np2 nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>ระวัง</b><em>20:00</em></div><div class="nbody">การตรวจสอบความเป็นอยู่ที่กำหนดไว้วันนี้ยังไม่ได้รับ กรุณาตรวจสอบด้วยตนเอง</div></div>
+        <div class="npop np3 nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>เตือน</b><em>20:00</em></div><div class="nbody">การตรวจสอบความเป็นอยู่ถูกพลาดติดต่อกัน กรุณายืนยันด้วยตนเอง</div></div>
+        <div class="npop np4 nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>เร่งด่วน</b><em>09:00</em></div><div class="nbody">ไม่มีการตรวจสอบความเป็นอยู่เป็นเวลา 3 วัน จำเป็นต้องยืนยันทันที</div></div>
+      </div>
+     </div>
     </div>
   </div>
 </section>

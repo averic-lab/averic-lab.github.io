@@ -366,17 +366,44 @@
 
 
 <!-- ========== LEVELS ========== -->
+<!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
+     히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
 <section class="levels">
   <div class="levels-inner">
-    <div class="eyebrow">5段階のシグナル</div>
-    <h2 class="section-title">必要なときに、<em>必要なだけ。</em></h2>
-    <p class="section-sub">すべての通知が緊急なわけではありません。Anbuは5つの静かなステップで、状況をお伝えします。</p>
-    <div class="levels-row">
-      <div class="level lv-normal  reveal"><div class="dot"></div><div class="name">異常なし</div><div class="desc">今日も穏やかです</div></div>
-      <div class="level lv-caution reveal"><div class="dot"></div><div class="name">注意</div><div class="desc">まだ動きがありません</div></div>
-      <div class="level lv-warning reveal"><div class="dot"></div><div class="name">警告</div><div class="desc">しばらくシグナルがありません</div></div>
-      <div class="level lv-urgent  reveal"><div class="dot"></div><div class="name">緊急</div><div class="desc">すぐに確認してください</div></div>
-      <div class="level lv-info    reveal"><div class="dot"></div><div class="name">情報</div><div class="desc">歩数 · バッテリー</div></div>
+    <div class="levels-copy">
+      <div class="eyebrow">5段階のシグナル</div>
+      <h2 class="section-title">必要なときに、<em>必要なだけ。</em></h2>
+      <p class="section-sub">すべての通知が緊急なわけではありません。Anbuは5つの静かなステップで、状況をお伝えします。</p>
+      <ul class="levels-list">
+        <li class="lv-normal"><span class="dot"></span><b>異常なし</b><span>今日も穏やかです</span></li>
+        <li class="lv-caution"><span class="dot"></span><b>注意</b><span>まだ動きがありません</span></li>
+        <li class="lv-warning"><span class="dot"></span><b>警告</b><span>しばらくシグナルがありません</span></li>
+        <li class="lv-urgent"><span class="dot"></span><b>緊急</b><span>すぐに確認してください</span></li>
+        <li class="lv-info"><span class="dot"></span><b>情報</b><span>歩数 · バッテリー</span></li>
+      </ul>
+    </div>
+
+    <div class="levels-stage" aria-hidden="true">
+     <div class="nwrap">
+      <div class="nphone">
+        <div class="nscreen">
+          <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+          <div class="ntitle">通知</div>
+          <div class="nlist">
+            <div class="ncard nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>正常</b><em>18:00</em></div><div class="nbody">安否確認が正常に受信されました。</div></div>
+            <div class="ncard nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>注意</b><em>20:00</em></div><div class="nbody">本日予定の安否確認がまだ届いていません。直接ご確認ください。</div></div>
+            <div class="ncard nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>警告</b><em>20:00</em></div><div class="nbody">安否確認が連続して届いていません。直接のご確認が必要です。</div></div>
+            <div class="ncard nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>緊急</b><em>09:00</em></div><div class="nbody">3日間安否確認がありません。直ちに確認が必要です。</div></div>
+            <div class="ncard nc-info"><div class="nrow"><span class="nic">&#8599;</span><b>情報</b></div><div class="nbody">本日3,482歩歩きました。</div></div>
+          </div>
+        </div>
+        <!-- 좌·우로 번갈아 튀어나오는 알림 카드 (.nscreen 바깥이라 잘리지 않는다) -->
+        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>正常</b><em>18:00</em></div><div class="nbody">安否確認が正常に受信されました。</div></div>
+        <div class="npop np2 nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>注意</b><em>20:00</em></div><div class="nbody">本日予定の安否確認がまだ届いていません。直接ご確認ください。</div></div>
+        <div class="npop np3 nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>警告</b><em>20:00</em></div><div class="nbody">安否確認が連続して届いていません。直接のご確認が必要です。</div></div>
+        <div class="npop np4 nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>緊急</b><em>09:00</em></div><div class="nbody">3日間安否確認がありません。直ちに確認が必要です。</div></div>
+      </div>
+     </div>
     </div>
   </div>
 </section>

@@ -366,17 +366,44 @@
 
 
 <!-- ========== LEVELS ========== -->
+<!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
+     히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
 <section class="levels">
   <div class="levels-inner">
-    <div class="eyebrow">TÍN HIỆU TỪNG MỨC</div>
-    <h2 class="section-title">Chỉ khi cần, <em>chỉ vừa đủ mức cần thiết.</em></h2>
-    <p class="section-sub">Không phải mọi cảnh báo đều là khẩn cấp. Anbu chia sẻ tình huống qua năm bước lặng lẽ.</p>
-    <div class="levels-row">
-      <div class="level lv-normal  reveal"><div class="dot"></div><div class="name">Bình thường</div><div class="desc">Hôm nay mọi thứ đều ổn</div></div>
-      <div class="level lv-caution reveal"><div class="dot"></div><div class="name">Chú ý</div><div class="desc">Chưa thấy hoạt động</div></div>
-      <div class="level lv-warning reveal"><div class="dot"></div><div class="name">Cảnh báo</div><div class="desc">Chưa có tín hiệu một lúc rồi</div></div>
-      <div class="level lv-urgent  reveal"><div class="dot"></div><div class="name">Khẩn cấp</div><div class="desc">Hãy kiểm tra ngay</div></div>
-      <div class="level lv-info    reveal"><div class="dot"></div><div class="name">Thông tin</div><div class="desc">Số bước chân · Pin</div></div>
+    <div class="levels-copy">
+      <div class="eyebrow">TÍN HIỆU TỪNG MỨC</div>
+      <h2 class="section-title">Chỉ khi cần, <em>chỉ vừa đủ mức cần thiết.</em></h2>
+      <p class="section-sub">Không phải mọi cảnh báo đều là khẩn cấp. Anbu chia sẻ tình huống qua năm bước lặng lẽ.</p>
+      <ul class="levels-list">
+        <li class="lv-normal"><span class="dot"></span><b>Bình thường</b><span>Hôm nay mọi thứ đều ổn</span></li>
+        <li class="lv-caution"><span class="dot"></span><b>Chú ý</b><span>Chưa thấy hoạt động</span></li>
+        <li class="lv-warning"><span class="dot"></span><b>Cảnh báo</b><span>Chưa có tín hiệu một lúc rồi</span></li>
+        <li class="lv-urgent"><span class="dot"></span><b>Khẩn cấp</b><span>Hãy kiểm tra ngay</span></li>
+        <li class="lv-info"><span class="dot"></span><b>Thông tin</b><span>Số bước chân · Pin</span></li>
+      </ul>
+    </div>
+
+    <div class="levels-stage" aria-hidden="true">
+     <div class="nwrap">
+      <div class="nphone">
+        <div class="nscreen">
+          <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+          <div class="ntitle">Thong bao</div>
+          <div class="nlist">
+            <div class="ncard nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>Binh thuong</b><em>18:00</em></div><div class="nbody">Kiem tra suc khoe da duoc nhan thanh cong.</div></div>
+            <div class="ncard nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>Chu y</b><em>20:00</em></div><div class="nbody">Kiem tra suc khoe theo lich hom nay chua duoc nhan. Vui long kiem tra truc tiep.</div></div>
+            <div class="ncard nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>Canh bao</b><em>20:00</em></div><div class="nbody">Kiem tra suc khoe da bi bo lo lien tiep. Vui long xac minh truc tiep.</div></div>
+            <div class="ncard nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>Khan cap</b><em>09:00</em></div><div class="nbody">Khong co kiem tra suc khoe trong 3 ngay. Can xac minh ngay lap tuc.</div></div>
+            <div class="ncard nc-info"><div class="nrow"><span class="nic">&#8599;</span><b>Thong tin</b></div><div class="nbody">Hom nay da di 3,482 buoc.</div></div>
+          </div>
+        </div>
+        <!-- 좌·우로 번갈아 튀어나오는 알림 카드 (.nscreen 바깥이라 잘리지 않는다) -->
+        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>Binh thuong</b><em>18:00</em></div><div class="nbody">Kiem tra suc khoe da duoc nhan thanh cong.</div></div>
+        <div class="npop np2 nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>Chu y</b><em>20:00</em></div><div class="nbody">Kiem tra suc khoe theo lich hom nay chua duoc nhan. Vui long kiem tra truc tiep.</div></div>
+        <div class="npop np3 nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>Canh bao</b><em>20:00</em></div><div class="nbody">Kiem tra suc khoe da bi bo lo lien tiep. Vui long xac minh truc tiep.</div></div>
+        <div class="npop np4 nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>Khan cap</b><em>09:00</em></div><div class="nbody">Khong co kiem tra suc khoe trong 3 ngay. Can xac minh ngay lap tuc.</div></div>
+      </div>
+     </div>
     </div>
   </div>
 </section>

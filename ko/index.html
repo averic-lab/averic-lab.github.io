@@ -366,17 +366,44 @@
 
 
 <!-- ========== LEVELS ========== -->
+<!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
+     히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
 <section class="levels">
   <div class="levels-inner">
-    <div class="eyebrow">단계별 신호</div>
-    <h2 class="section-title">필요한 순간에만, <em>꼭 필요한 만큼.</em></h2>
-    <p class="section-sub">모든 알림이 비상은 아닙니다. 안부는 다섯 단계로 상황을 차분히 전해드립니다.</p>
-    <div class="levels-row">
-      <div class="level lv-normal  reveal"><div class="dot"></div><div class="name">정상</div><div class="desc">오늘도 안녕히</div></div>
-      <div class="level lv-caution reveal"><div class="dot"></div><div class="name">주의</div><div class="desc">활동 기록이 없어요</div></div>
-      <div class="level lv-warning reveal"><div class="dot"></div><div class="name">경고</div><div class="desc">연속으로 신호가 없어요</div></div>
-      <div class="level lv-urgent  reveal"><div class="dot"></div><div class="name">긴급</div><div class="desc">지금 확인이 필요해요</div></div>
-      <div class="level lv-info    reveal"><div class="dot"></div><div class="name">정보</div><div class="desc">걸음수 · 배터리</div></div>
+    <div class="levels-copy">
+      <div class="eyebrow">단계별 신호</div>
+      <h2 class="section-title">필요한 순간에만, <em>꼭 필요한 만큼.</em></h2>
+      <p class="section-sub">모든 알림이 비상은 아닙니다. 안부는 다섯 단계로 상황을 차분히 전해드립니다.</p>
+      <ul class="levels-list">
+        <li class="lv-normal"><span class="dot"></span><b>정상</b><span>오늘도 안녕히</span></li>
+        <li class="lv-caution"><span class="dot"></span><b>주의</b><span>활동 기록이 없어요</span></li>
+        <li class="lv-warning"><span class="dot"></span><b>경고</b><span>연속으로 신호가 없어요</span></li>
+        <li class="lv-urgent"><span class="dot"></span><b>긴급</b><span>지금 확인이 필요해요</span></li>
+        <li class="lv-info"><span class="dot"></span><b>정보</b><span>걸음수 · 배터리</span></li>
+      </ul>
+    </div>
+
+    <div class="levels-stage" aria-hidden="true">
+     <div class="nwrap">
+      <div class="nphone">
+        <div class="nscreen">
+          <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+          <div class="ntitle">알림</div>
+          <div class="nlist">
+            <div class="ncard nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>정상</b><em>18:00</em></div><div class="nbody">안부 확인이 정상 수신되었습니다.</div></div>
+            <div class="ncard nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>주의</b><em>20:00</em></div><div class="nbody">오늘 예정된 안부 확인이 아직 없습니다. 직접 확인해 주세요.</div></div>
+            <div class="ncard nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>경고</b><em>20:00</em></div><div class="nbody">연속으로 안부 확인이 되지 않고 있습니다. 직접 확인이 필요합니다.</div></div>
+            <div class="ncard nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>긴급</b><em>09:00</em></div><div class="nbody">3일간 안부 확인이 없습니다. 즉시 확인이 필요합니다.</div></div>
+            <div class="ncard nc-info"><div class="nrow"><span class="nic">&#8599;</span><b>정보</b></div><div class="nbody">오늘 3,482보를 걸으셨습니다.</div></div>
+          </div>
+        </div>
+        <!-- 좌·우로 번갈아 튀어나오는 알림 카드 (.nscreen 바깥이라 잘리지 않는다) -->
+        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>정상</b><em>18:00</em></div><div class="nbody">안부 확인이 정상 수신되었습니다.</div></div>
+        <div class="npop np2 nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>주의</b><em>20:00</em></div><div class="nbody">오늘 예정된 안부 확인이 아직 없습니다. 직접 확인해 주세요.</div></div>
+        <div class="npop np3 nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>경고</b><em>20:00</em></div><div class="nbody">연속으로 안부 확인이 되지 않고 있습니다. 직접 확인이 필요합니다.</div></div>
+        <div class="npop np4 nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>긴급</b><em>09:00</em></div><div class="nbody">3일간 안부 확인이 없습니다. 즉시 확인이 필요합니다.</div></div>
+      </div>
+     </div>
     </div>
   </div>
 </section>

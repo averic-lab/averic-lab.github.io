@@ -65,7 +65,7 @@ safety_home 화면의 권한 관련 안내 4가지. **이 범위를 넓히지 �
 [3] 산출  {ko,en,…}/faq.html × 20 · {ko}/guide.html  →  git push  →  GitHub Pages
 ```
 
-> ⚠️ **`app-strings.json`의 소비자는 이제 셋이다** — `build_faq.py` · `build_guide.py` · **`i18n/build.py`(홈 히어로 폰 목업, 2026-08-07 추가)**. `KEYS`에서 키를 빼면 홈까지 깨지므로, 제거 전에 세 빌더를 모두 확인할 것.
+> ⚠️ **`app-strings.json`의 소비자는 이제 셋이다** — `build_faq.py` · `build_guide.py` · **`i18n/build.py`(홈 히어로 폰 목업 + 「단계별 신호」 알림 페이지 목업, 2026-08-07 추가)**. `KEYS`에서 키를 빼면 홈까지 깨지므로, 제거 전에 세 빌더를 모두 확인할 것.
 
 **앱 저장소를 빌드 시점에 직접 읽지 않는다.** JSON을 중간에 두는 이유:
 - 두 저장소가 빌드 시점에 결합되지 않는다(어느 한쪽을 옮겨도 빌드가 깨지지 않음)

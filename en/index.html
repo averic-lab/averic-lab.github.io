@@ -366,17 +366,44 @@
 
 
 <!-- ========== LEVELS ========== -->
+<!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
+     히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
 <section class="levels">
   <div class="levels-inner">
-    <div class="eyebrow">STEPPED SIGNALS</div>
-    <h2 class="section-title">Only when needed, <em>only as much as needed.</em></h2>
-    <p class="section-sub">Not every alert is an emergency. Anbu shares the situation in five quiet steps.</p>
-    <div class="levels-row">
-      <div class="level lv-normal  reveal"><div class="dot"></div><div class="name">Normal</div><div class="desc">All quiet today</div></div>
-      <div class="level lv-caution reveal"><div class="dot"></div><div class="name">Caution</div><div class="desc">No activity yet</div></div>
-      <div class="level lv-warning reveal"><div class="dot"></div><div class="name">Warning</div><div class="desc">No signals for a while</div></div>
-      <div class="level lv-urgent  reveal"><div class="dot"></div><div class="name">Urgent</div><div class="desc">Please check now</div></div>
-      <div class="level lv-info    reveal"><div class="dot"></div><div class="name">Info</div><div class="desc">Steps · Battery</div></div>
+    <div class="levels-copy">
+      <div class="eyebrow">STEPPED SIGNALS</div>
+      <h2 class="section-title">Only when needed, <em>only as much as needed.</em></h2>
+      <p class="section-sub">Not every alert is an emergency. Anbu shares the situation in five quiet steps.</p>
+      <ul class="levels-list">
+        <li class="lv-normal"><span class="dot"></span><b>Normal</b><span>All quiet today</span></li>
+        <li class="lv-caution"><span class="dot"></span><b>Caution</b><span>No activity yet</span></li>
+        <li class="lv-warning"><span class="dot"></span><b>Warning</b><span>No signals for a while</span></li>
+        <li class="lv-urgent"><span class="dot"></span><b>Urgent</b><span>Please check now</span></li>
+        <li class="lv-info"><span class="dot"></span><b>Info</b><span>Steps · Battery</span></li>
+      </ul>
+    </div>
+
+    <div class="levels-stage" aria-hidden="true">
+     <div class="nwrap">
+      <div class="nphone">
+        <div class="nscreen">
+          <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+          <div class="ntitle">Notifications</div>
+          <div class="nlist">
+            <div class="ncard nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>Normal</b><em>18:00</em></div><div class="nbody">Wellness check was received successfully.</div></div>
+            <div class="ncard nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>Caution</b><em>20:00</em></div><div class="nbody">Today's scheduled wellness check has not been received yet. Please check in person.</div></div>
+            <div class="ncard nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>Warning</b><em>20:00</em></div><div class="nbody">Wellness checks have been missed consecutively. Please verify in person.</div></div>
+            <div class="ncard nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>Urgent</b><em>09:00</em></div><div class="nbody">No wellness check for 3 day(s). Immediate verification is required.</div></div>
+            <div class="ncard nc-info"><div class="nrow"><span class="nic">&#8599;</span><b>Info</b></div><div class="nbody">3,482 steps taken today.</div></div>
+          </div>
+        </div>
+        <!-- 좌·우로 번갈아 튀어나오는 알림 카드 (.nscreen 바깥이라 잘리지 않는다) -->
+        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>Normal</b><em>18:00</em></div><div class="nbody">Wellness check was received successfully.</div></div>
+        <div class="npop np2 nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>Caution</b><em>20:00</em></div><div class="nbody">Today's scheduled wellness check has not been received yet. Please check in person.</div></div>
+        <div class="npop np3 nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>Warning</b><em>20:00</em></div><div class="nbody">Wellness checks have been missed consecutively. Please verify in person.</div></div>
+        <div class="npop np4 nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>Urgent</b><em>09:00</em></div><div class="nbody">No wellness check for 3 day(s). Immediate verification is required.</div></div>
+      </div>
+     </div>
     </div>
   </div>
 </section>

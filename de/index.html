@@ -366,17 +366,44 @@
 
 
 <!-- ========== LEVELS ========== -->
+<!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
+     히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
 <section class="levels">
   <div class="levels-inner">
-    <div class="eyebrow">Abgestufte Signale</div>
-    <h2 class="section-title">Nur wenn nötig, <em>nur so viel wie nötig.</em></h2>
-    <p class="section-sub">Nicht jeder Hinweis ist ein Notfall. Anbu teilt die Situation in fünf ruhigen Stufen mit.</p>
-    <div class="levels-row">
-      <div class="level lv-normal  reveal"><div class="dot"></div><div class="name">Normal</div><div class="desc">Alles ruhig heute</div></div>
-      <div class="level lv-caution reveal"><div class="dot"></div><div class="name">Achtung</div><div class="desc">Noch keine Aktivität</div></div>
-      <div class="level lv-warning reveal"><div class="dot"></div><div class="name">Warnung</div><div class="desc">Seit einer Weile kein Signal</div></div>
-      <div class="level lv-urgent  reveal"><div class="dot"></div><div class="name">Dringend</div><div class="desc">Bitte jetzt nachsehen</div></div>
-      <div class="level lv-info    reveal"><div class="dot"></div><div class="name">Info</div><div class="desc">Schritte · Akku</div></div>
+    <div class="levels-copy">
+      <div class="eyebrow">Abgestufte Signale</div>
+      <h2 class="section-title">Nur wenn nötig, <em>nur so viel wie nötig.</em></h2>
+      <p class="section-sub">Nicht jeder Hinweis ist ein Notfall. Anbu teilt die Situation in fünf ruhigen Stufen mit.</p>
+      <ul class="levels-list">
+        <li class="lv-normal"><span class="dot"></span><b>Normal</b><span>Alles ruhig heute</span></li>
+        <li class="lv-caution"><span class="dot"></span><b>Achtung</b><span>Noch keine Aktivität</span></li>
+        <li class="lv-warning"><span class="dot"></span><b>Warnung</b><span>Seit einer Weile kein Signal</span></li>
+        <li class="lv-urgent"><span class="dot"></span><b>Dringend</b><span>Bitte jetzt nachsehen</span></li>
+        <li class="lv-info"><span class="dot"></span><b>Info</b><span>Schritte · Akku</span></li>
+      </ul>
+    </div>
+
+    <div class="levels-stage" aria-hidden="true">
+     <div class="nwrap">
+      <div class="nphone">
+        <div class="nscreen">
+          <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+          <div class="ntitle">Benachrichtigungen</div>
+          <div class="nlist">
+            <div class="ncard nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>Normal</b><em>18:00</em></div><div class="nbody">Die Wohlbefindens-Prüfung wurde erfolgreich empfangen.</div></div>
+            <div class="ncard nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>Achtung</b><em>20:00</em></div><div class="nbody">Die geplante Wohlbefindens-Prüfung für heute steht noch aus. Bitte persönlich nachsehen.</div></div>
+            <div class="ncard nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>Warnung</b><em>20:00</em></div><div class="nbody">Wohlbefindens-Prüfungen wurden hintereinander versäumt. Bitte persönlich überprüfen.</div></div>
+            <div class="ncard nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>Dringend</b><em>09:00</em></div><div class="nbody">Seit 3 Tag(en) keine Wohlbefindens-Prüfung. Sofortige Überprüfung erforderlich.</div></div>
+            <div class="ncard nc-info"><div class="nrow"><span class="nic">&#8599;</span><b>Info</b></div><div class="nbody">Heute 3,482 Schritte gegangen.</div></div>
+          </div>
+        </div>
+        <!-- 좌·우로 번갈아 튀어나오는 알림 카드 (.nscreen 바깥이라 잘리지 않는다) -->
+        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic">&#10003;</span><b>Normal</b><em>18:00</em></div><div class="nbody">Die Wohlbefindens-Prüfung wurde erfolgreich empfangen.</div></div>
+        <div class="npop np2 nc-caution"><div class="nrow"><span class="nic">&#33;</span><b>Achtung</b><em>20:00</em></div><div class="nbody">Die geplante Wohlbefindens-Prüfung für heute steht noch aus. Bitte persönlich nachsehen.</div></div>
+        <div class="npop np3 nc-warning"><div class="nrow"><span class="nic">&#9888;</span><b>Warnung</b><em>20:00</em></div><div class="nbody">Wohlbefindens-Prüfungen wurden hintereinander versäumt. Bitte persönlich überprüfen.</div></div>
+        <div class="npop np4 nc-urgent"><div class="nrow"><span class="nic">&#33;</span><b>Dringend</b><em>09:00</em></div><div class="nbody">Seit 3 Tag(en) keine Wohlbefindens-Prüfung. Sofortige Überprüfung erforderlich.</div></div>
+      </div>
+     </div>
     </div>
   </div>
 </section>

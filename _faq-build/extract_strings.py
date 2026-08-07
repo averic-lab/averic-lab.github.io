@@ -127,6 +127,16 @@ KEYS = [
     "guardian_activity_active",
     "guardian_chart_y_axis_steps",
     "guardian_chart_x_axis_last_7_days",
+    # 홈 "단계별 신호" 섹션의 알림 페이지 목업 (i18n/build.py 가 쓴다)
+    "notifications_title",
+    "notifications_level_health",
+    "notifications_level_info",
+    "notifications_level_warning",
+    "notifications_level_urgent",
+    "noti_auto_report_body",
+    "noti_warning_body",
+    "noti_urgent_body",
+    "noti_steps_body",
     # 하단 네비게이션 (설정·연결 화면에 보인다)
     "nav_home",
     "nav_connection",
@@ -147,6 +157,8 @@ PLACEHOLDER_OK = {
     "heartbeat_daily_time",              # @time — 위와 동일
     "guardian_checking_subjects",        # @count — 사용설명 목업이 2명으로 채운다
     "guardian_last_check_hours",         # @hours — 사용설명 목업이 채운다
+    "noti_urgent_body",                  # @days  — 홈 알림 목업이 채운다
+    "noti_steps_body",                   # @steps — 위와 동일
 }
 
 # 'key': 뒤 (같은 줄 또는 다음 줄) 문자열 리터럴. 양쪽 따옴표 + 이스케이프 허용.
