@@ -138,6 +138,14 @@ def app_tokens(code, app_all):
         "APP_MAP_EXTERNAL": a["emergency_map_open_external"],
         "APP_SHARE_TITLE": a["subject_home_share_title"],
         "APP_REPORT_BTN": a["subject_home_report_button"],
+        # ① 대상자 앱 홈 — 사용설명(guide)의 안전 홈 UI 전체를 옮겨왔다.
+        # 사용설명은 상태 카드 제목에 오늘 날짜를 JS 로 붙이지만 여기서는 붙이지
+        # 않는다 — 홈은 빌드 시각에 문자열이 박혀서 날짜를 넣으면 저절로 낡는다.
+        "APP_CHECK_TITLE": a["subject_home_check_title_last"],
+        "APP_CHECK_BODY": a["subject_home_check_body_reported"].replace("@time", "18:00"),
+        "APP_SCHED_LBL": a["heartbeat_schedule_change"],
+        "APP_SCHED_DSC": a["heartbeat_daily_time"].replace("@time", "18:00"),
+        "APP_REPORT_DESC": a["subject_home_report_desc"],
     }
 
 

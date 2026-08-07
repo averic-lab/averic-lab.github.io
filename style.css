@@ -1028,16 +1028,21 @@ p.section-sub {
 }
 
 /* ==================================================
-   HELP — 긴급 요청 흐름. 설명 없이 화면 4장을 나란히 보여준다.
-   ① 대상자 홈 → ② 확인 창 → ③ 보호자 알림 → ④ 위치 지도
-   4장을 한 폰에서 순환시키지 않고 각각 독립된 폰으로 세운다 — 한눈에
-   "1→2→3→4 단계"로 읽히게 하는 것이 목적이고, 순환은 지나간 단계를
-   지워버려 흐름 전체를 동시에 보여주지 못한다. 되돌리지 말 것.
-   전환은 CSS 애니메이션만 쓴다(JS 없음). 강조가 2.4초씩 4단계를 돈다.
+   HELP — 긴급 요청 흐름. 설명 없이 화면을 보여준다.
+   ① 대상자 앱(홈 → 도움 요청 확인 창) → ② 보호자 알림 → ③ 위치 지도
+   ⚠️ 한 폰에서 여러 장을 순환시키지 말 것(2026-08-07 되돌림). 순환은 지나간
+      단계를 지워 흐름 전체를 동시에 보여주지 못한다. 단계마다 자기 폰을 갖는다.
+   ⚠️ ①의 홈 화면은 사용설명(guide)의 안전 홈 UI 전체를 옮긴 것이다 — 코드 카드
+      (복사·공유), 보고 상태, 시각 변경, 안전 보고, 긴급 버튼까지. 줄이지 말 것.
+   전환은 CSS 애니메이션만 쓴다(JS 없음). 12초 주기 ÷ 3 = 한 단계 4초.
+   ①의 확인 창은 그 4초 안에서 열리고 닫힌다(탭 → 창 → 전송 탭).
 
    ★ 크기: .fphone 내부 좌표는 300×620 기준 실측값이다. 화면폭에 맞출 때
-     내부 px 을 손대지 말고 .step 의 --s (scale) 만 바꾼다. .step 이
+     내부 px 을 손대지 말고 .fstep 의 --s (scale) 만 바꾼다. .fstep 이
      계산된 크기의 자리를 차지하고 .fphone 은 그 안에서 축소된다.
+   ★ 클래스에 f 접두사가 붙은 이유: 페이지에 이미 .step(reveal 대상, opacity:0)이
+     있어 접두사 없이 쓰면 폰이 통째로 안 보인다. ncard/nrow/nic 계열만은
+     「단계별 알림」섹션과 의도적으로 공유한다.
    ================================================== */
 .help {
   position: relative; padding: 120px 24px;
@@ -1048,39 +1053,50 @@ p.section-sub {
 
 .flow {
   margin-top: 56px; display: flex; align-items: flex-start;
-  justify-content: center; gap: 8px;
+  justify-content: center; gap: 10px;
 }
-/* 단계 강조가 도는 순서 — 두 애니메이션이 같은 지연을 공유해야 하므로 변수로 둔다 */
-.fs1 { --d: 0s; } .fs2 { --d: 2.4s; } .fs3 { --d: 4.8s; } .fs4 { --d: 7.2s; }
+/* 단계 강조 순서 — 들어올림·번호·그림자가 같은 지연을 공유하므로 변수로 둔다 */
+.fs1 { --d: 0s; } .fs2 { --d: 4s; } .fs3 { --d: 8s; }
 .fstep {
-  --s: .66;
+  --s: .72;
   position: relative; flex: 0 0 auto;
-  width: calc(300px * var(--s)); height: calc(620px * var(--s));
-  animation: stepLift 9.6s ease-in-out var(--d) infinite;
+  width: calc(300px * var(--s));
+  /* 폰은 absolute 라 자리를 안 만든다 → padding 으로 폰 높이를 확보하고
+     라벨은 그 아래에 static 으로 흐르게 둔다. 라벨을 absolute + bottom:0 으로
+     두면 두 줄짜리 언어(터키어 등)에서 위로 자라 폰을 침범한다 */
+  padding-top: calc(620px * var(--s) + 12px);
+  animation: stepLift 12s ease-in-out var(--d) infinite;
 }
 .fstep .fnum {
-  position: absolute; inset-inline-start: 50%; top: calc(-34px);
+  position: absolute; inset-inline-start: 50%; top: -34px;
   transform: translateX(-50%);
   width: 26px; height: 26px; border-radius: 999px;
   display: flex; align-items: center; justify-content: center;
   font-size: 13px; font-weight: 800; line-height: 1;
   background: rgba(67,85,185,.14); color: #4355B9;
-  animation: numOn 9.6s ease-in-out var(--d) infinite;
+  animation: numOn 12s ease-in-out var(--d) infinite;
 }
+/* 어느 쪽 앱인지 — 번호만으로는 대상자/보호자 전환이 안 보인다 */
+/* 두 줄을 항상 확보한다 — 한 줄 언어와 두 줄 언어의 라벨 첫 줄이 같은 높이에 온다 */
+.fstep .flbl {
+  display: block; min-height: 2.7em; line-height: 1.35;
+  font-size: 12.5px; font-weight: 700; letter-spacing: .2px; color: #6E6B66;
+}
+.fs1 .flbl { color: #00685E; }
 @keyframes stepLift {
-  0%, 4%   { transform: translateY(0); }
-  10%, 21% { transform: translateY(-12px); }
-  27%,100% { transform: translateY(0); }
+  0%, 3%    { transform: translateY(0); }
+  8%, 29%   { transform: translateY(-12px); }
+  34%, 100% { transform: translateY(0); }
 }
 @keyframes numOn {
-  0%, 4%   { background: rgba(67,85,185,.14); color: #4355B9; }
-  10%, 21% { background: #4355B9; color: #fff; }
-  27%,100% { background: rgba(67,85,185,.14); color: #4355B9; }
+  0%, 3%    { background: rgba(67,85,185,.14); color: #4355B9; }
+  8%, 29%   { background: #4355B9; color: #fff; }
+  34%, 100% { background: rgba(67,85,185,.14); color: #4355B9; }
 }
-/* 단계 사이 화살표 — RTL 은 flex 가 알아서 뒤집으므로 촉만 뒤집는다 */
+/* 단계 사이 화살표 — RTL 은 flex 가 순서를 뒤집으므로 촉만 반전한다 */
 .farrow {
   flex: 0 0 auto; align-self: center; width: 22px; height: 22px;
-  position: relative; opacity: .5;
+  position: relative; opacity: .5; margin-top: -17px;
 }
 .farrow::before {
   content: ""; position: absolute; top: 50%; left: 50%;
@@ -1097,16 +1113,16 @@ p.section-sub {
   border-radius: 42px; background: #0d0f1f; padding: 9px;
   box-shadow: 0 0 0 1.5px rgba(255,255,255,.1), 0 0 0 7px #14162c,
     0 22px 44px -18px rgba(20,24,60,.34);
-  animation: phoneGlow 9.6s ease-in-out var(--d) infinite;
+  animation: phoneGlow 12s ease-in-out var(--d) infinite;
 }
 [dir="rtl"] .fphone { transform-origin: 100% 0; }
 @keyframes phoneGlow {
-  0%, 4%   { box-shadow: 0 0 0 1.5px rgba(255,255,255,.1), 0 0 0 7px #14162c,
-             0 22px 44px -18px rgba(20,24,60,.34); }
-  10%, 21% { box-shadow: 0 0 0 1.5px rgba(255,255,255,.14), 0 0 0 7px #14162c,
-             0 40px 72px -20px rgba(20,24,60,.5); }
-  27%,100% { box-shadow: 0 0 0 1.5px rgba(255,255,255,.1), 0 0 0 7px #14162c,
-             0 22px 44px -18px rgba(20,24,60,.34); }
+  0%, 3%    { box-shadow: 0 0 0 1.5px rgba(255,255,255,.1), 0 0 0 7px #14162c,
+              0 22px 44px -18px rgba(20,24,60,.34); }
+  8%, 29%   { box-shadow: 0 0 0 1.5px rgba(255,255,255,.14), 0 0 0 7px #14162c,
+              0 40px 72px -20px rgba(20,24,60,.5); }
+  34%, 100% { box-shadow: 0 0 0 1.5px rgba(255,255,255,.1), 0 0 0 7px #14162c,
+              0 22px 44px -18px rgba(20,24,60,.34); }
 }
 .fscreen {
   position: relative; width: 100%; height: 100%; border-radius: 34px; overflow: hidden;
@@ -1115,113 +1131,153 @@ p.section-sub {
 }
 .fbar { display: flex; justify-content: space-between; align-items: center;
   padding: 12px 20px 2px; font-size: 11.5px; font-weight: 600; }
-.fpad { padding: 12px 16px; }
-.fpad.dim { filter: saturate(.85); }
+
+/* ── ① 대상자 앱 홈 (사용설명 안전 홈 UI 전체) ── */
+.fappbar { display: flex; align-items: center; gap: 10px; padding: 10px 16px 6px; }
+.fappbar svg { width: 19px; height: 19px; fill: #1A1C1C; }
+.fappbar span { font-size: 15px; font-weight: 700; }
+.fpad { padding: 6px 16px 12px; }
 .ftitle { font-size: 17px; font-weight: 700; margin: 4px 2px 12px; }
 .fmini { font-size: 12.5px; font-weight: 700; color: #00685E; margin-bottom: 8px; }
 
-/* 안전 코드 카드(앱 값 축약) */
-.fcode { border-radius: 14px; padding: 13px 14px 16px;
+/* 안전 코드 카드 — 복사·공유 버튼 포함 */
+.fcode { border-radius: 14px; padding: 12px 14px 15px;
   background: linear-gradient(135deg, #123C63 0%, #1D6FA5 100%); }
-.fcode span { display: block; font-size: 8.5px; font-weight: 700; letter-spacing: 1.2px;
-  color: rgba(255,255,255,.75); margin-bottom: 6px; }
-.fcode b { font-size: 26px; font-weight: 800; letter-spacing: 2px; color: #fff; }
-.frow { margin-top: 10px; border-radius: 12px; background: #E0F2F1; color: #00685E;
-  font-size: 12px; font-weight: 700; padding: 12px 14px; }
+.fcodetop { display: flex; align-items: center; gap: 6px; margin-bottom: 7px; }
+.fcodetop span { flex: 1; font-size: 8.5px; font-weight: 700; letter-spacing: 1.2px;
+  color: rgba(255,255,255,.75); }
+.fcbtn { display: flex; width: 22px; height: 22px; border-radius: 999px;
+  align-items: center; justify-content: center; background: rgba(255,255,255,.16); }
+.fcbtn svg { width: 12px; height: 12px; fill: #fff; }
+.fcode b { display: block; font-size: 25px; font-weight: 800; letter-spacing: 2px; color: #fff; }
 
-/* 긴급 버튼 — 앱 값(그라데이션 #6E2020→#C07878, 테두리 #571818) */
-.fsos { position: relative; margin-top: 10px; border-radius: 14px; padding: 13px 14px;
-  background: linear-gradient(135deg, #6E2020, #C07878); border: 1px solid #571818; }
-.fsos b { display: block; font-size: 14px; font-weight: 800; color: #fff; }
-.fsos span { display: block; font-size: 10.5px; color: rgba(255,255,255,.78); margin-top: 2px; }
+/* 보고 상태 카드 */
+.fstate { display: flex; align-items: center; gap: 10px; margin-top: 12px;
+  border-radius: 12px; background: #E8F5E9; padding: 11px 12px; }
+.fsbadge { display: flex; width: 26px; height: 26px; border-radius: 999px; flex: 0 0 auto;
+  align-items: center; justify-content: center; background: #43A047; }
+.fsbadge svg { width: 14px; height: 14px; fill: #fff; }
+.fstt { font-size: 11px; font-weight: 700; color: #2E7D32; }
+.fstb { font-size: 12px; font-weight: 600; margin-top: 2px; }
 
-/* 탭 표시 — 손끝이 닿는 순간을 원으로 */
-.tap { position: absolute; right: 16px; top: 50%; width: 26px; height: 26px;
-  margin-top: -13px; border-radius: 50%; background: rgba(255,255,255,.55);
-  box-shadow: 0 0 0 0 rgba(255,255,255,.5); animation: tapPulse 3.4s ease-out infinite; }
+/* 실행 행 — 시각 변경 / 안전 보고 */
+.frow { display: flex; align-items: center; gap: 10px; margin-top: 10px;
+  border-radius: 12px; background: #E0F2F1; padding: 11px 12px; }
+.fbadge { display: flex; width: 28px; height: 28px; border-radius: 999px; flex: 0 0 auto;
+  align-items: center; justify-content: center; background: rgba(0,104,94,.14); }
+.fbadge svg { width: 15px; height: 15px; fill: #00685E; }
+.frow div { flex: 1; }
+.frow b { display: block; font-size: 12.5px; font-weight: 700; color: #00685E; }
+.frow i { display: block; font-style: normal; font-size: 10px; color: #4A6360; margin-top: 2px; }
+.fchev { font-size: 16px; color: #00685E; }
+
+/* 긴급 버튼 */
+.fsos { position: relative; display: flex; align-items: center; gap: 10px; margin-top: 10px;
+  border-radius: 14px; padding: 12px; background: linear-gradient(135deg, #8E2B2B, #B71C1C); }
+.fsos .fbadge { background: rgba(255,255,255,.2); }
+.fsos .fbadge svg { fill: #fff; }
+.fsos div { flex: 1; }
+.fsos b { display: block; font-size: 13.5px; font-weight: 800; color: #fff; }
+.fsos i { display: block; font-style: normal; font-size: 10px; color: rgba(255,255,255,.78);
+  margin-top: 2px; }
+
+/* 탭 표시 — 세 곳이 서로 다른 시점에 눌린다. 한 애니메이션으로 묶지 말 것 */
+.ftap { position: absolute; width: 26px; height: 26px; border-radius: 999px;
+  background: rgba(255,255,255,.42); opacity: 0; }
+.tapa { inset-inline-end: 14px; top: 50%; margin-top: -13px;
+  animation: tapPulse 12s ease-in-out 0s infinite; }
+.tapb { inset-inline-end: 8px; top: 50%; margin-top: -13px;
+  background: rgba(183,28,28,.3); animation: tapPulse 12s ease-in-out 2.5s infinite; }
+.tapc { inset-inline-end: 10px; top: 50%; margin-top: -13px;
+  background: rgba(229,57,53,.35); animation: tapPulse 12s ease-in-out 6.2s infinite; }
 @keyframes tapPulse {
-  0%, 55%  { transform: scale(.4); opacity: 0; }
-  62%      { transform: scale(1);  opacity: 1; }
-  78%, 100%{ transform: scale(1.6); opacity: 0; }
+  0%       { opacity: 0; transform: scale(.4); }
+  4%       { opacity: 1; transform: scale(1); }
+  9%       { opacity: 0; transform: scale(1.7); }
+  100%     { opacity: 0; transform: scale(1.7); }
 }
 
-/* 확인 창 — 앱 값(배리어 black54 / 좌우 40 / radius 16) */
-.fscrim { position: absolute; inset: 0; background: rgba(0,0,0,.54); }
-.fdlg { position: absolute; left: 28px; right: 28px; top: 50%; transform: translateY(-50%);
-  background: #fff; border-radius: 16px; padding: 18px 18px 12px; }
+/* 확인 창 — ①의 4초 구간 안에서 서서히 나타났다 사라진다 */
+.fscrim { position: absolute; inset: 0; background: rgba(0,0,0,.54); opacity: 0;
+  animation: dlgFade 12s ease-in-out 0s infinite; }
+.fdlg { position: absolute; left: 24px; right: 24px; top: 50%;
+  border-radius: 18px; background: #fff; padding: 16px 16px 14px; opacity: 0;
+  box-shadow: 0 18px 40px -12px rgba(0,0,0,.4);
+  animation: dlgPop 12s ease-in-out 0s infinite; }
 .fdlg b { display: block; font-size: 15px; font-weight: 700; margin-bottom: 8px; }
 .fdlg p { font-size: 11.5px; line-height: 1.6; color: #3F4948; }
 .fin { margin-top: 12px; border: 1px solid #DFE3E8; border-radius: 10px;
-  padding: 9px 10px; font-size: 11px; color: #9AA0AE; }
-.fbtns { display: flex; justify-content: flex-end; gap: 16px; margin-top: 12px;
-  font-size: 12.5px; font-weight: 600; }
+  padding: 9px 10px; font-size: 10.5px; color: #9AA0A6; }
+.fbtns { position: relative; display: flex; justify-content: flex-end; gap: 16px;
+  margin-top: 12px; font-size: 12px; font-weight: 600; }
 .fbtns span { color: #757575; }
 .fbtns em { font-style: normal; color: #B71C1C; font-weight: 700; }
+@keyframes dlgFade {
+  0%, 11%   { opacity: 0; }
+  17%, 28%  { opacity: 1; }
+  32%, 100% { opacity: 0; }
+}
+@keyframes dlgPop {
+  0%, 11%   { opacity: 0; transform: translateY(-46%) scale(.94); }
+  17%, 28%  { opacity: 1; transform: translateY(-50%) scale(1); }
+  32%, 100% { opacity: 0; transform: translateY(-52%) scale(.97); }
+}
 
-/* 보호자 알림 카드 안의 위치 보기 버튼 */
+/* ── ② 보호자 알림 ── */
 .fmap { position: relative; margin-top: 10px; border-radius: 10px; background: #fff;
-  border: 1px solid rgba(229,57,53,.3); padding: 9px 12px;
-  font-size: 11.5px; font-weight: 700; color: #E53935; }
-.fmap .tap { right: 10px; background: rgba(229,57,53,.35); }
+  padding: 8px 10px; font-size: 11px; font-weight: 700; color: #E53935; }
 
-/* 위치 지도 */
+/* ── ③ 위치 지도 ── */
 .fmaphead { display: flex; align-items: center; gap: 8px; padding: 8px 16px 10px;
   font-size: 15px; font-weight: 700; }
 .fmaphead .back { font-size: 20px; color: #4355B9; }
-.fmapview { position: relative; height: 300px; background: #E8EDE7; overflow: hidden; }
-.fmapview .road { position: absolute; background: #fff; }
-.r1 { left: 0; right: 0; top: 88px; height: 13px; }
-.r2 { left: 0; right: 0; top: 196px; height: 9px; }
-.r3 { top: 0; bottom: 0; left: 78px; width: 12px; }
-.r4 { top: 0; bottom: 0; left: 196px; width: 8px; }
-.fmapview .blk { position: absolute; background: #DCE4DA; border-radius: 3px; }
-.b1 { left: 14px; top: 20px; width: 52px; height: 54px; }
-.b2 { left: 104px; top: 116px; width: 78px; height: 64px; }
-.b3 { left: 216px; top: 26px; width: 62px; height: 48px; }
-.pin { position: absolute; left: 50%; top: 150px; width: 16px; height: 16px;
-  margin-left: -8px; border-radius: 50%; background: #E53935;
-  box-shadow: 0 0 0 4px #fff, 0 4px 10px rgba(0,0,0,.3); z-index: 2; }
-.fmapview .halo { position: absolute; left: 50%; top: 150px; width: 16px; height: 16px;
-  margin-left: -8px; border-radius: 50%; background: rgba(229,57,53,.35);
-  animation: mapPulse 2.2s ease-out infinite; }
+.fmapview { position: relative; height: 300px; background: #DCE7F0; overflow: hidden; }
+/* 미국 본토 윤곽 — Natural Earth 110m 를 알버스 등적 원추도법으로 투영한 실제 좌표.
+   기억으로 손그림하지 말 것(윤곽은 틀리면 바로 티가 난다) */
+.fusmap { position: absolute; inset: 0; width: 100%; height: 100%; }
+.fusmap path { fill: #E4EDE3; stroke: #B7C7BC; stroke-width: 1; }
+/* 핀은 SVG 안에 둔다 — 지도와 같이 스케일되므로 화면 크기가 바뀌어도 위치가 안 어긋난다 */
+.fpin { fill: #E53935; stroke: #fff; stroke-width: 3; }
+.fhalo { fill: rgba(229,57,53,.35); transform-box: fill-box; transform-origin: center;
+  animation: mapPulse 2.4s ease-out infinite; }
 @keyframes mapPulse {
-  0%   { transform: scale(1); opacity: .55; }
-  100% { transform: scale(5); opacity: 0; }
+  0%   { transform: scale(1);   opacity: .6; }
+  100% { transform: scale(4.5); opacity: 0; }
 }
 .fmapinfo { padding: 12px 16px; }
 .fmapinfo div { display: flex; justify-content: space-between; font-size: 11.5px;
-  padding: 6px 0; border-bottom: 1px solid #EDEFF2; }
+  padding: 6px 0; }
 .fmapinfo div span { color: #757575; }
 .fmapinfo div b { font-weight: 700; }
 .fmapinfo .ext { display: block; margin-top: 12px; border: 0; text-align: center;
   border-radius: 10px; background: #EEF0FA; color: #4355B9; font-weight: 700; padding: 11px 0; }
 
-@media (max-width: 1080px) {
-  /* 아직 한 줄이 들어간다 — 축소가 2×2 로 접는 것보다 순서를 잘 전달한다 */
-  .fstep { --s: .5; }
-  .flow { gap: 6px; }
-}
+@media (max-width: 1080px) { .fstep { --s: .6; } .flow { gap: 8px; } }
 @media (max-width: 820px) {
-  /* 여기서부터는 더 줄이면 화면 내용이 안 읽힌다 → 2×2.
-     격자에서는 화살표 방향이 어긋나므로 숨기고 번호가 순서를 맡는다 */
-  .flow { flex-wrap: wrap; gap: 46px 26px; max-width: 430px; margin-inline: auto; }
+  /* 3열이 안 들어가면 세로로 쌓는다. 격자에서는 화살표 방향이 어긋나므로 숨기고
+     번호와 「대상자 앱 / 보호자 앱」라벨이 순서를 맡는다 */
+  .flow { flex-wrap: wrap; gap: 54px 26px; max-width: 430px; margin-inline: auto; }
   .farrow { display: none; }
   .fstep { --s: .62; }
 }
 @media (max-width: 620px) {
   .help { padding: 90px 18px; }
-  .flow { margin-top: 44px; gap: 40px 22px; max-width: 340px; }
+  .flow { margin-top: 46px; gap: 50px 22px; max-width: 340px; }
   .fstep { --s: .5; }
 }
 @media (max-width: 400px) {
-  .flow { gap: 36px 16px; max-width: 286px; }
+  .flow { gap: 46px 16px; max-width: 286px; }
   .fstep { --s: .42; }
+  .fstep .flbl { font-size: 11px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* 4장이 이미 다 보이므로 강조만 끄면 된다 — 흐름은 번호와 화살표가 그대로 전달한다 */
-  .fstep, .fstep .fnum, .fphone { animation: none; }
-  .tap, .fmapview .halo { animation: none; }
+  /* 3장이 이미 다 보이므로 강조만 끈다 — 흐름 전달에 손실이 없다.
+     단 확인 창은 애니메이션이 곧 표시이므로 켜둔 상태로 고정한다 */
+  .fstep, .fstep .fnum, .fphone, .ftap, .fhalo { animation: none; }
+  .ftap { opacity: 1; }
+  .fscrim, .fdlg { animation: none; opacity: 1; }
+  .fdlg { transform: translateY(-50%); }
 }
 
 /* ==================================================

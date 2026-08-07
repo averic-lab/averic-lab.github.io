@@ -75,7 +75,9 @@
   "code_copy_short": "复制",
   "code_share_short": "分享",
   "help_eyebrow": "紧急求助",
-  "help_title_html": "一个按钮，<em>连位置一起送达。</em>"
+  "help_title_html": "一个按钮，<em>连位置一起送达。</em>",
+  "flow_lbl_subject": "被关怀者的应用",
+  "flow_lbl_guardian": "家人的应用"
  },
  "fr": {
   "title": "Anbu — Vous n'êtes jamais seul · Averic Lab",
@@ -153,7 +155,9 @@
   "code_copy_short": "Copier",
   "code_share_short": "Partager",
   "help_eyebrow": "DEMANDE D'AIDE",
-  "help_title_html": "Un bouton — <em>la position part aussi.</em>"
+  "help_title_html": "Un bouton — <em>la position part aussi.</em>",
+  "flow_lbl_subject": "App de la personne suivie",
+  "flow_lbl_guardian": "App du proche"
  },
  "de": {
   "title": "Anbu — Du bist nie allein · Averic Lab",
@@ -231,7 +235,9 @@
   "code_copy_short": "Kopieren",
   "code_share_short": "Teilen",
   "help_eyebrow": "NOTRUF",
-  "help_title_html": "Ein Knopf — <em>auch der Standort geht mit.</em>"
+  "help_title_html": "Ein Knopf — <em>auch der Standort geht mit.</em>",
+  "flow_lbl_subject": "App der betreuten Person",
+  "flow_lbl_guardian": "App des Angehörigen"
  },
  "pl": {
   "title": "Anbu — Nigdy nie jesteś sam · Averic Lab",
@@ -309,7 +315,9 @@
   "code_copy_short": "Kopiuj",
   "code_share_short": "Udostępnij",
   "help_eyebrow": "WEZWANIE POMOCY",
-  "help_title_html": "Jeden przycisk — <em>lokalizacja też leci.</em>"
+  "help_title_html": "Jeden przycisk — <em>lokalizacja też leci.</em>",
+  "flow_lbl_subject": "Aplikacja podopiecznego",
+  "flow_lbl_guardian": "Aplikacja bliskiej osoby"
  },
  "zh-TW": {
   "title": "Anbu — 你從不孤單 · Averic Lab",
@@ -387,7 +395,9 @@
   "code_copy_short": "複製",
   "code_share_short": "分享",
   "help_eyebrow": "緊急求助",
-  "help_title_html": "一個按鈕，<em>連位置一起送達。</em>"
+  "help_title_html": "一個按鈕，<em>連位置一起送達。</em>",
+  "flow_lbl_subject": "被關懷者的應用程式",
+  "flow_lbl_guardian": "家人的應用程式"
  },
  "es": {
   "title": "Anbu — Nunca estás solo · Averic Lab",
@@ -465,7 +475,9 @@
   "code_copy_short": "Copiar",
   "code_share_short": "Compartir",
   "help_eyebrow": "PETICIÓN DE AYUDA",
-  "help_title_html": "Un botón — <em>y la ubicación va contigo.</em>"
+  "help_title_html": "Un botón — <em>y la ubicación va contigo.</em>",
+  "flow_lbl_subject": "App de la persona cuidada",
+  "flow_lbl_guardian": "App del familiar"
  },
  "ja": {
   "title": "Anbu — あなたはひとりじゃない · Averic Lab",
@@ -543,7 +555,9 @@
   "code_copy_short": "コピー",
   "code_share_short": "共有",
   "help_eyebrow": "緊急の助け",
-  "help_title_html": "ボタンひとつで <em>位置まで届きます。</em>"
+  "help_title_html": "ボタンひとつで <em>位置まで届きます。</em>",
+  "flow_lbl_subject": "対象者のアプリ",
+  "flow_lbl_guardian": "保護者のアプリ"
  },
  "nl": {
   "title": "Anbu — Je bent nooit alleen · Averic Lab",
@@ -621,7 +635,9 @@
   "code_copy_short": "Kopiëren",
   "code_share_short": "Delen",
   "help_eyebrow": "NOODOPROEP",
-  "help_title_html": "Eén knop — <em>de locatie gaat mee.</em>"
+  "help_title_html": "Eén knop — <em>de locatie gaat mee.</em>",
+  "flow_lbl_subject": "App van de naaste",
+  "flow_lbl_guardian": "App van het familielid"
  },
  "it": {
   "title": "Anbu — Non sei mai solo · Averic Lab",
@@ -699,7 +715,9 @@
   "code_copy_short": "Copia",
   "code_share_short": "Condividi",
   "help_eyebrow": "RICHIESTA DI AIUTO",
-  "help_title_html": "Un pulsante — <em>parte anche la posizione.</em>"
+  "help_title_html": "Un pulsante — <em>parte anche la posizione.</em>",
+  "flow_lbl_subject": "App della persona assistita",
+  "flow_lbl_guardian": "App del familiare"
  },
  "pt-BR": {
   "title": "Anbu — Você nunca está sozinho · Averic Lab",
@@ -777,7 +795,9 @@
   "code_copy_short": "Copiar",
   "code_share_short": "Compartilhar",
   "help_eyebrow": "PEDIDO DE AJUDA",
-  "help_title_html": "Um botão — <em>a localização vai junto.</em>"
+  "help_title_html": "Um botão — <em>a localização vai junto.</em>",
+  "flow_lbl_subject": "App de quem é acompanhado",
+  "flow_lbl_guardian": "App do familiar"
  },
  "tr": {
   "title": "Anbu — Hiçbir zaman yalnız değilsin · Averic Lab",
@@ -855,7 +875,9 @@
   "code_copy_short": "Kopyala",
   "code_share_short": "Paylaş",
   "help_eyebrow": "ACİL YARDIM",
-  "help_title_html": "Tek düğme — <em>konum da gider.</em>"
+  "help_title_html": "Tek düğme — <em>konum da gider.</em>",
+  "flow_lbl_subject": "Takip edilen kişinin uygulaması",
+  "flow_lbl_guardian": "Yakınının uygulaması"
  },
  "ru": {
   "title": "Anbu — Ты никогда не одинок · Averic Lab",
@@ -933,7 +955,9 @@
   "code_copy_short": "Копировать",
   "code_share_short": "Поделиться",
   "help_eyebrow": "ЭКСТРЕННАЯ ПОМОЩЬ",
-  "help_title_html": "Одна кнопка — <em>и местоположение уходит тоже.</em>"
+  "help_title_html": "Одна кнопка — <em>и местоположение уходит тоже.</em>",
+  "flow_lbl_subject": "Приложение подопечного",
+  "flow_lbl_guardian": "Приложение близкого"
  },
  "hi": {
   "title": "Anbu — आप कभी अकेले नहीं · Averic Lab",
@@ -1011,7 +1035,9 @@
   "code_copy_short": "कॉपी",
   "code_share_short": "शेयर",
   "help_eyebrow": "आपातकालीन मदद",
-  "help_title_html": "एक बटन — <em>लोकेशन भी चली जाती है।</em>"
+  "help_title_html": "एक बटन — <em>लोकेशन भी चली जाती है।</em>",
+  "flow_lbl_subject": "देखभाल पाने वाले का ऐप",
+  "flow_lbl_guardian": "परिजन का ऐप"
  },
  "vi": {
   "title": "Anbu — Bạn không bao giờ đơn độc · Averic Lab",
@@ -1089,7 +1115,9 @@
   "code_copy_short": "Sao chép",
   "code_share_short": "Chia sẻ",
   "help_eyebrow": "YÊU CẦU TRỢ GIÚP",
-  "help_title_html": "Một nút bấm — <em>vị trí cũng được gửi đi.</em>"
+  "help_title_html": "Một nút bấm — <em>vị trí cũng được gửi đi.</em>",
+  "flow_lbl_subject": "Ứng dụng của người được quan tâm",
+  "flow_lbl_guardian": "Ứng dụng của người thân"
  },
  "id": {
   "title": "Anbu — Kamu tidak pernah sendiri · Averic Lab",
@@ -1167,7 +1195,9 @@
   "code_copy_short": "Salin",
   "code_share_short": "Bagikan",
   "help_eyebrow": "PERMINTAAN BANTUAN",
-  "help_title_html": "Satu tombol — <em>lokasi ikut terkirim.</em>"
+  "help_title_html": "Satu tombol — <em>lokasi ikut terkirim.</em>",
+  "flow_lbl_subject": "Aplikasi orang yang dipantau",
+  "flow_lbl_guardian": "Aplikasi keluarga"
  },
  "th": {
   "title": "Anbu — คุณไม่เคยอยู่คนเดียว · Averic Lab",
@@ -1245,7 +1275,9 @@
   "code_copy_short": "คัดลอก",
   "code_share_short": "แชร์",
   "help_eyebrow": "ขอความช่วยเหลือฉุกเฉิน",
-  "help_title_html": "ปุ่มเดียว <em>ส่งตำแหน่งไปด้วย</em>"
+  "help_title_html": "ปุ่มเดียว <em>ส่งตำแหน่งไปด้วย</em>",
+  "flow_lbl_subject": "แอปของผู้ได้รับการดูแล",
+  "flow_lbl_guardian": "แอปของคนในครอบครัว"
  },
  "sv": {
   "title": "Anbu — Du är aldrig ensam · Averic Lab",
@@ -1323,7 +1355,9 @@
   "code_copy_short": "Kopiera",
   "code_share_short": "Dela",
   "help_eyebrow": "NÖDANROP",
-  "help_title_html": "En knapp — <em>platsen följer med.</em>"
+  "help_title_html": "En knapp — <em>platsen följer med.</em>",
+  "flow_lbl_subject": "Den närståendes app",
+  "flow_lbl_guardian": "Familjemedlemmens app"
  },
  "ar": {
   "title": "Anbu — لستَ وحدك أبدًا · Averic Lab",
@@ -1401,7 +1435,9 @@
   "code_copy_short": "نسخ",
   "code_share_short": "مشاركة",
   "help_eyebrow": "طلب مساعدة عاجل",
-  "help_title_html": "زرٌّ واحد — <em>والموقع يصل معه.</em>"
+  "help_title_html": "زرٌّ واحد — <em>والموقع يصل معه.</em>",
+  "flow_lbl_subject": "تطبيق الشخص المستفيد",
+  "flow_lbl_guardian": "تطبيق أحد الأقارب"
  },
  "ko": {
   "title": "안부 — 우리는 언제나 혼자가 아닙니다 · Averic Lab",
@@ -1487,7 +1523,9 @@
   "code_copy_short": "복사",
   "code_share_short": "공유",
   "help_eyebrow": "긴급 도움 요청",
-  "help_title_html": "버튼 하나로 <em>위치까지 전해집니다.</em>"
+  "help_title_html": "버튼 하나로 <em>위치까지 전해집니다.</em>",
+  "flow_lbl_subject": "대상자 앱",
+  "flow_lbl_guardian": "보호자 앱"
  },
  "en": {
   "title": "Anbu — You are never alone · Averic Lab",
@@ -1573,6 +1611,8 @@
   "code_copy_short": "Copy",
   "code_share_short": "Share",
   "help_eyebrow": "EMERGENCY HELP",
-  "help_title_html": "One button — <em>your location goes too.</em>"
+  "help_title_html": "One button — <em>your location goes too.</em>",
+  "flow_lbl_subject": "Care recipient",
+  "flow_lbl_guardian": "Family member"
  }
 }
