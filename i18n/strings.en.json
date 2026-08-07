@@ -84,5 +84,7 @@
  "feat2_h": "Once a day, every day",
  "feat2_p": "You'll know which level today falls under.",
  "feat3_h": "Just install the app",
- "feat3_p": "One 7-character safety code connects you both — nothing else needed."
+ "feat3_p": "One 7-character safety code connects you both — nothing else needed.",
+ "code_copy_label": "Copy the code",
+ "code_share_label": "Share the code"
 }

@@ -511,7 +511,7 @@ em { font-style: normal; }
 /* 안전 코드 카드 — 앱 InviteCodeShareCard 값(그라데이션·흰 원 액센트) */
 .codecard {
   position: absolute; left: 126px; top: 556px; width: 300px;
-  border-radius: 16px; overflow: hidden;
+  border-radius: 16px;
   background: linear-gradient(135deg, #123C63 0%, #1D6FA5 100%);
   box-shadow: 26px 40px 64px -20px rgba(4,6,22,.72);
   transform: translate3d(76px, 10px, 122px);
@@ -521,12 +521,36 @@ em { font-style: normal; }
   0%, 100% { transform: translate3d(76px, 10px, 122px); }
   50%      { transform: translate3d(82px, 2px, 144px); }
 }
+/* 액센트 원은 안쪽 래퍼에서 자르고, 카드 자체는 overflow visible —
+   점선 설명이 카드 위로 뻗어 나가야 하기 때문 */
+.codecard .cbg { position: absolute; inset: 0; border-radius: 16px; overflow: hidden; }
 .codecard .c1, .codecard .c2 { position: absolute; border-radius: 50%; background: #fff; }
 .codecard .c1 { width: 132px; height: 132px; right: -34px; top: -46px; opacity: .07; }
 .codecard .c2 { width: 118px; height: 118px; right: 46px; bottom: -56px; opacity: .05; }
 .codecard .in { position: relative; padding: 16px 16px 22px; }
-.codecard .top { margin-bottom: 12px; }
-.codecard .lb { font-size: 10.5px; font-weight: 700; letter-spacing: 1.4px; color: rgba(255,255,255,.75); }
+.codecard .top { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.codecard .lb { flex: 1; font-size: 10.5px; font-weight: 700; letter-spacing: 1.4px;
+  color: rgba(255,255,255,.75); }
+.codecard .cb { width: 32px; height: 32px; flex: 0 0 32px; border-radius: 50%;
+  background: rgba(255,255,255,.16); display: flex; align-items: center; justify-content: center; }
+.codecard .cb svg { width: 15px; height: 15px; fill: #fff; }
+
+/* 점선 설명 — 버튼 위로 뻗는다. 좌우는 논리 속성이라 RTL에서 자동 반전.
+   두 라벨이 나란히 서면 겹치므로 선 길이를 어긋내 위아래로 벌린다 */
+.codecard .co {
+  position: absolute; bottom: calc(100% - 8px);
+  display: flex; flex-direction: column; align-items: center; pointer-events: none;
+}
+.codecard .cotext {
+  font-size: 11px; font-weight: 600; white-space: nowrap; color: #ffd9a8;
+  background: rgba(8, 11, 34, .68); padding: 3px 9px; border-radius: 999px;
+  border: 1px solid rgba(255, 217, 168, .28);
+}
+.codecard .coline { width: 0; border-left: 1.5px dashed rgba(255, 217, 168, .8); }
+.co-copy  { inset-inline-end: 55px; }
+.co-copy  .coline { height: 52px; }
+.co-share { inset-inline-end: 13px; }
+.co-share .coline { height: 18px; }
 .codecard .val { font-size: 34px; font-weight: 800; letter-spacing: 3px; color: #fff; line-height: 1.1; }
 
 .scroll-hint {
