@@ -358,6 +358,10 @@ em { font-style: normal; }
 }
 .phone {
   position: relative; width: 352px; height: 722px;
+  /* 좁은 화면에서 .hero-inner 가 text-align:center 가 되는데, 떠 있는 카드들
+     (.push/.pop/.pop2/.codecard)은 .screen 바깥이라 그 정렬을 물려받아 앱 문구가
+     가운데로 몰렸다. 폰 전체를 start 로 고정한다(RTL 에서는 오른쪽 정렬). */
+  text-align: start;
   transform-style: preserve-3d;
   transform: rotateY(-19deg) rotateX(5deg) rotateZ(-1.5deg);
   border-radius: 46px; background: #0d0f1f; padding: 10px;
@@ -376,7 +380,7 @@ em { font-style: normal; }
   width: 100%; height: 100%; border-radius: 37px; overflow: hidden;
   background: #F7F9F8; color: #1A1C1C; display: flex; flex-direction: column;
   font-family: -apple-system, "Roboto", "Noto Sans KR", system-ui, sans-serif;
-  text-align: left;
+  text-align: start;
 }
 .statusbar { display: flex; justify-content: space-between; align-items: center;
   padding: 13px 22px 4px; font-size: 12px; font-weight: 600; }
