@@ -351,7 +351,9 @@ em { font-style: normal; }
 /* ── 오른쪽 폰 목업 ── */
 .stage { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; }
 .pwrap {
-  position: relative; width: 352px; height: 722px; margin-right: 96px;
+  /* margin-right 는 안전 코드 카드의 점선 라벨이 오른쪽으로 뻗을 자리다.
+     줄이면 라벨이 화면 밖으로 잘린다(포르투갈어·스페인어가 가장 길다) */
+  position: relative; width: 352px; height: 722px; margin-right: 262px;
   perspective: 1600px; perspective-origin: 42% 50%; transform-origin: 50% 50%;
 }
 .phone {
@@ -535,23 +537,56 @@ em { font-style: normal; }
   background: rgba(255,255,255,.16); display: flex; align-items: center; justify-content: center; }
 .codecard .cb svg { width: 15px; height: 15px; fill: #fff; }
 
-/* 점선 설명 — 버튼 위로 뻗는다. 좌우는 논리 속성이라 RTL에서 자동 반전.
-   두 라벨이 나란히 서면 겹치므로 선 길이를 어긋내 위아래로 벌린다 */
-.codecard .co {
-  position: absolute; bottom: calc(100% - 8px);
-  display: flex; flex-direction: column; align-items: center; pointer-events: none;
+/* 점선 설명 — 버튼 중심에서 위로 뻗고, 선 끝의 점 오른쪽에 라벨이 붙는다.
+   ⚠️ .co 는 **width:0** 이어야 한다. 폭을 가지면 inset-inline-end 가 점선이 아니라
+   상자의 끝을 잡아서, 점선이 라벨 폭의 절반만큼 왼쪽으로 밀린다(언어마다 다르게).
+   좌우·텍스트 방향은 전부 논리 속성이라 아랍어에서 통째로 반대편으로 넘어간다. */
+.codecard .co { position: absolute; width: 0; bottom: calc(100% - 10px); pointer-events: none; }
+.codecard .coline {
+  position: absolute; bottom: 0; inset-inline-start: 0; width: 0;
+  border-left: 1.5px dashed rgba(255, 217, 168, .85);
+}
+.codecard .cohead {
+  position: absolute; inset-inline-start: -4px; transform: translateY(50%);
+  display: flex; align-items: center; gap: 7px; white-space: nowrap;
+}
+.codecard .codot {
+  width: 8px; height: 8px; flex: 0 0 8px; border-radius: 50%;
+  background: #ffd9a8; box-shadow: 0 0 10px rgba(255, 217, 168, .9);
 }
 .codecard .cotext {
-  font-size: 11px; font-weight: 600; white-space: nowrap; color: #ffd9a8;
+  font-size: 11.5px; font-weight: 600; color: #ffd9a8;
   background: rgba(8, 11, 34, .68); padding: 3px 9px; border-radius: 999px;
   border: 1px solid rgba(255, 217, 168, .28);
 }
-.codecard .coline { width: 0; border-left: 1.5px dashed rgba(255, 217, 168, .8); }
-.co-copy  { inset-inline-end: 55px; }
-.co-copy  .coline { height: 52px; }
-.co-share { inset-inline-end: 13px; }
-.co-share .coline { height: 18px; }
-.codecard .val { font-size: 34px; font-weight: 800; letter-spacing: 3px; color: #fff; line-height: 1.1; }
+/* 버튼 중심까지의 거리 — 카드 padding 16 + 버튼 32 + 간격 8 기준 실측값.
+   두 라벨이 겹치지 않도록 선 길이를 크게 어긋내 둔다(의도) */
+.co-copy  { inset-inline-end: 72px; }
+.co-copy  .coline { height: 104px; }
+.co-copy  .cohead { bottom: 104px; }
+.co-share { inset-inline-end: 32px; }
+.co-share .coline { height: 56px; }
+.co-share .cohead { bottom: 56px; }
+
+/* 아랍어(RTL): 카드가 화면 왼쪽으로 넘어가면서 라벨이 폰 화면 위를 덮는다.
+   점선을 위로 올린 뒤 오른쪽으로 꺾어(ㄱ의 좌우 반전) 라벨을 폰 바깥으로 뺀다.
+   ⚠️ 여기서만 물리 속성(left)을 쓴다 — 꺾이는 방향은 화면 기준이라 논리 속성과 섞으면 뒤집힌다. */
+.codecard .coelbow { display: none; }
+[dir="rtl"] .codecard .coelbow {
+  display: block; position: absolute; height: 0; left: 0;
+  border-top: 1.5px dashed rgba(255, 217, 168, .85);
+}
+[dir="rtl"] .codecard .cohead {
+  /* RTL 컨테이너 안에서는 flex row 도 오른쪽→왼쪽이라 라벨이 폰 위로 되뻗는다.
+     상자 순서만 물리적으로 고정(점 → 라벨)하고, 아랍어 본문 방향은 .cotext 에서 되돌린다 */
+  direction: ltr;
+  inset-inline-start: auto; right: auto;
+}
+[dir="rtl"] .codecard .cotext { direction: rtl; }
+[dir="rtl"] .co-copy  .coelbow { bottom: 104px; width: 150px; }
+[dir="rtl"] .co-copy  .cohead  { left: 146px; bottom: 104px; }
+[dir="rtl"] .co-share .coelbow { bottom: 56px;  width: 196px; }
+[dir="rtl"] .co-share .cohead  { left: 192px; bottom: 56px; }
 
 .scroll-hint {
   position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
@@ -1032,7 +1067,7 @@ footer {
    .pwrap 을 통째로 scale 하고, 남는 세로 공간은 음수 margin 으로 회수한다. */
 @media (max-width: 1180px) {
   .hero-inner { padding-left: 40px; }
-  .pwrap { transform: scale(.84); margin-right: 74px; }
+  .pwrap { transform: scale(.84); margin-right: 190px; }
 }
 @media (max-width: 880px) {
   .hero { min-height: auto; }
@@ -1205,6 +1240,9 @@ footer {
 
 @media (max-width: 640px) {
   .hero-inner { padding: 80px 18px 72px; }
+  /* 좁은 화면에는 점선 라벨이 들어갈 가로 공간이 없다 — 폰을 더 왼쪽으로 밀어도
+     컨테이너에 걸려 더 안 움직인다. 라벨은 설명용 장식이므로 숨기고 버튼만 남긴다 */
+  .codecard .co { display: none; }
   .pwrap { transform: scale(.66); margin: -123px 16px -123px 0; }
 }
 @media (max-width: 400px) {

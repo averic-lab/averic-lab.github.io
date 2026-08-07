@@ -488,8 +488,8 @@
   "feat2_p": "Sabrá en qué nivel está el día de hoy.",
   "feat3_h": "Solo instale la aplicación",
   "feat3_p": "Un único código de seguridad de 7 caracteres les conecta; nada más.",
-  "code_copy_label": "Copiar el código",
-  "code_share_label": "Compartir el código"
+  "code_copy_label": "Copiar código",
+  "code_share_label": "Compartir código"
  },
  "ja": {
   "title": "Anbu — あなたはひとりじゃない · Averic Lab",
@@ -734,8 +734,8 @@
   "feat2_p": "Saprai a quale livello si trova la giornata.",
   "feat3_h": "Basta installare l'app",
   "feat3_p": "Un solo codice di sicurezza di 7 caratteri vi collega, nient'altro.",
-  "code_copy_label": "Copia il codice",
-  "code_share_label": "Condividi il codice"
+  "code_copy_label": "Copia codice",
+  "code_share_label": "Condividi codice"
  },
  "pt-BR": {
   "title": "Anbu — Você nunca está sozinho · Averic Lab",
@@ -816,8 +816,8 @@
   "feat2_p": "Você sabe em que nível o dia está.",
   "feat3_h": "Basta instalar o app",
   "feat3_p": "Um único código de segurança de 7 caracteres conecta vocês — nada mais.",
-  "code_copy_label": "Copiar o código",
-  "code_share_label": "Compartilhar o código"
+  "code_copy_label": "Copiar código",
+  "code_share_label": "Compartilhar código"
  },
  "tr": {
   "title": "Anbu — Hiçbir zaman yalnız değilsin · Averic Lab",
