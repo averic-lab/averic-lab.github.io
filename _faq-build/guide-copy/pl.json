@@ -1,0 +1,66 @@
+{
+  "lang_name": "Polski",
+  "meta_title": "Połączenie z rodziną przez kod bezpieczeństwa — Anbu",
+  "meta_desc": "Krok po kroku po prawdziwych ekranach aplikacji: utworzyć kod bezpieczeństwa, przekazać go i pozwolić rodzinie się połączyć.",
+  "page_eyebrow": "Jak to działa",
+  "page_title": "Połączenie z rodziną przez kod bezpieczeństwa",
+  "page_lead": "Anbu łączy ludzi jednym <strong>kodem bezpieczeństwa</strong>. Tworzysz kod na swoim telefonie i przekazujesz go dalej; rodzina wpisuje go na swoim. Dlatego połączenie powstaje bez żadnego imienia czy numeru na naszym serwerze.",
+  "phone_me": "Mój telefon — tu powstaje kod",
+  "phone_family": "Telefon rodziny — ci, którzy mnie doglądają",
+  "demo": {
+    "code": "K7M-4PXR",
+    "alias": "Mama",
+    "alias2": "Tata",
+    "phone": "512 345 678"
+  },
+  "ctrl_prev": "Wstecz",
+  "ctrl_next": "Dalej",
+  "ctrl_replay": "Od początku",
+  "mockup_caption": "To prawdziwe ekrany aplikacji, odtworzone. Kod, imię i numer to wartości przykładowe.",
+  "steps": [
+    {
+      "h": "W ustawieniach dotknij [@gs_enable_button]",
+      "d": "Otwórz na dole kartę <b>@nav_settings</b> — przycisk jest na samej górze. Przechodzisz od samego doglądania rodziny do <b>wysyłania także własnego sygnału</b>."
+    },
+    {
+      "h": "Potwierdź włączenie",
+      "d": "@gs_enable_dialog_body<br><b>Na iPhonie pojawia się jeszcze jedna informacja</b> — sygnał wychodzi tylko po dotknięciu powiadomienia o ustalonej godzinie albo po samodzielnym otwarciu aplikacji. Dotknij [iPhone] poniżej, aby porównać."
+    },
+    {
+      "h": "Kod bezpieczeństwa zostaje utworzony",
+      "d": "Puste miejsce wypełnia <b>kod z 7 znaków</b>. Na urządzenie przypada jeden kod, a po usunięciu i ponownej instalacji wraca ten sam."
+    },
+    {
+      "h": "Skopiuj lub udostępnij kod rodzinie",
+      "d": "Lewy przycisk kopiuje, prawy udostępnia. Po skopiowaniu pojawia się <b>@subject_home_code_copied</b>. Wyślij wiadomością — to 7 znaków, można je też podyktować przez telefon."
+    },
+    {
+      "h": "Od tego miejsca to telefon rodziny",
+      "d": "Kto otrzymał kod, otwiera we własnej aplikacji kartę <b>@nav_connection</b> i dotyka [<b>@add_subject_button</b>]. Do wypełnienia są trzy pola."
+    },
+    {
+      "h": "Wpisz otrzymany kod",
+      "d": "@add_subject_code_info Małe litery zamieniają się na wielkie. <b>Zostaw myślnik (-) w środku</b> — bez niego między 3 a 4 znakami kod nie zostanie rozpoznany."
+    },
+    {
+      "h": "Ustal imię",
+      "d": "Tak ta osoba będzie nazywana na ekranie rodziny. W odróżnieniu od numeru poniżej <b>tego pola nie można zostawić pustego.</b>"
+    },
+    {
+      "h": "Podaj numer telefonu (opcjonalnie)",
+      "d": "Tak wygląda karta tej osoby na ekranie głównym rodziny. Z zapisanym numerem przycisk <b>[@guardian_call_now]</b> <b>dzwoni od razu.</b> Puste pole oznacza szukanie tej osoby w kontaktach za każdym razem.",
+      "illus": "cards",
+      "d_after": "Gdy zadzwonisz i osobiście upewnisz się, że wszystko w porządku, dotknij <b>[@guardian_confirm_safety]</b>. Ostrzeżenie zostaje zdjęte, stan wraca do normalnego, a <b>pozostali bliscy, którzy też doglądają,</b> otrzymują powiadomienie o potwierdzeniu."
+    },
+    {
+      "h": "Dotknij [@add_subject_connect] i gotowe",
+      "d": "Przycisk rozjaśnia się, gdy kod i imię są wypełnione. Jedno dotknięcie łączy, a karta widoczna powyżej pojawia się na ekranie głównym rodziny."
+    }
+  ],
+  "note": "Po połączeniu nie trzeba już nic robić. Anbu wysyła sygnał <strong>sam, codziennie o ustalonej godzinie</strong>, a jeśli ta godzina minie bez sygnału — powiadamia rodzinę. Gdy sygnał się spóźnia albo kroki wyglądają na puste, zajrzyj do <a href=\"faq.html\">najczęstszych pytań</a>.",
+  "footer_home": "Strona główna",
+  "footer_faq": "Najczęstsze pytania",
+  "footer_privacy": "Polityka prywatności",
+  "footer_terms": "Warunki korzystania",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

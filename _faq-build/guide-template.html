@@ -273,8 +273,6 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
             <div class="bnav">{{BNAV_CONNECT}}</div>
           </div>
 
-        </div>
-
         <!-- 안전 코드 생성 확인 다이얼로그. iOS는 주황 경고 카드가 더 붙고 확인
              버튼 문구도 다르다 (_showEnableConfirm / _showEnableConfirmIOS).
              iOS에서는 이 기능이 대상자 기능의 유일한 경로라 경고를 생략할 수 없다. -->
@@ -307,6 +305,8 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 
         <!-- 코드 복사 스낵바 -->
         <div class="snack" id="snack" hidden data-key="subject_home_code_copied"></div>
+        </div>
+
       </div>
 
       <!-- 확인 창이 플랫폼별로 다른 단계에서만 쓰인다. 자리는 늘 잡아 둬(visibility)
@@ -369,6 +369,17 @@ document.querySelector('[data-check-body]').textContent =
   S.subject_home_check_body_reported.replace('@time','18:00');
 document.querySelector('[data-daily-time]').textContent =
   S.heartbeat_daily_time.replace('@time','18:00');
+// 8단계 설명에 끼워 넣은 대상자 카드 — 첫 카드가 주의 상태다
+document.querySelector('[data-last-check]').textContent =
+  S.guardian_last_check_hours.replace('@hours','26');
+// 두 번째 카드는 정상 — activityLabelFor의 "활동량 : 활동적" 형태를 그대로 쓴다
+document.querySelector('[data-demo-alias2]').textContent = DEMO.alias2;
+document.querySelector('[data-activity]').textContent =
+  S.guardian_activity_prefix + ' : ' + S.guardian_activity_active;
+document.querySelector('[data-last-check2]').textContent =
+  S.guardian_last_check_hours.replace('@hours','3');
+
+document.querySelector('[data-demo-alias]').textContent = DEMO.alias;
 
 var $ = function(id){ return document.getElementById(id); };
 var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -415,7 +426,7 @@ function render(i){
   if (typer) { clearInterval(typer); typer = null; }
   var s = STEPS[i];
 
-  ['settings','safety','add'].forEach(function(n){
+  SCREENS.forEach(function(n){
     $('scr-' + n).hidden = (n !== s.scr);
   });
 
@@ -515,6 +526,49 @@ stepBtns.forEach(function(b, n){
         {behavior: reduce.matches ? 'auto' : 'smooth', block: 'center'});
     }
   });
+});
+
+// 폰 목업을 창 높이에 맞춰 축소한다.
+//
+// 안 하면 목업 기둥(폰 ~950 + 라벨·버튼 ~150)이 브라우저 창보다 높아져 두 가지가
+// 깨진다: (1) sticky로 고정돼도 폰 아랫부분이 화면 밖이라 하단 카드·버튼이 안 보이고,
+// (2) 기둥이 높을수록 고정이 일찍 풀려 뒷 단계를 읽을 때 폰이 위로 사라진다.
+// 실제로 10단계(대시보드 카드)에서 이 문제가 났다.
+//
+// 높이는 **가장 긴 화면 기준으로 한 번만** 재서 고정한다 — 단계마다 폰 높이가
+// 달라(설정 789 / 안전홈 954) 그때그때 맞추면 아래 버튼들이 위아래로 튄다.
+var SCREENS = ['settings','safety','add'];
+
+function fitStage(){
+  var stage = document.querySelector('.stage'), device = $('device');
+  if (!window.matchMedia('(min-width:921px)').matches) {   // 좁은 화면은 원래 크기로 흐른다
+    device.style.transform = 'none';
+    stage.style.height = '';
+    return;
+  }
+  var cur = SCREENS.filter(function(n){ return !$('scr-' + n).hidden; })[0] || SCREENS[0];
+  device.style.transform = 'none';
+  stage.style.height = '';
+
+  var maxH = 0;
+  SCREENS.forEach(function(n){
+    SCREENS.forEach(function(m){ $('scr-' + m).hidden = (m !== n); });
+    maxH = Math.max(maxH, device.offsetHeight);
+  });
+  SCREENS.forEach(function(m){ $('scr-' + m).hidden = (m !== cur); });
+
+  // 40 = 위아래 여백, 168 = 폰 위 라벨 + 아래 플랫폼탭·컨트롤·캡션
+  var avail = window.innerHeight - 40 - 168;
+  var scale = Math.max(0.6, Math.min(1, avail / maxH));
+  device.style.transform = scale < 1 ? 'scale(' + scale + ')' : 'none';
+  stage.style.height = Math.round(maxH * scale) + 'px';
+}
+
+fitStage();
+var fitTimer;
+window.addEventListener('resize', function(){
+  clearTimeout(fitTimer);
+  fitTimer = setTimeout(fitStage, 150);
 });
 
 // 화면 밖에서 혼자 돌지 않도록 — 보이지 않으면 멈춘다

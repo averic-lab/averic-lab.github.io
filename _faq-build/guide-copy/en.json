@@ -1,0 +1,66 @@
+{
+  "lang_name": "English",
+  "meta_title": "Connecting with family using your safety code — Anbu",
+  "meta_desc": "Follow the real app screens: create a safety code, share it, and let your family connect with it.",
+  "page_eyebrow": "How it works",
+  "page_title": "Connecting with family using your safety code",
+  "page_lead": "Anbu connects people with a single <strong>safety code</strong>. You create the code on your phone and pass it on; your family enters it on theirs. That is how the connection works without any name or phone number ever reaching our server.",
+  "phone_me": "Your phone — where the code is created",
+  "phone_family": "Your family's phone — where they watch over you",
+  "demo": {
+    "code": "K7M-4PXR",
+    "alias": "Mom",
+    "alias2": "Dad",
+    "phone": "(555) 123-4567"
+  },
+  "ctrl_prev": "Back",
+  "ctrl_next": "Next",
+  "ctrl_replay": "From the start",
+  "mockup_caption": "These are the real app screens, recreated. The code, nickname and phone number are sample values.",
+  "steps": [
+    {
+      "h": "Tap [@gs_enable_button] in settings",
+      "d": "Open the <b>@nav_settings</b> tab at the bottom of the guardian screen — it sits right at the top. You go from only watching over your family to <b>sending your own check-in as well</b>."
+    },
+    {
+      "h": "Confirm to activate",
+      "d": "@gs_enable_dialog_body<br><b>On iPhone there is one more notice</b> — a check-in is only sent when you tap the notification that arrives at the set time, or open the app yourself. Tap [iPhone] below to compare."
+    },
+    {
+      "h": "Your safety code appears",
+      "d": "The empty slot fills with a <b>7-character code</b>. One code is issued per device, and the same code comes back even if you delete and reinstall the app."
+    },
+    {
+      "h": "Copy or share the code with your family",
+      "d": "The left button copies, the right one shares. Copying shows <b>@subject_home_code_copied</b>. Send it by text or messenger — or just read the 7 characters out over the phone."
+    },
+    {
+      "h": "From here on, this is your family's phone",
+      "d": "Whoever received the code opens the <b>@nav_connection</b> tab in their own app and taps [<b>@add_subject_button</b>] to reach this screen. Three fields to fill in."
+    },
+    {
+      "h": "Enter the code you received",
+      "d": "@add_subject_code_info Lower case is converted to upper case. <b>Keep the hyphen (-) in the middle</b> — the code is only recognised with a hyphen between the 3 and the 4 characters."
+    },
+    {
+      "h": "Choose a nickname",
+      "d": "This is what this person will be called on your family's screen. Unlike the phone number below, <b>it cannot be left empty.</b>"
+    },
+    {
+      "h": "Add a phone number (optional)",
+      "d": "This is how the person's card looks on your family's home screen. With a number saved, the <b>[@guardian_call_now]</b> button <b>dials straight away.</b> Leave it empty and they have to find this person in their contacts every time.",
+      "illus": "cards",
+      "d_after": "Once you have called and confirmed that everything is fine, tap <b>[@guardian_confirm_safety]</b>. The alert clears, the status returns to normal, and <b>the other guardians watching along</b> receive a confirmation notice."
+    },
+    {
+      "h": "Tap [@add_subject_connect] and you are done",
+      "d": "The button lights up once the code and nickname are filled in. Tapping it connects you, and the card you saw above appears on your family's home screen."
+    }
+  ],
+  "note": "Once connected there is nothing left to do. Anbu sends a check-in <strong>by itself, every day at the set time</strong>, and tells your family if that time passes with no signal. If the signal is late or the step count looks empty, see the <a href=\"faq.html\">FAQ</a>.",
+  "footer_home": "Home",
+  "footer_faq": "Frequently asked",
+  "footer_privacy": "Privacy Policy",
+  "footer_terms": "Terms of Service",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

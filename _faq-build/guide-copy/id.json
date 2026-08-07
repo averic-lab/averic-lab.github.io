@@ -1,0 +1,66 @@
+{
+  "lang_name": "Bahasa Indonesia",
+  "meta_title": "Terhubung dengan keluarga lewat kode keamanan — Anbu",
+  "meta_desc": "Ikuti langkah demi langkah di layar asli aplikasi: membuat kode keamanan, membagikannya, dan keluarga terhubung dengan kode itu.",
+  "page_eyebrow": "Cara pakai",
+  "page_title": "Terhubung dengan keluarga lewat kode keamanan",
+  "page_lead": "Anbu menghubungkan orang dengan satu <strong>kode keamanan</strong>. Anda membuat kode di ponsel sendiri lalu memberitahukannya; keluarga memasukkannya di ponsel mereka. Karena itulah hubungan terbentuk tanpa nama atau nomor telepon yang sampai ke server kami.",
+  "phone_me": "Ponsel saya — tempat kode dibuat",
+  "phone_family": "Ponsel keluarga — yang menjaga saya",
+  "demo": {
+    "code": "K7M-4PXR",
+    "alias": "Ibu",
+    "alias2": "Ayah",
+    "phone": "0812-3456-7890"
+  },
+  "ctrl_prev": "Sebelumnya",
+  "ctrl_next": "Berikutnya",
+  "ctrl_replay": "Dari awal",
+  "mockup_caption": "Ini layar asli aplikasi yang dibuat ulang. Kode, nama panggilan, dan nomor telepon hanyalah contoh.",
+  "steps": [
+    {
+      "h": "Di pengaturan, ketuk [@gs_enable_button]",
+      "d": "Buka tab <b>@nav_settings</b> di bagian bawah — tombolnya ada paling atas. Anda beralih dari sekadar menjaga keluarga menjadi <b>ikut mengirim sinyal sendiri</b>."
+    },
+    {
+      "h": "Konfirmasi untuk mengaktifkan",
+      "d": "@gs_enable_dialog_body<br><b>Di iPhone ada satu keterangan tambahan</b> — sinyal hanya terkirim saat Anda mengetuk notifikasi yang datang pada waktu yang ditentukan, atau membuka aplikasi sendiri. Ketuk [iPhone] di bawah untuk membandingkan."
+    },
+    {
+      "h": "Kode keamanan terbentuk",
+      "d": "Bagian yang tadinya kosong terisi <b>kode 7 karakter</b>. Satu kode untuk satu perangkat, dan meski aplikasi dihapus lalu dipasang lagi, kode yang sama akan kembali."
+    },
+    {
+      "h": "Salin atau bagikan kode kepada keluarga",
+      "d": "Tombol kiri untuk menyalin, tombol kanan untuk membagikan. Setelah disalin muncul <b>@subject_home_code_copied</b>. Kirim lewat pesan — hanya 7 karakter, dibacakan lewat telepon pun cukup."
+    },
+    {
+      "h": "Mulai dari sini adalah ponsel keluarga",
+      "d": "Yang menerima kode membuka tab <b>@nav_connection</b> di aplikasinya lalu mengetuk [<b>@add_subject_button</b>], dan layar ini muncul. Ada tiga kolom yang perlu diisi."
+    },
+    {
+      "h": "Masukkan kode yang diterima",
+      "d": "@add_subject_code_info Huruf kecil otomatis berubah menjadi huruf besar. <b>Biarkan tanda hubung (-) di tengah</b> — tanpa tanda itu di antara 3 dan 4 karakter, kode tidak dikenali."
+    },
+    {
+      "h": "Tentukan nama panggilan",
+      "d": "Begitulah orang ini akan dipanggil di layar keluarga. Berbeda dengan nomor telepon di bawah, <b>kolom ini tidak boleh kosong.</b>"
+    },
+    {
+      "h": "Isi nomor telepon (opsional)",
+      "d": "Beginilah kartu orang ini terlihat di layar utama keluarga. Bila nomor sudah tersimpan, tombol <b>[@guardian_call_now]</b> <b>langsung menelepon.</b> Bila dikosongkan, setiap kali harus mencari orang ini di daftar kontak.",
+      "illus": "cards",
+      "d_after": "Setelah menelepon dan memastikan sendiri bahwa semuanya baik, ketuk <b>[@guardian_confirm_safety]</b>. Peringatan dicabut, status kembali normal, dan <b>anggota keluarga lain yang ikut menjaga</b> menerima pemberitahuan konfirmasi."
+    },
+    {
+      "h": "Ketuk [@add_subject_connect], selesai",
+      "d": "Tombol menyala begitu kode dan nama panggilan terisi. Sekali ketuk langsung terhubung, dan kartu yang tadi terlihat muncul di layar utama keluarga."
+    }
+  ],
+  "note": "Setelah terhubung tidak ada lagi yang perlu dilakukan. Anbu mengirim sinyal <strong>sendiri, setiap hari pada waktu yang ditentukan</strong>, dan memberi tahu keluarga bila waktu itu lewat tanpa sinyal. Bila sinyal terlambat atau langkah tampak kosong, lihat <a href=\"faq.html\">pertanyaan umum</a>.",
+  "footer_home": "Beranda",
+  "footer_faq": "Pertanyaan umum",
+  "footer_privacy": "Kebijakan Privasi",
+  "footer_terms": "Ketentuan Layanan",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

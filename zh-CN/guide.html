@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>用安全码与家人连接 — Anbu</title>
+<meta name="description" content="按真实应用界面走一遍：生成安全码、告诉家人，家人用这个码完成连接。">
+<link rel="canonical" href="https://averic.co.kr/zh-CN/guide.html">
+  <link rel="alternate" hreflang="en" href="https://averic.co.kr/en/guide.html">
+  <link rel="alternate" hreflang="ko" href="https://averic.co.kr/ko/guide.html">
+  <link rel="alternate" hreflang="ja" href="https://averic.co.kr/ja/guide.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://averic.co.kr/zh-CN/guide.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://averic.co.kr/zh-TW/guide.html">
+  <link rel="alternate" hreflang="de" href="https://averic.co.kr/de/guide.html">
+  <link rel="alternate" hreflang="fr" href="https://averic.co.kr/fr/guide.html">
+  <link rel="alternate" hreflang="es" href="https://averic.co.kr/es/guide.html">
+  <link rel="alternate" hreflang="it" href="https://averic.co.kr/it/guide.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://averic.co.kr/pt-BR/guide.html">
+  <link rel="alternate" hreflang="ru" href="https://averic.co.kr/ru/guide.html">
+  <link rel="alternate" hreflang="nl" href="https://averic.co.kr/nl/guide.html">
+  <link rel="alternate" hreflang="pl" href="https://averic.co.kr/pl/guide.html">
+  <link rel="alternate" hreflang="tr" href="https://averic.co.kr/tr/guide.html">
+  <link rel="alternate" hreflang="vi" href="https://averic.co.kr/vi/guide.html">
+  <link rel="alternate" hreflang="th" href="https://averic.co.kr/th/guide.html">
+  <link rel="alternate" hreflang="id" href="https://averic.co.kr/id/guide.html">
+  <link rel="alternate" hreflang="sv" href="https://averic.co.kr/sv/guide.html">
+  <link rel="alternate" hreflang="hi" href="https://averic.co.kr/hi/guide.html">
+  <link rel="alternate" hreflang="ar" href="https://averic.co.kr/ar/guide.html">
+<style>
+/* ── 사이트 팔레트(style.css :root)와 동일 톤 ── */
+:root{
+  --paper:#ffffff; --warm-paper:#fff8f3; --line:#f0e8e3;
+  --ink:#1a1c1c; --ink-soft:#4a4a4a; --ink-mute:#8a8a8a;
+  --pink-deep:#e54b5e; --teal:#00685e;
+  --sans:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR","Hiragino Sans","Microsoft YaHei","Segoe UI",Arial,sans-serif;
+  --serif:"Iowan Old Style","Apple Garamond",Charter,Georgia,"Times New Roman",serif;
+  /* 목업 전용 — 기기 화면처럼 보이도록 본문 폰트와 분리 */
+  --device:-apple-system,"Roboto","Noto Sans KR",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--warm-paper);color:var(--ink);font-family:var(--sans);
+  line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+
+/* 헤더 */
+.site-head{border-bottom:1px solid var(--line);background:var(--paper)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;
+  gap:16px;height:62px;flex-wrap:wrap}
+.site-logo{font-family:var(--serif);font-size:21px;letter-spacing:.01em;
+  text-decoration:none;font-weight:600}
+.lang-switch{display:flex;gap:4px;flex-wrap:wrap}
+.lang-switch a{font-size:13px;color:var(--ink-mute);text-decoration:none;
+  padding:4px 9px;border-radius:999px}
+.lang-switch a.active{color:var(--ink);background:var(--warm-paper);font-weight:600}
+.lang-switch a:hover{color:var(--ink)}
+
+/* 도입부 */
+.intro{padding:58px 0 34px}
+.eyebrow{font-size:13.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--pink-deep);margin-bottom:15px}
+h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
+  letter-spacing:-.01em;font-weight:600;text-wrap:balance;margin-bottom:17px}
+.lead{font-size:16.5px;color:var(--ink-soft);max-width:62ch}
+.lead strong{color:var(--ink);font-weight:600}
+
+/* 본문 2단 — FAQ와 좌우가 반대다. 여기서는 화면이 주인공이고 설명이 따라간다. */
+.cols{display:grid;grid-template-columns:373px minmax(0,1fr);gap:44px;
+  align-items:start;padding-bottom:76px}
+@media(max-width:920px){.cols{grid-template-columns:1fr;gap:30px}
+  .sticky{position:static!important}}
+.sticky{position:sticky;top:20px}
+.stage{position:relative;width:373px;margin:0 auto}
+@media(max-width:420px){.stage,.device{width:100%!important}}
+
+/* 어느 폰을 보고 있는지 — 코드를 만드는 폰과 입력하는 폰이 다르다.
+   이걸 말해 주지 않으면 한 사람이 혼자 다 하는 것처럼 보인다. */
+.whose{display:flex;align-items:center;gap:8px;margin-bottom:11px;
+  font-size:13px;font-weight:600;color:var(--ink-soft)}
+.whose .dot{width:9px;height:9px;border-radius:50%;background:var(--teal);flex:none}
+.whose.family .dot{background:var(--pink-deep)}
+
+/* 플랫폼 전환 (확인 창 단계에서만 의미가 있다) */
+.pf{display:flex;gap:5px;margin-top:12px;visibility:hidden}
+.pf.on{visibility:visible}
+.pf-tab{font:inherit;font-size:12.5px;padding:5px 12px;border:1px solid var(--line);
+  border-radius:999px;background:var(--paper);color:var(--ink-mute);cursor:pointer}
+.pf-tab[aria-pressed="true"]{background:var(--ink);color:var(--paper);
+  border-color:var(--ink);font-weight:600}
+.pf-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+/* 재생 컨트롤 */
+.ctrl{display:flex;align-items:center;gap:8px;margin-top:12px}
+.ctrl button{font:inherit;font-size:13px;font-weight:600;color:var(--ink-soft);
+  background:var(--paper);border:1px solid var(--line);border-radius:999px;
+  padding:7px 13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.ctrl button:hover:not(:disabled){border-color:var(--ink-mute);color:var(--ink)}
+.ctrl button:disabled{opacity:.4;cursor:default}
+.ctrl button svg{width:13px;height:13px;fill:currentColor}
+.ctrl .count{margin-left:auto;font-size:12.5px;color:var(--ink-mute);
+  font-variant-numeric:tabular-nums}
+[dir="rtl"] .ctrl .count{margin-left:0;margin-right:auto}
+.ctrl button:focus-visible,.step:focus-visible,.lang-switch a:focus-visible{
+  outline:2px solid var(--teal);outline-offset:2px}
+
+/* 단계 목록 — 애니메이션을 못 보거나 안 보는 사람에게는 이쪽이 본문이다.
+   전 단계가 항상 글로 남아 있어 순서대로 읽을 수 있다. */
+.steps{list-style:none;counter-reset:s}
+.step{display:grid;grid-template-columns:30px minmax(0,1fr);gap:13px;
+  padding:15px 14px;border-radius:12px;border:1px solid transparent;
+  cursor:pointer;transition:background .18s ease,border-color .18s ease;
+  width:100%;text-align:inherit;font:inherit;background:none;color:inherit}
+.step+.step{margin-top:3px}
+.step:hover{background:var(--paper)}
+.step[aria-current="step"]{background:var(--paper);border-color:var(--line)}
+.step .n{width:30px;height:30px;border-radius:50%;background:var(--warm-paper);
+  border:1px solid var(--line);color:var(--ink-mute);display:flex;
+  align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.step[aria-current="step"] .n{background:var(--teal);border-color:var(--teal);color:#fff}
+/* .h/.d는 span이라 block으로 바꿔야 줄이 나뉜다 — 인라인이면 제목과 설명이 붙는다 */
+.step .h{display:block;font-size:15.5px;font-weight:600;line-height:1.5;margin-bottom:4px}
+.step .d{display:block;font-size:14.5px;color:var(--ink-soft);line-height:1.6}
+.step .d b{color:var(--ink);font-weight:600}
+
+.note{margin-top:26px;padding:16px 18px;background:var(--paper);
+  border:1px solid var(--line);border-radius:12px;font-size:14px;
+  color:var(--ink-soft);line-height:1.65}
+.note strong{color:var(--ink);font-weight:600}
+.caption{font-size:12.5px;color:var(--ink-mute);line-height:1.6;margin-top:13px}
+
+/* ── 여기부터 앱 화면 복제. 값은 앱 소스와 동일 — 임의로 바꾸지 말 것 ── */
+.device{width:373px;box-sizing:border-box;margin:0 auto;border:1px solid var(--line);
+  border-radius:26px;background:#F9F9F9;overflow:hidden;
+  box-shadow:0 10px 30px rgba(80,50,40,.10)}
+.appbar{height:52px;display:flex;align-items:center;gap:14px;padding:0 16px;
+  background:#F9F9F9;font-family:var(--device)}
+.appbar svg{width:22px;height:22px;fill:#1A1C1C}
+.appbar .brand{font-size:18px;font-weight:700;color:#1A1C1C}
+.screen{font-family:var(--device);padding:0 27px 26px;background:#F9F9F9;line-height:normal}
+.gap-lg{height:16px}
+/* 경고 여백은 페이지가 아니라 위젯 자신이 갖는다 (AppSpacing.md = 12)
+   배터리는 아래, 걸음수·위치는 위 — 방향이 다르다 */
+.pad-top{padding-top:12px}
+.pad-bottom{padding-bottom:12px}
+
+.spot{border-radius:14px;transition:opacity .3s ease,filter .3s ease}
+.dimmed .spot:not(.on){opacity:.26;filter:grayscale(.75)}
+.spot.on{position:relative;z-index:2}
+.dimmed .spot.on .ring{position:relative}
+.dimmed .spot.on .ring::after{content:"";position:absolute;inset:-7px;
+  border-radius:16px;border:2px solid #00685E;pointer-events:none;
+  animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.42}}
+@media(prefers-reduced-motion:reduce){.dimmed .spot.on .ring::after{animation:none}
+  .modal{animation:none}}
+
+.hdr{font-size:20px;font-weight:600;line-height:1.4;color:#00685E;margin:0 0 8px}
+.warn-row{width:100%;min-height:48px;box-sizing:border-box;display:flex;
+  align-items:center;gap:8px;padding:8px 12px;border-radius:12px;border:1px solid;
+  font-size:12px;font-weight:600;line-height:1.33}
+.warn-row svg{flex:none;width:20px;height:20px}
+.warn-row .txt{flex:1}
+.w-batt{background:#FFF8E1;border-color:rgba(249,168,37,.4);color:#B75A00}
+.w-batt .ico{fill:#E65100}.w-batt .chev{fill:#B75A00}
+.w-perm{background:#FFEBEE;border-color:rgba(183,28,28,.3);color:#B71C1C}
+.w-perm .ico{fill:#B71C1C}
+
+.hero{position:relative;border-radius:16px;overflow:hidden;padding:16px 22px 20px;
+  background:linear-gradient(135deg,#123C63,#1D6FA5)}
+.hero .circ{position:absolute;border-radius:50%;background:rgba(255,255,255,.07)}
+.hero .c1{width:132px;height:132px;right:-34px;top:-46px}
+.hero .c2{width:118px;height:118px;right:46px;bottom:-56px;background:rgba(255,255,255,.05)}
+.hero .top{position:relative;display:flex;align-items:center;gap:8px}
+.hero .kicker{flex:1;font-size:11px;font-weight:700;letter-spacing:1.4px;
+  color:rgba(255,255,255,.75);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hero .cbtn{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.18);
+  border:1.2px solid rgba(255,255,255,.4);display:flex;align-items:center;
+  justify-content:center;flex:none}
+.hero .cbtn svg{width:20px;height:20px;fill:#fff}
+.hero .code{position:relative;margin-top:12px;font-size:42px;font-weight:800;
+  color:#fff;letter-spacing:3px;line-height:1.1;white-space:nowrap}
+
+.state{display:flex;border-radius:12px;overflow:hidden;background:#FFFFFF}
+.state .bar{width:5px;flex:none;background:#00685E}
+.state .in{flex:1;padding:16px;display:flex;align-items:center;gap:16px;min-width:0}
+.state .badge{width:28px;height:28px;border-radius:50%;background:#FDECEC;flex:none;
+  display:flex;align-items:center;justify-content:center}
+.state .badge svg{width:16px;height:16px;fill:#1A1C1C}
+.state .t{font-size:12px;line-height:1.33;color:#757575}
+.state .b{font-size:18px;line-height:1.44;font-weight:700;color:#00685E;margin-top:2px}
+
+.action{width:100%;box-sizing:border-box;min-height:68px;border-radius:12px;
+  display:flex;align-items:center;gap:12px;padding:12px;border:1px solid}
+.action .badge{width:40px;height:40px;border-radius:50%;flex:none;display:flex;
+  align-items:center;justify-content:center}
+.action .badge svg{width:24px;height:24px}
+.action .txt{flex:1;min-width:0}
+.action .lbl{font-size:18px;font-weight:700;line-height:1.44}
+.action .dsc{font-size:12px;font-weight:600;line-height:1.33;margin-top:2px}
+.action .chev{width:24px;height:24px;flex:none}
+.a-tonal{background:#E0F2F1;border-color:rgba(0,104,94,.28);color:#00685E}
+.a-tonal .badge{background:rgba(0,104,94,.12)}.a-tonal svg{fill:#00685E}
+.a-emg{background:linear-gradient(135deg,#6E2020,#C07878);border-color:#571818;color:#fff}
+.a-emg .badge{background:rgba(255,255,255,.9)}.a-emg .badge svg{fill:#8F3030}
+.a-emg .dsc{color:rgba(255,255,255,.85)}
+
+/* 휴면 다이얼로그 — 실제 앱처럼 화면 위에 겹친다.
+   배리어 rgba(0,0,0,.54) = Flutter 기본 Colors.black54
+   좌우 40 = AlertDialog 기본 insetPadding */
+.modal{position:absolute;inset:0;border-radius:26px;background:rgba(0,0,0,.54);
+  display:flex;align-items:center;justify-content:center;padding:24px 40px;
+  box-sizing:border-box;z-index:5;animation:fade .28s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.modal[hidden]{display:none}
+.dlg{width:100%;background:#fff;border-radius:16px;padding:24px 24px 8px;
+  font-family:var(--device);box-shadow:0 8px 28px rgba(0,0,0,.2);line-height:normal}
+.dlg-title{font-size:18px;font-weight:700;color:#1A1C1C;line-height:1.35;margin:0 0 16px}
+.dlg-title mark{background:none;color:#B71C1C;font-weight:700}
+.dlg-body{font-size:14px;color:#3F4948;line-height:1.5}
+.dlg-body p{margin:0 0 14px}.dlg-body p:last-child{margin:0}
+.dlg-actions{display:flex;justify-content:flex-end;gap:8px;margin:16px -12px 0;
+  padding-bottom:8px}
+.dlg-btn{font:inherit;font-size:14px;font-weight:500;color:#00685E;background:none;
+  border:0;padding:10px 12px;border-radius:8px;cursor:default}
+.dlg-btn[disabled]{opacity:1}
+
+[dir="rtl"] .warn-row,[dir="rtl"] .action{flex-direction:row-reverse}
+[dir="rtl"] .state{flex-direction:row-reverse}
+[dir="rtl"] .screen,[dir="rtl"] .appbar{text-align:right}
+[dir="rtl"] .dlg-actions{justify-content:flex-start}
+/* ── 사용설명 페이지가 추가로 쓰는 앱 화면 복제 ──
+   mockup.css(FAQ와 공용)에 없는 위젯만 여기 있다: 보호자 설정 화면, 보호 대상자
+   연결 화면, 하단 네비게이션, 스낵바.
+   값은 전부 앱 소스에서 읽은 것이다 — 임의로 바꾸지 말 것.
+     설정      guardian_settings_page.dart
+     연결      guardian_add_subject_page.dart
+     하단네비  core/widgets/guardian_bottom_nav.dart
+     스낵바    core/utils/app_snackbar.dart
+     간격/글꼴 core/theme/app_spacing.dart, app_text_theme.dart */
+
+/* AppSpacing: sm 8 / md 12 / lg 16 / xl 20 / sp4 22 / sp6 32 */
+.gap-sm{height:8px}.gap-md{height:12px}.gap-xl{height:20px}.gap-sp6{height:32px}
+
+/* 설정 화면 AppBar는 아이콘과 제목 간격이 8 (safety_home은 14) */
+.appbar.tight{gap:8px}
+.appbar .grow{flex:1}
+.appbar .act{width:24px;height:24px;fill:#3F4948}
+.appbar .back{width:20px;height:20px;fill:#1A1C1C}
+
+/* 섹션 라벨 — labelMedium 14/w600, textTertiary */
+.sec-label{font-size:14px;font-weight:600;line-height:1.43;color:#757575;margin:0}
+
+/* 구독 카드 — free_trial(회색 그라데이션). padding sp4=22, radius 20
+   ※ 일수 배지·가격은 뺐다: 배지는 앱에서도 days>0일 때만 보이고,
+     그 문구(@days)는 자리표시자라 페이지에 그대로 그릴 수 없다 */
+.sub-card{border-radius:20px;padding:22px;
+  background:linear-gradient(135deg,#607D8B,#90A4AE)}
+.sub-top{display:flex;align-items:center;gap:6px}
+.sub-top svg{width:18px;height:18px;fill:rgba(255,255,255,.7);flex:none}
+.sub-top span{font-size:11px;font-weight:600;line-height:1.45;color:rgba(255,255,255,.7)}
+.sub-title{margin:12px 0 0;font-size:20px;font-weight:700;line-height:1.4;color:#fff}
+.sub-btn{margin-top:16px;padding:10px;border-radius:24px;text-align:center;
+  font-size:14px;font-weight:700;line-height:1.43}
+.sub-btn.filled{background:#fff;color:#4355B9}
+.sub-btn.outline{margin-top:8px;border:1px solid rgba(255,255,255,.54);color:#fff}
+
+/* 흰 카드 행 (알림 설정) — padding lg=16, radius 16 */
+.row-card{background:#fff;border-radius:16px;padding:16px;display:flex;
+  align-items:center;gap:12px}
+.row-card>svg{width:22px;height:22px;fill:#3F4948;flex:none}
+.row-card .lbl{flex:1;font-size:16px;font-weight:600;line-height:1.5;color:#1A1C1C}
+
+/* 약관 카드 */
+.terms{background:#fff;border-radius:16px;padding:16px}
+.terms .head{display:flex;align-items:center;gap:12px}
+.terms .head svg{width:20px;height:20px;fill:#3F4948;flex:none}
+.terms .head span{font-size:16px;font-weight:600;line-height:1.5;color:#1A1C1C}
+.terms .lnk{display:flex;align-items:center;justify-content:space-between;gap:8px;
+  font-size:14px;line-height:1.43;color:#3F4948}
+.terms .lnk svg{width:18px;height:18px;fill:#3F4948;flex:none}
+
+/* 하단 네비게이션 — 상단만 radius 20, 위로 뜨는 그림자 */
+.bnav{background:#fff;border-radius:20px 20px 0 0;
+  box-shadow:0 -2px 8px rgba(0,0,0,.06);display:flex;padding:10px 0 12px}
+.bnav .tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;
+  font-family:var(--device);font-size:12px;line-height:1.2;color:#BEC9C7}
+.bnav .tab svg{width:24px;height:24px;fill:#BEC9C7}
+.bnav .tab.on{color:#1A1C1C;font-weight:600}
+.bnav .tab.on svg{fill:#1A1C1C}
+
+/* 보호 대상자 연결 화면 */
+.add-h{font-size:24px;font-weight:600;line-height:1.35;color:#1A1C1C;margin:0}
+.add-sub{font-size:14px;line-height:1.43;color:#757575;margin:0}
+.fld-label{font-size:14px;font-weight:600;line-height:1.43;color:#1A1C1C;margin:0}
+/* TextField: filled #FFFFFF, radius 12, 테두리 outlineVariant 30%,
+   포커스 시 #4355B9 2px. 본문 bodyLarge 16, 힌트 textTertiary */
+.fld{min-height:56px;border-radius:12px;background:#fff;
+  border:1px solid rgba(190,201,199,.3);display:flex;align-items:center;
+  padding:0 12px;font-size:16px;line-height:1.5;color:#1A1C1C;
+  transition:border-color .2s ease}
+.fld.on{border:2px solid #4355B9;padding:0 11px}
+.fld .ph{color:#757575}
+.fld .caret{display:inline-block;width:2px;height:20px;background:#4355B9;
+  margin-left:1px;vertical-align:-4px;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.fld-info{display:flex;align-items:flex-start;gap:4px;font-size:12px;
+  line-height:1.33;color:#757575}
+.fld-info svg{width:14px;height:14px;fill:#757575;flex:none;margin-top:1px}
+/* 연결하기 — 입력이 다 차기 전에는 30% 불투명 (앱의 disabledBackgroundColor) */
+.connect{min-height:56px;border-radius:16px;background:rgba(67,85,185,.3);
+  color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;
+  font-size:16px;font-weight:600;line-height:1.5;transition:background .25s ease}
+.connect.ready{background:#4355B9}
+.connect svg{width:20px;height:20px;fill:#fff;flex:none}
+
+/* 스낵바 — 흰 배경 고정(다크모드 무관), radius 12, margin h16 v8, 하단 */
+.snack{position:absolute;left:16px;right:16px;bottom:8px;background:#fff;
+  border-radius:12px;padding:16px;font-family:var(--device);font-size:14px;
+  line-height:1.43;color:#1A1C1C;box-shadow:0 4px 16px rgba(0,0,0,.18);z-index:6}
+.snack[hidden]{display:none}
+
+/* 다이얼로그·스낵바가 기기 안에 있으므로 기준점을 기기로 잡는다.
+   (기기를 창 높이에 맞춰 축소하면 .stage 기준 좌표는 기기와 어긋난다) */
+.device{position:relative;transform-origin:top center}
+
+/* ── 보호자 대시보드 (guardian_dashboard_page.dart) ──
+   주의 카드: statusColor #F59E0B, 배경 #FFF9C4 60%, 왼쪽 보더 4px
+   정상 카드: statusColor #00685E, 배경 #E8F5E9 50% */
+.dash-h{font-size:24px;font-weight:600;line-height:1.35;color:#1A1C1C;margin:0;
+  white-space:pre-line}
+.sum-label{font-size:14px;font-weight:500;line-height:1.43;color:#757575;margin:0}
+.legend{display:flex;flex-wrap:wrap;gap:4px 10px}
+.legend .it{display:flex;align-items:center;gap:6px;font-size:13px;color:#3F4948}
+.legend .d{width:8px;height:8px;border-radius:50%;flex:none}
+.list-h{font-size:16px;font-weight:700;line-height:1.5;color:#1A1C1C;margin:0}
+
+/* 카드는 PageView로 옆으로 넘긴다. 2명 이상이면 viewportFraction 0.92 +
+   padEnds:false라 **다음 카드가 오른쪽에 걸쳐 보인다** — 카드가 더 있다는 걸
+   점 인디케이터보다 먼저 알려주는 장치라 목업에서도 그대로 살린다.
+   높이 200 고정(SizedBox(height: 200.h)), 카드 자체 margin-right 8. */
+.cards{display:flex;overflow:hidden}
+.scard{flex:0 0 calc(92% - 8px);margin-right:8px;height:200px;box-sizing:border-box;
+  display:flex;flex-direction:column;
+  border-radius:16px;padding:8px 16px;border-left:4px solid}
+.scard .top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.scard .nm{font-size:16px;font-weight:700;line-height:1.5;color:#1A1C1C}
+.scard .badge{padding:3px 10px;border-radius:10px;font-size:11px;font-weight:600;
+  line-height:1.45}
+/* 앱은 need 행 위아래에 Spacer를 둬 닉네임과 버튼 사이 중앙에 놓는다 */
+.scard .need{display:flex;align-items:center;gap:6px;margin:auto 0}
+.scard .need svg{width:18px;height:18px;flex:none}
+.scard .need .t{flex:1;font-size:16px;font-weight:700;line-height:1.5}
+.scard .btn{height:40px;border-radius:10px;display:flex;align-items:center;
+  justify-content:center;gap:4px;font-size:11px;font-weight:600;line-height:1.45}
+.scard .btn svg{width:15px;height:15px;fill:#fff}
+.scard .btn.call{color:#fff}
+.scard .btn.safe{margin-top:6px;background:transparent;border:1px solid}
+.scard .last{margin:8px 0 0;font-size:12px;line-height:1.33;color:#757575}
+/* 정상 카드는 활동량 라벨 + 걸음수 막대 (연결 전후 대비용으로 뒤 카드에 쓴다) */
+.scard .act{margin:2px 0 0;font-size:12px;line-height:1.33;color:#3F4948}
+.bars{display:flex;align-items:flex-end;gap:6px;height:46px;margin-top:6px}
+.bars i{flex:1;border-radius:3px 3px 0 0;background:rgba(26,35,126,.7)}
+.bars i.today{background:#FB8C00}
+.dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.dots i{width:6px;height:6px;border-radius:50%;background:#BEC9C7}
+.dots i.on{background:#4355B9;width:18px;border-radius:3px}
+
+/* iOS 확인 창의 주황 경고 카드 — 배경 #FFF3E0, 왼쪽 보더 #E65100 4px,
+   제목 bodyLarge 16/w700, 본문 bodyMedium 14 (_showEnableConfirmIOS) */
+.ios-warn{margin-top:16px;padding:12px;background:#FFF3E0;border-radius:12px;
+  border-left:4px solid #E65100}
+.ios-warn .t{margin:0;font-size:16px;font-weight:700;line-height:1.5;color:#E65100}
+.ios-warn .b{margin:8px 0 0;font-size:14px;line-height:1.43;color:#3F4948}
+[dir="rtl"] .ios-warn{border-left:0;border-right:4px solid #E65100}
+
+[dir="rtl"] .fld .caret{margin-left:0;margin-right:1px}
+[dir="rtl"] .terms .lnk,[dir="rtl"] .row-card{flex-direction:row-reverse}
+[dir="rtl"] .terms .head,[dir="rtl"] .sub-top,[dir="rtl"] .fld-info{
+  flex-direction:row-reverse}
+
+/* 단계 설명 안에 끼워 넣는 대상자 카드.
+   앱에서는 PageView라 한 장씩 넘겨 보지만, 여기서는 주의 카드와 정상 카드를
+   **둘 다 온전히** 보여준다 — 두 상태의 차이(버튼이 생긴다 / 걸음수가 보인다)가
+   이 그림의 요점이라 걸쳐 보이게 두면 전달되지 않는다. */
+.inline-card{display:block;max-width:600px;margin:16px 0 6px;
+  font-family:var(--device);line-height:normal}
+.inline-card .cards{overflow:visible;gap:8px}
+.inline-card .scard{flex:1 1 0;min-width:0;margin-right:0}
+.inline-card .bnav{margin-top:12px;border-radius:20px}
+@media(max-width:820px){
+  .inline-card .cards{flex-direction:column}
+  .inline-card .scard{flex:0 0 auto}
+}
+/* 카드·후속 설명은 button 밖에 있으므로 들여쓰기를 직접 맞춘다
+   (.step 그리드의 30px 번호 + 13px 간격 + 14px 좌패딩) */
+.extra{padding:0 14px 15px 57px}
+.extra .d{display:block;font-size:14.5px;color:var(--ink-soft);line-height:1.6;
+  margin-top:14px}
+.extra .d b{color:var(--ink);font-weight:600}
+
+/* 30일 전체 차트를 여는 달력 버튼 — 아이콘 위에 "30"이 겹친다
+   (_buildFullChartButton: 30x30 아이콘 + 흰 배경 위 10sp/w800 텍스트, 아래로 5) */
+.cal{position:relative;flex:none;width:38px;height:38px;padding:4px;
+  display:flex;align-items:center;justify-content:center}
+.cal svg{width:30px;height:30px;fill:#3F4948}
+.cal b{position:absolute;top:calc(50% + 5px);left:50%;
+  transform:translate(-50%,-50%);background:#fff;padding:0 1px;
+  font-size:10px;font-weight:800;line-height:1;color:#3F4948}
+
+/* 정상 카드 — 이름 옆 배터리는 정상일 때만 나온다
+   (batteryLevel: isNormal ? ... : null). 30% 초과는 초록 #43A047 */
+.scard .who{display:flex;align-items:center;gap:2px;min-width:0}
+.scard .who .nm{margin-right:4px}
+.scard .batt{width:18px;height:18px;flex:none;fill:#43A047}
+.scard .battp{font-size:11px;font-weight:600;line-height:1.45;color:#43A047}
+.scard .actrow{display:flex;align-items:center;gap:6px}
+.scard .actrow .act{flex:1;min-width:0;margin:0}
+
+/* 7일 걸음수 막대 — 왼쪽·아래만 축선, 축 이름은 위/아래 모서리에 */
+.chart{flex:1;min-height:0;display:flex;flex-direction:column}
+.chart .ylab,.chart .xlab{font-size:11px;line-height:1.45;color:#757575}
+.chart .xlab{align-self:flex-end}
+.chart .plot{flex:1;min-height:0;display:flex;align-items:flex-end;gap:5px;
+  padding:0 4px;border-left:1px solid rgba(117,117,117,.4);
+  border-bottom:1px solid rgba(117,117,117,.4)}
+.chart .bar{flex:1;min-width:0;display:flex;flex-direction:column;
+  justify-content:flex-end;height:100%}
+/* 라벨 자리는 모든 막대가 똑같이 비워 둬야 막대 밑선이 맞는다 */
+.chart .bar b{display:block;height:13px;font-size:11px;font-weight:700;
+  line-height:13px;color:#1A237E;text-align:center;white-space:nowrap}
+.chart .bar i{display:block;width:100%;border-radius:2px 2px 0 0;
+  background:rgba(26,35,126,.7)}
+.chart .bar i.today{background:#FB8C00}
+
+/* 화면 전환 — 한 번에 하나만 보인다 */
+.scr[hidden]{display:none}
+/* 지금 눌러야 하는 곳. mockup.css의 .spot/.ring과 같은 언어를 쓴다. */
+.tap{position:relative}
+.tap::after{content:"";position:absolute;inset:-6px;border-radius:16px;
+  border:2px solid #00685E;pointer-events:none;animation:pulse 2.4s ease-in-out infinite}
+.tap.ind::after{border-color:#4355B9}
+.tap.round::after{inset:-5px;border-radius:50%}
+@media(prefers-reduced-motion:reduce){.tap::after{animation:none}
+  .modal{animation:none}.fld .caret{animation:none}
+  .connect,.fld,.hero .code{transition:none}}
+
+footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0 34px}
+footer .wrap{display:flex;gap:18px;flex-wrap:wrap;align-items:center;
+  font-size:13px;color:var(--ink-mute)}
+footer a{color:var(--ink-soft);text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .copy{margin-left:auto}
+[dir="rtl"] footer .copy{margin-left:0;margin-right:auto}
+</style>
+</head>
+<body>
+
+<header class="site-head"><div class="wrap">
+  <a class="site-logo" href="/zh-CN/">Anbu</a>
+  <nav class="lang-switch"><a href="/en/guide.html" class="lang-option">English</a><a href="/ko/guide.html" class="lang-option">한국어</a><a href="/ja/guide.html" class="lang-option">日本語</a><a href="/zh-CN/guide.html" class="lang-option active">简体中文</a><a href="/zh-TW/guide.html" class="lang-option">繁體中文</a><a href="/de/guide.html" class="lang-option">Deutsch</a><a href="/fr/guide.html" class="lang-option">Français</a><a href="/es/guide.html" class="lang-option">Español</a><a href="/it/guide.html" class="lang-option">Italiano</a><a href="/pt-BR/guide.html" class="lang-option">Português</a><a href="/ru/guide.html" class="lang-option">Русский</a><a href="/nl/guide.html" class="lang-option">Nederlands</a><a href="/pl/guide.html" class="lang-option">Polski</a><a href="/tr/guide.html" class="lang-option">Türkçe</a><a href="/vi/guide.html" class="lang-option">Tiếng Việt</a><a href="/th/guide.html" class="lang-option">ไทย</a><a href="/id/guide.html" class="lang-option">Bahasa Indonesia</a><a href="/sv/guide.html" class="lang-option">Svenska</a><a href="/hi/guide.html" class="lang-option">हिन्दी</a><a href="/ar/guide.html" class="lang-option">العربية</a></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="intro">
+    <p class="eyebrow">使用说明</p>
+    <h1>用安全码与家人连接</h1>
+    <p class="lead">Anbu 靠一个<strong>安全码</strong>把人连起来。你在自己手机上生成码并告诉家人，家人在他们的手机上输入它。这就是无需把姓名或电话号码上传到服务器也能连接的原因。</p>
+  </div>
+
+  <div class="cols">
+    <div class="sticky">
+      <p class="whose" id="whose"><span class="dot"></span><span class="who-txt"></span></p>
+      <div class="stage">
+        <div class="device" id="device">
+
+          <!-- ── 1) 보호자 설정 화면 ── -->
+          <div class="scr" id="scr-settings">
+            <div class="appbar tight">
+              <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.48.48 0 0 0-.59.22L2.74 8.87a.48.48 0 0 0 .12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.49.49 0 0 0-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/></svg>
+              <span class="brand" data-key="settings_title"></span>
+              <span class="grow"></span>
+              <svg class="act" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.39 5.39 0 0 1-4.4 2.26 5.4 5.4 0 0 1-5.4-5.4c0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+            </div>
+            <div class="screen">
+              <div class="gap-lg"></div>
+
+              <!-- G+S 버튼 (SolidActionButton tonal) — 애니메이션 1·2단계 대상 -->
+              <div class="action a-tonal" id="gs-btn">
+                <span class="badge"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span>
+                <div class="txt"><div class="lbl" data-key="gs_enable_button"></div>
+                  <div class="dsc" data-key="gs_enable_button_desc"></div></div>
+              </div>
+              <div class="gap-sp6"></div>
+
+              <p class="sec-label" data-key="settings_subscription_service"></p>
+              <div class="gap-md"></div>
+
+              <div class="sub-card">
+                <div class="sub-top">
+                  <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.11-.31.18-.65.18-1a2.996 2.996 0 0 0-5.5-1.65l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19a2 2 0 0 0 2 2h16c1.1 0 2-.9 2-2V8c0-1.11-.9-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z"/></svg>
+                  <span data-key="settings_current_membership"></span>
+                </div>
+                <p class="sub-title" data-key="settings_free_trial"></p>
+                <div class="sub-btn filled" data-key="subscription_subscribe"></div>
+                <div class="sub-btn outline" data-key="subscription_restore"></div>
+              </div>
+              <div class="gap-lg"></div>
+
+              <div class="row-card">
+                <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+                <span class="lbl" data-key="settings_notification"></span>
+                <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+              </div>
+              <div class="gap-sp6"></div>
+
+              <div class="terms">
+                <div class="head">
+                  <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+                  <span data-key="settings_terms_section"></span>
+                </div>
+                <div class="gap-lg"></div>
+                <div class="lnk"><span data-key="settings_privacy_policy"></span>
+                  <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></div>
+                <div class="gap-md"></div>
+                <div class="lnk"><span data-key="settings_terms"></span>
+                  <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></div>
+              </div>
+            </div>
+            <div class="bnav"><span class="tab"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>首页</span></span><span class="tab"><svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7a5 5 0 0 0 0 10h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4a5 5 0 0 0 0-10z"/></svg><span>连接</span></span><span class="tab"><svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg><span>通知</span></span><span class="tab on"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.48.48 0 0 0-.59.22L2.74 8.87a.48.48 0 0 0 .12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.49.49 0 0 0-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/></svg><span>设置</span></span></div>
+          </div>
+
+          <!-- ── 2) 안전 홈 (코드 발급 후) ── -->
+          <div class="scr" id="scr-safety" hidden>
+            <div class="appbar">
+              <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+              <span class="brand" data-key="app_name"></span>
+            </div>
+            <div class="screen">
+              <p class="hdr" data-key="subject_home_share_title"></p>
+              <div class="hero" id="hero">
+                <div class="circ c1"></div><div class="circ c2"></div>
+                <div class="top">
+                  <span class="kicker">SAFETY SHARE CODE</span>
+                  <span class="cbtn" id="btn-copy"><svg viewBox="0 0 24 24"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></svg></span>
+                  <span class="cbtn" id="btn-share"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 1 0-3-3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 1 0 0 6c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65a2.92 2.92 0 1 0 2.92-2.92z"/></svg></span>
+                </div>
+                <div class="code" id="code">---  ----</div>
+              </div>
+              <div class="gap-lg"></div>
+
+              <div class="state">
+                <div class="bar"></div>
+                <div class="in">
+                  <span class="badge"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                  <div><div class="t" data-check-title></div><div class="b" data-check-body></div></div>
+                </div>
+              </div>
+              <div class="gap-lg"></div>
+
+              <div class="action a-tonal">
+                <span class="badge"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></span>
+                <div class="txt"><div class="lbl" data-key="heartbeat_schedule_change"></div>
+                  <div class="dsc" data-daily-time></div></div>
+                <svg class="chev" viewBox="0 0 24 24" style="fill:#00685E"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+              </div>
+              <div class="gap-lg"></div>
+
+              <div class="action a-tonal">
+                <span class="badge"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg></span>
+                <div class="txt"><div class="lbl" data-key="subject_home_report_button"></div>
+                  <div class="dsc" data-key="subject_home_report_desc"></div></div>
+              </div>
+              <div class="gap-lg"></div>
+
+              <div class="action a-emg">
+                <span class="badge"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+                <div class="txt"><div class="lbl" data-key="subject_home_emergency_button"></div>
+                  <div class="dsc" data-key="subject_home_emergency_desc"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── 3) 보호 대상자 연결 (가족의 폰) ── -->
+          <div class="scr" id="scr-add" hidden>
+            <div class="appbar tight">
+              <svg class="back" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+              <span class="brand" data-key="add_subject_title"></span>
+            </div>
+            <div class="screen">
+              <div class="gap-sp6"></div>
+              <p class="add-h" data-key="add_subject_guide_title"></p>
+              <div class="gap-sm"></div>
+              <p class="add-sub" data-key="add_subject_guide_subtitle"></p>
+              <div class="gap-sp6"></div>
+
+              <p class="fld-label" data-key="add_subject_code_label"></p>
+              <div class="gap-sm"></div>
+              <div class="fld" id="fld-code"><span class="ph">123-4567</span></div>
+              <div class="gap-sm"></div>
+              <div class="fld-info">
+                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                <span data-key="add_subject_code_info"></span>
+              </div>
+              <div class="gap-sp6"></div>
+
+              <p class="fld-label" data-key="add_subject_alias_label"></p>
+              <div class="gap-sm"></div>
+              <div class="fld" id="fld-alias"><span class="ph" data-key="add_subject_alias_hint"></span></div>
+              <div class="gap-sp6"></div>
+
+              <p class="fld-label" data-key="add_subject_phone_label"></p>
+              <div class="gap-sm"></div>
+              <div class="fld" id="fld-phone"><span class="ph" data-key="add_subject_phone_hint"></span></div>
+              <div class="gap-sm"></div>
+              <div class="fld-info">
+                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                <span data-key="add_subject_phone_info"></span>
+              </div>
+              <div class="gap-sp6"></div>
+
+              <div class="connect" id="connect">
+                <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7a5 5 0 0 0 0 10h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4a5 5 0 0 0 0-10z"/></svg>
+                <span data-key="add_subject_connect"></span>
+              </div>
+            </div>
+            <div class="bnav"><span class="tab"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>首页</span></span><span class="tab on"><svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7a5 5 0 0 0 0 10h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4a5 5 0 0 0 0-10z"/></svg><span>连接</span></span><span class="tab"><svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg><span>通知</span></span><span class="tab"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.48.48 0 0 0-.59.22L2.74 8.87a.48.48 0 0 0 .12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.49.49 0 0 0-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/></svg><span>设置</span></span></div>
+          </div>
+
+        <!-- 안전 코드 생성 확인 다이얼로그. iOS는 주황 경고 카드가 더 붙고 확인
+             버튼 문구도 다르다 (_showEnableConfirm / _showEnableConfirmIOS).
+             iOS에서는 이 기능이 대상자 기능의 유일한 경로라 경고를 생략할 수 없다. -->
+        <div class="modal" id="modal" hidden>
+          <div class="dlg" data-pf="and">
+            <p class="dlg-title" data-key="gs_enable_dialog_title"></p>
+            <div class="dlg-body"><p data-key="gs_enable_dialog_body"></p></div>
+            <div class="dlg-actions">
+              <button class="dlg-btn" type="button" tabindex="-1" disabled
+                style="color:#3F4948" data-key="common_cancel"></button>
+              <button class="dlg-btn" type="button" tabindex="-1" disabled
+                style="color:#4355B9;font-weight:700" data-key="gs_enable_confirm"></button>
+            </div>
+          </div>
+          <div class="dlg" data-pf="ios" hidden>
+            <p class="dlg-title" data-key="gs_enable_dialog_title"></p>
+            <div class="dlg-body"><p data-key="gs_enable_dialog_body"></p></div>
+            <div class="ios-warn">
+              <p class="t" data-key="gs_enable_dialog_ios_warning_title"></p>
+              <p class="b" data-key="gs_enable_dialog_ios_warning_body"></p>
+            </div>
+            <div class="dlg-actions">
+              <button class="dlg-btn" type="button" tabindex="-1" disabled
+                style="color:#3F4948" data-key="common_cancel"></button>
+              <button class="dlg-btn" type="button" tabindex="-1" disabled
+                style="color:#E65100;font-weight:700" data-key="gs_enable_dialog_ios_confirm"></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 코드 복사 스낵바 -->
+        <div class="snack" id="snack" hidden data-key="subject_home_code_copied"></div>
+        </div>
+
+      </div>
+
+      <!-- 확인 창이 플랫폼별로 다른 단계에서만 쓰인다. 자리는 늘 잡아 둬(visibility)
+           단계를 넘길 때 아래 컨트롤이 튀지 않게 한다. -->
+      <div class="pf" id="pf">
+        <button class="pf-tab" type="button" data-pf="and" aria-pressed="true">Android</button>
+        <button class="pf-tab" type="button" data-pf="ios" aria-pressed="false">iPhone</button>
+      </div>
+
+      <div class="ctrl">
+        <button type="button" id="prev">
+          <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+          <span>上一步</span></button>
+        <button type="button" id="next">
+          <span>下一步</span>
+          <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
+        <button type="button" id="replay">
+          <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/></svg>
+          <span>从头开始</span></button>
+        <span class="count" id="count"></span>
+      </div>
+      <p class="caption">这是按真实应用界面复刻的。安全码、称呼和联系方式均为示例。</p>
+    </div>
+
+    <main>
+      <ol class="steps" id="steps"><li><button class="step" type="button"><span class="n">1</span><span><span class="h">在设置中点击[生成我的安全码]</span><span class="d">打开守护界面底部的<b>设置</b>标签，它就在最上方。你会从只守护家人，变成<b>同时也传送自己平安</b>的状态。</span></span></button></li>
+<li><button class="step" type="button"><span class="n">2</span><span><span class="h">在确认窗口点击启用</span><span class="d">启用后将发放安全码，请将您的"安全码"告知其他监护人。<br><b>iPhone 会多一条提示</b> — 需要点击按时到达的通知，或自己打开应用，平安信号才会发送。点下方的[iPhone]对比看看。</span></span></button></li>
+<li><button class="step" type="button"><span class="n">3</span><span><span class="h">安全码生成了</span><span class="d">原本空着的位置填上了<b>7 位安全码</b>。每台设备发放一个，即使删除应用再重装，回来的仍是同一个码。</span></span></button></li>
+<li><button class="step" type="button"><span class="n">4</span><span><span class="h">复制或分享安全码告诉家人</span><span class="d">左边的按钮是复制，右边是分享。复制后会提示<b>邀请码已复制</b>。可以用短信或聊天软件发送，只有 7 位，电话里念给对方也行。</span></span></button></li>
+<li><button class="step" type="button"><span class="n">5</span><span><span class="h">从这里开始是家人的手机</span><span class="d">收到码的家人在自己应用中打开<b>连接</b>标签，点击[<b>添加新的被守护者</b>]就会看到这个界面。填好下面三栏即可。</span></span></button></li>
+<li><button class="step" type="button"><span class="n">6</span><span><span class="h">输入收到的安全码</span><span class="d">专属码可在被守护者的应用中找到。 输入小写也会自动转成大写。<b>中间的连字符(-)请照样输入</b> — 3 位与 4 位之间必须有连字符才能识别。</span></span></button></li>
+<li><button class="step" type="button"><span class="n">7</span><span><span class="h">设定称呼</span><span class="d">这是家人界面上对这个人的称呼。与下面的联系方式不同，<b>不能留空。</b></span></span></button></li>
+<li><button class="step" type="button"><span class="n">8</span><span><span class="h">填写联系方式（可选）</span><span class="d">在家人的主界面上，这个人的卡片是这样的。事先填好号码，<b>[立即拨打电话]</b>按钮就会<b>直接拨号。</b>留空的话，每次都要自己去通讯录里找这个人。</span></span></button><div class="extra"><div class="inline-card"><p class="list-h" data-key="guardian_subject_list"></p>
+<div class="gap-md"></div>
+<div class="cards">
+
+<!-- 주의 카드 — 이 상태에서만 [전화]/[안전확인 완료]가 나온다
+     (showActionButtons: !isNormal). 배터리는 정상일 때만 보이므로 여기엔 없다. -->
+<div class="scard" style="background:rgba(255,249,196,.6);border-left-color:#F59E0B">
+  <div class="top">
+    <span class="nm" data-demo-alias></span>
+    <span class="badge" style="background:rgba(245,158,11,.12);color:#F59E0B"
+          data-key="guardian_status_caution"></span>
+  </div>
+  <div class="need">
+    <svg viewBox="0 0 24 24" style="fill:#F59E0B"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+    <span class="t" style="color:#F59E0B" data-key="guardian_safety_needed"></span>
+    <span class="cal"><svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 18H5V9h14v12z"/></svg><b>30</b></span>
+  </div>
+  <div class="btn call" style="background:#F59E0B">
+    <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1A17 17 0 0 1 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    <span data-key="guardian_call_now"></span>
+  </div>
+  <div class="btn safe" style="border-color:rgba(245,158,11,.3);color:#F59E0B"
+       data-key="guardian_confirm_safety"></div>
+  <p class="last" data-last-check></p>
+</div>
+
+<!-- 정상 카드 — 배터리 + 활동량 라벨 + 7일 걸음수 막대. 오늘 막대만 주황(#FB8C00),
+     최댓값 막대 위에만 걸음수 라벨이 붙는다(_StepsBarChart). -->
+<div class="scard" style="background:rgba(232,245,233,.5);border-left-color:#00685E">
+  <div class="top">
+    <span class="who">
+      <span class="nm" data-demo-alias2></span>
+      <svg class="batt" viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.34C7 21.4 7.6 22 8.33 22h7.34c.73 0 1.33-.6 1.33-1.33V5.33C17 4.6 16.4 4 15.67 4zM16 8H8V6h8v2z"/></svg>
+      <span class="battp">85%</span>
+    </span>
+    <span class="badge" style="background:rgba(0,104,94,.12);color:#00685E"
+          data-key="guardian_status_confirmed"></span>
+  </div>
+  <div class="actrow">
+    <span class="act" data-activity></span>
+    <span class="cal"><svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 18H5V9h14v12z"/></svg><b>30</b></span>
+  </div>
+  <div class="chart">
+    <span class="ylab" data-key="guardian_chart_y_axis_steps"></span>
+    <div class="plot">
+      <span class="bar"><b></b><i style="height:51%"></i></span>
+      <span class="bar"><b></b><i style="height:82%"></i></span>
+      <span class="bar"><b></b><i style="height:69%"></i></span>
+      <span class="bar"><b>6,240</b><i style="height:100%"></i></span>
+      <span class="bar"><b></b><i style="height:77%"></i></span>
+      <span class="bar"><b></b><i style="height:90%"></i></span>
+      <span class="bar"><b></b><i class="today" style="height:66%"></i></span>
+    </div>
+    <span class="xlab" data-key="guardian_chart_x_axis_last_7_days"></span>
+  </div>
+  <p class="last" data-last-check2></p>
+</div>
+
+</div>
+<div class="dots"><i class="on"></i><i></i></div>
+<div class="bnav"><span class="tab on"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>首页</span></span><span class="tab"><svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7a5 5 0 0 0 0 10h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4a5 5 0 0 0 0-10z"/></svg><span>连接</span></span><span class="tab"><svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg><span>通知</span></span><span class="tab"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.48.48 0 0 0-.59.22L2.74 8.87a.48.48 0 0 0 .12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.49.49 0 0 0-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/></svg><span>设置</span></span></div>
+</div><p class="d">打过电话、亲自确认平安后，请点击<b>[确认安全]</b>。警告解除并恢复为正常显示，<b>一同守护的其他守护人</b>也会收到确认通知。</p></div></li>
+<li><button class="step" type="button"><span class="n">9</span><span><span class="h">点击[连接]就完成了</span><span class="d">安全码和称呼填好后按钮就会亮起。点下去即完成连接，上面看到的卡片会出现在家人的主界面上。</span></span></button></li></ol>
+      <p class="note">连接之后就不用再做什么了。Anbu 会<strong>每天在设定时间自动</strong>发送平安信号，若过了时间仍无信号就通知家人。若信号偏晚或步数看起来是空的，请查看<a href="faq.html">常见问题</a>。</p>
+    </main>
+  </div>
+</div>
+
+<footer><div class="wrap">
+  <a href="/zh-CN/">首页</a>
+  <a href="/zh-CN/faq.html">常见问题</a>
+  <a href="/zh-CN/privacy-policy.html">隐私政策</a>
+  <a href="/zh-CN/terms-of-service.html">服务条款</a>
+  <span class="copy">© 2026 Averic Lab. All rights reserved.</span>
+</div></footer>
+
+<script>
+// 앱 번역 파일에서 추출한 실제 문구 (extract_strings.py)
+var S = {"stability_battery_warning_short": "需要解除电池使用限制", "gs_activity_permission_denied_warning": "计步权限已被拒绝。点击此处授予权限。", "location_permission_warning": "紧急求助时位置不会被发送。点按以允许。", "permission_hibernation_title": "请关闭\"自动撤销权限\"", "permission_hibernation_highlight": "自动撤销权限", "permission_hibernation_message": "Android会自动撤销长时间未使用应用的权限。Anbu平时几乎不会被打开,如果此功能开启,一段时间后权限会消失,导致安康信号传输中断。\n\n点击下方[打开设置]后,会直接显示相应的开关页面。请关闭该开关。\n\n※ 显示文字可能因设备制造商而略有不同。", "permission_hibernation_go_to_settings": "打开设置", "common_later": "稍后", "app_name": "Anbu", "subject_home_share_title": "请分享您的安全码", "subject_home_check_title_last": "上次问安", "subject_home_check_body_reported": "@time 已正常报告", "heartbeat_schedule_change": "更改平安确认时间", "heartbeat_daily_time": "每天 @time", "subject_home_report_button": "立即报告安全", "subject_home_report_desc": "让守护者知道您一切安好", "subject_home_emergency_button": "我需要帮助", "subject_home_emergency_desc": "向监护人发送紧急警报", "notifications_level_caution": "注意", "noti_caution_missing_body": "今天预定的问安尚未收到。请亲自确认。", "notifications_view_location": "🗺️ 查看位置", "stability_battery_dialog_title": "解除电池使用限制", "stability_battery_dialog_message": "当手机进入省电模式时,发送给监护人的安康信号可能延迟或丢失。\n\n点击下方[打开设置]后,请将\"电池\"设置为\"无限制\"。这样可以确保每天准时稳定地传输安康信号。\n\n※ 显示文字可能因设备制造商而略有不同。", "gs_activity_permission_settings_title": "需要权限设置", "gs_activity_permission_settings_body": "请在应用设置中允许身体活动（运动与健身）权限。", "gs_activity_permission_settings_go": "前往设置", "location_permission_settings_title": "需要位置权限设置", "location_permission_settings_body_android": "依次选择\"权限\"→\"位置\",然后选择\"仅在使用该应用时允许\"。", "location_permission_settings_body_ios": "找到并选择\"Anbu\",然后在\"位置\"中选择\"使用App期间\"。", "common_cancel": "取消", "settings_title": "设置", "gs_enable_button": "生成我的安全码", "gs_enable_button_desc": "让家人也能确认您的安好", "settings_subscription_service": "订阅与服务", "settings_current_membership": "当前会员", "settings_free_trial": "免费试用中", "subscription_subscribe": "订阅", "subscription_restore": "恢复购买", "settings_notification": "通知设置", "settings_terms_section": "条款", "settings_privacy_policy": "隐私政策", "settings_terms": "使用条款", "gs_enable_dialog_title": "生成我的安全码", "gs_enable_dialog_body": "启用后将发放安全码，请将您的\"安全码\"告知其他监护人。", "gs_enable_confirm": "生成", "gs_enable_dialog_ios_warning_title": "⚠ 安否确认发送方式说明", "gs_enable_dialog_ios_warning_body": "每天会在固定时间显示\"安否推送通知\"。您必须点按通知或在该时间前后亲自打开应用，安否信号才会发送。如果不打开应用，监护人可能会收到未接收警告。", "gs_enable_dialog_ios_confirm": "我已了解，启用", "subject_home_code_copied": "邀请码已复制", "add_subject_title": "连接被守护者", "add_subject_button": "添加新的被守护者", "add_subject_guide_title": "请输入被守护者的专属码和别名。", "add_subject_guide_subtitle": "连接被守护者的应用后，可以实时查看其健康状态和活动情况。", "add_subject_code_label": "专属码（7位）", "add_subject_code_info": "专属码可在被守护者的应用中找到。", "add_subject_alias_label": "被守护者别名", "add_subject_alias_hint": "例如：妈妈、爸爸", "add_subject_phone_label": "联系方式", "add_subject_phone_hint": "13800138000", "add_subject_phone_info": "非必填项，填写后点击通话按钮可直接拨打。", "add_subject_connect": "连接", "guardian_today_summary": "今日问安总结", "guardian_checking_subjects": "正在关注\n@count 位被守护者的平安。", "guardian_subject_list": "被守护者列表", "guardian_status_caution": "注意", "guardian_status_confirmed": "✅ 安全", "guardian_safety_needed": "需要确认安全", "guardian_call_now": "立即拨打电话", "guardian_confirm_safety": "确认安全", "guardian_last_check_hours": "上次确认：@hours 小时前", "guardian_activity_prefix": "活动量", "guardian_activity_active": "活跃", "guardian_chart_y_axis_steps": "步数", "guardian_chart_x_axis_last_7_days": "最近7天", "nav_home": "首页", "nav_connection": "连接", "nav_notification": "通知", "nav_settings": "设置"};
+var WHO = ["我的手机 — 生成码的一方", "家人的手机 — 守护我的一方"];          // 어느 폰인지 라벨 2개
+var DEMO = {"code": "K7M-4PXR", "alias": "妈妈", "alias2": "爸爸", "phone": "138 0013 8000"};        // 목업에 채워 넣는 예시값 (코드·별칭·연락처)
+
+document.querySelectorAll('[data-key]').forEach(function(el){
+  el.textContent = S[el.dataset.key] || '';
+});
+// @time 자리표시자는 템플릿이 채운다 (extract_strings.py의 PLACEHOLDER_OK)
+// 날짜는 **오늘**이어야 한다 — 이 화면은 안전 코드를 방금 만든 직후에 나오고,
+// enableSubjectFeature()가 그때 첫 안부를 바로 보내므로 어제 날짜면 사실과 다르다.
+// 고정값으로 박으면 시간이 지나 저절로 틀려지기도 한다.
+(function(){
+  var d = new Date(), p = function(n){ return (n < 10 ? '0' : '') + n; };
+  var today = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+  document.querySelector('[data-check-title]').textContent =
+    S.subject_home_check_title_last + ' : ' + today;
+})();
+document.querySelector('[data-check-body]').textContent =
+  S.subject_home_check_body_reported.replace('@time','18:00');
+document.querySelector('[data-daily-time]').textContent =
+  S.heartbeat_daily_time.replace('@time','18:00');
+// 8단계 설명에 끼워 넣은 대상자 카드 — 첫 카드가 주의 상태다
+document.querySelector('[data-last-check]').textContent =
+  S.guardian_last_check_hours.replace('@hours','26');
+// 두 번째 카드는 정상 — activityLabelFor의 "활동량 : 활동적" 형태를 그대로 쓴다
+document.querySelector('[data-demo-alias2]').textContent = DEMO.alias2;
+document.querySelector('[data-activity]').textContent =
+  S.guardian_activity_prefix + ' : ' + S.guardian_activity_active;
+document.querySelector('[data-last-check2]').textContent =
+  S.guardian_last_check_hours.replace('@hours','3');
+
+document.querySelector('[data-demo-alias]').textContent = DEMO.alias;
+
+var $ = function(id){ return document.getElementById(id); };
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+// 각 단계가 무엇을 보여주는지. render()가 이 표만 보고 화면 전체를 다시 그린다
+// — 단계를 누적 변경하지 않으므로 이전/다음/건너뛰기가 전부 같은 경로를 탄다.
+var STEPS = [
+  {scr:'settings', tap:'gs-btn',  who:0},
+  {scr:'settings', tap:'gs-btn',  who:0, dialog:true},
+  {scr:'safety',   tap:null,      who:0, code:true},
+  {scr:'safety',   tap:'btn-copy', who:0, code:true, round:true, snack:true},
+  {scr:'add',      tap:null,      who:1},
+  {scr:'add',      tap:'fld-code',  who:1, fill:1},
+  {scr:'add',      tap:'fld-alias', who:1, fill:2},
+  {scr:'add',      tap:'fld-phone', who:1, fill:3},
+  {scr:'add',      tap:'connect',   who:1, fill:3, ready:true, ind:true}
+];
+
+var FILLS = [
+  {el:'fld-code',  val:function(){ return DEMO.code; }},
+  {el:'fld-alias', val:function(){ return DEMO.alias; }},
+  {el:'fld-phone', val:function(){ return DEMO.phone; }}
+];
+
+var idx = 0, timer = null, typer = null, playing = !reduce.matches, platform = 'and';
+var stepBtns = Array.prototype.slice.call(document.querySelectorAll('.step'));
+
+function setField(i, text, caret){
+  var el = $(FILLS[i].el);
+  el.innerHTML = '';
+  if (text === null) {
+    var ph = document.createElement('span');
+    ph.className = 'ph';
+    ph.textContent = FILLS[i].el === 'fld-code' ? '123-4567'
+      : (FILLS[i].el === 'fld-alias' ? S.add_subject_alias_hint : S.add_subject_phone_hint);
+    el.append(ph);
+  } else {
+    el.append(document.createTextNode(text));
+    if (caret) { var c = document.createElement('i'); c.className = 'caret'; el.append(c); }
+  }
+}
+
+function render(i){
+  if (typer) { clearInterval(typer); typer = null; }
+  var s = STEPS[i];
+
+  SCREENS.forEach(function(n){
+    $('scr-' + n).hidden = (n !== s.scr);
+  });
+
+  $('whose').className = 'whose' + (s.who ? ' family' : '');
+  $('whose').querySelector('.who-txt').textContent = WHO[s.who];
+
+  $('modal').hidden = !s.dialog;
+  $('pf').classList.toggle('on', !!s.dialog);
+  document.querySelectorAll('.modal .dlg').forEach(function(d){
+    d.hidden = d.dataset.pf !== platform;
+  });
+  $('snack').hidden = !s.snack;
+  $('code').textContent = s.code ? DEMO.code : '---  ----';
+  $('code').style.color = s.code ? '#fff' : 'rgba(255,255,255,.35)';
+  $('connect').classList.toggle('ready', !!s.ready);
+
+  var fill = s.fill || 0;
+  for (var f = 0; f < FILLS.length; f++) {
+    setField(f, f < fill ? FILLS[f].val() : null, false);
+  }
+  // 이번 단계에서 채워지는 칸만 한 글자씩 — 앱에서 직접 입력하는 부분이다
+  if (fill > 0 && s.tap === FILLS[fill - 1].el) {
+    var target = FILLS[fill - 1].val();
+    if (reduce.matches) { setField(fill - 1, target, false); }
+    else {
+      var n = 0;
+      setField(fill - 1, '', true);
+      typer = setInterval(function(){
+        n++;
+        setField(fill - 1, target.slice(0, n), n < target.length);
+        if (n >= target.length) { clearInterval(typer); typer = null; }
+      }, 110);
+    }
+  }
+
+  document.querySelectorAll('.tap').forEach(function(el){
+    el.classList.remove('tap','round','ind');
+  });
+  if (s.tap) {
+    var t = $(s.tap);
+    t.classList.add('tap');
+    if (s.round) t.classList.add('round');
+    if (s.ind) t.classList.add('ind');
+  }
+  document.querySelectorAll('.fld').forEach(function(el){ el.classList.remove('on'); });
+  if (s.tap && s.tap.indexOf('fld-') === 0) $(s.tap).classList.add('on');
+
+  stepBtns.forEach(function(b, n){
+    if (n === i) b.setAttribute('aria-current', 'step');
+    else b.removeAttribute('aria-current');
+  });
+  $('count').textContent = (i + 1) + ' / ' + STEPS.length;
+  $('prev').disabled = (i === 0);
+  $('next').disabled = (i === STEPS.length - 1);
+}
+
+function go(i, manual){
+  idx = Math.max(0, Math.min(STEPS.length - 1, i));
+  if (manual) stop();
+  render(idx);
+  if (playing) schedule();
+}
+
+function schedule(){
+  clearTimeout(timer);
+  if (idx >= STEPS.length - 1) { playing = false; return; }
+  // 입력 단계는 타이핑이 끝날 시간을 준다
+  var s = STEPS[idx];
+  var ms = (s.fill && s.tap && s.tap.indexOf('fld-') === 0) ? 3400 : 2600;
+  timer = setTimeout(function(){ go(idx + 1, false); }, ms);
+}
+
+function stop(){ playing = false; clearTimeout(timer); }
+
+$('pf').addEventListener('click', function(e){
+  var t = e.target.closest('.pf-tab');
+  if (!t) return;
+  platform = t.dataset.pf;
+  $('pf').querySelectorAll('.pf-tab').forEach(function(x){
+    x.setAttribute('aria-pressed', String(x === t));
+  });
+  stop();          // 창을 비교해 보는 중이니 자동으로 넘어가지 않는다
+  render(idx);
+});
+
+$('prev').addEventListener('click', function(){ go(idx - 1, true); });
+$('next').addEventListener('click', function(){ go(idx + 1, true); });
+$('replay').addEventListener('click', function(){
+  playing = !reduce.matches;
+  go(0, false);
+});
+stepBtns.forEach(function(b, n){
+  b.addEventListener('click', function(){
+    go(n, true);
+    if (window.matchMedia('(max-width:920px)').matches) {
+      document.querySelector('.stage').scrollIntoView(
+        {behavior: reduce.matches ? 'auto' : 'smooth', block: 'center'});
+    }
+  });
+});
+
+// 폰 목업을 창 높이에 맞춰 축소한다.
+//
+// 안 하면 목업 기둥(폰 ~950 + 라벨·버튼 ~150)이 브라우저 창보다 높아져 두 가지가
+// 깨진다: (1) sticky로 고정돼도 폰 아랫부분이 화면 밖이라 하단 카드·버튼이 안 보이고,
+// (2) 기둥이 높을수록 고정이 일찍 풀려 뒷 단계를 읽을 때 폰이 위로 사라진다.
+// 실제로 10단계(대시보드 카드)에서 이 문제가 났다.
+//
+// 높이는 **가장 긴 화면 기준으로 한 번만** 재서 고정한다 — 단계마다 폰 높이가
+// 달라(설정 789 / 안전홈 954) 그때그때 맞추면 아래 버튼들이 위아래로 튄다.
+var SCREENS = ['settings','safety','add'];
+
+function fitStage(){
+  var stage = document.querySelector('.stage'), device = $('device');
+  if (!window.matchMedia('(min-width:921px)').matches) {   // 좁은 화면은 원래 크기로 흐른다
+    device.style.transform = 'none';
+    stage.style.height = '';
+    return;
+  }
+  var cur = SCREENS.filter(function(n){ return !$('scr-' + n).hidden; })[0] || SCREENS[0];
+  device.style.transform = 'none';
+  stage.style.height = '';
+
+  var maxH = 0;
+  SCREENS.forEach(function(n){
+    SCREENS.forEach(function(m){ $('scr-' + m).hidden = (m !== n); });
+    maxH = Math.max(maxH, device.offsetHeight);
+  });
+  SCREENS.forEach(function(m){ $('scr-' + m).hidden = (m !== cur); });
+
+  // 40 = 위아래 여백, 168 = 폰 위 라벨 + 아래 플랫폼탭·컨트롤·캡션
+  var avail = window.innerHeight - 40 - 168;
+  var scale = Math.max(0.6, Math.min(1, avail / maxH));
+  device.style.transform = scale < 1 ? 'scale(' + scale + ')' : 'none';
+  stage.style.height = Math.round(maxH * scale) + 'px';
+}
+
+fitStage();
+var fitTimer;
+window.addEventListener('resize', function(){
+  clearTimeout(fitTimer);
+  fitTimer = setTimeout(fitStage, 150);
+});
+
+// 화면 밖에서 혼자 돌지 않도록 — 보이지 않으면 멈춘다
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) { clearTimeout(timer); }
+      else if (playing) { schedule(); }
+    });
+  }, {threshold: 0.25}).observe(document.querySelector('.stage'));
+}
+
+go(0, false);
+</script>
+</body>
+</html>

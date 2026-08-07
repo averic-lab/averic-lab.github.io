@@ -70,7 +70,8 @@
   "footer_copyright": "© 2026 Averic Lab. 保留所有权利。",
   "footer_privacy": "隐私政策",
   "footer_terms": "服务条款",
-  "nav_faq": "常见问题"
+  "nav_faq": "常见问题",
+  "nav_guide": "使用说明"
  },
  "fr": {
   "title": "Anbu — Vous n'êtes jamais seul · Averic Lab",
@@ -143,7 +144,8 @@
   "footer_copyright": "© 2026 Averic Lab. Tous droits réservés.",
   "footer_privacy": "Politique de confidentialité",
   "footer_terms": "Conditions d'utilisation",
-  "nav_faq": "FAQ"
+  "nav_faq": "FAQ",
+  "nav_guide": "Mode d'emploi"
  },
  "de": {
   "title": "Anbu — Du bist nie allein · Averic Lab",
@@ -216,7 +218,8 @@
   "footer_copyright": "© 2026 Averic Lab. Alle Rechte vorbehalten.",
   "footer_privacy": "Datenschutzerklärung",
   "footer_terms": "Nutzungsbedingungen",
-  "nav_faq": "FAQ"
+  "nav_faq": "FAQ",
+  "nav_guide": "Anleitung"
  },
  "pl": {
   "title": "Anbu — Nigdy nie jesteś sam · Averic Lab",
@@ -289,7 +292,8 @@
   "footer_copyright": "© 2026 Averic Lab. Wszelkie prawa zastrzeżone.",
   "footer_privacy": "Polityka prywatności",
   "footer_terms": "Warunki korzystania z usługi",
-  "nav_faq": "FAQ"
+  "nav_faq": "FAQ",
+  "nav_guide": "Jak to działa"
  },
  "zh-TW": {
   "title": "Anbu — 你從不孤單 · Averic Lab",
@@ -362,7 +366,8 @@
   "footer_copyright": "© 2026 Averic Lab. 版權所有。",
   "footer_privacy": "隱私政策",
   "footer_terms": "服務條款",
-  "nav_faq": "常見問題"
+  "nav_faq": "常見問題",
+  "nav_guide": "使用說明"
  },
  "es": {
   "title": "Anbu — Nunca estás solo · Averic Lab",
@@ -435,7 +440,8 @@
   "footer_copyright": "© 2026 Averic Lab. Todos los derechos reservados.",
   "footer_privacy": "Política de privacidad",
   "footer_terms": "Condiciones de uso",
-  "nav_faq": "FAQ"
+  "nav_faq": "FAQ",
+  "nav_guide": "Cómo se usa"
  },
  "ja": {
   "title": "Anbu — あなたはひとりじゃない · Averic Lab",
@@ -508,7 +514,8 @@
   "footer_copyright": "© 2026 Averic Lab. All rights reserved.",
   "footer_privacy": "プライバシーポリシー",
   "footer_terms": "利用規約",
-  "nav_faq": "よくある質問"
+  "nav_faq": "よくある質問",
+  "nav_guide": "使い方"
  },
  "nl": {
   "title": "Anbu — Je bent nooit alleen · Averic Lab",
@@ -581,7 +588,8 @@
   "footer_copyright": "© 2026 Averic Lab. Alle rechten voorbehouden.",
   "footer_privacy": "Privacybeleid",
   "footer_terms": "Algemene voorwaarden",
-  "nav_faq": "FAQ"
+  "nav_faq": "FAQ",
+  "nav_guide": "Zo werkt het"
  },
  "it": {
   "title": "Anbu — Non sei mai solo · Averic Lab",
@@ -654,7 +662,8 @@
   "footer_copyright": "© 2026 Averic Lab. Tutti i diritti riservati.",
   "footer_privacy": "Informativa sulla Privacy",
   "footer_terms": "Termini di Servizio",
-  "nav_faq": "FAQ"
+  "nav_faq": "FAQ",
+  "nav_guide": "Come si usa"
  },
  "pt-BR": {
   "title": "Anbu — Você nunca está sozinho · Averic Lab",
@@ -727,7 +736,8 @@
   "footer_copyright": "© 2026 Averic Lab. Todos os direitos reservados.",
   "footer_privacy": "Política de Privacidade",
   "footer_terms": "Termos de Serviço",
-  "nav_faq": "FAQ"
+  "nav_faq": "FAQ",
+  "nav_guide": "Como usar"
  },
  "tr": {
   "title": "Anbu — Hiçbir zaman yalnız değilsin · Averic Lab",
@@ -800,7 +810,8 @@
   "footer_copyright": "© 2026 Averic Lab. Tüm hakları saklıdır.",
   "footer_privacy": "Gizlilik Politikası",
   "footer_terms": "Kullanım Koşulları",
-  "nav_faq": "SSS"
+  "nav_faq": "SSS",
+  "nav_guide": "Nasıl kullanılır"
  },
  "ru": {
   "title": "Anbu — Ты никогда не одинок · Averic Lab",
@@ -873,7 +884,8 @@
   "footer_copyright": "© 2026 Averic Lab. Все права защищены.",
   "footer_privacy": "Политика конфиденциальности",
   "footer_terms": "Условия использования",
-  "nav_faq": "Вопросы"
+  "nav_faq": "Вопросы",
+  "nav_guide": "Как пользоваться"
  },
  "hi": {
   "title": "Anbu — आप कभी अकेले नहीं · Averic Lab",
@@ -946,7 +958,8 @@
   "footer_copyright": "© 2026 Averic Lab. सर्वाधिकार सुरक्षित।",
   "footer_privacy": "गोपनीयता नीति",
   "footer_terms": "सेवा की शर्तें",
-  "nav_faq": "सामान्य प्रश्न"
+  "nav_faq": "सामान्य प्रश्न",
+  "nav_guide": "कैसे इस्तेमाल करें"
  },
  "vi": {
   "title": "Anbu — Bạn không bao giờ đơn độc · Averic Lab",
@@ -1019,7 +1032,8 @@
   "footer_copyright": "© 2026 Averic Lab. Bảo lưu mọi quyền.",
   "footer_privacy": "Chính sách quyền riêng tư",
   "footer_terms": "Điều khoản dịch vụ",
-  "nav_faq": "Hỏi đáp"
+  "nav_faq": "Hỏi đáp",
+  "nav_guide": "Hướng dẫn"
  },
  "id": {
   "title": "Anbu — Kamu tidak pernah sendiri · Averic Lab",
@@ -1092,7 +1106,8 @@
   "footer_copyright": "© 2026 Averic Lab. Semua hak dilindungi.",
   "footer_privacy": "Kebijakan Privasi",
   "footer_terms": "Ketentuan Layanan",
-  "nav_faq": "FAQ"
+  "nav_faq": "FAQ",
+  "nav_guide": "Cara pakai"
  },
  "th": {
   "title": "Anbu — คุณไม่เคยอยู่คนเดียว · Averic Lab",
@@ -1165,7 +1180,8 @@
   "footer_copyright": "© 2026 Averic Lab. สงวนลิขสิทธิ์ทุกประการ",
   "footer_privacy": "นโยบายความเป็นส่วนตัว",
   "footer_terms": "ข้อกำหนดการใช้งาน",
-  "nav_faq": "คำถามที่พบบ่อย"
+  "nav_faq": "คำถามที่พบบ่อย",
+  "nav_guide": "วิธีใช้งาน"
  },
  "sv": {
   "title": "Anbu — Du är aldrig ensam · Averic Lab",
@@ -1238,7 +1254,8 @@
   "footer_copyright": "© 2026 Averic Lab. Med ensamrätt.",
   "footer_privacy": "Integritetspolicy",
   "footer_terms": "Användarvillkor",
-  "nav_faq": "Frågor"
+  "nav_faq": "Frågor",
+  "nav_guide": "Så fungerar det"
  },
  "ar": {
   "title": "Anbu — لستَ وحدك أبدًا · Averic Lab",
@@ -1311,6 +1328,7 @@
   "footer_copyright": "© 2026 Averic Lab. جميع الحقوق محفوظة.",
   "footer_privacy": "سياسة الخصوصية",
   "footer_terms": "شروط الخدمة",
-  "nav_faq": "الأسئلة الشائعة"
+  "nav_faq": "الأسئلة الشائعة",
+  "nav_guide": "طريقة الاستخدام"
  }
 }

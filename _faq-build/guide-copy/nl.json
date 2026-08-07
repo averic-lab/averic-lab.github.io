@@ -1,0 +1,66 @@
+{
+  "lang_name": "Nederlands",
+  "meta_title": "Verbinden met familie via de veiligheidscode — Anbu",
+  "meta_desc": "Stap voor stap langs de echte app-schermen: een veiligheidscode maken, doorgeven en de familie verbindt zich ermee.",
+  "page_eyebrow": "Zo werkt het",
+  "page_title": "Verbinden met familie via de veiligheidscode",
+  "page_lead": "Anbu verbindt mensen met één <strong>veiligheidscode</strong>. U maakt de code op uw eigen telefoon en geeft hem door; uw familie voert hem in op de hunne. Zo komt de verbinding tot stand zonder dat een naam of telefoonnummer ooit op onze server belandt.",
+  "phone_me": "Mijn telefoon — hier ontstaat de code",
+  "phone_family": "Telefoon van de familie — wie op mij let",
+  "demo": {
+    "code": "K7M-4PXR",
+    "alias": "Mama",
+    "alias2": "Papa",
+    "phone": "06 12345678"
+  },
+  "ctrl_prev": "Vorige",
+  "ctrl_next": "Volgende",
+  "ctrl_replay": "Vanaf het begin",
+  "mockup_caption": "Dit zijn de echte app-schermen, nagebouwd. Code, naam en telefoonnummer zijn voorbeeldwaarden.",
+  "steps": [
+    {
+      "h": "Tik in de instellingen op [@gs_enable_button]",
+      "d": "Open onderaan het tabblad <b>@nav_settings</b> — de knop staat helemaal bovenaan. U gaat van alleen op de familie letten naar <b>ook zelf een signaal sturen</b>."
+    },
+    {
+      "h": "Bevestig de activering",
+      "d": "@gs_enable_dialog_body<br><b>Op de iPhone komt er één mededeling bij</b> — het signaal vertrekt alleen als u de melding op het ingestelde tijdstip aantikt of de app zelf opent. Tik hieronder op [iPhone] om te vergelijken."
+    },
+    {
+      "h": "De veiligheidscode verschijnt",
+      "d": "De lege plek vult zich met een <b>code van 7 tekens</b>. Per apparaat wordt er één uitgegeven, en na verwijderen en opnieuw installeren komt dezelfde code terug."
+    },
+    {
+      "h": "Kopieer of deel de code met uw familie",
+      "d": "De linkerknop kopieert, de rechter deelt. Bij kopiëren verschijnt <b>@subject_home_code_copied</b>. Stuur hem per bericht — het zijn 7 tekens, u kunt ze ook door de telefoon voorlezen."
+    },
+    {
+      "h": "Vanaf hier is dit de telefoon van de familie",
+      "d": "Wie de code heeft gekregen, opent in de eigen app het tabblad <b>@nav_connection</b> en tikt op [<b>@add_subject_button</b>]. Er zijn drie velden in te vullen."
+    },
+    {
+      "h": "Voer de ontvangen code in",
+      "d": "@add_subject_code_info Kleine letters worden hoofdletters. <b>Neem het koppelteken (-) in het midden mee</b> — zonder dat teken tussen de 3 en de 4 tekens wordt de code niet herkend."
+    },
+    {
+      "h": "Kies een naam",
+      "d": "Zo heet deze persoon op het scherm van de familie. Anders dan het nummer hieronder <b>mag dit veld niet leeg blijven.</b>"
+    },
+    {
+      "h": "Vul een telefoonnummer in (optioneel)",
+      "d": "Zo ziet de kaart van deze persoon eruit op het beginscherm van de familie. Met een opgeslagen nummer <b>belt</b> de knop <b>[@guardian_call_now]</b> <b>meteen.</b> Blijft het leeg, dan moet men deze persoon telkens in de contacten opzoeken.",
+      "illus": "cards",
+      "d_after": "Hebt u gebeld en zelf vastgesteld dat alles in orde is, tik dan op <b>[@guardian_confirm_safety]</b>. De waarschuwing vervalt, de weergave staat weer op normaal en <b>de andere meekijkende naasten</b> krijgen een bevestiging."
+    },
+    {
+      "h": "Tik op [@add_subject_connect] en klaar",
+      "d": "De knop kleurt zodra code en naam zijn ingevuld. Eén tik verbindt, en de kaart van hierboven verschijnt op het beginscherm van de familie."
+    }
+  ],
+  "note": "Na het verbinden hoeft u niets meer te doen. Anbu stuurt het signaal <strong>vanzelf, elke dag op het ingestelde tijdstip</strong>, en waarschuwt de familie als dat tijdstip zonder signaal voorbijgaat. Komt het signaal laat of blijven de stappen leeg, kijk dan bij de <a href=\"faq.html\">veelgestelde vragen</a>.",
+  "footer_home": "Home",
+  "footer_faq": "Veelgestelde vragen",
+  "footer_privacy": "Privacybeleid",
+  "footer_terms": "Gebruiksvoorwaarden",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

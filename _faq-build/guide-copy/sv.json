@@ -1,0 +1,66 @@
+{
+  "lang_name": "Svenska",
+  "meta_title": "Koppla ihop familjen med säkerhetskoden — Anbu",
+  "meta_desc": "Steg för steg genom appens verkliga skärmar: skapa en säkerhetskod, dela den och låt familjen ansluta med den.",
+  "page_eyebrow": "Så fungerar det",
+  "page_title": "Koppla ihop familjen med säkerhetskoden",
+  "page_lead": "Anbu kopplar ihop människor med en enda <strong>säkerhetskod</strong>. Du skapar koden i din egen telefon och lämnar den vidare; familjen skriver in den i sin. Det är därför kopplingen uppstår utan att något namn eller telefonnummer någonsin når vår server.",
+  "phone_me": "Min telefon — där koden skapas",
+  "phone_family": "Familjens telefon — de som ser efter mig",
+  "demo": {
+    "code": "K7M-4PXR",
+    "alias": "Mamma",
+    "alias2": "Pappa",
+    "phone": "070-123 45 67"
+  },
+  "ctrl_prev": "Tillbaka",
+  "ctrl_next": "Nästa",
+  "ctrl_replay": "Från början",
+  "mockup_caption": "Det här är appens verkliga skärmar, återskapade. Kod, namn och telefonnummer är exempelvärden.",
+  "steps": [
+    {
+      "h": "Tryck på [@gs_enable_button] i inställningarna",
+      "d": "Öppna fliken <b>@nav_settings</b> längst ned — knappen ligger allra överst. Du går från att bara se efter familjen till att <b>även skicka ditt eget livstecken</b>."
+    },
+    {
+      "h": "Bekräfta aktiveringen",
+      "d": "@gs_enable_dialog_body<br><b>På iPhone tillkommer en upplysning</b> — signalen skickas bara när du trycker på aviseringen som kommer vid den inställda tiden, eller öppnar appen själv. Tryck på [iPhone] nedan för att jämföra."
+    },
+    {
+      "h": "Säkerhetskoden skapas",
+      "d": "Den tomma platsen fylls med en <b>kod på 7 tecken</b>. En kod per enhet, och samma kod kommer tillbaka även om du avinstallerar och installerar om appen."
+    },
+    {
+      "h": "Kopiera eller dela koden med familjen",
+      "d": "Vänstra knappen kopierar, den högra delar. Vid kopiering visas <b>@subject_home_code_copied</b>. Skicka den som meddelande — sju tecken går lika bra att läsa upp i telefon."
+    },
+    {
+      "h": "Härifrån är det familjens telefon",
+      "d": "Den som fått koden öppnar fliken <b>@nav_connection</b> i sin egen app och trycker på [<b>@add_subject_button</b>]. Tre fält ska fyllas i."
+    },
+    {
+      "h": "Skriv in koden du fått",
+      "d": "@add_subject_code_info Små bokstäver blir versaler. <b>Behåll bindestrecket (-) i mitten</b> — utan det mellan de 3 och de 4 tecknen känns koden inte igen."
+    },
+    {
+      "h": "Välj ett namn",
+      "d": "Så kommer personen att heta på familjens skärm. Till skillnad från telefonnumret nedanför <b>får fältet inte lämnas tomt.</b>"
+    },
+    {
+      "h": "Fyll i ett telefonnummer (valfritt)",
+      "d": "Så här ser personens kort ut på familjens startskärm. Med numret sparat <b>ringer</b> knappen <b>[@guardian_call_now]</b> <b>direkt.</b> Lämnas det tomt måste man leta upp personen bland kontakterna varje gång.",
+      "illus": "cards",
+      "d_after": "När du har ringt och själv förvissat dig om att allt står rätt till, tryck på <b>[@guardian_confirm_safety]</b>. Varningen hävs, läget återgår till normalt och <b>de övriga anhöriga som också håller ett öga</b> får en bekräftelse."
+    },
+    {
+      "h": "Tryck på [@add_subject_connect] så är det klart",
+      "d": "Knappen tänds så snart kod och namn är ifyllda. En tryckning kopplar ihop er, och kortet du såg ovan dyker upp på familjens startskärm."
+    }
+  ],
+  "note": "När kopplingen är gjord finns inget mer att göra. Anbu skickar livstecknet <strong>av sig självt, varje dag på den inställda tiden</strong>, och hör av sig till familjen om tiden passerar utan signal. Kommer signalen sent eller ser stegen tomma ut, se <a href=\"faq.html\">vanliga frågor</a>.",
+  "footer_home": "Hem",
+  "footer_faq": "Vanliga frågor",
+  "footer_privacy": "Integritetspolicy",
+  "footer_terms": "Användarvillkor",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

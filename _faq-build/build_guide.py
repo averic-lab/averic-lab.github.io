@@ -71,6 +71,19 @@ def render_bnav(app, active):
     return "".join(out)
 
 
+def render_cards(app):
+    """보호 대상자 리스트 제목 + 카드 + 메뉴바.
+
+    연락처를 왜 넣는지는 말로만 하면 와닿지 않아서, 그 설명 안에 대상자 카드를
+    실물 그대로 끼워 넣는다. 카드 마크업은 이 파일 하나에서만 만들어 쓴다.
+    """
+    with open(os.path.join(HERE, "_cards_block.html"), encoding="utf-8") as f:
+        block = f.read()
+    return ('<div class="inline-card">'
+            + block.replace("{{BNAV_HOME}}", render_bnav(app, 0))
+            + '</div>')
+
+
 def render_steps(copy, app, code):
     """단계 목록. 애니메이션을 보지 않아도 순서대로 읽히는 본문이기도 하다."""
     out = []
@@ -81,8 +94,22 @@ def render_steps(copy, app, code):
             f'<span class="n">{i + 1}</span>'
             f'<span><span class="h">{fill(st["h"], app, w)}</span>'
             f'<span class="d">{fill(st["d"], app, w)}</span></span>'
-            f'</button></li>')
+            f'</button>'
+            # 카드는 button 밖에 둔다 — <button> 안의 <p>/<div>는 유효하지 않은 HTML이라
+            # 브라우저마다 렌더가 달라진다. 들여쓰기는 .extra가 맞춘다.
+            f'{extra(st, app, w)}'
+            f'</li>')
     return "\n".join(out)
+
+
+def extra(st, app, w):
+    """단계 설명 아래에 붙는 그림 + 이어지는 설명."""
+    if st.get("illus") != "cards" and not st.get("d_after"):
+        return ""
+    after = (f'<p class="d">{fill(st["d_after"], app, w)}</p>'
+             if st.get("d_after") else "")
+    cards = render_cards(app) if st.get("illus") == "cards" else ""
+    return f'<div class="extra">{cards}{after}</div>'
 
 
 def build(code, copy, app):

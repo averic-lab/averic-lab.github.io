@@ -112,6 +112,20 @@ KEYS = [
     "add_subject_phone_hint",
     "add_subject_phone_info",
     "add_subject_connect",
+    # 보호자 대시보드 (연결이 끝나면 보이는 화면 — 주의 카드의 [전화] 버튼 맥락)
+    "guardian_today_summary",
+    "guardian_checking_subjects",
+    "guardian_subject_list",
+    "guardian_status_caution",
+    "guardian_status_confirmed",
+    "guardian_safety_needed",
+    "guardian_call_now",
+    "guardian_confirm_safety",
+    "guardian_last_check_hours",
+    "guardian_activity_prefix",
+    "guardian_activity_active",
+    "guardian_chart_y_axis_steps",
+    "guardian_chart_x_axis_last_7_days",
     # 하단 네비게이션 (설정·연결 화면에 보인다)
     "nav_home",
     "nav_connection",
@@ -130,6 +144,8 @@ KEYS = [
 PLACEHOLDER_OK = {
     "subject_home_check_body_reported",  # @time — 템플릿이 18:00으로 채운다
     "heartbeat_daily_time",              # @time — 위와 동일
+    "guardian_checking_subjects",        # @count — 사용설명 목업이 2명으로 채운다
+    "guardian_last_check_hours",         # @hours — 사용설명 목업이 채운다
 }
 
 # 'key': 뒤 (같은 줄 또는 다음 줄) 문자열 리터럴. 양쪽 따옴표 + 이스케이프 허용.

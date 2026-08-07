@@ -1,0 +1,66 @@
+{
+  "lang_name": "Tiếng Việt",
+  "meta_title": "Kết nối với gia đình bằng mã an toàn — Anbu",
+  "meta_desc": "Đi qua từng màn hình thật của ứng dụng: tạo mã an toàn, gửi cho gia đình và để gia đình kết nối bằng mã đó.",
+  "page_eyebrow": "Hướng dẫn",
+  "page_title": "Kết nối với gia đình bằng mã an toàn",
+  "page_lead": "Anbu nối mọi người bằng một <strong>mã an toàn</strong> duy nhất. Bạn tạo mã trên máy mình rồi báo cho gia đình; gia đình nhập mã đó trên máy của họ. Nhờ vậy kết nối hình thành mà không có tên hay số điện thoại nào lên máy chủ.",
+  "phone_me": "Máy của tôi — nơi tạo mã",
+  "phone_family": "Máy của gia đình — người dõi theo tôi",
+  "demo": {
+    "code": "K7M-4PXR",
+    "alias": "Mẹ",
+    "alias2": "Bố",
+    "phone": "090 123 4567"
+  },
+  "ctrl_prev": "Trước",
+  "ctrl_next": "Tiếp",
+  "ctrl_replay": "Từ đầu",
+  "mockup_caption": "Đây là các màn hình thật của ứng dụng, được dựng lại. Mã, tên gọi và số điện thoại chỉ là ví dụ.",
+  "steps": [
+    {
+      "h": "Trong cài đặt, chạm [@gs_enable_button]",
+      "d": "Mở thẻ <b>@nav_settings</b> ở dưới màn hình — nút nằm ngay trên cùng. Bạn chuyển từ chỉ dõi theo gia đình sang <b>gửi cả tín hiệu của chính mình</b>."
+    },
+    {
+      "h": "Xác nhận để bật",
+      "d": "@gs_enable_dialog_body<br><b>Trên iPhone có thêm một lưu ý</b> — tín hiệu chỉ được gửi khi bạn chạm vào thông báo đến đúng giờ đã đặt, hoặc tự mở ứng dụng. Chạm [iPhone] bên dưới để so sánh."
+    },
+    {
+      "h": "Mã an toàn được tạo",
+      "d": "Chỗ trống được điền bằng <b>mã 7 ký tự</b>. Mỗi máy được cấp một mã, và dù gỡ rồi cài lại thì vẫn là mã cũ."
+    },
+    {
+      "h": "Sao chép hoặc chia sẻ mã cho gia đình",
+      "d": "Nút bên trái để sao chép, nút bên phải để chia sẻ. Khi sao chép sẽ hiện <b>@subject_home_code_copied</b>. Gửi qua tin nhắn cũng được — chỉ 7 ký tự nên đọc qua điện thoại cũng xong."
+    },
+    {
+      "h": "Từ đây trở đi là máy của gia đình",
+      "d": "Người nhận mã mở thẻ <b>@nav_connection</b> trong ứng dụng của mình rồi chạm [<b>@add_subject_button</b>] sẽ thấy màn hình này. Có ba ô cần điền."
+    },
+    {
+      "h": "Nhập mã đã nhận",
+      "d": "@add_subject_code_info Chữ thường sẽ tự chuyển thành chữ hoa. <b>Hãy giữ dấu gạch nối (-) ở giữa</b> — thiếu dấu này giữa 3 và 4 ký tự thì mã không được nhận."
+    },
+    {
+      "h": "Đặt tên gọi",
+      "d": "Đây là cách gọi người này trên màn hình của gia đình. Khác với số điện thoại bên dưới, <b>ô này không được để trống.</b>"
+    },
+    {
+      "h": "Nhập số điện thoại (tùy chọn)",
+      "d": "Thẻ của người này trên màn hình chính của gia đình trông như thế này. Nếu đã lưu số, nút <b>[@guardian_call_now]</b> sẽ <b>gọi ngay lập tức.</b> Bỏ trống thì mỗi lần bấm lại phải tự tìm người này trong danh bạ.",
+      "illus": "cards",
+      "d_after": "Sau khi gọi và tự mình xác nhận mọi việc vẫn ổn, hãy chạm <b>[@guardian_confirm_safety]</b>. Cảnh báo được gỡ, trạng thái trở lại bình thường, và <b>những người thân khác cùng dõi theo</b> sẽ nhận được thông báo xác nhận."
+    },
+    {
+      "h": "Chạm [@add_subject_connect] là xong",
+      "d": "Nút sẽ sáng lên khi mã và tên gọi đã điền đủ. Chạm vào là kết nối, và thẻ vừa xem ở trên sẽ hiện trên màn hình chính của gia đình."
+    }
+  ],
+  "note": "Kết nối xong là không còn việc gì phải làm. Anbu <strong>tự gửi tín hiệu mỗi ngày vào giờ đã đặt</strong>, và báo cho gia đình nếu quá giờ đó mà không có tín hiệu. Nếu tín hiệu đến muộn hoặc số bước trống, hãy xem <a href=\"faq.html\">câu hỏi thường gặp</a>.",
+  "footer_home": "Trang chủ",
+  "footer_faq": "Câu hỏi thường gặp",
+  "footer_privacy": "Chính sách bảo mật",
+  "footer_terms": "Điều khoản dịch vụ",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

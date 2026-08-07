@@ -1,0 +1,61 @@
+<p class="list-h" data-key="guardian_subject_list"></p>
+<div class="gap-md"></div>
+<div class="cards">
+
+<!-- 주의 카드 — 이 상태에서만 [전화]/[안전확인 완료]가 나온다
+     (showActionButtons: !isNormal). 배터리는 정상일 때만 보이므로 여기엔 없다. -->
+<div class="scard" style="background:rgba(255,249,196,.6);border-left-color:#F59E0B">
+  <div class="top">
+    <span class="nm" data-demo-alias></span>
+    <span class="badge" style="background:rgba(245,158,11,.12);color:#F59E0B"
+          data-key="guardian_status_caution"></span>
+  </div>
+  <div class="need">
+    <svg viewBox="0 0 24 24" style="fill:#F59E0B"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+    <span class="t" style="color:#F59E0B" data-key="guardian_safety_needed"></span>
+    <span class="cal"><svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 18H5V9h14v12z"/></svg><b>30</b></span>
+  </div>
+  <div class="btn call" style="background:#F59E0B">
+    <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1A17 17 0 0 1 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    <span data-key="guardian_call_now"></span>
+  </div>
+  <div class="btn safe" style="border-color:rgba(245,158,11,.3);color:#F59E0B"
+       data-key="guardian_confirm_safety"></div>
+  <p class="last" data-last-check></p>
+</div>
+
+<!-- 정상 카드 — 배터리 + 활동량 라벨 + 7일 걸음수 막대. 오늘 막대만 주황(#FB8C00),
+     최댓값 막대 위에만 걸음수 라벨이 붙는다(_StepsBarChart). -->
+<div class="scard" style="background:rgba(232,245,233,.5);border-left-color:#00685E">
+  <div class="top">
+    <span class="who">
+      <span class="nm" data-demo-alias2></span>
+      <svg class="batt" viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.34C7 21.4 7.6 22 8.33 22h7.34c.73 0 1.33-.6 1.33-1.33V5.33C17 4.6 16.4 4 15.67 4zM16 8H8V6h8v2z"/></svg>
+      <span class="battp">85%</span>
+    </span>
+    <span class="badge" style="background:rgba(0,104,94,.12);color:#00685E"
+          data-key="guardian_status_confirmed"></span>
+  </div>
+  <div class="actrow">
+    <span class="act" data-activity></span>
+    <span class="cal"><svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 18H5V9h14v12z"/></svg><b>30</b></span>
+  </div>
+  <div class="chart">
+    <span class="ylab" data-key="guardian_chart_y_axis_steps"></span>
+    <div class="plot">
+      <span class="bar"><b></b><i style="height:51%"></i></span>
+      <span class="bar"><b></b><i style="height:82%"></i></span>
+      <span class="bar"><b></b><i style="height:69%"></i></span>
+      <span class="bar"><b>6,240</b><i style="height:100%"></i></span>
+      <span class="bar"><b></b><i style="height:77%"></i></span>
+      <span class="bar"><b></b><i style="height:90%"></i></span>
+      <span class="bar"><b></b><i class="today" style="height:66%"></i></span>
+    </div>
+    <span class="xlab" data-key="guardian_chart_x_axis_last_7_days"></span>
+  </div>
+  <p class="last" data-last-check2></p>
+</div>
+
+</div>
+<div class="dots"><i class="on"></i><i></i></div>
+<div class="bnav">{{BNAV_HOME}}</div>

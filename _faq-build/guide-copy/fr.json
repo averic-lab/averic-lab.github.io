@@ -1,0 +1,66 @@
+{
+  "lang_name": "Français",
+  "meta_title": "Se relier à sa famille avec le code de sécurité — Anbu",
+  "meta_desc": "Pas à pas sur les vrais écrans de l'application : créer un code de sécurité, le transmettre, et la famille s'y relie.",
+  "page_eyebrow": "Mode d'emploi",
+  "page_title": "Se relier à sa famille avec le code de sécurité",
+  "page_lead": "Anbu relie les personnes par un seul <strong>code de sécurité</strong>. Vous créez le code sur votre téléphone et le transmettez ; votre famille le saisit sur le sien. C'est ainsi que la liaison se fait sans qu'aucun nom ni numéro n'arrive sur notre serveur.",
+  "phone_me": "Mon téléphone — celui qui crée le code",
+  "phone_family": "Le téléphone de la famille — celui qui veille sur moi",
+  "demo": {
+    "code": "K7M-4PXR",
+    "alias": "Maman",
+    "alias2": "Papa",
+    "phone": "06 12 34 56 78"
+  },
+  "ctrl_prev": "Précédent",
+  "ctrl_next": "Suivant",
+  "ctrl_replay": "Depuis le début",
+  "mockup_caption": "Les écrans réels de l'application, reproduits à l'identique. Le code, le surnom et le numéro sont des exemples.",
+  "steps": [
+    {
+      "h": "Dans les réglages, appuyez sur [@gs_enable_button]",
+      "d": "Ouvrez l'onglet <b>@nav_settings</b> en bas de l'écran : le bouton se trouve tout en haut. Vous passez de « veiller sur sa famille » à <b>envoyer aussi son propre signal</b>."
+    },
+    {
+      "h": "Confirmez l'activation",
+      "d": "@gs_enable_dialog_body<br><b>Sur iPhone, un avis supplémentaire s'affiche</b> — le signal ne part que si vous touchez la notification reçue à l'heure fixée, ou si vous ouvrez l'application vous-même. Appuyez sur [iPhone] ci-dessous pour comparer."
+    },
+    {
+      "h": "Le code de sécurité est créé",
+      "d": "L'emplacement vide se remplit d'un <b>code à 7 caractères</b>. Un seul code par appareil, et il revient identique même après désinstallation et réinstallation."
+    },
+    {
+      "h": "Copiez ou partagez le code pour le transmettre",
+      "d": "Le bouton de gauche copie, celui de droite partage. La copie affiche <b>@subject_home_code_copied</b>. Envoyez-le par SMS ou messagerie — 7 caractères, cela se dicte aussi très bien au téléphone."
+    },
+    {
+      "h": "À partir d'ici, c'est le téléphone de la famille",
+      "d": "La personne qui a reçu le code ouvre l'onglet <b>@nav_connection</b> dans sa propre application et appuie sur [<b>@add_subject_button</b>]. Trois champs à remplir."
+    },
+    {
+      "h": "Saisissez le code reçu",
+      "d": "@add_subject_code_info Les minuscules deviennent des majuscules. <b>Gardez le trait d'union (-) au milieu</b> — sans lui entre les 3 et les 4 caractères, le code n'est pas reconnu."
+    },
+    {
+      "h": "Choisissez un surnom",
+      "d": "C'est ainsi que cette personne apparaîtra sur l'écran de la famille. Contrairement au numéro ci-dessous, <b>ce champ ne peut pas rester vide.</b>"
+    },
+    {
+      "h": "Ajoutez un numéro (facultatif)",
+      "d": "Voici la fiche de cette personne sur l'écran d'accueil de la famille. Avec un numéro enregistré, le bouton <b>[@guardian_call_now]</b> <b>appelle directement.</b> Sans numéro, il faut chercher la personne dans les contacts à chaque fois.",
+      "illus": "cards",
+      "d_after": "Après avoir appelé et vous être assuré que tout va bien, appuyez sur <b>[@guardian_confirm_safety]</b>. L'alerte est levée, l'affichage revient à la normale, et <b>les autres proches qui veillent</b> reçoivent un avis de confirmation."
+    },
+    {
+      "h": "Appuyez sur [@add_subject_connect], c'est terminé",
+      "d": "Le bouton s'active dès que le code et le surnom sont remplis. Une pression relie les deux appareils, et la fiche vue plus haut apparaît sur l'écran d'accueil de la famille."
+    }
+  ],
+  "note": "Une fois relié, il n'y a plus rien à faire. Anbu envoie le signal <strong>tout seul, chaque jour à l'heure fixée</strong>, et prévient la famille si cette heure passe sans signal. Si le signal tarde ou si les pas restent vides, consultez la <a href=\"faq.html\">FAQ</a>.",
+  "footer_home": "Accueil",
+  "footer_faq": "Questions fréquentes",
+  "footer_privacy": "Politique de confidentialité",
+  "footer_terms": "Conditions d'utilisation",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

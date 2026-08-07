@@ -1,0 +1,66 @@
+{
+  "lang_name": "Türkçe",
+  "meta_title": "Güvenlik koduyla aileye bağlanmak — Anbu",
+  "meta_desc": "Gerçek uygulama ekranlarında adım adım: güvenlik kodunu oluşturun, paylaşın ve ailenizin bu kodla bağlanmasını sağlayın.",
+  "page_eyebrow": "Nasıl kullanılır",
+  "page_title": "Güvenlik koduyla aileye bağlanmak",
+  "page_lead": "Anbu insanları tek bir <strong>güvenlik koduyla</strong> birbirine bağlar. Kodu kendi telefonunuzda oluşturup iletirsiniz; aileniz kendi telefonuna girer. Bağlantının hiçbir isim veya numara sunucumuza ulaşmadan kurulmasının nedeni budur.",
+  "phone_me": "Benim telefonum — kodun oluşturulduğu yer",
+  "phone_family": "Ailenin telefonu — beni gözeten taraf",
+  "demo": {
+    "code": "K7M-4PXR",
+    "alias": "Annem",
+    "alias2": "Babam",
+    "phone": "0532 123 45 67"
+  },
+  "ctrl_prev": "Geri",
+  "ctrl_next": "İleri",
+  "ctrl_replay": "Baştan",
+  "mockup_caption": "Bunlar uygulamanın gerçek ekranlarının yeniden çizilmiş hâlidir. Kod, ad ve telefon örnek değerlerdir.",
+  "steps": [
+    {
+      "h": "Ayarlarda [@gs_enable_button] düğmesine dokunun",
+      "d": "Alttaki <b>@nav_settings</b> sekmesini açın — düğme en üstte durur. Yalnızca aileyi gözetmekten, <b>kendi iyilik işaretinizi de göndermeye</b> geçersiniz."
+    },
+    {
+      "h": "Onay penceresinde etkinleştirin",
+      "d": "@gs_enable_dialog_body<br><b>iPhone'da bir uyarı daha çıkar</b> — işaret yalnızca belirlenen saatte gelen bildirime dokunduğunuzda ya da uygulamayı kendiniz açtığınızda gönderilir. Karşılaştırmak için aşağıdaki [iPhone] düğmesine dokunun."
+    },
+    {
+      "h": "Güvenlik kodu oluşturulur",
+      "d": "Boş duran yer <b>7 karakterlik bir kodla</b> dolar. Her cihaza bir tane verilir; uygulamayı silip yeniden kursanız da aynı kod geri gelir."
+    },
+    {
+      "h": "Kodu kopyalayın veya paylaşarak ailenize iletin",
+      "d": "Soldaki düğme kopyalar, sağdaki paylaşır. Kopyalayınca <b>@subject_home_code_copied</b> uyarısı çıkar. Mesajla gönderebilirsiniz — 7 karakter olduğu için telefonda okumak da yeterlidir."
+    },
+    {
+      "h": "Buradan sonrası ailenin telefonu",
+      "d": "Kodu alan kişi kendi uygulamasında <b>@nav_connection</b> sekmesini açıp [<b>@add_subject_button</b>] düğmesine dokununca bu ekran gelir. Doldurulacak üç alan var."
+    },
+    {
+      "h": "Aldığınız kodu girin",
+      "d": "@add_subject_code_info Küçük harfler büyük harfe dönüşür. <b>Ortadaki tireyi (-) olduğu gibi bırakın</b> — 3 ile 4 karakter arasında tire olmadan kod tanınmaz."
+    },
+    {
+      "h": "Bir ad belirleyin",
+      "d": "Bu kişi ailenin ekranında böyle görünecek. Aşağıdaki telefondan farklı olarak <b>boş bırakılamaz.</b>"
+    },
+    {
+      "h": "Telefon numarası ekleyin (isteğe bağlı)",
+      "d": "Bu kişinin kartı ailenin ana ekranında böyle görünür. Numara kayıtlıysa <b>[@guardian_call_now]</b> düğmesi <b>doğrudan arar.</b> Boş bırakılırsa her seferinde bu kişiyi rehberden bulmak gerekir.",
+      "illus": "cards",
+      "d_after": "Arayıp iyi olduğunu bizzat doğruladıysanız <b>[@guardian_confirm_safety]</b> düğmesine dokunun. Uyarı kalkar, durum yeniden normale döner ve <b>birlikte gözeten diğer yakınlara</b> doğrulama bildirimi gider."
+    },
+    {
+      "h": "[@add_subject_connect] düğmesine dokunun, işlem tamam",
+      "d": "Kod ve ad doldurulunca düğme renklenir. Dokunduğunuz anda bağlantı kurulur ve yukarıda gördüğünüz kart ailenin ana ekranında belirir."
+    }
+  ],
+  "note": "Bağlantı kurulduktan sonra yapılacak bir şey kalmaz. Anbu iyilik işaretini <strong>her gün belirlenen saatte kendiliğinden</strong> gönderir ve o saat işaretsiz geçerse aileye haber verir. İşaret geç geliyorsa ya da adım sayısı boş görünüyorsa <a href=\"faq.html\">sık sorulan sorular</a> sayfasına bakın.",
+  "footer_home": "Ana sayfa",
+  "footer_faq": "Sık sorulan sorular",
+  "footer_privacy": "Gizlilik Politikası",
+  "footer_terms": "Kullanım Koşulları",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

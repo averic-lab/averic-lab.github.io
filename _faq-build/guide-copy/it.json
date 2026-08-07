@@ -1,0 +1,66 @@
+{
+  "lang_name": "Italiano",
+  "meta_title": "Collegarsi alla famiglia con il codice di sicurezza — Anbu",
+  "meta_desc": "Passo dopo passo sulle schermate reali: creare il codice di sicurezza, condividerlo e lasciare che la famiglia si colleghi.",
+  "page_eyebrow": "Come si usa",
+  "page_title": "Collegarsi alla famiglia con il codice di sicurezza",
+  "page_lead": "Anbu collega le persone con un solo <strong>codice di sicurezza</strong>. Lei crea il codice sul suo telefono e lo comunica; la sua famiglia lo inserisce sul proprio. È così che il collegamento avviene senza che nome o numero arrivino mai al nostro server.",
+  "phone_me": "Il mio telefono — dove nasce il codice",
+  "phone_family": "Il telefono della famiglia — chi veglia su di me",
+  "demo": {
+    "code": "K7M-4PXR",
+    "alias": "Mamma",
+    "alias2": "Papà",
+    "phone": "320 123 4567"
+  },
+  "ctrl_prev": "Indietro",
+  "ctrl_next": "Avanti",
+  "ctrl_replay": "Dall'inizio",
+  "mockup_caption": "Sono le schermate reali dell'app, ricostruite. Codice, nome e numero sono valori di esempio.",
+  "steps": [
+    {
+      "h": "Nelle impostazioni tocchi [@gs_enable_button]",
+      "d": "Apra la scheda <b>@nav_settings</b> in basso: il pulsante è proprio in cima. Si passa dal solo vegliare sulla famiglia all'<b>inviare anche il proprio segnale</b>."
+    },
+    {
+      "h": "Confermi l'attivazione",
+      "d": "@gs_enable_dialog_body<br><b>Su iPhone compare un avviso in più</b> — il segnale parte solo toccando la notifica che arriva all'ora stabilita, oppure aprendo l'app di persona. Tocchi [iPhone] qui sotto per confrontare."
+    },
+    {
+      "h": "Il codice di sicurezza viene creato",
+      "d": "Lo spazio vuoto si riempie con un <b>codice di 7 caratteri</b>. Ne viene rilasciato uno per dispositivo e, anche disinstallando e reinstallando, torna lo stesso codice."
+    },
+    {
+      "h": "Copi o condivida il codice con la famiglia",
+      "d": "Il pulsante di sinistra copia, quello di destra condivide. Copiando compare <b>@subject_home_code_copied</b>. Lo invii per messaggio — sono 7 caratteri, può anche dettarlo al telefono."
+    },
+    {
+      "h": "Da qui in poi è il telefono della famiglia",
+      "d": "Chi ha ricevuto il codice apre la scheda <b>@nav_connection</b> nella propria app e tocca [<b>@add_subject_button</b>]. Ci sono tre campi da compilare."
+    },
+    {
+      "h": "Inserisca il codice ricevuto",
+      "d": "@add_subject_code_info Le minuscole diventano maiuscole. <b>Mantenga il trattino (-) al centro</b> — senza di esso tra i 3 e i 4 caratteri il codice non viene riconosciuto."
+    },
+    {
+      "h": "Scelga un nome",
+      "d": "È così che questa persona apparirà sullo schermo della famiglia. A differenza del numero qui sotto, <b>non può restare vuoto.</b>"
+    },
+    {
+      "h": "Aggiunga un numero (facoltativo)",
+      "d": "Ecco come appare la scheda di questa persona nella schermata iniziale della famiglia. Con il numero salvato, il pulsante <b>[@guardian_call_now]</b> <b>chiama subito.</b> Lasciandolo vuoto, ogni volta bisognerà cercare la persona in rubrica.",
+      "illus": "cards",
+      "d_after": "Dopo aver chiamato e verificato di persona che va tutto bene, tocchi <b>[@guardian_confirm_safety]</b>. L'avviso viene revocato, lo stato torna normale e <b>gli altri familiari che vegliano</b> ricevono una conferma."
+    },
+    {
+      "h": "Tocchi [@add_subject_connect] ed è fatta",
+      "d": "Il pulsante si accende quando codice e nome sono compilati. Toccandolo il collegamento è attivo e la scheda vista sopra compare sulla schermata iniziale della famiglia."
+    }
+  ],
+  "note": "Una volta collegati non resta altro da fare. Anbu invia il segnale <strong>da solo, ogni giorno all'ora stabilita</strong>, e avvisa la famiglia se quell'ora passa senza segnale. Se il segnale tarda o i passi risultano vuoti, consulti le <a href=\"faq.html\">domande frequenti</a>.",
+  "footer_home": "Home",
+  "footer_faq": "Domande frequenti",
+  "footer_privacy": "Informativa sulla privacy",
+  "footer_terms": "Termini di servizio",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

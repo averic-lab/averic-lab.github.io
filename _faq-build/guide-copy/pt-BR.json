@@ -1,0 +1,66 @@
+{
+  "lang_name": "Português",
+  "meta_title": "Conectar-se à família com o código de segurança — Anbu",
+  "meta_desc": "Passo a passo pelas telas reais: criar o código de segurança, compartilhá-lo e deixar a família se conectar.",
+  "page_eyebrow": "Como usar",
+  "page_title": "Conectar-se à família com o código de segurança",
+  "page_lead": "O Anbu liga as pessoas por um único <strong>código de segurança</strong>. Você cria o código no seu celular e o repassa; sua família digita esse código no aparelho dela. É assim que a ligação acontece sem que nome ou telefone cheguem ao nosso servidor.",
+  "phone_me": "Meu celular — onde o código é criado",
+  "phone_family": "Celular da família — quem cuida de mim",
+  "demo": {
+    "code": "K7M-4PXR",
+    "alias": "Mãe",
+    "alias2": "Pai",
+    "phone": "(11) 91234-5678"
+  },
+  "ctrl_prev": "Anterior",
+  "ctrl_next": "Próximo",
+  "ctrl_replay": "Do começo",
+  "mockup_caption": "São as telas reais do aplicativo, recriadas. Código, apelido e telefone são valores de exemplo.",
+  "steps": [
+    {
+      "h": "Nas configurações, toque em [@gs_enable_button]",
+      "d": "Abra a aba <b>@nav_settings</b> na parte de baixo — o botão fica bem no topo. Você passa de apenas cuidar da família para <b>também enviar o próprio sinal</b>."
+    },
+    {
+      "h": "Confirme a ativação",
+      "d": "@gs_enable_dialog_body<br><b>No iPhone aparece um aviso a mais</b> — o sinal só é enviado ao tocar na notificação que chega no horário definido, ou ao abrir o aplicativo por conta própria. Toque em [iPhone] abaixo para comparar."
+    },
+    {
+      "h": "O código de segurança é criado",
+      "d": "O espaço vazio se preenche com um <b>código de 7 caracteres</b>. É emitido um por aparelho e, mesmo desinstalando e instalando de novo, volta o mesmo código."
+    },
+    {
+      "h": "Copie ou compartilhe o código com a família",
+      "d": "O botão da esquerda copia; o da direita compartilha. Ao copiar aparece <b>@subject_home_code_copied</b>. Envie por mensagem — são 7 caracteres, dá até para ditar por telefone."
+    },
+    {
+      "h": "Daqui em diante é o celular da família",
+      "d": "Quem recebeu o código abre a aba <b>@nav_connection</b> no próprio aplicativo e toca em [<b>@add_subject_button</b>]. São três campos a preencher."
+    },
+    {
+      "h": "Digite o código recebido",
+      "d": "@add_subject_code_info Minúsculas viram maiúsculas. <b>Mantenha o hífen (-) do meio</b> — sem ele entre os 3 e os 4 caracteres o código não é reconhecido."
+    },
+    {
+      "h": "Escolha um apelido",
+      "d": "É assim que essa pessoa aparecerá na tela da família. Ao contrário do telefone abaixo, <b>não pode ficar em branco.</b>"
+    },
+    {
+      "h": "Informe um telefone (opcional)",
+      "d": "É assim que o cartão dessa pessoa aparece na tela inicial da família. Com o número salvo, o botão <b>[@guardian_call_now]</b> <b>liga na hora.</b> Em branco, será preciso procurar essa pessoa nos contatos toda vez.",
+      "illus": "cards",
+      "d_after": "Depois de ligar e confirmar pessoalmente que está tudo bem, toque em <b>[@guardian_confirm_safety]</b>. O alerta é encerrado, o estado volta ao normal e <b>os outros familiares que acompanham</b> recebem um aviso de confirmação."
+    },
+    {
+      "h": "Toque em [@add_subject_connect] e pronto",
+      "d": "O botão ganha cor assim que código e apelido estiverem preenchidos. Um toque conecta, e o cartão visto acima aparece na tela inicial da família."
+    }
+  ],
+  "note": "Depois de conectado não há mais nada a fazer. O Anbu envia o sinal <strong>sozinho, todo dia no horário definido</strong>, e avisa a família se esse horário passar sem sinal. Se o sinal atrasar ou os passos aparecerem vazios, veja as <a href=\"faq.html\">perguntas frequentes</a>.",
+  "footer_home": "Início",
+  "footer_faq": "Perguntas frequentes",
+  "footer_privacy": "Política de Privacidade",
+  "footer_terms": "Termos de Serviço",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}

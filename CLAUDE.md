@@ -22,9 +22,9 @@ Jekyll은 front matter가 없는 `.md`도 **정적 파일로 그대로 복사**�
 ## 사이트 구조
 
 - `index.html` — 루트 스플래시(언어 자동 분기), `style.css`, `site.js`
-- `ko/`, `en/`, `ja/` … (20개 언어 폴더) — 각 언어별 `index.html` / `privacy-policy.html` / `terms-of-service.html` / `faq.html`
+- `ko/`, `en/`, `ja/` … (20개 언어 폴더) — 각 언어별 `index.html` / `privacy-policy.html` / `terms-of-service.html` / `faq.html` / `guide.html`
 - `i18n/` — 다국어 랜딩 빌드 도구(`build.py`, `template.html`, `translations.json`) — **`index.html`만 생성**한다
-- `_faq-build/` — FAQ 빌드 도구 + `PRD-FAQ.md` (게시 제외). 상세는 아래 별도 절
+- `_faq-build/` — FAQ·사용설명 빌드 도구 + `PRD-FAQ.md` (게시 제외). 상세는 아래 별도 절
 - `CNAME` — `averic.co.kr`
 
 ## 비공개 테스트 안내 페이지 (이 저장소에서 관리)
@@ -105,11 +105,11 @@ _faq-build/                    # 게시 제외
 - **사용설명 단계 수는 `guide-template.html`의 `STEPS`(JS)가 정한다.** `guide-copy`의 `steps` 배열 길이가 다르면 `build_guide.py`가 exit 1 한다(번호와 화면이 따로 놀기 때문).
 
 - **스크린샷을 쓰지 않는다.** 앱 UI를 HTML/CSS로 재현하고, 앱 화면 문구는 앱 번역 파일에서 추출한다 — 20개 언어가 공짜이고, 앱 문구가 바뀌어도 낡지 않는다(근거는 PRD §1).
-- **문장이 두 종류다.** 앱 화면 문구는 `faq-strings.json`(추출), FAQ 질문·답변은 `copy/{lang}.json`(직접 작성). 카피에서 앱 문구를 인용할 때는 **`@키`**를 쓰며 **번역하지 않는다** — 번역하면 앱 화면과 어긋난다.
+- **문장이 두 종류다.** 앱 화면 문구는 `app-strings.json`(추출), 질문·답변과 단계 설명은 `copy/`·`guide-copy/{lang}.json`(직접 작성). 카피에서 앱 문구를 인용할 때는 **`@키`**를 쓰며 **번역하지 않는다** — 번역하면 앱 화면과 어긋난다.
 - **언어 목록은 `i18n/build.py`의 `META`/`ORDER`를 임포트해 쓴다.** 복제하면 어긋난다. `build.py`의 `patch_inplace()`는 `index.html`만 갱신하므로 **faq.html의 스위처는 `build_faq.py`가 직접 만들고 링크는 `/{code}/faq.html`로** 건다(홈으로 보내지 말 것).
 - **언어 추가는 `copy/`·`guide-copy/`에 파일을 넣는 것으로 끝난다** — 빌더는 폴더에 있는 언어만 생성하며 스크립트를 고칠 필요가 없다. 스위처·`hreflang`도 같은 기준이라 없는 언어를 링크해 404를 내지 않는다.
 - **홈 헤더 링크는 세 곳을 함께 고쳐야 한다** — 18개 생성 언어는 `i18n/template.html`+`translations.json`(`nav_faq`/`nav_guide`), `ko/index.html`과 `en/index.html`은 직접 수정(`patch_inplace()`가 본문을 건드리지 않으므로). ⚠️ `translations.json`은 `{언어: {키: 값}}` 구조에 `indent=1`이라, 스크립트로 키를 추가할 때 형식을 유지하지 않으면 diff가 2600줄로 부푼다.
-- ⚠️ **헤더 링크는 그 언어의 페이지가 실제로 있을 때만 넣는다.** 20개 언어 헤더에 먼저 링크를 걸면 아직 카피가 없는 언어가 404가 된다. 사용설명은 현재 **한국어만** 있어 `ko/index.html`에만 링크되어 있다.
+- ⚠️ **헤더 링크는 그 언어의 페이지가 실제로 있을 때만 넣는다.** 20개 언어 헤더에 먼저 링크를 걸면 아직 카피가 없는 언어가 404가 된다. FAQ·사용설명 모두 현재 20개 언어가 다 있다.
 - `{lang}/faq.html`·`{lang}/guide.html`은 산출물 — 직접 수정 금지, 항상 재빌드.
 
 ```bash

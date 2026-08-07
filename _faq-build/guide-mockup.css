@@ -89,6 +89,52 @@
   line-height:1.43;color:#1A1C1C;box-shadow:0 4px 16px rgba(0,0,0,.18);z-index:6}
 .snack[hidden]{display:none}
 
+/* 다이얼로그·스낵바가 기기 안에 있으므로 기준점을 기기로 잡는다.
+   (기기를 창 높이에 맞춰 축소하면 .stage 기준 좌표는 기기와 어긋난다) */
+.device{position:relative;transform-origin:top center}
+
+/* ── 보호자 대시보드 (guardian_dashboard_page.dart) ──
+   주의 카드: statusColor #F59E0B, 배경 #FFF9C4 60%, 왼쪽 보더 4px
+   정상 카드: statusColor #00685E, 배경 #E8F5E9 50% */
+.dash-h{font-size:24px;font-weight:600;line-height:1.35;color:#1A1C1C;margin:0;
+  white-space:pre-line}
+.sum-label{font-size:14px;font-weight:500;line-height:1.43;color:#757575;margin:0}
+.legend{display:flex;flex-wrap:wrap;gap:4px 10px}
+.legend .it{display:flex;align-items:center;gap:6px;font-size:13px;color:#3F4948}
+.legend .d{width:8px;height:8px;border-radius:50%;flex:none}
+.list-h{font-size:16px;font-weight:700;line-height:1.5;color:#1A1C1C;margin:0}
+
+/* 카드는 PageView로 옆으로 넘긴다. 2명 이상이면 viewportFraction 0.92 +
+   padEnds:false라 **다음 카드가 오른쪽에 걸쳐 보인다** — 카드가 더 있다는 걸
+   점 인디케이터보다 먼저 알려주는 장치라 목업에서도 그대로 살린다.
+   높이 200 고정(SizedBox(height: 200.h)), 카드 자체 margin-right 8. */
+.cards{display:flex;overflow:hidden}
+.scard{flex:0 0 calc(92% - 8px);margin-right:8px;height:200px;box-sizing:border-box;
+  display:flex;flex-direction:column;
+  border-radius:16px;padding:8px 16px;border-left:4px solid}
+.scard .top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.scard .nm{font-size:16px;font-weight:700;line-height:1.5;color:#1A1C1C}
+.scard .badge{padding:3px 10px;border-radius:10px;font-size:11px;font-weight:600;
+  line-height:1.45}
+/* 앱은 need 행 위아래에 Spacer를 둬 닉네임과 버튼 사이 중앙에 놓는다 */
+.scard .need{display:flex;align-items:center;gap:6px;margin:auto 0}
+.scard .need svg{width:18px;height:18px;flex:none}
+.scard .need .t{flex:1;font-size:16px;font-weight:700;line-height:1.5}
+.scard .btn{height:40px;border-radius:10px;display:flex;align-items:center;
+  justify-content:center;gap:4px;font-size:11px;font-weight:600;line-height:1.45}
+.scard .btn svg{width:15px;height:15px;fill:#fff}
+.scard .btn.call{color:#fff}
+.scard .btn.safe{margin-top:6px;background:transparent;border:1px solid}
+.scard .last{margin:8px 0 0;font-size:12px;line-height:1.33;color:#757575}
+/* 정상 카드는 활동량 라벨 + 걸음수 막대 (연결 전후 대비용으로 뒤 카드에 쓴다) */
+.scard .act{margin:2px 0 0;font-size:12px;line-height:1.33;color:#3F4948}
+.bars{display:flex;align-items:flex-end;gap:6px;height:46px;margin-top:6px}
+.bars i{flex:1;border-radius:3px 3px 0 0;background:rgba(26,35,126,.7)}
+.bars i.today{background:#FB8C00}
+.dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.dots i{width:6px;height:6px;border-radius:50%;background:#BEC9C7}
+.dots i.on{background:#4355B9;width:18px;border-radius:3px}
+
 /* iOS 확인 창의 주황 경고 카드 — 배경 #FFF3E0, 왼쪽 보더 #E65100 4px,
    제목 bodyLarge 16/w700, 본문 bodyMedium 14 (_showEnableConfirmIOS) */
 .ios-warn{margin-top:16px;padding:12px;background:#FFF3E0;border-radius:12px;
@@ -101,3 +147,57 @@
 [dir="rtl"] .terms .lnk,[dir="rtl"] .row-card{flex-direction:row-reverse}
 [dir="rtl"] .terms .head,[dir="rtl"] .sub-top,[dir="rtl"] .fld-info{
   flex-direction:row-reverse}
+
+/* 단계 설명 안에 끼워 넣는 대상자 카드.
+   앱에서는 PageView라 한 장씩 넘겨 보지만, 여기서는 주의 카드와 정상 카드를
+   **둘 다 온전히** 보여준다 — 두 상태의 차이(버튼이 생긴다 / 걸음수가 보인다)가
+   이 그림의 요점이라 걸쳐 보이게 두면 전달되지 않는다. */
+.inline-card{display:block;max-width:600px;margin:16px 0 6px;
+  font-family:var(--device);line-height:normal}
+.inline-card .cards{overflow:visible;gap:8px}
+.inline-card .scard{flex:1 1 0;min-width:0;margin-right:0}
+.inline-card .bnav{margin-top:12px;border-radius:20px}
+@media(max-width:820px){
+  .inline-card .cards{flex-direction:column}
+  .inline-card .scard{flex:0 0 auto}
+}
+/* 카드·후속 설명은 button 밖에 있으므로 들여쓰기를 직접 맞춘다
+   (.step 그리드의 30px 번호 + 13px 간격 + 14px 좌패딩) */
+.extra{padding:0 14px 15px 57px}
+.extra .d{display:block;font-size:14.5px;color:var(--ink-soft);line-height:1.6;
+  margin-top:14px}
+.extra .d b{color:var(--ink);font-weight:600}
+
+/* 30일 전체 차트를 여는 달력 버튼 — 아이콘 위에 "30"이 겹친다
+   (_buildFullChartButton: 30x30 아이콘 + 흰 배경 위 10sp/w800 텍스트, 아래로 5) */
+.cal{position:relative;flex:none;width:38px;height:38px;padding:4px;
+  display:flex;align-items:center;justify-content:center}
+.cal svg{width:30px;height:30px;fill:#3F4948}
+.cal b{position:absolute;top:calc(50% + 5px);left:50%;
+  transform:translate(-50%,-50%);background:#fff;padding:0 1px;
+  font-size:10px;font-weight:800;line-height:1;color:#3F4948}
+
+/* 정상 카드 — 이름 옆 배터리는 정상일 때만 나온다
+   (batteryLevel: isNormal ? ... : null). 30% 초과는 초록 #43A047 */
+.scard .who{display:flex;align-items:center;gap:2px;min-width:0}
+.scard .who .nm{margin-right:4px}
+.scard .batt{width:18px;height:18px;flex:none;fill:#43A047}
+.scard .battp{font-size:11px;font-weight:600;line-height:1.45;color:#43A047}
+.scard .actrow{display:flex;align-items:center;gap:6px}
+.scard .actrow .act{flex:1;min-width:0;margin:0}
+
+/* 7일 걸음수 막대 — 왼쪽·아래만 축선, 축 이름은 위/아래 모서리에 */
+.chart{flex:1;min-height:0;display:flex;flex-direction:column}
+.chart .ylab,.chart .xlab{font-size:11px;line-height:1.45;color:#757575}
+.chart .xlab{align-self:flex-end}
+.chart .plot{flex:1;min-height:0;display:flex;align-items:flex-end;gap:5px;
+  padding:0 4px;border-left:1px solid rgba(117,117,117,.4);
+  border-bottom:1px solid rgba(117,117,117,.4)}
+.chart .bar{flex:1;min-width:0;display:flex;flex-direction:column;
+  justify-content:flex-end;height:100%}
+/* 라벨 자리는 모든 막대가 똑같이 비워 둬야 막대 밑선이 맞는다 */
+.chart .bar b{display:block;height:13px;font-size:11px;font-weight:700;
+  line-height:13px;color:#1A237E;text-align:center;white-space:nowrap}
+.chart .bar i{display:block;width:100%;border-radius:2px 2px 0 0;
+  background:rgba(26,35,126,.7)}
+.chart .bar i.today{background:#FB8C00}

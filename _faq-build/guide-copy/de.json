@@ -1,0 +1,66 @@
+{
+  "lang_name": "Deutsch",
+  "meta_title": "Mit dem Sicherheitscode die Familie verbinden — Anbu",
+  "meta_desc": "Schritt für Schritt durch die echten App-Bildschirme: Code erstellen, weitergeben und die Familie verbindet sich damit.",
+  "page_eyebrow": "Anleitung",
+  "page_title": "Mit dem Sicherheitscode die Familie verbinden",
+  "page_lead": "Anbu verbindet Menschen über einen einzigen <strong>Sicherheitscode</strong>. Sie erstellen den Code auf Ihrem Gerät und geben ihn weiter; Ihre Familie trägt ihn auf ihrem Gerät ein. Deshalb kommt die Verbindung zustande, ohne dass Name oder Telefonnummer auf unserem Server landen.",
+  "phone_me": "Mein Gerät — hier entsteht der Code",
+  "phone_family": "Gerät der Familie — hier wird nach mir gesehen",
+  "demo": {
+    "code": "K7M-4PXR",
+    "alias": "Mama",
+    "alias2": "Papa",
+    "phone": "0151 23456789"
+  },
+  "ctrl_prev": "Zurück",
+  "ctrl_next": "Weiter",
+  "ctrl_replay": "Von vorn",
+  "mockup_caption": "Die echten App-Bildschirme, originalgetreu nachgebaut. Code, Name und Telefonnummer sind Beispielwerte.",
+  "steps": [
+    {
+      "h": "In den Einstellungen auf [@gs_enable_button] tippen",
+      "d": "Öffnen Sie unten den Reiter <b>@nav_settings</b> — die Schaltfläche steht ganz oben. Aus „nur nach der Familie sehen“ wird <b>auch das eigene Lebenszeichen senden</b>."
+    },
+    {
+      "h": "Im Bestätigungsfenster aktivieren",
+      "d": "@gs_enable_dialog_body<br><b>Auf dem iPhone kommt ein Hinweis dazu</b> — gesendet wird nur, wenn Sie die Mitteilung zur eingestellten Zeit antippen oder die App selbst öffnen. Tippen Sie unten auf [iPhone], um zu vergleichen."
+    },
+    {
+      "h": "Der Sicherheitscode entsteht",
+      "d": "Die leere Stelle füllt sich mit einem <b>7-stelligen Code</b>. Pro Gerät wird genau einer vergeben, und nach Löschen und Neuinstallation kommt derselbe Code zurück."
+    },
+    {
+      "h": "Code kopieren oder teilen und der Familie mitteilen",
+      "d": "Die linke Schaltfläche kopiert, die rechte teilt. Beim Kopieren erscheint <b>@subject_home_code_copied</b>. Per SMS oder Messenger verschicken — oder die 7 Zeichen einfach am Telefon vorlesen."
+    },
+    {
+      "h": "Ab hier ist es das Gerät der Familie",
+      "d": "Wer den Code erhalten hat, öffnet in der eigenen App den Reiter <b>@nav_connection</b> und tippt auf [<b>@add_subject_button</b>]. Drei Felder sind auszufüllen."
+    },
+    {
+      "h": "Den erhaltenen Code eintragen",
+      "d": "@add_subject_code_info Kleinbuchstaben werden in Großbuchstaben umgewandelt. <b>Den Bindestrich (-) in der Mitte bitte mit eingeben</b> — ohne ihn zwischen den 3 und den 4 Zeichen wird der Code nicht erkannt."
+    },
+    {
+      "h": "Einen Namen festlegen",
+      "d": "So wird diese Person auf dem Bildschirm der Familie genannt. Anders als die Telefonnummer darunter <b>darf dieses Feld nicht leer bleiben.</b>"
+    },
+    {
+      "h": "Telefonnummer eintragen (optional)",
+      "d": "So sieht die Karte dieser Person auf dem Startbildschirm der Familie aus. Ist die Nummer hinterlegt, <b>wählt</b> die Schaltfläche <b>[@guardian_call_now]</b> <b>sofort.</b> Bleibt sie leer, muss die Person jedes Mal in den Kontakten gesucht werden.",
+      "illus": "cards",
+      "d_after": "Wenn Sie angerufen und sich selbst vergewissert haben, tippen Sie auf <b>[@guardian_confirm_safety]</b>. Die Warnung wird aufgehoben, die Anzeige steht wieder auf normal, und <b>die übrigen mitschauenden Angehörigen</b> erhalten eine Bestätigung."
+    },
+    {
+      "h": "Auf [@add_subject_connect] tippen — fertig",
+      "d": "Sobald Code und Name ausgefüllt sind, färbt sich die Schaltfläche. Ein Tippen verbindet, und die oben gezeigte Karte erscheint auf dem Startbildschirm der Familie."
+    }
+  ],
+  "note": "Nach der Verbindung bleibt nichts weiter zu tun. Anbu sendet das Lebenszeichen <strong>jeden Tag zur eingestellten Zeit von selbst</strong> und meldet sich bei der Familie, wenn diese Zeit ohne Signal verstreicht. Kommt das Signal spät oder bleiben die Schritte leer, hilft die <a href=\"faq.html\">Hilfe-Seite</a> weiter.",
+  "footer_home": "Startseite",
+  "footer_faq": "Häufige Fragen",
+  "footer_privacy": "Datenschutzerklärung",
+  "footer_terms": "Nutzungsbedingungen",
+  "footer_copyright": "© 2026 Averic Lab. All rights reserved."
+}
