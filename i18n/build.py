@@ -88,6 +88,8 @@ def app_tokens(code, app_all):
     a = app_all[LANG_TO_STRINGS[code]]
     checking = a["guardian_checking_subjects"].replace("@count", "2")
     last = a["guardian_last_check_hours"].replace("@hours", "2")
+    # 연결관리 카운터 — @max 는 앱의 기본 상한(users.max_subjects)과 같은 5
+    count = a["connection_managed_count_value"].replace("@max", "5")
     return {
         "APP_NAME": a["app_name"],
         "APP_CHECKING": checking.replace("\n", "<br>"),
@@ -146,6 +148,25 @@ def app_tokens(code, app_all):
         "APP_SCHED_LBL": a["heartbeat_schedule_change"],
         "APP_SCHED_DSC": a["heartbeat_daily_time"].replace("@time", "18:00"),
         "APP_REPORT_DESC": a["subject_home_report_desc"],
+        # "최대 5명" 섹션 — 연결관리 → 대상자 추가 → 대시보드 반영
+        # 카운터는 등록 전/후 두 값이 다 필요해서 토큰을 둘로 나눠 둔다.
+        "APP_CONN_TITLE": a["connection_title"],
+        "APP_CONN_HEAD": a["connection_connected_subjects"],
+        "APP_CONN_CNT3": count.replace("@current", "3"),
+        "APP_CONN_CNT4": count.replace("@current", "4"),
+        "APP_CONN_SCHED": a["connection_heartbeat_schedule"].replace("@time", "18:00"),
+        "APP_ADD_TITLE": a["add_subject_title"],
+        "APP_ADD_GUIDE": a["add_subject_guide_title"],
+        "APP_ADD_CODE_LBL": a["add_subject_code_label"],
+        "APP_ADD_ALIAS_LBL": a["add_subject_alias_label"],
+        "APP_ADD_PHONE_LBL": a["add_subject_phone_label"],
+        # 입력 필드에 채워 넣는 예시 연락처. 앱의 힌트 값이 곧 그 언어의 예시 번호라
+        # 그대로 쓴다(별칭·코드는 대시보드 카드와 맞춘 A~D / K7M-4PXR).
+        "APP_ADD_PHONE_VAL": a["add_subject_phone_hint"],
+        "APP_ADD_CONNECT": a["add_subject_connect"],
+        # 헤드라인은 등록 전 3명 / 등록 후 4명 두 벌이 필요하다
+        "APP_CHECKING3": a["guardian_checking_subjects"].replace("@count", "3").replace("\n", "<br>"),
+        "APP_CHECKING4": a["guardian_checking_subjects"].replace("@count", "4").replace("\n", "<br>"),
     }
 
 

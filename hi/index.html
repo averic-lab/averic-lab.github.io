@@ -412,6 +412,113 @@
 </section>
 
 
+<!-- ========== LIMIT (최대 5명) ========== -->
+<!-- 폰 2대가 한 편의 이야기를 나눠 갖는다 — ① 연결 관리에서 대상자를 추가하면
+     ② 대시보드에 카드가 한 장 늘어난다. 18초 주기로 반복.
+     ⚠️ ②의 카드는 **전부 안전(정상) 등급**이다. 이 섹션의 주제는 인원 한도이지
+     경고 등급이 아니며, 등급 이야기는 「단계별 알림」 섹션이 따로 맡는다.
+     주의/경고/긴급 카드나 푸시 배너를 여기에 끌어오지 말 것.
+     클래스 접두사 k — .c/.f/.n/.p 는 히어로·알림·긴급 섹션이 이미 쓰고 있다. -->
+<section class="limit">
+  <div class="limit-inner">
+    <div class="eyebrow">ज़्यादा से ज़्यादा 5</div>
+    <h2 class="section-title"><em>पाँच लोगों तक</em> का ख़याल एक साथ।</h2>
+    <p class="section-sub">कनेक्शन में सुरक्षा कोड डालिए — डैशबोर्ड पर एक और कार्ड जुड़ जाता है।</p>
+
+    <div class="kflow" aria-hidden="true">
+      <!-- ① 연결 관리 → 대상자 추가 → 연결 관리(카드 4장) -->
+      <div class="kstep ks1">
+        <span class="knum">1</span>
+        <div class="kphone"><div class="kscreen">
+
+          <!-- 연결관리 화면 -->
+          <div class="kscr kconn">
+            <div class="kbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+            <div class="kappbar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9.5 14.5 14.5 9.5"/><path d="M11 7 13 5a4 4 0 0 1 6 6l-2 2"/><path d="M13 17l-2 2a4 4 0 0 1-6-6l2-2"/></svg><span>कनेक्शन प्रबंधन</span></div>
+            <div class="kpad">
+              <div class="khead">
+                <span class="khl">जुड़े संरक्षित व्यक्ति <b class="kswap"><i class="ka">3 / 5</i><i class="kb">4 / 5</i></b></span>
+                <span class="kplus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg><em class="ktap ktapa"></em></span>
+              </div>
+              <div class="klist">
+                <div class="kcard"><span class="kav"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg></span><span class="kmeta"><b>A</b><i>P3Q-8VBN</i><u>रोज 18:00 पर</u></span></div>
+                <div class="kcard"><span class="kav"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg></span><span class="kmeta"><b>B</b><i>T5R-2LMC</i><u>रोज 18:00 पर</u></span></div>
+                <div class="kcard"><span class="kav"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg></span><span class="kmeta"><b>C</b><i>W9J-6XHD</i><u>रोज 18:00 पर</u></span></div>
+                <div class="kcard kc4"><span class="kav"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg></span><span class="kmeta"><b>D</b><i>K7M-4PXR</i><u>रोज 18:00 पर</u></span></div>
+              </div>
+            </div>
+            <div class="knav">
+              <div><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/></svg>होम</div>
+              <div class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9.5 14.5 14.5 9.5"/><path d="M11 7 13 5a4 4 0 0 1 6 6l-2 2"/><path d="M13 17l-2 2a4 4 0 0 1-6-6l2-2"/></svg>कनेक्ट</div>
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10.5 20a2 2 0 0 0 3 0"/></svg>अलर्ट</div>
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5" stroke-linecap="round"/></svg>सेटिंग्स</div>
+            </div>
+          </div>
+
+          <!-- 보호 대상자 연결(추가) 화면 -->
+          <div class="kscr kadd">
+            <div class="kbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+            <div class="kappbar"><span class="kback">&#8249;</span><span>संरक्षित व्यक्ति जोड़ें</span></div>
+            <div class="kpad">
+              <p class="kguide">संरक्षित व्यक्ति का अनोखा कोड और उपनाम दर्ज करें।</p>
+              <span class="klab">अनोखा कोड (7 अंक)</span>
+              <div class="kfld"><em class="kv kv1">K7M-4PXR</em></div>
+              <span class="klab">संरक्षित व्यक्ति का उपनाम</span>
+              <div class="kfld"><em class="kv kv2">D</em></div>
+              <span class="klab">फ़ोन नंबर</span>
+              <div class="kfld"><em class="kv kv3">9876543210</em></div>
+              <div class="kbtn">जोड़ें<em class="ktap ktapb"></em></div>
+            </div>
+            <div class="knav">
+              <div><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/></svg>होम</div>
+              <div class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9.5 14.5 14.5 9.5"/><path d="M11 7 13 5a4 4 0 0 1 6 6l-2 2"/><path d="M13 17l-2 2a4 4 0 0 1-6-6l2-2"/></svg>कनेक्ट</div>
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10.5 20a2 2 0 0 0 3 0"/></svg>अलर्ट</div>
+              <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5" stroke-linecap="round"/></svg>सेटिंग्स</div>
+            </div>
+          </div>
+
+        </div></div>
+        <span class="klbl">परिजन का ऐप · कनेक्शन</span>
+      </div>
+
+      <span class="karrow" aria-hidden="true"></span>
+
+      <!-- ② 대시보드에 카드가 한 장 늘어난다 (전부 안전 등급) -->
+      <div class="kstep ks2">
+        <span class="knum">2</span>
+        <div class="kphone"><div class="kscreen">
+          <div class="kbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+          <div class="kappbar dash"><span>Anbu Guardian</span></div>
+          <div class="kpad">
+            <div class="kdhead"><span class="ka">वर्तमान में 3 संरक्षित व्यक्ति(यों)<br>की जांच हो रही है।</span><span class="kb">वर्तमान में 4 संरक्षित व्यक्ति(यों)<br>की जांच हो रही है।</span></div>
+            <div class="kdsum">आज की कुशलता सारांश</div>
+            <div class="kleg"><span><i></i>सुरक्षित: <b class="kswap"><i class="ka">3</i><i class="kb">4</i></b></span></div>
+            <div class="kdlist">संरक्षित व्यक्ति सूची</div>
+            <div class="kview">
+              <div class="ktrack">
+                <div class="kdcard"><div class="kdr"><span class="kdn">A<span class="kbat">92%</span></span><span class="kpill">सुरक्षित</span></div><div class="kdact">गतिविधि: सक्रिय</div><div class="kplot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="t"></i></div><div class="kdlast">अंतिम जांच: 2 घंटे पहले</div></div>
+                <div class="kdcard"><div class="kdr"><span class="kdn">B<span class="kbat">78%</span></span><span class="kpill">सुरक्षित</span></div><div class="kdact">गतिविधि: सक्रिय</div><div class="kplot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="t"></i></div><div class="kdlast">अंतिम जांच: 2 घंटे पहले</div></div>
+                <div class="kdcard"><div class="kdr"><span class="kdn">C<span class="kbat">64%</span></span><span class="kpill">सुरक्षित</span></div><div class="kdact">गतिविधि: सक्रिय</div><div class="kplot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="t"></i></div><div class="kdlast">अंतिम जांच: 2 घंटे पहले</div></div>
+                <div class="kdcard kd4"><div class="kdr"><span class="kdn">D<span class="kbat">88%</span></span><span class="kpill">सुरक्षित</span></div><div class="kdact">गतिविधि: सक्रिय</div><div class="kplot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="t"></i></div><div class="kdlast">अंतिम जांच: 2 घंटे पहले</div></div>
+              </div>
+            </div>
+            <div class="kdots"><i class="kt1"></i><i class="kt2"></i><i class="kt3"></i><i class="kt4"></i></div>
+            <div class="kaddbtn"><span class="kcircle">+</span><span>नया संरक्षित व्यक्ति जोड़ें</span></div>
+          </div>
+          <div class="knav">
+            <div class="on"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/></svg>होम</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9.5 14.5 14.5 9.5"/><path d="M11 7 13 5a4 4 0 0 1 6 6l-2 2"/><path d="M13 17l-2 2a4 4 0 0 1-6-6l2-2"/></svg>कनेक्ट</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10.5 20a2 2 0 0 0 3 0"/></svg>अलर्ट</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5" stroke-linecap="round"/></svg>सेटिंग्स</div>
+          </div>
+        </div></div>
+        <span class="klbl">परिजन का ऐप · डैशबोर्ड</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ========== HELP (긴급 요청 흐름) ========== -->
 <!-- 설명 없이 흐름만 보여준다 — 대상자 홈 → 확인 창 → 보호자 알림 → 위치 지도.
      화면 문구는 전부 앱 번역 파일에서 온다(APP_SOS_* / APP_MAP_*). -->

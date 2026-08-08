@@ -147,6 +147,11 @@ KEYS = [
     "noti_warning_body",
     "noti_urgent_body",
     "noti_steps_body",
+    # 홈 "최대 5명" 섹션의 연결관리 화면 목업 (i18n/build.py 가 쓴다)
+    "connection_title",
+    "connection_connected_subjects",
+    "connection_managed_count_value",
+    "connection_heartbeat_schedule",
     # 하단 네비게이션 (설정·연결 화면에 보인다)
     "nav_home",
     "nav_connection",
@@ -169,6 +174,8 @@ PLACEHOLDER_OK = {
     "guardian_last_check_hours",         # @hours — 사용설명 목업이 채운다
     "noti_urgent_body",                  # @days  — 홈 알림 목업이 채운다
     "noti_steps_body",                   # @steps — 위와 동일
+    "connection_managed_count_value",    # @current/@max — 홈 "최대 5명" 목업이 3·4/5로 채운다
+    "connection_heartbeat_schedule",     # @time — 위와 동일 (18:00)
 }
 
 # 'key': 뒤 (같은 줄 또는 다음 줄) 문자열 리터럴. 양쪽 따옴표 + 이스케이프 허용.
