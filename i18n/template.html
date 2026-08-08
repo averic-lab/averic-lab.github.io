@@ -128,7 +128,7 @@
 
             <div class="cards">
               <div class="scard">
-                <div class="r1"><span class="nm">A<span class="bat">85%</span></span><span class="pill">{{APP_ST_CONFIRMED}}</span></div>
+                <div class="r1"><span class="nm">{{nick1}}<span class="bat">85%</span></span><span class="pill">{{APP_ST_CONFIRMED}}</span></div>
                 <div class="r2"><span class="act">{{APP_ACTIVITY}}</span></div>
                 <div class="slot">
                   <div class="ghost">
@@ -141,7 +141,7 @@
                 <div class="last">{{APP_LAST_CHECK}}</div>
               </div>
               <div class="scard c2">
-                <div class="r1"><span class="nm">B</span><span class="pill">{{APP_ST_CAUTION}}</span></div>
+                <div class="r1"><span class="nm">{{nick2}}</span><span class="pill">{{APP_ST_CAUTION}}</span></div>
                 <div class="slot2">
                   <div class="ghost2">
                     <div class="warn">{{APP_SAFETY_NEEDED}}</div>
@@ -342,7 +342,6 @@
   <div class="limit-inner">
     <div class="eyebrow">{{limit_eyebrow}}</div>
     <h2 class="section-title">{{limit_title_html}}</h2>
-    <p class="section-sub">{{limit_sub}}</p>
 
     <div class="kflow" aria-hidden="true">
       <!-- ① 연결 관리 → 대상자 추가 → 연결 관리(카드 4장) -->
@@ -360,10 +359,10 @@
                 <span class="kplus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg><em class="ktap ktapa"></em></span>
               </div>
               <div class="klist">
-                <div class="kcard"><span class="kav"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg></span><span class="kmeta"><b>A</b><i>P3Q-8VBN</i><u>{{APP_CONN_SCHED}}</u></span></div>
-                <div class="kcard"><span class="kav"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg></span><span class="kmeta"><b>B</b><i>T5R-2LMC</i><u>{{APP_CONN_SCHED}}</u></span></div>
-                <div class="kcard"><span class="kav"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg></span><span class="kmeta"><b>C</b><i>W9J-6XHD</i><u>{{APP_CONN_SCHED}}</u></span></div>
-                <div class="kcard kc4"><span class="kav"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg></span><span class="kmeta"><b>D</b><i>K7M-4PXR</i><u>{{APP_CONN_SCHED}}</u></span></div>
+                <div class="kcard"><span class="kav"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg></span><span class="kmeta"><b>{{nick1}}</b><i>P3Q-8VBN</i><u>{{APP_CONN_SCHED}}</u></span></div>
+                <div class="kcard"><span class="kav"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg></span><span class="kmeta"><b>{{nick2}}</b><i>T5R-2LMC</i><u>{{APP_CONN_SCHED}}</u></span></div>
+                <div class="kcard"><span class="kav"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg></span><span class="kmeta"><b>{{nick3}}</b><i>W9J-6XHD</i><u>{{APP_CONN_SCHED}}</u></span></div>
+                <div class="kcard kc4"><span class="kav"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/></svg></span><span class="kmeta"><b>{{nick4}}</b><i>K7M-4PXR</i><u>{{APP_CONN_SCHED}}</u></span></div>
               </div>
             </div>
             <div class="knav">
@@ -383,7 +382,7 @@
               <span class="klab">{{APP_ADD_CODE_LBL}}</span>
               <div class="kfld"><em class="kv kv1">K7M-4PXR</em></div>
               <span class="klab">{{APP_ADD_ALIAS_LBL}}</span>
-              <div class="kfld"><em class="kv kv2">D</em></div>
+              <div class="kfld"><em class="kv kv2">{{nick4}}</em></div>
               <span class="klab">{{APP_ADD_PHONE_LBL}}</span>
               <div class="kfld"><em class="kv kv3">{{APP_ADD_PHONE_VAL}}</em></div>
               <div class="kbtn">{{APP_ADD_CONNECT}}<em class="ktap ktapb"></em></div>
@@ -415,10 +414,10 @@
             <div class="kdlist">{{APP_SUBJECT_LIST}}</div>
             <div class="kview">
               <div class="ktrack">
-                <div class="kdcard"><div class="kdr"><span class="kdn">A<span class="kbat">92%</span></span><span class="kpill">{{APP_ST_NORMAL}}</span></div><div class="kdact">{{APP_ACTIVITY}}</div><div class="kplot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="t"></i></div><div class="kdlast">{{APP_LAST_CHECK}}</div></div>
-                <div class="kdcard"><div class="kdr"><span class="kdn">B<span class="kbat">78%</span></span><span class="kpill">{{APP_ST_NORMAL}}</span></div><div class="kdact">{{APP_ACTIVITY}}</div><div class="kplot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="t"></i></div><div class="kdlast">{{APP_LAST_CHECK}}</div></div>
-                <div class="kdcard"><div class="kdr"><span class="kdn">C<span class="kbat">64%</span></span><span class="kpill">{{APP_ST_NORMAL}}</span></div><div class="kdact">{{APP_ACTIVITY}}</div><div class="kplot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="t"></i></div><div class="kdlast">{{APP_LAST_CHECK}}</div></div>
-                <div class="kdcard kd4"><div class="kdr"><span class="kdn">D<span class="kbat">88%</span></span><span class="kpill">{{APP_ST_NORMAL}}</span></div><div class="kdact">{{APP_ACTIVITY}}</div><div class="kplot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="t"></i></div><div class="kdlast">{{APP_LAST_CHECK}}</div></div>
+                <div class="kdcard"><div class="kdr"><span class="kdn">{{nick1}}<span class="kbat">92%</span></span><span class="kpill">{{APP_ST_NORMAL}}</span></div><div class="kdact">{{APP_ACTIVITY}}</div><div class="kplot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="t"></i></div><div class="kdlast">{{APP_LAST_CHECK}}</div></div>
+                <div class="kdcard"><div class="kdr"><span class="kdn">{{nick2}}<span class="kbat">78%</span></span><span class="kpill">{{APP_ST_NORMAL}}</span></div><div class="kdact">{{APP_ACTIVITY}}</div><div class="kplot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="t"></i></div><div class="kdlast">{{APP_LAST_CHECK}}</div></div>
+                <div class="kdcard"><div class="kdr"><span class="kdn">{{nick3}}<span class="kbat">64%</span></span><span class="kpill">{{APP_ST_NORMAL}}</span></div><div class="kdact">{{APP_ACTIVITY}}</div><div class="kplot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="t"></i></div><div class="kdlast">{{APP_LAST_CHECK}}</div></div>
+                <div class="kdcard kd4"><div class="kdr"><span class="kdn">{{nick4}}<span class="kbat">88%</span></span><span class="kpill">{{APP_ST_NORMAL}}</span></div><div class="kdact">{{APP_ACTIVITY}}</div><div class="kplot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="t"></i></div><div class="kdlast">{{APP_LAST_CHECK}}</div></div>
               </div>
             </div>
             <div class="kdots"><i class="kt1"></i><i class="kt2"></i><i class="kt3"></i><i class="kt4"></i></div>
@@ -512,7 +511,7 @@
             </svg>
           </div>
           <div class="fmapinfo">
-            <div><span>{{APP_MAP_SUBJECT}}</span><b>A</b></div>
+            <div><span>{{APP_MAP_SUBJECT}}</span><b>{{nick1}}</b></div>
             <div><span>{{APP_MAP_ACCURACY}}</span><b>12 m</b></div>
             <div class="ext">{{APP_MAP_EXTERNAL}}</div>
           </div>

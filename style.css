@@ -1069,7 +1069,6 @@ p.section-sub {
   text-align: center; overflow: hidden;
 }
 .limit-inner { max-width: 1160px; margin: 0 auto; }
-.limit .section-sub { margin: 14px auto 0; }
 
 .kflow {
   margin-top: 56px; display: flex; align-items: flex-start;
