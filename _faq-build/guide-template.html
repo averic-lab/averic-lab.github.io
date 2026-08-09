@@ -522,6 +522,7 @@ function render(i){
   $('prev').disabled = (i === 0);
   $('next').disabled = (i === STEPS.length - 1);
   syncCtxBar(i);
+  if (autoFollow) revealCurrentSpot();
 }
 
 function go(i, manual){
@@ -557,10 +558,12 @@ $('prev').addEventListener('click', function(){ go(idx - 1, true); });
 $('next').addEventListener('click', function(){ go(idx + 1, true); });
 $('replay').addEventListener('click', function(){
   playing = !reduce.matches;
+  autoFollow = true;
   go(0, false);
 });
 stepBtns.forEach(function(b, n){
   b.addEventListener('click', function(){
+    autoFollow = true;
     go(n, true);
     if (window.matchMedia('(max-width:920px)').matches) {
       document.querySelector('.stage').scrollIntoView(
@@ -577,6 +580,12 @@ stepBtns.forEach(function(b, n){
 // 목업은 클릭 대상으로 만들지 않는다(PRD-FAQ §6 "목업은 조작 불가").
 var ctxBar = $('ctxbar'), ctxNarrow = window.matchMedia('(max-width:920px)');
 var stageVisible = false;
+// 손으로 스크롤하면 자동 따라가기를 끈다. 'scroll'이 아니라 사용자 제스처만
+// 듣는다 — 'scroll'은 우리가 부른 부드러운 스크롤에도 발생해 스스로 꺼진다.
+var autoFollow = true;
+['wheel', 'touchmove'].forEach(function(ev){
+  window.addEventListener(ev, function(){ autoFollow = false; }, {passive: true});
+});
 
 function syncCtxBar(i){
   if (!ctxBar) return;
@@ -595,10 +604,14 @@ function updateCtxBar(){
   }
 }
 
-// ‹ › 로 단계를 넘기면 그 단계가 가리키는 곳이 화면 밖일 수 있다 — 폰이 730px
-// 이라 844px 화면에 다 들어오지 않고, 단계마다 강조 위치가 위아래로 흩어진다.
-// **가려져 있을 때만** 옮긴다(이미 보이는데 스크롤하면 화면이 이유 없이 흔들린다).
-// 자동재생 중에는 부르지 않는다 — 읽는 중에 페이지가 저 혼자 움직이면 안 된다.
+// 단계가 바뀌면 그 단계가 가리키는 곳이 화면 밖일 수 있다 — 폰이 730px이라
+// 844px 화면에 다 들어오지 않고, 강조 위치가 단계마다 위아래로 흩어진다.
+// 실측(390×844, 스크롤 0): 6~9단계 대상이 전부 화면 밖이라 자동재생이 도는
+// 동안 바의 숫자만 올라가고 정작 무엇이 강조되는지 보이지 않았다.
+// 그래서 **자동재생 중에도 따라간다**(`autoFollow`). 다만
+//   · **가려져 있을 때만** 옮긴다 — 이미 보이는데 스크롤하면 이유 없이 흔들린다.
+//   · 사용자가 손으로 스크롤한 순간 따라가기를 끈다 — 주도권은 사용자에게 있다.
+//     ‹ ›·단계 탭·다시보기처럼 "따라가겠다"는 조작을 하면 다시 켜진다.
 function revealCurrentSpot(){
   if (!ctxNarrow.matches) return;
   var s = STEPS[idx];
@@ -610,8 +623,8 @@ function revealCurrentSpot(){
   el.scrollIntoView({behavior: reduce.matches ? 'auto' : 'smooth', block: 'center'});
 }
 
-$('ctx-prev').addEventListener('click', function(){ go(idx - 1, true); revealCurrentSpot(); });
-$('ctx-next').addEventListener('click', function(){ go(idx + 1, true); revealCurrentSpot(); });
+$('ctx-prev').addEventListener('click', function(){ autoFollow = true; go(idx - 1, true); });
+$('ctx-next').addEventListener('click', function(){ autoFollow = true; go(idx + 1, true); });
 $('ctx-main').addEventListener('click', function(){
   stop();   // 설명을 읽으러 가는 중이니 폰이 혼자 다음 단계로 넘어가지 않는다
   stepBtns[idx].scrollIntoView(
