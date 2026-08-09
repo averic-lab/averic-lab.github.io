@@ -68,6 +68,64 @@ a{color:inherit}
   .lang-switch a{font-size:12px;padding:3px 7px}
 }
 
+/* ── 모바일 문맥 바 (사용설명·FAQ 공용) ───────────────────────────────
+   좁은 화면(≤920px)에서는 설명과 폰 목업이 위아래로 쌓인다. 폰 하나가
+   iPhone 세로 화면의 87~93%(사용설명 730px · FAQ 785px @390×844)라
+   둘을 한 화면에 넣는 것은 축소 없이는 불가능하고, 축소하면 12px 글자가
+   5px가 되어 읽을 수 없다. 그래서 "둘 다 보이게" 대신 **목업을 보는 동안
+   문맥과 돌아갈 길을 화면에 붙여 둔다**.
+     · 사용설명 — 지금 몇 단계인지 + 이전/다음. 제목만으로 충분한 단계는
+       아래로 내려갈 필요가 없어져 왕복 자체가 줄어든다.
+     · FAQ — [화면에서 어디에 있는지 보기]로 3,274px 아래 목업까지 내려간
+       뒤 돌아올 방법이 없던 것을 메운다.
+   목업 자체는 클릭 대상으로 만들지 않는다(PRD-FAQ §6 "목업은 조작 불가").
+   ------------------------------------------------------------------ */
+.ctxbar{display:none}
+@media (max-width:920px){
+  .ctxbar{position:fixed;left:0;right:0;bottom:0;z-index:60;
+    display:flex;align-items:stretch;
+    background:rgba(255,255,255,.94);backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(80,50,40,.09);
+    padding-bottom:env(safe-area-inset-bottom)}
+  /* [hidden] 이 display:flex 를 이기도록 뒤에 둔다 */
+  .ctxbar[hidden]{display:none}
+  .ctxbar button{font:inherit;background:none;border:0;color:var(--ink);
+    cursor:pointer;display:flex;align-items:center;gap:8px}
+  .ctxbar .ctxnav{flex:0 0 auto;padding:0 14px;min-height:56px}
+  .ctxbar .ctxnav svg{width:22px;height:22px;fill:var(--ink-soft)}
+  .ctxbar .ctxnav:disabled svg{fill:#d6cec9}
+  .ctxbar .ctxnav:disabled{cursor:default}
+  .ctxbar .ctxmain{flex:1;min-width:0;padding:9px 4px;min-height:56px;
+    text-align:start}
+  /* "1 / 9"는 숫자 두 개를 중립 문자로 이은 형태라, RTL 문단에서는 양방향
+     알고리즘이 순서를 뒤집어 "9 / 1"로 보인다. 이 조각만 LTR로 격리한다. */
+  .ctxbar .ctxnum{flex:0 0 auto;font-size:12px;font-weight:700;color:#fff;
+    background:var(--teal);border-radius:999px;padding:2px 8px;line-height:1.5;
+    direction:ltr;unicode-bidi:isolate}
+  .ctxbar .ctxtitle{flex:1;min-width:0;font-size:13.5px;font-weight:600;
+    line-height:1.35;color:var(--ink);
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+    overflow:hidden}
+  .ctxbar .ctxgo{flex:0 0 auto;width:18px;height:18px;fill:var(--ink-mute)}
+  /* 바가 떠 있는 동안 마지막 콘텐츠가 가리지 않도록 */
+  body.has-ctxbar{padding-bottom:72px}
+  /* RTL — 방향 아이콘만 뒤집는다. 나머지 배치는 flex 가 알아서 뒤집는다 */
+  [dir="rtl"] .ctxbar .ctxnav svg,[dir="rtl"] .ctxbar .ctxgo{transform:scaleX(-1)}
+}
+@media (prefers-reduced-motion:reduce){
+  .ctxbar{backdrop-filter:none;-webkit-backdrop-filter:none;
+    background:var(--paper)}
+}
+
+/* FAQ 변형 — 돌아가기 알약. 사용설명은 이 요소가 없다(단계 이동이 목적) */
+@media (max-width:920px){
+  .ctxbar .ctxback{flex:0 0 auto;font-size:13px;font-weight:700;color:var(--teal);
+    background:var(--warm-paper);border:1px solid var(--line);border-radius:999px;
+    padding:6px 12px;white-space:nowrap}
+  .ctxbar #ctx-back .ctxtitle{-webkit-line-clamp:1}
+}
+
 /* 도입부 */
 .intro{padding:58px 0 34px}
 .eyebrow{font-size:13.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
@@ -111,6 +169,7 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 .ctrl button:disabled{opacity:.4;cursor:default}
 .ctrl button svg{width:13px;height:13px;fill:currentColor}
 .ctrl .count{margin-left:auto;font-size:12.5px;color:var(--ink-mute);
+  direction:ltr;unicode-bidi:isolate;
   font-variant-numeric:tabular-nums}
 [dir="rtl"] .ctrl .count{margin-left:0;margin-right:auto}
 .ctrl button:focus-visible,.step:focus-visible,.lang-switch a:focus-visible{
@@ -794,6 +853,23 @@ footer .copy{margin-left:auto}
   <span class="copy">© 2026 Averic Lab. All rights reserved.</span>
 </div></footer>
 
+<!-- 모바일 문맥 바 — 폰이 화면에 들어와 있는 동안만 뜬다. 좁은 화면에서는
+     폰(730px)이 화면의 87%라 단계 설명과 한 화면에 못 들어오므로, 지금 몇
+     단계인지와 이동 수단을 화면에 붙여 둔다. 스타일은 base.css 공용. -->
+<div class="ctxbar" id="ctxbar" hidden>
+  <button class="ctxnav" type="button" id="ctx-prev" aria-label="Back">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+  </button>
+  <button class="ctxmain" type="button" id="ctx-main">
+    <span class="ctxnum" id="ctx-num"></span>
+    <span class="ctxtitle" id="ctx-title"></span>
+    <svg class="ctxgo" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>
+  </button>
+  <button class="ctxnav" type="button" id="ctx-next" aria-label="Next">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+  </button>
+</div>
+
 <script>
 // 앱 번역 파일에서 추출한 실제 문구 (extract_strings.py)
 var S = {"stability_battery_warning_short": "Disable battery usage restrictions", "gs_activity_permission_denied_warning": "Activity permission is denied. Tap here to allow.", "location_permission_warning": "Location will not be sent with an emergency request. Tap to allow.", "permission_hibernation_title": "Please turn off Auto Permission Removal", "permission_hibernation_highlight": "Auto Permission Removal", "permission_hibernation_message": "Android automatically removes permissions from apps you haven't used for a long time. Anbu typically runs without being opened, so this feature can cause permissions to disappear after a while and stop the wellness check signal.\n\nTap [Open Settings] below — the relevant toggle screen will appear directly. Please turn the toggle off.\n\n※ The exact wording may vary by device manufacturer.", "permission_hibernation_go_to_settings": "Open Settings", "common_later": "Later", "app_name": "Anbu", "subject_home_share_title": "Share your safety code", "subject_home_check_title_last": "Last wellness check", "subject_home_check_body_reported": "Reported at @time", "heartbeat_schedule_change": "Change check-in time", "heartbeat_daily_time": "Daily at @time", "subject_home_report_button": "Report Safety Now", "subject_home_report_desc": "Let your guardian know you're okay", "subject_home_emergency_button": "I need help", "subject_home_emergency_desc": "Sends an emergency alert to your guardians", "notifications_level_caution": "Caution", "noti_caution_missing_body": "Today's scheduled wellness check has not been received yet. Please check in person.", "notifications_view_location": "🗺️ View location", "stability_battery_dialog_title": "Disable Battery Usage Restriction", "stability_battery_dialog_message": "When your phone enters power-saving mode, wellness check signals may reach your guardian late or be missed.\n\nAfter tapping [Open Settings] below, set \"Battery\" → \"Unrestricted\". This ensures wellness checks are delivered reliably at the scheduled time every day.\n\n※ The exact wording may vary by device manufacturer.", "gs_activity_permission_settings_title": "Permission Required", "gs_activity_permission_settings_body": "Please allow Physical activity (Motion & Fitness) permission in app settings.", "gs_activity_permission_settings_go": "Go to Settings", "location_permission_settings_title": "Location Permission Required", "location_permission_settings_body_android": "Tap 'Permissions' → 'Location', then select 'Allow only while using the app'.", "location_permission_settings_body_ios": "Find and tap 'Anbu', then under 'Location' select 'While Using the App'.", "common_cancel": "Cancel", "settings_title": "Settings", "gs_enable_button": "Create My Safety Code", "gs_enable_button_desc": "Let your family check on you too", "settings_subscription_service": "Subscription & Service", "settings_current_membership": "Current Membership", "settings_free_trial": "Free Trial", "subscription_subscribe": "Subscribe", "subscription_restore": "Restore Purchase", "settings_notification": "Notification Settings", "settings_terms_section": "Legal", "settings_privacy_policy": "Privacy Policy", "settings_terms": "Terms of Service", "gs_enable_dialog_title": "Create My Safety Code", "gs_enable_dialog_body": "A safety code will be issued — please share it with other guardians.", "gs_enable_confirm": "Create", "gs_enable_dialog_ios_warning_title": "⚠ How your wellness check is sent", "gs_enable_dialog_ios_warning_body": "A \"wellness push notification\" appears every day at the scheduled time. You must tap the notification or open the app yourself around that time for your wellness signal to be sent. If you do not open the app, your guardians may receive a missed-check alert.", "gs_enable_dialog_ios_confirm": "I understand, enable", "subject_home_code_copied": "Code copied", "add_subject_title": "Link Subject", "add_subject_button": "Add New Subject", "add_subject_guide_title": "Enter the subject's unique code and an alias.", "add_subject_guide_subtitle": "Link a subject's app to monitor their health and activity in real-time.", "add_subject_code_label": "Unique Code (7 digits)", "add_subject_code_info": "The unique code can be found in the subject's app.", "add_subject_alias_label": "Subject Alias", "add_subject_alias_hint": "e.g., Mom, Dad", "add_subject_phone_label": "Phone Number (Optional)", "add_subject_phone_hint": "2015550123", "add_subject_phone_info": "If entered, the call button dials this number directly. If left empty, you have to pick the contact from your contact list.", "add_subject_connect": "Connect", "guardian_today_summary": "Today's Wellness Summary", "guardian_checking_subjects": "Currently checking on\n@count subject(s).", "guardian_subject_list": "Subject List", "guardian_status_normal": "Safe", "guardian_status_caution": "Caution", "guardian_status_confirmed": "✅ Safe", "guardian_safety_needed": "Safety check needed", "guardian_call_now": "Call Now", "guardian_confirm_safety": "Confirm Safety", "guardian_last_check_hours": "Last check: @hours hr ago", "guardian_activity_prefix": "Activity", "guardian_activity_active": "Active", "guardian_chart_y_axis_steps": "Steps", "guardian_chart_x_axis_last_7_days": "Last 7 days", "subject_home_emergency_confirm_title": "Emergency Help Request", "subject_home_emergency_confirm_body": "An emergency alert will be sent to all guardians.\nYour current location will be shared too.\nDo you really want to request help?", "subject_home_emergency_confirm_send": "Send Emergency Request", "emergency_message_hint": "Add a message (optional)", "noti_emergency_body": "The subject has directly requested help. Please check immediately.", "emergency_map_title": "Emergency location", "emergency_map_subject_label": "Subject", "emergency_map_accuracy_label": "Accuracy", "emergency_map_open_external": "Open in external map app", "notifications_title": "Notifications", "notifications_level_health": "Normal", "notifications_level_info": "Info", "notifications_level_warning": "Warning", "notifications_level_urgent": "Urgent", "noti_auto_report_body": "Wellness check was received successfully.", "noti_warning_body": "Wellness checks have been missed consecutively. Please verify in person.", "noti_urgent_body": "No wellness check for @days day(s). Immediate verification is required.", "noti_steps_body": "@steps steps taken today.", "connection_title": "Connection Management", "connection_connected_subjects": "Connected Subjects", "connection_managed_count_value": "@current / @max", "connection_heartbeat_schedule": "Daily at @time", "nav_home": "Home", "nav_connection": "Connect", "nav_notification": "Alerts", "nav_settings": "Settings"};
@@ -938,6 +1014,7 @@ function render(i){
   $('count').textContent = (i + 1) + ' / ' + STEPS.length;
   $('prev').disabled = (i === 0);
   $('next').disabled = (i === STEPS.length - 1);
+  syncCtxBar(i);
 }
 
 function go(i, manual){
@@ -984,6 +1061,49 @@ stepBtns.forEach(function(b, n){
     }
   });
 });
+
+// ── 모바일 문맥 바 ─────────────────────────────────────────────────
+// 좁은 화면에서는 폰(730px)이 화면의 87%라 단계 설명과 한 화면에 못 들어온다.
+// 축소는 답이 아니다 — 12px 글자가 5px가 된다. 그래서 폰을 보는 동안
+// "지금 몇 단계"와 이동 수단을 화면 아래에 붙여 둔다. 제목만으로 충분한
+// 단계는 아래로 내려갈 필요가 없어져 왕복 횟수 자체가 줄어든다.
+// 목업은 클릭 대상으로 만들지 않는다(PRD-FAQ §6 "목업은 조작 불가").
+var ctxBar = $('ctxbar'), ctxNarrow = window.matchMedia('(max-width:920px)');
+var stageVisible = false;
+
+function syncCtxBar(i){
+  if (!ctxBar) return;
+  var h = stepBtns[i].querySelector('.h');
+  $('ctx-num').textContent = (i + 1) + ' / ' + STEPS.length;
+  $('ctx-title').textContent = h ? h.textContent : '';
+  $('ctx-prev').disabled = (i === 0);
+  $('ctx-next').disabled = (i === STEPS.length - 1);
+}
+
+function updateCtxBar(){
+  var on = stageVisible && ctxNarrow.matches;
+  if (ctxBar.hidden !== !on) {
+    ctxBar.hidden = !on;
+    document.body.classList.toggle('has-ctxbar', on);
+  }
+}
+
+$('ctx-prev').addEventListener('click', function(){ go(idx - 1, true); });
+$('ctx-next').addEventListener('click', function(){ go(idx + 1, true); });
+$('ctx-main').addEventListener('click', function(){
+  stop();   // 설명을 읽으러 가는 중이니 폰이 혼자 다음 단계로 넘어가지 않는다
+  stepBtns[idx].scrollIntoView(
+    {behavior: reduce.matches ? 'auto' : 'smooth', block: 'center'});
+});
+
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(function(entries){
+    stageVisible = entries[0].isIntersecting;
+    updateCtxBar();
+  }, {threshold: 0.12}).observe(document.querySelector('.stage'));
+}
+if (ctxNarrow.addEventListener) ctxNarrow.addEventListener('change', updateCtxBar);
+else if (ctxNarrow.addListener) ctxNarrow.addListener(updateCtxBar);
 
 // 폰 목업을 창 높이에 맞춰 축소한다.
 //

@@ -8,6 +8,7 @@
   "mockup_caption": "説明のため、3つのお知らせを1つの画面にまとめています。実際は該当する場合にのみ1つずつ表示され、対処が済むと消えます。",
   "mockup_hint": "画面のどこにあるか見る",
   "mockup_hint_close": "閉じる",
+  "back_to_answer": "説明に戻る",
 
   "spot_all": "画面全体",
   "spot_battery": "安否が遅い",

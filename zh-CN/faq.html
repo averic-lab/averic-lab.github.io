@@ -68,6 +68,64 @@ a{color:inherit}
   .lang-switch a{font-size:12px;padding:3px 7px}
 }
 
+/* ── 모바일 문맥 바 (사용설명·FAQ 공용) ───────────────────────────────
+   좁은 화면(≤920px)에서는 설명과 폰 목업이 위아래로 쌓인다. 폰 하나가
+   iPhone 세로 화면의 87~93%(사용설명 730px · FAQ 785px @390×844)라
+   둘을 한 화면에 넣는 것은 축소 없이는 불가능하고, 축소하면 12px 글자가
+   5px가 되어 읽을 수 없다. 그래서 "둘 다 보이게" 대신 **목업을 보는 동안
+   문맥과 돌아갈 길을 화면에 붙여 둔다**.
+     · 사용설명 — 지금 몇 단계인지 + 이전/다음. 제목만으로 충분한 단계는
+       아래로 내려갈 필요가 없어져 왕복 자체가 줄어든다.
+     · FAQ — [화면에서 어디에 있는지 보기]로 3,274px 아래 목업까지 내려간
+       뒤 돌아올 방법이 없던 것을 메운다.
+   목업 자체는 클릭 대상으로 만들지 않는다(PRD-FAQ §6 "목업은 조작 불가").
+   ------------------------------------------------------------------ */
+.ctxbar{display:none}
+@media (max-width:920px){
+  .ctxbar{position:fixed;left:0;right:0;bottom:0;z-index:60;
+    display:flex;align-items:stretch;
+    background:rgba(255,255,255,.94);backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(80,50,40,.09);
+    padding-bottom:env(safe-area-inset-bottom)}
+  /* [hidden] 이 display:flex 를 이기도록 뒤에 둔다 */
+  .ctxbar[hidden]{display:none}
+  .ctxbar button{font:inherit;background:none;border:0;color:var(--ink);
+    cursor:pointer;display:flex;align-items:center;gap:8px}
+  .ctxbar .ctxnav{flex:0 0 auto;padding:0 14px;min-height:56px}
+  .ctxbar .ctxnav svg{width:22px;height:22px;fill:var(--ink-soft)}
+  .ctxbar .ctxnav:disabled svg{fill:#d6cec9}
+  .ctxbar .ctxnav:disabled{cursor:default}
+  .ctxbar .ctxmain{flex:1;min-width:0;padding:9px 4px;min-height:56px;
+    text-align:start}
+  /* "1 / 9"는 숫자 두 개를 중립 문자로 이은 형태라, RTL 문단에서는 양방향
+     알고리즘이 순서를 뒤집어 "9 / 1"로 보인다. 이 조각만 LTR로 격리한다. */
+  .ctxbar .ctxnum{flex:0 0 auto;font-size:12px;font-weight:700;color:#fff;
+    background:var(--teal);border-radius:999px;padding:2px 8px;line-height:1.5;
+    direction:ltr;unicode-bidi:isolate}
+  .ctxbar .ctxtitle{flex:1;min-width:0;font-size:13.5px;font-weight:600;
+    line-height:1.35;color:var(--ink);
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+    overflow:hidden}
+  .ctxbar .ctxgo{flex:0 0 auto;width:18px;height:18px;fill:var(--ink-mute)}
+  /* 바가 떠 있는 동안 마지막 콘텐츠가 가리지 않도록 */
+  body.has-ctxbar{padding-bottom:72px}
+  /* RTL — 방향 아이콘만 뒤집는다. 나머지 배치는 flex 가 알아서 뒤집는다 */
+  [dir="rtl"] .ctxbar .ctxnav svg,[dir="rtl"] .ctxbar .ctxgo{transform:scaleX(-1)}
+}
+@media (prefers-reduced-motion:reduce){
+  .ctxbar{backdrop-filter:none;-webkit-backdrop-filter:none;
+    background:var(--paper)}
+}
+
+/* FAQ 변형 — 돌아가기 알약. 사용설명은 이 요소가 없다(단계 이동이 목적) */
+@media (max-width:920px){
+  .ctxbar .ctxback{flex:0 0 auto;font-size:13px;font-weight:700;color:var(--teal);
+    background:var(--warm-paper);border:1px solid var(--line);border-radius:999px;
+    padding:6px 12px;white-space:nowrap}
+  .ctxbar #ctx-back .ctxtitle{-webkit-line-clamp:1}
+}
+
 /* 도입부 */
 .intro{padding:58px 0 34px}
 /* 한글은 uppercase가 적용되지 않으므로 크기·자간으로만 라벨임을 드러낸다.
@@ -372,6 +430,18 @@ footer .copy{margin-left:auto}
   <span class="copy">© 2026 Averic Lab. All rights reserved.</span>
 </div></footer>
 
+<!-- 모바일 문맥 바 — [화면에서 어디에 있는지 보기]로 목업까지 내려간 뒤에만
+     뜬다. 좁은 화면에서 목업은 문서 3,274px 지점이라(390×844 실측) 손으로
+     되돌아오기 어렵고, 어느 질문 때문에 내려왔는지도 잊는다.
+     스타일은 base.css 공용(사용설명과 같은 바). -->
+<div class="ctxbar" id="ctxbar" hidden>
+  <button class="ctxmain" type="button" id="ctx-back">
+    <svg class="ctxgo" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+    <span class="ctxtitle" id="ctx-title"></span>
+    <span class="ctxback">返回说明</span>
+  </button>
+</div>
+
 <script>
 // 앱 번역 파일에서 추출한 실제 문구 (extract_strings.py)
 var S = {"stability_battery_warning_short": "需要解除电池使用限制", "gs_activity_permission_denied_warning": "计步权限已被拒绝。点击此处授予权限。", "location_permission_warning": "紧急求助时位置不会被发送。点按以允许。", "permission_hibernation_title": "请关闭\"自动撤销权限\"", "permission_hibernation_highlight": "自动撤销权限", "permission_hibernation_message": "Android会自动撤销长时间未使用应用的权限。Anbu平时几乎不会被打开,如果此功能开启,一段时间后权限会消失,导致安康信号传输中断。\n\n点击下方[打开设置]后,会直接显示相应的开关页面。请关闭该开关。\n\n※ 显示文字可能因设备制造商而略有不同。", "permission_hibernation_go_to_settings": "打开设置", "common_later": "稍后", "app_name": "Anbu", "subject_home_share_title": "请分享您的安全码", "subject_home_check_title_last": "上次问安", "subject_home_check_body_reported": "@time 已正常报告", "heartbeat_schedule_change": "更改平安确认时间", "heartbeat_daily_time": "每天 @time", "subject_home_report_button": "立即报告安全", "subject_home_report_desc": "让守护者知道您一切安好", "subject_home_emergency_button": "我需要帮助", "subject_home_emergency_desc": "向监护人发送紧急警报", "notifications_level_caution": "注意", "noti_caution_missing_body": "今天预定的问安尚未收到。请亲自确认。", "notifications_view_location": "🗺️ 查看位置", "stability_battery_dialog_title": "解除电池使用限制", "stability_battery_dialog_message": "当手机进入省电模式时,发送给监护人的安康信号可能延迟或丢失。\n\n点击下方[打开设置]后,请将\"电池\"设置为\"无限制\"。这样可以确保每天准时稳定地传输安康信号。\n\n※ 显示文字可能因设备制造商而略有不同。", "gs_activity_permission_settings_title": "需要权限设置", "gs_activity_permission_settings_body": "请在应用设置中允许身体活动（运动与健身）权限。", "gs_activity_permission_settings_go": "前往设置", "location_permission_settings_title": "需要位置权限设置", "location_permission_settings_body_android": "依次选择\"权限\"→\"位置\",然后选择\"仅在使用该应用时允许\"。", "location_permission_settings_body_ios": "找到并选择\"Anbu\",然后在\"位置\"中选择\"使用App期间\"。", "common_cancel": "取消", "settings_title": "设置", "gs_enable_button": "生成我的安全码", "gs_enable_button_desc": "让家人也能确认您的安好", "settings_subscription_service": "订阅与服务", "settings_current_membership": "当前会员", "settings_free_trial": "免费试用中", "subscription_subscribe": "订阅", "subscription_restore": "恢复购买", "settings_notification": "通知设置", "settings_terms_section": "条款", "settings_privacy_policy": "隐私政策", "settings_terms": "使用条款", "gs_enable_dialog_title": "生成我的安全码", "gs_enable_dialog_body": "启用后将发放安全码，请将您的\"安全码\"告知其他监护人。", "gs_enable_confirm": "生成", "gs_enable_dialog_ios_warning_title": "⚠ 安否确认发送方式说明", "gs_enable_dialog_ios_warning_body": "每天会在固定时间显示\"安否推送通知\"。您必须点按通知或在该时间前后亲自打开应用，安否信号才会发送。如果不打开应用，监护人可能会收到未接收警告。", "gs_enable_dialog_ios_confirm": "我已了解，启用", "subject_home_code_copied": "邀请码已复制", "add_subject_title": "连接被守护者", "add_subject_button": "添加新的被守护者", "add_subject_guide_title": "请输入被守护者的专属码和别名。", "add_subject_guide_subtitle": "连接被守护者的应用后，可以实时查看其健康状态和活动情况。", "add_subject_code_label": "专属码（7位）", "add_subject_code_info": "专属码可在被守护者的应用中找到。", "add_subject_alias_label": "被守护者别名", "add_subject_alias_hint": "例如：妈妈、爸爸", "add_subject_phone_label": "联系方式（选填）", "add_subject_phone_hint": "13800138000", "add_subject_phone_info": "填写后点击通话按钮可直接拨打；留空则需从通讯录中自行选择号码。", "add_subject_connect": "连接", "guardian_today_summary": "今日问安总结", "guardian_checking_subjects": "正在关注\n@count 位被守护者的平安。", "guardian_subject_list": "被守护者列表", "guardian_status_normal": "安全", "guardian_status_caution": "注意", "guardian_status_confirmed": "✅ 安全", "guardian_safety_needed": "需要确认安全", "guardian_call_now": "立即拨打电话", "guardian_confirm_safety": "确认安全", "guardian_last_check_hours": "上次确认：@hours 小时前", "guardian_activity_prefix": "活动量", "guardian_activity_active": "活跃", "guardian_chart_y_axis_steps": "步数", "guardian_chart_x_axis_last_7_days": "最近7天", "subject_home_emergency_confirm_title": "紧急求助", "subject_home_emergency_confirm_body": "将向所有监护人发送紧急警报。\n当前位置也将一同共享。\n确定要请求帮助吗？", "subject_home_emergency_confirm_send": "发送紧急请求", "emergency_message_hint": "附言（可选）", "noti_emergency_body": "被监护人直接请求了帮助。请立即确认。", "emergency_map_title": "紧急位置", "emergency_map_subject_label": "对象", "emergency_map_accuracy_label": "精度", "emergency_map_open_external": "在外部地图应用中打开", "notifications_title": "通知", "notifications_level_health": "正常", "notifications_level_info": "信息", "notifications_level_warning": "警告", "notifications_level_urgent": "紧急", "noti_auto_report_body": "问安已正常收到。", "noti_warning_body": "问安已连续未收到。请亲自核实。", "noti_urgent_body": "已@days天未收到问安。需要立即确认。", "noti_steps_body": "今天共走了@steps步。", "connection_title": "连接管理", "connection_connected_subjects": "已连接的被守护者", "connection_managed_count_value": "@current / @max 人", "connection_heartbeat_schedule": "每天 @time", "nav_home": "首页", "nav_connection": "连接", "nav_notification": "通知", "nav_settings": "设置"};
@@ -429,6 +499,7 @@ chips.forEach(function(c){
   c.addEventListener('click', function(){
     // 칩으로 위치를 바꾸면 펼쳐 둔 다이얼로그는 접는다 — 상태가 어긋나지 않도록
     collapseAll(null);
+    setCtxTopic(null);   // 다른 주제로 옮겼으니 돌아갈 자리도 지운다
     show(c.dataset.spot);
 
     // 칩을 고르면 해당 FAQ 본문으로 함께 이동한다. 넓은 화면에서는 목업이
@@ -466,9 +537,54 @@ document.querySelectorAll('.show-me').forEach(function(b){
     if (!open && window.matchMedia('(max-width:920px)').matches) {
       document.querySelector('.stage')
         .scrollIntoView({behavior: scrollBehavior(), block: 'center'});
+      setCtxTopic(b.closest('.topic'));   // 돌아올 자리를 기억해 둔다
+    } else {
+      setCtxTopic(null);
     }
   });
 });
+
+// ── 모바일 문맥 바 ─────────────────────────────────────────────────
+// 좁은 화면에서 목업은 문서 3,274px 지점이다(390×844 실측). [어디에 있는지
+// 보기]가 거기까지 데려다주지만 돌아올 방법이 없었고, 내려간 뒤에는 어느 질문
+// 때문에 왔는지도 잊는다. 목업을 보는 동안만 "질문 제목 + 돌아가기"를 띄운다.
+// 목업 자체는 클릭 대상으로 만들지 않는다(§6 "목업은 조작 불가").
+var ctxBar = document.getElementById('ctxbar');
+var ctxNarrow = window.matchMedia('(max-width:920px)');
+var ctxTopic = null, ctxStageVisible = false;
+
+function updateCtxBar(){
+  var on = !!ctxTopic && ctxStageVisible && ctxNarrow.matches;
+  if (ctxBar.hidden !== !on) {
+    ctxBar.hidden = !on;
+    document.body.classList.toggle('has-ctxbar', on);
+  }
+}
+
+function setCtxTopic(topic){
+  ctxTopic = topic || null;
+  if (ctxTopic) {
+    var h = ctxTopic.querySelector('h2');
+    document.getElementById('ctx-title').textContent = h ? h.textContent : '';
+  }
+  updateCtxBar();
+}
+
+document.getElementById('ctx-back').addEventListener('click', function(){
+  if (!ctxTopic) return;
+  var target = ctxTopic;
+  setCtxTopic(null);          // 먼저 감춰야 도착 지점을 바가 가리지 않는다
+  target.scrollIntoView({behavior: scrollBehavior(), block: 'start'});
+});
+
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(function(entries){
+    ctxStageVisible = entries[0].isIntersecting;
+    updateCtxBar();
+  }, {threshold: 0.12}).observe(document.querySelector('.stage'));
+}
+if (ctxNarrow.addEventListener) ctxNarrow.addEventListener('change', updateCtxBar);
+else if (ctxNarrow.addListener) ctxNarrow.addListener(updateCtxBar);
 
 // 플랫폼별 본문 전환 (위치 다이얼로그 전용)
 document.querySelectorAll('.pf-tabs').forEach(function(tabs){

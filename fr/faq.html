@@ -68,6 +68,64 @@ a{color:inherit}
   .lang-switch a{font-size:12px;padding:3px 7px}
 }
 
+/* ── 모바일 문맥 바 (사용설명·FAQ 공용) ───────────────────────────────
+   좁은 화면(≤920px)에서는 설명과 폰 목업이 위아래로 쌓인다. 폰 하나가
+   iPhone 세로 화면의 87~93%(사용설명 730px · FAQ 785px @390×844)라
+   둘을 한 화면에 넣는 것은 축소 없이는 불가능하고, 축소하면 12px 글자가
+   5px가 되어 읽을 수 없다. 그래서 "둘 다 보이게" 대신 **목업을 보는 동안
+   문맥과 돌아갈 길을 화면에 붙여 둔다**.
+     · 사용설명 — 지금 몇 단계인지 + 이전/다음. 제목만으로 충분한 단계는
+       아래로 내려갈 필요가 없어져 왕복 자체가 줄어든다.
+     · FAQ — [화면에서 어디에 있는지 보기]로 3,274px 아래 목업까지 내려간
+       뒤 돌아올 방법이 없던 것을 메운다.
+   목업 자체는 클릭 대상으로 만들지 않는다(PRD-FAQ §6 "목업은 조작 불가").
+   ------------------------------------------------------------------ */
+.ctxbar{display:none}
+@media (max-width:920px){
+  .ctxbar{position:fixed;left:0;right:0;bottom:0;z-index:60;
+    display:flex;align-items:stretch;
+    background:rgba(255,255,255,.94);backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(80,50,40,.09);
+    padding-bottom:env(safe-area-inset-bottom)}
+  /* [hidden] 이 display:flex 를 이기도록 뒤에 둔다 */
+  .ctxbar[hidden]{display:none}
+  .ctxbar button{font:inherit;background:none;border:0;color:var(--ink);
+    cursor:pointer;display:flex;align-items:center;gap:8px}
+  .ctxbar .ctxnav{flex:0 0 auto;padding:0 14px;min-height:56px}
+  .ctxbar .ctxnav svg{width:22px;height:22px;fill:var(--ink-soft)}
+  .ctxbar .ctxnav:disabled svg{fill:#d6cec9}
+  .ctxbar .ctxnav:disabled{cursor:default}
+  .ctxbar .ctxmain{flex:1;min-width:0;padding:9px 4px;min-height:56px;
+    text-align:start}
+  /* "1 / 9"는 숫자 두 개를 중립 문자로 이은 형태라, RTL 문단에서는 양방향
+     알고리즘이 순서를 뒤집어 "9 / 1"로 보인다. 이 조각만 LTR로 격리한다. */
+  .ctxbar .ctxnum{flex:0 0 auto;font-size:12px;font-weight:700;color:#fff;
+    background:var(--teal);border-radius:999px;padding:2px 8px;line-height:1.5;
+    direction:ltr;unicode-bidi:isolate}
+  .ctxbar .ctxtitle{flex:1;min-width:0;font-size:13.5px;font-weight:600;
+    line-height:1.35;color:var(--ink);
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+    overflow:hidden}
+  .ctxbar .ctxgo{flex:0 0 auto;width:18px;height:18px;fill:var(--ink-mute)}
+  /* 바가 떠 있는 동안 마지막 콘텐츠가 가리지 않도록 */
+  body.has-ctxbar{padding-bottom:72px}
+  /* RTL — 방향 아이콘만 뒤집는다. 나머지 배치는 flex 가 알아서 뒤집는다 */
+  [dir="rtl"] .ctxbar .ctxnav svg,[dir="rtl"] .ctxbar .ctxgo{transform:scaleX(-1)}
+}
+@media (prefers-reduced-motion:reduce){
+  .ctxbar{backdrop-filter:none;-webkit-backdrop-filter:none;
+    background:var(--paper)}
+}
+
+/* FAQ 변형 — 돌아가기 알약. 사용설명은 이 요소가 없다(단계 이동이 목적) */
+@media (max-width:920px){
+  .ctxbar .ctxback{flex:0 0 auto;font-size:13px;font-weight:700;color:var(--teal);
+    background:var(--warm-paper);border:1px solid var(--line);border-radius:999px;
+    padding:6px 12px;white-space:nowrap}
+  .ctxbar #ctx-back .ctxtitle{-webkit-line-clamp:1}
+}
+
 /* 도입부 */
 .intro{padding:58px 0 34px}
 /* 한글은 uppercase가 적용되지 않으므로 크기·자간으로만 라벨임을 드러낸다.
@@ -372,6 +430,18 @@ footer .copy{margin-left:auto}
   <span class="copy">© 2026 Averic Lab. All rights reserved.</span>
 </div></footer>
 
+<!-- 모바일 문맥 바 — [화면에서 어디에 있는지 보기]로 목업까지 내려간 뒤에만
+     뜬다. 좁은 화면에서 목업은 문서 3,274px 지점이라(390×844 실측) 손으로
+     되돌아오기 어렵고, 어느 질문 때문에 내려왔는지도 잊는다.
+     스타일은 base.css 공용(사용설명과 같은 바). -->
+<div class="ctxbar" id="ctxbar" hidden>
+  <button class="ctxmain" type="button" id="ctx-back">
+    <svg class="ctxgo" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+    <span class="ctxtitle" id="ctx-title"></span>
+    <span class="ctxback">Retour à la réponse</span>
+  </button>
+</div>
+
 <script>
 // 앱 번역 파일에서 추출한 실제 문구 (extract_strings.py)
 var S = {"stability_battery_warning_short": "La restriction d'utilisation de la batterie doit être désactivée", "gs_activity_permission_denied_warning": "L'autorisation de compteur de pas est refusée. Appuyez ici pour autoriser.", "location_permission_warning": "La position ne sera pas envoyée lors d'un appel d'urgence. Touchez pour autoriser.", "permission_hibernation_title": "Veuillez désactiver la suppression automatique des autorisations", "permission_hibernation_highlight": "suppression automatique des autorisations", "permission_hibernation_message": "Android supprime automatiquement les autorisations des applications que vous n'utilisez pas depuis longtemps. Anbu fonctionne généralement sans être ouverte, donc cette fonctionnalité peut faire disparaître les autorisations après un certain temps et arrêter l'envoi du signal de bien-être.\n\nAppuyez sur [Ouvrir les paramètres] ci-dessous — l'écran du bouton correspondant s'affichera directement. Veuillez désactiver le bouton.\n\n※ Les libellés exacts peuvent varier selon le fabricant de l'appareil.", "permission_hibernation_go_to_settings": "Ouvrir les paramètres", "common_later": "Plus tard", "app_name": "Anbu", "subject_home_share_title": "Partagez votre code de sécurité", "subject_home_check_title_last": "Dernière vérification", "subject_home_check_body_reported": "Signalé à @time", "heartbeat_schedule_change": "Modifier l'heure de confirmation", "heartbeat_daily_time": "Tous les jours à @time", "subject_home_report_button": "Signaler mon bien-être maintenant", "subject_home_report_desc": "Rassurez votre protecteur en lui montrant que vous allez bien", "subject_home_emergency_button": "J'ai besoin d'aide", "subject_home_emergency_desc": "Envoie une alerte d'urgence à vos protecteurs", "notifications_level_caution": "Attention", "noti_caution_missing_body": "La vérification de bien-être prévue aujourd'hui n'a pas encore été reçue. Veuillez vérifier en personne.", "notifications_view_location": "🗺️ Voir la position", "stability_battery_dialog_title": "Désactiver la restriction d'utilisation de la batterie", "stability_battery_dialog_message": "Lorsque votre téléphone passe en mode économie d'énergie, les signaux de bien-être envoyés à votre proche peuvent être retardés ou manqués.\n\nAprès avoir appuyé sur [Ouvrir les paramètres] ci-dessous, réglez \"Batterie\" → \"Sans restriction\". Ainsi, les signaux de bien-être sont transmis de manière fiable à l'heure prévue chaque jour.\n\n※ Les libellés exacts peuvent varier selon le fabricant de l'appareil.", "gs_activity_permission_settings_title": "Autorisation requise", "gs_activity_permission_settings_body": "Veuillez autoriser l'autorisation Activité physique (Mouvement et Forme) dans les paramètres de l'application.", "gs_activity_permission_settings_go": "Aller aux paramètres", "location_permission_settings_title": "Autorisation de localisation requise", "location_permission_settings_body_android": "Sélectionnez « Autorisations » → « Position », puis choisissez « Autoriser uniquement lorsque l'app est utilisée ».", "location_permission_settings_body_ios": "Trouvez et sélectionnez « Anbu », puis dans « Position » choisissez « Lorsque l'app est active ».", "common_cancel": "Annuler", "settings_title": "Paramètres", "gs_enable_button": "Créer mon code de sécurité", "gs_enable_button_desc": "Vos proches peuvent aussi veiller sur vous", "settings_subscription_service": "Abonnement & service", "settings_current_membership": "Abonnement actuel", "settings_free_trial": "Essai gratuit", "subscription_subscribe": "S'abonner", "subscription_restore": "Restaurer l'achat", "settings_notification": "Paramètres de notification", "settings_terms_section": "Mentions légales", "settings_privacy_policy": "Politique de confidentialité", "settings_terms": "Conditions d'utilisation", "gs_enable_dialog_title": "Créer mon code de sécurité", "gs_enable_dialog_body": "Un code de sécurité sera émis — veuillez le partager avec d'autres gardiens.", "gs_enable_confirm": "Créer", "gs_enable_dialog_ios_warning_title": "⚠ Comment votre bilan de santé est envoyé", "gs_enable_dialog_ios_warning_body": "Une « notification push de bien-être » apparaît chaque jour à l'heure programmée. Vous devez appuyer sur la notification ou ouvrir l'application vous-même à ce moment-là pour que votre signal de bien-être soit envoyé. Si vous n'ouvrez pas l'application, vos gardiens peuvent recevoir une alerte de vérification manquée.", "gs_enable_dialog_ios_confirm": "Compris, activer", "subject_home_code_copied": "Code copié", "add_subject_title": "Associer une personne protégée", "add_subject_button": "Ajouter une personne protégée", "add_subject_guide_title": "Saisissez le code unique et un surnom.", "add_subject_guide_subtitle": "Associez l'application d'un proche pour suivre son état en temps réel.", "add_subject_code_label": "Code unique (7 caractères)", "add_subject_code_info": "Le code unique se trouve dans l'application de la personne protégée.", "add_subject_alias_label": "Surnom", "add_subject_alias_hint": "ex. : Maman, Papa", "add_subject_phone_label": "Numéro de téléphone (facultatif)", "add_subject_phone_hint": "0612345678", "add_subject_phone_info": "Si renseigné, le bouton d'appel compose directement ce numéro. Sinon, vous devrez choisir le contact dans votre liste.", "add_subject_connect": "Associer", "guardian_today_summary": "Résumé du jour", "guardian_checking_subjects": "Suivi en cours pour\n@count personne(s).", "guardian_subject_list": "Liste des personnes protégées", "guardian_status_normal": "Sûr", "guardian_status_caution": "Attention", "guardian_status_confirmed": "✅ Sûr", "guardian_safety_needed": "Vérification de sécurité nécessaire", "guardian_call_now": "Appeler maintenant", "guardian_confirm_safety": "Confirmer la sécurité", "guardian_last_check_hours": "Dernière vérif. : il y a @hours h", "guardian_activity_prefix": "Activité", "guardian_activity_active": "Actif", "guardian_chart_y_axis_steps": "Pas", "guardian_chart_x_axis_last_7_days": "7 derniers jours", "subject_home_emergency_confirm_title": "Demande d'aide d'urgence", "subject_home_emergency_confirm_body": "Une alerte d'urgence sera envoyée à tous les gardiens.\nVotre position actuelle sera également partagée.\nVoulez-vous vraiment demander de l'aide ?", "subject_home_emergency_confirm_send": "Envoyer la demande d'urgence", "emergency_message_hint": "Ajouter un message (facultatif)", "noti_emergency_body": "La personne protégée a directement demandé de l'aide. Veuillez vérifier immédiatement.", "emergency_map_title": "Position d'urgence", "emergency_map_subject_label": "Personne surveillée", "emergency_map_accuracy_label": "Précision", "emergency_map_open_external": "Ouvrir dans l'application de cartes externe", "notifications_title": "Notifications", "notifications_level_health": "Normal", "notifications_level_info": "Info", "notifications_level_warning": "Alerte", "notifications_level_urgent": "Urgent", "noti_auto_report_body": "La vérification de bien-être a été reçue avec succès.", "noti_warning_body": "Les vérifications de bien-être ont été manquées consécutivement. Veuillez vérifier en personne.", "noti_urgent_body": "Aucune vérification de bien-être depuis @days jour(s). Une vérification immédiate est requise.", "noti_steps_body": "@steps pas effectués aujourd'hui.", "connection_title": "Gestion des connexions", "connection_connected_subjects": "Personnes protégées connectées", "connection_managed_count_value": "@current / @max", "connection_heartbeat_schedule": "Tous les jours à @time", "nav_home": "Accueil", "nav_connection": "Connexion", "nav_notification": "Alertes", "nav_settings": "Paramètres"};
@@ -429,6 +499,7 @@ chips.forEach(function(c){
   c.addEventListener('click', function(){
     // 칩으로 위치를 바꾸면 펼쳐 둔 다이얼로그는 접는다 — 상태가 어긋나지 않도록
     collapseAll(null);
+    setCtxTopic(null);   // 다른 주제로 옮겼으니 돌아갈 자리도 지운다
     show(c.dataset.spot);
 
     // 칩을 고르면 해당 FAQ 본문으로 함께 이동한다. 넓은 화면에서는 목업이
@@ -466,9 +537,54 @@ document.querySelectorAll('.show-me').forEach(function(b){
     if (!open && window.matchMedia('(max-width:920px)').matches) {
       document.querySelector('.stage')
         .scrollIntoView({behavior: scrollBehavior(), block: 'center'});
+      setCtxTopic(b.closest('.topic'));   // 돌아올 자리를 기억해 둔다
+    } else {
+      setCtxTopic(null);
     }
   });
 });
+
+// ── 모바일 문맥 바 ─────────────────────────────────────────────────
+// 좁은 화면에서 목업은 문서 3,274px 지점이다(390×844 실측). [어디에 있는지
+// 보기]가 거기까지 데려다주지만 돌아올 방법이 없었고, 내려간 뒤에는 어느 질문
+// 때문에 왔는지도 잊는다. 목업을 보는 동안만 "질문 제목 + 돌아가기"를 띄운다.
+// 목업 자체는 클릭 대상으로 만들지 않는다(§6 "목업은 조작 불가").
+var ctxBar = document.getElementById('ctxbar');
+var ctxNarrow = window.matchMedia('(max-width:920px)');
+var ctxTopic = null, ctxStageVisible = false;
+
+function updateCtxBar(){
+  var on = !!ctxTopic && ctxStageVisible && ctxNarrow.matches;
+  if (ctxBar.hidden !== !on) {
+    ctxBar.hidden = !on;
+    document.body.classList.toggle('has-ctxbar', on);
+  }
+}
+
+function setCtxTopic(topic){
+  ctxTopic = topic || null;
+  if (ctxTopic) {
+    var h = ctxTopic.querySelector('h2');
+    document.getElementById('ctx-title').textContent = h ? h.textContent : '';
+  }
+  updateCtxBar();
+}
+
+document.getElementById('ctx-back').addEventListener('click', function(){
+  if (!ctxTopic) return;
+  var target = ctxTopic;
+  setCtxTopic(null);          // 먼저 감춰야 도착 지점을 바가 가리지 않는다
+  target.scrollIntoView({behavior: scrollBehavior(), block: 'start'});
+});
+
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(function(entries){
+    ctxStageVisible = entries[0].isIntersecting;
+    updateCtxBar();
+  }, {threshold: 0.12}).observe(document.querySelector('.stage'));
+}
+if (ctxNarrow.addEventListener) ctxNarrow.addEventListener('change', updateCtxBar);
+else if (ctxNarrow.addListener) ctxNarrow.addListener(updateCtxBar);
 
 // 플랫폼별 본문 전환 (위치 다이얼로그 전용)
 document.querySelectorAll('.pf-tabs').forEach(function(tabs){

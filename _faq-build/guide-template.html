@@ -52,6 +52,7 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 .ctrl button:disabled{opacity:.4;cursor:default}
 .ctrl button svg{width:13px;height:13px;fill:currentColor}
 .ctrl .count{margin-left:auto;font-size:12.5px;color:var(--ink-mute);
+  direction:ltr;unicode-bidi:isolate;
   font-variant-numeric:tabular-nums}
 [dir="rtl"] .ctrl .count{margin-left:0;margin-right:auto}
 .ctrl button:focus-visible,.step:focus-visible,.lang-switch a:focus-visible{
@@ -359,6 +360,23 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
   <span class="copy">{{FOOTER_COPYRIGHT}}</span>
 </div></footer>
 
+<!-- 모바일 문맥 바 — 폰이 화면에 들어와 있는 동안만 뜬다. 좁은 화면에서는
+     폰(730px)이 화면의 87%라 단계 설명과 한 화면에 못 들어오므로, 지금 몇
+     단계인지와 이동 수단을 화면에 붙여 둔다. 스타일은 base.css 공용. -->
+<div class="ctxbar" id="ctxbar" hidden>
+  <button class="ctxnav" type="button" id="ctx-prev" aria-label="{{CTRL_PREV}}">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+  </button>
+  <button class="ctxmain" type="button" id="ctx-main">
+    <span class="ctxnum" id="ctx-num"></span>
+    <span class="ctxtitle" id="ctx-title"></span>
+    <svg class="ctxgo" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>
+  </button>
+  <button class="ctxnav" type="button" id="ctx-next" aria-label="{{CTRL_NEXT}}">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+  </button>
+</div>
+
 <script>
 // 앱 번역 파일에서 추출한 실제 문구 (extract_strings.py)
 var S = {{APP_STRINGS}};
@@ -503,6 +521,7 @@ function render(i){
   $('count').textContent = (i + 1) + ' / ' + STEPS.length;
   $('prev').disabled = (i === 0);
   $('next').disabled = (i === STEPS.length - 1);
+  syncCtxBar(i);
 }
 
 function go(i, manual){
@@ -549,6 +568,49 @@ stepBtns.forEach(function(b, n){
     }
   });
 });
+
+// ── 모바일 문맥 바 ─────────────────────────────────────────────────
+// 좁은 화면에서는 폰(730px)이 화면의 87%라 단계 설명과 한 화면에 못 들어온다.
+// 축소는 답이 아니다 — 12px 글자가 5px가 된다. 그래서 폰을 보는 동안
+// "지금 몇 단계"와 이동 수단을 화면 아래에 붙여 둔다. 제목만으로 충분한
+// 단계는 아래로 내려갈 필요가 없어져 왕복 횟수 자체가 줄어든다.
+// 목업은 클릭 대상으로 만들지 않는다(PRD-FAQ §6 "목업은 조작 불가").
+var ctxBar = $('ctxbar'), ctxNarrow = window.matchMedia('(max-width:920px)');
+var stageVisible = false;
+
+function syncCtxBar(i){
+  if (!ctxBar) return;
+  var h = stepBtns[i].querySelector('.h');
+  $('ctx-num').textContent = (i + 1) + ' / ' + STEPS.length;
+  $('ctx-title').textContent = h ? h.textContent : '';
+  $('ctx-prev').disabled = (i === 0);
+  $('ctx-next').disabled = (i === STEPS.length - 1);
+}
+
+function updateCtxBar(){
+  var on = stageVisible && ctxNarrow.matches;
+  if (ctxBar.hidden !== !on) {
+    ctxBar.hidden = !on;
+    document.body.classList.toggle('has-ctxbar', on);
+  }
+}
+
+$('ctx-prev').addEventListener('click', function(){ go(idx - 1, true); });
+$('ctx-next').addEventListener('click', function(){ go(idx + 1, true); });
+$('ctx-main').addEventListener('click', function(){
+  stop();   // 설명을 읽으러 가는 중이니 폰이 혼자 다음 단계로 넘어가지 않는다
+  stepBtns[idx].scrollIntoView(
+    {behavior: reduce.matches ? 'auto' : 'smooth', block: 'center'});
+});
+
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(function(entries){
+    stageVisible = entries[0].isIntersecting;
+    updateCtxBar();
+  }, {threshold: 0.12}).observe(document.querySelector('.stage'));
+}
+if (ctxNarrow.addEventListener) ctxNarrow.addEventListener('change', updateCtxBar);
+else if (ctxNarrow.addListener) ctxNarrow.addListener(updateCtxBar);
 
 // 폰 목업을 창 높이에 맞춰 축소한다.
 //

@@ -137,6 +137,7 @@ def build(code, copy, app):
         "CHIPS": render_chips(copy, None),
         "SECTIONS": render_sections(copy, app),
         "MOCKUP_CAPTION": copy["mockup_caption"],
+        "BACK_TO_ANSWER": esc(copy["back_to_answer"]),
         "APP_STRINGS": json.dumps(app, ensure_ascii=False),
         "FOOTER_HOME": copy["footer_home"],
         "FOOTER_PRIVACY": copy["footer_privacy"],

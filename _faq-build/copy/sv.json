@@ -8,6 +8,7 @@
   "mockup_caption": "För tydlighetens skull visas alla tre meddelanden tillsammans på en och samma skärm. I verkligheten visas de ett i taget, bara när de gäller, och försvinner när saken är åtgärdad.",
   "mockup_hint": "Visa var det finns på skärmen",
   "mockup_hint_close": "Stäng",
+  "back_to_answer": "Tillbaka till svaret",
 
   "spot_all": "Hela skärmen",
   "spot_battery": "Livstecknet dröjer",

@@ -8,6 +8,7 @@
   "mockup_caption": "Para explicarlo, aquí se muestran los tres avisos en una misma pantalla. En realidad aparecen de uno en uno, solo cuando corresponde, y desaparecen una vez resuelto.",
   "mockup_hint": "Ver dónde está en la pantalla",
   "mockup_hint_close": "Cerrar",
+  "back_to_answer": "Volver a la respuesta",
 
   "spot_all": "Pantalla completa",
   "spot_battery": "El aviso llega tarde",

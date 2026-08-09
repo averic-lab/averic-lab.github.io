@@ -8,6 +8,7 @@
   "mockup_caption": "為方便說明，這裡將三種提示放在同一個畫面中。實際上只在符合情況時逐一出現，處理完成後就會消失。",
   "mockup_hint": "查看在畫面中的位置",
   "mockup_hint_close": "收合",
+  "back_to_answer": "返回說明",
 
   "spot_all": "整個畫面",
   "spot_battery": "問候延遲",

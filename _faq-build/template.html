@@ -204,6 +204,18 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
   <span class="copy">{{FOOTER_COPYRIGHT}}</span>
 </div></footer>
 
+<!-- 모바일 문맥 바 — [화면에서 어디에 있는지 보기]로 목업까지 내려간 뒤에만
+     뜬다. 좁은 화면에서 목업은 문서 3,274px 지점이라(390×844 실측) 손으로
+     되돌아오기 어렵고, 어느 질문 때문에 내려왔는지도 잊는다.
+     스타일은 base.css 공용(사용설명과 같은 바). -->
+<div class="ctxbar" id="ctxbar" hidden>
+  <button class="ctxmain" type="button" id="ctx-back">
+    <svg class="ctxgo" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+    <span class="ctxtitle" id="ctx-title"></span>
+    <span class="ctxback">{{BACK_TO_ANSWER}}</span>
+  </button>
+</div>
+
 <script>
 // 앱 번역 파일에서 추출한 실제 문구 (extract_strings.py)
 var S = {{APP_STRINGS}};
@@ -261,6 +273,7 @@ chips.forEach(function(c){
   c.addEventListener('click', function(){
     // 칩으로 위치를 바꾸면 펼쳐 둔 다이얼로그는 접는다 — 상태가 어긋나지 않도록
     collapseAll(null);
+    setCtxTopic(null);   // 다른 주제로 옮겼으니 돌아갈 자리도 지운다
     show(c.dataset.spot);
 
     // 칩을 고르면 해당 FAQ 본문으로 함께 이동한다. 넓은 화면에서는 목업이
@@ -298,9 +311,54 @@ document.querySelectorAll('.show-me').forEach(function(b){
     if (!open && window.matchMedia('(max-width:920px)').matches) {
       document.querySelector('.stage')
         .scrollIntoView({behavior: scrollBehavior(), block: 'center'});
+      setCtxTopic(b.closest('.topic'));   // 돌아올 자리를 기억해 둔다
+    } else {
+      setCtxTopic(null);
     }
   });
 });
+
+// ── 모바일 문맥 바 ─────────────────────────────────────────────────
+// 좁은 화면에서 목업은 문서 3,274px 지점이다(390×844 실측). [어디에 있는지
+// 보기]가 거기까지 데려다주지만 돌아올 방법이 없었고, 내려간 뒤에는 어느 질문
+// 때문에 왔는지도 잊는다. 목업을 보는 동안만 "질문 제목 + 돌아가기"를 띄운다.
+// 목업 자체는 클릭 대상으로 만들지 않는다(§6 "목업은 조작 불가").
+var ctxBar = document.getElementById('ctxbar');
+var ctxNarrow = window.matchMedia('(max-width:920px)');
+var ctxTopic = null, ctxStageVisible = false;
+
+function updateCtxBar(){
+  var on = !!ctxTopic && ctxStageVisible && ctxNarrow.matches;
+  if (ctxBar.hidden !== !on) {
+    ctxBar.hidden = !on;
+    document.body.classList.toggle('has-ctxbar', on);
+  }
+}
+
+function setCtxTopic(topic){
+  ctxTopic = topic || null;
+  if (ctxTopic) {
+    var h = ctxTopic.querySelector('h2');
+    document.getElementById('ctx-title').textContent = h ? h.textContent : '';
+  }
+  updateCtxBar();
+}
+
+document.getElementById('ctx-back').addEventListener('click', function(){
+  if (!ctxTopic) return;
+  var target = ctxTopic;
+  setCtxTopic(null);          // 먼저 감춰야 도착 지점을 바가 가리지 않는다
+  target.scrollIntoView({behavior: scrollBehavior(), block: 'start'});
+});
+
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(function(entries){
+    ctxStageVisible = entries[0].isIntersecting;
+    updateCtxBar();
+  }, {threshold: 0.12}).observe(document.querySelector('.stage'));
+}
+if (ctxNarrow.addEventListener) ctxNarrow.addEventListener('change', updateCtxBar);
+else if (ctxNarrow.addListener) ctxNarrow.addListener(updateCtxBar);
 
 // 플랫폼별 본문 전환 (위치 다이얼로그 전용)
 document.querySelectorAll('.pf-tabs').forEach(function(tabs){
