@@ -86,8 +86,11 @@ a{color:inherit}
 @media (max-width:920px){
   .ctxbar{position:fixed;left:0;right:0;bottom:0;z-index:60;
     display:flex;align-items:stretch;
-    background:rgba(26,28,28,.95);backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
+    /* 알파 0.72 — 뒤가 비쳐 "떠 있는 판"으로 읽히면서도, 가장 밝은 배경(흰
+       카드) 위에서조차 흰 글자 대비가 약 6.9:1로 AA(4.5:1)를 넉넉히 넘는다.
+       0.6까지 내리면 4.6:1로 경계에 걸리므로 더 내리지 말 것. */
+    background:rgba(26,28,28,.72);backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border-top:1px solid rgba(255,255,255,.12);
     box-shadow:0 -8px 26px rgba(0,0,0,.3);
     padding-bottom:env(safe-area-inset-bottom)}
@@ -116,7 +119,12 @@ a{color:inherit}
   /* RTL — 방향 아이콘만 뒤집는다. 나머지 배치는 flex 가 알아서 뒤집는다 */
   [dir="rtl"] .ctxbar .ctxnav svg,[dir="rtl"] .ctxbar .ctxgo{transform:scaleX(-1)}
 }
+/* 투명·블러를 원치 않는 환경에서는 불투명 잉크로 떨어진다 */
 @media (prefers-reduced-motion:reduce){
+  .ctxbar{backdrop-filter:none;-webkit-backdrop-filter:none;
+    background:var(--ink)}
+}
+@media (prefers-reduced-transparency:reduce){
   .ctxbar{backdrop-filter:none;-webkit-backdrop-filter:none;
     background:var(--ink)}
 }

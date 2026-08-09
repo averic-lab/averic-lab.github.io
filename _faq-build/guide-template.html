@@ -595,8 +595,23 @@ function updateCtxBar(){
   }
 }
 
-$('ctx-prev').addEventListener('click', function(){ go(idx - 1, true); });
-$('ctx-next').addEventListener('click', function(){ go(idx + 1, true); });
+// ‹ › 로 단계를 넘기면 그 단계가 가리키는 곳이 화면 밖일 수 있다 — 폰이 730px
+// 이라 844px 화면에 다 들어오지 않고, 단계마다 강조 위치가 위아래로 흩어진다.
+// **가려져 있을 때만** 옮긴다(이미 보이는데 스크롤하면 화면이 이유 없이 흔들린다).
+// 자동재생 중에는 부르지 않는다 — 읽는 중에 페이지가 저 혼자 움직이면 안 된다.
+function revealCurrentSpot(){
+  if (!ctxNarrow.matches) return;
+  var s = STEPS[idx];
+  var el = (s.dialog && $('modal')) || (s.tap && $(s.tap)) || $('scr-' + s.scr);
+  if (!el) return;
+  var r = el.getBoundingClientRect();
+  var barH = ctxBar.hidden ? 0 : ctxBar.getBoundingClientRect().height;
+  if (r.top >= 8 && r.bottom <= window.innerHeight - barH - 8) return;
+  el.scrollIntoView({behavior: reduce.matches ? 'auto' : 'smooth', block: 'center'});
+}
+
+$('ctx-prev').addEventListener('click', function(){ go(idx - 1, true); revealCurrentSpot(); });
+$('ctx-next').addEventListener('click', function(){ go(idx + 1, true); revealCurrentSpot(); });
 $('ctx-main').addEventListener('click', function(){
   stop();   // 설명을 읽으러 가는 중이니 폰이 혼자 다음 단계로 넘어가지 않는다
   stepBtns[idx].scrollIntoView(
