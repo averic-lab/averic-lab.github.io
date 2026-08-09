@@ -93,9 +93,22 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
   border:2px solid #00685E;pointer-events:none;animation:pulse 2.4s ease-in-out infinite}
 .tap.ind::after{border-color:#4355B9}
 .tap.round::after{inset:-5px;border-radius:50%}
+/* 코드 카드 위에서는 링을 흰색으로. 기본 teal(#00685E)은 짙은 카드에 묻혀
+   "어느 버튼을 말하는지"가 보이지 않는다. */
+.hero .tap::after{border-color:#fff}
+/* 복사·공유를 설명하는 단계에서 두 버튼을 살짝 돌출시킨다.
+   점선 라벨은 폰 밖에 자리가 없어(단계 목록이 67px 뒤부터 시작) 쓸 수 없고,
+   제목 오른쪽도 아랍어·스페인어 등에서 여백이 0이라 불가능했다. */
+.hero .cbtn{transition:transform .3s ease,background .3s ease,box-shadow .3s ease}
+.hero .cbtn.lift{transform:scale(1.14);background:rgba(255,255,255,.34);
+  box-shadow:0 0 0 2.5px rgba(255,255,255,.75),0 6px 16px rgba(0,0,0,.3)}
+/* 두 버튼 간격(8px)은 확대분(각 3px)과 링(각 2.5px)을 못 버텨 원이 서로 붙는다.
+   강조하는 동안만 간격을 벌린다 — 커진 두 개가 서로 떨어지는 움직임이기도 하다. */
+.hero .top{transition:gap .3s ease}
+.hero .top.spread{gap:16px}
 @media(prefers-reduced-motion:reduce){.tap::after{animation:none}
   .modal{animation:none}.fld .caret{animation:none}
-  .connect,.fld,.hero .code{transition:none}}
+  .connect,.fld,.hero .code,.hero .cbtn{transition:none}}
 
 {{CSS_FOOTER}}
 </style>
@@ -390,7 +403,7 @@ var STEPS = [
   {scr:'settings', tap:'gs-btn',  who:0},
   {scr:'settings', tap:'gs-btn',  who:0, dialog:true},
   {scr:'safety',   tap:null,      who:0, code:true},
-  {scr:'safety',   tap:'btn-copy', who:0, code:true, round:true, snack:true},
+  {scr:'safety',   tap:'btn-copy', who:0, code:true, round:true, snack:true, lift:true},
   {scr:'add',      tap:null,      who:1},
   {scr:'add',      tap:'fld-code',  who:1, fill:1},
   {scr:'add',      tap:'fld-alias', who:1, fill:2},
@@ -470,6 +483,15 @@ function render(i){
     t.classList.add('tap');
     if (s.round) t.classList.add('round');
     if (s.ind) t.classList.add('ind');
+  }
+  // 복사·공유 두 버튼 동시 강조 — 탭 링은 복사 하나에만 붙으므로
+  // "오른쪽 버튼은 공유"라는 설명이 가리키는 대상이 화면에 드러나지 않는다.
+  document.querySelectorAll('.cbtn').forEach(function(el){ el.classList.remove('lift'); });
+  document.querySelectorAll('.hero .top').forEach(function(el){ el.classList.remove('spread'); });
+  if (s.lift) {
+    $('btn-copy').classList.add('lift');
+    $('btn-share').classList.add('lift');
+    $('btn-copy').parentElement.classList.add('spread');
   }
   document.querySelectorAll('.fld').forEach(function(el){ el.classList.remove('on'); });
   if (s.tap && s.tap.indexOf('fld-') === 0) $(s.tap).classList.add('on');
