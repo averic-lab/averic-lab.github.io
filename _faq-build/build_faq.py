@@ -93,8 +93,7 @@ def render_sections(copy, app):
         # 제목 바로 아래에 둔다 — 어떤 주제인지 알자마자 화면에서 위치를 찾을 수 있도록
         link = (f'<button class="show-me" type="button" data-show="{spot}" '
                 f'aria-expanded="false" '
-                f'data-open="{esc(copy["mockup_hint"])}" '
-                f'data-close="{esc(copy["mockup_hint_close"])}">'
+                f'data-open="{esc(copy["mockup_hint"])}">'
                 f'{icon}<span>{copy["mockup_hint"]}</span></button>') if spot else ""
         out.append(
             f'<section class="topic" id="{sec["id"]}"{attr}>'
