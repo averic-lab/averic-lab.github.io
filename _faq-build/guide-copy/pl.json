@@ -4,7 +4,7 @@
   "meta_desc": "Krok po kroku po prawdziwych ekranach aplikacji: utworzyć kod bezpieczeństwa, przekazać go i pozwolić rodzinie się połączyć.",
   "page_eyebrow": "Jak to działa",
   "page_title": "Połączenie z rodziną przez kod bezpieczeństwa",
-  "page_lead": "Anbu łączy ludzi jednym <strong>kodem bezpieczeństwa</strong>. Tworzysz kod na swoim telefonie i przekazujesz go dalej; rodzina wpisuje go na swoim. Dlatego połączenie powstaje bez żadnego imienia czy numeru na naszym serwerze.",
+  "page_lead": "Anbu łączy ludzi jednym <strong>kodem bezpieczeństwa</strong>. Tworzysz kod na swoim telefonie i przekazujesz go dalej; rodzina wpisuje go na swoim.",
   "phone_me": "Mój telefon — tu powstaje kod",
   "phone_family": "Telefon rodziny — ci, którzy mnie doglądają",
   "demo": {
@@ -48,7 +48,7 @@
     },
     {
       "h": "Podaj numer telefonu (opcjonalnie)",
-      "d": "Tak wygląda karta tej osoby na ekranie głównym rodziny. Z zapisanym numerem przycisk <b>[@guardian_call_now]</b> <b>dzwoni od razu.</b> Puste pole oznacza szukanie tej osoby w kontaktach za każdym razem.",
+      "d": "Tak wygląda karta tej osoby na ekranie głównym rodziny. Numer jest <b>opcjonalny</b>, a nawet podany nie trafia na nasz serwer — zostaje <b>tylko w telefonie rodziny</b>.",
       "illus": "cards",
       "d_after": "Gdy zadzwonisz i osobiście upewnisz się, że wszystko w porządku, dotknij <b>[@guardian_confirm_safety]</b>. Ostrzeżenie zostaje zdjęte, stan wraca do normalnego, a <b>pozostali bliscy, którzy też doglądają,</b> otrzymują powiadomienie o potwierdzeniu."
     },

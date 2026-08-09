@@ -4,7 +4,7 @@
   "meta_desc": "Đi qua từng màn hình thật của ứng dụng: tạo mã an toàn, gửi cho gia đình và để gia đình kết nối bằng mã đó.",
   "page_eyebrow": "Hướng dẫn",
   "page_title": "Kết nối với gia đình bằng mã an toàn",
-  "page_lead": "Anbu nối mọi người bằng một <strong>mã an toàn</strong> duy nhất. Bạn tạo mã trên máy mình rồi báo cho gia đình; gia đình nhập mã đó trên máy của họ. Nhờ vậy kết nối hình thành mà không có tên hay số điện thoại nào lên máy chủ.",
+  "page_lead": "Anbu nối mọi người bằng một <strong>mã an toàn</strong> duy nhất. Bạn tạo mã trên máy mình rồi báo cho gia đình; gia đình nhập mã đó trên máy của họ.",
   "phone_me": "Máy của tôi — nơi tạo mã",
   "phone_family": "Máy của gia đình — người dõi theo tôi",
   "demo": {
@@ -48,7 +48,7 @@
     },
     {
       "h": "Nhập số điện thoại (tùy chọn)",
-      "d": "Thẻ của người này trên màn hình chính của gia đình trông như thế này. Nếu đã lưu số, nút <b>[@guardian_call_now]</b> sẽ <b>gọi ngay lập tức.</b> Bỏ trống thì mỗi lần bấm lại phải tự tìm người này trong danh bạ.",
+      "d": "Thẻ của người này trên màn hình chính của gia đình trông như thế này. Số điện thoại là <b>tùy chọn</b>, và dù có nhập thì nó cũng không được gửi lên máy chủ mà chỉ nằm <b>trong máy của gia đình</b>.",
       "illus": "cards",
       "d_after": "Sau khi gọi và tự mình xác nhận mọi việc vẫn ổn, hãy chạm <b>[@guardian_confirm_safety]</b>. Cảnh báo được gỡ, trạng thái trở lại bình thường, và <b>những người thân khác cùng dõi theo</b> sẽ nhận được thông báo xác nhận."
     },

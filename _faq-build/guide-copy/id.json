@@ -4,7 +4,7 @@
   "meta_desc": "Ikuti langkah demi langkah di layar asli aplikasi: membuat kode keamanan, membagikannya, dan keluarga terhubung dengan kode itu.",
   "page_eyebrow": "Cara pakai",
   "page_title": "Terhubung dengan keluarga lewat kode keamanan",
-  "page_lead": "Anbu menghubungkan orang dengan satu <strong>kode keamanan</strong>. Anda membuat kode di ponsel sendiri lalu memberitahukannya; keluarga memasukkannya di ponsel mereka. Karena itulah hubungan terbentuk tanpa nama atau nomor telepon yang sampai ke server kami.",
+  "page_lead": "Anbu menghubungkan orang dengan satu <strong>kode keamanan</strong>. Anda membuat kode di ponsel sendiri lalu memberitahukannya; keluarga memasukkannya di ponsel mereka.",
   "phone_me": "Ponsel saya — tempat kode dibuat",
   "phone_family": "Ponsel keluarga — yang menjaga saya",
   "demo": {
@@ -48,7 +48,7 @@
     },
     {
       "h": "Isi nomor telepon (opsional)",
-      "d": "Beginilah kartu orang ini terlihat di layar utama keluarga. Bila nomor sudah tersimpan, tombol <b>[@guardian_call_now]</b> <b>langsung menelepon.</b> Bila dikosongkan, setiap kali harus mencari orang ini di daftar kontak.",
+      "d": "Beginilah kartu orang ini terlihat di layar utama keluarga. Nomor ini <b>opsional</b>, dan sekalipun diisi tidak dikirim ke server kami — hanya tersimpan <b>di ponsel keluarga</b>.",
       "illus": "cards",
       "d_after": "Setelah menelepon dan memastikan sendiri bahwa semuanya baik, ketuk <b>[@guardian_confirm_safety]</b>. Peringatan dicabut, status kembali normal, dan <b>anggota keluarga lain yang ikut menjaga</b> menerima pemberitahuan konfirmasi."
     },

@@ -4,7 +4,7 @@
   "meta_desc": "Steg för steg genom appens verkliga skärmar: skapa en säkerhetskod, dela den och låt familjen ansluta med den.",
   "page_eyebrow": "Så fungerar det",
   "page_title": "Koppla ihop familjen med säkerhetskoden",
-  "page_lead": "Anbu kopplar ihop människor med en enda <strong>säkerhetskod</strong>. Du skapar koden i din egen telefon och lämnar den vidare; familjen skriver in den i sin. Det är därför kopplingen uppstår utan att något namn eller telefonnummer någonsin når vår server.",
+  "page_lead": "Anbu kopplar ihop människor med en enda <strong>säkerhetskod</strong>. Du skapar koden i din egen telefon och lämnar den vidare; familjen skriver in den i sin.",
   "phone_me": "Min telefon — där koden skapas",
   "phone_family": "Familjens telefon — de som ser efter mig",
   "demo": {
@@ -48,7 +48,7 @@
     },
     {
       "h": "Fyll i ett telefonnummer (valfritt)",
-      "d": "Så här ser personens kort ut på familjens startskärm. Med numret sparat <b>ringer</b> knappen <b>[@guardian_call_now]</b> <b>direkt.</b> Lämnas det tomt måste man leta upp personen bland kontakterna varje gång.",
+      "d": "Så här ser personens kort ut på familjens startskärm. Numret är <b>valfritt</b>, och även ifyllt når det aldrig vår server — det stannar <b>bara i familjens telefon</b>.",
       "illus": "cards",
       "d_after": "När du har ringt och själv förvissat dig om att allt står rätt till, tryck på <b>[@guardian_confirm_safety]</b>. Varningen hävs, läget återgår till normalt och <b>de övriga anhöriga som också håller ett öga</b> får en bekräftelse."
     },

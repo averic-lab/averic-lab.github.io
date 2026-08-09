@@ -4,7 +4,7 @@
   "meta_desc": "Schritt für Schritt durch die echten App-Bildschirme: Code erstellen, weitergeben und die Familie verbindet sich damit.",
   "page_eyebrow": "Anleitung",
   "page_title": "Mit dem Sicherheitscode die Familie verbinden",
-  "page_lead": "Anbu verbindet Menschen über einen einzigen <strong>Sicherheitscode</strong>. Sie erstellen den Code auf Ihrem Gerät und geben ihn weiter; Ihre Familie trägt ihn auf ihrem Gerät ein. Deshalb kommt die Verbindung zustande, ohne dass Name oder Telefonnummer auf unserem Server landen.",
+  "page_lead": "Anbu verbindet Menschen über einen einzigen <strong>Sicherheitscode</strong>. Sie erstellen den Code auf Ihrem Gerät und geben ihn weiter; Ihre Familie trägt ihn auf ihrem Gerät ein.",
   "phone_me": "Mein Gerät — hier entsteht der Code",
   "phone_family": "Gerät der Familie — hier wird nach mir gesehen",
   "demo": {
@@ -48,7 +48,7 @@
     },
     {
       "h": "Telefonnummer eintragen (optional)",
-      "d": "So sieht die Karte dieser Person auf dem Startbildschirm der Familie aus. Ist die Nummer hinterlegt, <b>wählt</b> die Schaltfläche <b>[@guardian_call_now]</b> <b>sofort.</b> Bleibt sie leer, muss die Person jedes Mal in den Kontakten gesucht werden.",
+      "d": "So sieht die Karte dieser Person auf dem Startbildschirm der Familie aus. Die Nummer ist <b>freiwillig</b> — und selbst wenn sie eingetragen wird, gelangt sie nicht auf unseren Server, sondern bleibt <b>nur auf dem Telefon der Familie</b>.",
       "illus": "cards",
       "d_after": "Wenn Sie angerufen und sich selbst vergewissert haben, tippen Sie auf <b>[@guardian_confirm_safety]</b>. Die Warnung wird aufgehoben, die Anzeige steht wieder auf normal, und <b>die übrigen mitschauenden Angehörigen</b> erhalten eine Bestätigung."
     },

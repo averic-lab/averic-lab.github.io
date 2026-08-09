@@ -4,7 +4,7 @@
   "meta_desc": "Stap voor stap langs de echte app-schermen: een veiligheidscode maken, doorgeven en de familie verbindt zich ermee.",
   "page_eyebrow": "Zo werkt het",
   "page_title": "Verbinden met familie via de veiligheidscode",
-  "page_lead": "Anbu verbindt mensen met één <strong>veiligheidscode</strong>. U maakt de code op uw eigen telefoon en geeft hem door; uw familie voert hem in op de hunne. Zo komt de verbinding tot stand zonder dat een naam of telefoonnummer ooit op onze server belandt.",
+  "page_lead": "Anbu verbindt mensen met één <strong>veiligheidscode</strong>. U maakt de code op uw eigen telefoon en geeft hem door; uw familie voert hem in op de hunne.",
   "phone_me": "Mijn telefoon — hier ontstaat de code",
   "phone_family": "Telefoon van de familie — wie op mij let",
   "demo": {
@@ -48,7 +48,7 @@
     },
     {
       "h": "Vul een telefoonnummer in (optioneel)",
-      "d": "Zo ziet de kaart van deze persoon eruit op het beginscherm van de familie. Met een opgeslagen nummer <b>belt</b> de knop <b>[@guardian_call_now]</b> <b>meteen.</b> Blijft het leeg, dan moet men deze persoon telkens in de contacten opzoeken.",
+      "d": "Zo ziet de kaart van deze persoon eruit op het beginscherm van de familie. Het nummer is <b>optioneel</b> en komt zelfs ingevuld niet op onze server terecht: het blijft <b>alleen op de telefoon van de familie</b>.",
       "illus": "cards",
       "d_after": "Hebt u gebeld en zelf vastgesteld dat alles in orde is, tik dan op <b>[@guardian_confirm_safety]</b>. De waarschuwing vervalt, de weergave staat weer op normaal en <b>de andere meekijkende naasten</b> krijgen een bevestiging."
     },

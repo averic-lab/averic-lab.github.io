@@ -4,7 +4,7 @@
   "meta_desc": "Paso a paso por las pantallas reales: crear el código de seguridad, compartirlo y que la familia se conecte con él.",
   "page_eyebrow": "Cómo se usa",
   "page_title": "Conectar con la familia mediante el código de seguridad",
-  "page_lead": "Anbu une a las personas con un solo <strong>código de seguridad</strong>. Usted crea el código en su teléfono y lo comparte; su familia lo introduce en el suyo. Así se establece la conexión sin que ningún nombre ni número llegue a nuestro servidor.",
+  "page_lead": "Anbu une a las personas con un solo <strong>código de seguridad</strong>. Usted crea el código en su teléfono y lo comparte; su familia lo introduce en el suyo.",
   "phone_me": "Mi teléfono — donde se crea el código",
   "phone_family": "El teléfono de la familia — quien vela por mí",
   "demo": {
@@ -48,7 +48,7 @@
     },
     {
       "h": "Añada un teléfono (opcional)",
-      "d": "Así se ve la tarjeta de esta persona en la pantalla de inicio de la familia. Con el número guardado, el botón <b>[@guardian_call_now]</b> <b>llama directamente.</b> Si se deja vacío, habrá que buscar a esta persona en los contactos cada vez.",
+      "d": "Así se ve la tarjeta de esta persona en la pantalla de inicio de la familia. El número es <b>opcional</b> y, aunque se rellene, no llega a nuestro servidor: se queda <b>solo en el teléfono de la familia</b>.",
       "illus": "cards",
       "d_after": "Cuando haya llamado y comprobado en persona que todo está bien, pulse <b>[@guardian_confirm_safety]</b>. La alerta se retira, el estado vuelve a normal y <b>los demás familiares que vigilan</b> reciben un aviso de confirmación."
     },

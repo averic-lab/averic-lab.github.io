@@ -4,7 +4,7 @@
   "meta_desc": "Follow the real app screens: create a safety code, share it, and let your family connect with it.",
   "page_eyebrow": "How it works",
   "page_title": "Connecting with family using your safety code",
-  "page_lead": "Anbu connects people with a single <strong>safety code</strong>. You create the code on your phone and pass it on; your family enters it on theirs. That is how the connection works without any name or phone number ever reaching our server.",
+  "page_lead": "Anbu connects people with a single <strong>safety code</strong>. You create the code on your phone and pass it on; your family enters it on theirs.",
   "phone_me": "Your phone — where the code is created",
   "phone_family": "Your family's phone — where they watch over you",
   "demo": {
@@ -48,7 +48,7 @@
     },
     {
       "h": "Add a phone number (optional)",
-      "d": "This is how the person's card looks on your family's home screen. With a number saved, the <b>[@guardian_call_now]</b> button <b>dials straight away.</b> Leave it empty and they have to find this person in their contacts every time.",
+      "d": "This is how the person's card looks on your family's home screen. The number is <b>optional</b>, and even when it is filled in it never reaches our server — it stays <b>only on the family's phone</b>.",
       "illus": "cards",
       "d_after": "Once you have called and confirmed that everything is fine, tap <b>[@guardian_confirm_safety]</b>. The alert clears, the status returns to normal, and <b>the other guardians watching along</b> receive a confirmation notice."
     },

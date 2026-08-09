@@ -4,7 +4,7 @@
   "meta_desc": "Pas à pas sur les vrais écrans de l'application : créer un code de sécurité, le transmettre, et la famille s'y relie.",
   "page_eyebrow": "Mode d'emploi",
   "page_title": "Se relier à sa famille avec le code de sécurité",
-  "page_lead": "Anbu relie les personnes par un seul <strong>code de sécurité</strong>. Vous créez le code sur votre téléphone et le transmettez ; votre famille le saisit sur le sien. C'est ainsi que la liaison se fait sans qu'aucun nom ni numéro n'arrive sur notre serveur.",
+  "page_lead": "Anbu relie les personnes par un seul <strong>code de sécurité</strong>. Vous créez le code sur votre téléphone et le transmettez ; votre famille le saisit sur le sien.",
   "phone_me": "Mon téléphone — celui qui crée le code",
   "phone_family": "Le téléphone de la famille — celui qui veille sur moi",
   "demo": {
@@ -48,7 +48,7 @@
     },
     {
       "h": "Ajoutez un numéro (facultatif)",
-      "d": "Voici la fiche de cette personne sur l'écran d'accueil de la famille. Avec un numéro enregistré, le bouton <b>[@guardian_call_now]</b> <b>appelle directement.</b> Sans numéro, il faut chercher la personne dans les contacts à chaque fois.",
+      "d": "Voici la fiche de cette personne sur l'écran d'accueil de la famille. Le numéro est <b>facultatif</b> : même renseigné, il n'arrive jamais sur notre serveur et reste <b>uniquement sur le téléphone de la famille</b>.",
       "illus": "cards",
       "d_after": "Après avoir appelé et vous être assuré que tout va bien, appuyez sur <b>[@guardian_confirm_safety]</b>. L'alerte est levée, l'affichage revient à la normale, et <b>les autres proches qui veillent</b> reçoivent un avis de confirmation."
     },

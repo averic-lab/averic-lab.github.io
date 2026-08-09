@@ -4,7 +4,7 @@
   "meta_desc": "Gerçek uygulama ekranlarında adım adım: güvenlik kodunu oluşturun, paylaşın ve ailenizin bu kodla bağlanmasını sağlayın.",
   "page_eyebrow": "Nasıl kullanılır",
   "page_title": "Güvenlik koduyla aileye bağlanmak",
-  "page_lead": "Anbu insanları tek bir <strong>güvenlik koduyla</strong> birbirine bağlar. Kodu kendi telefonunuzda oluşturup iletirsiniz; aileniz kendi telefonuna girer. Bağlantının hiçbir isim veya numara sunucumuza ulaşmadan kurulmasının nedeni budur.",
+  "page_lead": "Anbu insanları tek bir <strong>güvenlik koduyla</strong> birbirine bağlar. Kodu kendi telefonunuzda oluşturup iletirsiniz; aileniz kendi telefonuna girer.",
   "phone_me": "Benim telefonum — kodun oluşturulduğu yer",
   "phone_family": "Ailenin telefonu — beni gözeten taraf",
   "demo": {
@@ -48,7 +48,7 @@
     },
     {
       "h": "Telefon numarası ekleyin (isteğe bağlı)",
-      "d": "Bu kişinin kartı ailenin ana ekranında böyle görünür. Numara kayıtlıysa <b>[@guardian_call_now]</b> düğmesi <b>doğrudan arar.</b> Boş bırakılırsa her seferinde bu kişiyi rehberden bulmak gerekir.",
+      "d": "Bu kişinin kartı ailenin ana ekranında böyle görünür. Numara <b>isteğe bağlıdır</b>; girilse bile sunucumuza ulaşmaz, <b>yalnızca ailenin telefonunda</b> kalır.",
       "illus": "cards",
       "d_after": "Arayıp iyi olduğunu bizzat doğruladıysanız <b>[@guardian_confirm_safety]</b> düğmesine dokunun. Uyarı kalkar, durum yeniden normale döner ve <b>birlikte gözeten diğer yakınlara</b> doğrulama bildirimi gider."
     },
