@@ -20,7 +20,7 @@
   "steps": [
     {
       "h": "In den Einstellungen auf [@gs_enable_button] tippen",
-      "d": "Öffnen Sie unten den Reiter <b>@nav_settings</b> — die Schaltfläche steht ganz oben. Aus „nur nach der Familie sehen“ wird <b>auch das eigene Lebenszeichen senden</b>."
+      "d": "Öffnen Sie unten den Reiter <b>@nav_settings</b> — die Schaltfläche steht ganz oben. Aus „nur nach der Familie sehen“ wird <b>auch die eigene Wohlbefindens-Meldung senden</b>."
     },
     {
       "h": "Im Bestätigungsfenster aktivieren",
@@ -57,7 +57,7 @@
       "d": "Sobald Code und Name ausgefüllt sind, färbt sich die Schaltfläche. Ein Tippen verbindet, und die oben gezeigte Karte erscheint auf dem Startbildschirm der Familie."
     }
   ],
-  "note": "Nach der Verbindung bleibt nichts weiter zu tun. Anbu sendet das Lebenszeichen <strong>jeden Tag zur eingestellten Zeit von selbst</strong> und meldet sich bei der Familie, wenn diese Zeit ohne Signal verstreicht. Kommt das Signal spät oder bleiben die Schritte leer, hilft die <a href=\"faq.html\">Hilfe-Seite</a> weiter.",
+  "note": "Nach der Verbindung bleibt nichts weiter zu tun. Anbu sendet die Wohlbefindens-Meldung <strong>jeden Tag zur eingestellten Zeit von selbst</strong> und meldet sich bei der Familie, wenn diese Zeit ohne Signal verstreicht. Kommt das Signal spät oder bleiben die Schritte leer, hilft die <a href=\"faq.html\">Hilfe-Seite</a> weiter.",
   "footer_home": "Startseite",
   "footer_faq": "Häufige Fragen",
   "footer_privacy": "Datenschutzerklärung",

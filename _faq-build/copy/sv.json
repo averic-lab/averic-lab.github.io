@@ -1,16 +1,16 @@
 {
   "lang_name": "Svenska",
-  "meta_title": "När livstecknet inte kommer fram — Anbu",
-  "meta_desc": "Vad du kan kontrollera när ett livstecken kommer försent, eller när steg och plats inte följer med.",
+  "meta_title": "När välmåendesignalen inte kommer fram — Anbu",
+  "meta_desc": "Vad du kan kontrollera när en välmåendesignal kommer försent, eller när steg och plats inte följer med.",
   "page_eyebrow": "Vanliga frågor",
-  "page_title": "När livstecknet inte kommer fram",
-  "page_lead": "Ibland kommer livstecknet försent, eller så saknas steg och plats. I de flesta fall räcker det att <strong>slå på en behörighet i avsändarens telefon</strong>.",
+  "page_title": "När välmåendesignalen inte kommer fram",
+  "page_lead": "Ibland kommer välmåendesignalen försent, eller så saknas steg och plats. I de flesta fall räcker det att <strong>slå på en behörighet i avsändarens telefon</strong>.",
   "mockup_caption": "För tydlighetens skull visas alla tre meddelanden tillsammans på en och samma skärm. I verkligheten visas de ett i taget, bara när de gäller, och försvinner när saken är åtgärdad.",
   "mockup_hint": "Visa var det finns på skärmen",
   "back_to_answer": "Tillbaka till svaret",
 
   "spot_all": "Hela skärmen",
-  "spot_battery": "Livstecknet dröjer",
+  "spot_battery": "Välmåendesignalen dröjer",
   "spot_activity": "Inga steg",
   "spot_location": "Ingen plats",
   "spot_hibernation": "Ett fönster återkommer",
@@ -19,7 +19,7 @@
     {
       "id": "battery",
       "spot": "battery",
-      "heading": "Livstecknet kommer försent",
+      "heading": "Välmåendesignalen kommer försent",
       "dialog": {
         "lead": "Ett tryck på det gula meddelandet öppnar det här fönstret direkt.",
         "title": "@stability_battery_dialog_title",
@@ -31,15 +31,15 @@
           "q": "Jag får ofta aviseringen ”💗 Kontroll av välbefinnande behövs” i telefonen. Det verkar som att sändningen sker först när jag öppnar appen.",
           "q2": "Min familj fick en avisering <b>”@notifications_level_caution”</b> med texten <b>”@noti_caution_missing_body”</b>",
           "a": [
-            "För att spara batteri saktar Android ner eller stoppar appar som används sällan. Anbu vaknar kort en gång om dagen vid den inställda tiden för att skicka livstecknet — gäller den här begränsningen <strong>missas det ögonblicket, och ingenting skickas förrän telefonen används igen.</strong>",
-            "Om inget livstecken kommit in <strong>två timmar efter den inställda tiden</strong> får familjen aviseringen ovan. Det kan inträffa även när avsändaren mår alldeles utmärkt och det bara var sändningen som blev försenad.",
+            "För att spara batteri saktar Android ner eller stoppar appar som används sällan. Anbu vaknar kort en gång om dagen vid den inställda tiden för att skicka välmåendesignalen — gäller den här begränsningen <strong>missas det ögonblicket, och ingenting skickas förrän telefonen används igen.</strong>",
+            "Om ingen välmåendesignal kommit in <strong>två timmar efter den inställda tiden</strong> får familjen aviseringen ovan. Det kan inträffa även när avsändaren mår alldeles utmärkt och det bara var sändningen som blev försenad.",
             "Öppna appen i avsändarens telefon och se efter högst upp om det gula meddelandet <b>”@stability_battery_warning_short”</b> står där. Ett tryck leder direkt till inställningarna, och när begränsningen väl är borttagen försvinner meddelandet."
           ]
         },
         {
           "q": "Varför är bara det här meddelandet gult?",
           "a": [
-            "Det betyder att livstecknen inte har upphört helt, utan <strong>bara kan bli försenade</strong>. Meddelanden i rött betyder att en funktion verkligen är blockerad."
+            "Det betyder att välmåendesignalerna inte har upphört helt, utan <strong>bara kan bli försenade</strong>. Meddelanden i rött betyder att en funktion verkligen är blockerad."
           ]
         }
       ]
@@ -58,7 +58,7 @@
         {
           "q": "Min anhörigas steg visas inte. Aviseringen ”Du gick N steg i dag” kommer aldrig.",
           "a": [
-            "Tillsammans med livstecknet skickar Anbu <strong>dagens antal steg</strong> så att familjen ser hur mycket rörelse det blivit. Är behörigheten avstängd i avsändarens telefon <strong>kommer livstecknet fram som vanligt, men stegen saknas.</strong>",
+            "Tillsammans med välmåendesignalen skickar Anbu <strong>dagens antal steg</strong> så att familjen ser hur mycket rörelse det blivit. Är behörigheten avstängd i avsändarens telefon <strong>kommer välmåendesignalen fram som vanligt, men stegen saknas.</strong>",
             "Öppna appen i den telefonen och se efter under säkerhetskoden om det röda meddelandet <b>”@gs_activity_permission_denied_warning”</b> står där. Ett tryck begär behörigheten på nytt."
           ]
         },
@@ -118,7 +118,7 @@
           ]
         },
         {
-          "q": "Jag bevakar också min familjs livstecken, men jag ser aldrig det här fönstret.",
+          "q": "Jag bevakar också min familjs välmående, men jag ser aldrig det här fönstret.",
           "a": [
             "Den som samtidigt vakar över sina anhöriga öppnar appen ofta för att läsa aviseringar och hamnar därför sällan i läget att behörigheter dras tillbaka automatiskt. Därför visas fönstret inte för dig."
           ]

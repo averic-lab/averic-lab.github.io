@@ -1,16 +1,16 @@
 {
   "lang_name": "Deutsch",
-  "meta_title": "Wenn Lebenszeichen nicht ankommen — Anbu",
-  "meta_desc": "Was zu prüfen ist, wenn ein Lebenszeichen zu spät eintrifft oder Schritte und Standort nicht mitkommen.",
+  "meta_title": "Wenn die Wohlbefindens-Meldung nicht ankommt — Anbu",
+  "meta_desc": "Was zu prüfen ist, wenn eine Wohlbefindens-Meldung zu spät eintrifft oder Schritte und Standort nicht mitkommen.",
   "page_eyebrow": "Häufige Fragen",
-  "page_title": "Wenn Lebenszeichen nicht ankommen",
-  "page_lead": "Manchmal trifft ein Lebenszeichen zu spät ein, oder Schritte und Standort fehlen. In den meisten Fällen genügt es, <strong>auf dem Telefon der sendenden Person eine Berechtigung zu aktivieren</strong>.",
+  "page_title": "Wenn die Wohlbefindens-Meldung nicht ankommt",
+  "page_lead": "Manchmal trifft eine Wohlbefindens-Meldung zu spät ein, oder Schritte und Standort fehlen. In den meisten Fällen genügt es, <strong>auf dem Telefon der sendenden Person eine Berechtigung zu aktivieren</strong>.",
   "mockup_caption": "Zur Erklärung sind hier alle drei Hinweise gemeinsam abgebildet. Tatsächlich erscheinen sie einzeln und nur dann, wenn sie zutreffen — und verschwinden, sobald das Problem behoben ist.",
   "mockup_hint": "Auf dem Bildschirm zeigen",
   "back_to_answer": "Zurück zur Antwort",
 
   "spot_all": "Ganzer Bildschirm",
-  "spot_battery": "Lebenszeichen verspätet",
+  "spot_battery": "Wohlbefindens-Meldung verspätet",
   "spot_activity": "Keine Schritte",
   "spot_location": "Kein Standort",
   "spot_hibernation": "Fenster erscheint immer wieder",
@@ -19,7 +19,7 @@
     {
       "id": "battery",
       "spot": "battery",
-      "heading": "Lebenszeichen kommen verspätet an",
+      "heading": "Wohlbefindens-Meldungen kommen verspätet an",
       "dialog": {
         "lead": "Ein Tippen auf den gelben Hinweis öffnet sofort dieses Fenster.",
         "title": "@stability_battery_dialog_title",
@@ -28,18 +28,18 @@
       },
       "items": [
         {
-          "q": "Auf meinem Telefon erscheint oft die Mitteilung „💗 Lebenszeichen erforderlich“. Es wirkt, als würde erst beim Öffnen der App gesendet.",
+          "q": "Auf meinem Telefon erscheint oft die Mitteilung „💗 Wohlbefindens-Meldung erforderlich“. Es wirkt, als würde erst beim Öffnen der App gesendet.",
           "q2": "Meine Familie hat eine Meldung <b>„@notifications_level_caution“</b> mit dem Text <b>„@noti_caution_missing_body“</b> erhalten.",
           "a": [
-            "Um Akku zu sparen, verlangsamt oder stoppt Android Apps, die selten genutzt werden. Anbu wacht einmal täglich zur eingestellten Zeit kurz auf, um das Lebenszeichen zu senden. Greift diese Einschränkung, <strong>wird dieser Moment verpasst und es wird erst gesendet, wenn das Telefon wieder benutzt wird.</strong>",
-            "Trifft <strong>zwei Stunden nach der eingestellten Zeit</strong> kein Lebenszeichen ein, erhält die Familie die obige Meldung. Das kann auch passieren, wenn es der sendenden Person gut geht und lediglich die Übertragung verzögert war.",
+            "Um Akku zu sparen, verlangsamt oder stoppt Android Apps, die selten genutzt werden. Anbu wacht einmal täglich zur eingestellten Zeit kurz auf, um die Wohlbefindens-Meldung zu senden. Greift diese Einschränkung, <strong>wird dieser Moment verpasst und es wird erst gesendet, wenn das Telefon wieder benutzt wird.</strong>",
+            "Trifft <strong>zwei Stunden nach der eingestellten Zeit</strong> keine Wohlbefindens-Meldung ein, erhält die Familie den obigen Hinweis. Das kann auch passieren, wenn es der sendenden Person gut geht und lediglich die Übertragung verzögert war.",
             "Öffnen Sie die App auf dem Telefon der sendenden Person und prüfen Sie oben im Bildschirm, ob dort der gelbe Hinweis <b>„@stability_battery_warning_short“</b> steht. Ein Tippen führt direkt zu den Einstellungen; nach einmaligem Aufheben verschwindet der Hinweis."
           ]
         },
         {
           "q": "Warum ist nur dieser Hinweis gelb?",
           "a": [
-            "Es bedeutet, dass die Lebenszeichen nicht ganz ausbleiben, sondern <strong>sich lediglich verzögern können</strong>. Rot dargestellte Hinweise bedeuten, dass eine Funktion tatsächlich blockiert ist."
+            "Es bedeutet, dass die Wohlbefindens-Meldungen nicht ganz ausbleiben, sondern <strong>sich lediglich verzögern können</strong>. Rot dargestellte Hinweise bedeuten, dass eine Funktion tatsächlich blockiert ist."
           ]
         }
       ]
@@ -58,7 +58,7 @@
         {
           "q": "Die Schrittzahl meines Angehörigen wird nicht angezeigt. Die Mitteilung „Heute N Schritte gegangen“ kommt nicht an.",
           "a": [
-            "Zusammen mit dem Lebenszeichen sendet Anbu <strong>die Schrittzahl des Tages</strong>, damit die Familie sieht, wie viel Bewegung stattgefunden hat. Ist die Berechtigung auf dem Telefon der sendenden Person deaktiviert, <strong>kommt das Lebenszeichen weiterhin an, nur die Schrittzahl fehlt.</strong>",
+            "Zusammen mit der Wohlbefindens-Meldung sendet Anbu <strong>die Schrittzahl des Tages</strong>, damit die Familie sieht, wie viel Bewegung stattgefunden hat. Ist die Berechtigung auf dem Telefon der sendenden Person deaktiviert, <strong>kommt die Wohlbefindens-Meldung weiterhin an, nur die Schrittzahl fehlt.</strong>",
             "Öffnen Sie auf diesem Telefon die App und prüfen Sie unterhalb des Sicherheitscodes, ob dort der rote Hinweis <b>„@gs_activity_permission_denied_warning“</b> steht. Ein Tippen fordert die Berechtigung erneut an."
           ]
         },
@@ -107,18 +107,18 @@
         {
           "q": "Jedes Mal, wenn ich die App öffne, erscheint das Fenster „@permission_hibernation_title“.",
           "a": [
-            "Android entzieht Apps, die lange nicht geöffnet wurden, automatisch die Berechtigungen. Anbu ist <strong>eine App, die auch ohne Öffnen des Bildschirms arbeitet</strong> — gerade deshalb ist sie davon leicht betroffen, und ohne Berechtigungen enden die Lebenszeichen unbemerkt.",
+            "Android entzieht Apps, die lange nicht geöffnet wurden, automatisch die Berechtigungen. Anbu ist <strong>eine App, die auch ohne Öffnen des Bildschirms arbeitet</strong> — gerade deshalb ist sie davon leicht betroffen, und ohne Berechtigungen enden die Wohlbefindens-Meldungen unbemerkt.",
             "Tippen Sie auf [@permission_hibernation_go_to_settings] und schalten Sie es einmal ab; danach erscheint dieses Fenster nicht mehr."
           ]
         },
         {
           "q": "Es erscheint jedes Mal. Kann ich einfach [@common_later] antippen?",
           "a": [
-            "Bis Sie die Einstellung abschalten, erscheint es bei jedem Öffnen der App weiterhin. Da ein ausgebliebenes Lebenszeichen schwer zu bemerken ist, weisen wir wiederholt darauf hin."
+            "Bis Sie die Einstellung abschalten, erscheint es bei jedem Öffnen der App weiterhin. Da eine ausgebliebene Wohlbefindens-Meldung schwer zu bemerken ist, weisen wir wiederholt darauf hin."
           ]
         },
         {
-          "q": "Ich behalte auch die Lebenszeichen meiner Familie im Blick, sehe dieses Fenster aber nie.",
+          "q": "Ich behalte auch das Wohlbefinden meiner Familie im Blick, sehe dieses Fenster aber nie.",
           "a": [
             "Wer zugleich über Angehörige wacht, öffnet die App häufig, um Meldungen zu prüfen, und gerät daher selten in die Lage, dass Berechtigungen automatisch entzogen werden. Deshalb wird Ihnen dieses Fenster nicht angezeigt."
           ]

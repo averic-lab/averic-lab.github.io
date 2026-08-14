@@ -20,7 +20,7 @@
   "steps": [
     {
       "h": "Tryck på [@gs_enable_button] i inställningarna",
-      "d": "Öppna fliken <b>@nav_settings</b> längst ned — knappen ligger allra överst. Du går från att bara se efter familjen till att <b>även skicka ditt eget livstecken</b>."
+      "d": "Öppna fliken <b>@nav_settings</b> längst ned — knappen ligger allra överst. Du går från att bara se efter familjen till att <b>även skicka din egen välmåendesignal</b>."
     },
     {
       "h": "Bekräfta aktiveringen",
@@ -57,7 +57,7 @@
       "d": "Knappen tänds så snart kod och namn är ifyllda. En tryckning kopplar ihop er, och kortet du såg ovan dyker upp på familjens startskärm."
     }
   ],
-  "note": "När kopplingen är gjord finns inget mer att göra. Anbu skickar livstecknet <strong>av sig självt, varje dag på den inställda tiden</strong>, och hör av sig till familjen om tiden passerar utan signal. Kommer signalen sent eller ser stegen tomma ut, se <a href=\"faq.html\">vanliga frågor</a>.",
+  "note": "När kopplingen är gjord finns inget mer att göra. Anbu skickar välmåendesignalen <strong>av sig självt, varje dag på den inställda tiden</strong>, och hör av sig till familjen om tiden passerar utan signal. Kommer signalen sent eller ser stegen tomma ut, se <a href=\"faq.html\">vanliga frågor</a>.",
   "footer_home": "Hem",
   "footer_faq": "Vanliga frågor",
   "footer_privacy": "Integritetspolicy",
