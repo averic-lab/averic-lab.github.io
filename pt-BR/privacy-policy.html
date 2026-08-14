@@ -84,7 +84,7 @@
     <tr>
       <td>Dados de Bem-estar (Pessoa Protegida)</td>
       <td>Nivel de bateria, horario de transmissao do heartbeat</td>
-      <td>Determinacao do estado de bem-estar e envio de alertas ao protetor</td>
+      <td>Determinacao do estado de bem-estar e envio de alertas ao guardião</td>
     </tr>
     <tr>
       <td>Leituras de Sensores (Pessoa Protegida)</td>
@@ -108,7 +108,7 @@
     <tr>
       <td>Dados de Localizacao (Pessoa Protegida &mdash; opcional)</td>
       <td>Latitude, longitude, precisao e horario da captura</td>
-      <td>Transmissao unica ao(s) protetor(es) quando a pessoa protegida pressiona o proprio botao [&#128680; Preciso de ajuda]. Nao ha coleta durante as verificacoes periodicas de bem-estar. Se a permissao de localizacao for negada ou o GPS falhar, o alerta de emergencia e enviado sem informacoes de localizacao.</td>
+      <td>Transmissao unica ao(s) guardião(ões) quando a pessoa protegida pressiona o proprio botao [&#128680; Preciso de ajuda]. Nao ha coleta durante as verificacoes periodicas de bem-estar. Se a permissao de localizacao for negada ou o GPS falhar, o alerta de emergencia e enviado sem informacoes de localizacao.</td>
     </tr>
     <tr>
       <td>Assinatura (Protetor)</td>
@@ -136,11 +136,11 @@
 <h2>2. Como Utilizamos Suas Informacoes</h2>
 <p>Utilizamos as informacoes coletadas exclusivamente para as seguintes finalidades:</p>
 <ol>
-  <li><strong>Servico de Verificacao de Bem-estar:</strong> Coletar sinais de heartbeat do dispositivo da pessoa protegida e notificar os protetores sobre o estado de bem-estar.</li>
-  <li><strong>Notificacoes de Alerta:</strong> Enviar alertas progressivos (Atencao → Aviso → Urgente) aos protetores quando o heartbeat da pessoa protegida nao for recebido.</li>
-  <li><strong>Atendimento a Pedidos de Ajuda de Emergencia:</strong> Quando a pessoa protegida pressiona o proprio botao de emergencia, uma notificacao e enviada imediatamente a todos os protetores conectados. Caso o usuario tenha consentido com o compartilhamento de localizacao, a posicao atual (latitude, longitude e precisao) e anexada a essa notificacao.</li>
-  <li><strong>Monitoramento do Estado do Dispositivo:</strong> Informar os protetores sobre bateria baixa, encerramento do aplicativo ou outras condicoes que possam afetar as verificacoes de bem-estar.</li>
-  <li><strong>Gestao de Assinaturas:</strong> Verificar comprovantes de compras no aplicativo e gerenciar o acesso ao servico do protetor.</li>
+  <li><strong>Servico de Verificacao de Bem-estar:</strong> Coletar sinais de heartbeat do dispositivo da pessoa protegida e notificar os guardiões sobre o estado de bem-estar.</li>
+  <li><strong>Notificacoes de Alerta:</strong> Enviar alertas progressivos (Atencao → Aviso → Urgente) aos guardiões quando o heartbeat da pessoa protegida nao for recebido.</li>
+  <li><strong>Atendimento a Pedidos de Ajuda de Emergencia:</strong> Quando a pessoa protegida pressiona o proprio botao de emergencia, uma notificacao e enviada imediatamente a todos os guardiões conectados. Caso o usuario tenha consentido com o compartilhamento de localizacao, a posicao atual (latitude, longitude e precisao) e anexada a essa notificacao.</li>
+  <li><strong>Monitoramento do Estado do Dispositivo:</strong> Informar os guardiões sobre bateria baixa, encerramento do aplicativo ou outras condicoes que possam afetar as verificacoes de bem-estar.</li>
+  <li><strong>Gestao de Assinaturas:</strong> Verificar comprovantes de compras no aplicativo e gerenciar o acesso ao servico do guardião.</li>
   <li><strong>Melhoria do Servico:</strong> Diagnosticar erros e melhorar a confiabilidade do servico.</li>
 </ol>
 
@@ -181,8 +181,8 @@
 <h2>4. Compartilhamento de Dados</h2>
 <p>Nao vendemos, negociamos ou alugamos suas informacoes a terceiros. Compartilhamos informacoes apenas nas seguintes circunstancias limitadas:</p>
 <ol>
-  <li><strong>Conexao Protetor-Pessoa Protegida:</strong> Quando uma pessoa protegida compartilha seu codigo de convite com um protetor, o protetor recebe o estado de bem-estar da pessoa protegida (heartbeat recebido/nao recebido, nivel de bateria). Nenhuma informacao pessoal e compartilhada — apenas dados de bem-estar em nivel de dispositivo.</li>
-  <li><strong>Compartilhamento de Localizacao em Pedido de Ajuda de Emergencia:</strong> Quando a pessoa protegida pressiona o proprio botao [&#128680; Preciso de ajuda] no aplicativo e consente com o compartilhamento de localizacao, sua posicao atual (latitude, longitude e precisao) e transmitida uma unica vez a todos os protetores conectados. Caso a permissao de localizacao seja negada ou nao seja possivel obter o sinal de GPS, o alerta de emergencia ainda assim e enviado, porem sem informacoes de localizacao.</li>
+  <li><strong>Conexao Protetor-Pessoa Protegida:</strong> Quando uma pessoa protegida compartilha seu codigo de convite com um guardião, o guardião recebe o estado de bem-estar da pessoa protegida (heartbeat recebido/nao recebido, nivel de bateria). Nenhuma informacao pessoal e compartilhada — apenas dados de bem-estar em nivel de dispositivo.</li>
+  <li><strong>Compartilhamento de Localizacao em Pedido de Ajuda de Emergencia:</strong> Quando a pessoa protegida pressiona o proprio botao [&#128680; Preciso de ajuda] no aplicativo e consente com o compartilhamento de localizacao, sua posicao atual (latitude, longitude e precisao) e transmitida uma unica vez a todos os guardiões conectados. Caso a permissao de localizacao seja negada ou nao seja possivel obter o sinal de GPS, o alerta de emergencia ainda assim e enviado, porem sem informacoes de localizacao.</li>
   <li><strong>Requisitos Legais:</strong> Quando exigido por lei aplicavel, regulamentacao ou processo legal valido.</li>
 </ol>
 
@@ -260,7 +260,7 @@
   <ul>
     <li>Conta de usuario e informacoes do dispositivo</li>
     <li>Todos os registros de heartbeat</li>
-    <li>Registros de conexao protetor-pessoa protegida</li>
+    <li>Registros de conexao guardião-pessoa protegida</li>
     <li>Informacoes de assinatura</li>
     <li>Registros de notificacoes de alerta</li>
     <li>Configuracoes de notificacao</li>

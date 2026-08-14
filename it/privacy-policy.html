@@ -84,7 +84,7 @@
     <tr>
       <td>Dati sul benessere (Persona assistita)</td>
       <td>Livello della batteria, orario di trasmissione del heartbeat</td>
-      <td>Determinazione dello stato di benessere e invio di avvisi al tutore</td>
+      <td>Determinazione dello stato di benessere e invio di avvisi al guardiano</td>
     </tr>
     <tr>
       <td>Istantanee dei sensori (Persona assistita)</td>
@@ -108,10 +108,10 @@
     <tr>
       <td>Dati di localizzazione (Persona assistita &mdash; opzionale)</td>
       <td>Latitudine, longitudine, precisione e orario di rilevamento</td>
-      <td>Trasmissione una tantum al/i tutore/i quando la persona assistita preme personalmente il pulsante [&#128680; Ho bisogno di aiuto]. Nessuna raccolta durante i normali controlli periodici di benessere. In caso di rifiuto dell'autorizzazione di localizzazione o di mancata acquisizione del segnale GPS, l'allerta di emergenza viene inviata senza informazioni di posizione.</td>
+      <td>Trasmissione una tantum al/i guardiano/i quando la persona assistita preme personalmente il pulsante [&#128680; Ho bisogno di aiuto]. Nessuna raccolta durante i normali controlli periodici di benessere. In caso di rifiuto dell'autorizzazione di localizzazione o di mancata acquisizione del segnale GPS, l'allerta di emergenza viene inviata senza informazioni di posizione.</td>
     </tr>
     <tr>
-      <td>Abbonamento (Tutore)</td>
+      <td>Abbonamento (Guardiano)</td>
       <td>Ricevuta dell'acquisto in-app (Apple/Google)</td>
       <td>Verifica dell'abbonamento e accesso al servizio</td>
     </tr>
@@ -136,11 +136,11 @@
 <h2>2. Come utilizziamo le tue informazioni</h2>
 <p>Utilizziamo le informazioni raccolte esclusivamente per le seguenti finalita:</p>
 <ol>
-  <li><strong>Servizio di controllo del benessere:</strong> Raccolta dei segnali heartbeat dal dispositivo della persona assistita e notifica ai tutori sullo stato di benessere.</li>
-  <li><strong>Notifiche di avviso:</strong> Invio di avvisi progressivi (Attenzione &rarr; Avvertimento &rarr; Urgente) ai tutori quando il heartbeat di una persona assistita non viene ricevuto.</li>
-  <li><strong>Gestione delle richieste di aiuto di emergenza:</strong> Quando la persona assistita preme personalmente il pulsante di emergenza, viene inviata immediatamente una notifica a tutti i tutori connessi. Se l'utente ha acconsentito alla condivisione della posizione, alla notifica viene allegata la posizione attuale (latitudine, longitudine e precisione).</li>
-  <li><strong>Monitoraggio dello stato del dispositivo:</strong> Informare i tutori in caso di batteria scarica, chiusura dell'app o altre condizioni che possono influire sui controlli del benessere.</li>
-  <li><strong>Gestione degli abbonamenti:</strong> Verifica delle ricevute degli acquisti in-app e gestione dell'accesso al servizio per i tutori.</li>
+  <li><strong>Servizio di controllo del benessere:</strong> Raccolta dei segnali heartbeat dal dispositivo della persona assistita e notifica ai guardiani sullo stato di benessere.</li>
+  <li><strong>Notifiche di avviso:</strong> Invio di avvisi progressivi (Attenzione &rarr; Avvertimento &rarr; Urgente) ai guardiani quando il heartbeat di una persona assistita non viene ricevuto.</li>
+  <li><strong>Gestione delle richieste di aiuto di emergenza:</strong> Quando la persona assistita preme personalmente il pulsante di emergenza, viene inviata immediatamente una notifica a tutti i guardiani connessi. Se l'utente ha acconsentito alla condivisione della posizione, alla notifica viene allegata la posizione attuale (latitudine, longitudine e precisione).</li>
+  <li><strong>Monitoraggio dello stato del dispositivo:</strong> Informare i guardiani in caso di batteria scarica, chiusura dell'app o altre condizioni che possono influire sui controlli del benessere.</li>
+  <li><strong>Gestione degli abbonamenti:</strong> Verifica delle ricevute degli acquisti in-app e gestione dell'accesso al servizio per i guardiani.</li>
   <li><strong>Miglioramento del servizio:</strong> Diagnosi degli errori e miglioramento dell'affidabilita del servizio.</li>
 </ol>
 
@@ -181,8 +181,8 @@
 <h2>4. Condivisione dei dati</h2>
 <p>Non vendiamo, scambiamo ne cediamo le tue informazioni a terzi. Condividiamo le informazioni solo nelle seguenti circostanze limitate:</p>
 <ol>
-  <li><strong>Connessione tutore-persona assistita:</strong> Quando una persona assistita condivide il proprio codice di invito con un tutore, quest'ultimo riceve lo stato di benessere della persona assistita (heartbeat ricevuto/mancante, livello della batteria). Nessuna informazione personale viene condivisa — solo dati sul benessere a livello di dispositivo.</li>
-  <li><strong>Condivisione della posizione in caso di richiesta di aiuto di emergenza:</strong> Quando la persona assistita preme personalmente il pulsante [&#128680; Ho bisogno di aiuto] all'interno dell'app e ha acconsentito alla condivisione della posizione, la posizione attuale (latitudine, longitudine e precisione) viene trasmessa una sola volta a tutti i tutori connessi. In caso di rifiuto dell'autorizzazione di localizzazione o di impossibilita di acquisire il segnale GPS, l'allerta di emergenza viene comunque inviata, ma senza informazioni di posizione.</li>
+  <li><strong>Connessione guardiano-persona assistita:</strong> Quando una persona assistita condivide il proprio codice di invito con un guardiano, quest'ultimo riceve lo stato di benessere della persona assistita (heartbeat ricevuto/mancante, livello della batteria). Nessuna informazione personale viene condivisa — solo dati sul benessere a livello di dispositivo.</li>
+  <li><strong>Condivisione della posizione in caso di richiesta di aiuto di emergenza:</strong> Quando la persona assistita preme personalmente il pulsante [&#128680; Ho bisogno di aiuto] all'interno dell'app e ha acconsentito alla condivisione della posizione, la posizione attuale (latitudine, longitudine e precisione) viene trasmessa una sola volta a tutti i guardiani connessi. In caso di rifiuto dell'autorizzazione di localizzazione o di impossibilita di acquisire il segnale GPS, l'allerta di emergenza viene comunque inviata, ma senza informazioni di posizione.</li>
   <li><strong>Obblighi di legge:</strong> Quando richiesto dalla legge applicabile, da regolamenti o da un procedimento legale valido.</li>
 </ol>
 
@@ -247,7 +247,7 @@
   <ul>
     <li>Account utente e informazioni sul dispositivo</li>
     <li>Tutti i log dei heartbeat</li>
-    <li>Registrazioni delle connessioni tutore-persona assistita</li>
+    <li>Registrazioni delle connessioni guardiano-persona assistita</li>
     <li>Informazioni sull'abbonamento</li>
     <li>Registrazioni delle notifiche di avviso</li>
     <li>Impostazioni delle notifiche</li>

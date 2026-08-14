@@ -61,7 +61,7 @@
 
 <p>Anbu ("chúng tôi") cam kết bảo vệ quyền riêng tư của bạn. Chính sách Bảo mật này giải thích cách chúng tôi thu thập, sử dụng, lưu trữ và bảo vệ thông tin khi bạn sử dụng ứng dụng di động Anbu ("Dịch vụ"). Khi sử dụng Dịch vụ, bạn đồng ý với các thông lệ được mô tả trong chính sách này.</p>
 
-<p>Chúng tôi thiết kế Anbu theo <strong>nguyên tắc ưu tiên quyền riêng tư</strong>. Chúng tôi không thu thập thông tin cá nhân như tên, số điện thoại, địa chỉ email hoặc vị trí của bạn. Dịch vụ chỉ hoạt động dựa trên mã nhận dạng thiết bị và dữ liệu cảm biến tối thiểu cần thiết cho chức năng kiểm tra sức khỏe.</p>
+<p>Chúng tôi thiết kế Anbu theo <strong>nguyên tắc ưu tiên quyền riêng tư</strong>. Chúng tôi không thu thập thông tin cá nhân như tên, số điện thoại, địa chỉ email hoặc vị trí của bạn. Dịch vụ chỉ hoạt động dựa trên mã nhận dạng thiết bị và dữ liệu cảm biến tối thiểu cần thiết cho chức năng kiểm tra bình an.</p>
 
 <h2>1. Thông tin Chúng tôi Thu thập</h2>
 
@@ -79,12 +79,12 @@
     <tr>
       <td>Mã thông báo đẩy</td>
       <td>Mã thông báo Firebase Cloud Messaging (FCM)</td>
-      <td>Gửi thông báo kiểm tra sức khỏe và cảnh báo</td>
+      <td>Gửi thông báo kiểm tra bình an và cảnh báo</td>
     </tr>
     <tr>
       <td>Dữ liệu Sức khỏe (Người được bảo vệ)</td>
       <td>Mức pin, thời gian truyền heartbeat</td>
-      <td>Xác định tình trạng sức khỏe và gửi cảnh báo cho người bảo vệ</td>
+      <td>Xác định tình trạng bình an và gửi cảnh báo cho người bảo vệ</td>
     </tr>
     <tr>
       <td>Ảnh chụp Cảm biến (Người được bảo vệ)</td>
@@ -136,10 +136,10 @@
 <h2>2. Cách Chúng tôi Sử dụng Thông tin của Bạn</h2>
 <p>Chúng tôi chỉ sử dụng thông tin thu thập được cho các mục đích sau:</p>
 <ol>
-  <li><strong>Dịch vụ Kiểm tra Sức khỏe:</strong> Thu thập tín hiệu heartbeat từ thiết bị của người được bảo vệ và thông báo cho người bảo vệ về tình trạng sức khỏe.</li>
+  <li><strong>Dịch vụ Kiểm tra Sức khỏe:</strong> Thu thập tín hiệu heartbeat từ thiết bị của người được bảo vệ và thông báo cho người bảo vệ về tình trạng bình an.</li>
   <li><strong>Thông báo Cảnh báo:</strong> Gửi cảnh báo theo từng cấp độ (Chú ý → Cảnh báo → Khẩn cấp) cho người bảo vệ khi không nhận được heartbeat từ người được bảo vệ.</li>
   <li><strong>Xử lý Yêu cầu Trợ giúp Khẩn cấp:</strong> Khi người được bảo vệ chủ động nhấn nút trợ giúp khẩn cấp, hệ thống lập tức chuyển thông báo đến toàn bộ người bảo vệ đã kết nối. Nếu người dùng đồng ý cung cấp thông tin vị trí, vị trí hiện tại (vĩ độ, kinh độ, độ chính xác) sẽ được gửi kèm.</li>
-  <li><strong>Giám sát Tình trạng Thiết bị:</strong> Thông báo cho người bảo vệ về pin yếu, ứng dụng bị tắt hoặc các tình trạng khác có thể ảnh hưởng đến việc kiểm tra sức khỏe.</li>
+  <li><strong>Giám sát Tình trạng Thiết bị:</strong> Thông báo cho người bảo vệ về pin yếu, ứng dụng bị tắt hoặc các tình trạng khác có thể ảnh hưởng đến việc kiểm tra bình an.</li>
   <li><strong>Quản lý Đăng ký:</strong> Xác minh biên lai mua hàng trong ứng dụng và quản lý quyền truy cập dịch vụ của người bảo vệ.</li>
   <li><strong>Cải thiện Dịch vụ:</strong> Chẩn đoán lỗi và nâng cao độ tin cậy của dịch vụ.</li>
 </ol>
@@ -181,7 +181,7 @@
 <h2>4. Chia sẻ Dữ liệu</h2>
 <p>Chúng tôi không bán, trao đổi hoặc cho thuê thông tin của bạn cho bên thứ ba. Chúng tôi chỉ chia sẻ thông tin trong các trường hợp hạn chế sau:</p>
 <ol>
-  <li><strong>Kết nối Người bảo vệ - Người được bảo vệ:</strong> Khi người được bảo vệ chia sẻ mã mời với người bảo vệ, người bảo vệ sẽ nhận được tình trạng sức khỏe của người được bảo vệ (heartbeat đã nhận/bị thiếu, mức pin). Không có thông tin cá nhân nào được chia sẻ — chỉ có dữ liệu sức khỏe ở cấp thiết bị.</li>
+  <li><strong>Kết nối Người bảo vệ - Người được bảo vệ:</strong> Khi người được bảo vệ chia sẻ mã mời với người bảo vệ, người bảo vệ sẽ nhận được tình trạng bình an của người được bảo vệ (heartbeat đã nhận/bị thiếu, mức pin). Không có thông tin cá nhân nào được chia sẻ — chỉ có dữ liệu bình an ở cấp thiết bị.</li>
   <li><strong>Cung cấp vị trí khi có yêu cầu trợ giúp khẩn cấp:</strong> Chỉ khi Người được bảo vệ tự bấm nút [🚨 Tôi cần giúp đỡ] trong ứng dụng và đồng ý chia sẻ thông tin vị trí, vị trí hiện tại (vĩ độ, kinh độ, độ chính xác) sẽ được chuyển một lần đến toàn bộ người bảo vệ đã kết nối. Nếu quyền vị trí bị từ chối hoặc thiết bị không nhận được tín hiệu GPS, thông báo khẩn cấp vẫn được gửi đi nhưng không kèm vị trí.</li>
   <li><strong>Yêu cầu Pháp lý:</strong> Khi được yêu cầu bởi luật pháp, quy định hoặc quy trình pháp lý hợp lệ.</li>
 </ol>
@@ -228,7 +228,7 @@
   <li>Chuyển đổi dữ liệu</li>
   <li>Khiếu nại với cơ quan bảo vệ dữ liệu tại địa phương của bạn</li>
 </ul>
-<p>Cơ sở pháp lý của chúng tôi để xử lý dữ liệu là <strong>lợi ích hợp pháp</strong> (cung cấp dịch vụ kiểm tra sức khỏe mà bạn đã chọn tham gia) và <strong>sự đồng ý</strong> (đối với các quyền tùy chọn như đếm bước chân).</p>
+<p>Cơ sở pháp lý của chúng tôi để xử lý dữ liệu là <strong>lợi ích hợp pháp</strong> (cung cấp dịch vụ kiểm tra bình an mà bạn đã chọn tham gia) và <strong>sự đồng ý</strong> (đối với các quyền tùy chọn như đếm bước chân).</p>
 
 <h3>Đối với Người dùng tại California (CCPA)</h3>
 <p>Theo Đạo luật Bảo mật Người tiêu dùng California, cư dân California có quyền:</p>
