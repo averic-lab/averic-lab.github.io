@@ -61,35 +61,35 @@
 
 <p>Anbu ("biz" veya "bizim") gizliliğinizi korumaya kararlıyız. Bu Gizlilik Politikası, Anbu mobil uygulamasını ("Hizmet") kullandığınızda bilgilerinizi nasıl topladığımızı, kullandığımızı, sakladığımızı ve koruduğumuzu açıklar. Hizmeti kullanarak bu politikada açıklanan uygulamaları kabul etmiş olursunuz.</p>
 
-<p>Anbu'yu <strong>gizlilik öncelikli bir yaklaşımla</strong> tasarladık. Adiniz, telefon numaranız, e-posta adresiniz veya konumunuz gibi kisisel bilgileri toplamıyoruz. Hizmet, yalnızca cihaz düzeyi tanımlayıcıları ve sağlık kontrolu işlevi icin gerekli minimum sensor verileriyle çalışır.</p>
+<p>Anbu'yu <strong>gizlilik öncelikli bir yaklaşımla</strong> tasarladık. Adınız, telefon numaranız, e-posta adresiniz veya konumunuz gibi kişisel bilgileri toplamıyoruz. Hizmet, yalnızca cihaz düzeyi tanımlayıcıları ve sağlık kontrolü işlevi için gerekli minimum sensör verileriyle çalışır.</p>
 
 <h2>1. Topladığımız Bilgiler</h2>
 
 <h3>1.1 Otomatik Olarak Toplanan Bilgiler</h3>
 <table>
   <thead>
-    <tr><th>Kategori</th><th>Veri</th><th>Amac</th></tr>
+    <tr><th>Kategori</th><th>Veri</th><th>Amaç</th></tr>
   </thead>
   <tbody>
     <tr>
       <td>Cihaz Bilgileri</td>
-      <td>Cihaz tanımlayıcısı (device_id), platform (Android/iOS), isletim sistemi surumu, saat dilimi</td>
-      <td>Hizmet isletimi ve cihaz tanımlama</td>
+      <td>Cihaz tanımlayıcısı (device_id), platform (Android/iOS), işletim sistemi sürümü, saat dilimi</td>
+      <td>Hizmet işletimi ve cihaz tanımlama</td>
     </tr>
     <tr>
       <td>Push Jetonu</td>
       <td>Firebase Cloud Messaging (FCM) jetonu</td>
-      <td>Sağlık kontrolu bildirimleri ve uyarıların iletilmesi</td>
+      <td>Sağlık kontrolü bildirimleri ve uyarıların iletilmesi</td>
     </tr>
     <tr>
-      <td>Sağlık Verileri (Korunan Kisi)</td>
-      <td>Pil seviyesi, heartbeat iletim zamani</td>
+      <td>Sağlık Verileri (Korunan Kişi)</td>
+      <td>Pil seviyesi, heartbeat iletim zamanı</td>
       <td>Sağlık durumunun belirlenmesi ve koruyucu uyarılarının gönderilmesi</td>
     </tr>
     <tr>
-      <td>Sensor Anlık Görüntüleri (Korunan Kisi)</td>
-      <td>Ivmeölçer ve jiroskop okumaları (sürekli degil, tek noktalı anlık görüntüler)</td>
-      <td>Aktiviteyi degerlendirmek icin cihaz hareketinin algılanması</td>
+      <td>Sensör Anlık Görüntüleri (Korunan Kişi)</td>
+      <td>Ivmeölçer ve jiroskop okumaları (sürekli değil, tek noktalı anlık görüntüler)</td>
+      <td>Aktiviteyi değerlendirmek için cihaz hareketinin algılanması</td>
     </tr>
   </tbody>
 </table>
@@ -97,64 +97,64 @@
 <h3>1.2 Izninizle Toplanan Bilgiler</h3>
 <table>
   <thead>
-    <tr><th>Kategori</th><th>Veri</th><th>Amac</th></tr>
+    <tr><th>Kategori</th><th>Veri</th><th>Amaç</th></tr>
   </thead>
   <tbody>
     <tr>
-      <td>Adim Sayisi (Korunan Kisi)</td>
+      <td>Adım Sayısı (Korunan Kişi)</td>
       <td>Son heartbeat'ten bu yana atılan adımlar (steps_delta)</td>
       <td>Aktivite doğrulaması (izin reddedilirse toplanmaz)</td>
     </tr>
     <tr>
-      <td>Opsiyonel (Korunan Kisi)</td>
-      <td>Konum verileri (enlem, boylam, doğruluk, yakalama zamani)</td>
-      <td>Yalnızca korunan kisi [🚨 Yardıma ihtiyacım var] acil yardim talebi düğmesine kendisi bastığında koruyuculara tek seferlik iletilir. Olağan sağlık kontrollerinde toplanmaz. Konum izninin reddedilmesi veya GPS sinyalinin alınamaması durumunda acil uyarı konum bilgisi olmadan gönderilir.</td>
+      <td>Opsiyonel (Korunan Kişi)</td>
+      <td>Konum verileri (enlem, boylam, doğruluk, yakalama zamanı)</td>
+      <td>Yalnızca korunan kişi [🚨 Yardıma ihtiyacım var] acil yardım talebi düğmesine kendisi bastığında koruyuculara tek seferlik iletilir. Olağan sağlık kontrollerinde toplanmaz. Konum izninin reddedilmesi veya GPS sinyalinin alınamaması durumunda acil uyarı konum bilgisi olmadan gönderilir.</td>
     </tr>
     <tr>
       <td>Abonelik (Koruyucu)</td>
-      <td>Uygulama ici satın alma makbuzu (Apple/Google)</td>
+      <td>Uygulama içi satın alma makbuzu (Apple/Google)</td>
       <td>Abonelik doğrulaması ve hizmet erişimi</td>
     </tr>
   </tbody>
 </table>
 
 <div class="highlight">
-  <p><strong>Odeme yöntemi bilgileri &mdash; sunucularımızda saklanmaz</strong></p>
-  <p>Sunucularımızda saklanan tek odeme ile ilgili veri, <strong>Apple App Store veya Google Play Store tarafından düzenlenen makbuz doğrulama belirteci</strong>dir. Kart numaraları, banka hesap bilgileri, odeme kimlik bilgileri ve fatura adresleri yalnızca Apple ve Google'in odeme sistemleri icinde islenir ve sunucularımız tarafından erişilebilir degildir. Odeme verilerinin saklanması, iadelerin islenmesi ve faturalandırma anlaşmazlıklarının çözümü tamamen Apple ve Google'in ilgili politikalarına tabidir.</p>
+  <p><strong>Ödeme yöntemi bilgileri &mdash; sunucularımızda saklanmaz</strong></p>
+  <p>Sunucularımızda saklanan tek ödeme ile ilgili veri, <strong>Apple App Store veya Google Play Store tarafından düzenlenen makbuz doğrulama belirteci</strong>dir. Kart numaraları, banka hesap bilgileri, ödeme kimlik bilgileri ve fatura adresleri yalnızca Apple ve Google'ın ödeme sistemleri içinde işlenir ve sunucularımız tarafından erişilebilir değildir. Ödeme verilerinin saklanması, iadelerin işlenmesi ve faturalandırma anlaşmazlıklarının çözümü tamamen Apple ve Google'ın ilgili politikalarına tabidir.</p>
 </div>
 
 <h3>1.3 Toplamadığımız Bilgiler</h3>
 <ul>
-  <li>Ad, telefon numarası, e-posta adresi veya kisisel olarak tanımlanabilir herhangi bir bilgi</li>
+  <li>Ad, telefon numarası, e-posta adresi veya kişisel olarak tanımlanabilir herhangi bir bilgi</li>
   <li>Olağan sağlık kontrollerinde (heartbeat) konum verisi — arka planda hiçbir konum takibi yapmıyoruz</li>
-  <li>Cihazınızda kayıtlı fotograflar, kisiler veya diğer veriler</li>
-  <li>Arama kayıtları, kısa mesajlar veya tarama gecmisi</li>
-  <li>Sürekli sensor verileri (günde yalnızca bir kez kısa anlık görüntüler alırız)</li>
-  <li>Kart numaraları veya banka hesap bilgileri gibi odeme yöntemi bilgileri &mdash; yalnızca Apple ve Google'in odeme sistemleri tarafından islenir</li>
+  <li>Cihazınızda kayıtlı fotoğraflar, kişiler veya diğer veriler</li>
+  <li>Arama kayıtları, kısa mesajlar veya tarama geçmişi</li>
+  <li>Sürekli sensör verileri (günde yalnızca bir kez kısa anlık görüntüler alırız)</li>
+  <li>Kart numaraları veya banka hesap bilgileri gibi ödeme yöntemi bilgileri &mdash; yalnızca Apple ve Google'ın ödeme sistemleri tarafından işlenir</li>
 </ul>
 
 <p><strong>Veri toplama yöntemleri:</strong></p>
 <ul>
   <li>Uygulamanın yüklenmesinin ardından otomatik kayıt (cihaz bilgileri, FCM jetonu)</li>
-  <li>Günlük sağlık kontrolu sırasında alınan sensor anlık görüntüleri ve adim sayisi (steps_delta, pil seviyesi)</li>
-  <li>Konum yalnızca korunan kisi acil yardim talebi düğmesine kendisi bastığında ve konum izni verilmiş ise tek seferlik toplanır (yalnızca on planda; arka planda konum toplanmaz)</li>
+  <li>Günlük sağlık kontrolü sırasında alınan sensör anlık görüntüleri ve adım sayısı (steps_delta, pil seviyesi)</li>
+  <li>Konum yalnızca korunan kişi acil yardım talebi düğmesine kendisi bastığında ve konum izni verilmiş ise tek seferlik toplanır (yalnızca ön planda; arka planda konum toplanmaz)</li>
 </ul>
 
 <h2>2. Bilgilerinizi Nasıl Kullanırız</h2>
-<p>Toplanan bilgileri yalnızca aşağıdaki amaclarla kullanırız:</p>
+<p>Toplanan bilgileri yalnızca aşağıdaki amaçlarla kullanırız:</p>
 <ol>
-  <li><strong>Sağlık Kontrolu Hizmeti:</strong> Korunan kisinin cihazından heartbeat sinyallerini toplayarak koruyuculara sağlık durumunu bildirmek.</li>
-  <li><strong>Uyarı Bildirimleri:</strong> Korunan kisinin heartbeat'i alınmadığında koruyuculara kademeli uyarılar (Dikkat &rarr; Uyarı &rarr; Acil) göndermek.</li>
-  <li><strong>Acil Yardim Taleplerinin Islenmesi:</strong> Korunan kisi acil yardim düğmesine kendisi bastığında bağlantılı tüm koruyucuları derhal bilgilendiririz. Kullanıcı konum bilgisinin paylaşılmasına onay verdiyse, mevcut konum (enlem, boylam, doğruluk) bildirimle birlikte iletilir.</li>
+  <li><strong>Sağlık Kontrolü Hizmeti:</strong> Korunan kişinin cihazından heartbeat sinyallerini toplayarak koruyuculara sağlık durumunu bildirmek.</li>
+  <li><strong>Uyarı Bildirimleri:</strong> Korunan kişinin heartbeat'i alınmadığında koruyuculara kademeli uyarılar (Dikkat &rarr; Uyarı &rarr; Acil) göndermek.</li>
+  <li><strong>Acil Yardım Taleplerinin Işlenmesi:</strong> Korunan kişi acil yardım düğmesine kendisi bastığında bağlantılı tüm koruyucuları derhal bilgilendiririz. Kullanıcı konum bilgisinin paylaşılmasına onay verdiyse, mevcut konum (enlem, boylam, doğruluk) bildirimle birlikte iletilir.</li>
   <li><strong>Cihaz Durumu Izleme:</strong> Düşük pil, uygulamanın kapatılması veya sağlık kontrollerini etkileyebilecek diğer durumlar hakkında koruyucuları bilgilendirmek.</li>
-  <li><strong>Abonelik Yönetimi:</strong> Uygulama ici satın alma makbuzlarını doğrulamak ve koruyucu hizmet erişimini yönetmek.</li>
+  <li><strong>Abonelik Yönetimi:</strong> Uygulama içi satın alma makbuzlarını doğrulamak ve koruyucu hizmet erişimini yönetmek.</li>
   <li><strong>Hizmet Iyileştirme:</strong> Hataları teşhis etmek ve hizmet güvenilirliğini artırmak.</li>
 </ol>
 
 <h2>3. Veri Saklama</h2>
 <table>
   <thead>
-    <tr><th>Veri</th><th>Saklama Suresi</th><th>Notlar</th></tr>
+    <tr><th>Veri</th><th>Saklama Süresi</th><th>Notlar</th></tr>
   </thead>
   <tbody>
     <tr>
@@ -170,12 +170,12 @@
     <tr>
       <td>Uyarı bildirim kayıtları</td>
       <td>Yalnızca mevcut gün</td>
-      <td>Her gün gece yarısında silinir (korunan kisinin yerel saat dilimine göre)</td>
+      <td>Her gün gece yarısında silinir (korunan kişinin yerel saat dilimine göre)</td>
     </tr>
     <tr>
-      <td>Acil yardim talebi konum verileri</td>
+      <td>Acil yardım talebi konum verileri</td>
       <td>24 saate kadar</td>
-      <td>Korunan kisinin cihaz saat dilimine göre gece yarısında bildirim kayıtlarıyla birlikte otomatik olarak silinir</td>
+      <td>Korunan kişinin cihaz saat dilimine göre gece yarısında bildirim kayıtlarıyla birlikte otomatik olarak silinir</td>
     </tr>
     <tr>
       <td>Abonelik bilgileri</td>
@@ -186,16 +186,16 @@
 </table>
 
 <h2>4. Veri Paylaşımı</h2>
-<p>Bilgilerinizi ucuncu taraflara satmayız, takas etmeyiz veya kiralamayız. Bilgileri yalnızca aşağıdaki sinirli durumlarda paylaşıyoruz:</p>
+<p>Bilgilerinizi üçüncü taraflara satmayız, takas etmeyiz veya kiralamayız. Bilgileri yalnızca aşağıdaki sınırlı durumlarda paylaşıyoruz:</p>
 <ol>
-  <li><strong>Koruyucu-Korunan Kisi Bağlantısı:</strong> Korunan kisi davet kodunu bir koruyucuyla paylasitiginda, koruyucu korunan kisinin sağlık durumunu (heartbeat alınıp alınmadığı, pil seviyesi) alır. Kisisel bilgi paylaşılmaz; yalnızca cihaz düzeyinde sağlık verileri paylaşılır.</li>
-  <li><strong>Acil yardim talebinde konum paylaşımı:</strong> Korunan kisi uygulama icindeki [🚨 Yardıma ihtiyacım var] acil yardim talebi düğmesine kendisi bastığında ve konum bilgisinin paylaşılmasına onay verdiginde, mevcut konumu (enlem, boylam, doğruluk) bağlantılı tüm koruyuculara tek seferlik iletilir. Konum izninin reddedilmesi veya GPS sinyalinin alınamaması durumunda acil bildirim konum bilgisi olmadan gönderilir.</li>
+  <li><strong>Koruyucu-Korunan Kişi Bağlantısı:</strong> Korunan kişi davet kodunu bir koruyucuyla paylasitiginda, koruyucu korunan kişinin sağlık durumunu (heartbeat alınıp alınmadığı, pil seviyesi) alır. Kişisel bilgi paylaşılmaz; yalnızca cihaz düzeyinde sağlık verileri paylaşılır.</li>
+  <li><strong>Acil yardım talebinde konum paylaşımı:</strong> Korunan kişi uygulama içindeki [🚨 Yardıma ihtiyacım var] acil yardım talebi düğmesine kendisi bastığında ve konum bilgisinin paylaşılmasına onay verdiğinde, mevcut konumu (enlem, boylam, doğruluk) bağlantılı tüm koruyuculara tek seferlik iletilir. Konum izninin reddedilmesi veya GPS sinyalinin alınamaması durumunda acil bildirim konum bilgisi olmadan gönderilir.</li>
   <li><strong>Yasal Gereklilikler:</strong> Yürürlükteki yasa, yönetmelik veya geçerli yasal süreç gerektirdiğinde.</li>
 </ol>
 
-<h2>5. Ucuncu Taraf Hizmet Sağlayıcıları</h2>
-<p>Hizmeti isletmek icin aşağıdaki ucuncu taraf hizmetlerini kullanıyoruz:</p>
-<p>Uygulama ici satın alma islemleri icin (Apple Inc., Google LLC), bu sağlayıcılardan yalnızca makbuz doğrulama belirtecini abonelik durumunu doğrulama amacıyla alıyoruz. Gercek odeme yöntemi bilgilerini almayız veya islemiyoruz.</p>
+<h2>5. Üçüncü Taraf Hizmet Sağlayıcıları</h2>
+<p>Hizmeti işletmek için aşağıdaki üçüncü taraf hizmetlerini kullanıyoruz:</p>
+<p>Uygulama içi satın alma işlemleri için (Apple Inc., Google LLC), bu sağlayıcılardan yalnızca makbuz doğrulama belirtecini abonelik durumunu doğrulama amacıyla alıyoruz. Gerçek ödeme yöntemi bilgilerini almayız veya işlemiyoruz.</p>
 <table>
   <thead>
     <tr><th>Sağlayıcı</th><th>Hizmet</th><th>Gizlilik Politikası</th></tr>
@@ -208,12 +208,12 @@
     </tr>
     <tr>
       <td>Apple Inc.</td>
-      <td>Uygulama ici satın almalar, push bildirimleri (APNs)</td>
+      <td>Uygulama içi satın almalar, push bildirimleri (APNs)</td>
       <td><a href="https://www.apple.com/privacy/">Apple Gizliliği</a></td>
     </tr>
     <tr>
       <td>Google LLC (Google Play)</td>
-      <td>Uygulama ici satın almalar</td>
+      <td>Uygulama içi satın almalar</td>
       <td><a href="https://policies.google.com/privacy">Google Gizliliği</a></td>
     </tr>
   </tbody>
@@ -222,53 +222,53 @@
 <h2>6. Haklarınız</h2>
 <p>Verilerinizle ilgili aşağıdaki haklara sahipsiniz:</p>
 <ol>
-  <li><strong>Hesabinizi Silin:</strong> Uygulama ayarlarındaki "Hesabi Sil" seçeneği aracılığıyla istediğiniz zaman hesabinizi ve ilgili tüm verileri silebilirsiniz. Silme islemi anında gerçekleşir ve geri alınamaz.</li>
-  <li><strong>Izinleri Geri Alin:</strong> Bildirim veya hareket izinlerini istediğiniz zaman cihaz ayarlarınızdan geri alabilirsiniz.</li>
-  <li><strong>Veri Erişimi Talebi:</strong> Hakkınızdaki veriler konusunda aşağıdaki e-posta adresi uzerinden bize ulaşarak bilgi talep edebilirsiniz.</li>
+  <li><strong>Hesabınızı Silin:</strong> Uygulama ayarlarındaki "Hesabı Sil" seçeneği aracılığıyla istediğiniz zaman hesabınızı ve ilgili tüm verileri silebilirsiniz. Silme işlemi anında gerçekleşir ve geri alınamaz.</li>
+  <li><strong>Izinleri Geri Alın:</strong> Bildirim veya hareket izinlerini istediğiniz zaman cihaz ayarlarınızdan geri alabilirsiniz.</li>
+  <li><strong>Veri Erişimi Talebi:</strong> Hakkınızdaki veriler konusunda aşağıdaki e-posta adresi üzerinden bize ulaşarak bilgi talep edebilirsiniz.</li>
 </ol>
 
-<h3>Avrupa Ekonomik Alanı (AEA) Kullanıcıları Icin</h3>
+<h3>Avrupa Ekonomik Alanı (AEA) Kullanıcıları Için</h3>
 <p>Genel Veri Koruma Yönetmeliği (GDPR) kapsamında aşağıdaki haklara da sahipsiniz:</p>
 <ul>
-  <li>Kisisel verilerinize erişim, düzeltme veya silme talebi</li>
-  <li>Verilerinizin islenmesine itiraz etme veya kısıtlama</li>
+  <li>Kişisel verilerinize erişim, düzeltme veya silme talebi</li>
+  <li>Verilerinizin işlenmesine itiraz etme veya kısıtlama</li>
   <li>Veri taşınabilirliği</li>
   <li>Yerel veri koruma otoritenize şikayet başvurusu</li>
 </ul>
-<p>Isleme icin yasal dayanağımız, <strong>meşru menfaat</strong> (tercih ettiginiz sağlık kontrolu hizmetinin sağlanması) ve <strong>rızadır</strong> (adim sayimi gibi isteğe bağlı izinler icin).</p>
+<p>Işleme için yasal dayanağımız, <strong>meşru menfaat</strong> (tercih ettiğiniz sağlık kontrolü hizmetinin sağlanması) ve <strong>rızadır</strong> (adım sayımı gibi isteğe bağlı izinler için).</p>
 
-<h3>Turkiye'deki Kullanıcılar Icin (KVKK)</h3>
-<p>6698 Sayili Kisisel Verilerin Korunması Kanunu (KVKK) kapsamında aşağıdaki haklara sahipsiniz:</p>
+<h3>Türkiye'deki Kullanıcılar Için (KVKK)</h3>
+<p>6698 Sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında aşağıdaki haklara sahipsiniz:</p>
 <ul>
-  <li>Kisisel verilerinizin islenip işlenmediğini öğrenme</li>
-  <li>Kisisel verileriniz işlenmişse buna iliskin bilgi talep etme</li>
-  <li>Kisisel verilerinizin işlenmiş amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme</li>
-  <li>Yurt icinde veya yurt dışında kisisel verilerinizin aktarıldığı ucuncu kisileri bilme</li>
-  <li>Kisisel verilerinizin eksik veya yanlış işlenmiş olması halinde bunların düzeltilmesini isteme</li>
-  <li>KVKK'nin 7. maddesinde öngörülen şartlar çerçevesinde kisisel verilerinizin silinmesini veya yok edilmesini isteme</li>
-  <li>Islenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle aleyhinize bir sonucun ortaya çıkmasına itiraz etme</li>
-  <li>Kisisel verilerinizin kanuna aykırı olarak islenmesi sebebiyle zarara uğramanız halinde zararın giderilmesini talep etme</li>
+  <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme</li>
+  <li>Kişisel verileriniz işlenmişse buna ilişkin bilgi talep etme</li>
+  <li>Kişisel verilerinizin işlenmiş amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme</li>
+  <li>Yurt içinde veya yurt dışında kişisel verilerinizin aktarıldığı üçüncü kişileri bilme</li>
+  <li>Kişisel verilerinizin eksik veya yanlış işlenmiş olması halinde bunların düzeltilmesini isteme</li>
+  <li>KVKK'nin 7. maddesinde öngörülen şartlar çerçevesinde kişisel verilerinizin silinmesini veya yok edilmesini isteme</li>
+  <li>Işlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle aleyhinize bir sonucun ortaya çıkmasına itiraz etme</li>
+  <li>Kişisel verilerinizin kanuna aykırı olarak işlenmesi sebebiyle zarara uğramanız halinde zararın giderilmesini talep etme</li>
 </ul>
-<p>KVKK kapsamındaki başvurularınızı aşağıdaki iletişim bilgileri uzerinden yapabilirsiniz.</p>
+<p>KVKK kapsamındaki başvurularınızı aşağıdaki iletişim bilgileri üzerinden yapabilirsiniz.</p>
 
-<h3>Kaliforniya'daki Kullanıcılar Icin (CCPA)</h3>
+<h3>Kaliforniya'daki Kullanıcılar Için (CCPA)</h3>
 <p>Kaliforniya Tüketici Gizlilik Yasası kapsamında Kaliforniya sakinleri aşağıdaki haklara sahiptir:</p>
 <ul>
-  <li>Hangi kisisel bilgilerin toplandığını ve nasıl kullanıldığını bilme</li>
-  <li>Kisisel bilgilerin silinmesini talep etme</li>
-  <li>Kisisel bilgilerin satisini reddetme — <strong>hiçbir kisisel bilgiyi satmıyoruz</strong></li>
-  <li>Gizlilik haklarınızı kullandığınız icin ayrımcılığa uğramama</li>
+  <li>Hangi kişisel bilgilerin toplandığını ve nasıl kullanıldığını bilme</li>
+  <li>Kişisel bilgilerin silinmesini talep etme</li>
+  <li>Kişisel bilgilerin satışını reddetme — <strong>hiçbir kişisel bilgiyi satmıyoruz</strong></li>
+  <li>Gizlilik haklarınızı kullandığınız için ayrımcılığa uğramama</li>
 </ul>
 
 <h3>Çocukların Gizliliği (COPPA)</h3>
-<p>Anbu, 13 yaşından kucuk cocuklara yonelik degildir. 13 yaşından kucuk cocuklardan bilerek bilgi toplamıyoruz. Bir çocuğun bize veri sağladığına inanıyorsanız, lütfen bizimle iletişime gecin; derhal sileceğiz.</p>
+<p>Anbu, 13 yaşından küçük çocuklara yönelik değildir. 13 yaşından küçük çocuklardan bilerek bilgi toplamıyoruz. Bir çocuğun bize veri sağladığına inanıyorsanız, lütfen bizimle iletişime geçin; derhal sileceğiz.</p>
 
 <div class="highlight">
   <p><strong>Hesap silindiğinde silinen veriler:</strong></p>
   <ul>
-    <li>Kullanıcı hesabi ve cihaz bilgileri</li>
+    <li>Kullanıcı hesabı ve cihaz bilgileri</li>
     <li>Tüm heartbeat kayıtları</li>
-    <li>Koruyucu-korunan kisi bağlantı kayıtları</li>
+    <li>Koruyucu-korunan kişi bağlantı kayıtları</li>
     <li>Abonelik bilgileri</li>
     <li>Uyarı bildirim kayıtları</li>
     <li>Bildirim ayarları</li>
@@ -276,29 +276,29 @@
 </div>
 
 <h2>7. Veri Güvenliği</h2>
-<p>Verilerinizi korumak icin aşağıdaki önlemleri uyguluyoruz:</p>
+<p>Verilerinizi korumak için aşağıdaki önlemleri uyguluyoruz:</p>
 <ol>
-  <li><strong>Aktarım Sırasında Şifreleme:</strong> Uygulama ile sunucularımız arasındaki tüm iletişim HTTPS (TLS 1.2 veya ustu) kullanır.</li>
-  <li><strong>Erişim Kontrolu:</strong> Cihaz jetonu tabanlı kimlik doğrulama, yalnızca kendi verilerinize erişmenizi saglar.</li>
-  <li><strong>Veri Minimizasyonu:</strong> Hizmeti saglamak icin yalnızca gerekli minimum bilgiyi topluyoruz.</li>
-  <li><strong>Otomatik Silme:</strong> Saklama suresini asan veriler otomatik olarak silinir.</li>
+  <li><strong>Aktarım Sırasında Şifreleme:</strong> Uygulama ile sunucularımız arasındaki tüm iletişim HTTPS (TLS 1.2 veya üstü) kullanır.</li>
+  <li><strong>Erişim Kontrolü:</strong> Cihaz jetonu tabanlı kimlik doğrulama, yalnızca kendi verilerinize erişmenizi sağlar.</li>
+  <li><strong>Veri Minimizasyonu:</strong> Hizmeti sağlamak için yalnızca gerekli minimum bilgiyi topluyoruz.</li>
+  <li><strong>Otomatik Silme:</strong> Saklama süresini aşan veriler otomatik olarak silinir.</li>
 </ol>
 
 <h2>8. Yerel Depolama</h2>
 <p>Anbu, çerez veya web izleme teknolojileri kullanmaz. Uygulama, aşağıdaki bilgileri cihazınızda yerel olarak depolar (Android'de SharedPreferences / iOS'ta UserDefaults kullanarak):</p>
 <ul>
-  <li>Cihaz jetonu (sunucu kimlik doğrulaması icin)</li>
+  <li>Cihaz jetonu (sunucu kimlik doğrulaması için)</li>
   <li>Davet kodu</li>
-  <li>Heartbeat planlama zamani</li>
-  <li>Son heartbeat iletim zamani</li>
+  <li>Heartbeat planlama zamanı</li>
+  <li>Son heartbeat iletim zamanı</li>
 </ul>
-<p>Bu veriler, uygulamayı kaldırdığınızda veya hesabinizi sildiğinizde silinir.</p>
+<p>Bu veriler, uygulamayı kaldırdığınızda veya hesabınızı sildiğinizde silinir.</p>
 
-<h2>9. Uluslararasi Veri Aktarımları</h2>
-<p>Sunucularımız ikamet ülkenizin dışında bulunabilir. Hizmeti kullanarak, bilgilerinizin başka yargı bölgelerindeki sunuculara aktarılmasına onay vermiş olursunuz. Bu Gizlilik Politikasına uygun olarak verilerinizi korumak icin uygun güvencelerin mevcut olmasını sağlıyoruz.</p>
+<h2>9. Uluslararası Veri Aktarımları</h2>
+<p>Sunucularımız ikamet ülkenizin dışında bulunabilir. Hizmeti kullanarak, bilgilerinizin başka yargı bölgelerindeki sunuculara aktarılmasına onay vermiş olursunuz. Bu Gizlilik Politikasına uygun olarak verilerinizi korumak için uygun güvencelerin mevcut olmasını sağlıyoruz.</p>
 
-<h2>10. Bu Politikadaki Degisiklikler</h2>
-<p>Uygulamalarımızı veya yürürlükteki yasaları yansıtmak icin bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Onemli degisiklikleri uygulama veya bu sayfa aracılığıyla size bildiririz. Degisiklikler yayınlandıktan sonra Hizmeti kullanmaya devam etmeniz, güncellenmiş politikayı kabul ettiginiz anlamına gelir.</p>
+<h2>10. Bu Politikadaki Değişiklikler</h2>
+<p>Uygulamalarımızı veya yürürlükteki yasaları yansıtmak için bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Önemli değişiklikleri uygulama veya bu sayfa aracılığıyla size bildiririz. Değişiklikler yayınlandıktan sonra Hizmeti kullanmaya devam etmeniz, güncellenmiş politikayı kabul ettiğiniz anlamına gelir.</p>
 
 <h2>11. Bize Ulaşın</h2>
 <table>
