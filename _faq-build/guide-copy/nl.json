@@ -24,7 +24,7 @@
     },
     {
       "h": "Bevestig de activering",
-      "d": "@gs_enable_dialog_body<br><b>Op de iPhone komt er één mededeling bij</b> — het signaal vertrekt alleen als u de melding op het ingestelde tijdstip aantikt of de app zelf opent. Tik hieronder op [iPhone] om te vergelijken."
+      "d": "@gs_enable_dialog_body"
     },
     {
       "h": "De veiligheidscode verschijnt",

@@ -24,7 +24,7 @@
     },
     {
       "h": "在確認視窗點選啟用",
-      "d": "@gs_enable_dialog_body<br><b>iPhone 會多一則說明</b> — 需要點選準時送達的通知，或自己開啟應用程式，平安訊號才會送出。點下方的[iPhone]比較看看。"
+      "d": "@gs_enable_dialog_body"
     },
     {
       "h": "安全碼產生了",

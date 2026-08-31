@@ -24,7 +24,7 @@
     },
     {
       "h": "Confirme a ativação",
-      "d": "@gs_enable_dialog_body<br><b>No iPhone aparece um aviso a mais</b> — o sinal só é enviado ao tocar na notificação que chega no horário definido, ou ao abrir o aplicativo por conta própria. Toque em [iPhone] abaixo para comparar."
+      "d": "@gs_enable_dialog_body"
     },
     {
       "h": "O código de segurança é criado",

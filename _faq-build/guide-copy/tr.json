@@ -24,7 +24,7 @@
     },
     {
       "h": "Onay penceresinde etkinleştirin",
-      "d": "@gs_enable_dialog_body<br><b>iPhone'da bir uyarı daha çıkar</b> — işaret yalnızca belirlenen saatte gelen bildirime dokunduğunuzda ya da uygulamayı kendiniz açtığınızda gönderilir. Karşılaştırmak için aşağıdaki [iPhone] düğmesine dokunun."
+      "d": "@gs_enable_dialog_body"
     },
     {
       "h": "Güvenlik kodu oluşturulur",

@@ -24,7 +24,7 @@
     },
     {
       "h": "Confermi l'attivazione",
-      "d": "@gs_enable_dialog_body<br><b>Su iPhone compare un avviso in più</b> — il segnale parte solo toccando la notifica che arriva all'ora stabilita, oppure aprendo l'app di persona. Tocchi [iPhone] qui sotto per confrontare."
+      "d": "@gs_enable_dialog_body"
     },
     {
       "h": "Il codice di sicurezza viene creato",

@@ -24,7 +24,7 @@
     },
     {
       "h": "Im Bestätigungsfenster aktivieren",
-      "d": "@gs_enable_dialog_body<br><b>Auf dem iPhone kommt ein Hinweis dazu</b> — gesendet wird nur, wenn Sie die Mitteilung zur eingestellten Zeit antippen oder die App selbst öffnen. Tippen Sie unten auf [iPhone], um zu vergleichen."
+      "d": "@gs_enable_dialog_body"
     },
     {
       "h": "Der Sicherheitscode entsteht",

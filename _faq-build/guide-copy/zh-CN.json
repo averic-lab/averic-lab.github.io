@@ -24,7 +24,7 @@
     },
     {
       "h": "在确认窗口点击启用",
-      "d": "@gs_enable_dialog_body<br><b>iPhone 会多一条提示</b> — 需要点击按时到达的通知，或自己打开应用，平安信号才会发送。点下方的[iPhone]对比看看。"
+      "d": "@gs_enable_dialog_body"
     },
     {
       "h": "安全码生成了",

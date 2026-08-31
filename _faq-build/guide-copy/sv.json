@@ -24,7 +24,7 @@
     },
     {
       "h": "Bekräfta aktiveringen",
-      "d": "@gs_enable_dialog_body<br><b>På iPhone tillkommer en upplysning</b> — signalen skickas bara när du trycker på aviseringen som kommer vid den inställda tiden, eller öppnar appen själv. Tryck på [iPhone] nedan för att jämföra."
+      "d": "@gs_enable_dialog_body"
     },
     {
       "h": "Säkerhetskoden skapas",

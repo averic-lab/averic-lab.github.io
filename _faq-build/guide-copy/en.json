@@ -24,7 +24,7 @@
     },
     {
       "h": "Confirm to activate",
-      "d": "@gs_enable_dialog_body<br><b>On iPhone there is one more notice</b> — a check-in is only sent when you tap the notification that arrives at the set time, or open the app yourself. Tap [iPhone] below to compare."
+      "d": "@gs_enable_dialog_body"
     },
     {
       "h": "Your safety code appears",

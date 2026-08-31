@@ -722,11 +722,14 @@ footer .copy{margin-left:auto}
             <div class="bnav"><span class="tab"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>首頁</span></span><span class="tab on"><svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7a5 5 0 0 0 0 10h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4a5 5 0 0 0 0-10z"/></svg><span>連線</span></span><span class="tab"><svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg><span>通知</span></span><span class="tab"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.48.48 0 0 0-.59.22L2.74 8.87a.48.48 0 0 0 .12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.49.49 0 0 0-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/></svg><span>設定</span></span></div>
           </div>
 
-        <!-- 안전 코드 생성 확인 다이얼로그. iOS는 주황 경고 카드가 더 붙고 확인
-             버튼 문구도 다르다 (_showEnableConfirm / _showEnableConfirmIOS).
-             iOS에서는 이 기능이 대상자 기능의 유일한 경로라 경고를 생략할 수 없다. -->
+        <!-- 안전 코드 생성 확인 다이얼로그. **플랫폼 분기 없음**(2026-08-31).
+             예전에는 iOS에만 "알림을 탭하거나 직접 앱을 열어야 안부가 전송됩니다"라는
+             주황 경고 카드가 더 붙었으나, NSE 트리거(08-22) + 피기백(08-29)으로 iOS도
+             탭 없이 자동 전송되면서 앱에서 그 분기가 제거됐다(_showEnableConfirm 단일).
+             ⚠️ gs_enable_dialog_ios_warning_* 키는 extract_strings.py의 KEYS에 남아
+             있어야 한다 — 지우면 이 빌드가 exit 1 한다. 여기서 그리지 않을 뿐이다. -->
         <div class="modal" id="modal" hidden>
-          <div class="dlg" data-pf="and">
+          <div class="dlg">
             <p class="dlg-title" data-key="gs_enable_dialog_title"></p>
             <div class="dlg-body"><p data-key="gs_enable_dialog_body"></p></div>
             <div class="dlg-actions">
@@ -736,33 +739,12 @@ footer .copy{margin-left:auto}
                 style="color:#4355B9;font-weight:700" data-key="gs_enable_confirm"></button>
             </div>
           </div>
-          <div class="dlg" data-pf="ios" hidden>
-            <p class="dlg-title" data-key="gs_enable_dialog_title"></p>
-            <div class="dlg-body"><p data-key="gs_enable_dialog_body"></p></div>
-            <div class="ios-warn">
-              <p class="t" data-key="gs_enable_dialog_ios_warning_title"></p>
-              <p class="b" data-key="gs_enable_dialog_ios_warning_body"></p>
-            </div>
-            <div class="dlg-actions">
-              <button class="dlg-btn" type="button" tabindex="-1" disabled
-                style="color:#3F4948" data-key="common_cancel"></button>
-              <button class="dlg-btn" type="button" tabindex="-1" disabled
-                style="color:#E65100;font-weight:700" data-key="gs_enable_dialog_ios_confirm"></button>
-            </div>
-          </div>
         </div>
 
         <!-- 코드 복사 스낵바 -->
         <div class="snack" id="snack" hidden data-key="subject_home_code_copied"></div>
         </div>
 
-      </div>
-
-      <!-- 확인 창이 플랫폼별로 다른 단계에서만 쓰인다. 자리는 늘 잡아 둬(visibility)
-           단계를 넘길 때 아래 컨트롤이 튀지 않게 한다. -->
-      <div class="pf" id="pf">
-        <button class="pf-tab" type="button" data-pf="and" aria-pressed="true">Android</button>
-        <button class="pf-tab" type="button" data-pf="ios" aria-pressed="false">iPhone</button>
       </div>
 
       <div class="ctrl">
@@ -782,7 +764,7 @@ footer .copy{margin-left:auto}
 
     <main>
       <ol class="steps" id="steps"><li><button class="step" type="button"><span class="n">1</span><span><span class="h">在設定中點選[產生我的安全碼]</span><span class="d">打開守護畫面下方的<b>設定</b>分頁，它就在最上面。你會從只守護家人，變成<b>同時也傳送自己平安</b>的狀態。</span></span></button></li>
-<li><button class="step" type="button"><span class="n">2</span><span><span class="h">在確認視窗點選啟用</span><span class="d">啟用後將發放安全碼，請將您的「安全碼」告知其他守護者。<br><b>iPhone 會多一則說明</b> — 需要點選準時送達的通知，或自己開啟應用程式，平安訊號才會送出。點下方的[iPhone]比較看看。</span></span></button></li>
+<li><button class="step" type="button"><span class="n">2</span><span><span class="h">在確認視窗點選啟用</span><span class="d">啟用後將發放安全碼，請將您的「安全碼」告知其他守護者。</span></span></button></li>
 <li><button class="step" type="button"><span class="n">3</span><span><span class="h">安全碼產生了</span><span class="d">原本空著的位置填上了<b>7 碼安全碼</b>。每台裝置發放一組，即使刪除應用程式再重裝，回來的仍是同一組碼。</span></span></button></li>
 <li><button class="step" type="button"><span class="n">4</span><span><span class="h">複製或分享安全碼告訴家人</span><span class="d">左邊的按鈕是複製，右邊是分享。複製後會顯示<b>安全碼已複製</b>。可以用簡訊或通訊軟體傳送，只有 7 碼，用電話唸給對方也行。</span></span></button></li>
 <li><button class="step" type="button"><span class="n">5</span><span><span class="h">從這裡開始是家人的手機</span><span class="d">收到碼的家人在自己的應用程式中打開<b>連線</b>分頁，點選[<b>新增被守護者</b>]就會看到這個畫面。填好下面三欄即可。</span></span></button></li>
@@ -939,7 +921,7 @@ var FILLS = [
   {el:'fld-phone', val:function(){ return DEMO.phone; }}
 ];
 
-var idx = 0, timer = null, typer = null, playing = !reduce.matches, platform = 'and';
+var idx = 0, timer = null, typer = null, playing = !reduce.matches;
 var stepBtns = Array.prototype.slice.call(document.querySelectorAll('.step'));
 
 function setField(i, text, caret){
@@ -969,10 +951,6 @@ function render(i){
   $('whose').querySelector('.who-txt').textContent = WHO[s.who];
 
   $('modal').hidden = !s.dialog;
-  $('pf').classList.toggle('on', !!s.dialog);
-  document.querySelectorAll('.modal .dlg').forEach(function(d){
-    d.hidden = d.dataset.pf !== platform;
-  });
   $('snack').hidden = !s.snack;
   $('code').textContent = s.code ? DEMO.code : '---  ----';
   $('code').style.color = s.code ? '#fff' : 'rgba(255,255,255,.35)';
@@ -1046,17 +1024,6 @@ function schedule(){
 }
 
 function stop(){ playing = false; clearTimeout(timer); }
-
-$('pf').addEventListener('click', function(e){
-  var t = e.target.closest('.pf-tab');
-  if (!t) return;
-  platform = t.dataset.pf;
-  $('pf').querySelectorAll('.pf-tab').forEach(function(x){
-    x.setAttribute('aria-pressed', String(x === t));
-  });
-  stop();          // 창을 비교해 보는 중이니 자동으로 넘어가지 않는다
-  render(idx);
-});
 
 $('prev').addEventListener('click', function(){ go(idx - 1, true); });
 $('next').addEventListener('click', function(){ go(idx + 1, true); });

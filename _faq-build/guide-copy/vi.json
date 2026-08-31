@@ -24,7 +24,7 @@
     },
     {
       "h": "Xác nhận để bật",
-      "d": "@gs_enable_dialog_body<br><b>Trên iPhone có thêm một lưu ý</b> — tín hiệu chỉ được gửi khi bạn chạm vào thông báo đến đúng giờ đã đặt, hoặc tự mở ứng dụng. Chạm [iPhone] bên dưới để so sánh."
+      "d": "@gs_enable_dialog_body"
     },
     {
       "h": "Mã an toàn được tạo",

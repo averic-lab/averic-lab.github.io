@@ -24,7 +24,7 @@
     },
     {
       "h": "Confirmez l'activation",
-      "d": "@gs_enable_dialog_body<br><b>Sur iPhone, un avis supplémentaire s'affiche</b> — le signal ne part que si vous touchez la notification reçue à l'heure fixée, ou si vous ouvrez l'application vous-même. Appuyez sur [iPhone] ci-dessous pour comparer."
+      "d": "@gs_enable_dialog_body"
     },
     {
       "h": "Le code de sécurité est créé",

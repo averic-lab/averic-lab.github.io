@@ -24,7 +24,7 @@
     },
     {
       "h": "Potwierdź włączenie",
-      "d": "@gs_enable_dialog_body<br><b>Na iPhonie pojawia się jeszcze jedna informacja</b> — sygnał wychodzi tylko po dotknięciu powiadomienia o ustalonej godzinie albo po samodzielnym otwarciu aplikacji. Dotknij [iPhone] poniżej, aby porównać."
+      "d": "@gs_enable_dialog_body"
     },
     {
       "h": "Kod bezpieczeństwa zostaje utworzony",

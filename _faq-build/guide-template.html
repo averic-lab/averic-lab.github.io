@@ -287,11 +287,14 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
             <div class="bnav">{{BNAV_CONNECT}}</div>
           </div>
 
-        <!-- 안전 코드 생성 확인 다이얼로그. iOS는 주황 경고 카드가 더 붙고 확인
-             버튼 문구도 다르다 (_showEnableConfirm / _showEnableConfirmIOS).
-             iOS에서는 이 기능이 대상자 기능의 유일한 경로라 경고를 생략할 수 없다. -->
+        <!-- 안전 코드 생성 확인 다이얼로그. **플랫폼 분기 없음**(2026-08-31).
+             예전에는 iOS에만 "알림을 탭하거나 직접 앱을 열어야 안부가 전송됩니다"라는
+             주황 경고 카드가 더 붙었으나, NSE 트리거(08-22) + 피기백(08-29)으로 iOS도
+             탭 없이 자동 전송되면서 앱에서 그 분기가 제거됐다(_showEnableConfirm 단일).
+             ⚠️ gs_enable_dialog_ios_warning_* 키는 extract_strings.py의 KEYS에 남아
+             있어야 한다 — 지우면 이 빌드가 exit 1 한다. 여기서 그리지 않을 뿐이다. -->
         <div class="modal" id="modal" hidden>
-          <div class="dlg" data-pf="and">
+          <div class="dlg">
             <p class="dlg-title" data-key="gs_enable_dialog_title"></p>
             <div class="dlg-body"><p data-key="gs_enable_dialog_body"></p></div>
             <div class="dlg-actions">
@@ -301,33 +304,12 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
                 style="color:#4355B9;font-weight:700" data-key="gs_enable_confirm"></button>
             </div>
           </div>
-          <div class="dlg" data-pf="ios" hidden>
-            <p class="dlg-title" data-key="gs_enable_dialog_title"></p>
-            <div class="dlg-body"><p data-key="gs_enable_dialog_body"></p></div>
-            <div class="ios-warn">
-              <p class="t" data-key="gs_enable_dialog_ios_warning_title"></p>
-              <p class="b" data-key="gs_enable_dialog_ios_warning_body"></p>
-            </div>
-            <div class="dlg-actions">
-              <button class="dlg-btn" type="button" tabindex="-1" disabled
-                style="color:#3F4948" data-key="common_cancel"></button>
-              <button class="dlg-btn" type="button" tabindex="-1" disabled
-                style="color:#E65100;font-weight:700" data-key="gs_enable_dialog_ios_confirm"></button>
-            </div>
-          </div>
         </div>
 
         <!-- 코드 복사 스낵바 -->
         <div class="snack" id="snack" hidden data-key="subject_home_code_copied"></div>
         </div>
 
-      </div>
-
-      <!-- 확인 창이 플랫폼별로 다른 단계에서만 쓰인다. 자리는 늘 잡아 둬(visibility)
-           단계를 넘길 때 아래 컨트롤이 튀지 않게 한다. -->
-      <div class="pf" id="pf">
-        <button class="pf-tab" type="button" data-pf="and" aria-pressed="true">Android</button>
-        <button class="pf-tab" type="button" data-pf="ios" aria-pressed="false">iPhone</button>
       </div>
 
       <div class="ctrl">
@@ -435,7 +417,7 @@ var FILLS = [
   {el:'fld-phone', val:function(){ return DEMO.phone; }}
 ];
 
-var idx = 0, timer = null, typer = null, playing = !reduce.matches, platform = 'and';
+var idx = 0, timer = null, typer = null, playing = !reduce.matches;
 var stepBtns = Array.prototype.slice.call(document.querySelectorAll('.step'));
 
 function setField(i, text, caret){
@@ -465,10 +447,6 @@ function render(i){
   $('whose').querySelector('.who-txt').textContent = WHO[s.who];
 
   $('modal').hidden = !s.dialog;
-  $('pf').classList.toggle('on', !!s.dialog);
-  document.querySelectorAll('.modal .dlg').forEach(function(d){
-    d.hidden = d.dataset.pf !== platform;
-  });
   $('snack').hidden = !s.snack;
   $('code').textContent = s.code ? DEMO.code : '---  ----';
   $('code').style.color = s.code ? '#fff' : 'rgba(255,255,255,.35)';
@@ -542,17 +520,6 @@ function schedule(){
 }
 
 function stop(){ playing = false; clearTimeout(timer); }
-
-$('pf').addEventListener('click', function(e){
-  var t = e.target.closest('.pf-tab');
-  if (!t) return;
-  platform = t.dataset.pf;
-  $('pf').querySelectorAll('.pf-tab').forEach(function(x){
-    x.setAttribute('aria-pressed', String(x === t));
-  });
-  stop();          // 창을 비교해 보는 중이니 자동으로 넘어가지 않는다
-  render(idx);
-});
 
 $('prev').addEventListener('click', function(){ go(idx - 1, true); });
 $('next').addEventListener('click', function(){ go(idx + 1, true); });
