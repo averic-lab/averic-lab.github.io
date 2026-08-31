@@ -804,7 +804,8 @@ p.section-sub {
 
 .steps {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* 카드 2장(2026-08-31, 3장에서 축소). i18n/template.html 주석 참조 */
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   margin-top: 88px;
   text-align: left;
