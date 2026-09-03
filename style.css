@@ -811,7 +811,7 @@ p.section-sub {
   overflow-wrap: break-word;
 }
 
-/* ── 「지킨 다섯 가지」 섹션 ─────────────────────────────────────────
+/* ── 「지킨 여섯 가지」 섹션 ─────────────────────────────────────────
    흰 카드 4장. 2026-09-03 에 intro 의 카드(.step)를 삭제했으므로 **흰 카드는
    이제 이 섹션 전용**이고, 텍스트만 남은 intro 와 형태로 뚜렷이 갈린다.
    ⚠️ 한때 세로 목록으로 바꿨던 이유는 "intro 와 구조가 겹친다" 였는데 그 전제가
@@ -852,9 +852,7 @@ p.section-sub {
 .made-item:nth-child(3).in-view { transition-delay: .24s; }
 .made-item:nth-child(4).in-view { transition-delay: .36s; }
 .made-item:nth-child(5).in-view { transition-delay: .48s; }
-/* 05 는 2열 그리드에서 한 칸만 차지하면 왼쪽에 홀로 남아 어색하다 — 전체 너비로 둔다.
-   ⚠️ 880px 아래는 이미 1열이라 이 규칙이 무의미하지만 해가 없으므로 그대로 둔다. */
-.made-item.wide { grid-column: 1 / -1; }
+.made-item:nth-child(6).in-view { transition-delay: .60s; }
 .made-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 30px 60px -20px rgba(229, 75, 94, 0.18);
@@ -872,9 +870,12 @@ p.section-sub {
   transition: opacity .35s ease;
 }
 .made-item:hover .made-num { opacity: .85; }
-/* 01 에만 아주 느린 맥박. 이 항목의 주장이 "멈추지 않는다" 이므로 장식이 아니라
-   그 문장의 시각적 대응이다 — 다른 항목에 복제하면 의미가 사라지고 무늬가 된다. */
-.made-item:first-child .made-num::after {
+/* ⚠️ 맥박은 **"멈추지 않습니다" 항목에만** 붙인다. 장식이 아니라 그 문장의 시각적
+   대응이라, 다른 항목에 복제하면 의미가 사라지고 무늬가 된다.
+   현재 그 항목은 02 다(2026-09-03 에 20개 언어 항목이 01 로 들어오면서 한 칸 밀렸다).
+   ⚠️ 항목 순서를 바꾸면 이 선택자도 같이 옮길 것 — :first-child 로 두면 엉뚱한
+      항목이 뛴다. */
+.made-item:nth-child(2) .made-num::after {
   content: '';
   display: inline-block;
   width: 9px; height: 9px;
@@ -913,7 +914,7 @@ p.section-sub {
 }
 @media (prefers-reduced-motion: reduce) {
   .made-item { opacity: 1; transform: none; }
-  .made-item:first-child .made-num::after { animation: none; opacity: .6; }
+  .made-item:nth-child(2) .made-num::after { animation: none; opacity: .6; }
 }
 
 
