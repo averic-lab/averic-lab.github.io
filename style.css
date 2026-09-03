@@ -293,7 +293,9 @@ em { font-style: normal; }
 .hero-text { position: relative; z-index: 3; max-width: 500px; }
 .brand-mark {
   display: inline-flex; align-items: center; gap: 10px;
-  font-size: 13px; font-weight: 500; letter-spacing: 2.5px;
+  /* 문구가 '앱을 열지 않아도, 매일'로 길어져 13px 고정 → 반응형.
+     letter-spacing 도 2.5 → 1.8px (길어진 만큼 자간을 줄여 폭을 벌충). */
+  font-size: clamp(14px, 1.5vw, 16px); font-weight: 500; letter-spacing: 1.8px;
   color: #ffd9a8; text-transform: uppercase; margin-bottom: 26px;
   opacity: 0; transform: translateY(12px);
   animation: rise 0.8s ease 0.1s forwards;
@@ -329,7 +331,14 @@ em { font-style: normal; }
   margin: 0 0 26px;
   opacity: 0; transform: translateY(20px);
   animation: rise 0.85s ease 0.6s forwards;
-  word-break: keep-all; overflow-wrap: break-word;
+ word-break: keep-all; overflow-wrap: break-word;
+}
+/* 히어로 부제의 '자동' 강조. 크기를 키우지 않는 이유: .hero-sub 는 line-height 1.75 의
+   2줄 문단이라 한 단어만 키우면 줄 간격이 어긋나고, 20개 언어에서 제각기 깨진다.
+   색 #ffd9a8 은 .brand-mark/.brand-dot 이 이미 쓰는 히어로 액센트색이다. */
+.hero-sub .hs-em {
+  font-weight: 700;
+  color: #ffd9a8;
 }
 .hero-feat {
   list-style: none; display: flex; flex-direction: column; gap: 13px;
