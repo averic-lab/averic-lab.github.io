@@ -367,6 +367,45 @@
 <!-- ========== LEVELS ========== -->
 <!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
      히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
+<!-- 「지킨 네 가지」 — intro(추상적 약속) 다음, levels(작동 방식) 앞.
+     경쟁 앱 조사(2026-09) 결과를 타사 언급 없이 부정형으로 담는 자리다.
+     ⚠️ 항목 문구는 전부 "~하지 않으셔도 됩니다" 형태를 유지할 것 —
+        그럴 필요가 있는 상황이 존재해야만 성립하는 문장이라, 비교 대상을
+        쓰지 않고도 차이가 전달된다. 타사를 직접 거명하지 말 것.
+     ⚠️ .step / .steps 를 재사용하지 않는다 — intro 의 .steps 가
+        grid repeat(2,1fr) 이고 .step 은 reveal 대상(opacity:0)이라,
+        물려받으면 4장 배치가 깨지고 카드가 통째로 안 보인다. -->
+<section class="made">
+  <div class="made-inner">
+    <div class="eyebrow">안부 앱을 만들며</div>
+    <h2 class="section-title">지킨 <em>네 가지</em></h2>
+    <p class="section-sub">폰 사용은 오래전부터 우리 하루의 일부가 되었습니다. 걷고, 폰의 잠금을 풀고, 화면을 들여다보는 평범한 순간들이 곧 “오늘도 잘 지내고 있다”는 신호입니다.<br><br>안부는 이러한 일상의 흔적을 읽고, 꼭 필요한 것만 보호자에게 전합니다.</p>
+
+    <div class="made-grid">
+      <div class="made-item reveal">
+        <div class="made-num">01</div>
+        <h3>앱을 종료하셔도 안부는 멈추지 않습니다</h3>
+        <p>매일 정해진 시각에 자동으로 전달됩니다. 앱을 열거나 버튼을 누르실 필요가 없습니다. 잠시 통신이 끊긴 날에도 그날의 기록은 기기에 남아 있다가, 연결이 회복되면 전해집니다.</p>
+      </div>
+      <div class="made-item reveal">
+        <div class="made-num">02</div>
+        <h3>안드로이드와 아이폰 모두</h3>
+        <p>두 기기 모두에 설치해 쓰실 수 있습니다. 한쪽에서만 되거나, 쓰시는 기기 때문에 앱 설치를 포기하실 일은 없습니다.</p>
+      </div>
+      <div class="made-item reveal">
+        <div class="made-num">03</div>
+        <h3>가볍게 만들었습니다</h3>
+        <p>앱이 항상 백그라운드에서도 켜져 있을 필요는 없습니다. 정해진 시각에 스스로 잠깐 깨어나 안부만 전하고 다시 잠듭니다. 그래서 배터리도, 데이터도 거의 쓰지 않습니다.</p>
+      </div>
+      <div class="made-item reveal">
+        <div class="made-num">04</div>
+        <h3>최대한 단순하게</h3>
+        <p>불필요한 기능이나 복잡한 설정 없이, 핵심 기능만으로 누구나 쉽게 쓰실 수 있도록 만들었습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="levels">
   <div class="levels-inner">
     <div class="levels-copy">

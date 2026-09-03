@@ -367,6 +367,45 @@
 <!-- ========== LEVELS ========== -->
 <!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
      히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
+<!-- 「지킨 네 가지」 — intro(추상적 약속) 다음, levels(작동 방식) 앞.
+     경쟁 앱 조사(2026-09) 결과를 타사 언급 없이 부정형으로 담는 자리다.
+     ⚠️ 항목 문구는 전부 "~하지 않으셔도 됩니다" 형태를 유지할 것 —
+        그럴 필요가 있는 상황이 존재해야만 성립하는 문장이라, 비교 대상을
+        쓰지 않고도 차이가 전달된다. 타사를 직접 거명하지 말 것.
+     ⚠️ .step / .steps 를 재사용하지 않는다 — intro 의 .steps 가
+        grid repeat(2,1fr) 이고 .step 은 reveal 대상(opacity:0)이라,
+        물려받으면 4장 배치가 깨지고 카드가 통째로 안 보인다. -->
+<section class="made">
+  <div class="made-inner">
+    <div class="eyebrow">Building Anbu</div>
+    <h2 class="section-title">Four things <em>we held to</em></h2>
+    <p class="section-sub">Using a phone became part of our day long ago. Walking, unlocking the phone, glancing at the screen — these ordinary moments are already a signal that says “I’m doing fine today.”<br><br>Anbu reads those everyday traces and passes on to your family only what is needed.</p>
+
+    <div class="made-grid">
+      <div class="made-item reveal">
+        <div class="made-num">01</div>
+        <h3>Close the app and the check-in still goes</h3>
+        <p>It is sent automatically at the same time each day. No opening the app, no button to press. Even on a day the connection drops, that day’s record stays on the phone and goes out once the connection is back.</p>
+      </div>
+      <div class="made-item reveal">
+        <div class="made-num">02</div>
+        <h3>Android and iPhone alike</h3>
+        <p>You can install it on either one. It does not run on just one of the two, and no one has to give up on installing it because of the phone they already use.</p>
+      </div>
+      <div class="made-item reveal">
+        <div class="made-num">03</div>
+        <h3>Built to stay light</h3>
+        <p>The app does not need to sit running in the background. It wakes on its own for a moment at the set time, sends the check-in, and goes back to sleep — so it barely uses battery or data.</p>
+      </div>
+      <div class="made-item reveal">
+        <div class="made-num">04</div>
+        <h3>As simple as we could make it</h3>
+        <p>No extra features, no complicated setup — just the essentials, so anyone can use it easily.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="levels">
   <div class="levels-inner">
     <div class="levels-copy">

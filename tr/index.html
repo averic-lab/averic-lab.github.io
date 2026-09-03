@@ -367,6 +367,45 @@
 <!-- ========== LEVELS ========== -->
 <!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
      히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
+<!-- 「지킨 네 가지」 — intro(추상적 약속) 다음, levels(작동 방식) 앞.
+     경쟁 앱 조사(2026-09) 결과를 타사 언급 없이 부정형으로 담는 자리다.
+     ⚠️ 항목 문구는 전부 "~하지 않으셔도 됩니다" 형태를 유지할 것 —
+        그럴 필요가 있는 상황이 존재해야만 성립하는 문장이라, 비교 대상을
+        쓰지 않고도 차이가 전달된다. 타사를 직접 거명하지 말 것.
+     ⚠️ .step / .steps 를 재사용하지 않는다 — intro 의 .steps 가
+        grid repeat(2,1fr) 이고 .step 은 reveal 대상(opacity:0)이라,
+        물려받으면 4장 배치가 깨지고 카드가 통째로 안 보인다. -->
+<section class="made">
+  <div class="made-inner">
+    <div class="eyebrow">Anbu’yu yaparken</div>
+    <h2 class="section-title">Bağlı kaldığımız <em>dört şey</em></h2>
+    <p class="section-sub">Telefon kullanmak çoktan günümüzün bir parçası oldu. Yürümek, telefonun kilidini açmak, ekrana göz atmak — bu sıradan anlar zaten “İyiyim” demenin bir yolu.<br><br>Anbu bu günlük izleri okur ve yakınına yalnızca gerekli olanı iletir.</p>
+
+    <div class="made-grid">
+      <div class="made-item reveal">
+        <div class="made-num">01</div>
+        <h3>Uygulama kapalıyken de iyilik haberi durmaz</h3>
+        <p>Her gün aynı saatte kendiliğinden gider. Uygulamayı açmak ya da bir düğmeye basmak gerekmez. Bağlantının kesildiği bir günde bile o günün kaydı telefonda kalır ve bağlantı gelince gönderilir.</p>
+      </div>
+      <div class="made-item reveal">
+        <div class="made-num">02</div>
+        <h3>Android de iPhone da</h3>
+        <p>İkisine de kurulabilir. Yalnızca ikisinden birinde çalışmaz; kimse kullandığı telefon yüzünden kurmaktan vazgeçmek zorunda kalmaz.</p>
+      </div>
+      <div class="made-item reveal">
+        <div class="made-num">03</div>
+        <h3>Hafif olsun diye</h3>
+        <p>Uygulamanın sürekli arka planda çalışması gerekmez. Belirlenen saatte kendiliğinden kısa bir an uyanır, yalnızca iyilik haberini gönderir ve yeniden uykuya döner. Bu yüzden neredeyse hiç pil ve veri harcamaz.</p>
+      </div>
+      <div class="made-item reveal">
+        <div class="made-num">04</div>
+        <h3>Olabildiğince yalın</h3>
+        <p>Gereksiz özellikler ve karmaşık ayarlar olmadan, yalnızca temel işlevlerle herkesin kolayca kullanabileceği biçimde yaptık.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="levels">
   <div class="levels-inner">
     <div class="levels-copy">
