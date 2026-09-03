@@ -341,25 +341,6 @@
       Föräldrar som bor långt bort, ett barn som bor ensamt — du undrar om de har det bra idag, men att ringa eller titta förbi varje dag går inte.<br>
       Om något händer borde någon veta. Anbu förmedlar det åt dig.
     </p>
-
-    <!-- 카드 2장. 예전에는 3장이었고 첫 장이 "복잡한 설정은 없습니다"를 말한 뒤
-         Android/iPhone 배지로 전달 방식을 나눠 설명했다. 2026-08-22 NSE 트리거 +
-         08-29 피기백으로 **두 플랫폼의 전달 방식이 같아져** 그 구분이 없는 차이를
-         만들어 내고 있었고, 남은 두 문장도 같은 말을 두 번 하고 있어 하나로 합쳤다.
-         ⚠️ .steps 그리드도 repeat(2, 1fr)로 함께 맞춰져 있다(style.css) — 카드를
-         다시 늘리면 그쪽도 같이 고칠 것. -->
-    <div class="steps">
-      <div class="step reveal">
-        <div class="step-num">01</div>
-        <h3>En daglig, automatisk check-in</h3>
-        <p>En signal når dina nära och kära automatiskt vid samma tid varje dag, uppfångad naturligt från dagens antal steg.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">02</div>
-        <h3>Och stilla sinnesfrid</h3>
-        <p>Även utan att nå dem direkt kan du följa hur de mår — steg för steg. Ta kontakt själv bara när det verkligen spelar roll.</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -367,7 +348,7 @@
 <!-- ========== LEVELS ========== -->
 <!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
      히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
-<!-- 「지킨 네 가지」 — intro(추상적 약속) 다음, levels(작동 방식) 앞.
+<!-- 「지킨 다섯 가지」 — intro(추상적 약속) 다음, levels(작동 방식) 앞.
      경쟁 앱 조사(2026-09) 결과를 타사 언급 없이 부정형으로 담는 자리다.
      ⚠️ 항목 문구는 전부 "~하지 않으셔도 됩니다" 형태를 유지할 것 —
         그럴 필요가 있는 상황이 존재해야만 성립하는 문장이라, 비교 대상을
@@ -378,7 +359,7 @@
 <section class="made">
   <div class="made-inner">
     <div class="eyebrow">När vi byggde Anbu</div>
-    <h2 class="section-title">Fyra saker <em>vi höll fast vid</em></h2>
+    <h2 class="section-title">Fem saker <em>vi höll fast vid</em></h2>
     <p class="section-sub">Att använda telefonen har länge varit en del av vår dag. Att gå, låsa upp telefonen, kasta en blick på skärmen — de vardagliga ögonblicken är i sig ett tecken på att ”det är bra med mig”.<br><br>Anbu läser de vardagliga spåren och för bara det nödvändiga vidare till familjemedlemmen.</p>
 
     <div class="made-grid">
@@ -390,7 +371,7 @@
       <div class="made-item reveal">
         <div class="made-num">02</div>
         <h3>Både Android och iPhone</h3>
-        <p>Den går att installera på båda. Den fungerar inte bara på den ena av de två, och ingen behöver avstå från att installera den på grund av sin telefon.</p>
+        <p>Den går att installera på båda. Den fungerar inte bara på den ena av de två, och ingen behöver avstå från att installera den för att enheten inte stöds.</p>
       </div>
       <div class="made-item reveal">
         <div class="made-num">03</div>
@@ -401,6 +382,13 @@
         <div class="made-num">04</div>
         <h3>Så enkel som möjligt</h3>
         <p>Inga överflödiga funktioner och inga krångliga inställningar — bara det väsentliga, så att vem som helst kan använda den.</p>
+      </div>
+      <!-- 05 는 개인정보. 2열 그리드에서 홀로 남아 어색해지지 않도록 전체 너비로 둔다
+           (.made-item.wide) — 마지막에 강조되는 효과도 겸한다. -->
+      <div class="made-item wide reveal">
+        <div class="made-num">05</div>
+        <h3>Inget namn, inget telefonnummer</h3>
+        <p>Vi lagrar inga personuppgifter som namn eller telefonnummer på våra servrar. En enda säkerhetskod på sju tecken räcker för att koppla ihop er. Platsen tittar vi inte heller på i vardagen — den skickas en gång, bara när någon ber om hjälp.</p>
       </div>
     </div>
   </div>

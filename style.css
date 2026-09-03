@@ -811,32 +811,31 @@ p.section-sub {
   overflow-wrap: break-word;
 }
 
-/* ── 「지킨 네 가지」 섹션 ─────────────────────────────────────────
-   ⚠️ 배경은 var(--warm-paper) 다. 순수 흰색을 쓰면 섹션 색 사슬이 끊긴다 —
-      이 사이트는 intro 끝(warm-paper) → levels 시작(warm-paper) 으로 이어지는
-      따뜻한 그라데이션 체인이고, 순수 흰색 var(--paper) 는 **카드에만** 쓴다.
-   ⚠️ .step/.steps 를 재사용하지 않는다. 그쪽은 grid repeat(2,1fr) 이고
-      .step 은 opacity:0 이라, 물려받으면 4장이 깨지고 카드가 안 보인다.
-   ⚠️ .made-item h3/p 는 한국어 긴 문장이 들어가는 새 자리라
-      word-break: keep-all 을 직접 걸어야 한다 — 그 목록은 자동이 아니다.
-   ⚠️ .reveal 은 site.js 가 .in-view 를 붙이는 훅일 뿐이다. 실제 전환은
-      컴포넌트마다 직접 정의한다(.step 과 같은 방식) — 안 쓰면 정적으로 보인다. */
-.made { padding: 110px 24px 120px; background: var(--warm-paper); }
+/* ── 「지킨 다섯 가지」 섹션 ─────────────────────────────────────────
+   흰 카드 4장. 2026-09-03 에 intro 의 카드(.step)를 삭제했으므로 **흰 카드는
+   이제 이 섹션 전용**이고, 텍스트만 남은 intro 와 형태로 뚜렷이 갈린다.
+   ⚠️ 한때 세로 목록으로 바꿨던 이유는 "intro 와 구조가 겹친다" 였는데 그 전제가
+      사라졌다. 다시 목록으로 되돌리기 전에 intro 에 카드가 있는지부터 확인할 것.
+   ⚠️ 배경은 var(--warm-paper). 순수 흰색은 **카드에만**(var(--paper)) 쓴다 —
+      intro 끝(warm-paper) → levels 시작(warm-paper) 으로 이어지는 색 사슬이 끊긴다.
+   ⚠️ .reveal 은 site.js 가 .in-view 를 붙이는 훅일 뿐 — 전환은 여기서 직접 정의한다.
+      :hover 는 .in-view 와 특이도가 같으므로 반드시 뒤에 온다.
+   ⚠️ grid 는 minmax(0,1fr) + min-width:0 이어야 한다. 기본 1fr(=minmax(auto,1fr))이면
+      열이 min-content 까지 부푸는데, 아래 keep-all 때문에 일본어·중국어에서는 그
+      min-content 가 **문장 하나 통째**가 된다(공백이 없어서). 실제로 ja 380px 에서
+      카드가 402px 로 부풀어 가로 스크롤이 생겼다. overflow-wrap 으로는 해결되지 않는다. */
+.made { padding: 112px 24px 120px; background: var(--warm-paper); }
 .made-inner { max-width: 1080px; margin: 0 auto; text-align: center; }
 .made .section-sub { max-width: 680px; margin-left: auto; margin-right: auto; }
 .made-grid {
   display: grid;
-  /* ⚠️ minmax(0,1fr) 이어야 한다. 기본 1fr = minmax(auto,1fr) 이라 열이
-     콘텐츠의 min-content 너비까지 부풀고, 그 min-content 가 아래 keep-all
-     때문에 일본어/중국어에서는 **문장 하나 통째**가 된다(공백이 없어서).
-     실제로 ja 380px 에서 카드가 402px 로 부풀어 가로 스크롤이 생겼다. */
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 28px;
   margin-top: 62px;
   text-align: left;
 }
 .made-item {
-  min-width: 0;   /* grid item 기본 min-width:auto 도 같이 막는다 */
+  min-width: 0;
   padding: 34px 32px 36px;
   background: var(--paper);
   border: 1px solid rgba(229, 75, 94, 0.07);
@@ -852,7 +851,10 @@ p.section-sub {
 .made-item:nth-child(2).in-view { transition-delay: .12s; }
 .made-item:nth-child(3).in-view { transition-delay: .24s; }
 .made-item:nth-child(4).in-view { transition-delay: .36s; }
-/* hover 는 .in-view 와 특이도가 같으므로 반드시 뒤에 온다(순서로 이긴다) */
+.made-item:nth-child(5).in-view { transition-delay: .48s; }
+/* 05 는 2열 그리드에서 한 칸만 차지하면 왼쪽에 홀로 남아 어색하다 — 전체 너비로 둔다.
+   ⚠️ 880px 아래는 이미 1열이라 이 규칙이 무의미하지만 해가 없으므로 그대로 둔다. */
+.made-item.wide { grid-column: 1 / -1; }
 .made-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 30px 60px -20px rgba(229, 75, 94, 0.18);
@@ -861,15 +863,17 @@ p.section-sub {
 .made-num {
   font-family: "Iowan Old Style", Charter, Georgia, serif;
   font-style: italic;
-  font-size: 44px;
+  font-size: 46px;
   font-weight: 400;
-  color: var(--pink);
-  opacity: 0.7;
   line-height: 1;
+  color: var(--pink);
+  opacity: .55;
   margin-bottom: 20px;
+  transition: opacity .35s ease;
 }
-/* 01 에만 아주 느린 맥박. 이 섹션의 주장이 "멈추지 않는다" 이므로
-   장식이 아니라 그 문장의 시각적 대응이다 — 나머지 항목엔 넣지 않는다. */
+.made-item:hover .made-num { opacity: .85; }
+/* 01 에만 아주 느린 맥박. 이 항목의 주장이 "멈추지 않는다" 이므로 장식이 아니라
+   그 문장의 시각적 대응이다 — 다른 항목에 복제하면 의미가 사라지고 무늬가 된다. */
 .made-item:first-child .made-num::after {
   content: '';
   display: inline-block;
@@ -877,7 +881,7 @@ p.section-sub {
   border-radius: 50%;
   background: var(--pink-deep);
   margin-left: 13px;
-  vertical-align: 11px;
+  vertical-align: 12px;
   animation: madePulse 2.8s ease-in-out infinite;
 }
 @keyframes madePulse {
@@ -905,60 +909,14 @@ p.section-sub {
   .made { padding: 84px 20px 90px; }
   .made-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; margin-top: 44px; }
   .made-item { padding: 28px 24px 30px; }
-  .made-num { font-size: 38px; margin-bottom: 16px; }
+  .made-num { font-size: 40px; margin-bottom: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  /* 카드는 이미 다 보이므로 등장만 끈다. 맥박도 정지시키되 점은 남긴다. */
   .made-item { opacity: 1; transform: none; }
   .made-item:first-child .made-num::after { animation: none; opacity: .6; }
 }
 
-.steps {
-  display: grid;
-  /* 카드 2장(2026-08-31, 3장에서 축소). i18n/template.html 주석 참조 */
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 88px;
-  text-align: left;
-}
-.step {
-  position: relative;
-  padding: 36px 28px 32px;
-  background: var(--paper);
-  border-radius: 24px;
-  border: 1px solid rgba(229, 75, 94, 0.07);
-  transition: transform .3s ease, box-shadow .3s ease;
-  opacity: 0;
-  transform: translateY(24px);
-}
-.step.in-view { opacity: 1; transform: translateY(0); transition: opacity 0.9s ease, transform 0.9s ease; }
-.step:nth-child(2).in-view { transition-delay: 0.15s; }
-.step:nth-child(3).in-view { transition-delay: 0.3s; }
-.step:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 30px 60px -20px rgba(229, 75, 94, 0.18);
-}
-.step-num {
-  font-family: "Iowan Old Style", Charter, Georgia, serif;
-  font-style: italic;
-  font-size: 44px;
-  font-weight: 400;
-  color: var(--pink);
-  opacity: 0.7;
-  line-height: 1;
-  margin-bottom: 24px;
-}
-.step h3 {
-  font-size: 19px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  letter-spacing: -0.3px;
-}
-.step p {
-  font-size: 15px;
-  color: var(--ink-soft);
-  line-height: 1.75;
-}
+
 .plat {
   list-style: none;
   margin: 16px 0 0;
@@ -1157,7 +1115,9 @@ p.section-sub {
    ★ 크기: .fphone 내부 좌표는 300×620 기준 실측값이다. 화면폭에 맞출 때
      내부 px 을 손대지 말고 .fstep 의 --s (scale) 만 바꾼다. .fstep 이
      계산된 크기의 자리를 차지하고 .fphone 은 그 안에서 축소된다.
-   ★ 클래스에 f 접두사가 붙은 이유: 페이지에 이미 .step(reveal 대상, opacity:0)이
+   ★ 클래스에 f 접두사가 붙은 이유: 당시 페이지에 .step(reveal 대상, opacity:0)이
+      있었다(2026-09-03 intro 카드와 함께 삭제됨).  ⚠️ 교훈은 유효하다 — 새 섹션을
+      만들 때는 마크업을 쓰기 **전에** 클래스명 충돌을 grep 으로 검사할 것.
      있어 접두사 없이 쓰면 폰이 통째로 안 보인다. ncard/nrow/nic 계열만은
      「단계별 알림」섹션과 의도적으로 공유한다.
    ================================================== */
@@ -1826,7 +1786,6 @@ footer {
 @media (max-width: 880px) {
   .dawn { padding: 100px 24px 120px; }
   .intro { padding: 100px 20px 80px; }
-  .steps { grid-template-columns: 1fr; gap: 16px; margin-top: 56px; }
   .help { padding: 90px 20px; }
   .footer-inner { grid-template-columns: 1fr; gap: 40px; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
@@ -1985,7 +1944,6 @@ footer {
 /* RTL support (for ar) */
 [dir="rtl"] .header-nav { flex-direction: row-reverse; }
 [dir="rtl"] .lang-menu  { left: 28px; right: auto; }
-[dir="rtl"] .step       { text-align: right; }
 [dir="rtl"] .plat b     { margin-right: 0; margin-left: 7px; }
 [dir="rtl"] .badge .l { text-align: right; }
 

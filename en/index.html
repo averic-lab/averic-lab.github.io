@@ -341,25 +341,6 @@
       Parents living far away, a child living alone — you wonder if they’re okay today, but calling or visiting every day is hard.<br>
       When something happens, someone should know. Anbu delivers the word for you.
     </p>
-
-    <!-- 카드 2장. 예전에는 3장이었고 첫 장이 "복잡한 설정은 없습니다"를 말한 뒤
-         Android/iPhone 배지로 전달 방식을 나눠 설명했다. 2026-08-22 NSE 트리거 +
-         08-29 피기백으로 **두 플랫폼의 전달 방식이 같아져** 그 구분이 없는 차이를
-         만들어 내고 있었고, 남은 두 문장도 같은 말을 두 번 하고 있어 하나로 합쳤다.
-         ⚠️ .steps 그리드도 repeat(2, 1fr)로 함께 맞춰져 있다(style.css) — 카드를
-         다시 늘리면 그쪽도 같이 고칠 것. -->
-    <div class="steps">
-      <div class="step reveal">
-        <div class="step-num">01</div>
-        <h3>A daily, automatic check-in</h3>
-        <p>A signal reaches your loved ones automatically at the same time each day, sensed naturally from that day's step count.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">02</div>
-        <h3>And quiet peace of mind</h3>
-        <p>Even without reaching them directly, you can tell how they're doing — step by step. Reach out yourself only when it truly matters.</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -367,7 +348,7 @@
 <!-- ========== LEVELS ========== -->
 <!-- 왼쪽 설명 + 오른쪽 알림 페이지 폰 목업.
      히어로와 달리 폰을 **정면**으로 두고, 알림 카드가 좌·우로 번갈아 튀어나온다. -->
-<!-- 「지킨 네 가지」 — intro(추상적 약속) 다음, levels(작동 방식) 앞.
+<!-- 「지킨 다섯 가지」 — intro(추상적 약속) 다음, levels(작동 방식) 앞.
      경쟁 앱 조사(2026-09) 결과를 타사 언급 없이 부정형으로 담는 자리다.
      ⚠️ 항목 문구는 전부 "~하지 않으셔도 됩니다" 형태를 유지할 것 —
         그럴 필요가 있는 상황이 존재해야만 성립하는 문장이라, 비교 대상을
@@ -378,7 +359,7 @@
 <section class="made">
   <div class="made-inner">
     <div class="eyebrow">Building Anbu</div>
-    <h2 class="section-title">Four things <em>we held to</em></h2>
+    <h2 class="section-title">Five things <em>we held to</em></h2>
     <p class="section-sub">Using a phone became part of our day long ago. Walking, unlocking the phone, glancing at the screen — these ordinary moments are already a signal that says “I’m doing fine today.”<br><br>Anbu reads those everyday traces and passes on to your family only what is needed.</p>
 
     <div class="made-grid">
@@ -390,7 +371,7 @@
       <div class="made-item reveal">
         <div class="made-num">02</div>
         <h3>Android and iPhone alike</h3>
-        <p>You can install it on either one. It does not run on just one of the two, and no one has to give up on installing it because of the phone they already use.</p>
+        <p>You can install it on either one. It does not run on just one of the two, and no one has to give up on installing it because their device isn’t supported.</p>
       </div>
       <div class="made-item reveal">
         <div class="made-num">03</div>
@@ -401,6 +382,13 @@
         <div class="made-num">04</div>
         <h3>As simple as we could make it</h3>
         <p>No extra features, no complicated setup — just the essentials, so anyone can use it easily.</p>
+      </div>
+      <!-- 05 는 개인정보. 2열 그리드에서 홀로 남아 어색해지지 않도록 전체 너비로 둔다
+           (.made-item.wide) — 마지막에 강조되는 효과도 겸한다. -->
+      <div class="made-item wide reveal">
+        <div class="made-num">05</div>
+        <h3>No name, no phone number</h3>
+        <p>We do not store personal details like names or phone numbers on our servers. A single seven-character safety code is all it takes to connect. Nor do we look at location from day to day — it is sent once, only when someone asks for help.</p>
       </div>
     </div>
   </div>
