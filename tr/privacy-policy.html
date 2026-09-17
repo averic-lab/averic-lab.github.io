@@ -57,11 +57,11 @@
 <body>
 
 <h1>Gizlilik Politikası</h1>
-<p class="date">Yürürlük tarihi: 27 Nisan 2026 | Son güncelleme: 29 Ağustos 2026</p>
+<p class="date">Yürürlük tarihi: 27 Nisan 2026 | Son güncelleme: 17 Eylül 2026</p>
 
 <p>Anbu ("biz" veya "bizim") gizliliğinizi korumaya kararlıyız. Bu Gizlilik Politikası, Anbu mobil uygulamasını ("Hizmet") kullandığınızda bilgilerinizi nasıl topladığımızı, kullandığımızı, sakladığımızı ve koruduğumuzu açıklar. Hizmeti kullanarak bu politikada açıklanan uygulamaları kabul etmiş olursunuz.</p>
 
-<p>Anbu'yu <strong>gizlilik öncelikli bir yaklaşımla</strong> tasarladık. Adınız, telefon numaranız, e-posta adresiniz veya konumunuz gibi kişisel bilgileri toplamıyoruz. Hizmet, yalnızca cihaz düzeyi tanımlayıcıları ve sağlık kontrolü işlevi için gerekli minimum sensör verileriyle çalışır.</p>
+<p>Anbu'yu <strong>gizlilik öncelikli bir yaklaşımla</strong> tasarladık. Adınız, telefon numaranız, e-posta adresiniz veya konumunuz gibi kişisel bilgileri toplamıyoruz. Hizmet, yalnızca cihaz düzeyi tanımlayıcıları ve sağlık kontrolü işlevi için gerekli minimum aktivite verileriyle (adım sayısı gibi) çalışır.</p>
 
 <h2>1. Topladığımız Bilgiler</h2>
 
@@ -85,11 +85,6 @@
       <td>Sağlık Verileri (Korunan Kişi)</td>
       <td>Pil seviyesi, heartbeat iletim zamanı</td>
       <td>Sağlık durumunun belirlenmesi ve koruyucu uyarılarının gönderilmesi</td>
-    </tr>
-    <tr>
-      <td>Sensör Anlık Görüntüleri (Korunan Kişi)</td>
-      <td>Ivmeölçer ve jiroskop okumaları (sürekli değil, tek noktalı anlık görüntüler)</td>
-      <td>Aktiviteyi değerlendirmek için cihaz hareketinin algılanması</td>
     </tr>
   </tbody>
 </table>
@@ -129,14 +124,13 @@
   <li>Olağan sağlık kontrollerinde (heartbeat) konum verisi — arka planda hiçbir konum takibi yapmıyoruz</li>
   <li>Cihazınızda kayıtlı fotoğraflar, kişiler veya diğer veriler</li>
   <li>Arama kayıtları, kısa mesajlar veya tarama geçmişi</li>
-  <li>Sürekli sensör verileri (günde yalnızca bir kez kısa anlık görüntüler alırız)</li>
   <li>Kart numaraları veya banka hesap bilgileri gibi ödeme yöntemi bilgileri &mdash; yalnızca Apple ve Google'ın ödeme sistemleri tarafından işlenir</li>
 </ul>
 
 <p><strong>Veri toplama yöntemleri:</strong></p>
 <ul>
   <li>Uygulamanın yüklenmesinin ardından otomatik kayıt (cihaz bilgileri, FCM jetonu)</li>
-  <li>Günlük sağlık kontrolü sırasında alınan sensör anlık görüntüleri ve adım sayısı (steps_delta, pil seviyesi)</li>
+  <li>Günlük sağlık kontrolü sırasında alınan adım sayısı (steps_delta, pil seviyesi)</li>
   <li>Konum yalnızca korunan kişi acil yardım talebi düğmesine kendisi bastığında ve konum izni verilmiş ise tek seferlik toplanır (yalnızca ön planda; arka planda konum toplanmaz)</li>
 </ul>
 
