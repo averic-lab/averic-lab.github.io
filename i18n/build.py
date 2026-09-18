@@ -42,6 +42,16 @@ META = {
 ORDER = ["en", "ko", "ja", "zh-CN", "zh-TW", "de", "fr", "es", "it", "pt-BR",
          "ru", "nl", "pl", "tr", "vi", "th", "id", "sv", "hi", "ar"]
 
+# 사이트 언어 코드 → App Store 국가 코드.
+# 국가 없는 링크(apps.apple.com/app/id...)는 애플이 301로 /us/ 에 보내 영문 스토어가 열린다.
+# 그래서 언어마다 스토어 국가를 명시한다. 20개 국가 모두 앱이 열리는 것을 확인함(2026-09-18).
+APP_STORE_COUNTRY = {
+    "en": "us", "ko": "kr", "ja": "jp", "zh-CN": "cn", "zh-TW": "tw", "de": "de",
+    "fr": "fr", "es": "es", "it": "it", "pt-BR": "br", "ru": "ru", "nl": "nl",
+    "pl": "pl", "tr": "tr", "vi": "vn", "th": "th", "id": "id", "sv": "se",
+    "hi": "in", "ar": "sa",
+}
+
 # 사이트 언어 코드(ko) → 앱 번역 파일 코드(ko_kr).
 # _faq-build/common.py 가 이 모듈을 임포트하므로 여기가 단일 출처다
 # (반대로 build.py 가 common.py 를 임포트하면 순환이 된다).
@@ -181,6 +191,7 @@ def build_page(code, strings, template, app_all):
         "LANG_CURRENT": label,
         "SWITCHER": switcher(code),
         "HEAD_LINKS": head_links(code),
+        "APP_STORE_URL": f"https://apps.apple.com/{APP_STORE_COUNTRY[code]}/app/id6762031850",
     }
     repl.update(app_tokens(code, app_all))
     repl.update(strings)
