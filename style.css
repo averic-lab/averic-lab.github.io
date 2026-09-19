@@ -769,11 +769,9 @@ em { font-style: normal; }
 .dawn-shorts .vbox.is-ended .vbtn .i-replay { display: block; }
 .dawn-shorts .vbox.is-playing .vbtn { opacity: 0; pointer-events: none; }
 .dawn-shorts figcaption { margin-top: 12px; font-size: 15px; opacity: 0.85; word-break: keep-all; }
-@media (max-width: 480px) {
-  .dawn-shorts { gap: 12px; }
-  .dawn-shorts .vbtn { width: 52px; height: 52px; margin: -26px 0 0 -26px; }
-  .dawn-shorts .vbtn svg { width: 24px; height: 24px; }
-  .dawn-shorts figcaption { font-size: 13.5px; }
+/* 휴대폰에서는 한 편씩 위아래로 — 나란히 두면 영상 속 글자가 읽히지 않는다 */
+@media (max-width: 600px) {
+  .dawn-shorts { grid-template-columns: minmax(0, 1fr); gap: 32px; max-width: 340px; }
 }
 
 /* ==================================================
