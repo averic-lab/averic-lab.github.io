@@ -6,6 +6,7 @@
   본문을 고칠 때 세 곳(ko, en, 템플릿)을 따로 고쳐야 해서 조용히 어긋났기 때문에
   ko/en 카피를 translations.json 으로 옮기고 단일 출처로 통합했다.
 """
+import hashlib
 import json
 import os
 import re
@@ -213,6 +214,19 @@ def dawn_tail(code, strings):
     return f'<div class="dawn-shorts reveal">\n{figs}\n    </div>'
 
 
+def asset_ver():
+    """style.css + site.js 내용 해시(8자). 주소에 ?v= 로 붙인다.
+
+    GitHub Pages 는 max-age=600 으로 내려주고 주소가 같으면 휴대폰 브라우저가 새로고침해도
+    옛 CSS 를 쓴다(2026-09-19, 숏폼 영상 배치 변경이 폰에서 반영되지 않았다).
+    내용이 바뀌면 주소가 바뀌므로 캐시가 즉시 무효화된다. CSS·JS 를 고친 뒤엔 반드시 재빌드할 것."""
+    h = hashlib.sha1()
+    for name in ("style.css", "site.js"):
+        with open(os.path.join(ROOT, name), "rb") as f:
+            h.update(f.read())
+    return h.hexdigest()[:8]
+
+
 def build_page(code, strings, template, app_all):
     bcp, direction, og_locale, label, native = META[code]
     page = template
@@ -224,6 +238,7 @@ def build_page(code, strings, template, app_all):
         "LANG_CURRENT": label,
         "SWITCHER": switcher(code),
         "HEAD_LINKS": head_links(code),
+        "ASSET_VER": asset_ver(),
         "APP_STORE_URL": f"https://apps.apple.com/{APP_STORE_COUNTRY[code]}/app/id6762031850",
     }
     repl.update(app_tokens(code, app_all))
