@@ -180,6 +180,39 @@ def app_tokens(code, app_all):
     }
 
 
+# 「해질녘」 ③ 자리를 숏폼 영상으로 바꾼 언어. 영상 끝(공통 엔딩)에 ③ 문장이 그대로 들어 있으므로
+# 문장을 지우고 영상을 둔다. 영상이 없는 언어는 지금처럼 ③ 문장을 보여 준다.
+# 파일은 media/shorts/<code>/ — 만드는 법은 _shorts-build/README.md.
+SHORTS = {
+    "ko": {
+        "videos": [("a", "전화 안 받는 엄마"), ("b", "유학 간 딸")],
+        "play": "재생", "replay": "다시 보기",
+    },
+}
+
+_PLAY_SVG = '<svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>'
+_REPLAY_SVG = ('<svg class="i-replay" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7.5 6 12 10V7a5 5 0 1 1-5 5H5'
+               'a7 7 0 1 0 7-7z"/></svg>')
+
+
+def dawn_tail(code, strings):
+    """③ 자리. 영상이 있는 언어는 영상 두 편, 없는 언어는 ③ 문장.
+
+    기본 컨트롤 대신 가운데 버튼 하나를 쓴다(재생 → 재생 중 숨김 → 끝나면 다시 보기).
+    동작은 site.js 의 「숏폼 영상」 블록. preload="none" 이라 누르기 전에는 받지 않는다."""
+    cfg = SHORTS.get(code)
+    if not cfg:
+        return f'<p class="q3 reveal">{strings["dawn_q3_html"]}</p>'
+    figs = "\n".join(
+        f'      <figure class="vbox"><video src="/media/shorts/{code}/{v}.mp4" poster="/media/shorts/{code}/{v}.jpg" '
+        f'playsinline muted preload="none"></video>'
+        f'<button type="button" class="vbtn" aria-label="{cfg["play"]}: {cap}" '
+        f'data-play="{cfg["play"]}: {cap}" data-replay="{cfg["replay"]}: {cap}">{_PLAY_SVG}{_REPLAY_SVG}</button>'
+        f'<figcaption>{cap}</figcaption></figure>'
+        for v, cap in cfg["videos"])
+    return f'<div class="dawn-shorts reveal">\n{figs}\n    </div>'
+
+
 def build_page(code, strings, template, app_all):
     bcp, direction, og_locale, label, native = META[code]
     page = template
@@ -195,6 +228,7 @@ def build_page(code, strings, template, app_all):
     }
     repl.update(app_tokens(code, app_all))
     repl.update(strings)
+    repl["DAWN_TAIL"] = dawn_tail(code, strings)
     for key, val in repl.items():
         page = page.replace("{{" + key + "}}", val)
     return page

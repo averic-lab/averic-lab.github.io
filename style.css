@@ -738,6 +738,44 @@ em { font-style: normal; }
   background: rgba(255, 248, 240, 0.4);
 }
 
+/* ③ 자리의 숏폼 영상(영상이 있는 언어만 — i18n/build.py SHORTS).
+   기본 컨트롤 대신 가운데 버튼 하나: 재생 → 재생 중엔 숨김 → 끝나면 다시 보기.
+   상태 클래스(.is-playing/.is-ended)는 site.js 「숏폼 영상」 블록이 붙인다. */
+.dawn-shorts {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;
+  max-width: 560px; margin: 8px auto 0;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 1.4s ease 1.6s, transform 1.4s ease 1.6s;
+}
+.dawn-shorts.in-view { opacity: 1; transform: translateY(0); }
+.dawn-shorts .vbox { position: relative; margin: 0; }
+.dawn-shorts video {
+  display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; cursor: pointer;
+  border-radius: 18px; background: #0a0e2a;
+  box-shadow: 0 18px 44px -14px rgba(20, 14, 44, 0.75), 0 0 0 1px rgba(255, 248, 240, 0.14);
+}
+.dawn-shorts .vbtn {
+  position: absolute; left: 50%; top: calc(50% - 16px); width: 64px; height: 64px; margin: -32px 0 0 -32px;
+  border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, 0.55); cursor: pointer; padding: 0;
+  background: rgba(20, 14, 44, 0.42); color: #fff;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity .25s ease, transform .25s ease;
+}
+.dawn-shorts .vbtn:hover { transform: scale(1.06); }
+.dawn-shorts .vbtn svg { width: 30px; height: 30px; fill: currentColor; }
+.dawn-shorts .vbtn .i-replay { display: none; }
+.dawn-shorts .vbox.is-ended .vbtn .i-play { display: none; }
+.dawn-shorts .vbox.is-ended .vbtn .i-replay { display: block; }
+.dawn-shorts .vbox.is-playing .vbtn { opacity: 0; pointer-events: none; }
+.dawn-shorts figcaption { margin-top: 12px; font-size: 15px; opacity: 0.85; word-break: keep-all; }
+@media (max-width: 480px) {
+  .dawn-shorts { gap: 12px; }
+  .dawn-shorts .vbtn { width: 52px; height: 52px; margin: -26px 0 0 -26px; }
+  .dawn-shorts .vbtn svg { width: 24px; height: 24px; }
+  .dawn-shorts figcaption { font-size: 13.5px; }
+}
+
 /* ==================================================
    INTRO — Anbu introduction, warm white
    ================================================== */

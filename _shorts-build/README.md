@@ -1,7 +1,7 @@
 # 숏폼 영상 빌드 (게시 제외 — `_` 접두 폴더)
 
 홈페이지 목업처럼 **앱 화면을 HTML/CSS로 그린 페이지**를 프레임 단위로 캡처해 mp4 로 만든다.
-결과물은 `preview/shorts/`(noindex 검토 페이지)에 두고, 확정되면 유튜브 쇼츠 등에 올린다.
+결과물은 `media/shorts/<언어>/`에 둔다. 검토 페이지 `preview/shorts/`(noindex)와 **한국어 홈 「해질녘」 섹션이 같은 파일을 쓴다** — 다시 렌더하면 홈에도 바로 반영된다.
 
 | 파일 | 역할 |
 |---|---|
@@ -20,8 +20,8 @@ export PLAYWRIGHT_CORE=<임시 폴더>/node_modules/playwright-core
 export CHROMIUM_PATH="$HOME/Library/Caches/ms-playwright/chromium-1243/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
 
 node render.mjs a.html --stills 0,8.5,13.5 /tmp/stills   # 정지 화면 몇 장 먼저 확인
-node render.mjs a.html ../preview/shorts/a.mp4           # 전체(약 2분)
-ffmpeg -ss 1 -i ../preview/shorts/a.mp4 -frames:v 1 -vf scale=540:-1 ../preview/shorts/a.jpg   # 포스터
+node render.mjs a.html ../media/shorts/ko/a.mp4           # 전체(약 2분)
+ffmpeg -ss 1 -i ../media/shorts/ko/a.mp4 -frames:v 1 -vf scale=540:-1 ../media/shorts/ko/a.jpg   # 포스터
 ```
 
 브라우저에서 `a.html?play`로 열면 실시간 재생으로 흐름을 볼 수 있다(캡처와 같은 타임라인).
