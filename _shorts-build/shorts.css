@@ -1,0 +1,58 @@
+/* 숏폼 영상용 공통 스타일.
+   앱 화면(.phone/.screen/.scard/.push …)은 ../style.css 를 그대로 쓰고,
+   여기서는 영상 캔버스·자막·엔딩과 "영상에서만 필요한 덮어쓰기"만 둔다.
+   캔버스는 CSS 540×960 을 deviceScaleFactor 2 로 찍어 1080×1920 이 된다. */
+
+html, body { width: 540px; height: 960px; overflow: hidden; background: #0a0e2a; }
+body { margin: 0; }
+
+.v {
+  position: relative; width: 540px; height: 960px; overflow: hidden; color: #fff8f0;
+  background: radial-gradient(900px 620px at 50% -8%, #1d2560 0%, #0a0e2a 58%) no-repeat, #0a0e2a;
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+
+/* ── 타임라인 엔진 대상 ───────────────────────────────────────────────
+   data-t="등장초,퇴장초" / data-fx="fade|up|down|pop" — engine.js 가 매 프레임
+   opacity 와 --fx 를 쓴다. 원래 transform 이 필요한 요소는 --base 에 둔다. */
+[data-t] { --base: translate(0,0); --fx: translate(0,0); transform: var(--base) var(--fx); opacity: 0; }
+
+/* ── 자막 ── 안전 영역: 위 8%·아래 20%·오른쪽 12% 는 플랫폼 UI 가 덮는다 */
+.cap {
+  position: absolute; left: 36px; right: 64px; top: 92px;
+  font-size: 30px; font-weight: 700; line-height: 1.4; letter-spacing: -0.6px;
+  word-break: keep-all; overflow-wrap: break-word; text-shadow: 0 2px 16px rgba(0,0,0,.45);
+}
+.cap small { display: block; margin-top: 10px; font-size: 19px; font-weight: 500; color: #c9cfe6; letter-spacing: -0.3px; }
+
+/* ── style.css 에서 가져온 앱 화면을 영상용으로 평평하게 ── */
+.v .phone { transform: none; animation: none; }
+.v .phone::after { opacity: .55; }
+.v .push, .v .pop, .v .plot i { animation: none !important; }
+.v .push { position: absolute; transform: var(--base) var(--fx); }
+.v .plot i { transform-origin: bottom; transform: scaleY(var(--g, 1)); }
+
+/* 확대해서 띄우는 조각 — 폰 안 글씨는 영상에서 너무 작아 읽히지 않는다 */
+.float { position: absolute; z-index: 5; color: #1A1C1C; box-shadow: 0 18px 50px -12px rgba(0,0,0,.6); }
+
+/* ── 공통 엔딩 — 홈페이지 「해질녘」 섹션의 문장과 배경 ── */
+.end {
+  position: absolute; inset: 0; z-index: 20; color: #fff8f0; text-align: center;
+  background:
+    radial-gradient(ellipse at 30% 0%,  #3d2f6b 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 100%, #ffc4a3 0%, transparent 50%),
+    linear-gradient(180deg, #2a2360 0%, #7d4a78 45%, #d4796a 80%, #ffc4a3 100%);
+}
+.end .q { position: absolute; left: 40px; right: 64px; font-size: 27px; font-weight: 300; line-height: 1.7;
+  letter-spacing: -0.4px; word-break: keep-all; text-shadow: 0 2px 18px rgba(20,14,44,.5); }
+.end .q em { font-style: normal; font-weight: 600; color: #fff8e8; }
+.end .q1 { top: 250px; }
+.end .q2 { top: 360px; }
+.end .brand { position: absolute; left: 0; right: 24px; top: 500px; }
+.end .brand svg { width: 64px; height: 64px; display: block; margin: 0 auto 10px;
+  filter: drop-shadow(0 6px 18px rgba(229,75,94,.45)); }
+.end .brand .nm { font-size: 40px; font-weight: 800; letter-spacing: 1px; }
+.end .brand .sub { margin-top: 4px; font-size: 18px; font-weight: 500; color: #fff3ea; opacity: .9; }
+.end .brand .store { display: inline-block; margin-top: 18px; padding: 9px 20px; border-radius: 22px;
+  background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35);
+  font-size: 17px; font-weight: 600; }

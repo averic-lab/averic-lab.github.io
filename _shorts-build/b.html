@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>숏폼 B — 유학 간 딸</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="shorts.css">
+<style>
+  /* A 와 다른 배치 — 세로 화면을 위(서울)·아래(보스턴)로 나눈다 */
+  .pane { position: absolute; left: 30px; right: 60px; height: 236px; border-radius: 24px; padding: 20px 22px;
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.11); }
+  .p1 { top: 258px; }
+  .p2 { top: 512px; background: rgba(255,214,140,.07); border-color: rgba(255,214,140,.16); }
+  .city { font-size: 17px; font-weight: 700; color: #c9cfe6; display: flex; align-items: center; gap: 7px; }
+  .city svg { width: 18px; height: 18px; }
+  .clock { margin-top: 2px; font-size: 44px; font-weight: 300; letter-spacing: -1.5px; }
+  .clock b { font-size: 22px; font-weight: 600; margin-inline-end: 6px; letter-spacing: 0; }
+
+  /* 특정 메신저를 흉내 내지 않은 일반 말풍선 */
+  .bubble { position: absolute; right: 22px; bottom: 22px; text-align: right; }
+  .bubble .b { display: inline-block; padding: 11px 16px; border-radius: 18px 18px 4px 18px;
+    background: #4355B9; color: #fff; font-size: 17px; font-weight: 500; }
+  .bubble .m { margin-top: 6px; font-size: 13px; color: #a8b0cc; }
+
+  /* 딸의 폰 — 화면이 꺼진 채 놓여 있다 */
+  .dphone { position: absolute; right: 26px; top: 26px; width: 92px; height: 184px; border-radius: 18px;
+    background: #111326; border: 3px solid #2a2d48; box-shadow: 0 10px 30px -8px rgba(0,0,0,.6); }
+  .dphone::before { content: ""; position: absolute; top: 7px; left: 50%; width: 28px; height: 7px;
+    margin-left: -14px; border-radius: 4px; background: #05060f; }
+  .dnote { position: absolute; left: 22px; bottom: 22px; font-size: 15px; color: #e8d9bf; line-height: 1.5; }
+
+  .ring { position: absolute; left: 50%; top: 50%; width: 70px; height: 70px; margin: -35px 0 0 -35px;
+    border-radius: 50%; border: 2px solid rgba(255,138,149,.8); box-shadow: 0 0 18px rgba(255,138,149,.6); }
+  .sig { position: absolute; left: 0; top: 0; width: 22px; height: 22px; margin: -11px 0 0 -11px; z-index: 6;
+    border-radius: 50%; background: radial-gradient(circle, #ffd4da 0%, #ff8a95 45%, rgba(255,138,149,0) 72%);
+    filter: drop-shadow(0 0 10px rgba(255,138,149,.9)); }
+
+  .fpush { left: 42px; top: 378px; width: 340px; --base: scale(1.25); transform-origin: top left; }
+  .fpush .now { margin-left: auto; font-size: 10.5px; color: #9AA0AE; }
+  .fcard { left: 42px; top: 318px; width: 332px; --base: scale(1.3); transform-origin: top left; background: #EEF6EF !important; }
+  .fcard .slot { height: 120px; }
+  .fcard .plot i.today { height: 34%; }
+</style></head>
+<body><div class="v">
+
+  <p class="cap" data-t="-1,3.6" data-fx="up">유학 간 딸,<br>오늘도 연락이 없다.</p>
+  <p class="cap" data-t="3.9,7.4" data-fx="up">시차 때문에<br>전화하기도 망설여진다.</p>
+  <p class="cap" data-t="7.7,11.7" data-fx="up">딸은 아무것도<br>하지 않았는데,<small>안부가 먼저 도착했습니다.</small></p>
+  <p class="cap" data-t="12.0,16.6" data-fx="up">연락하지 않아도,<br>잘 지내는 걸 압니다.</p>
+
+  <div class="pane p1" data-t="-1,11.8">
+    <div class="city"><svg viewBox="0 0 24 24" fill="#c9cfe6"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>서울</div>
+    <div class="clock"><b>오후</b>11:40</div>
+    <div class="bubble" data-t="4.1,8.7" data-fx="up"><div class="b">잘 지내? 밥은 챙겨 먹고?</div><div class="m">오후 9:12 · 아직 읽지 않음</div></div>
+  </div>
+
+  <div class="pane p2" data-t="-1,11.8">
+    <div class="city" style="color:#f1dcb4"><svg viewBox="0 0 24 24" fill="#f1dcb4"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1" stroke="#f1dcb4" stroke-width="2" stroke-linecap="round"/></svg>보스턴</div>
+    <div class="clock"><b>오전</b>10:40</div>
+    <div class="dphone"><span class="ring" data-t="7.75,8.4" data-fx="pop"></span></div>
+    <div class="dnote" data-t="7.7" data-fx="up">딸의 휴대폰<br>앱을 열지 않았어요</div>
+  </div>
+
+  <span class="sig" data-t="7.9,8.75"></span>
+
+  <div class="push float fpush" data-t="8.75,11.8" data-fx="down">
+    <div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z"/></svg></span><span class="app">안부</span><span class="now">지금</span></div>
+    <div class="ti">✅ 오늘 안부 확인 완료</div>
+    <div class="bo">딸 · 오늘 2,318보를 걸으셨습니다.</div>
+  </div>
+
+  <div class="scard float fcard" data-t="12.1,16.6" data-fx="pop">
+    <div class="r1"><span class="nm">딸<span class="bat">64%</span></span><span class="pill">✅ 안전</span></div>
+    <div class="r2"><span class="act">활동량: 활동적</span></div>
+    <div class="slot"><div class="ghost">
+      <div class="chd"><span>걸음수</span><b class="peak">2,318</b></div>
+      <div class="plot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="today"></i></div>
+      <div class="xlab">지난 7일</div></div></div>
+    <div class="last">마지막 확인: 방금 전</div>
+  </div>
+
+</div>
+<script src="engine.js"></script>
+<script>
+  window.DURATION = 23.4;
+  mountEnding(16.6);
+  const card = document.querySelector('.fcard'), sig = document.querySelector('.sig');
+  // 딸의 폰(아래) → 서울 칸(위)으로 신호가 올라간다
+  const A = [408, 630], B = [262, 410];
+  window.extra = t => {
+    growBars(card, t, 12.5);
+    const p = ease((t - 7.9) / 0.85);
+    const x = A[0] + (B[0] - A[0]) * p, y = A[1] + (B[1] - A[1]) * p - Math.sin(p * Math.PI) * 60;
+    sig.style.left = x + 'px'; sig.style.top = y + 'px';
+  };
+</script>
+</body></html>
