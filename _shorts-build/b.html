@@ -29,7 +29,7 @@
 
   .ring { position: absolute; left: 50%; top: 50%; width: 70px; height: 70px; margin: -35px 0 0 -35px;
     border-radius: 50%; border: 2px solid rgba(255,138,149,.8); box-shadow: 0 0 18px rgba(255,138,149,.6); }
-  .sig { position: absolute; left: 0; top: 0; width: 22px; height: 22px; margin: -11px 0 0 -11px; z-index: 6;
+  .sig { position: absolute; left: 0; top: 0; width: 30px; height: 30px; margin: -15px 0 0 -15px; z-index: 6;
     border-radius: 50%; background: radial-gradient(circle, #ffd4da 0%, #ff8a95 45%, rgba(255,138,149,0) 72%);
     filter: drop-shadow(0 0 10px rgba(255,138,149,.9)); }
 
@@ -37,7 +37,7 @@
   .fpush .now { margin-left: auto; font-size: 10.5px; color: #9AA0AE; }
   .fcard { left: 42px; top: 318px; width: 332px; --base: scale(1.3); transform-origin: top left; background: #EEF6EF !important; }
   .fcard .slot { height: 120px; }
-  .fcard .plot i.today { height: 34%; }
+  .fcard .plot i.today { height: 72%; }
 </style></head>
 <body><div class="v">
 
@@ -49,7 +49,7 @@
   <div class="pane p1" data-t="-1,11.8">
     <div class="city"><svg viewBox="0 0 24 24" fill="#c9cfe6"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>서울</div>
     <div class="clock"><b>오후</b>11:40</div>
-    <div class="bubble" data-t="4.1,8.7" data-fx="up"><div class="b">잘 지내? 밥은 챙겨 먹고?</div><div class="m">오후 9:12 · 아직 읽지 않음</div></div>
+    <div class="bubble" data-t="4.1,8.5" data-fx="up"><div class="b">잘 지내? 밥은 챙겨 먹고?</div><div class="m">오후 9:12 · 아직 읽지 않음</div></div>
   </div>
 
   <div class="pane p2" data-t="-1,11.8">
@@ -59,9 +59,9 @@
     <div class="dnote" data-t="7.7" data-fx="up">딸의 휴대폰<br>앱을 열지 않았어요</div>
   </div>
 
-  <span class="sig" data-t="7.9,8.75"></span>
+  <span class="sig" data-t="7.9,8.95"></span>
 
-  <div class="push float fpush" data-t="8.75,11.8" data-fx="down">
+  <div class="push float fpush" data-t="9.0,11.8" data-fx="down">
     <div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z"/></svg></span><span class="app">안부</span><span class="now">지금</span></div>
     <div class="ti">✅ 오늘 안부 확인 완료</div>
     <div class="bo">딸 · 오늘 2,318보를 걸으셨습니다.</div>
@@ -84,10 +84,10 @@
   mountEnding(16.6);
   const card = document.querySelector('.fcard'), sig = document.querySelector('.sig');
   // 딸의 폰(아래) → 서울 칸(위)으로 신호가 올라간다
-  const A = [408, 630], B = [262, 410];
+  const A = [408, 630], B = [270, 440];
   window.extra = t => {
     growBars(card, t, 12.5);
-    const p = ease((t - 7.9) / 0.85);
+    const q = Math.min(Math.max((t - 7.9) / 1.0, 0), 1), p = q * q * (3 - 2 * q);   // 완만한 가감속
     const x = A[0] + (B[0] - A[0]) * p, y = A[1] + (B[1] - A[1]) * p - Math.sin(p * Math.PI) * 60;
     sig.style.left = x + 'px'; sig.style.top = y + 'px';
   };
