@@ -4,37 +4,61 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>숏폼 시험 영상 · Averic Lab</title>
+<title>숏폼 영상 보관함 · Averic Lab</title>
 <style>
   :root { --bg:#0a0e2a; --tx:#e9ecf6; --tx2:#a8b0cc; --bd:rgba(255,255,255,.10); }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--tx);
-    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; line-height: 1.6; }
-  .wrap { max-width: 900px; margin: 0 auto; padding: 28px 16px 64px; }
+  body { margin: 0; background: var(--bg); color: var(--tx); line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 28px 16px 64px; }
   h1 { font-size: 22px; margin: 0 0 6px; }
   .note { color: var(--tx2); font-size: 14px; margin: 0 0 24px; word-break: keep-all; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
+  a { color: #8b9cf0; }
+  .back { display: inline-block; margin-bottom: 14px; font-size: 14px; text-decoration: none; }
+  .folders { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+  .folder { display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 14px;
+    background: rgba(255,255,255,.05); border: 1px solid var(--bd); color: var(--tx); text-decoration: none; }
+  .folder:hover { background: rgba(255,255,255,.09); }
+  .folder svg { width: 30px; height: 30px; flex: none; fill: #ffcf6b; }
+  .folder b { display: block; font-size: 15px; }
+  .folder span { font-size: 12.5px; color: var(--tx2); }
+  .folder.empty { opacity: .45; pointer-events: none; }
+  .folder.empty svg { fill: #7b84a6; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 28px; }
   figure { margin: 0; }
-  video { display: block; width: 100%; max-width: 360px; aspect-ratio: 9 / 16; margin: 0 auto;
+  video { display: block; width: 100%; max-width: 340px; aspect-ratio: 9 / 16; margin: 0 auto;
     border-radius: 18px; background: #000; border: 1px solid var(--bd); }
-  figcaption { max-width: 360px; margin: 12px auto 0; font-size: 14px; color: var(--tx2); word-break: keep-all; }
+  figcaption { max-width: 340px; margin: 12px auto 0; font-size: 14px; color: var(--tx2); word-break: keep-all; }
   figcaption b { display: block; color: var(--tx); font-size: 16px; }
-  figcaption a { color: #8b9cf0; }
+  .dl { display: inline-block; margin-top: 6px; padding: 6px 14px; border-radius: 16px;
+    background: rgba(139,156,240,.16); text-decoration: none; font-weight: 600; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>숏폼 시험 영상 (검토용)</h1>
-  <p class="note">검색에 노출되지 않는 내부 검토 페이지입니다. 영상에는 소리가 없습니다 — 배경음악은 업로드할 때 각 플랫폼에서 붙입니다.</p>
-  <div class="grid">
-    <figure>
-      <video src="../../media/shorts/ko/a.mp4" poster="../../media/shorts/ko/a.jpg" controls playsinline muted loop preload="metadata"></video>
-      <figcaption><b>A. 전화 안 받는 엄마</b>22초 · 폰 한 대로 장면이 이어지는 구성 · <a href="../../media/shorts/ko/a.mp4" download>내려받기</a></figcaption>
-    </figure>
-    <figure>
-      <video src="../../media/shorts/ko/b.mp4" poster="../../media/shorts/ko/b.jpg" controls playsinline muted loop preload="metadata"></video>
-      <figcaption><b>B. 유학 간 딸</b>23초 · 서울·보스턴 위아래 분할 구성 · <a href="../../media/shorts/ko/b.mp4" download>내려받기</a></figcaption>
-    </figure>
+  <h1>숏폼 영상 보관함</h1>
+  <p class="note">검색에 노출되지 않는 내부 페이지입니다. 언어 폴더를 누르면 그 언어의 영상을 보고 내려받을 수 있습니다. 영상에는 소리가 없습니다 — 배경음악은 업로드할 때 각 플랫폼에서 붙입니다.</p>
+  <div class="folders">
+    <a class="folder" href="en/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>English</b><span>en · 영상 2편</span></div></a>
+    <a class="folder" href="ko/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>한국어</b><span>ko · 영상 2편</span></div></a>
+    <a class="folder" href="ja/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>日本語</b><span>ja · 영상 2편</span></div></a>
+    <a class="folder" href="zh-CN/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>简体中文</b><span>zh-CN · 영상 2편</span></div></a>
+    <a class="folder" href="zh-TW/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>繁體中文</b><span>zh-TW · 영상 2편</span></div></a>
+    <a class="folder" href="de/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>Deutsch</b><span>de · 영상 2편</span></div></a>
+    <a class="folder" href="fr/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>Français</b><span>fr · 영상 2편</span></div></a>
+    <a class="folder" href="es/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>Español</b><span>es · 영상 2편</span></div></a>
+    <a class="folder" href="it/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>Italiano</b><span>it · 영상 2편</span></div></a>
+    <a class="folder" href="pt-BR/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>Português</b><span>pt-BR · 영상 2편</span></div></a>
+    <a class="folder" href="ru/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>Русский</b><span>ru · 영상 2편</span></div></a>
+    <a class="folder" href="nl/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>Nederlands</b><span>nl · 영상 2편</span></div></a>
+    <a class="folder" href="pl/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>Polski</b><span>pl · 영상 2편</span></div></a>
+    <a class="folder" href="tr/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>Türkçe</b><span>tr · 영상 2편</span></div></a>
+    <a class="folder" href="vi/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>Tiếng Việt</b><span>vi · 영상 2편</span></div></a>
+    <a class="folder" href="th/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>ไทย</b><span>th · 영상 2편</span></div></a>
+    <a class="folder" href="id/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>Bahasa Indonesia</b><span>id · 영상 2편</span></div></a>
+    <a class="folder" href="sv/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>Svenska</b><span>sv · 영상 2편</span></div></a>
+    <a class="folder" href="hi/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>हिन्दी</b><span>hi · 영상 2편</span></div></a>
+    <a class="folder" href="ar/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4.2l2 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><div><b>العربية</b><span>ar · 영상 2편</span></div></a>
   </div>
 </div>
 </body>

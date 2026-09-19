@@ -1,0 +1,229 @@
+{
+  "_doc": "숏폼 영상의 단일 출처. videos = 편 목록(home:true 인 편만 홈 해질녘에 나온다), langs = 영상에만 나오는 문구. 앱 화면 문구·푸시 제목·엄마 호칭·엔딩 문장은 gen.py 가 앱/서버/홈 번역에서 가져온다.",
+  "videos": [
+    {"id": "mom-call", "page": "a.html", "title": "t_a", "date": "2026-09-19", "home": true},
+    {"id": "daughter-abroad", "page": "b.html", "title": "t_b", "date": "2026-09-19", "home": true}
+  ],
+  "langs": {
+    "ko": {
+      "t_a": "전화 안 받는 엄마", "t_b": "유학 간 딸", "play": "재생", "replay": "다시 보기",
+      "a1": "엄마가 전화를<br>안 받는다.", "a1s": "벌써 세 번째.", "a2": "무슨 일 있으신 건<br>아니겠지…",
+      "a3": "그때,<br>알림 하나가 도착했다.", "a4": "전화하지 않아도,<br>매일 안부가 옵니다.",
+      "calls": "최근 기록", "no_answer": "발신 · 응답 없음",
+      "b1": "유학 간 딸,<br>오늘도 연락이 없다.", "b2": "시차 때문에<br>전화하기도 망설여진다.",
+      "b3": "딸은 아무것도<br>하지 않았는데,", "b3s": "안부가 먼저 도착했습니다.", "b4": "연락하지 않아도,<br>잘 지내는 걸 압니다.",
+      "daughter": "딸", "home_city": "서울", "home_tz": "Asia/Seoul", "away_city": "보스턴", "away_tz": "America/New_York",
+      "bubble": "잘 지내? 밥은 챙겨 먹고?", "unread": "아직 읽지 않음", "dnote": "딸의 휴대폰<br>앱을 열지 않았어요",
+      "now": "지금", "brand_sub": "매일 자동으로 전해지는 안부", "store": "스토어에서 ‘안부’ 검색"
+    },
+    "en": {
+      "t_a": "Mom isn't picking up", "t_b": "Our daughter abroad", "play": "Play", "replay": "Replay",
+      "a1": "Mom isn't<br>picking up.", "a1s": "Third call already.", "a2": "I hope<br>nothing's wrong…",
+      "a3": "Then,<br>a notification arrived.", "a4": "No need to call.<br>Her check-in comes every day.",
+      "calls": "Recents", "no_answer": "Outgoing · No answer",
+      "b1": "Our daughter studies abroad.<br>No word again today.", "b2": "With the time difference,<br>it's hard to call.",
+      "b3": "She didn't do a thing,", "b3s": "yet her check-in arrived first.", "b4": "Even without a call,<br>we know she's okay.",
+      "daughter": "Emma", "home_city": "New York", "home_tz": "America/New_York", "away_city": "Sydney", "away_tz": "Australia/Sydney",
+      "bubble": "Doing okay? Eating well?", "unread": "Not read yet", "dnote": "Her phone<br>The app was never opened",
+      "now": "now", "brand_sub": "Daily check-ins, sent automatically", "store": "Search “Anbu” in your app store"
+    },
+    "ja": {
+      "t_a": "電話に出ない母", "t_b": "留学中の娘", "play": "再生", "replay": "もう一度見る",
+      "a1": "母が電話に<br>出ない。", "a1s": "もう3回目。", "a2": "何かあったんじゃ<br>ないだろうか…",
+      "a3": "そのとき、<br>通知がひとつ届いた。", "a4": "電話しなくても、<br>毎日安否が届きます。",
+      "calls": "履歴", "no_answer": "発信 · 応答なし",
+      "b1": "留学中の娘から、<br>今日も連絡がない。", "b2": "時差があって、<br>電話もためらってしまう。",
+      "b3": "娘は何も<br>していないのに、", "b3s": "安否が先に届きました。", "b4": "連絡しなくても、<br>元気だとわかります。",
+      "daughter": "さくら", "home_city": "東京", "home_tz": "Asia/Tokyo", "away_city": "ロンドン", "away_tz": "Europe/London",
+      "bubble": "元気？ちゃんと食べてる？", "unread": "未読", "dnote": "娘のスマホ<br>アプリは開いていません",
+      "now": "今", "brand_sub": "毎日、自動で届く安否", "store": "ストアで「Anbu」を検索"
+    },
+    "zh-CN": {
+      "t_a": "不接电话的妈妈", "t_b": "在国外留学的女儿", "play": "播放", "replay": "重播",
+      "a1": "妈妈<br>不接电话。", "a1s": "已经第三次了。", "a2": "不会出什么事了吧……",
+      "a3": "就在这时，<br>收到了一条通知。", "a4": "不用打电话，<br>每天都能收到平安。",
+      "calls": "最近通话", "no_answer": "呼出 · 未接听",
+      "b1": "在国外留学的女儿，<br>今天也没有消息。", "b2": "因为时差，<br>连电话都不敢打。",
+      "b3": "女儿什么都没做，", "b3s": "平安却先到了。", "b4": "不用联系，<br>也知道她过得好。",
+      "daughter": "小雨", "home_city": "上海", "home_tz": "Asia/Shanghai", "away_city": "多伦多", "away_tz": "America/Toronto",
+      "bubble": "过得好吗？有好好吃饭吗？", "unread": "未读", "dnote": "女儿的手机<br>没有打开应用",
+      "now": "现在", "brand_sub": "每天自动送达的平安", "store": "在应用商店搜索“Anbu”"
+    },
+    "zh-TW": {
+      "t_a": "不接電話的媽媽", "t_b": "出國留學的女兒", "play": "播放", "replay": "重播",
+      "a1": "媽媽<br>不接電話。", "a1s": "已經第三次了。", "a2": "該不會出了什麼事吧……",
+      "a3": "就在這時，<br>收到了一則通知。", "a4": "不用打電話，<br>每天都能收到平安。",
+      "calls": "最近通話", "no_answer": "撥出 · 未接聽",
+      "b1": "出國留學的女兒，<br>今天也沒有消息。", "b2": "因為時差，<br>連電話都不敢打。",
+      "b3": "女兒什麼都沒做，", "b3s": "平安卻先到了。", "b4": "不用聯絡，<br>也知道她過得好。",
+      "daughter": "怡君", "home_city": "台北", "home_tz": "Asia/Taipei", "away_city": "洛杉磯", "away_tz": "America/Los_Angeles",
+      "bubble": "過得好嗎？有好好吃飯嗎？", "unread": "未讀", "dnote": "女兒的手機<br>沒有打開 App",
+      "now": "現在", "brand_sub": "每天自動送達的平安", "store": "在 App 商店搜尋「Anbu」"
+    },
+    "de": {
+      "t_a": "Mama geht nicht ran", "t_b": "Unsere Tochter im Ausland", "play": "Abspielen", "replay": "Erneut ansehen",
+      "a1": "Mama geht<br>nicht ans Telefon.", "a1s": "Schon zum dritten Mal.", "a2": "Hoffentlich ist<br>nichts passiert …",
+      "a3": "Dann kam<br>eine Benachrichtigung.", "a4": "Ohne Anruf –<br>jeden Tag ein Lebenszeichen.",
+      "calls": "Anrufliste", "no_answer": "Ausgehend · Keine Antwort",
+      "b1": "Unsere Tochter im Ausland.<br>Auch heute keine Nachricht.", "b2": "Wegen der Zeitverschiebung<br>zögert man anzurufen.",
+      "b3": "Sie hat nichts getan,", "b3s": "und trotzdem kam ihr Lebenszeichen.", "b4": "Auch ohne Anruf<br>wissen wir: Es geht ihr gut.",
+      "daughter": "Lena", "home_city": "Berlin", "home_tz": "Europe/Berlin", "away_city": "New York", "away_tz": "America/New_York",
+      "bubble": "Alles gut? Isst du ordentlich?", "unread": "Noch nicht gelesen", "dnote": "Ihr Handy<br>App nicht geöffnet",
+      "now": "jetzt", "brand_sub": "Jeden Tag automatisch ein Lebenszeichen", "store": "Im Store nach „Anbu“ suchen"
+    },
+    "fr": {
+      "t_a": "Maman ne répond pas", "t_b": "Notre fille à l’étranger", "play": "Lire", "replay": "Revoir",
+      "a1": "Maman ne répond<br>pas au téléphone.", "a1s": "Déjà la troisième fois.", "a2": "Pourvu qu’il ne soit<br>rien arrivé…",
+      "a3": "Puis,<br>une notification est arrivée.", "a4": "Sans appeler,<br>des nouvelles chaque jour.",
+      "calls": "Récents", "no_answer": "Sortant · Pas de réponse",
+      "b1": "Notre fille étudie à l’étranger.<br>Toujours pas de nouvelles.", "b2": "Avec le décalage horaire,<br>on hésite à appeler.",
+      "b3": "Elle n’a rien fait,", "b3s": "et pourtant ses nouvelles sont arrivées.", "b4": "Sans même appeler,<br>on sait qu’elle va bien.",
+      "daughter": "Chloé", "home_city": "Paris", "home_tz": "Europe/Paris", "away_city": "Montréal", "away_tz": "America/Toronto",
+      "bubble": "Ça va ? Tu manges bien ?", "unread": "Pas encore lu", "dnote": "Son téléphone<br>Appli jamais ouverte",
+      "now": "maintenant", "brand_sub": "Des nouvelles chaque jour, automatiquement", "store": "Cherchez « Anbu » dans votre store"
+    },
+    "es": {
+      "t_a": "Mamá no contesta", "t_b": "Nuestra hija en el extranjero", "play": "Reproducir", "replay": "Volver a ver",
+      "a1": "Mamá no contesta<br>el teléfono.", "a1s": "Ya es la tercera vez.", "a2": "Ojalá no le haya<br>pasado nada…",
+      "a3": "Entonces,<br>llegó una notificación.", "a4": "Sin llamar,<br>cada día sabes que está bien.",
+      "calls": "Recientes", "no_answer": "Saliente · Sin respuesta",
+      "b1": "Nuestra hija estudia fuera.<br>Hoy tampoco hay noticias.", "b2": "Con la diferencia horaria,<br>cuesta llamar.",
+      "b3": "Ella no hizo nada,", "b3s": "y aun así llegó su aviso.", "b4": "Sin llamar,<br>sabemos que está bien.",
+      "daughter": "Lucía", "home_city": "Madrid", "home_tz": "Europe/Madrid", "away_city": "Nueva York", "away_tz": "America/New_York",
+      "bubble": "¿Todo bien? ¿Comes bien?", "unread": "Sin leer", "dnote": "Su teléfono<br>No abrió la app",
+      "now": "ahora", "brand_sub": "Cada día, noticias automáticas", "store": "Busca «Anbu» en tu tienda de apps"
+    },
+    "it": {
+      "t_a": "La mamma non risponde", "t_b": "Nostra figlia all’estero", "play": "Riproduci", "replay": "Rivedi",
+      "a1": "La mamma non<br>risponde al telefono.", "a1s": "Già la terza volta.", "a2": "Speriamo non sia<br>successo niente…",
+      "a3": "Poi<br>è arrivata una notifica.", "a4": "Senza telefonare,<br>ogni giorno sai che sta bene.",
+      "calls": "Recenti", "no_answer": "In uscita · Nessuna risposta",
+      "b1": "Nostra figlia studia all’estero.<br>Anche oggi nessuna notizia.", "b2": "Con il fuso orario,<br>si esita a chiamare.",
+      "b3": "Lei non ha fatto nulla,", "b3s": "eppure è arrivato il suo segnale.", "b4": "Anche senza chiamare,<br>sappiamo che sta bene.",
+      "daughter": "Giulia", "home_city": "Milano", "home_tz": "Europe/Rome", "away_city": "New York", "away_tz": "America/New_York",
+      "bubble": "Tutto bene? Mangi bene?", "unread": "Non ancora letto", "dnote": "Il suo telefono<br>App mai aperta",
+      "now": "ora", "brand_sub": "Ogni giorno un segnale, in automatico", "store": "Cerca «Anbu» nello store"
+    },
+    "pt-BR": {
+      "t_a": "Mãe não atende", "t_b": "Nossa filha no exterior", "play": "Reproduzir", "replay": "Assistir de novo",
+      "a1": "Mãe não atende<br>o telefone.", "a1s": "Já é a terceira vez.", "a2": "Tomara que não<br>tenha acontecido nada…",
+      "a3": "Então,<br>chegou uma notificação.", "a4": "Sem precisar ligar,<br>todo dia chega um sinal.",
+      "calls": "Recentes", "no_answer": "Efetuada · Sem resposta",
+      "b1": "Nossa filha estuda fora.<br>Hoje também sem notícias.", "b2": "Com o fuso horário,<br>dá receio de ligar.",
+      "b3": "Ela não fez nada,", "b3s": "e mesmo assim o sinal chegou.", "b4": "Mesmo sem ligar,<br>sabemos que ela está bem.",
+      "daughter": "Ana", "home_city": "São Paulo", "home_tz": "America/Sao_Paulo", "away_city": "Sydney", "away_tz": "Australia/Sydney",
+      "bubble": "Tudo bem? Tá comendo direito?", "unread": "Não lida", "dnote": "O celular dela<br>App não foi aberto",
+      "now": "agora", "brand_sub": "Todo dia um sinal, automaticamente", "store": "Procure “Anbu” na loja de apps"
+    },
+    "ru": {
+      "t_a": "Мама не берёт трубку", "t_b": "Дочь учится за границей", "play": "Смотреть", "replay": "Смотреть снова",
+      "a1": "Мама не берёт<br>трубку.", "a1s": "Уже третий раз.", "a2": "Только бы ничего<br>не случилось…",
+      "a3": "И тут<br>пришло уведомление.", "a4": "Без звонков —<br>весточка каждый день.",
+      "calls": "Недавние", "no_answer": "Исходящий · Нет ответа",
+      "b1": "Дочь учится за границей.<br>Сегодня снова ни слова.", "b2": "Из-за разницы во времени<br>не решаешься позвонить.",
+      "b3": "Она ничего не делала,", "b3s": "а весточка уже пришла.", "b4": "Даже без звонка<br>мы знаем: у неё всё хорошо.",
+      "daughter": "Аня", "home_city": "Москва", "home_tz": "Europe/Moscow", "away_city": "Нью-Йорк", "away_tz": "America/New_York",
+      "bubble": "Как ты? Хорошо питаешься?", "unread": "Не прочитано", "dnote": "Её телефон<br>Приложение не открывали",
+      "now": "сейчас", "brand_sub": "Весточка каждый день — автоматически", "store": "Найдите «Anbu» в магазине приложений"
+    },
+    "nl": {
+      "t_a": "Mama neemt niet op", "t_b": "Onze dochter in het buitenland", "play": "Afspelen", "replay": "Opnieuw bekijken",
+      "a1": "Mama neemt<br>niet op.", "a1s": "Al voor de derde keer.", "a2": "Er is toch niets<br>gebeurd…?",
+      "a3": "Toen kwam<br>er een melding binnen.", "a4": "Zonder te bellen,<br>elke dag een teken van leven.",
+      "calls": "Recent", "no_answer": "Uitgaand · Geen antwoord",
+      "b1": "Onze dochter studeert in het buitenland.<br>Vandaag weer niets gehoord.", "b2": "Door het tijdsverschil<br>durf je niet te bellen.",
+      "b3": "Zij deed niets,", "b3s": "en toch kwam haar teken van leven.", "b4": "Ook zonder te bellen<br>weten we dat het goed gaat.",
+      "daughter": "Sophie", "home_city": "Amsterdam", "home_tz": "Europe/Amsterdam", "away_city": "Toronto", "away_tz": "America/Toronto",
+      "bubble": "Gaat het goed? Eet je wel goed?", "unread": "Nog niet gelezen", "dnote": "Haar telefoon<br>App niet geopend",
+      "now": "nu", "brand_sub": "Elke dag automatisch een teken van leven", "store": "Zoek „Anbu” in je app store"
+    },
+    "pl": {
+      "t_a": "Mama nie odbiera", "t_b": "Córka na studiach za granicą", "play": "Odtwórz", "replay": "Obejrzyj ponownie",
+      "a1": "Mama nie odbiera<br>telefonu.", "a1s": "Już trzeci raz.", "a2": "Oby nic się<br>nie stało…",
+      "a3": "I wtedy<br>przyszło powiadomienie.", "a4": "Bez dzwonienia –<br>codziennie znak, że wszystko dobrze.",
+      "calls": "Ostatnie", "no_answer": "Wychodzące · Brak odpowiedzi",
+      "b1": "Córka studiuje za granicą.<br>Dziś znowu cisza.", "b2": "Przez różnicę czasu<br>trudno zadzwonić.",
+      "b3": "Nic nie zrobiła,", "b3s": "a znak od niej już dotarł.", "b4": "Nawet bez telefonu<br>wiemy, że u niej dobrze.",
+      "daughter": "Zosia", "home_city": "Warszawa", "home_tz": "Europe/Warsaw", "away_city": "Chicago", "away_tz": "America/Chicago",
+      "bubble": "Wszystko dobrze? Jesz porządnie?", "unread": "Jeszcze nieprzeczytane", "dnote": "Jej telefon<br>Aplikacja nieotwierana",
+      "now": "teraz", "brand_sub": "Codzienny znak, automatycznie", "store": "Wyszukaj „Anbu” w sklepie z aplikacjami"
+    },
+    "tr": {
+      "t_a": "Annem telefonu açmıyor", "t_b": "Yurt dışındaki kızımız", "play": "Oynat", "replay": "Yeniden izle",
+      "a1": "Annem telefonu<br>açmıyor.", "a1s": "Bu üçüncü arayış.", "a2": "Umarım bir şey<br>olmamıştır…",
+      "a3": "Tam o sırada<br>bir bildirim geldi.", "a4": "Aramadan da<br>her gün haber alırsınız.",
+      "calls": "Son aramalar", "no_answer": "Giden · Yanıt yok",
+      "b1": "Kızımız yurt dışında okuyor.<br>Bugün de ses yok.", "b2": "Saat farkı yüzünden<br>aramaya çekiniyoruz.",
+      "b3": "O hiçbir şey yapmadı,", "b3s": "ama haberi önce geldi.", "b4": "Aramasak da<br>iyi olduğunu biliyoruz.",
+      "daughter": "Elif", "home_city": "İstanbul", "home_tz": "Europe/Istanbul", "away_city": "Toronto", "away_tz": "America/Toronto",
+      "bubble": "İyi misin? Düzgün yemek yiyor musun?", "unread": "Henüz okunmadı", "dnote": "Onun telefonu<br>Uygulamayı açmadı",
+      "now": "şimdi", "brand_sub": "Her gün otomatik gelen haber", "store": "Mağazada “Anbu” aratın"
+    },
+    "vi": {
+      "t_a": "Mẹ không nghe máy", "t_b": "Con gái đi du học", "play": "Phát", "replay": "Xem lại",
+      "a1": "Mẹ không<br>nghe máy.", "a1s": "Đã là lần thứ ba.", "a2": "Mong là không<br>có chuyện gì…",
+      "a3": "Đúng lúc đó,<br>một thông báo đến.", "a4": "Không cần gọi,<br>ngày nào cũng có tin bình an.",
+      "calls": "Gần đây", "no_answer": "Cuộc gọi đi · Không trả lời",
+      "b1": "Con gái đi du học,<br>hôm nay vẫn chưa có tin.", "b2": "Vì lệch múi giờ,<br>ngại gọi điện.",
+      "b3": "Con không làm gì cả,", "b3s": "vậy mà tin bình an đã đến.", "b4": "Không cần liên lạc,<br>vẫn biết con ổn.",
+      "daughter": "Linh", "home_city": "Hà Nội", "home_tz": "Asia/Ho_Chi_Minh", "away_city": "Los Angeles", "away_tz": "America/Los_Angeles",
+      "bubble": "Con ổn không? Ăn uống đầy đủ chứ?", "unread": "Chưa đọc", "dnote": "Điện thoại của con<br>Không mở ứng dụng",
+      "now": "bây giờ", "brand_sub": "Tin bình an mỗi ngày, tự động", "store": "Tìm “Anbu” trên kho ứng dụng"
+    },
+    "th": {
+      "t_a": "แม่ไม่รับสาย", "t_b": "ลูกสาวที่ไปเรียนต่างประเทศ", "play": "เล่น", "replay": "ดูอีกครั้ง",
+      "a1": "แม่<br>ไม่รับสาย", "a1s": "นี่ครั้งที่สามแล้ว", "a2": "หวังว่าคงไม่มี<br>อะไรเกิดขึ้น…",
+      "a3": "แล้วก็มี<br>การแจ้งเตือนเข้ามา", "a4": "ไม่ต้องโทร<br>ก็รู้ว่าปลอดภัยทุกวัน",
+      "calls": "ล่าสุด", "no_answer": "โทรออก · ไม่มีผู้รับสาย",
+      "b1": "ลูกสาวไปเรียนต่างประเทศ<br>วันนี้ก็ยังเงียบ", "b2": "เพราะเวลาต่างกัน<br>จะโทรก็ลังเล",
+      "b3": "ลูกไม่ได้ทำอะไรเลย", "b3s": "แต่ข่าวคราวก็มาถึงก่อน", "b4": "ไม่ต้องติดต่อ<br>ก็รู้ว่าลูกสบายดี",
+      "daughter": "ฝ้าย", "home_city": "กรุงเทพฯ", "home_tz": "Asia/Bangkok", "away_city": "ลอนดอน", "away_tz": "Europe/London",
+      "bubble": "สบายดีไหม กินข้าวหรือยัง", "unread": "ยังไม่ได้อ่าน", "dnote": "โทรศัพท์ของลูก<br>ไม่ได้เปิดแอป",
+      "now": "ตอนนี้", "brand_sub": "ส่งข่าวคราวอัตโนมัติทุกวัน", "store": "ค้นหา “Anbu” ในสโตร์"
+    },
+    "id": {
+      "t_a": "Ibu tidak mengangkat telepon", "t_b": "Putri kami kuliah di luar negeri", "play": "Putar", "replay": "Tonton lagi",
+      "a1": "Ibu tidak<br>mengangkat telepon.", "a1s": "Sudah yang ketiga kalinya.", "a2": "Semoga tidak<br>terjadi apa-apa…",
+      "a3": "Lalu,<br>sebuah notifikasi masuk.", "a4": "Tanpa menelepon,<br>kabar baik tiba setiap hari.",
+      "calls": "Terbaru", "no_answer": "Keluar · Tidak dijawab",
+      "b1": "Putri kami kuliah di luar negeri.<br>Hari ini pun belum ada kabar.", "b2": "Karena perbedaan waktu,<br>jadi ragu untuk menelepon.",
+      "b3": "Dia tidak melakukan apa pun,", "b3s": "tapi kabarnya sudah sampai.", "b4": "Tanpa menghubungi pun,<br>kami tahu dia baik-baik saja.",
+      "daughter": "Putri", "home_city": "Jakarta", "home_tz": "Asia/Jakarta", "away_city": "London", "away_tz": "Europe/London",
+      "bubble": "Kamu baik-baik saja? Makan yang teratur ya?", "unread": "Belum dibaca", "dnote": "Ponselnya<br>Aplikasi tidak dibuka",
+      "now": "sekarang", "brand_sub": "Kabar setiap hari, otomatis", "store": "Cari “Anbu” di toko aplikasi"
+    },
+    "sv": {
+      "t_a": "Mamma svarar inte", "t_b": "Dottern som pluggar utomlands", "play": "Spela upp", "replay": "Se igen",
+      "a1": "Mamma svarar<br>inte i telefon.", "a1s": "Redan tredje gången.", "a2": "Hoppas att inget<br>har hänt…",
+      "a3": "Då kom<br>en avisering.", "a4": "Utan att ringa –<br>ett livstecken varje dag.",
+      "calls": "Senaste", "no_answer": "Utgående · Inget svar",
+      "b1": "Dottern pluggar utomlands.<br>Inget hörts i dag heller.", "b2": "På grund av tidsskillnaden<br>tvekar man att ringa.",
+      "b3": "Hon gjorde ingenting,", "b3s": "men livstecknet kom ändå.", "b4": "Även utan att ringa<br>vet vi att hon mår bra.",
+      "daughter": "Ella", "home_city": "Stockholm", "home_tz": "Europe/Stockholm", "away_city": "Vancouver", "away_tz": "America/Vancouver",
+      "bubble": "Mår du bra? Äter du ordentligt?", "unread": "Inte läst än", "dnote": "Hennes telefon<br>Appen öppnades inte",
+      "now": "nu", "brand_sub": "Ett livstecken varje dag, automatiskt", "store": "Sök efter ”Anbu” i appbutiken"
+    },
+    "hi": {
+      "t_a": "माँ फ़ोन नहीं उठा रहीं", "t_b": "विदेश में पढ़ती बेटी", "play": "चलाएँ", "replay": "फिर से देखें",
+      "a1": "माँ फ़ोन<br>नहीं उठा रहीं।", "a1s": "यह तीसरी बार है।", "a2": "भगवान करे<br>सब ठीक हो…",
+      "a3": "तभी<br>एक सूचना आई।", "a4": "बिना फ़ोन किए,<br>हर दिन कुशलता की ख़बर।",
+      "calls": "हाल के कॉल", "no_answer": "आउटगोइंग · कोई जवाब नहीं",
+      "b1": "बेटी विदेश में पढ़ रही है।<br>आज भी कोई ख़बर नहीं।", "b2": "समय के अंतर की वजह से<br>फ़ोन करने में हिचक होती है।",
+      "b3": "उसने कुछ नहीं किया,", "b3s": "फिर भी उसकी ख़बर पहले आ गई।", "b4": "बिना संपर्क किए भी<br>पता है कि वह ठीक है।",
+      "daughter": "प्रिया", "home_city": "दिल्ली", "home_tz": "Asia/Kolkata", "away_city": "टोरंटो", "away_tz": "America/Toronto",
+      "bubble": "ठीक हो? खाना ठीक से खा रही हो?", "unread": "अभी पढ़ा नहीं", "dnote": "उसका फ़ोन<br>ऐप नहीं खोला",
+      "now": "अभी", "brand_sub": "हर दिन अपने-आप पहुँचती कुशलता", "store": "ऐप स्टोर में “Anbu” खोजें"
+    },
+    "ar": {
+      "t_a": "أمي لا تردّ", "t_b": "ابنتنا في الغربة", "play": "تشغيل", "replay": "إعادة المشاهدة",
+      "a1": "أمي لا تردّ<br>على الهاتف.", "a1s": "للمرة الثالثة.", "a2": "أرجو ألّا يكون<br>قد حدث شيء…",
+      "a3": "وفجأة<br>وصل إشعار.", "a4": "دون اتصال،<br>يصلك الاطمئنان كل يوم.",
+      "calls": "الأخيرة", "no_answer": "صادرة · لا رد",
+      "b1": "ابنتنا تدرس في الخارج.<br>ولا خبر منها اليوم أيضاً.", "b2": "بسبب فارق التوقيت<br>نتردد في الاتصال.",
+      "b3": "لم تفعل شيئاً،", "b3s": "ومع ذلك وصل اطمئنانها.", "b4": "حتى دون اتصال<br>نعرف أنها بخير.",
+      "daughter": "سارة", "home_city": "الرياض", "home_tz": "Asia/Riyadh", "away_city": "بوسطن", "away_tz": "America/New_York",
+      "bubble": "كيف حالك؟ هل تأكلين جيداً؟", "unread": "لم تُقرأ بعد", "dnote": "هاتفها<br>لم تفتح التطبيق",
+      "now": "الآن", "brand_sub": "اطمئنان يومي يصل تلقائياً", "store": "ابحث عن ”Anbu“ في متجر التطبيقات"
+    }
+  }
+}

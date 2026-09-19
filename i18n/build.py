@@ -184,12 +184,25 @@ def app_tokens(code, app_all):
 # 「해질녘」 ③ 자리를 숏폼 영상으로 바꾼 언어. 영상 끝(공통 엔딩)에 ③ 문장이 그대로 들어 있으므로
 # 문장을 지우고 영상을 둔다. 영상이 없는 언어는 지금처럼 ③ 문장을 보여 준다.
 # 파일은 media/shorts/<code>/ — 만드는 법은 _shorts-build/README.md.
-SHORTS = {
-    "ko": {
-        "videos": [("a", "전화 안 받는 엄마"), ("b", "유학 간 딸")],
-        "play": "재생", "replay": "다시 보기",
-    },
-}
+def _load_shorts():
+    """홈 해질녘에 넣을 숏폼(_shorts-build/shorts.json 의 home:true 편).
+
+    영상 파일이 전부 있는 언어만 돌려준다 — 파일 없이 목록에만 있으면 홈에 깨진 영상이 뜨므로
+    렌더가 끝난 언어만 자동으로 켜진다. 없는 언어는 ③ 문장을 그대로 보여 준다."""
+    path = os.path.join(ROOT, "_shorts-build", "shorts.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding="utf-8") as f:
+        cfg = json.load(f)
+    home = [v for v in cfg["videos"] if v.get("home")]
+    out = {}
+    for code, L in cfg["langs"].items():
+        if home and all(os.path.exists(os.path.join(ROOT, "media", "shorts", code, v["id"] + ".mp4")) for v in home):
+            out[code] = {"videos": [(v["id"], L[v["title"]]) for v in home], "play": L["play"], "replay": L["replay"]}
+    return out
+
+
+SHORTS = _load_shorts()
 
 _PLAY_SVG = '<svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>'
 _REPLAY_SVG = ('<svg class="i-replay" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7.5 6 12 10V7a5 5 0 1 1-5 5H5'

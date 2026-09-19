@@ -11,93 +11,102 @@
   /* 통화 기록 — 특정 OS 화면을 흉내 내지 않은 일반형 */
   .calls .hd { padding: 14px 22px 10px; font-size: 26px; font-weight: 800; }
   .calls .row { display: flex; align-items: center; gap: 12px; padding: 14px 22px; border-bottom: 1px solid #E8EAF0; }
-  .calls .av { width: 42px; height: 42px; border-radius: 50%; background: #E3E7F6; color: #4355B9;
+  .calls .av { width: 42px; height: 42px; flex: none; border-radius: 50%; background: #E3E7F6; color: #4355B9;
     display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; }
   .calls .nm2 { font-size: 16px; font-weight: 700; }
   .calls .st { font-size: 12.5px; color: #E53935; margin-top: 2px; }
-  .calls .tm { margin-left: auto; font-size: 13px; color: #757575; }
+  .calls .tm { margin-inline-start: auto; font-size: 13px; color: #757575; white-space: nowrap; }
   .dim { position: absolute; inset: 0; background: rgba(8,10,30,.62); }
 
   /* 잠금 화면 */
   .lock { background: linear-gradient(170deg, #25204f 0%, #4b3a74 55%, #7a4f78 100%); color: #fff; text-align: center; }
-  .lock .d { margin-top: 250px; font-size: 16px; font-weight: 600; opacity: .9; }
+  .lock .d { margin-top: 280px; font-size: 16px; font-weight: 600; opacity: .9; }
   .lock .tm { font-size: 76px; font-weight: 300; letter-spacing: -2px; line-height: 1.1; }
 
   .fpush { left: 44px; top: 300px; width: 340px; --base: scale(1.25); transform-origin: top left; }
-  .fpush .r { justify-content: flex-start; }
-  .fpush .now { margin-left: auto; font-size: 10.5px; color: #9AA0AE; }
+  .fpush .now { margin-inline-start: auto; font-size: 10.5px; color: #9AA0AE; }
   .fcard { left: 42px; top: 440px; width: 332px; --base: scale(1.3); transform-origin: top left;
     background: #EEF6EF !important; }
   .fcard .slot { height: 120px; }
 </style></head>
 <body><div class="v">
 
-  <p class="cap" data-t="-1,3.2" data-fx="up">엄마가 전화를<br>안 받는다.<small>벌써 세 번째.</small></p>
-  <p class="cap" data-t="3.5,6.6" data-fx="up">무슨 일 있으신 건<br>아니겠지…</p>
-  <p class="cap" data-t="6.9,10.8" data-fx="up">그때,<br>알림 하나가 도착했다.</p>
-  <p class="cap" data-t="11.1,15.2" data-fx="up">전화하지 않아도,<br>매일 안부가 옵니다.</p>
+  <p class="cap" data-t="-1,3.2" data-fx="up"><span data-h="a1"></span><small data-k="a1s"></small></p>
+  <p class="cap" data-t="3.5,6.6" data-fx="up" data-h="a2"></p>
+  <p class="cap" data-t="6.9,10.8" data-fx="up" data-h="a3"></p>
+  <p class="cap" data-t="11.1,15.2" data-fx="up" data-h="a4"></p>
 
   <div class="pw" data-t="-1,15.2"><div class="phone"><div class="screen" style="position:relative">
 
     <!-- ① 통화 기록 -->
     <div class="layer calls" data-t="-1,6.3">
-      <div class="statusbar"><span>7:52</span><span>&#9646;&#9646;&#9646;</span></div>
-      <div class="hd">최근 기록</div>
-      <div class="row"><span class="av">엄</span><div><div class="nm2">엄마</div><div class="st">발신 · 응답 없음</div></div><span class="tm">오후 7:48</span></div>
-      <div class="row"><span class="av">엄</span><div><div class="nm2">엄마</div><div class="st">발신 · 응답 없음</div></div><span class="tm">오후 7:31</span></div>
-      <div class="row"><span class="av">엄</span><div><div class="nm2">엄마</div><div class="st">발신 · 응답 없음</div></div><span class="tm">오후 7:12</span></div>
+      <div class="statusbar"><span class="t-sb1"></span><span>&#9646;&#9646;&#9646;</span></div>
+      <div class="hd" data-k="calls"></div>
+      <div class="row"><span class="av"></span><div><div class="nm2" data-k="mom"></div><div class="st" data-k="no_answer"></div></div><span class="tm" data-w="19:48"></span></div>
+      <div class="row"><span class="av"></span><div><div class="nm2" data-k="mom"></div><div class="st" data-k="no_answer"></div></div><span class="tm" data-w="19:31"></span></div>
+      <div class="row"><span class="av"></span><div><div class="nm2" data-k="mom"></div><div class="st" data-k="no_answer"></div></div><span class="tm" data-w="19:12"></span></div>
       <div class="dim" data-t="3.5"></div>
     </div>
 
     <!-- ② 잠금 화면 -->
     <div class="layer lock" data-t="6.1,11.0">
-      <div class="d">9월 19일</div><div class="tm">8:04</div>
+      <div class="d t-date"></div><div class="tm t-lock"></div>
     </div>
 
     <!-- ③ 보호자 대시보드 — 홈 히어로 마크업 -->
     <div class="layer" data-t="10.7">
-      <div class="statusbar"><span>8:05</span><span>&#9646;&#9646;&#9646;</span></div>
-      <div class="appbar">Anbu Guardian</div>
+      <div class="statusbar"><span class="t-sb2"></span><span>&#9646;&#9646;&#9646;</span></div>
+      <div class="appbar" data-k="guardian_title"></div>
       <div class="pbody">
-        <div class="phead">현재 1명의 안부를<br>확인 중입니다.</div>
-        <div class="psum">오늘의 안부 요약</div>
-        <div class="plegend"><span><i></i>안전: 1</span></div>
-        <div class="plist">보호 대상자 리스트</div>
+        <div class="phead" data-h="phead"></div>
+        <div class="psum" data-k="psum"></div>
+        <div class="plegend"><span><i></i><span data-k="legend"></span></span></div>
+        <div class="plist" data-k="plist"></div>
         <div class="cards"><div class="scard" style="flex-basis:100%">
-          <div class="r1"><span class="nm">엄마<span class="bat">72%</span></span><span class="pill">✅ 안전</span></div>
-          <div class="r2"><span class="act">활동량: 활동적</span></div>
+          <div class="r1"><span class="nm"><span data-k="mom"></span><span class="bat">72%</span></span><span class="pill" data-k="pill"></span></div>
+          <div class="r2"><span class="act" data-k="act"></span></div>
           <div class="slot" style="height:104px"><div class="ghost">
-            <div class="chd"><span>걸음수</span><b class="peak">3,214</b></div>
+            <div class="chd"><span data-k="steps"></span><b class="peak n-steps"></b></div>
             <div class="plot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="today"></i></div>
-            <div class="xlab">지난 7일</div></div></div>
-          <div class="last">마지막 확인: 방금 전</div>
+            <div class="xlab" data-k="last7"></div></div></div>
+          <div class="last" data-k="last_now"></div>
         </div></div>
-        <div class="addbtn"><span class="circle">+</span><span class="t">새로운 보호 대상자 추가</span></div>
+        <div class="addbtn"><span class="circle">+</span><span class="t" data-k="add"></span></div>
       </div>
     </div>
   </div></div></div>
 
   <!-- 확대해서 띄운 조각 -->
   <div class="push float fpush" data-t="7.1,11.0" data-fx="down">
-    <div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z"/></svg></span><span class="app">안부</span><span class="now">지금</span></div>
-    <div class="ti">✅ 오늘 안부 확인 완료</div>
-    <div class="bo">엄마 · 오늘 3,214보를 걸으셨습니다.</div>
+    <div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z"/></svg></span><span class="app" data-k="app_name"></span><span class="now" data-k="now"></span></div>
+    <div class="ti" data-k="push_title"></div>
+    <div class="bo t-push"></div>
   </div>
 
   <div class="scard float fcard" data-t="12.0,15.2" data-fx="pop">
-    <div class="r1"><span class="nm">엄마<span class="bat">72%</span></span><span class="pill">✅ 안전</span></div>
-    <div class="r2"><span class="act">활동량: 활동적</span></div>
+    <div class="r1"><span class="nm"><span data-k="mom"></span><span class="bat">72%</span></span><span class="pill" data-k="pill"></span></div>
+    <div class="r2"><span class="act" data-k="act"></span></div>
     <div class="slot"><div class="ghost">
-      <div class="chd"><span>걸음수</span><b class="peak">3,214</b></div>
+      <div class="chd"><span data-k="steps"></span><b class="peak n-steps"></b></div>
       <div class="plot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="today"></i></div>
-      <div class="xlab">지난 7일</div></div></div>
-    <div class="last">마지막 확인: 방금 전</div>
+      <div class="xlab" data-k="last7"></div></div></div>
+    <div class="last" data-k="last_now"></div>
   </div>
 
 </div>
 <script src="engine.js"></script>
 <script>
   window.DURATION = 22.0;
+  fillText();
+  const $$ = s => document.querySelectorAll(s);
+  $$('.av').forEach(e => { e.textContent = Array.from(L.mom)[0]; });
+  $$('[data-w]').forEach(e => { const [h, m] = e.dataset.w.split(':').map(Number); e.textContent = fmtTime(wall(h, m)); });
+  $$('.t-sb1').forEach(e => { e.textContent = fmtShort(wall(19, 52)); });
+  $$('.t-sb2').forEach(e => { e.textContent = fmtShort(wall(20, 5)); });
+  $$('.t-date').forEach(e => { e.textContent = fmtDate(wall(20, 4)); });
+  $$('.t-lock').forEach(e => { e.textContent = fmtShort(wall(20, 4)); });
+  $$('.n-steps').forEach(e => { e.textContent = fmtNum(3214); });
+  $$('.t-push').forEach(e => { e.textContent = pushBody(L.mom, 3214); });
   mountEnding(15.2);
   const card = document.querySelector('.fcard');
   window.extra = t => growBars(card, t, 12.4);

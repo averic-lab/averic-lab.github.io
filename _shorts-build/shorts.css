@@ -56,3 +56,6 @@ body { margin: 0; }
 .end .brand .store { display: inline-block; margin-top: 18px; padding: 9px 20px; border-radius: 22px;
   background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35);
   font-size: 17px; font-weight: 600; }
+
+/* 일본어·중국어는 띄어쓰기가 없어 keep-all 이면 절 하나가 통째로 안 끊긴다(홈 CLAUDE.md 참조) */
+:lang(ja) .cap, :lang(zh) .cap, :lang(ja) .end .q, :lang(zh) .end .q { word-break: normal; line-break: strict; }
