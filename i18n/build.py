@@ -43,6 +43,20 @@ META = {
 ORDER = ["en", "ko", "ja", "zh-CN", "zh-TW", "de", "fr", "es", "it", "pt-BR",
          "ru", "nl", "pl", "tr", "vi", "th", "id", "sv", "hi", "ar"]
 
+# 언어 메뉴의 국기 이모지. META 튜플에 끼우지 않는 이유는 5-튜플 언패킹이
+# build.py·build_faq.py·build_guide.py 세 곳에 있어 원소를 늘리면 전부 깨지기 때문이다.
+# ⚠️ 국기는 국가지 언어가 아니다 — 여러 나라가 쓰는 언어(en·ar)는 한 나라를 고르면
+#    나머지 사용자를 배제하므로 지구본을 쓴다. pt-BR 은 브라질 포르투갈어라 🇧🇷 다(🇵🇹 아님).
+# ⚠️ 윈도우(크롬·엣지)는 국기 글리프가 없어 "KR" 같은 두 글자로 보인다. 알려진 OS 제약이고
+#    읽을 수는 있어 수용한다. 인라인 SVG 20개로 바꾸는 비용이 훨씬 크다.
+FLAG = {
+    "en": "🌍", "ko": "🇰🇷", "ja": "🇯🇵", "zh-CN": "🇨🇳", "zh-TW": "🇹🇼",
+    "de": "🇩🇪", "fr": "🇫🇷", "es": "🇪🇸", "it": "🇮🇹", "pt-BR": "🇧🇷",
+    "ru": "🇷🇺", "nl": "🇳🇱", "pl": "🇵🇱", "tr": "🇹🇷", "vi": "🇻🇳",
+    "th": "🇹🇭", "id": "🇮🇩", "sv": "🇸🇪", "hi": "🇮🇳", "ar": "🌍",
+}
+# 값은 여기 박아 둔 고정 문자라 HTML 이스케이프가 필요 없다(원어명은 esc 를 거친다).
+
 # 사이트 언어 코드 → App Store 국가 코드.
 # 국가 없는 링크(apps.apple.com/app/id...)는 애플이 301로 /us/ 에 보내 영문 스토어가 열린다.
 # 그래서 언어마다 스토어 국가를 명시한다. 20개 국가 모두 앱이 열리는 것을 확인함(2026-09-18).
@@ -79,7 +93,8 @@ def switcher(active):
         cls = "lang-option active" if code == active else "lang-option"
         rows.append(
             f'    <a href="/{code}/" class="{cls}" role="menuitem" data-lang="{code}">\n'
-            f'      <span class="lang-name">{native}</span><span class="lang-code">{label}</span>\n'
+            f'      <span class="lang-flag" aria-hidden="true">{FLAG[code]}</span>'
+            f'<span class="lang-name">{native}</span>\n'
             f'    </a>'
         )
     return "\n".join(rows)

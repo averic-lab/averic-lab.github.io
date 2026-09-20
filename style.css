@@ -191,22 +191,25 @@ em { font-style: normal; }
 .lang-option {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* 국기와 이름 사이 간격은 margin 이 아니라 gap 으로 준다 — 방향을 따라가므로
+     아랍어(dir=rtl)에서 따로 뒤집을 것이 없다. */
+  gap: 10px;
   padding: 11px 14px;
   border-radius: 10px;
   color: var(--ink);
   font-size: 13.5px;
+  letter-spacing: 0.3px;
   transition: background-color .15s ease;
 }
 .lang-option:hover { background: var(--warm-rose); }
 .lang-option.active { background: var(--warm-rose); color: var(--pink-deep); font-weight: 600; }
-.lang-option .lang-code {
-  font-size: 11px;
-  color: var(--ink-mute);
-  letter-spacing: 0.8px;
-  font-weight: 500;
-}
-.lang-option.active .lang-code { color: var(--pink-deep); opacity: 0.7; }
+.lang-option .lang-flag { flex: 0 0 auto; font-size: 16px; line-height: 1; }
+/* 키보드로 여닫는 요소라 포커스 링이 필요하다. FAQ·사용설명(base.css)과 같은 모양. */
+.lang-toggle:focus-visible,
+.lang-option:focus-visible { outline: 2px solid var(--pink-deep); outline-offset: 2px; }
+/* 대소문자가 있는 문자만 바뀐다 — 라틴·키릴(Русский→РУССКИЙ)만 대문자가 되고
+   한글·CJK·태국어·데바나가리·아랍어는 그대로다. DOM 텍스트는 원문이라 접근성 이름도 유지된다. */
+.lang-option .lang-name { text-transform: uppercase; }
 
 /* Mobile: same horizontal layout, smaller sizes — no hamburger */
 @media (max-width: 720px) {
