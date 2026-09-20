@@ -17,25 +17,60 @@ a{color:inherit}
 
 /* 헤더 */
 .site-head{border-bottom:1px solid var(--line);background:var(--paper)}
-/* height 를 고정하면 안 된다 — 언어 칩 20개가 좁은 화면에서 3줄로 접히는데
-   헤더는 62px 그대로라 칩이 헤더 밖으로 155px 삐져나와 본문을 덮었다.
-   min-height + 위아래 padding 이라야 접힌 만큼 헤더가 같이 자란다. */
+/* height 를 고정하지 않는다. 언어를 드롭다운으로 옮긴 뒤로는 헤더에 로고와 버튼
+   하나뿐이라 접힐 것이 없지만, min-height + 위아래 padding 형태는 그대로 둔다 —
+   긴 브랜드명이나 새 헤더 요소가 들어와도 헤더가 같이 자란다.
+   (그전에는 언어 칩 20개가 좁은 화면에서 3줄로 접히는데 헤더는 62px 그대로라
+    칩이 헤더 밖으로 155px 삐져나와 본문을 덮는 결함이 있었다. 드롭다운이 그 원인
+    자체를 없앴다 — 칩 목록으로 되돌린다면 이 사정이 같이 돌아온다.) */
 .site-head .wrap{display:flex;align-items:center;justify-content:space-between;
   gap:10px 16px;min-height:62px;padding:11px 22px;flex-wrap:wrap}
 .site-logo{font-family:var(--serif);font-size:21px;letter-spacing:.01em;
   text-decoration:none;font-weight:600}
-.lang-switch{display:flex;gap:4px;flex-wrap:wrap}
-.lang-switch a{font-size:13px;color:var(--ink-mute);text-decoration:none;
-  padding:4px 9px;border-radius:999px}
-.lang-switch a.active{color:var(--ink);background:var(--warm-paper);font-weight:600}
-.lang-switch a:hover{color:var(--ink)}
 
-/* 좁은 화면: 언어 칩이 3줄까지 늘어나면 헤더가 본문을 밀어낸다 — 조금 줄인다 */
+/* ── 언어 드롭다운 — 홈(style.css)과 같은 모양·같은 클래스 ──
+   홈은 히어로 위에 얹힌 투명 헤더라 밝은 글자가 기본이고 스크롤 후 어두워지지만,
+   이 페이지들의 헤더는 처음부터 흰 배경이다. 그래서 홈의 `.scrolled` 변형을
+   기본값으로 가져왔다 — 홈의 기본값을 그대로 쓰면 흰 바탕에 흰 글자가 된다. */
+.lang-wrap{position:relative;flex:0 0 auto}
+.lang-toggle{display:inline-flex;align-items:center;gap:6px;background:transparent;
+  border:1px solid rgba(0,0,0,.1);border-radius:999px;padding:6px 12px 6px 11px;
+  color:var(--ink-soft);font-family:inherit;font-size:11.5px;font-weight:600;
+  letter-spacing:.4px;cursor:pointer;
+  transition:background-color .15s ease,border-color .15s ease;
+  -webkit-appearance:none;appearance:none}
+.lang-toggle:hover{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.18)}
+.lang-toggle .globe{width:13px;height:13px;opacity:.85}
+.lang-toggle .caret{width:9px;height:9px;opacity:.7;transition:transform .2s ease}
+.lang-toggle[aria-expanded="true"] .caret{transform:rotate(180deg)}
+
+/* inset-inline-end 라 아랍어(dir=rtl)에서 반대편으로 자동으로 붙는다 —
+   홈처럼 [dir="rtl"] 보정을 따로 둘 필요가 없다. */
+.lang-menu{position:absolute;inset-inline-end:0;top:calc(100% + 8px);z-index:70;
+  min-width:240px;max-width:min(440px,calc(100vw - 32px));
+  max-height:min(70vh,540px);overflow-y:auto;
+  background:rgba(255,255,255,.98);
+  -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
+  border-radius:16px;border:1px solid rgba(0,0,0,.04);
+  box-shadow:0 24px 64px -16px rgba(0,0,0,.22),0 2px 8px rgba(0,0,0,.06);
+  padding:8px;display:none}
+.lang-menu[data-open="true"]{display:block}
+/* 국기와 이름 사이는 margin 이 아니라 gap — 방향을 따라가 RTL 에서 알아서 뒤집힌다 */
+.lang-option{display:flex;align-items:center;gap:10px;padding:11px 14px;
+  border-radius:10px;color:var(--ink);font-size:13.5px;letter-spacing:.3px;
+  text-decoration:none;transition:background-color .15s ease}
+.lang-option:hover{background:var(--warm-paper)}
+.lang-option.active{background:var(--warm-paper);color:var(--pink-deep);font-weight:600}
+.lang-option .lang-flag{flex:0 0 auto;font-size:16px;line-height:1}
+/* 대소문자가 있는 문자만 바뀐다 — 라틴·키릴(Русский→РУССКИЙ)만 대문자가 되고
+   한글·CJK·태국어·데바나가리·아랍어는 그대로다. DOM 텍스트는 원문이라 접근성 이름도 유지된다. */
+.lang-option .lang-name{text-transform:uppercase}
+
 @media (max-width:600px){
   .site-head .wrap{gap:8px 10px;padding:10px 18px}
   .site-logo{font-size:19px}
-  .lang-switch{gap:2px}
-  .lang-switch a{font-size:12px;padding:3px 7px}
+  .lang-toggle{padding:5px 10px 5px 9px;font-size:11px;gap:5px}
+  .lang-toggle .globe{width:12px;height:12px}
 }
 
 /* ── 모바일 문맥 바 (사용설명·FAQ 공용) ───────────────────────────────

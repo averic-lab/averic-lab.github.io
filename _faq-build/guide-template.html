@@ -55,7 +55,8 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
   direction:ltr;unicode-bidi:isolate;
   font-variant-numeric:tabular-nums}
 [dir="rtl"] .ctrl .count{margin-left:0;margin-right:auto}
-.ctrl button:focus-visible,.step:focus-visible,.lang-switch a:focus-visible{
+.ctrl button:focus-visible,.step:focus-visible,
+.lang-toggle:focus-visible,.lang-option:focus-visible{
   outline:2px solid var(--teal);outline-offset:2px}
 
 /* 단계 목록 — 애니메이션을 못 보거나 안 보는 사람에게는 이쪽이 본문이다.
@@ -360,6 +361,48 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 </div>
 
 <script>
+// ----- 언어 드롭다운 -----
+// 홈은 site.js 가 하지만 이 페이지들은 site.js 를 불러오지 않는다(인라인 전용).
+// 여닫기와 언어 기억 둘 다 홈과 같은 동작이어야 한다.
+(function(){
+  var t = document.getElementById('langToggle');
+  var m = document.getElementById('langMenu');
+  if (!t || !m) return;   // 언어가 하나뿐이면 switcher() 가 아무것도 내보내지 않는다
+  function close(){
+    m.setAttribute('data-open','false');
+    m.setAttribute('aria-hidden','true');
+    t.setAttribute('aria-expanded','false');
+  }
+  t.addEventListener('click', function(e){
+    e.stopPropagation();
+    if (m.getAttribute('data-open') === 'true') { close(); return; }
+    m.setAttribute('data-open','true');
+    m.setAttribute('aria-hidden','false');
+    t.setAttribute('aria-expanded','true');
+  });
+  document.addEventListener('click', function(e){
+    if (m.getAttribute('data-open') !== 'true') return;
+    if (m.contains(e.target) || t.contains(e.target)) return;
+    close();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') close();
+  });
+
+  // 고른 언어를 기억해 두면 루트(averic.co.kr/)의 라우터가 다음 방문에 그리로 보낸다.
+  // 키와 형식은 라우터(index.html)와 같아야 한다 — t 가 없으면 90일 만료 판정이
+  // 안 돼 그 브라우저에서 영원히 이 언어로 열린다.
+  m.querySelectorAll('.lang-option').forEach(function(opt){
+    opt.addEventListener('click', function(){
+      var code = opt.getAttribute('data-lang');
+      if (!code) return;
+      try {
+        localStorage.setItem('anbu.lang', JSON.stringify({ code: code, t: Date.now() }));
+      } catch (e) {}
+    });
+  });
+})();
+
 // 앱 번역 파일에서 추출한 실제 문구 (extract_strings.py)
 var S = {{APP_STRINGS}};
 var WHO = {{WHO}};          // 어느 폰인지 라벨 2개

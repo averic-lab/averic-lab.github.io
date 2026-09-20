@@ -47,25 +47,60 @@ a{color:inherit}
 
 /* 헤더 */
 .site-head{border-bottom:1px solid var(--line);background:var(--paper)}
-/* height 를 고정하면 안 된다 — 언어 칩 20개가 좁은 화면에서 3줄로 접히는데
-   헤더는 62px 그대로라 칩이 헤더 밖으로 155px 삐져나와 본문을 덮었다.
-   min-height + 위아래 padding 이라야 접힌 만큼 헤더가 같이 자란다. */
+/* height 를 고정하지 않는다. 언어를 드롭다운으로 옮긴 뒤로는 헤더에 로고와 버튼
+   하나뿐이라 접힐 것이 없지만, min-height + 위아래 padding 형태는 그대로 둔다 —
+   긴 브랜드명이나 새 헤더 요소가 들어와도 헤더가 같이 자란다.
+   (그전에는 언어 칩 20개가 좁은 화면에서 3줄로 접히는데 헤더는 62px 그대로라
+    칩이 헤더 밖으로 155px 삐져나와 본문을 덮는 결함이 있었다. 드롭다운이 그 원인
+    자체를 없앴다 — 칩 목록으로 되돌린다면 이 사정이 같이 돌아온다.) */
 .site-head .wrap{display:flex;align-items:center;justify-content:space-between;
   gap:10px 16px;min-height:62px;padding:11px 22px;flex-wrap:wrap}
 .site-logo{font-family:var(--serif);font-size:21px;letter-spacing:.01em;
   text-decoration:none;font-weight:600}
-.lang-switch{display:flex;gap:4px;flex-wrap:wrap}
-.lang-switch a{font-size:13px;color:var(--ink-mute);text-decoration:none;
-  padding:4px 9px;border-radius:999px}
-.lang-switch a.active{color:var(--ink);background:var(--warm-paper);font-weight:600}
-.lang-switch a:hover{color:var(--ink)}
 
-/* 좁은 화면: 언어 칩이 3줄까지 늘어나면 헤더가 본문을 밀어낸다 — 조금 줄인다 */
+/* ── 언어 드롭다운 — 홈(style.css)과 같은 모양·같은 클래스 ──
+   홈은 히어로 위에 얹힌 투명 헤더라 밝은 글자가 기본이고 스크롤 후 어두워지지만,
+   이 페이지들의 헤더는 처음부터 흰 배경이다. 그래서 홈의 `.scrolled` 변형을
+   기본값으로 가져왔다 — 홈의 기본값을 그대로 쓰면 흰 바탕에 흰 글자가 된다. */
+.lang-wrap{position:relative;flex:0 0 auto}
+.lang-toggle{display:inline-flex;align-items:center;gap:6px;background:transparent;
+  border:1px solid rgba(0,0,0,.1);border-radius:999px;padding:6px 12px 6px 11px;
+  color:var(--ink-soft);font-family:inherit;font-size:11.5px;font-weight:600;
+  letter-spacing:.4px;cursor:pointer;
+  transition:background-color .15s ease,border-color .15s ease;
+  -webkit-appearance:none;appearance:none}
+.lang-toggle:hover{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.18)}
+.lang-toggle .globe{width:13px;height:13px;opacity:.85}
+.lang-toggle .caret{width:9px;height:9px;opacity:.7;transition:transform .2s ease}
+.lang-toggle[aria-expanded="true"] .caret{transform:rotate(180deg)}
+
+/* inset-inline-end 라 아랍어(dir=rtl)에서 반대편으로 자동으로 붙는다 —
+   홈처럼 [dir="rtl"] 보정을 따로 둘 필요가 없다. */
+.lang-menu{position:absolute;inset-inline-end:0;top:calc(100% + 8px);z-index:70;
+  min-width:240px;max-width:min(440px,calc(100vw - 32px));
+  max-height:min(70vh,540px);overflow-y:auto;
+  background:rgba(255,255,255,.98);
+  -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
+  border-radius:16px;border:1px solid rgba(0,0,0,.04);
+  box-shadow:0 24px 64px -16px rgba(0,0,0,.22),0 2px 8px rgba(0,0,0,.06);
+  padding:8px;display:none}
+.lang-menu[data-open="true"]{display:block}
+/* 국기와 이름 사이는 margin 이 아니라 gap — 방향을 따라가 RTL 에서 알아서 뒤집힌다 */
+.lang-option{display:flex;align-items:center;gap:10px;padding:11px 14px;
+  border-radius:10px;color:var(--ink);font-size:13.5px;letter-spacing:.3px;
+  text-decoration:none;transition:background-color .15s ease}
+.lang-option:hover{background:var(--warm-paper)}
+.lang-option.active{background:var(--warm-paper);color:var(--pink-deep);font-weight:600}
+.lang-option .lang-flag{flex:0 0 auto;font-size:16px;line-height:1}
+/* 대소문자가 있는 문자만 바뀐다 — 라틴·키릴(Русский→РУССКИЙ)만 대문자가 되고
+   한글·CJK·태국어·데바나가리·아랍어는 그대로다. DOM 텍스트는 원문이라 접근성 이름도 유지된다. */
+.lang-option .lang-name{text-transform:uppercase}
+
 @media (max-width:600px){
   .site-head .wrap{gap:8px 10px;padding:10px 18px}
   .site-logo{font-size:19px}
-  .lang-switch{gap:2px}
-  .lang-switch a{font-size:12px;padding:3px 7px}
+  .lang-toggle{padding:5px 10px 5px 9px;font-size:11px;gap:5px}
+  .lang-toggle .globe{width:12px;height:12px}
 }
 
 /* ── 모바일 문맥 바 (사용설명·FAQ 공용) ───────────────────────────────
@@ -201,7 +236,8 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
   border-radius:999px;background:var(--paper);color:var(--ink-mute);cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);
   border-color:var(--ink);font-weight:600}
-.chip:focus-visible,.show-me:focus-visible,.lang-switch a:focus-visible{
+.chip:focus-visible,.show-me:focus-visible,
+.lang-toggle:focus-visible,.lang-option:focus-visible{
   outline:2px solid var(--teal);outline-offset:2px}
 .caption{font-size:12.5px;color:var(--ink-mute);line-height:1.6;margin-top:13px}
 
@@ -325,7 +361,7 @@ footer .copy{margin-left:auto}
 
 <header class="site-head"><div class="wrap">
   <a class="site-logo" href="/fr/">Anbu</a>
-  <nav class="lang-switch"><a href="/en/faq.html" class="lang-option">English</a><a href="/ko/faq.html" class="lang-option">한국어</a><a href="/ja/faq.html" class="lang-option">日本語</a><a href="/zh-CN/faq.html" class="lang-option">简体中文</a><a href="/zh-TW/faq.html" class="lang-option">繁體中文</a><a href="/de/faq.html" class="lang-option">Deutsch</a><a href="/fr/faq.html" class="lang-option active">Français</a><a href="/es/faq.html" class="lang-option">Español</a><a href="/it/faq.html" class="lang-option">Italiano</a><a href="/pt-BR/faq.html" class="lang-option">Português</a><a href="/ru/faq.html" class="lang-option">Русский</a><a href="/nl/faq.html" class="lang-option">Nederlands</a><a href="/pl/faq.html" class="lang-option">Polski</a><a href="/tr/faq.html" class="lang-option">Türkçe</a><a href="/vi/faq.html" class="lang-option">Tiếng Việt</a><a href="/th/faq.html" class="lang-option">ไทย</a><a href="/id/faq.html" class="lang-option">Bahasa Indonesia</a><a href="/sv/faq.html" class="lang-option">Svenska</a><a href="/hi/faq.html" class="lang-option">हिन्दी</a><a href="/ar/faq.html" class="lang-option">العربية</a></nav>
+  <span class="lang-wrap"><button class="lang-toggle" id="langToggle" type="button" aria-haspopup="true" aria-expanded="false"><svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span class="lang-current">FR</span><svg class="caret" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M2 4l4 4 4-4z"/></svg></button><div class="lang-menu" id="langMenu" role="menu" aria-hidden="true"><a href="/en/faq.html" class="lang-option" role="menuitem" data-lang="en"><span class="lang-flag" aria-hidden="true">🌍</span><span class="lang-name">English</span></a><a href="/ko/faq.html" class="lang-option" role="menuitem" data-lang="ko"><span class="lang-flag" aria-hidden="true">🇰🇷</span><span class="lang-name">한국어</span></a><a href="/ja/faq.html" class="lang-option" role="menuitem" data-lang="ja"><span class="lang-flag" aria-hidden="true">🇯🇵</span><span class="lang-name">日本語</span></a><a href="/zh-CN/faq.html" class="lang-option" role="menuitem" data-lang="zh-CN"><span class="lang-flag" aria-hidden="true">🇨🇳</span><span class="lang-name">简体中文</span></a><a href="/zh-TW/faq.html" class="lang-option" role="menuitem" data-lang="zh-TW"><span class="lang-flag" aria-hidden="true">🇹🇼</span><span class="lang-name">繁體中文</span></a><a href="/de/faq.html" class="lang-option" role="menuitem" data-lang="de"><span class="lang-flag" aria-hidden="true">🇩🇪</span><span class="lang-name">Deutsch</span></a><a href="/fr/faq.html" class="lang-option active" role="menuitem" data-lang="fr"><span class="lang-flag" aria-hidden="true">🇫🇷</span><span class="lang-name">Français</span></a><a href="/es/faq.html" class="lang-option" role="menuitem" data-lang="es"><span class="lang-flag" aria-hidden="true">🇪🇸</span><span class="lang-name">Español</span></a><a href="/it/faq.html" class="lang-option" role="menuitem" data-lang="it"><span class="lang-flag" aria-hidden="true">🇮🇹</span><span class="lang-name">Italiano</span></a><a href="/pt-BR/faq.html" class="lang-option" role="menuitem" data-lang="pt-BR"><span class="lang-flag" aria-hidden="true">🇧🇷</span><span class="lang-name">Português</span></a><a href="/ru/faq.html" class="lang-option" role="menuitem" data-lang="ru"><span class="lang-flag" aria-hidden="true">🇷🇺</span><span class="lang-name">Русский</span></a><a href="/nl/faq.html" class="lang-option" role="menuitem" data-lang="nl"><span class="lang-flag" aria-hidden="true">🇳🇱</span><span class="lang-name">Nederlands</span></a><a href="/pl/faq.html" class="lang-option" role="menuitem" data-lang="pl"><span class="lang-flag" aria-hidden="true">🇵🇱</span><span class="lang-name">Polski</span></a><a href="/tr/faq.html" class="lang-option" role="menuitem" data-lang="tr"><span class="lang-flag" aria-hidden="true">🇹🇷</span><span class="lang-name">Türkçe</span></a><a href="/vi/faq.html" class="lang-option" role="menuitem" data-lang="vi"><span class="lang-flag" aria-hidden="true">🇻🇳</span><span class="lang-name">Tiếng Việt</span></a><a href="/th/faq.html" class="lang-option" role="menuitem" data-lang="th"><span class="lang-flag" aria-hidden="true">🇹🇭</span><span class="lang-name">ไทย</span></a><a href="/id/faq.html" class="lang-option" role="menuitem" data-lang="id"><span class="lang-flag" aria-hidden="true">🇮🇩</span><span class="lang-name">Bahasa Indonesia</span></a><a href="/sv/faq.html" class="lang-option" role="menuitem" data-lang="sv"><span class="lang-flag" aria-hidden="true">🇸🇪</span><span class="lang-name">Svenska</span></a><a href="/hi/faq.html" class="lang-option" role="menuitem" data-lang="hi"><span class="lang-flag" aria-hidden="true">🇮🇳</span><span class="lang-name">हिन्दी</span></a><a href="/ar/faq.html" class="lang-option" role="menuitem" data-lang="ar"><span class="lang-flag" aria-hidden="true">🌍</span><span class="lang-name">العربية</span></a></div></span>
 </div></header>
 
 <div class="wrap">
@@ -454,6 +490,48 @@ footer .copy{margin-left:auto}
 </div>
 
 <script>
+// ----- 언어 드롭다운 -----
+// 홈은 site.js 가 하지만 이 페이지들은 site.js 를 불러오지 않는다(인라인 전용).
+// 여닫기와 언어 기억 둘 다 홈과 같은 동작이어야 한다.
+(function(){
+  var t = document.getElementById('langToggle');
+  var m = document.getElementById('langMenu');
+  if (!t || !m) return;   // 언어가 하나뿐이면 switcher() 가 아무것도 내보내지 않는다
+  function close(){
+    m.setAttribute('data-open','false');
+    m.setAttribute('aria-hidden','true');
+    t.setAttribute('aria-expanded','false');
+  }
+  t.addEventListener('click', function(e){
+    e.stopPropagation();
+    if (m.getAttribute('data-open') === 'true') { close(); return; }
+    m.setAttribute('data-open','true');
+    m.setAttribute('aria-hidden','false');
+    t.setAttribute('aria-expanded','true');
+  });
+  document.addEventListener('click', function(e){
+    if (m.getAttribute('data-open') !== 'true') return;
+    if (m.contains(e.target) || t.contains(e.target)) return;
+    close();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') close();
+  });
+
+  // 고른 언어를 기억해 두면 루트(averic.co.kr/)의 라우터가 다음 방문에 그리로 보낸다.
+  // 키와 형식은 라우터(index.html)와 같아야 한다 — t 가 없으면 90일 만료 판정이
+  // 안 돼 그 브라우저에서 영원히 이 언어로 열린다.
+  m.querySelectorAll('.lang-option').forEach(function(opt){
+    opt.addEventListener('click', function(){
+      var code = opt.getAttribute('data-lang');
+      if (!code) return;
+      try {
+        localStorage.setItem('anbu.lang', JSON.stringify({ code: code, t: Date.now() }));
+      } catch (e) {}
+    });
+  });
+})();
+
 // 앱 번역 파일에서 추출한 실제 문구 (extract_strings.py)
 var S = {"stability_battery_warning_short": "La restriction d'utilisation de la batterie doit être désactivée", "gs_activity_permission_denied_warning": "L'autorisation de compteur de pas est refusée. Appuyez ici pour autoriser.", "location_permission_warning": "La position ne sera pas envoyée lors d'un appel d'urgence. Touchez pour autoriser.", "permission_hibernation_title": "Veuillez désactiver la suppression automatique des autorisations", "permission_hibernation_highlight": "suppression automatique des autorisations", "permission_hibernation_message": "Android supprime automatiquement les autorisations des applications que vous n'utilisez pas depuis longtemps. Anbu fonctionne généralement sans être ouverte, donc cette fonctionnalité peut faire disparaître les autorisations après un certain temps et arrêter l'envoi du signal de bien-être.\n\nAppuyez sur [Ouvrir les paramètres] ci-dessous — l'écran du bouton correspondant s'affichera directement. Veuillez désactiver le bouton.\n\n※ Les libellés exacts peuvent varier selon le fabricant de l'appareil.", "permission_hibernation_go_to_settings": "Ouvrir les paramètres", "common_later": "Plus tard", "app_name": "Anbu", "subject_home_share_title": "Partagez votre code de sécurité", "subject_home_check_title_last": "Dernière vérification", "subject_home_check_body_reported": "Signalé à @time", "heartbeat_schedule_change": "Modifier l'heure de vérification", "heartbeat_daily_time": "Tous les jours à @time", "subject_home_report_button": "Signaler mon bien-être maintenant", "subject_home_report_desc": "Rassurez votre protecteur en lui montrant que vous allez bien", "subject_home_emergency_button": "J'ai besoin d'aide", "subject_home_emergency_desc": "Envoie une alerte d'urgence à vos protecteurs", "notifications_level_caution": "Attention", "noti_caution_missing_body": "La vérification de bien-être prévue aujourd'hui n'a pas encore été reçue. Veuillez vérifier en personne.", "notifications_view_location": "🗺️ Voir la position", "stability_battery_dialog_title": "Désactiver la restriction d'utilisation de la batterie", "stability_battery_dialog_message": "Lorsque votre téléphone passe en mode économie d'énergie, les signaux de bien-être envoyés à votre protecteur peuvent être retardés ou manqués.\n\nAprès avoir appuyé sur [Ouvrir les paramètres] ci-dessous, réglez \"Batterie\" → \"Sans restriction\". Ainsi, les signaux de bien-être sont transmis de manière fiable à l'heure prévue chaque jour.\n\n※ Les libellés exacts peuvent varier selon le fabricant de l'appareil.", "gs_activity_permission_settings_title": "Autorisation requise", "gs_activity_permission_settings_body": "Veuillez autoriser l'autorisation Activité physique (Mouvement et Forme) dans les paramètres de l'application.", "gs_activity_permission_settings_go": "Aller aux paramètres", "location_permission_settings_title": "Autorisation de localisation requise", "location_permission_settings_body_android": "Sélectionnez « Autorisations » → « Position », puis choisissez « Autoriser uniquement lorsque l'app est utilisée ».", "location_permission_settings_body_ios": "Trouvez et sélectionnez « Anbu », puis dans « Position » choisissez « Lorsque l'app est active ».", "common_cancel": "Annuler", "settings_title": "Paramètres", "gs_enable_button": "Créer mon code de sécurité", "gs_enable_button_desc": "Vos proches peuvent aussi veiller sur vous", "settings_subscription_service": "Abonnement & service", "settings_current_membership": "Abonnement actuel", "settings_free_trial": "Essai gratuit", "subscription_subscribe": "S'abonner", "subscription_restore": "Restaurer l'achat", "settings_notification": "Paramètres de notification", "settings_terms_section": "Mentions légales", "settings_privacy_policy": "Politique de confidentialité", "settings_terms": "Conditions d'utilisation", "gs_enable_dialog_title": "Créer mon code de sécurité", "gs_enable_dialog_body": "Un code de sécurité sera émis — veuillez le partager avec vos autres protecteurs.", "gs_enable_confirm": "Créer", "gs_enable_dialog_ios_warning_title": "⚠ Comment votre signal de bien-être est envoyé", "gs_enable_dialog_ios_warning_body": "Une « notification push de bien-être » apparaît chaque jour à l'heure programmée. Vous devez appuyer sur la notification ou ouvrir l'application vous-même à ce moment-là pour que votre signal de bien-être soit envoyé. Si vous n'ouvrez pas l'application, vos protecteurs peuvent recevoir une alerte de vérification manquée.", "gs_enable_dialog_ios_confirm": "Compris, activer", "subject_home_code_copied": "Code copié", "add_subject_title": "Associer une personne protégée", "add_subject_button": "Ajouter une personne protégée", "add_subject_guide_title": "Saisissez le code unique et un surnom.", "add_subject_guide_subtitle": "Associez l'application d'un proche pour suivre son état en temps réel.", "add_subject_code_label": "Code unique (7 caractères)", "add_subject_code_info": "Le code unique se trouve dans l'application de la personne protégée.", "add_subject_alias_label": "Surnom", "add_subject_alias_hint": "ex. : Maman, Papa", "add_subject_phone_label": "Numéro de téléphone (facultatif)", "add_subject_phone_hint": "0612345678", "add_subject_phone_info": "Si renseigné, le bouton d'appel compose directement ce numéro. Sinon, vous devrez choisir le contact dans votre liste.", "add_subject_connect": "Associer", "guardian_today_summary": "Résumé du bien-être du jour", "guardian_checking_subjects": "Suivi en cours pour\n@count personne(s).", "guardian_subject_list": "Liste des personnes protégées", "guardian_status_normal": "Normal", "guardian_status_caution": "Attention", "guardian_status_confirmed": "✅ Normal", "guardian_safety_needed": "Vérification nécessaire", "guardian_call_now": "Appeler maintenant", "guardian_confirm_safety": "Confirmer", "guardian_last_check_hours": "Dernière vérif. : il y a @hours h", "guardian_activity_prefix": "Activité", "guardian_activity_active": "Actif", "guardian_chart_y_axis_steps": "Pas", "guardian_chart_x_axis_last_7_days": "7 derniers jours", "subject_home_emergency_confirm_title": "Demande d'aide d'urgence", "subject_home_emergency_confirm_body": "Une alerte d'urgence sera envoyée à tous vos protecteurs.\nVotre position actuelle sera également partagée.\nVoulez-vous vraiment demander de l'aide ?", "subject_home_emergency_confirm_send": "Envoyer la demande d'urgence", "emergency_message_hint": "Ajouter un message (facultatif)", "noti_emergency_body": "La personne protégée a directement demandé de l'aide. Veuillez vérifier immédiatement.", "emergency_map_title": "Position d'urgence", "emergency_map_subject_label": "Personne protégée", "emergency_map_accuracy_label": "Précision", "emergency_map_open_external": "Ouvrir dans l'application de cartes externe", "notifications_title": "Notifications", "notifications_level_health": "Normal", "notifications_level_info": "Info", "notifications_level_warning": "Alerte", "notifications_level_urgent": "Urgent", "noti_auto_report_body": "La vérification de bien-être a été reçue avec succès.", "noti_warning_body": "Les vérifications de bien-être ont été manquées consécutivement. Veuillez vérifier en personne.", "noti_urgent_body": "Aucune vérification de bien-être depuis @days jour(s). Une vérification immédiate est requise.", "noti_steps_body": "@steps pas effectués aujourd'hui.", "connection_title": "Gestion des connexions", "connection_connected_subjects": "Personnes protégées connectées", "connection_managed_count_value": "@current / @max", "connection_heartbeat_schedule": "Tous les jours à @time", "nav_home": "Accueil", "nav_connection": "Connexion", "nav_notification": "Alertes", "nav_settings": "Paramètres"};
 

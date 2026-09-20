@@ -47,25 +47,60 @@ a{color:inherit}
 
 /* 헤더 */
 .site-head{border-bottom:1px solid var(--line);background:var(--paper)}
-/* height 를 고정하면 안 된다 — 언어 칩 20개가 좁은 화면에서 3줄로 접히는데
-   헤더는 62px 그대로라 칩이 헤더 밖으로 155px 삐져나와 본문을 덮었다.
-   min-height + 위아래 padding 이라야 접힌 만큼 헤더가 같이 자란다. */
+/* height 를 고정하지 않는다. 언어를 드롭다운으로 옮긴 뒤로는 헤더에 로고와 버튼
+   하나뿐이라 접힐 것이 없지만, min-height + 위아래 padding 형태는 그대로 둔다 —
+   긴 브랜드명이나 새 헤더 요소가 들어와도 헤더가 같이 자란다.
+   (그전에는 언어 칩 20개가 좁은 화면에서 3줄로 접히는데 헤더는 62px 그대로라
+    칩이 헤더 밖으로 155px 삐져나와 본문을 덮는 결함이 있었다. 드롭다운이 그 원인
+    자체를 없앴다 — 칩 목록으로 되돌린다면 이 사정이 같이 돌아온다.) */
 .site-head .wrap{display:flex;align-items:center;justify-content:space-between;
   gap:10px 16px;min-height:62px;padding:11px 22px;flex-wrap:wrap}
 .site-logo{font-family:var(--serif);font-size:21px;letter-spacing:.01em;
   text-decoration:none;font-weight:600}
-.lang-switch{display:flex;gap:4px;flex-wrap:wrap}
-.lang-switch a{font-size:13px;color:var(--ink-mute);text-decoration:none;
-  padding:4px 9px;border-radius:999px}
-.lang-switch a.active{color:var(--ink);background:var(--warm-paper);font-weight:600}
-.lang-switch a:hover{color:var(--ink)}
 
-/* 좁은 화면: 언어 칩이 3줄까지 늘어나면 헤더가 본문을 밀어낸다 — 조금 줄인다 */
+/* ── 언어 드롭다운 — 홈(style.css)과 같은 모양·같은 클래스 ──
+   홈은 히어로 위에 얹힌 투명 헤더라 밝은 글자가 기본이고 스크롤 후 어두워지지만,
+   이 페이지들의 헤더는 처음부터 흰 배경이다. 그래서 홈의 `.scrolled` 변형을
+   기본값으로 가져왔다 — 홈의 기본값을 그대로 쓰면 흰 바탕에 흰 글자가 된다. */
+.lang-wrap{position:relative;flex:0 0 auto}
+.lang-toggle{display:inline-flex;align-items:center;gap:6px;background:transparent;
+  border:1px solid rgba(0,0,0,.1);border-radius:999px;padding:6px 12px 6px 11px;
+  color:var(--ink-soft);font-family:inherit;font-size:11.5px;font-weight:600;
+  letter-spacing:.4px;cursor:pointer;
+  transition:background-color .15s ease,border-color .15s ease;
+  -webkit-appearance:none;appearance:none}
+.lang-toggle:hover{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.18)}
+.lang-toggle .globe{width:13px;height:13px;opacity:.85}
+.lang-toggle .caret{width:9px;height:9px;opacity:.7;transition:transform .2s ease}
+.lang-toggle[aria-expanded="true"] .caret{transform:rotate(180deg)}
+
+/* inset-inline-end 라 아랍어(dir=rtl)에서 반대편으로 자동으로 붙는다 —
+   홈처럼 [dir="rtl"] 보정을 따로 둘 필요가 없다. */
+.lang-menu{position:absolute;inset-inline-end:0;top:calc(100% + 8px);z-index:70;
+  min-width:240px;max-width:min(440px,calc(100vw - 32px));
+  max-height:min(70vh,540px);overflow-y:auto;
+  background:rgba(255,255,255,.98);
+  -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
+  border-radius:16px;border:1px solid rgba(0,0,0,.04);
+  box-shadow:0 24px 64px -16px rgba(0,0,0,.22),0 2px 8px rgba(0,0,0,.06);
+  padding:8px;display:none}
+.lang-menu[data-open="true"]{display:block}
+/* 국기와 이름 사이는 margin 이 아니라 gap — 방향을 따라가 RTL 에서 알아서 뒤집힌다 */
+.lang-option{display:flex;align-items:center;gap:10px;padding:11px 14px;
+  border-radius:10px;color:var(--ink);font-size:13.5px;letter-spacing:.3px;
+  text-decoration:none;transition:background-color .15s ease}
+.lang-option:hover{background:var(--warm-paper)}
+.lang-option.active{background:var(--warm-paper);color:var(--pink-deep);font-weight:600}
+.lang-option .lang-flag{flex:0 0 auto;font-size:16px;line-height:1}
+/* 대소문자가 있는 문자만 바뀐다 — 라틴·키릴(Русский→РУССКИЙ)만 대문자가 되고
+   한글·CJK·태국어·데바나가리·아랍어는 그대로다. DOM 텍스트는 원문이라 접근성 이름도 유지된다. */
+.lang-option .lang-name{text-transform:uppercase}
+
 @media (max-width:600px){
   .site-head .wrap{gap:8px 10px;padding:10px 18px}
   .site-logo{font-size:19px}
-  .lang-switch{gap:2px}
-  .lang-switch a{font-size:12px;padding:3px 7px}
+  .lang-toggle{padding:5px 10px 5px 9px;font-size:11px;gap:5px}
+  .lang-toggle .globe{width:12px;height:12px}
 }
 
 /* ── 모바일 문맥 바 (사용설명·FAQ 공용) ───────────────────────────────
@@ -183,7 +218,8 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
   direction:ltr;unicode-bidi:isolate;
   font-variant-numeric:tabular-nums}
 [dir="rtl"] .ctrl .count{margin-left:0;margin-right:auto}
-.ctrl button:focus-visible,.step:focus-visible,.lang-switch a:focus-visible{
+.ctrl button:focus-visible,.step:focus-visible,
+.lang-toggle:focus-visible,.lang-option:focus-visible{
   outline:2px solid var(--teal);outline-offset:2px}
 
 /* 단계 목록 — 애니메이션을 못 보거나 안 보는 사람에게는 이쪽이 본문이다.
@@ -553,7 +589,7 @@ footer .copy{margin-left:auto}
 
 <header class="site-head"><div class="wrap">
   <a class="site-logo" href="/th/">Anbu</a>
-  <nav class="lang-switch"><a href="/en/guide.html" class="lang-option">English</a><a href="/ko/guide.html" class="lang-option">한국어</a><a href="/ja/guide.html" class="lang-option">日本語</a><a href="/zh-CN/guide.html" class="lang-option">简体中文</a><a href="/zh-TW/guide.html" class="lang-option">繁體中文</a><a href="/de/guide.html" class="lang-option">Deutsch</a><a href="/fr/guide.html" class="lang-option">Français</a><a href="/es/guide.html" class="lang-option">Español</a><a href="/it/guide.html" class="lang-option">Italiano</a><a href="/pt-BR/guide.html" class="lang-option">Português</a><a href="/ru/guide.html" class="lang-option">Русский</a><a href="/nl/guide.html" class="lang-option">Nederlands</a><a href="/pl/guide.html" class="lang-option">Polski</a><a href="/tr/guide.html" class="lang-option">Türkçe</a><a href="/vi/guide.html" class="lang-option">Tiếng Việt</a><a href="/th/guide.html" class="lang-option active">ไทย</a><a href="/id/guide.html" class="lang-option">Bahasa Indonesia</a><a href="/sv/guide.html" class="lang-option">Svenska</a><a href="/hi/guide.html" class="lang-option">हिन्दी</a><a href="/ar/guide.html" class="lang-option">العربية</a></nav>
+  <span class="lang-wrap"><button class="lang-toggle" id="langToggle" type="button" aria-haspopup="true" aria-expanded="false"><svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span class="lang-current">TH</span><svg class="caret" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M2 4l4 4 4-4z"/></svg></button><div class="lang-menu" id="langMenu" role="menu" aria-hidden="true"><a href="/en/guide.html" class="lang-option" role="menuitem" data-lang="en"><span class="lang-flag" aria-hidden="true">🌍</span><span class="lang-name">English</span></a><a href="/ko/guide.html" class="lang-option" role="menuitem" data-lang="ko"><span class="lang-flag" aria-hidden="true">🇰🇷</span><span class="lang-name">한국어</span></a><a href="/ja/guide.html" class="lang-option" role="menuitem" data-lang="ja"><span class="lang-flag" aria-hidden="true">🇯🇵</span><span class="lang-name">日本語</span></a><a href="/zh-CN/guide.html" class="lang-option" role="menuitem" data-lang="zh-CN"><span class="lang-flag" aria-hidden="true">🇨🇳</span><span class="lang-name">简体中文</span></a><a href="/zh-TW/guide.html" class="lang-option" role="menuitem" data-lang="zh-TW"><span class="lang-flag" aria-hidden="true">🇹🇼</span><span class="lang-name">繁體中文</span></a><a href="/de/guide.html" class="lang-option" role="menuitem" data-lang="de"><span class="lang-flag" aria-hidden="true">🇩🇪</span><span class="lang-name">Deutsch</span></a><a href="/fr/guide.html" class="lang-option" role="menuitem" data-lang="fr"><span class="lang-flag" aria-hidden="true">🇫🇷</span><span class="lang-name">Français</span></a><a href="/es/guide.html" class="lang-option" role="menuitem" data-lang="es"><span class="lang-flag" aria-hidden="true">🇪🇸</span><span class="lang-name">Español</span></a><a href="/it/guide.html" class="lang-option" role="menuitem" data-lang="it"><span class="lang-flag" aria-hidden="true">🇮🇹</span><span class="lang-name">Italiano</span></a><a href="/pt-BR/guide.html" class="lang-option" role="menuitem" data-lang="pt-BR"><span class="lang-flag" aria-hidden="true">🇧🇷</span><span class="lang-name">Português</span></a><a href="/ru/guide.html" class="lang-option" role="menuitem" data-lang="ru"><span class="lang-flag" aria-hidden="true">🇷🇺</span><span class="lang-name">Русский</span></a><a href="/nl/guide.html" class="lang-option" role="menuitem" data-lang="nl"><span class="lang-flag" aria-hidden="true">🇳🇱</span><span class="lang-name">Nederlands</span></a><a href="/pl/guide.html" class="lang-option" role="menuitem" data-lang="pl"><span class="lang-flag" aria-hidden="true">🇵🇱</span><span class="lang-name">Polski</span></a><a href="/tr/guide.html" class="lang-option" role="menuitem" data-lang="tr"><span class="lang-flag" aria-hidden="true">🇹🇷</span><span class="lang-name">Türkçe</span></a><a href="/vi/guide.html" class="lang-option" role="menuitem" data-lang="vi"><span class="lang-flag" aria-hidden="true">🇻🇳</span><span class="lang-name">Tiếng Việt</span></a><a href="/th/guide.html" class="lang-option active" role="menuitem" data-lang="th"><span class="lang-flag" aria-hidden="true">🇹🇭</span><span class="lang-name">ไทย</span></a><a href="/id/guide.html" class="lang-option" role="menuitem" data-lang="id"><span class="lang-flag" aria-hidden="true">🇮🇩</span><span class="lang-name">Bahasa Indonesia</span></a><a href="/sv/guide.html" class="lang-option" role="menuitem" data-lang="sv"><span class="lang-flag" aria-hidden="true">🇸🇪</span><span class="lang-name">Svenska</span></a><a href="/hi/guide.html" class="lang-option" role="menuitem" data-lang="hi"><span class="lang-flag" aria-hidden="true">🇮🇳</span><span class="lang-name">हिन्दी</span></a><a href="/ar/guide.html" class="lang-option" role="menuitem" data-lang="ar"><span class="lang-flag" aria-hidden="true">🌍</span><span class="lang-name">العربية</span></a></div></span>
 </div></header>
 
 <div class="wrap">
@@ -864,6 +900,48 @@ footer .copy{margin-left:auto}
 </div>
 
 <script>
+// ----- 언어 드롭다운 -----
+// 홈은 site.js 가 하지만 이 페이지들은 site.js 를 불러오지 않는다(인라인 전용).
+// 여닫기와 언어 기억 둘 다 홈과 같은 동작이어야 한다.
+(function(){
+  var t = document.getElementById('langToggle');
+  var m = document.getElementById('langMenu');
+  if (!t || !m) return;   // 언어가 하나뿐이면 switcher() 가 아무것도 내보내지 않는다
+  function close(){
+    m.setAttribute('data-open','false');
+    m.setAttribute('aria-hidden','true');
+    t.setAttribute('aria-expanded','false');
+  }
+  t.addEventListener('click', function(e){
+    e.stopPropagation();
+    if (m.getAttribute('data-open') === 'true') { close(); return; }
+    m.setAttribute('data-open','true');
+    m.setAttribute('aria-hidden','false');
+    t.setAttribute('aria-expanded','true');
+  });
+  document.addEventListener('click', function(e){
+    if (m.getAttribute('data-open') !== 'true') return;
+    if (m.contains(e.target) || t.contains(e.target)) return;
+    close();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') close();
+  });
+
+  // 고른 언어를 기억해 두면 루트(averic.co.kr/)의 라우터가 다음 방문에 그리로 보낸다.
+  // 키와 형식은 라우터(index.html)와 같아야 한다 — t 가 없으면 90일 만료 판정이
+  // 안 돼 그 브라우저에서 영원히 이 언어로 열린다.
+  m.querySelectorAll('.lang-option').forEach(function(opt){
+    opt.addEventListener('click', function(){
+      var code = opt.getAttribute('data-lang');
+      if (!code) return;
+      try {
+        localStorage.setItem('anbu.lang', JSON.stringify({ code: code, t: Date.now() }));
+      } catch (e) {}
+    });
+  });
+})();
+
 // 앱 번역 파일에서 추출한 실제 문구 (extract_strings.py)
 var S = {"stability_battery_warning_short": "ต้องปิดข้อจำกัดการใช้แบตเตอรี่", "gs_activity_permission_denied_warning": "สิทธิ์นับก้าวถูกปฏิเสธ แตะที่นี่เพื่ออนุญาต", "location_permission_warning": "จะไม่ส่งตำแหน่งเมื่อขอความช่วยเหลือฉุกเฉิน แตะเพื่ออนุญาต", "permission_hibernation_title": "โปรดปิดการลบสิทธิ์อัตโนมัติ", "permission_hibernation_highlight": "การลบสิทธิ์อัตโนมัติ", "permission_hibernation_message": "Android จะลบสิทธิ์ของแอปที่คุณไม่ได้ใช้งานเป็นเวลานานโดยอัตโนมัติ Anbu มักทำงานโดยไม่ได้เปิดขึ้นมา ดังนั้นฟีเจอร์นี้อาจทำให้สิทธิ์หายไปหลังจากผ่านไประยะหนึ่งและการส่งสัญญาณความเป็นอยู่หยุดทำงาน\n\nแตะ [เปิดการตั้งค่า] ด้านล่าง — หน้าจอสวิตช์ที่เกี่ยวข้องจะปรากฏขึ้นทันที โปรดปิดสวิตช์\n\n※ ข้อความที่แสดงอาจแตกต่างกันไปตามผู้ผลิตอุปกรณ์", "permission_hibernation_go_to_settings": "เปิดการตั้งค่า", "common_later": "ภายหลัง", "app_name": "Anbu", "subject_home_share_title": "แชร์รหัสความปลอดภัยของคุณ", "subject_home_check_title_last": "การตรวจสอบครั้งล่าสุด", "subject_home_check_body_reported": "รายงานเมื่อ @time", "heartbeat_schedule_change": "เปลี่ยนเวลารายงาน", "heartbeat_daily_time": "ทุกวันเวลา @time", "subject_home_report_button": "รายงานความปลอดภัยตอนนี้", "subject_home_report_desc": "แจ้งผู้ดูแลว่าคุณสบายดี", "subject_home_emergency_button": "ฉันต้องการความช่วยเหลือ", "subject_home_emergency_desc": "ส่งการแจ้งเตือนฉุกเฉินไปยังผู้ดูแล", "notifications_level_caution": "ระวัง", "noti_caution_missing_body": "การตรวจสอบความเป็นอยู่ที่กำหนดไว้วันนี้ยังไม่ได้รับ กรุณาตรวจสอบด้วยตนเอง", "notifications_view_location": "🗺️ ดูตำแหน่ง", "stability_battery_dialog_title": "ปิดข้อจำกัดการใช้แบตเตอรี่", "stability_battery_dialog_message": "เมื่อโทรศัพท์ของคุณเข้าสู่โหมดประหยัดพลังงาน สัญญาณความเป็นอยู่ที่ส่งไปยังผู้ดูแลของคุณอาจมาช้าหรือสูญหาย\n\nหลังจากแตะ [เปิดการตั้งค่า] ด้านล่าง ให้ตั้งค่า \"แบตเตอรี่\" → \"ไม่จำกัด\" จากนั้นสัญญาณความเป็นอยู่จะถูกส่งอย่างน่าเชื่อถือในเวลาที่กำหนดทุกวัน\n\n※ ข้อความที่แสดงอาจแตกต่างกันไปตามผู้ผลิตอุปกรณ์", "gs_activity_permission_settings_title": "ต้องการสิทธิ์", "gs_activity_permission_settings_body": "โปรดอนุญาตสิทธิ์กิจกรรมทางกาย (การเคลื่อนไหวและฟิตเนส) ในการตั้งค่าแอป", "gs_activity_permission_settings_go": "ไปที่การตั้งค่า", "location_permission_settings_title": "ต้องการสิทธิ์ตำแหน่งที่ตั้ง", "location_permission_settings_body_android": "เลือก \"การอนุญาต\" → \"ตำแหน่ง\" แล้วเลือก \"อนุญาตเฉพาะขณะใช้แอปเท่านั้น\"", "location_permission_settings_body_ios": "ค้นหาและเลือก \"Anbu\" จากนั้นในหัวข้อ \"ตำแหน่งที่ตั้ง\" เลือก \"ขณะใช้แอป\"", "common_cancel": "ยกเลิก", "settings_title": "การตั้งค่า", "gs_enable_button": "สร้างรหัสความปลอดภัยของฉัน", "gs_enable_button_desc": "ให้ครอบครัวดูแลคุณได้เช่นกัน", "settings_subscription_service": "การสมัครสมาชิกและบริการ", "settings_current_membership": "สมาชิกปัจจุบัน", "settings_free_trial": "ทดลองใช้ฟรี", "subscription_subscribe": "สมัครสมาชิก", "subscription_restore": "กู้คืนการซื้อ", "settings_notification": "การตั้งค่าการแจ้งเตือน", "settings_terms_section": "กฎหมาย", "settings_privacy_policy": "นโยบายความเป็นส่วนตัว", "settings_terms": "ข้อกำหนดการใช้งาน", "gs_enable_dialog_title": "สร้างรหัสความปลอดภัยของฉัน", "gs_enable_dialog_body": "รหัสความปลอดภัยจะถูกออก — กรุณาแชร์ให้ผู้ดูแลคนอื่น", "gs_enable_confirm": "สร้าง", "gs_enable_dialog_ios_warning_title": "⚠ วิธีการส่งสัญญาณความเป็นอยู่ของคุณ", "gs_enable_dialog_ios_warning_body": "จะมี \"การแจ้งเตือนพุชความเป็นอยู่\" ปรากฏทุกวันตามเวลาที่กำหนด คุณต้องแตะที่การแจ้งเตือนหรือเปิดแอปด้วยตัวเองในช่วงเวลานั้น สัญญาณความเป็นอยู่ของคุณจึงจะถูกส่ง หากคุณไม่เปิดแอป ผู้ดูแลของคุณอาจได้รับการแจ้งเตือนการตรวจสอบที่พลาดไป", "gs_enable_dialog_ios_confirm": "เข้าใจแล้ว เปิดใช้งาน", "subject_home_code_copied": "คัดลอกรหัสแล้ว", "add_subject_title": "เชื่อมต่อผู้ได้รับการดูแล", "add_subject_button": "เพิ่มผู้ได้รับการดูแลใหม่", "add_subject_guide_title": "กรอกรหัสเฉพาะของผู้ได้รับการดูแลและชื่อเล่น", "add_subject_guide_subtitle": "เชื่อมต่อแอปของผู้ได้รับการดูแลเพื่อติดตามความเป็นอยู่และกิจกรรมแบบเรียลไทม์", "add_subject_code_label": "รหัสเฉพาะ (7 หลัก)", "add_subject_code_info": "รหัสเฉพาะสามารถพบได้ในแอปของผู้ได้รับการดูแล", "add_subject_alias_label": "ชื่อเล่นผู้ได้รับการดูแล", "add_subject_alias_hint": "เช่น แม่, พ่อ", "add_subject_phone_label": "เบอร์ติดต่อ (ไม่บังคับ)", "add_subject_phone_hint": "0812345678", "add_subject_phone_info": "หากกรอกไว้ การกดปุ่มโทรจะโทรตรงไปยังหมายเลขนี้ หากเว้นว่าง จะต้องเลือกรายชื่อจากสมุดโทรศัพท์เอง", "add_subject_connect": "เชื่อมต่อ", "guardian_today_summary": "สรุปความเป็นอยู่วันนี้", "guardian_checking_subjects": "กำลังตรวจสอบ\nผู้ได้รับการดูแล @count คน", "guardian_subject_list": "รายชื่อผู้ได้รับการดูแล", "guardian_status_normal": "ปลอดภัย", "guardian_status_caution": "ระวัง", "guardian_status_confirmed": "✅ ปลอดภัย", "guardian_safety_needed": "ต้องตรวจสอบความปลอดภัย", "guardian_call_now": "โทรเลย", "guardian_confirm_safety": "ยืนยันแล้ว", "guardian_last_check_hours": "ตรวจสอบล่าสุด: @hours ชั่วโมงที่แล้ว", "guardian_activity_prefix": "กิจกรรม", "guardian_activity_active": "กระฉับกระเฉง", "guardian_chart_y_axis_steps": "ก้าว", "guardian_chart_x_axis_last_7_days": "7 วันที่ผ่านมา", "subject_home_emergency_confirm_title": "ขอความช่วยเหลือฉุกเฉิน", "subject_home_emergency_confirm_body": "จะส่งการแจ้งเตือนฉุกเฉินไปยังผู้ดูแลทุกคน\nตำแหน่งปัจจุบันของคุณจะถูกแชร์ไปด้วย\nคุณต้องการขอความช่วยเหลือจริงหรือ?", "subject_home_emergency_confirm_send": "ส่งคำขอฉุกเฉิน", "emergency_message_hint": "เพิ่มข้อความ (ไม่บังคับ)", "noti_emergency_body": "ผู้ได้รับการดูแลขอความช่วยเหลือโดยตรง กรุณาตรวจสอบทันที", "emergency_map_title": "ตำแหน่งฉุกเฉิน", "emergency_map_subject_label": "ผู้ได้รับการดูแล", "emergency_map_accuracy_label": "ความแม่นยำ", "emergency_map_open_external": "เปิดในแอปแผนที่ภายนอก", "notifications_title": "การแจ้งเตือน", "notifications_level_health": "ปกติ", "notifications_level_info": "ข้อมูล", "notifications_level_warning": "เตือน", "notifications_level_urgent": "เร่งด่วน", "noti_auto_report_body": "การตรวจสอบความเป็นอยู่ได้รับเรียบร้อยแล้ว", "noti_warning_body": "การตรวจสอบความเป็นอยู่ถูกพลาดติดต่อกัน กรุณายืนยันด้วยตนเอง", "noti_urgent_body": "ไม่มีการตรวจสอบความเป็นอยู่เป็นเวลา @days วัน จำเป็นต้องยืนยันทันที", "noti_steps_body": "วันนี้เดิน @steps ก้าว", "connection_title": "การจัดการการเชื่อมต่อ", "connection_connected_subjects": "ผู้ได้รับการดูแลที่เชื่อมต่อ", "connection_managed_count_value": "@current / @max", "connection_heartbeat_schedule": "ทุกวันเวลา @time", "nav_home": "หน้าแรก", "nav_connection": "เชื่อมต่อ", "nav_notification": "แจ้งเตือน", "nav_settings": "ตั้งค่า"};
 var WHO = ["เครื่องของฉัน — ฝั่งที่สร้างรหัส", "เครื่องของครอบครัว — ฝั่งที่คอยดูแลฉัน"];          // 어느 폰인지 라벨 2개
