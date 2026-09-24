@@ -3,18 +3,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://averic.co.kr/en/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/en/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/en/faq.html</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/en/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/en/privacy-policy.html</loc>
@@ -28,18 +33,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/ko/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/ko/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/ko/faq.html</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/ko/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/ko/privacy-policy.html</loc>
@@ -53,18 +63,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/ja/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/ja/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/ja/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/ja/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/ja/privacy-policy.html</loc>
@@ -78,18 +93,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/zh-CN/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/zh-CN/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/zh-CN/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/zh-CN/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/zh-CN/privacy-policy.html</loc>
@@ -103,18 +123,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/zh-TW/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/zh-TW/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/zh-TW/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/zh-TW/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/zh-TW/privacy-policy.html</loc>
@@ -128,18 +153,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/de/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/de/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/de/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/de/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/de/privacy-policy.html</loc>
@@ -153,18 +183,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/fr/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/fr/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/fr/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/fr/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/fr/privacy-policy.html</loc>
@@ -178,18 +213,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/es/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/es/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/es/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/es/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/es/privacy-policy.html</loc>
@@ -203,18 +243,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/it/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/it/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/it/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/it/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/it/privacy-policy.html</loc>
@@ -228,18 +273,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/pt-BR/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/pt-BR/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/pt-BR/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/pt-BR/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/pt-BR/privacy-policy.html</loc>
@@ -253,18 +303,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/ru/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/ru/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/ru/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/ru/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/ru/privacy-policy.html</loc>
@@ -278,18 +333,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/nl/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/nl/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/nl/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/nl/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/nl/privacy-policy.html</loc>
@@ -303,18 +363,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/pl/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/pl/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/pl/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/pl/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/pl/privacy-policy.html</loc>
@@ -328,18 +393,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/tr/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/tr/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/tr/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/tr/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/tr/privacy-policy.html</loc>
@@ -353,18 +423,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/vi/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/vi/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/vi/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/vi/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/vi/privacy-policy.html</loc>
@@ -378,18 +453,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/th/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/th/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/th/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/th/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/th/privacy-policy.html</loc>
@@ -403,18 +483,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/id/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/id/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/id/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/id/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/id/privacy-policy.html</loc>
@@ -428,18 +513,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/sv/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/sv/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/sv/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/sv/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/sv/privacy-policy.html</loc>
@@ -453,18 +543,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/hi/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/hi/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/hi/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/hi/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/hi/privacy-policy.html</loc>
@@ -478,18 +573,23 @@
   </url>
   <url>
     <loc>https://averic.co.kr/ar/</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/ar/guide.html</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/ar/faq.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://averic.co.kr/ar/shorts.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://averic.co.kr/ar/privacy-policy.html</loc>
