@@ -228,13 +228,15 @@ def dawn_tail(code, strings):
     """③ 자리. 영상이 있는 언어는 영상 두 편, 없는 언어는 ③ 문장.
 
     기본 컨트롤 대신 가운데 버튼 하나를 쓴다(재생 → 재생 중 숨김 → 끝나면 다시 보기).
-    동작은 site.js 의 「숏폼 영상」 블록. preload="none" 이라 누르기 전에는 받지 않는다."""
+    동작은 site.js 의 「숏폼 영상」 블록. preload="none" 이라 누르기 전에는 받지 않는다.
+    muted 를 두지 않는다 — 재생은 항상 사용자가 버튼을 눌러 시작하므로 브라우저가 소리를 허용하고,
+    누른 사람은 배경음악·효과음까지 들을 의도가 있다. 자동 재생을 추가한다면 그때 muted 를 다시 검토할 것."""
     cfg = SHORTS.get(code)
     if not cfg:
         return f'<p class="q3 reveal">{strings["dawn_q3_html"]}</p>'
     figs = "\n".join(
         f'      <figure class="vbox"><video src="/media/shorts/{code}/{v}.mp4" poster="/media/shorts/{code}/{v}.jpg" '
-        f'playsinline muted preload="none"></video>'
+        f'playsinline preload="none"></video>'
         f'<button type="button" class="vbtn" aria-label="{cfg["play"]}: {cap}" '
         f'data-play="{cfg["play"]}: {cap}" data-replay="{cfg["replay"]}: {cap}">{_PLAY_SVG}{_REPLAY_SVG}</button>'
         f'<figcaption>{cap}</figcaption></figure>'
