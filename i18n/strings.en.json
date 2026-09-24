@@ -89,5 +89,9 @@
  "code_copy_short": "Copy",
  "code_share_short": "Share",
  "help_eyebrow": "EMERGENCY HELP",
- "help_title_html": "One button — <em>your location goes too.</em>"
+ "help_title_html": "One button — <em>your location goes too.</em>",
+ "shorts_more": "More videos",
+ "shorts_title": "Anbu in short videos",
+ "shorts_lead": "Moments when a check-in arrives — no call needed.",
+ "shorts_back": "Back to home"
 }

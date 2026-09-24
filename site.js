@@ -156,10 +156,10 @@
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in-view'); });
   }
 
-  // ----- 숏폼 영상 (해질녘 ③ 자리, i18n/build.py SHORTS) -----
+  // ----- 숏폼 영상 (홈 해질녘 ③ 자리 + 영상 페이지 /{언어}/shorts.html, i18n/build.py) -----
   // 가운데 버튼: 재생 → 재생 중 숨김 → 끝나면 다시 보기. 영상을 탭하면 일시정지.
   // 한 편을 재생하면 다른 편은 멈춘다.
-  var vboxes = Array.prototype.slice.call(document.querySelectorAll('.dawn-shorts .vbox'));
+  var vboxes = Array.prototype.slice.call(document.querySelectorAll('.vlist .vbox'));
   vboxes.forEach(function (box) {
     var v = box.querySelector('video'), btn = box.querySelector('.vbtn');
     function label(key) { btn.setAttribute('aria-label', btn.getAttribute('data-' + key)); }

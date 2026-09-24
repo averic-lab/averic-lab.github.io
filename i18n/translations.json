@@ -93,7 +93,11 @@
   "help_eyebrow": "紧急求助",
   "help_title_html": "一个按钮，<em>连当前位置一起送达。</em>",
   "flow_lbl_subject": "被关怀者的应用",
-  "flow_lbl_guardian": "家人的应用"
+  "flow_lbl_guardian": "家人的应用",
+  "shorts_more": "查看更多视频",
+  "shorts_title": "用视频认识 Anbu",
+  "shorts_lead": "不用打电话，平安也能送达的那些瞬间。",
+  "shorts_back": "返回首页"
  },
  "fr": {
   "title": "Anbu — Vous n'êtes jamais seul · Averic Lab",
@@ -189,7 +193,11 @@
   "help_eyebrow": "DEMANDE D'AIDE",
   "help_title_html": "Un bouton — <em>la position actuelle part aussi.</em>",
   "flow_lbl_subject": "App de la personne suivie",
-  "flow_lbl_guardian": "App du proche"
+  "flow_lbl_guardian": "App du proche",
+  "shorts_more": "Voir plus de vidéos",
+  "shorts_title": "Anbu en courtes vidéos",
+  "shorts_lead": "Ces moments où des nouvelles arrivent, sans même un appel.",
+  "shorts_back": "Retour à l’accueil"
  },
  "de": {
   "title": "Anbu — Du bist nie allein · Averic Lab",
@@ -285,7 +293,11 @@
   "help_eyebrow": "NOTRUF",
   "help_title_html": "Ein Knopf — <em>auch der aktuelle Standort geht mit.</em>",
   "flow_lbl_subject": "App der betreuten Person",
-  "flow_lbl_guardian": "App des Angehörigen"
+  "flow_lbl_guardian": "App des Angehörigen",
+  "shorts_more": "Weitere Videos",
+  "shorts_title": "Anbu in kurzen Videos",
+  "shorts_lead": "Momente, in denen ein Lebenszeichen ankommt – ganz ohne Anruf.",
+  "shorts_back": "Zur Startseite"
  },
  "pl": {
   "title": "Anbu — Nigdy nie jesteś sam · Averic Lab",
@@ -381,7 +393,11 @@
   "help_eyebrow": "WEZWANIE POMOCY",
   "help_title_html": "Jeden przycisk — <em>aktualna lokalizacja też leci.</em>",
   "flow_lbl_subject": "Aplikacja podopiecznego",
-  "flow_lbl_guardian": "Aplikacja bliskiej osoby"
+  "flow_lbl_guardian": "Aplikacja bliskiej osoby",
+  "shorts_more": "Więcej filmów",
+  "shorts_title": "Anbu w krótkich filmach",
+  "shorts_lead": "Chwile, gdy wiadomość dociera — bez dzwonienia.",
+  "shorts_back": "Wróć na stronę główną"
  },
  "zh-TW": {
   "title": "Anbu — 你從不孤單 · Averic Lab",
@@ -477,7 +493,11 @@
   "help_eyebrow": "緊急求助",
   "help_title_html": "一個按鈕，<em>連目前位置一起送達。</em>",
   "flow_lbl_subject": "被關懷者的應用程式",
-  "flow_lbl_guardian": "家人的應用程式"
+  "flow_lbl_guardian": "家人的應用程式",
+  "shorts_more": "觀看更多影片",
+  "shorts_title": "用影片認識 Anbu",
+  "shorts_lead": "不必打電話，平安也能送達的那些時刻。",
+  "shorts_back": "回到首頁"
  },
  "es": {
   "title": "Anbu — Nunca estás solo · Averic Lab",
@@ -573,7 +593,11 @@
   "help_eyebrow": "PETICIÓN DE AYUDA",
   "help_title_html": "Un botón — <em>y la ubicación actual va contigo.</em>",
   "flow_lbl_subject": "App de la persona cuidada",
-  "flow_lbl_guardian": "App del familiar"
+  "flow_lbl_guardian": "App del familiar",
+  "shorts_more": "Ver más vídeos",
+  "shorts_title": "Anbu en vídeos cortos",
+  "shorts_lead": "Momentos en los que llegan noticias, sin necesidad de llamar.",
+  "shorts_back": "Volver al inicio"
  },
  "ja": {
   "title": "Anbu — あなたはひとりじゃない · Averic Lab",
@@ -669,7 +693,11 @@
   "help_eyebrow": "緊急の助け",
   "help_title_html": "ボタンひとつで <em>現在地まで届きます。</em>",
   "flow_lbl_subject": "対象者のアプリ",
-  "flow_lbl_guardian": "見守り人のアプリ"
+  "flow_lbl_guardian": "見守り人のアプリ",
+  "shorts_more": "動画をもっと見る",
+  "shorts_title": "動画で見るAnbu",
+  "shorts_lead": "電話しなくても、安否が届く瞬間。",
+  "shorts_back": "ホームへ"
  },
  "nl": {
   "title": "Anbu — Je bent nooit alleen · Averic Lab",
@@ -765,7 +793,11 @@
   "help_eyebrow": "NOODOPROEP",
   "help_title_html": "Eén knop — <em>de huidige locatie gaat mee.</em>",
   "flow_lbl_subject": "App van de naaste",
-  "flow_lbl_guardian": "App van het familielid"
+  "flow_lbl_guardian": "App van het familielid",
+  "shorts_more": "Meer video’s",
+  "shorts_title": "Anbu in korte video’s",
+  "shorts_lead": "Momenten waarop een teken van leven binnenkomt – zonder te bellen.",
+  "shorts_back": "Terug naar home"
  },
  "it": {
   "title": "Anbu — Non sei mai solo · Averic Lab",
@@ -861,7 +893,11 @@
   "help_eyebrow": "RICHIESTA DI AIUTO",
   "help_title_html": "Un pulsante — <em>parte anche la posizione attuale.</em>",
   "flow_lbl_subject": "App della persona assistita",
-  "flow_lbl_guardian": "App del familiare"
+  "flow_lbl_guardian": "App del familiare",
+  "shorts_more": "Guarda altri video",
+  "shorts_title": "Anbu in brevi video",
+  "shorts_lead": "Momenti in cui arrivano notizie, senza bisogno di chiamare.",
+  "shorts_back": "Torna alla home"
  },
  "pt-BR": {
   "title": "Anbu — Você nunca está sozinho · Averic Lab",
@@ -957,7 +993,11 @@
   "help_eyebrow": "PEDIDO DE AJUDA",
   "help_title_html": "Um botão — <em>a localização atual vai junto.</em>",
   "flow_lbl_subject": "App de quem é acompanhado",
-  "flow_lbl_guardian": "App do familiar"
+  "flow_lbl_guardian": "App do familiar",
+  "shorts_more": "Ver mais vídeos",
+  "shorts_title": "Anbu em vídeos curtos",
+  "shorts_lead": "Momentos em que as notícias chegam, sem precisar ligar.",
+  "shorts_back": "Voltar ao início"
  },
  "tr": {
   "title": "Anbu — Hiçbir zaman yalnız değilsin · Averic Lab",
@@ -1053,7 +1093,11 @@
   "help_eyebrow": "ACİL YARDIM",
   "help_title_html": "Tek düğme — <em>anlık konum da gider.</em>",
   "flow_lbl_subject": "Takip edilen kişinin uygulaması",
-  "flow_lbl_guardian": "Yakınının uygulaması"
+  "flow_lbl_guardian": "Yakınının uygulaması",
+  "shorts_more": "Daha fazla video",
+  "shorts_title": "Kısa videolarla Anbu",
+  "shorts_lead": "Aramaya gerek kalmadan haberin ulaştığı anlar.",
+  "shorts_back": "Ana sayfaya dön"
  },
  "ru": {
   "title": "Anbu — Ты никогда не одинок · Averic Lab",
@@ -1149,7 +1193,11 @@
   "help_eyebrow": "ЭКСТРЕННАЯ ПОМОЩЬ",
   "help_title_html": "Одна кнопка — <em>и текущее местоположение уходит тоже.</em>",
   "flow_lbl_subject": "Приложение подопечного",
-  "flow_lbl_guardian": "Приложение близкого"
+  "flow_lbl_guardian": "Приложение близкого",
+  "shorts_more": "Больше видео",
+  "shorts_title": "Anbu в коротких видео",
+  "shorts_lead": "Моменты, когда весточка приходит — даже без звонка.",
+  "shorts_back": "На главную"
  },
  "hi": {
   "title": "Anbu — आप कभी अकेले नहीं · Averic Lab",
@@ -1245,7 +1293,11 @@
   "help_eyebrow": "आपातकालीन मदद",
   "help_title_html": "एक बटन — <em>मौजूदा लोकेशन भी चली जाती है।</em>",
   "flow_lbl_subject": "देखभाल पाने वाले का ऐप",
-  "flow_lbl_guardian": "परिजन का ऐप"
+  "flow_lbl_guardian": "परिजन का ऐप",
+  "shorts_more": "और वीडियो देखें",
+  "shorts_title": "छोटे वीडियो में Anbu",
+  "shorts_lead": "वे पल जब बिना फ़ोन किए हालचाल पहुँच जाता है।",
+  "shorts_back": "होम पर वापस"
  },
  "vi": {
   "title": "Anbu — Bạn không bao giờ đơn độc · Averic Lab",
@@ -1341,7 +1393,11 @@
   "help_eyebrow": "YÊU CẦU TRỢ GIÚP",
   "help_title_html": "Một nút bấm — <em>vị trí hiện tại cũng được gửi đi.</em>",
   "flow_lbl_subject": "Ứng dụng của người được quan tâm",
-  "flow_lbl_guardian": "Ứng dụng của người thân"
+  "flow_lbl_guardian": "Ứng dụng của người thân",
+  "shorts_more": "Xem thêm video",
+  "shorts_title": "Anbu qua những video ngắn",
+  "shorts_lead": "Những khoảnh khắc lời hỏi thăm đến nơi mà không cần gọi điện.",
+  "shorts_back": "Về trang chủ"
  },
  "id": {
   "title": "Anbu — Kamu tidak pernah sendiri · Averic Lab",
@@ -1437,7 +1493,11 @@
   "help_eyebrow": "PERMINTAAN BANTUAN",
   "help_title_html": "Satu tombol — <em>lokasi terkini ikut terkirim.</em>",
   "flow_lbl_subject": "Aplikasi orang yang dipantau",
-  "flow_lbl_guardian": "Aplikasi keluarga"
+  "flow_lbl_guardian": "Aplikasi keluarga",
+  "shorts_more": "Lihat video lainnya",
+  "shorts_title": "Anbu dalam video pendek",
+  "shorts_lead": "Saat-saat kabar tiba, tanpa perlu menelepon.",
+  "shorts_back": "Kembali ke beranda"
  },
  "th": {
   "title": "Anbu — คุณไม่เคยอยู่คนเดียว · Averic Lab",
@@ -1533,7 +1593,11 @@
   "help_eyebrow": "ขอความช่วยเหลือฉุกเฉิน",
   "help_title_html": "ปุ่มเดียว <em>ส่งตำแหน่งปัจจุบันไปด้วย</em>",
   "flow_lbl_subject": "แอปของผู้ได้รับการดูแล",
-  "flow_lbl_guardian": "แอปของคนในครอบครัว"
+  "flow_lbl_guardian": "แอปของคนในครอบครัว",
+  "shorts_more": "ดูวิดีโอเพิ่มเติม",
+  "shorts_title": "Anbu ในวิดีโอสั้น",
+  "shorts_lead": "ช่วงเวลาที่ความห่วงใยส่งถึงกัน โดยไม่ต้องโทร",
+  "shorts_back": "กลับหน้าแรก"
  },
  "sv": {
   "title": "Anbu — Du är aldrig ensam · Averic Lab",
@@ -1629,7 +1693,11 @@
   "help_eyebrow": "NÖDANROP",
   "help_title_html": "En knapp — <em>den aktuella platsen följer med.</em>",
   "flow_lbl_subject": "Den närståendes app",
-  "flow_lbl_guardian": "Familjemedlemmens app"
+  "flow_lbl_guardian": "Familjemedlemmens app",
+  "shorts_more": "Fler videor",
+  "shorts_title": "Anbu i korta videor",
+  "shorts_lead": "Stunder då ett livstecken kommer fram – utan att någon ringer.",
+  "shorts_back": "Till startsidan"
  },
  "ar": {
   "title": "Anbu — لستَ وحدك أبدًا · Averic Lab",
@@ -1725,7 +1793,11 @@
   "help_eyebrow": "طلب مساعدة عاجل",
   "help_title_html": "زرٌّ واحد — <em>والموقع الحالي يصل معه.</em>",
   "flow_lbl_subject": "تطبيق الشخص المستفيد",
-  "flow_lbl_guardian": "تطبيق أحد الأقارب"
+  "flow_lbl_guardian": "تطبيق أحد الأقارب",
+  "shorts_more": "شاهد المزيد من الفيديوهات",
+  "shorts_title": "Anbu في مقاطع قصيرة",
+  "shorts_lead": "لحظات تصل فيها الطمأنينة، دون الحاجة إلى اتصال.",
+  "shorts_back": "العودة إلى الرئيسية"
  },
  "ko": {
   "title": "안부 — 우리는 언제나 혼자가 아닙니다 · Averic Lab",
@@ -1829,7 +1901,11 @@
   "help_eyebrow": "긴급 도움 요청",
   "help_title_html": "버튼 하나로 <em>현재 위치까지 전해집니다.</em>",
   "flow_lbl_subject": "대상자 앱",
-  "flow_lbl_guardian": "보호자 앱"
+  "flow_lbl_guardian": "보호자 앱",
+  "shorts_more": "영상 더 보기",
+  "shorts_title": "영상으로 보는 안부",
+  "shorts_lead": "전화하지 않아도 안부가 전해지는 순간들.",
+  "shorts_back": "홈으로"
  },
  "en": {
   "title": "Anbu — You are never alone · Averic Lab",
@@ -1933,6 +2009,10 @@
   "help_eyebrow": "EMERGENCY HELP",
   "help_title_html": "One button — <em>your current location goes too.</em>",
   "flow_lbl_subject": "Care recipient",
-  "flow_lbl_guardian": "Family member"
+  "flow_lbl_guardian": "Family member",
+  "shorts_more": "More videos",
+  "shorts_title": "Anbu in short videos",
+  "shorts_lead": "Moments when a check-in arrives — no call needed.",
+  "shorts_back": "Back to home"
  }
 }

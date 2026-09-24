@@ -86,13 +86,13 @@ APP_STRINGS = os.path.join(ROOT, "_faq-build", "app-strings.json")
 GENERATED = list(ORDER)
 
 
-def switcher(active):
+def switcher(active, page=""):
     rows = []
     for code in ORDER:
         bcp, _dir, _og, label, native = META[code]
         cls = "lang-option active" if code == active else "lang-option"
         rows.append(
-            f'    <a href="/{code}/" class="{cls}" role="menuitem" data-lang="{code}">\n'
+            f'    <a href="/{code}/{page}" class="{cls}" role="menuitem" data-lang="{code}">\n'
             f'      <span class="lang-flag" aria-hidden="true">{FLAG[code]}</span>'
             f'<span class="lang-name">{native}</span>\n'
             f'    </a>'
@@ -100,12 +100,14 @@ def switcher(active):
     return "\n".join(rows)
 
 
-def head_links(active):
-    lines = [f'<link rel="canonical" href="https://averic.co.kr/{active}/">']
-    for code in ORDER:
+def head_links(active, page="", codes=None):
+    codes = codes or ORDER
+    lines = [f'<link rel="canonical" href="https://averic.co.kr/{active}/{page}">']
+    for code in codes:
         bcp = META[code][0]
-        lines.append(f'<link rel="alternate" hreflang="{bcp}" href="https://averic.co.kr/{code}/">')
-    lines.append('<link rel="alternate" hreflang="x-default" href="https://averic.co.kr/en/">')
+        lines.append(f'<link rel="alternate" hreflang="{bcp}" href="https://averic.co.kr/{code}/{page}">')
+    fallback = "en" if "en" in codes else codes[0]
+    lines.append(f'<link rel="alternate" hreflang="x-default" href="https://averic.co.kr/{fallback}/{page}">')
     return "\n".join(lines)
 
 
@@ -210,10 +212,16 @@ def _load_shorts():
     with open(path, encoding="utf-8") as f:
         cfg = json.load(f)
     home = [v for v in cfg["videos"] if v.get("home")]
+    have = lambda code, v: os.path.exists(os.path.join(ROOT, "media", "shorts", code, v["id"] + ".mp4"))
+    # 영상 페이지(/{code}/shorts.html)는 그 언어로 렌더된 편 전부 — 최신 날짜가 위, 같은 날짜는 목록 순서
+    newest = sorted(cfg["videos"], key=lambda v: v["date"], reverse=True)
     out = {}
     for code, L in cfg["langs"].items():
-        if home and all(os.path.exists(os.path.join(ROOT, "media", "shorts", code, v["id"] + ".mp4")) for v in home):
-            out[code] = {"videos": [(v["id"], L[v["title"]]) for v in home], "play": L["play"], "replay": L["replay"]}
+        entry = {"play": L["play"], "replay": L["replay"],
+                 "all": [(v["id"], L[v["title"]]) for v in newest if have(code, v) and v["title"] in L]}
+        if home and all(have(code, v) for v in home):
+            entry["videos"] = [(v["id"], L[v["title"]]) for v in home]
+        out[code] = entry
     return out
 
 
@@ -224,6 +232,17 @@ _REPLAY_SVG = ('<svg class="i-replay" viewBox="0 0 24 24" aria-hidden="true"><pa
                'a7 7 0 1 0 7-7z"/></svg>')
 
 
+def video_figs(code, items, play, replay, indent="      "):
+    """영상 카드. 홈 해질녘과 영상 페이지가 같은 마크업·같은 버튼(site.js 「숏폼 영상」)을 쓴다."""
+    return "\n".join(
+        f'{indent}<figure class="vbox"><video src="/media/shorts/{code}/{v}.mp4" poster="/media/shorts/{code}/{v}.jpg" '
+        f'playsinline preload="none"></video>'
+        f'<button type="button" class="vbtn" aria-label="{play}: {cap}" '
+        f'data-play="{play}: {cap}" data-replay="{replay}: {cap}">{_PLAY_SVG}{_REPLAY_SVG}</button>'
+        f'<figcaption>{cap}</figcaption></figure>'
+        for v, cap in items)
+
+
 def dawn_tail(code, strings):
     """③ 자리. 영상이 있는 언어는 영상 두 편, 없는 언어는 ③ 문장.
 
@@ -232,16 +251,13 @@ def dawn_tail(code, strings):
     muted 를 두지 않는다 — 재생은 항상 사용자가 버튼을 눌러 시작하므로 브라우저가 소리를 허용하고,
     누른 사람은 배경음악·효과음까지 들을 의도가 있다. 자동 재생을 추가한다면 그때 muted 를 다시 검토할 것."""
     cfg = SHORTS.get(code)
-    if not cfg:
+    if not cfg or not cfg.get("videos"):
         return f'<p class="q3 reveal">{strings["dawn_q3_html"]}</p>'
-    figs = "\n".join(
-        f'      <figure class="vbox"><video src="/media/shorts/{code}/{v}.mp4" poster="/media/shorts/{code}/{v}.jpg" '
-        f'playsinline preload="none"></video>'
-        f'<button type="button" class="vbtn" aria-label="{cfg["play"]}: {cap}" '
-        f'data-play="{cfg["play"]}: {cap}" data-replay="{cfg["replay"]}: {cap}">{_PLAY_SVG}{_REPLAY_SVG}</button>'
-        f'<figcaption>{cap}</figcaption></figure>'
-        for v, cap in cfg["videos"])
-    return f'<div class="dawn-shorts reveal">\n{figs}\n    </div>'
+    figs = video_figs(code, cfg["videos"], cfg["play"], cfg["replay"])
+    more = (f'\n    <a class="shorts-more reveal" href="/{code}/shorts.html">{strings["shorts_more"]}'
+            '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" '
+            'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>')
+    return f'<div class="dawn-shorts vlist reveal">\n{figs}\n    </div>{more}'
 
 
 def asset_ver():
@@ -279,6 +295,38 @@ def build_page(code, strings, template, app_all):
     return page
 
 
+def _slice(html, start, end):
+    """template.html 에서 머리글·꼬리글 블록을 그대로 잘라 온다 — 영상 페이지가 두 벌을 갖지 않게."""
+    i = html.index(start)
+    j = html.index(end, i) + len(end)
+    return html[i:j]
+
+
+def build_shorts_page(code, strings, template, shorts_template):
+    """/{code}/shorts.html — 그 언어로 렌더된 숏폼 전부. 영상 카드·버튼 동작은 홈과 같다."""
+    cfg = SHORTS[code]
+    codes = [c for c in ORDER if SHORTS.get(c, {}).get("all")]
+    header = _slice(template, "<!-- ========== HEADER ========== -->", "</header>")
+    footer = _slice(template, "<footer>", "</footer>")
+    page = shorts_template.replace("{{HEADER}}", header).replace("{{FOOTER}}", footer)
+    bcp, direction, og_locale, label, native = META[code]
+    repl = {
+        "HTML_LANG": bcp,
+        "DIR_ATTR": ' dir="rtl"' if direction == "rtl" else "",
+        "PATH": f"/{code}/",
+        "OG_LOCALE": og_locale,
+        "LANG_CURRENT": label,
+        "SWITCHER": switcher(code, "shorts.html"),
+        "SHORTS_HEAD_LINKS": head_links(code, "shorts.html", codes),
+        "ASSET_VER": asset_ver(),
+        "SHORTS_GRID": f'  <div class="shorts-grid vlist">\n{video_figs(code, cfg["all"], cfg["play"], cfg["replay"], "    ")}\n  </div>',
+    }
+    repl.update(strings)
+    for key, val in repl.items():
+        page = page.replace("{{" + key + "}}", val)
+    return page
+
+
 def patch_inplace(code):
     """(미사용) 예전에 손으로 쓴 ko/en 페이지의 언어 메뉴·hreflang 만 갱신하던 함수.
 
@@ -310,6 +358,8 @@ def patch_inplace(code):
 def main():
     with open(os.path.join(I18N, "template.html"), encoding="utf-8") as f:
         template = f.read()
+    with open(os.path.join(I18N, "shorts-template.html"), encoding="utf-8") as f:
+        shorts_template = f.read()
     with open(os.path.join(I18N, "strings.en.json"), encoding="utf-8") as f:
         en = json.load(f)
     with open(os.path.join(I18N, "translations.json"), encoding="utf-8") as f:
@@ -337,6 +387,14 @@ def main():
         with open(os.path.join(ROOT, code, "index.html"), "w", encoding="utf-8") as f:
             f.write(page)
         print(f"  generated /{code}/index.html  ({len(page)} bytes)")
+        if SHORTS.get(code, {}).get("all"):
+            sp = build_shorts_page(code, merged, template, shorts_template)
+            left = re.findall(r"\{\{[A-Za-z0-9_]+\}\}", sp)
+            if left:
+                problems.append(f"{code}: shorts.html unresolved tokens {set(left)}")
+                continue
+            with open(os.path.join(ROOT, code, "shorts.html"), "w", encoding="utf-8") as f:
+                f.write(sp)
 
     if problems:
         print("\nPROBLEMS:")
