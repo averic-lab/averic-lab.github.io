@@ -37,7 +37,8 @@ export CHROMIUM_PATH="$HOME/Library/Caches/ms-playwright/chromium-1243/chrome-ma
 python3 gen.py                                         # 데이터 먼저
 node render.mjs b.html --check --lang de               # 글자 넘침·겹침 자동 검사
 node render.mjs a.html --stills 1.5,8.5 /tmp/s --lang ja   # 정지 화면 확인
-./render_all.sh                                        # 전체(40편, 약 25분) — 또는 ./render_all.sh en ja
+./render_all.sh                                        # 전체(편 × 20개 언어) — 또는 ./render_all.sh en ja
+VIDEOS=neighbor-friends ./render_all.sh ko             # 그 편만(쉼표로 여러 편) — 새 편을 만들 때 다른 편을 다시 인코딩하지 않는다
 ```
 
 브라우저에서 `a.html?lang=en&play`로 열면 실시간 재생으로 흐름을 볼 수 있다.
