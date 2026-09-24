@@ -34,6 +34,7 @@ PAGES = [
     ("index.html", "", "1.0"),
     ("guide.html", "guide.html", "0.8"),
     ("faq.html", "faq.html", "0.7"),
+    ("shorts.html", "shorts.html", "0.6"),
     ("privacy-policy.html", "privacy-policy.html", "0.3"),
     ("terms-of-service.html", "terms-of-service.html", "0.3"),
 ]
