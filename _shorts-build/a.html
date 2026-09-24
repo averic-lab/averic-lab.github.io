@@ -97,6 +97,13 @@
 <script src="engine.js"></script>
 <script>
   window.DURATION = 22.0;
+  // 효과음 — t 는 화면에 그 요소가 나타나는 시각(data-t 와 같은 값). 크기·앞 무음 보정은 audio.py 가 한다.
+  // 팝업·알림이 뜰 때만 넣는다. duck:true 는 앱 알림음. 엔딩 로고 차임은 모든 편 공통(시리즈 서명).
+  window.SFX = [
+    { t: 7.1,  file: '1_푸시알림/positive-notification.mp3', duck: true }, // 잠금 화면에 알림 도착
+    { t: 12.0, file: '1_푸시알림/bubble-pop-up-alert-notification.mp3' }, // 엄마 카드
+    { t: 19.2, file: '3_페이지_넘김/page-forward-single-chime.mp3' },      // 엔딩 로고(15.2 + 4.0)
+  ];
   fillText();
   const $$ = s => document.querySelectorAll(s);
   $$('.av').forEach(e => { e.textContent = Array.from(L.mom)[0]; });
@@ -105,8 +112,8 @@
   $$('.t-sb2').forEach(e => { e.textContent = fmtShort(wall(20, 5)); });
   $$('.t-date').forEach(e => { e.textContent = fmtDate(wall(20, 4)); });
   $$('.t-lock').forEach(e => { e.textContent = fmtShort(wall(20, 4)); });
-  $$('.n-steps').forEach(e => { e.textContent = fmtNum(3214); });
-  $$('.t-push').forEach(e => { e.textContent = pushBody(L.mom, 3214); });
+  const today = setWeek([5120, 5860, 5340, 6280, 5510, 5930, 6420]);   // 엄마(성인) — 평균 5,780 → 활동적
+  $$('.t-push').forEach(e => { e.textContent = pushBody(L.mom, today); });
   mountEnding(15.2);
   const card = document.querySelector('.fcard');
   window.extra = t => growBars(card, t, 12.4);

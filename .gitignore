@@ -1,1 +1,7 @@
 __pycache__/
+
+# 숏폼 음원 원본(Mixkit) — 라이선스가 파일 단독 재배포를 금지한다.
+# media/ 는 그대로 공개되는 폴더라 커밋하면 averic.co.kr 에서 내려받을 수 있게 된다.
+# 영상에 섞어 넣은 결과물(media/shorts/*.mp4)만 공개한다.
+media/bgm/
+media/sfx/

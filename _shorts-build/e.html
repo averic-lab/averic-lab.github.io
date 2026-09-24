@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>숏폼 E — 동네 친구끼리</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="shorts.css">
+<style>
+  /* 밤의 동네 — 앞에는 편의점과 벤치(캔 세 개 = 친구 셋), 뒤에는 서로 가까이 사는 집들.
+     처음엔 벤치 쪽으로 다가가 있다가, 안부 장면에서 뒤로 물러나 친구들의 창문이 보인다.
+     사람은 그리지 않는다. 의도: "가족보다 친구"가 아니라 "그 순간엔 가까이 있는 사람이 절실하다". */
+  .scene { position: absolute; inset: 0; transform-origin: 140px 700px; }
+  .scene svg { display: block; width: 540px; height: 960px; }
+  .shade { position: absolute; inset: 0; background: #070918; opacity: 0; }
+  .cap { z-index: 8; }
+
+  .owner { position: absolute; left: 42px; z-index: 6; display: inline-flex; align-items: center; gap: 7px;
+    padding: 6px 13px 6px 10px; border-radius: 16px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+    font-size: 15px; font-weight: 600; color: #f1e6d6; }
+  .owner svg { width: 15px; height: 15px; flex: none; }
+  .o1 { top: 262px; }
+  .o2 { top: 410px; }
+  .o3 { top: 282px; }
+
+  /* 지우의 안전 코드 — 대상자 앱의 코드 카드(Teal) */
+  .code { left: 42px; top: 296px; width: 330px; z-index: 5; border-radius: 20px; padding: 14px 18px 16px;
+    background: linear-gradient(135deg, #00897B 0%, #00695C 100%); color: #fff; }
+  .code .lb { font-size: 12px; font-weight: 700; letter-spacing: 1.6px; opacity: .85; }
+  .code .val { margin-top: 4px; font-size: 40px; font-weight: 800; letter-spacing: 3px; line-height: 1.15; }
+
+  /* 내 폰 — 보호 대상자 연결 화면(앱 문구 그대로) */
+  .form { left: 118px; top: 458px; width: 356px; z-index: 5; border-radius: 20px; padding: 14px 18px 16px; background: #F7F9F8; }
+  .form .ttl { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+  .form .lb { font-size: 13px; font-weight: 600; color: #6b7080; margin: 7px 0 3px; }
+  .form .in { padding: 7px 12px; border-radius: 12px; background: #fff; border: 1.5px solid #D8DCE8; font-size: 18px; font-weight: 700; }
+  .form .in.code-in { letter-spacing: 2px; }
+  .form .btn { position: relative; margin-top: 12px; padding: 10px; border-radius: 14px; background: #4355B9; color: #fff;
+    text-align: center; font-size: 17px; font-weight: 700; }
+  /* 연결 완료 — 버튼 자리에서 초록으로 바뀐다(별도 토스트는 아래 가림 영역과 겹친다) */
+  .form .ok { position: absolute; inset: 0; border-radius: 14px; background: #2E7D32; display: flex; align-items: center;
+    justify-content: center; padding: 0 10px; font-size: 15px; line-height: 1.25; }
+
+  .sig { position: absolute; left: 0; top: 0; width: 30px; height: 30px; margin: -15px 0 0 -15px; z-index: 6;
+    border-radius: 50%; background: radial-gradient(circle, #ffd4da 0%, #ff8a95 45%, rgba(255,138,149,0) 72%);
+    filter: drop-shadow(0 0 10px rgba(255,138,149,.9)); }
+  .fpush { left: 44px; width: 340px; --base: scale(1.2); transform-origin: top left; }
+  .fpush .now { margin-inline-start: auto; font-size: 10.5px; color: #9AA0AE; }
+  .f1 { top: 322px; }
+  .f2 { top: 452px; }
+
+  /* 엔딩 — 한 문장을 두 번에 나눠 보여주므로 줄 사이를 붙인다(흐름 배치라 줄이 늘어도 겹치지 않는다) */
+  .end { padding-top: 280px; }
+  .end .q { position: relative; top: auto; left: auto; right: auto; margin: 0 64px 0 40px; }
+  .end .q2 { margin-top: 6px; }
+</style></head>
+<body><div class="v">
+
+  <div class="scene">
+    <svg viewBox="0 0 540 960" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#070a26"/><stop offset=".6" stop-color="#151848"/><stop offset="1" stop-color="#2a2458"/></linearGradient>
+        <radialGradient id="moon"><stop offset="0" stop-color="#fff2d2" stop-opacity=".5"/><stop offset="1" stop-color="#fff2d2" stop-opacity="0"/></radialGradient>
+        <radialGradient id="store"><stop offset="0" stop-color="#e6f2ff" stop-opacity=".55"/><stop offset="1" stop-color="#e6f2ff" stop-opacity="0"/></radialGradient>
+        <radialGradient id="lamp"><stop offset="0" stop-color="#ffd9a0" stop-opacity=".45"/><stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/></radialGradient>
+        <radialGradient id="win"><stop offset="0" stop-color="#ffcf8a" stop-opacity=".7"/><stop offset="1" stop-color="#ffcf8a" stop-opacity="0"/></radialGradient>
+        <radialGradient id="vig" cx=".5" cy=".55" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".5"/></radialGradient>
+      </defs>
+      <rect width="540" height="960" fill="url(#sky)"/>
+      <circle cx="440" cy="300" r="46" fill="url(#moon)"/><circle cx="440" cy="300" r="14" fill="#fff1d0"/>
+      <g fill="#fff" opacity=".6"><circle cx="80" cy="300" r="1.2"/><circle cx="170" cy="340" r="1"/><circle cx="360" cy="330" r="1.1"/><circle cx="500" cy="380" r="1"/></g>
+
+      <!-- 뒤편의 집들(서로 가까이 산다) -->
+      <rect x="236" y="360" width="140" height="420" fill="#141638"/>
+      <rect x="372" y="420" width="168" height="360" fill="#191a40"/>
+      <rect x="160" y="450" width="90" height="330" fill="#11122f"/>
+      <g fill="#262a5a">
+        <rect x="256" y="380" width="16" height="18"/><rect x="286" y="380" width="16" height="18"/><rect x="316" y="380" width="16" height="18"/><rect x="346" y="380" width="16" height="18"/>
+        <rect x="256" y="414" width="16" height="18"/><rect x="316" y="414" width="16" height="18"/><rect x="346" y="414" width="16" height="18"/>
+        <rect x="256" y="448" width="16" height="18"/><rect x="286" y="448" width="16" height="18"/><rect x="346" y="448" width="16" height="18"/>
+        <rect x="392" y="440" width="18" height="20"/><rect x="424" y="440" width="18" height="20"/><rect x="488" y="440" width="18" height="20"/>
+        <rect x="392" y="476" width="18" height="20"/><rect x="456" y="476" width="18" height="20"/><rect x="488" y="476" width="18" height="20"/>
+        <rect x="392" y="512" width="18" height="20"/><rect x="424" y="512" width="18" height="20"/>
+      </g>
+      <g fill="#ffcf8a" opacity=".55"><rect x="286" y="414" width="16" height="18"/><rect x="316" y="448" width="16" height="18"/><rect x="456" y="440" width="18" height="20"/><rect x="424" y="476" width="18" height="20"/></g>
+      <!-- 친구 둘의 창문 -->
+      <circle class="wg1" cx="294" cy="389" r="30" fill="url(#win)"/><rect x="286" y="380" width="16" height="18" fill="#ffd99a"/>
+      <circle class="w1" cx="294" cy="389" r="1" fill="none"/>
+      <circle class="wg2" cx="465" cy="522" r="30" fill="url(#win)"/><rect x="456" y="512" width="18" height="20" fill="#ffd99a"/>
+      <circle class="w2" cx="465" cy="522" r="1" fill="none"/>
+
+      <!-- 편의점 -->
+      <circle cx="140" cy="640" r="190" fill="url(#store)"/>
+      <rect x="12" y="520" width="256" height="250" fill="#1d2140"/>
+      <rect x="12" y="520" width="256" height="34" fill="#2a8f7a"/>
+      <text x="140" y="544" text-anchor="middle" font-size="20" font-weight="800" fill="#fff" font-family="-apple-system, sans-serif">24H</text>
+      <path d="M12 554 h256 v12 h-256 Z" fill="#e8e4dc" opacity=".85"/>
+      <rect x="28" y="580" width="150" height="150" rx="3" fill="#dff0ff" opacity=".85"/>
+      <g fill="#9fb9d8" opacity=".6"><rect x="40" y="600" width="126" height="6"/><rect x="40" y="636" width="126" height="6"/><rect x="40" y="672" width="126" height="6"/></g>
+      <g fill="#f08a5d" opacity=".7"><rect x="46" y="590" width="10" height="10"/><rect x="64" y="590" width="10" height="10"/><rect x="100" y="626" width="10" height="10"/><rect x="130" y="662" width="10" height="10"/></g>
+      <rect x="192" y="584" width="62" height="186" rx="3" fill="#c8e2f5" opacity=".7"/>
+      <!-- 땅과 가로등 -->
+      <rect y="770" width="540" height="190" fill="#0c0d24"/>
+      <ellipse cx="140" cy="780" rx="190" ry="26" fill="#dff0ff" opacity=".08"/>
+      <circle cx="318" cy="600" r="80" fill="url(#lamp)"/>
+      <path d="M318 600 V780" stroke="#2c2f55" stroke-width="5"/><rect x="306" y="592" width="24" height="10" rx="4" fill="#ffe4b8"/>
+      <!-- 벤치와 캔 세 개(친구 셋) -->
+      <rect x="40" y="744" width="200" height="10" rx="3" fill="#6b4a36"/>
+      <rect x="54" y="754" width="8" height="24" fill="#4a3226"/><rect x="218" y="754" width="8" height="24" fill="#4a3226"/>
+      <rect x="92" y="724" width="13" height="20" rx="2" fill="#e04e4e"/><rect x="92" y="724" width="13" height="4" rx="1" fill="#d8d8d8"/>
+      <rect x="132" y="724" width="13" height="20" rx="2" fill="#3f8fd8"/><rect x="132" y="724" width="13" height="4" rx="1" fill="#d8d8d8"/>
+      <rect x="172" y="724" width="13" height="20" rx="2" fill="#f2c14e"/><rect x="172" y="724" width="13" height="4" rx="1" fill="#d8d8d8"/>
+      <rect width="540" height="960" fill="url(#vig)"/>
+    </svg>
+  </div>
+  <div class="shade"></div>
+
+  <p class="cap" data-t="-1,3.3" data-fx="up" data-h="e1"></p>
+  <p class="cap" data-t="3.6,6.8" data-fx="up" data-h="e2"></p>
+  <p class="cap" data-t="7.0,11.6" data-fx="up" data-h="e3"></p>
+  <p class="cap" data-t="12.0,17.2" data-fx="up" data-h="e4"></p>
+
+  <!-- 서로 코드를 주고받는다: 지우의 코드 → 내 폰에 입력 (서로가 같은 걸 한다) -->
+  <div class="owner o1" data-t="7.2,11.8" data-fx="up"><svg viewBox="0 0 24 24" fill="none" stroke="#f1e6d6" stroke-width="2"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3" stroke-linecap="round"/></svg><span data-k="e_owner1"></span></div>
+  <div class="code float" data-t="7.2,11.8" data-fx="pop"><div class="lb">SAFETY SHARE CODE</div><div class="val">K7M-4PXR</div></div>
+  <div class="owner o2" data-t="8.4,11.8" data-fx="up"><svg viewBox="0 0 24 24" fill="none" stroke="#f1e6d6" stroke-width="2"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3" stroke-linecap="round"/></svg><span data-k="e_me"></span></div>
+  <div class="form float" data-t="8.4,11.8" data-fx="pop">
+    <div class="ttl" data-k="as_title"></div>
+    <div class="lb" data-k="as_code"></div><div class="in code-in">K7M-4PXR</div>
+    <div class="lb" data-k="as_alias"></div><div class="in" data-k="e_f1"></div>
+    <div class="btn"><span data-k="as_connect"></span><span class="ok" data-t="10.2,11.8">✓&nbsp;<span data-k="as_success"></span></span></div>
+  </div>
+
+  <!-- 안부 — 두 친구의 창문에서 내 폰으로 -->
+  <div class="owner o3" data-t="12.2,17.2" data-fx="up"><svg viewBox="0 0 24 24" fill="none" stroke="#f1e6d6" stroke-width="2"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3" stroke-linecap="round"/></svg><span data-k="e_me"></span></div>
+  <span class="sig q1" data-t="12.0,13.05"></span>
+  <span class="sig q2" data-t="13.0,14.05"></span>
+  <div class="push float fpush f1" data-t="13.0,17.2" data-fx="down">
+    <div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z"/></svg></span><span class="app" data-k="app_name"></span><span class="now" data-k="now"></span></div>
+    <div class="ti" data-k="push_title"></div>
+    <div class="bo t-push1"></div>
+  </div>
+  <div class="push float fpush f2" data-t="14.0,17.2" data-fx="down">
+    <div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z"/></svg></span><span class="app" data-k="app_name"></span><span class="now" data-k="now"></span></div>
+    <div class="ti" data-k="push_title"></div>
+    <div class="bo t-push2"></div>
+  </div>
+
+</div>
+<script src="engine.js"></script>
+<script>
+  window.DURATION = 24.2;
+  // 효과음 — t 는 화면에 그 요소가 나타나는 시각. 크기·앞 무음 보정은 audio.py. 엔딩 로고 차임은 모든 편 공통.
+  window.SFX = [
+    { t: 7.2,  file: '1_푸시알림/dry-pop-up-notification-alert.mp3' },    // 지우의 코드
+    { t: 8.4,  file: '1_푸시알림/dry-pop-up-notification-alert.mp3' },    // 내 폰 연결 화면
+    { t: 10.2, file: '1_푸시알림/bubble-pop-up-alert-notification.mp3' }, // 연결 완료
+    { t: 13.0, file: '1_푸시알림/positive-notification.mp3', duck: true }, // 지우의 안부
+    { t: 14.0, file: '1_푸시알림/bubble-pop-up-alert-notification.mp3' }, // 하나의 안부
+    { t: 21.4, file: '3_페이지_넘김/page-forward-single-chime.mp3' },      // 엔딩 로고(17.4 + 4.0)
+  ];
+  fillText();
+  const $ = s => document.querySelector(s);
+  // 걸음수(성인 5,000보 이상)
+  $('.t-push1').textContent = pushBody(L.e_f1, 6120);
+  $('.t-push2').textContent = pushBody(L.e_f2, 7480);
+  mountEnding(17.4, L.e_q1, L.e_q2);
+
+  const scene = $('.scene'), shade = $('.shade'), wg1 = $('.wg1'), wg2 = $('.wg2');
+  const center = el => { const r = el.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
+  const fly = (sig, from, B, t0, t) => {
+    const A = center(from);
+    const q = Math.min(Math.max((t - t0) / 1.0, 0), 1), p = q * q * (3 - 2 * q);
+    sig.style.left = (A[0] + (B[0] - A[0]) * p) + 'px';
+    sig.style.top = (A[1] + (B[1] - A[1]) * p - Math.sin(p * Math.PI) * 40) + 'px';
+  };
+  window.extra = t => {
+    // 카메라: 처음엔 벤치 쪽으로 다가가 있다가(1.14), 안부 장면에서 동네 전체로 물러난다(1.0)
+    scene.style.transform = `scale(${(1.14 - 0.14 * ease((t - 11.6) / 1.2)).toFixed(4)})`;
+    // 코드 주고받기 동안 어둡게, 안부 장면에서 걷힌다
+    shade.style.opacity = (0.62 * ease((t - 6.9) / 0.4) - 0.4 * ease((t - 11.6) / 0.6)).toFixed(3);
+    // 친구들의 창문: 신호가 떠날 때 밝아진다
+    wg1.style.opacity = (0.5 + 0.5 * ease((t - 11.8) / 0.3)).toFixed(3);
+    wg2.style.opacity = (0.5 + 0.5 * ease((t - 12.8) / 0.3)).toFixed(3);
+    fly($('.q1'), $('.w1'), [230, 384], 12.0, t);
+    fly($('.q2'), $('.w2'), [230, 514], 13.0, t);
+  };
+</script>
+</body></html>

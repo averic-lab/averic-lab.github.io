@@ -4,6 +4,7 @@
 //   node render.mjs a.html out.mp4 [--lang en]                         전체 렌더
 //   node render.mjs a.html --stills 0,5,8,13,18 <출력폴더> [--lang en]  지정 초의 정지 화면만
 //   node render.mjs a.html --check [--lang en]                         글자 넘침 검사
+//   node render.mjs c.html --cues                                      효과음 신호(JSON) — audio.py 용
 //
 // playwright-core 는 이 저장소에 설치하지 않는다(게시 저장소라 node_modules 를 두지 않는다).
 // 설치된 위치를 PLAYWRIGHT_CORE 로 넘긴다. 브라우저는 ~/Library/Caches/ms-playwright 의 것을 쓴다.
@@ -30,7 +31,11 @@ const duration = await page.evaluate(() => window.DURATION);
 
 const shot = async ms => { await page.evaluate(m => window.render(m), ms); return page.screenshot({ type: 'png' }); };
 
-if (rest[0] === '--check') {
+if (rest[0] === '--cues') {
+  // 효과음 신호와 영상 길이 — audio.py 가 읽는다. 타임라인은 언어와 무관하므로 한 번만 뽑으면 된다.
+  const cues = await page.evaluate(() => ({ duration: window.DURATION, sfx: window.SFX || [] }));
+  console.log(JSON.stringify(cues));
+} else if (rest[0] === '--check') {
   // 자막이 폰/카드 영역을 침범하는지, 한 줄짜리 요소가 넘치는지 검사한다(투명도와 무관하게 레이아웃만 본다)
   const issues = await page.evaluate(() => {
     const out = [], lim = 250;

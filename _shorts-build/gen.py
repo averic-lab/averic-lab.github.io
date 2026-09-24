@@ -22,8 +22,11 @@ import extract_strings as ex               # noqa: E402  TRANS / VALUE_RE / unes
 
 APP_KEYS = ["app_name", "app_guardian_title", "guardian_today_summary", "guardian_checking_subjects",
             "guardian_subject_list", "guardian_status_normal", "guardian_activity_prefix",
-            "guardian_activity_active", "guardian_chart_y_axis_steps", "guardian_chart_x_axis_last_7_days",
-            "guardian_last_check_now", "add_subject_button", "noti_steps_body"]
+            "guardian_activity_active", "guardian_activity_very_active", "guardian_activity_needs_exercise",
+            "guardian_chart_y_axis_steps", "guardian_chart_x_axis_last_7_days",
+            "guardian_last_check_now", "add_subject_button", "noti_steps_body",
+            "add_subject_title", "add_subject_code_label", "add_subject_alias_label", "add_subject_connect",
+            "add_subject_success"]
 SERVER_MESSAGES = os.path.join(os.path.dirname(ROOT), "anbucheck-server", "i18n", "messages.py")
 MEDIA = os.path.join(ROOT, "media", "shorts")
 PREVIEW = os.path.join(ROOT, "preview", "shorts")
@@ -71,9 +74,16 @@ def lang_data(code, cfg, site_tr, msgs):
         "phead": a["guardian_checking_subjects"].replace("@count", "1").replace("\n", "<br>"),
         "psum": a["guardian_today_summary"], "plist": a["guardian_subject_list"],
         "legend": a["guardian_status_normal"] + ": 1", "pill": "✅ " + a["guardian_status_normal"],
+        # 활동량 라벨 — 앱과 같이 7일 평균으로 고른다(engine.js setWeek)
         "act": a["guardian_activity_prefix"] + ": " + a["guardian_activity_active"],
+        "act_very": a["guardian_activity_prefix"] + ": " + a["guardian_activity_very_active"],
+        "act_need": a["guardian_activity_prefix"] + ": " + a["guardian_activity_needs_exercise"],
         "steps": a["guardian_chart_y_axis_steps"], "last7": a["guardian_chart_x_axis_last_7_days"],
         "last_now": a["guardian_last_check_now"], "add": a["add_subject_button"],
+        # 보호 대상자 연결 화면(동네 친구 편) — 앱 화면 그대로
+        "as_title": a["add_subject_title"], "as_code": a["add_subject_code_label"],
+        "as_alias": a["add_subject_alias_label"], "as_connect": a["add_subject_connect"],
+        "as_success": a["add_subject_success"],
         "steps_tpl": a["noti_steps_body"],
         "push_title": msgs[locale]["push_auto_report_title"],
         "q1": q1.strip(), "q2": q2.strip(),
@@ -145,7 +155,7 @@ def gen_preview(cfg):
         items.append(f'    <a class="{cls}" href="{code}/">{FOLDER_SVG}<div><b>{html.escape(label)}</b>'
                      f'<span>{code} · {"영상 " + str(n) + "편" if n else "준비 중"}</span></div></a>')
     root = PAGE_HEAD.format(lang="ko", dir="", title="숏폼 영상 보관함") + f"""  <h1>숏폼 영상 보관함</h1>
-  <p class="note">검색에 노출되지 않는 내부 페이지입니다. 언어 폴더를 누르면 그 언어의 영상을 보고 내려받을 수 있습니다. 영상에는 소리가 없습니다 — 배경음악은 업로드할 때 각 플랫폼에서 붙입니다.</p>
+  <p class="note">검색에 노출되지 않는 내부 페이지입니다. 언어 폴더를 누르면 그 언어의 영상을 보고 내려받을 수 있습니다. 배경음악·효과음이 들어 있는 영상은 재생하면 소리가 납니다(소리가 없는 영상은 업로드할 때 각 플랫폼에서 음악을 붙입니다).</p>
   <div class="folders">
 {chr(10).join(items)}
   </div>
@@ -165,7 +175,7 @@ def gen_preview(cfg):
             local = html.escape(L[v["title"]])
             kor = html.escape(ko[v["title"]])
             sub = "" if code == "ko" else f"<span>{kor}</span> · "
-            figs.append(f'    <figure><video src="{src}.mp4" poster="{src}.jpg" controls playsinline muted preload="metadata"></video>'
+            figs.append(f'    <figure><video src="{src}.mp4" poster="{src}.jpg" controls playsinline preload="metadata"></video>'
                         f'<figcaption><b dir="auto">{local}</b>{sub}{v["date"]} · {v["id"]}.mp4<br>'
                         f'<a class="dl" href="{src}.mp4" download="anbu-{code}-{v["id"]}.mp4">내려받기</a></figcaption></figure>')
         body = "\n".join(figs) if figs else '    <p class="note">아직 영상이 없습니다.</p>'

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>숏폼 D — 너무 바쁜 연인</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="shorts.css">
+<style>
+  /* 위(병원 야간 근무)·아래(사무실 야근) 두 칸. 안부는 반드시 양방향으로 오간다 —
+     한쪽만 확인하면 "감시"로 읽힌다(시나리오 주의). 사람은 그리지 않고 공간과 폰으로 보여준다. */
+  .pane { position: absolute; left: 30px; width: 450px; height: 236px; border-radius: 24px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,.12); }
+  .pane svg { display: block; width: 450px; height: 236px; }
+  .p1 { top: 262px; }
+  .p2 { top: 516px; }
+  .lab { position: absolute; left: 14px; top: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 12px; border-radius: 14px; background: rgba(8,10,30,.55); border: 1px solid rgba(255,255,255,.18);
+    font-size: 14px; font-weight: 600; color: #f1e6d6; }
+  .lab b { color: #fff; }
+  .shade { position: absolute; inset: 0; background: #070918; opacity: 0; z-index: 3; }
+  .cap { z-index: 8; }
+
+  /* 멈춰 있는 대화 — 특정 메신저를 흉내 내지 않은 일반형 */
+  .chat { left: 50px; top: 356px; width: 410px; z-index: 5; border-radius: 22px; overflow: hidden; background: #F7F9F8; }
+  .chat .hd { display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #E8EAF0; }
+  .chat .av { width: 42px; height: 42px; border-radius: 15px; background: #FCE4EC; color: #C2185B;
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; }
+  .chat .nm2 { font-size: 20px; font-weight: 700; }
+  .chat .bd { padding: 16px 20px 26px; }
+  .chat .day { text-align: center; font-size: 14px; color: #9AA0AE; margin-bottom: 14px; }
+  .chat .b { display: inline-block; padding: 11px 16px; border-radius: 18px 18px 18px 4px; background: #fff;
+    border: 1px solid #E3E6EE; font-size: 19px; }
+  [dir="rtl"] .chat .b { border-radius: 18px 18px 4px 18px; }
+  .chat .tm { margin-inline-start: 8px; font-size: 13px; color: #9AA0AE; }
+
+  .sig { position: absolute; left: 0; top: 0; width: 30px; height: 30px; margin: -15px 0 0 -15px; z-index: 6;
+    border-radius: 50%; background: radial-gradient(circle, #ffd4da 0%, #ff8a95 45%, rgba(255,138,149,0) 72%);
+    filter: drop-shadow(0 0 10px rgba(255,138,149,.9)); }
+  .fpush { left: 44px; width: 340px; --base: scale(1.2); transform-origin: top left; }
+  .fpush .now { margin-inline-start: auto; font-size: 10.5px; color: #9AA0AE; }
+  .f1 { top: 318px; }
+  .f2 { top: 572px; }
+</style></head>
+<body><div class="v">
+
+  <!-- 병원 야간 근무 -->
+  <div class="pane p1">
+    <svg viewBox="0 0 450 236" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="h-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d2233"/><stop offset="1" stop-color="#123040"/></linearGradient>
+        <radialGradient id="h-mon"><stop offset="0" stop-color="#5fe3c0" stop-opacity=".35"/><stop offset="1" stop-color="#5fe3c0" stop-opacity="0"/></radialGradient>
+        <radialGradient id="h-ph"><stop offset="0" stop-color="#d6e6ff" stop-opacity=".5"/><stop offset="1" stop-color="#d6e6ff" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="450" height="236" fill="url(#h-bg)"/>
+      <rect x="0" y="0" width="450" height="10" fill="#1d4052"/>
+      <rect x="60" y="10" width="330" height="4" rx="2" fill="#bfe8ff" opacity=".45"/>
+      <!-- 복도 문 -->
+      <rect x="250" y="40" width="70" height="110" rx="4" fill="#0f2a38" stroke="#24495c" stroke-width="2"/>
+      <rect x="265" y="54" width="40" height="30" rx="3" fill="#8fd3ff" opacity=".35"/>
+      <!-- 벽시계 -->
+      <circle cx="385" cy="62" r="24" fill="#e8eef2"/><circle cx="385" cy="62" r="24" fill="none" stroke="#9fb4c0" stroke-width="3"/>
+      <path d="M385 62 L385 46 M385 62 L395 67" stroke="#1d2b33" stroke-width="3" stroke-linecap="round"/>
+      <!-- 수액 거치대 -->
+      <path d="M420 70 V160 M408 160 h24 M420 70 h-10" stroke="#3a6070" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <rect x="405" y="74" width="12" height="20" rx="4" fill="#9fdcff" opacity=".45"/>
+      <!-- 모니터 -->
+      <circle cx="115" cy="100" r="90" fill="url(#h-mon)"/>
+      <rect x="45" y="58" width="140" height="92" rx="8" fill="#08141c" stroke="#2a4a5a" stroke-width="3"/>
+      <path d="M55 110 h28 l8 -24 l10 44 l8 -30 l6 10 h70" stroke="#5fe3c0" stroke-width="3" fill="none" stroke-linejoin="round"/>
+      <rect x="105" y="150" width="20" height="10" fill="#2a4a5a"/>
+      <!-- 스테이션 카운터 -->
+      <rect x="0" y="158" width="450" height="78" fill="#0a1a24"/>
+      <rect x="0" y="156" width="450" height="8" fill="#2d5566"/>
+      <!-- 카운터 위의 폰 -->
+      <circle cx="330" cy="150" r="46" fill="url(#h-ph)" class="glow1"/>
+      <rect x="318" y="140" width="26" height="15" rx="3" fill="#0c0e24" stroke="#4a6a80" stroke-width="1.2" transform="rotate(-6 331 147)"/>
+      <circle class="s1" cx="331" cy="147" r="1" fill="none"/>
+    </svg>
+    <span class="lab"><b data-k="d_n1"></b><span>·</span><span data-k="d_p1"></span></span>
+  </div>
+
+  <!-- 사무실 야근 -->
+  <div class="pane p2">
+    <svg viewBox="0 0 450 236" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="o-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a1636"/><stop offset="1" stop-color="#241d3e"/></linearGradient>
+        <linearGradient id="o-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a1238"/><stop offset="1" stop-color="#27306a"/></linearGradient>
+        <radialGradient id="o-lamp"><stop offset="0" stop-color="#ffcf8a" stop-opacity=".5"/><stop offset="1" stop-color="#ffcf8a" stop-opacity="0"/></radialGradient>
+        <radialGradient id="o-mon"><stop offset="0" stop-color="#9fbcff" stop-opacity=".35"/><stop offset="1" stop-color="#9fbcff" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="450" height="236" fill="url(#o-bg)"/>
+      <!-- 창밖 도시 -->
+      <rect x="236" y="22" width="196" height="126" rx="4" fill="url(#o-sky)" stroke="#3a3466" stroke-width="3"/>
+      <path d="M239 145 V110 h20 v-24 h22 v36 h14 v-50 h26 v60 h16 v-34 h22 v20 h18 v-30 h18 V145 Z" fill="#0b1133"/>
+      <g fill="#ffcf8a" opacity=".85"><rect x="286" y="96" width="4" height="4"/><rect x="296" y="108" width="4" height="4"/><rect x="330" y="100" width="4" height="4"/><rect x="262" y="118" width="3" height="3"/><rect x="394" y="116" width="4" height="4"/><rect x="372" y="128" width="3" height="3"/></g>
+      <rect x="333" y="22" width="3" height="126" fill="#3a3466"/>
+      <!-- 모니터 -->
+      <circle cx="110" cy="105" r="95" fill="url(#o-mon)"/>
+      <rect x="40" y="46" width="146" height="98" rx="8" fill="#0e1330" stroke="#3a3f6a" stroke-width="3"/>
+      <g fill="#6f86d8" opacity=".75"><rect x="54" y="62" width="80" height="6" rx="2"/><rect x="54" y="76" width="112" height="5" rx="2"/><rect x="54" y="88" width="96" height="5" rx="2"/><rect x="54" y="100" width="104" height="5" rx="2"/><rect x="54" y="112" width="70" height="5" rx="2"/></g>
+      <rect x="103" y="144" width="20" height="12" fill="#3a3f6a"/>
+      <!-- 스탠드 -->
+      <circle cx="214" cy="150" r="70" fill="url(#o-lamp)"/>
+      <path d="M200 96 h28 l6 18 h-40 Z" fill="#d9a35e"/>
+      <path d="M214 114 V156" stroke="#8a6a44" stroke-width="3"/>
+      <!-- 책상 -->
+      <rect x="0" y="156" width="450" height="80" fill="#16122c"/>
+      <rect x="0" y="154" width="450" height="7" fill="#4a3d6a"/>
+      <rect x="150" y="136" width="18" height="20" rx="3" fill="#e8e4dc"/><path d="M168 142 q8 4 0 10" stroke="#e8e4dc" stroke-width="3" fill="none"/>
+      <!-- 책상 위의 폰 -->
+      <rect x="258" y="146" width="28" height="15" rx="3" fill="#0c0e24" stroke="#5a5a8a" stroke-width="1.2" transform="rotate(8 272 153)"/>
+      <circle class="s2" cx="272" cy="153" r="1" fill="none"/>
+    </svg>
+    <span class="lab"><b data-k="d_n2"></b><span>·</span><span data-k="d_p2"></span></span>
+  </div>
+  <div class="shade"></div>
+
+  <p class="cap" data-t="-1,7.6" data-fx="up" data-h="d1"></p>
+  <p class="cap" data-t="7.9,15.0" data-fx="up" data-h="d2"></p>
+
+  <!-- 어제 '잘 자'에서 멈춘 대화 -->
+  <div class="chat float" data-t="4.0,7.8" data-fx="up">
+    <div class="hd"><span class="av" data-i="d_n1"></span><span class="nm2" data-k="d_n1"></span></div>
+    <div class="bd"><div class="day t-yday"></div><span class="b" data-k="d_last"></span><span class="tm t-last"></span></div>
+  </div>
+
+  <!-- 서로의 안부가 교차해 도착한다 -->
+  <span class="sig q1" data-t="8.4,9.45"></span>
+  <span class="sig q2" data-t="8.8,9.85"></span>
+  <div class="push float fpush f1" data-t="9.4,15.0" data-fx="down">
+    <div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z"/></svg></span><span class="app" data-k="app_name"></span><span class="now" data-k="now"></span></div>
+    <div class="ti" data-k="push_title"></div>
+    <div class="bo t-push1"></div>
+  </div>
+  <div class="push float fpush f2" data-t="10.0,15.0" data-fx="down">
+    <div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z"/></svg></span><span class="app" data-k="app_name"></span><span class="now" data-k="now"></span></div>
+    <div class="ti" data-k="push_title"></div>
+    <div class="bo t-push2"></div>
+  </div>
+
+</div>
+<script src="engine.js"></script>
+<script>
+  window.DURATION = 22.0;
+  // 효과음 — t 는 화면에 그 요소가 나타나는 시각. 크기·앞 무음 보정은 audio.py. 엔딩 로고 차임은 모든 편 공통.
+  window.SFX = [
+    { t: 4.0,  file: '1_푸시알림/dry-pop-up-notification-alert.mp3' },    // 멈춰 있는 대화
+    { t: 8.4,  file: '2_슬라이드_전환/fast-small-sweep-transition.mp3' },  // 서로에게 신호가 간다
+    { t: 9.4,  file: '1_푸시알림/positive-notification.mp3', duck: true }, // 수아 폰에 지훈의 안부
+    { t: 10.0, file: '1_푸시알림/bubble-pop-up-alert-notification.mp3' }, // 지훈 폰에 수아의 안부
+    { t: 19.2, file: '3_페이지_넘김/page-forward-single-chime.mp3' },      // 엔딩 로고(15.2 + 4.0)
+  ];
+  fillText();
+  const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
+  $$('[data-i]').forEach(e => { e.textContent = Array.from(L[e.dataset.i])[0]; });
+  $('.t-yday').textContent = new Intl.RelativeTimeFormat(L.bcp, { numeric: 'auto' }).format(-1, 'day');
+  $('.t-last').textContent = fmtTime(wall(23, 52));
+  // 걸음수(성인 5,000보 이상) — 병원 근무는 많이 걷는다
+  $('.t-push1').textContent = pushBody(L.d_n2, 5310);    // 수아 폰: 지훈의 안부
+  $('.t-push2').textContent = pushBody(L.d_n1, 11240);   // 지훈 폰: 수아의 안부
+  mountEnding(15.2, L.d_q1, L.d_q2);
+
+  const shade = $('.shade'), g1 = $('.glow1');
+  const center = el => { const r = el.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
+  const fly = (sig, A, B, t0, t) => {
+    const q = Math.min(Math.max((t - t0) / 1.0, 0), 1), p = q * q * (3 - 2 * q);
+    sig.style.left = (A[0] + (B[0] - A[0]) * p) + 'px';
+    sig.style.top = (A[1] + (B[1] - A[1]) * p) + 'px';
+  };
+  const P1 = center($('.s1')), P2 = center($('.s2'));
+  window.extra = t => {
+    shade.style.opacity = (0.6 * ease((t - 3.8) / 0.4) * (1 - ease((t - 7.8) / 0.4))).toFixed(3);
+    g1.style.opacity = (0.75 + 0.25 * Math.sin(t * 2)).toFixed(3);
+    fly($('.q1'), P2, [240, 380], 8.4, t);   // 지훈 폰 → 수아 쪽 알림
+    fly($('.q2'), P1, [240, 634], 8.8, t);   // 수아 폰 → 지훈 쪽 알림
+  };
+</script>
+</body></html>

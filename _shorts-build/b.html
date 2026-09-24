@@ -41,7 +41,6 @@
   .fpush .now { margin-inline-start: auto; font-size: 10.5px; color: #9AA0AE; }
   .fcard { left: 42px; top: 318px; width: 332px; --base: scale(1.3); transform-origin: top left; background: #EEF6EF !important; }
   .fcard .slot { height: 120px; }
-  .fcard .plot i.today { height: 72%; }
 </style></head>
 <body><div class="v">
 
@@ -85,13 +84,22 @@
 <script src="engine.js"></script>
 <script>
   window.DURATION = 23.4;
+  // 효과음 — t 는 화면에 그 요소가 나타나는 시각(data-t 와 같은 값). 크기·앞 무음 보정은 audio.py 가 한다.
+  // 팝업·알림이 뜰 때만 넣는다. duck:true 는 앱 알림음. 엔딩 로고 차임은 모든 편 공통(시리즈 서명).
+  window.SFX = [
+    { t: 4.1,  file: '1_푸시알림/dry-pop-up-notification-alert.mp3' },    // 엄마가 보낸 말풍선
+    { t: 7.9,  file: '2_슬라이드_전환/fast-small-sweep-transition.mp3' },  // 딸 폰에서 신호가 올라간다
+    { t: 9.0,  file: '1_푸시알림/positive-notification.mp3', duck: true }, // 알림 도착
+    { t: 12.1, file: '1_푸시알림/bubble-pop-up-alert-notification.mp3' }, // 딸 카드
+    { t: 20.6, file: '3_페이지_넘김/page-forward-single-chime.mp3' },      // 엔딩 로고(16.6 + 4.0)
+  ];
   fillText();
   const now = new Date(L.b_now), sent = new Date(L.b_sent);
   document.querySelector('.t-home').innerHTML = clockHTML(now, L.home_tz);
   document.querySelector('.t-away').innerHTML = clockHTML(now, L.away_tz);
   document.querySelector('.t-sent').textContent = fmtTime(sent, L.home_tz) + ' · ' + L.unread;
-  document.querySelectorAll('.n-steps').forEach(e => { e.textContent = fmtNum(2318); });
-  document.querySelector('.t-push').textContent = pushBody(L.daughter, 2318);
+  const today = setWeek([5480, 6120, 5230, 6790, 5660, 6350, 5920]);   // 딸(성인) — 평균 5,936 → 활동적
+  document.querySelector('.t-push').textContent = pushBody(L.daughter, today);
   mountEnding(16.6);
 
   const card = document.querySelector('.fcard'), sig = document.querySelector('.sig');

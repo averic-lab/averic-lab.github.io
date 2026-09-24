@@ -24,4 +24,10 @@ render_one() {
 }
 export -f render_one
 echo "$JOBS" | xargs -P 4 -L 1 bash -c 'render_one "$0" "$1" "$2"'
+# 소리 — 모든 편(편에서 "audio": false 만 제외). 배경음악 공통 + 편마다 효과음. 영상은 다시 인코딩하지 않는다.
+for id in $(python3 -c 'import json;print(" ".join(v["id"] for v in json.load(open("shorts.json"))["videos"] if v.get("audio") is not False))'); do
+  python3 audio.py "$id" $LANGS
+done
 python3 gen.py
+# 홈 해질녘 영상·영상 페이지(/{언어}/shorts.html)는 영상 파일이 있는 편을 목록으로 삼는다 — 렌더 뒤 다시 만든다
+python3 ../i18n/build.py >/dev/null

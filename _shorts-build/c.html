@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>숏폼 C — 자취 3년차</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="shorts.css">
+<style>
+  /* 배경 일러스트 — 새벽의 원룸. 사람은 이불과 머리 실루엣만(표정 연기 없음, 특정 나라처럼 보이지 않게).
+     움직임은 전부 render(ms) → extra(t) 가 쓴다(카메라 줌·폰 불빛·어둡게 덮기) */
+  .room { position: absolute; inset: 0; transform-origin: 330px 640px; }
+  .room svg { display: block; width: 540px; height: 960px; }
+  .shade { position: absolute; inset: 0; background: #070918; opacity: 0; }
+  .cap { z-index: 8; }
+
+  /* 채팅 목록 — 특정 메신저를 흉내 내지 않은 일반형. 폰 안 글씨는 안 읽히므로 목록만 크게 띄운다 */
+  .chats { left: 36px; top: 300px; width: 430px; z-index: 5; border-radius: 22px; overflow: hidden; background: #F7F9F8; }
+  .chats .hd { padding: 20px 24px 12px; font-size: 26px; font-weight: 800; }
+  .chats .row { display: flex; align-items: center; gap: 14px; padding: 16px 24px; border-top: 1px solid #E8EAF0; }
+  .chats .av { width: 50px; height: 50px; flex: none; border-radius: 17px; background: #E3E7F6; color: #4355B9;
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 20px; }
+  .chats .tx { min-width: 0; }
+  .chats .nm2 { font-size: 20px; font-weight: 700; }
+  .chats .ms { font-size: 16px; color: #8a8f9c; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .chats .tm { margin-inline-start: auto; align-self: flex-start; margin-top: 3px; font-size: 16px; font-weight: 600; color: #E0564F; white-space: nowrap; }
+
+  /* 엔딩 — 한 문장을 두 번에 나눠 보여주므로 줄 사이를 붙인다(흐름 배치라 줄이 늘어도 겹치지 않는다) */
+  .end { padding-top: 300px; }
+  .end .q { position: relative; top: auto; left: auto; right: auto; margin: 0 64px 0 40px; }
+  .end .q2 { margin-top: 4px; }
+
+  /* 받는 쪽 표시 — 안부가 누구에게 가는지 */
+  .owner { position: absolute; left: 42px; top: 288px; z-index: 6; display: inline-flex; align-items: center; gap: 7px;
+    padding: 6px 13px 6px 10px; border-radius: 16px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+    font-size: 15px; font-weight: 600; color: #f1e6d6; }
+  .owner svg { width: 15px; height: 15px; flex: none; }
+
+  .ring { position: absolute; width: 64px; height: 64px; margin: -32px 0 0 -32px; z-index: 4; border-radius: 50%;
+    border: 2px solid rgba(255,138,149,.85); box-shadow: 0 0 18px rgba(255,138,149,.6); }
+  .sig { position: absolute; left: 0; top: 0; width: 30px; height: 30px; margin: -15px 0 0 -15px; z-index: 6;
+    border-radius: 50%; background: radial-gradient(circle, #ffd4da 0%, #ff8a95 45%, rgba(255,138,149,0) 72%);
+    filter: drop-shadow(0 0 10px rgba(255,138,149,.9)); }
+
+  .fpush { left: 42px; top: 330px; width: 340px; --base: scale(1.25); transform-origin: top left; }
+  .fpush .now { margin-inline-start: auto; font-size: 10.5px; color: #9AA0AE; }
+  .fcard { left: 42px; top: 330px; width: 332px; --base: scale(1.3); transform-origin: top left; background: #EEF6EF !important; }
+  .fcard .slot { height: 120px; }
+</style></head>
+<body><div class="v">
+
+  <div class="room">
+    <svg viewBox="0 0 540 960" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0b0e2a"/><stop offset=".55" stop-color="#181a45"/><stop offset="1" stop-color="#1e1f4d"/></linearGradient>
+        <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#13143a"/><stop offset="1" stop-color="#090a20"/></linearGradient>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#07123a"/><stop offset="1" stop-color="#22306e"/></linearGradient>
+        <radialGradient id="moonG"><stop offset="0" stop-color="#fff2d2" stop-opacity=".55"/><stop offset="1" stop-color="#fff2d2" stop-opacity="0"/></radialGradient>
+        <radialGradient id="phoneG"><stop offset="0" stop-color="#d6e6ff" stop-opacity=".62"/>
+          <stop offset=".35" stop-color="#9fbcff" stop-opacity=".22"/><stop offset="1" stop-color="#9fbcff" stop-opacity="0"/></radialGradient>
+        <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#aab8ff" stop-opacity=".16"/><stop offset="1" stop-color="#aab8ff" stop-opacity="0"/></linearGradient>
+        <linearGradient id="blanket" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#3d4488"/><stop offset="1" stop-color="#262a5e"/></linearGradient>
+        <radialGradient id="vig" cx=".5" cy=".55" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
+      </defs>
+
+      <rect width="540" height="782" fill="url(#wall)"/>
+      <rect y="782" width="540" height="178" fill="url(#floor)"/>
+      <rect y="778" width="540" height="4" fill="#282a5a"/>
+
+      <!-- 창문 -->
+      <rect x="24" y="282" width="300" height="3" rx="1.5" fill="#34376b"/>
+      <rect x="66" y="296" width="200" height="208" rx="6" fill="#2a2d5d"/>
+      <rect x="74" y="304" width="184" height="192" fill="url(#sky)"/>
+      <circle cx="220" cy="340" r="42" fill="url(#moonG)"/>
+      <circle cx="220" cy="340" r="14" fill="#fff1d0"/>
+      <g fill="#ffffff" opacity=".7"><circle cx="96" cy="326" r="1.2"/><circle cx="140" cy="352" r="1"/><circle cx="178" cy="318" r="1.1"/><circle cx="116" cy="378" r="1"/></g>
+      <path d="M74 496 V452 h22 v-20 h20 v36 h16 v-50 h28 v62 h18 v-30 h24 v18 h20 v-40 h20 v24 h16 V496 Z" fill="#0b1133"/>
+      <g fill="#ffcf8a" opacity=".85">
+        <rect x="136" y="430" width="4" height="4"/><rect x="146" y="444" width="4" height="4"/><rect x="136" y="458" width="4" height="4"/>
+        <rect x="100" y="440" width="3" height="3"/><rect x="224" y="446" width="4" height="4"/><rect x="236" y="460" width="3" height="3"/>
+      </g>
+      <rect x="164" y="304" width="4" height="192" fill="#2a2d5d"/>
+      <rect x="74" y="398" width="184" height="4" fill="#2a2d5d"/>
+      <rect x="58" y="500" width="216" height="10" rx="3" fill="#33366a"/>
+      <path d="M26 285 C44 330 30 380 46 430 C58 470 40 520 56 560 L26 560 Z" fill="#241c4b"/>
+      <path d="M294 285 C280 330 296 380 282 430 C270 470 290 520 276 560 L306 560 L306 285 Z" fill="#241c4b" opacity=".92"/>
+
+      <!-- 달빛이 침대로 -->
+      <polygon points="74,510 258,510 372,712 118,748" fill="url(#beam)"/>
+
+      <!-- 침대 -->
+      <rect x="14" y="560" width="26" height="182" rx="8" fill="#252857"/>
+      <rect x="14" y="692" width="360" height="58" rx="10" fill="#1a1b43"/>
+      <rect x="22" y="652" width="348" height="52" rx="10" fill="#2a2d60"/>
+      <ellipse cx="92" cy="630" rx="58" ry="21" fill="#b3b8d9"/>
+      <ellipse cx="120" cy="617" rx="25" ry="21" fill="#131430"/>
+      <path d="M110 646 C128 604 168 592 204 600 C244 574 302 584 332 608 C352 624 366 640 370 654 L370 704 L110 704 Z" fill="url(#blanket)"/>
+      <path d="M150 640 C190 628 232 632 262 646" stroke="#4d53a0" stroke-width="2" fill="none" opacity=".55"/>
+      <path d="M232 612 C262 606 294 612 320 628" stroke="#4d53a0" stroke-width="2" fill="none" opacity=".45"/>
+      <path d="M112 646 C130 630 146 626 160 628" stroke="#50569f" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+      <!-- 손에 든 폰과 그 불빛 -->
+      <circle class="glow" cx="160" cy="604" r="128" fill="url(#phoneG)"/>
+      <g transform="rotate(-16 160 604)">
+        <rect x="151" y="589" width="18" height="30" rx="4" fill="#0c0e24" stroke="#3f4577" stroke-width="1.2"/>
+        <rect class="scr" x="153.5" y="592" width="13" height="24" rx="2.5" fill="#dbe8ff"/>
+      </g>
+      <circle class="sender" cx="160" cy="604" r="1" fill="none"/>
+
+      <!-- 머리맡 탁자: 시계·물컵·약병 -->
+      <rect x="378" y="642" width="98" height="12" rx="4" fill="#2c2f62"/>
+      <rect x="384" y="652" width="86" height="126" rx="6" fill="#20224c"/>
+      <rect x="392" y="700" width="70" height="2" fill="#33366a"/><circle cx="427" cy="716" r="3" fill="#3a3e74"/>
+      <rect x="382" y="616" width="44" height="26" rx="6" fill="#0c0d22" stroke="#2e3160"/>
+      <text class="clk" x="404" y="634" text-anchor="middle" font-size="13" font-weight="600" fill="#ff9e7c"
+            font-family="-apple-system, 'SF Pro Display', sans-serif"></text>
+      <path d="M432 606 h16 l-2 36 h-12 Z" fill="#9fb0e8" opacity=".22" stroke="#aab8f0" stroke-opacity=".35"/>
+      <rect x="435" y="622" width="10" height="18" fill="#9fb0e8" opacity=".18"/>
+      <rect x="452" y="616" width="18" height="26" rx="3" fill="#b8733b"/>
+      <rect x="450" y="610" width="22" height="8" rx="2" fill="#e8e4dc"/>
+      <rect x="455" y="624" width="12" height="9" rx="1" fill="#f3ead8" opacity=".85"/>
+
+      <rect width="540" height="960" fill="url(#vig)"/>
+    </svg>
+  </div>
+  <div class="shade"></div>
+
+  <p class="cap" data-t="-1,3.3" data-fx="up" data-h="c1"></p>
+  <p class="cap" data-t="3.6,6.9" data-fx="up" data-h="c2"></p>
+  <p class="cap" data-t="7.2,10.1" data-fx="up" data-h="c3"></p>
+  <p class="cap" data-t="10.4,13.4" data-fx="up" data-h="c4"></p>
+  <p class="cap" data-t="13.8,20.3" data-fx="up" data-h="c5"></p>
+
+  <!-- 며칠째 조용한 채팅 목록 -->
+  <div class="chats float" data-t="7.0,13.6" data-fx="up">
+    <div class="hd" data-k="c_chats"></div>
+    <div class="row"><span class="av" data-i="c_n1"></span><div class="tx"><div class="nm2" data-k="c_n1"></div><div class="ms" data-k="c_m1"></div></div><span class="tm" data-d="5"></span></div>
+    <div class="row"><span class="av" data-i="c_n2"></span><div class="tx"><div class="nm2" data-k="c_n2"></div><div class="ms" data-k="c_m2"></div></div><span class="tm" data-d="9"></span></div>
+    <div class="row"><span class="av" data-i="c_n3"></span><div class="tx"><div class="nm2" data-k="c_n3"></div><div class="ms" data-k="c_m3"></div></div><span class="tm" data-d="17"></span></div>
+  </div>
+
+  <!-- 안부가 전해지는 순간 -->
+  <span class="ring" data-t="13.9,14.6" data-fx="pop"></span>
+  <span class="sig" data-t="14.0,15.1"></span>
+  <div class="owner" data-t="14.2,20.3" data-fx="up"><svg viewBox="0 0 24 24" fill="none" stroke="#f1e6d6" stroke-width="2"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3" stroke-linecap="round"/></svg><span data-k="c_owner"></span></div>
+
+  <div class="push float fpush" data-t="15.0,17.8" data-fx="down">
+    <div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z"/></svg></span><span class="app" data-k="app_name"></span><span class="now" data-k="now"></span></div>
+    <div class="ti" data-k="push_title"></div>
+    <div class="bo t-push"></div>
+  </div>
+
+  <div class="scard float fcard" data-t="17.6,20.3" data-fx="pop">
+    <div class="r1"><span class="nm"><span data-k="c_alias"></span><span class="bat">41%</span></span><span class="pill" data-k="pill"></span></div>
+    <div class="r2"><span class="act" data-k="act"></span></div>
+    <div class="slot"><div class="ghost">
+      <div class="chd"><span data-k="steps"></span><b class="peak n-steps"></b></div>
+      <div class="plot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="today"></i></div>
+      <div class="xlab" data-k="last7"></div></div></div>
+    <div class="last" data-k="last_now"></div>
+  </div>
+
+</div>
+<script src="engine.js"></script>
+<script>
+  window.DURATION = 27.1;
+  // 효과음 — t 는 화면에 그 요소가 나타나는 시각(data-t 와 같은 값). 파일 앞 무음은 audio.py 가 잘라낸다.
+  // 크기는 audio.py 가 그 순간 배경음악보다 +4.5dB 로 맞춘다(rel 로 조정). duck:true 는 앱 알림음 — 배경음악을 2.5dB 낮춘다.
+  // 팝업·알림이 뜰 때만 넣는다. 파일은 ../media/sfx/ 기준(라이선스상 원본은 커밋하지 않는다).
+  window.SFX = [
+    { t: 7.0,  file: '1_푸시알림/dry-pop-up-notification-alert.mp3' },    // 채팅 목록
+    { t: 14.0, file: '2_슬라이드_전환/fast-small-sweep-transition.mp3' },  // 신호가 날아간다
+    { t: 15.0, file: '1_푸시알림/positive-notification.mp3', duck: true }, // 언니 폰에 알림 도착
+    { t: 17.6, file: '1_푸시알림/bubble-pop-up-alert-notification.mp3' }, // 보호자 카드
+    { t: 24.3, file: '3_페이지_넘김/page-forward-single-chime.mp3' },      // 엔딩 로고(20.3 + 4.0)
+  ];
+  fillText();
+  const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
+  $$('[data-i]').forEach(e => { e.textContent = Array.from(L[e.dataset.i])[0]; });
+  // 채팅 마지막 대화: "5일 전" — 언어별 표현은 Intl.RelativeTimeFormat
+  const rtf = new Intl.RelativeTimeFormat(L.bcp, { numeric: 'auto' });
+  $$('[data-d]').forEach(e => { e.textContent = rtf.format(-Number(e.dataset.d), 'day'); });
+  $('.clk').textContent = fmtShort(wall(2, 14));
+  // 동생(성인) — 몸이 안 좋은 날이라 오늘이 이번 주 가장 적다. 평균 5,916 → 활동적
+  const today = setWeek([5320, 6180, 5570, 6930, 5840, 6410, 5160]);
+  $('.t-push').textContent = pushBody(L.c_alias, today);
+  mountEnding(20.3, L.c_q1, L.c_q2);
+
+  const room = $('.room'), shade = $('.shade'), glow = $('.glow'), scr = $('.scr');
+  const sender = $('.sender'), ring = $('.ring'), sig = $('.sig'), card = $('.fcard');
+  const clamp = v => Math.min(Math.max(v, 0), 1);
+  const ramp = (t, a, b) => ease((t - a) / (b - a));
+  const center = el => { const r = el.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
+  const B = [230, 352];                                   // 받는 쪽 알림이 뜨는 자리
+
+  window.extra = t => {
+    // 카메라: 처음 7초 동안 머리맡(약병) 쪽으로 천천히 다가간다
+    room.style.transform = `scale(${1 + 0.07 * ramp(t, 0, 7)})`;
+    // 채팅 장면 동안 방을 어둡게, 안부 장면에서 조금 걷힌다
+    shade.style.opacity = (0.62 * ramp(t, 6.8, 7.4) - 0.26 * ramp(t, 13.3, 13.9)).toFixed(3);
+    // 폰 불빛: 새벽엔 켜져 있다가(잔잔히 흔들림) 안부 장면 전에 꺼진다 — 잠든 사이 자동으로 간다
+    const on = t < 13.2 ? 1 : 1 - ramp(t, 13.2, 13.7);
+    glow.style.opacity = (on * (0.9 + 0.1 * Math.sin(t * 2.1))).toFixed(3);
+    scr.style.opacity = (0.15 + 0.85 * on).toFixed(3);
+    scr.setAttribute('fill', on > 0.5 ? '#dbe8ff' : '#1b1f3d');
+
+    const A = center(sender);
+    ring.style.left = A[0] + 'px'; ring.style.top = A[1] + 'px';
+    const q = clamp((t - 14.0) / 1.0), p = q * q * (3 - 2 * q);
+    sig.style.left = (A[0] + (B[0] - A[0]) * p) + 'px';
+    sig.style.top = (A[1] + (B[1] - A[1]) * p - Math.sin(p * Math.PI) * 70) + 'px';
+    growBars(card, t, 18.0);
+  };
+</script>
+</body></html>
