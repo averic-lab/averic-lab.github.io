@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>숏폼 F — 혼자 떠난 여행</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="shorts.css">
+<style>
+  /* 세 장면 — 새벽 공항(출발) → 낯선 도시의 초저녁(여행지) → 한국 집의 아침(엄마 쪽).
+     사람은 그리지 않는다. 특정 나라처럼 보이지 않게 도시는 지붕·탑 실루엣만.
+     움직임은 전부 render(ms) → extra(t): 비행기 이륙·유도등·하늘색·가로등·창문 불빛·아침빛·카메라 줌. */
+  .scn { position: absolute; inset: 0; opacity: 0; }
+  .scn svg { display: block; width: 540px; height: 960px; }
+  .s-air { transform-origin: 110px 740px; }
+  .s-home { transform-origin: 430px 640px; }
+  .shade { position: absolute; inset: 0; background: #070918; opacity: 0; }
+  .cap { z-index: 8; }
+
+  .owner { position: absolute; left: 42px; z-index: 6; display: inline-flex; align-items: center; gap: 7px;
+    padding: 6px 13px 6px 10px; border-radius: 16px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+    font-size: 15px; font-weight: 600; color: #f1e6d6; }
+  .owner svg { width: 15px; height: 15px; flex: none; }
+  .o1 { top: 256px; }
+  .o2 { top: 410px; }
+  .o3 { top: 282px; background: rgba(10,12,40,.62); }  /* 밝은 아침 창 위라 어둡게 */
+
+  /* 내 안전 코드 — 대상자 앱의 코드 카드(Teal) */
+  .code { left: 42px; top: 296px; width: 330px; z-index: 5; border-radius: 20px; padding: 14px 18px 16px;
+    background: linear-gradient(135deg, #00897B 0%, #00695C 100%); color: #fff; }
+  .code .lb { font-size: 12px; font-weight: 700; letter-spacing: 1.6px; opacity: .85; }
+  .code .val { margin-top: 4px; font-size: 40px; font-weight: 800; letter-spacing: 3px; line-height: 1.15; }
+
+  /* 엄마 폰 — 보호 대상자 연결 화면(앱 문구 그대로) */
+  .form { left: 118px; top: 458px; width: 356px; z-index: 5; border-radius: 20px; padding: 14px 18px 16px; background: #F7F9F8; }
+  .form .ttl { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+  .form .lb { font-size: 13px; font-weight: 600; color: #6b7080; margin: 7px 0 3px; }
+  .form .in { padding: 7px 12px; border-radius: 12px; background: #fff; border: 1.5px solid #D8DCE8; font-size: 18px; font-weight: 700; }
+  .form .in.code-in { letter-spacing: 2px; }
+  .form .btn { position: relative; margin-top: 12px; padding: 10px; border-radius: 14px; background: #4355B9; color: #fff;
+    text-align: center; font-size: 17px; font-weight: 700; }
+  .form .ok { position: absolute; inset: 0; border-radius: 14px; background: #2E7D32; display: flex; align-items: center;
+    justify-content: center; padding: 0 10px; font-size: 15px; line-height: 1.25; }
+
+  .sig { position: absolute; left: 0; top: 0; width: 30px; height: 30px; margin: -15px 0 0 -15px; z-index: 6;
+    border-radius: 50%; background: radial-gradient(circle, #ffd4da 0%, #ff8a95 45%, rgba(255,138,149,0) 72%);
+    filter: drop-shadow(0 0 10px rgba(255,138,149,.9)); }
+  .fpush { left: 42px; top: 330px; width: 340px; --base: scale(1.25); transform-origin: top left; }
+  .fpush .now { margin-inline-start: auto; font-size: 10.5px; color: #9AA0AE; }
+  .fcard { left: 42px; top: 330px; width: 332px; --base: scale(1.3); transform-origin: top left; background: #EEF6EF !important; }
+  .fcard .slot { height: 120px; }
+
+  /* 엔딩 — 한 문장을 두 줄로 나눠 보여주므로 줄 사이를 붙인다(흐름 배치) */
+  .end { padding-top: 290px; }
+  .end .q { position: relative; top: auto; left: auto; right: auto; margin: 0 64px 0 40px; }
+  .end .q2 { margin-top: 6px; }
+</style></head>
+<body><div class="v">
+
+  <!-- ① 새벽 공항 — 큰 창 너머 활주로, 캐리어 하나 -->
+  <div class="scn s-air">
+    <svg viewBox="0 0 540 960" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="aWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0c26"/><stop offset="1" stop-color="#1a1c48"/></linearGradient>
+        <linearGradient id="aSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f1850"/><stop offset=".55" stop-color="#3b3a80"/><stop offset=".85" stop-color="#b8687e"/><stop offset="1" stop-color="#f09a7a"/></linearGradient>
+        <linearGradient id="aFloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#15163c"/><stop offset="1" stop-color="#08091e"/></linearGradient>
+        <radialGradient id="aLight"><stop offset="0" stop-color="#ffe0a8" stop-opacity=".9"/><stop offset="1" stop-color="#ffe0a8" stop-opacity="0"/></radialGradient>
+        <radialGradient id="aVig" cx=".5" cy=".55" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".5"/></radialGradient>
+        <clipPath id="aWin"><rect x="34" y="236" width="472" height="460"/></clipPath>
+      </defs>
+      <rect width="540" height="960" fill="url(#aWall)"/>
+      <!-- 창 밖 -->
+      <g clip-path="url(#aWin)">
+        <rect x="34" y="236" width="472" height="460" fill="url(#aSky)"/>
+        <g fill="#fff" opacity=".6"><circle cx="90" cy="270" r="1.2"/><circle cx="200" cy="300" r="1"/><circle cx="330" cy="262" r="1.1"/><circle cx="450" cy="310" r="1"/><circle cx="130" cy="352" r="1"/></g>
+        <path d="M34 620 h60 v-14 h40 v8 h50 v-20 h30 v26 h70 v-10 h60 v12 h80 v-18 h40 v16 h42 V640 H34 Z" fill="#141434"/>
+        <rect x="34" y="636" width="472" height="60" fill="#12132f"/>
+        <rect x="34" y="652" width="472" height="18" fill="#22244e"/>
+        <g fill="#e8e4dc" opacity=".6"><rect x="60" y="660" width="26" height="2"/><rect x="120" y="660" width="26" height="2"/><rect x="180" y="660" width="26" height="2"/><rect x="240" y="660" width="26" height="2"/><rect x="300" y="660" width="26" height="2"/><rect x="360" y="660" width="26" height="2"/><rect x="420" y="660" width="26" height="2"/><rect x="480" y="660" width="26" height="2"/></g>
+        <g class="rwl"></g>
+        <g class="plane">
+          <path d="M-60 0 C-50 -9 40 -9 56 -4 C64 -2 64 2 56 4 C40 9 -50 9 -60 0 Z" fill="#dfe3f2"/>
+          <path d="M-6 0 L-30 34 L-16 34 L20 2 Z" fill="#b9bfd6"/>
+          <path d="M-6 -2 L-24 -26 L-14 -26 L16 -3 Z" fill="#c9cee2"/>
+          <path d="M-52 -4 L-64 -26 L-54 -26 L-40 -5 Z" fill="#c9cee2"/>
+          <circle class="pbl" cx="-62" cy="-24" r="2.6" fill="#ff5a5a"/>
+          <g fill="#6d7596"><circle cx="30" cy="-2" r="1.5"/><circle cx="22" cy="-2" r="1.5"/><circle cx="14" cy="-2" r="1.5"/><circle cx="6" cy="-2" r="1.5"/><circle cx="-2" cy="-2" r="1.5"/></g>
+        </g>
+      </g>
+      <!-- 창틀 -->
+      <g fill="#0a0c24">
+        <rect x="26" y="228" width="488" height="10"/><rect x="26" y="694" width="488" height="10"/>
+        <rect x="26" y="228" width="10" height="476"/><rect x="504" y="228" width="10" height="476"/>
+        <rect x="150" y="228" width="7" height="476"/><rect x="268" y="228" width="7" height="476"/><rect x="386" y="228" width="7" height="476"/>
+        <rect x="26" y="460" width="488" height="5"/>
+      </g>
+      <!-- 대합실 바닥·의자 -->
+      <rect y="704" width="540" height="256" fill="url(#aFloor)"/>
+      <rect x="34" y="706" width="472" height="40" fill="#f09a7a" opacity=".06"/>
+      <g fill="#262a58">
+        <rect x="200" y="714" width="60" height="50" rx="10"/><rect x="268" y="714" width="60" height="50" rx="10"/><rect x="336" y="714" width="60" height="50" rx="10"/><rect x="404" y="714" width="60" height="50" rx="10"/>
+      </g>
+      <rect x="194" y="758" width="276" height="16" rx="5" fill="#1d2048"/>
+      <g fill="#16183c"><rect x="210" y="774" width="8" height="30"/><rect x="446" y="774" width="8" height="30"/></g>
+      <!-- 캐리어 -->
+      <ellipse cx="112" cy="806" rx="58" ry="8" fill="#000" opacity=".35"/>
+      <rect x="98" y="612" width="5" height="60" fill="#8a8fa8"/><rect x="121" y="612" width="5" height="60" fill="#8a8fa8"/>
+      <rect x="94" y="606" width="36" height="9" rx="4" fill="#9ca2bc"/>
+      <rect x="72" y="668" width="80" height="130" rx="12" fill="#c9674b"/>
+      <g fill="#b35a41"><rect x="86" y="676" width="5" height="114" rx="2"/><rect x="109" y="676" width="5" height="114" rx="2"/><rect x="132" y="676" width="5" height="114" rx="2"/></g>
+      <rect x="92" y="720" width="30" height="18" rx="3" fill="#f3ead8" opacity=".9"/>
+      <circle cx="84" cy="802" r="5" fill="#2a2d52"/><circle cx="140" cy="802" r="5" fill="#2a2d52"/>
+      <rect width="540" height="960" fill="url(#aVig)"/>
+    </svg>
+  </div>
+
+  <!-- ② 낯선 도시의 초저녁 — 지붕과 먼 탑, 돌바닥 길, 가로등 -->
+  <div class="scn s-city">
+    <svg viewBox="0 0 540 960" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="cSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2b6c"/><stop offset=".45" stop-color="#7a4a86"/><stop offset=".75" stop-color="#d8707a"/><stop offset="1" stop-color="#f6aa6c"/></linearGradient>
+        <linearGradient id="cNight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0d30"/><stop offset="1" stop-color="#1c1d52"/></linearGradient>
+        <radialGradient id="cSun"><stop offset="0" stop-color="#ffe0a0" stop-opacity=".9"/><stop offset="1" stop-color="#ffe0a0" stop-opacity="0"/></radialGradient>
+        <radialGradient id="cLamp"><stop offset="0" stop-color="#ffd9a0" stop-opacity=".55"/><stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/></radialGradient>
+        <radialGradient id="cVig" cx=".5" cy=".55" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".5"/></radialGradient>
+      </defs>
+      <rect width="540" height="960" fill="url(#cSky)"/>
+      <g class="sun"><circle cx="360" cy="600" r="90" fill="url(#cSun)"/><circle cx="360" cy="600" r="26" fill="#ffd79a"/></g>
+      <rect class="night" width="540" height="960" fill="url(#cNight)" opacity="0"/>
+      <g class="stars" fill="#fff" opacity="0"><circle cx="70" cy="260" r="1.2"/><circle cx="180" cy="220" r="1"/><circle cx="300" cy="280" r="1.1"/><circle cx="430" cy="240" r="1"/><circle cx="480" cy="330" r="1"/></g>
+      <!-- 먼 탑과 돔(특정 도시가 아니게 단순한 실루엣) -->
+      <g fill="#3a2a5c">
+        <rect x="120" y="470" width="30" height="170"/><path d="M114 470 L135 420 L156 470 Z"/><rect x="133" y="398" width="4" height="24"/>
+        <path d="M300 560 a50 50 0 0 1 100 0 Z"/><rect x="346" y="490" width="8" height="22"/><rect x="300" y="558" width="100" height="90"/>
+        <rect x="20" y="540" width="80" height="110"/><rect x="420" y="520" width="110" height="130"/>
+      </g>
+      <!-- 앞줄 집들(뾰족 지붕) -->
+      <g class="houses">
+        <path d="M0 640 L50 590 L100 640 V800 H0 Z" fill="#4a2f58"/>
+        <path d="M100 620 L160 560 L220 620 V800 H100 Z" fill="#5a3563"/>
+        <path d="M220 650 L270 600 L320 650 V800 H220 Z" fill="#4b2d57"/>
+        <path d="M320 610 L385 548 L450 610 V800 H320 Z" fill="#583462"/>
+        <path d="M450 640 L500 596 L550 640 V800 H450 Z" fill="#482c55"/>
+      </g>
+      <g class="cwin"></g>
+      <!-- 돌바닥 길 -->
+      <rect y="800" width="540" height="160" fill="#241d3c"/>
+      <g stroke="#3a2f55" stroke-width="2" opacity=".8">
+        <path d="M0 830 H540 M0 866 H540 M0 906 H540"/>
+        <path d="M40 800 v30 M120 800 v30 M200 800 v30 M280 800 v30 M360 800 v30 M440 800 v30 M520 800 v30"/>
+        <path d="M80 830 v36 M160 830 v36 M240 830 v36 M320 830 v36 M400 830 v36 M480 830 v36"/>
+      </g>
+      <!-- 가로등(하나둘 켜진다) -->
+      <g class="lamps"></g>
+      <rect width="540" height="960" fill="url(#cVig)"/>
+    </svg>
+  </div>
+
+  <!-- ③ 한국 집의 새벽 → 아침 — 창, 침대 끝, 협탁 위 엄마 폰 -->
+  <div class="scn s-home">
+    <svg viewBox="0 0 540 960" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0e1134"/><stop offset="1" stop-color="#1c1e4c"/></linearGradient>
+        <linearGradient id="hNightSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#101a4c"/><stop offset="1" stop-color="#3a3f7c"/></linearGradient>
+        <linearGradient id="hDaySky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fb8ea"/><stop offset=".7" stop-color="#f6d6b4"/><stop offset="1" stop-color="#ffe6c4"/></linearGradient>
+        <linearGradient id="hWarm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd9a8" stop-opacity=".35"/><stop offset="1" stop-color="#ffd9a8" stop-opacity="0"/></linearGradient>
+        <linearGradient id="hBeam" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0d0" stop-opacity=".45"/><stop offset="1" stop-color="#fff0d0" stop-opacity="0"/></linearGradient>
+        <radialGradient id="hPhone"><stop offset="0" stop-color="#d6e6ff" stop-opacity=".7"/><stop offset="1" stop-color="#9fbcff" stop-opacity="0"/></radialGradient>
+        <radialGradient id="hVig" cx=".5" cy=".55" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".5"/></radialGradient>
+      </defs>
+      <rect width="540" height="960" fill="url(#hWall)"/>
+      <rect class="warm" width="540" height="960" fill="url(#hWarm)" opacity="0"/>
+      <!-- 창 -->
+      <rect x="48" y="262" width="214" height="276" rx="6" fill="#2a2d5d"/>
+      <rect x="58" y="272" width="194" height="256" fill="url(#hNightSky)"/>
+      <rect class="day" x="58" y="272" width="194" height="256" fill="url(#hDaySky)" opacity="0"/>
+      <path d="M58 528 V478 h26 v-22 h22 v36 h18 v-54 h30 v64 h20 v-32 h26 v20 h20 v-44 h32 V528 Z" fill="#141a44" class="apt"/>
+      <g class="aptw" fill="#ffcf8a" opacity=".8"><rect x="134" y="446" width="5" height="5"/><rect x="144" y="462" width="5" height="5"/><rect x="190" y="474" width="5" height="5"/><rect x="232" y="460" width="5" height="5"/></g>
+      <rect x="153" y="272" width="4" height="256" fill="#2a2d5d"/>
+      <path d="M36 250 H274" stroke="#3a3d72" stroke-width="4"/>
+      <path d="M40 254 C62 330 54 460 44 548 H70 C80 460 76 330 70 254 Z" fill="#5a4a7a" opacity=".85"/>
+      <path d="M270 254 C248 330 256 460 266 548 H240 C230 460 234 330 240 254 Z" fill="#5a4a7a" opacity=".85"/>
+      <!-- 아침빛 -->
+      <path class="beam" d="M70 540 L250 540 L520 800 L180 800 Z" fill="url(#hBeam)" opacity="0"/>
+      <!-- 바닥·침대 끝 -->
+      <rect y="782" width="540" height="178" fill="#0e0f2c"/>
+      <rect x="0" y="640" width="300" height="150" rx="14" fill="#2f3570"/>
+      <path d="M0 660 C80 640 180 650 300 668 V790 H0 Z" fill="#3d4488"/>
+      <path d="M0 700 C90 690 200 700 300 716" stroke="#4b53a0" stroke-width="3" fill="none" opacity=".6"/>
+      <!-- 협탁·스탠드·폰 -->
+      <rect x="340" y="652" width="170" height="130" rx="8" fill="#4a3526"/>
+      <rect x="340" y="652" width="170" height="14" rx="6" fill="#5c4230"/>
+      <rect x="352" y="700" width="146" height="4" fill="#3a2a1e"/>
+      <rect x="476" y="560" width="6" height="92" fill="#8a7a6a"/><path d="M452 530 L506 530 L496 562 L462 562 Z" fill="#d9c7a8" opacity=".8"/>
+      <circle class="pglow" cx="414" cy="646" r="70" fill="url(#hPhone)" opacity="0"/>
+      <rect x="390" y="638" width="50" height="14" rx="4" fill="#15183a"/>
+      <rect class="pscr" x="393" y="640" width="44" height="10" rx="3" fill="#1b1f3d"/>
+      <rect x="360" y="630" width="18" height="22" rx="3" fill="#e8e4dc" opacity=".8"/>
+      <rect width="540" height="960" fill="url(#hVig)"/>
+    </svg>
+  </div>
+  <div class="shade"></div>
+
+  <p class="cap" data-t="-1,3.5" data-fx="up" data-h="f1"></p>
+  <p class="cap" data-t="3.8,8.6" data-fx="up" data-h="f2"></p>
+  <p class="cap" data-t="8.9,12.5" data-fx="up" data-h="f3"></p>
+  <p class="cap" data-t="12.8,16.9" data-fx="up" data-h="f4"></p>
+  <p class="cap" data-t="17.1,20.1" data-fx="up" data-h="f5"></p>
+
+  <!-- 출국 전: 내 코드 → 엄마 폰에서 입력(연결은 보호자가 코드를 입력해 만든다) -->
+  <div class="owner o1" data-t="4.0,8.6" data-fx="up"><svg viewBox="0 0 24 24" fill="none" stroke="#f1e6d6" stroke-width="2"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3" stroke-linecap="round"/></svg><span data-k="f_me"></span></div>
+  <div class="code float" data-t="4.0,8.6" data-fx="pop"><div class="lb">SAFETY SHARE CODE</div><div class="val">K7M-4PXR</div></div>
+  <div class="owner o2" data-t="5.2,8.6" data-fx="up"><svg viewBox="0 0 24 24" fill="none" stroke="#f1e6d6" stroke-width="2"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3" stroke-linecap="round"/></svg><span data-k="f_mom"></span></div>
+  <div class="form float" data-t="5.2,8.6" data-fx="pop">
+    <div class="ttl" data-k="as_title"></div>
+    <div class="lb" data-k="as_code"></div><div class="in code-in">K7M-4PXR</div>
+    <div class="lb" data-k="as_alias"></div><div class="in" data-k="f_alias"></div>
+    <div class="btn"><span data-k="as_connect"></span><span class="ok" data-t="6.8,8.6">✓&nbsp;<span data-k="as_success"></span></span></div>
+  </div>
+
+  <!-- 엄마의 아침 — 밤사이 도착해 있던 안부 -->
+  <div class="owner o3" data-t="13.0,16.9" data-fx="up"><svg viewBox="0 0 24 24" fill="none" stroke="#f1e6d6" stroke-width="2"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3" stroke-linecap="round"/></svg><span data-k="f_mom"></span></div>
+  <span class="sig" data-t="13.2,14.2"></span>
+  <div class="push float fpush" data-t="14.1,16.9" data-fx="down">
+    <div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z"/></svg></span><span class="app" data-k="app_name"></span><span class="now t-ago"></span></div>
+    <div class="ti" data-k="push_title"></div>
+    <div class="bo t-push"></div>
+  </div>
+
+  <!-- 엄마 폰의 앱 — 여행 날부터 걸음이 늘었다 -->
+  <div class="scard float fcard" data-t="17.2,20.2" data-fx="pop">
+    <div class="r1"><span class="nm"><span data-k="f_alias"></span><span class="bat">64%</span></span><span class="pill" data-k="pill"></span></div>
+    <div class="r2"><span class="act" data-k="act"></span></div>
+    <div class="slot"><div class="ghost">
+      <div class="chd"><span data-k="steps"></span><b class="peak n-steps"></b></div>
+      <div class="plot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="today"></i></div>
+      <div class="xlab" data-k="last7"></div></div></div>
+    <div class="last" data-k="last_now"></div>
+  </div>
+
+</div>
+<script src="engine.js"></script>
+<script>
+  window.DURATION = 27.0;
+  // 효과음 — t 는 화면에 그 요소가 나타나는 시각(data-t 와 같은 값). 크기·앞 무음 보정은 audio.py.
+  window.SFX = [
+    { t: 4.0,  file: '1_푸시알림/dry-pop-up-notification-alert.mp3' },    // 내 안전 코드
+    { t: 5.2,  file: '1_푸시알림/dry-pop-up-notification-alert.mp3' },    // 엄마 폰 연결 화면
+    { t: 6.8,  file: '1_푸시알림/bubble-pop-up-alert-notification.mp3' }, // 연결 완료
+    { t: 13.2, file: '2_슬라이드_전환/fast-small-sweep-transition.mp3' },  // 안부가 날아온다
+    { t: 14.1, file: '1_푸시알림/positive-notification.mp3', duck: true }, // 엄마 폰에 안부
+    { t: 17.2, file: '1_푸시알림/bubble-pop-up-alert-notification.mp3' }, // 보호자 카드
+    { t: 24.2, file: '3_페이지_넘김/page-forward-single-chime.mp3' },      // 엔딩 로고(20.2 + 4.0)
+  ];
+  fillText();
+  const $ = s => document.querySelector(s);
+  const NS = 'http://www.w3.org/2000/svg';
+  const mk = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
+
+  // 아들(성인) — 출국 전 평소 5천~6천 보, 여행 나흘째부터 크게 늘었다. 평균 약 13,240 → 아주 활동적
+  const today = setWeek([6120, 5470, 5890, 17360, 19840, 16520, 21480]);
+  $('.t-push').textContent = pushBody(L.f_alias, today);
+  // 밤사이 도착해 있던 알림 — "지금"이 아니라 "6시간 전"(언어별 표현은 Intl)
+  $('.t-ago').textContent = new Intl.RelativeTimeFormat(L.bcp, { numeric: 'auto' }).format(-6, 'hour');
+  mountEnding(20.2, L.f_q1, L.f_q2);
+
+  // 활주로 유도등 — 왼쪽에서 오른쪽으로 차례로 깜박인다
+  const rwl = $('.rwl'), lights = [];
+  for (let i = 0; i < 16; i++) lights.push(mk('circle', { cx: 50 + i * 29, cy: 676, r: 2.6, fill: '#ffd28a' }, rwl));
+  // 도시 창문 — 각자 다른 시각에 켜진다(한꺼번에 켜지면 기계적이다)
+  const cw = $('.cwin'), wins = [];
+  const houses = [[0, 100, 650], [100, 220, 632], [220, 320, 662], [320, 450, 622], [450, 540, 652]];
+  let seed = 7; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+  houses.forEach(([x0, x1, y0]) => {
+    for (let y = y0 + 14; y < 780; y += 34) for (let x = x0 + 14; x < x1 - 20; x += 30) {
+      if (rnd() < 0.3) continue;
+      mk('rect', { x, y, width: 14, height: 18, fill: '#2a1f40' }, cw);
+      wins.push([mk('rect', { x, y, width: 14, height: 18, fill: '#ffcf8a', opacity: 0 }, cw), 9.4 + rnd() * 3.0]);
+    }
+  });
+  // 가로등 — 앞에서부터 하나둘
+  const lg = $('.lamps'), lamps = [];
+  [[60, 9.6], [190, 10.1], [330, 10.6], [470, 11.0]].forEach(([x, on]) => {
+    mk('path', { d: `M${x} 660 V800`, stroke: '#1d1733', 'stroke-width': 5 }, lg);
+    const glow = mk('circle', { cx: x, cy: 656, r: 70, fill: 'url(#cLamp)', opacity: 0 }, lg);
+    const head = mk('rect', { x: x - 11, y: 648, width: 22, height: 12, rx: 4, fill: '#6b5a7a' }, lg);
+    lamps.push([glow, head, on]);
+  });
+
+  const air = $('.s-air'), city = $('.s-city'), home = $('.s-home'), shade = $('.shade');
+  const plane = $('.plane'), pbl = $('.pbl'), sun = $('.sun'), night = $('.night'), stars = $('.stars');
+  const apt = $('.apt'), day = $('.day'), warm = $('.warm'), beam = $('.beam'), aptw = $('.aptw');
+  const pglow = $('.pglow'), pscr = $('.pscr'), sig = $('.sig'), card = $('.fcard');
+  const ramp = (t, a, b) => ease((t - a) / (b - a));
+  const lin = (t, a, b) => Math.min(Math.max((t - a) / (b - a), 0), 1);
+  const mix = (a, b, k) => '#' + [1, 3, 5].map(i => Math.round(parseInt(a.substr(i, 2), 16) * (1 - k) + parseInt(b.substr(i, 2), 16) * k).toString(16).padStart(2, '0')).join('');
+  const B = [230, 352];                                   // 알림이 뜨는 자리
+
+  window.extra = t => {
+    // 장면 전환(교차 페이드)
+    air.style.opacity = (1 - ramp(t, 8.6, 9.0)).toFixed(3);
+    city.style.opacity = (ramp(t, 8.6, 9.0) - ramp(t, 12.4, 12.8)).toFixed(3);
+    home.style.opacity = ramp(t, 12.4, 12.8).toFixed(3);
+    // 코드 장면과 카드 장면에서 배경을 어둡게
+    shade.style.opacity = (0.6 * ramp(t, 3.8, 4.2) - 0.6 * ramp(t, 8.4, 8.8) + 0.55 * ramp(t, 16.9, 17.3)).toFixed(3);
+
+    // ① 공항: 캐리어 쪽으로 천천히 줌인, 비행기 이륙, 유도등 차례로 깜박임
+    air.style.transform = `scale(${(1 + 0.08 * ramp(t, 0, 8.6)).toFixed(4)})`;
+    const q = lin(t, 0.3, 3.6), p = q * q;               // 활주로에서 점점 빨라지며 떠오른다
+    const px = 470 - 430 * q, py = 648 - 330 * p, s = 1 - 0.45 * q;
+    plane.setAttribute('transform', `translate(${px.toFixed(1)} ${py.toFixed(1)}) rotate(${(16 * Math.min(q * 2, 1)).toFixed(2)}) scale(${(-s).toFixed(3)} ${s.toFixed(3)})`);  // 그림은 기수가 +x — 좌우를 뒤집어 진행 방향(왼쪽)을 보게 한다
+    plane.style.opacity = (1 - ramp(t, 3.4, 3.9)).toFixed(3);
+    pbl.setAttribute('opacity', (Math.floor(t * 2.5) % 2 ? 1 : 0.25));
+    lights.forEach((c, i) => {
+      const ph = ((t * 1.6 - i * 0.09) % 1 + 1) % 1;
+      c.setAttribute('opacity', (0.25 + 0.75 * Math.max(0, 1 - ph * 4)).toFixed(3));
+    });
+
+    // ② 도시: 해가 지고 하늘이 남색으로, 가로등·창문이 하나둘
+    sun.setAttribute('transform', `translate(0 ${(40 * lin(t, 8.6, 12.6)).toFixed(1)})`);
+    sun.setAttribute('opacity', (1 - 0.8 * lin(t, 8.6, 12.6)).toFixed(3));
+    night.setAttribute('opacity', (0.62 * lin(t, 8.8, 12.6)).toFixed(3));
+    stars.setAttribute('opacity', (0.7 * ramp(t, 10.6, 12.2)).toFixed(3));
+    lamps.forEach(([glow, head, on]) => {
+      const k = ramp(t, on, on + 0.35);
+      glow.setAttribute('opacity', k.toFixed(3));
+      head.setAttribute('fill', k > 0.5 ? '#ffe4b8' : '#6b5a7a');
+    });
+    wins.forEach(([w, on]) => w.setAttribute('opacity', (0.85 * ramp(t, on, on + 0.3)).toFixed(3)));
+
+    // ③ 집: 창밖이 밝아지고 아침빛이 번진다, 협탁 쪽으로 줌인
+    home.style.transform = `scale(${(1 + 0.08 * ramp(t, 12.4, 20.2)).toFixed(4)})`;
+    day.setAttribute('opacity', ramp(t, 12.6, 15.6).toFixed(3));
+    warm.setAttribute('opacity', ramp(t, 13.2, 16.2).toFixed(3));
+    beam.setAttribute('opacity', (0.9 * ramp(t, 13.4, 16.4)).toFixed(3));
+    apt.setAttribute('fill', mix('#141a44', '#7c86b4', ramp(t, 12.6, 15.6)));
+    aptw.setAttribute('opacity', (0.8 * (1 - ramp(t, 12.8, 14.6))).toFixed(3));
+    // 폰: 안부가 닿는 순간 화면이 켜진다
+    const lit = ramp(t, 14.0, 14.3);
+    pglow.setAttribute('opacity', lit.toFixed(3));
+    pscr.setAttribute('fill', lit > 0.5 ? '#dbe8ff' : '#1b1f3d');
+    // 신호: 창밖(먼 곳)에서 알림 자리로
+    const A = [150, 380];
+    const g = lin(t, 13.2, 14.1), gp = g * g * (3 - 2 * g);
+    sig.style.left = (A[0] + (B[0] - A[0]) * gp) + 'px';
+    sig.style.top = (A[1] + (B[1] - A[1]) * gp - Math.sin(gp * Math.PI) * 60) + 'px';
+    growBars(card, t, 17.5);
+  };
+</script>
+</body></html>

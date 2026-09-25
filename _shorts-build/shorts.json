@@ -7,7 +7,8 @@
     {"id": "daughter-abroad", "page": "b.html", "title": "t_b", "date": "2026-09-19", "home": true},
     {"id": "living-alone", "page": "c.html", "title": "t_c", "date": "2026-09-24"},
     {"id": "busy-couple", "page": "d.html", "title": "t_d", "date": "2026-09-24"},
-    {"id": "neighbor-friends", "page": "e.html", "title": "t_e", "date": "2026-09-24"}
+    {"id": "neighbor-friends", "page": "e.html", "title": "t_e", "date": "2026-09-24"},
+    {"id": "solo-trip", "page": "f.html", "title": "t_f", "date": "2026-09-25"}
   ],
   "langs": {
     "ko": {
@@ -32,7 +33,12 @@
       "t_e": "동네 친구끼리", "e1": "가족은 멀리 살고,<br>연인은 없다.", "e2": "그래서 근처에 사는<br>친구들끼리",
       "e3": "안부를 같이<br>설치하기로 했다.", "e4": "서로의<br>비상연락망이 되기로.",
       "e_q1": "멀리 있는 가족보다", "e_q2": "<em>동네 친구가 더 중요해지는</em><br>순간이 있다.",
-      "e_f1": "지우", "e_f2": "하나", "e_owner1": "지우의 휴대폰", "e_me": "내 휴대폰"
+      "e_f1": "지우", "e_f2": "하나", "e_owner1": "지우의 휴대폰", "e_me": "내 휴대폰",
+      "t_f": "혼자 떠난 여행", "f1": "혼자 떠나는<br>첫 해외여행.", "f2": "출국 전, 엄마에게<br>코드 하나를 알려 드렸다.",
+      "f3": "여기는 초저녁인데,<br>집은 한밤중이겠지?", "f4": "아침에 눈을 뜨면<br>안부가 먼저 와 있다.",
+      "f5": "즐겁게 여행하고<br>있구나.",
+      "f_q1": "세계 어디를 가도", "f_q2": "<em>현지 시각에 맞게<br>안부가 전달됩니다.</em>",
+      "f_alias": "아들", "f_me": "내 휴대폰", "f_mom": "엄마의 휴대폰"
     },
     "en": {
       "t_a": "Mom isn't picking up", "t_b": "Our daughter abroad", "play": "Play", "replay": "Replay",
