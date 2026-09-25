@@ -13,7 +13,6 @@
   "spot_battery": "Teken komt laat",
   "spot_activity": "Geen stappen",
   "spot_location": "Geen locatie",
-  "spot_hibernation": "Venster blijft terugkomen",
 
   "sections": [
     {
@@ -100,32 +99,6 @@
       ]
     },
     {
-      "id": "hibernation",
-      "spot": "hibernation",
-      "heading": "Elke keer dat ik de app open verschijnt een venster",
-      "items": [
-        {
-          "q": "Elke keer dat ik de app open verschijnt een venster met “@permission_hibernation_title”.",
-          "a": [
-            "Android heeft een functie die toestemmingen automatisch intrekt bij apps die lang niet geopend zijn. Anbu is <strong>een app die werkt zonder dat u het scherm opent</strong> — juist daardoor is het een gemakkelijk doelwit, en zonder toestemmingen stopt het versturen ongemerkt.",
-            "Tik op [@permission_hibernation_go_to_settings] en zet het één keer uit; daarna verschijnt dit venster niet meer."
-          ]
-        },
-        {
-          "q": "Het komt elke keer terug. Mag ik gewoon op [@common_later] tikken?",
-          "a": [
-            "Zolang u de instelling niet uitzet, blijft het bij elke opening verschijnen. Omdat een gestopte verzending moeilijk op te merken is, herinneren we u er herhaaldelijk aan."
-          ]
-        },
-        {
-          "q": "Ik houd ook het welzijn van mijn familie in de gaten, maar dit venster zie ik nooit.",
-          "a": [
-            "Wie ook over familieleden waakt, opent de app vaak om meldingen te bekijken en komt daardoor zelden in de situatie dat toestemmingen automatisch worden ingetrokken. Daarom wordt dit venster u niet getoond."
-          ]
-        }
-      ]
-    },
-    {
       "id": "etc",
       "spot": null,
       "heading": "Overige",
@@ -140,6 +113,31 @@
     }
   ],
 
+  "travel": {
+    "heading": "Als u naar het buitenland reist",
+    "items": [
+      {
+        "q": "Na aankomst in het buitenland kreeg mijn familie een melding ‘@notifications_level_caution’.",
+        "a": [
+          "Het teken wordt verstuurd volgens de <strong>lokale tijd</strong> op uw telefoon. Maar de eerste dag of twee na aankomst in een ander land is de nieuwe tijd nog niet doorgegeven, dus wordt het teken nog verwacht volgens de tijd van het land dat u verliet. Door het tijdsverschil <strong>lijkt het alsof het teken niet is aangekomen</strong>: uw familie kan een melding krijgen en ook uw eigen telefoon kan midden in de nacht een herinnering tonen.",
+          "Met u is alles in orde, alleen de tijd klopt niet. Zodra het eerste teken op lokale tijd wordt verstuurd, is alles vanzelf weer normaal."
+        ]
+      },
+      {
+        "q": "Kan ik dit vooraf voorkomen?",
+        "a": [
+          "Open na aankomst <strong>de Anbu-app één keer.</strong> Zodra u de app opent, wordt de nieuwe tijd doorgegeven en volgt het teken vanaf dan de lokale tijd. Open de app ook één keer als u terug bent.",
+          "Hebt u ‘Niet storen’-tijden ingesteld, open de app dan ook één keer bij aankomst. Zo schuiven de uren waarin u geen meldingen wilt krijgen (bijvoorbeeld 22:00 tot 7:00) mee naar de lokale tijd. Doet u dat niet, dan blijft de tijd van het vertrekland gelden en kunnen meldingen midden in de nacht klinken of overdag stil blijven."
+        ]
+      },
+      {
+        "q": "Moet ik de tijd van het teken op reis aanpassen?",
+        "a": [
+          "Nee. De ingestelde tijd geldt <strong>voor de plek waar u nu bent</strong>. Hebt u 18:00 ingesteld, dan wordt het teken op reis ook om 18:00 lokale tijd verstuurd."
+        ]
+      }
+    ]
+  },
   "footer_home": "Home",
   "footer_privacy": "Privacybeleid",
   "footer_terms": "Gebruiksvoorwaarden",

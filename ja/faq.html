@@ -229,6 +229,11 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 .pf-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .pf-body[hidden]{display:none}
 
+/* 해외여행 — 그리드 밖 전폭 블록. 본문 열과 같은 읽기 폭으로 묶는다 */
+.travel{max-width:760px;border-top:1px solid var(--line);margin-top:-40px;
+  padding-bottom:76px}
+@media(max-width:920px){.travel{margin-top:0}}
+
 /* 목업 패널 */
 .sticky{position:sticky;top:20px}
 .chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
@@ -375,11 +380,10 @@ footer .copy{margin-left:auto}
     <main><section class="topic" id="battery" data-spot="battery"><h2>安否が遅れて届きます</h2><button class="show-me" type="button" data-show="battery" aria-expanded="false" data-open="画面のどこにあるか見る"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>画面のどこにあるか見る</span></button><div class="qa"><p class="q">自分のスマホに「💗 安否確認が必要です」の通知がよく届きます。アプリを開かないと安否が送られていないようです。</p><p class="q">家族のスマホに<b>「注意」</b>の通知で<b>「本日予定の安否確認がまだ届いていません。直接ご確認ください。」</b>と届きました。</p><div class="a"><p>Android はバッテリーを節約するため、あまり使わないアプリの動作を遅らせたり止めたりします。Anbu は1日1回、決まった時刻に少しだけ起動して安否を送るアプリなので、この制限がかかると<strong>その時刻を逃し、スマホを再び使うまで送信されません。</strong></p><p>決まった時刻から<strong>2時間過ぎても安否が届かない場合</strong>、家族に上記の通知が送られます。安否を送る方はご無事でも、送信が遅れただけでこの通知が届くことがあります。</p><p>安否を送る方のスマホでアプリを開き、画面の上部に<b>「バッテリー使用制限の解除が必要です」</b>という黄色のお知らせがないか確認してください。タップすると設定画面へ直接移動し、一度解除するとお知らせは消えます。</p></div></div><div class="qa"><p class="q">このお知らせだけ黄色なのはなぜですか。</p><div class="a"><p>安否が完全に止まったわけではなく、<strong>遅れる可能性がある</strong>という意味なので黄色です。機能が実際にふさがれているときは赤色で表示されます。</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">黄色のお知らせをタップすると、すぐにこのウィンドウが表示されます。</p><div class="scrim"><div class="dlg"><p class="dlg-title">バッテリー使用制限の解除</p><div class="dlg-body"><p>スマートフォンが省電力モードに入ると、見守り人への安否確認信号が遅れたり、届かなかったりすることがあります。</p><p>下の[設定を開く]をタップした後、「バッテリー」→「制限なし」に設定してください。毎日決まった時刻に安否が安定して届きます。</p><p>※ 端末メーカーによって表記が少し異なる場合があります。</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>あとで</button><button class="dlg-btn" type="button" tabindex="-1" disabled>設定を開く</button></div></div></div></div></section>
 <section class="topic" id="activity" data-spot="activity"><h2>歩数が表示されません</h2><button class="show-me" type="button" data-show="activity" aria-expanded="false" data-open="画面のどこにあるか見る"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>画面のどこにあるか見る</span></button><div class="qa"><p class="q">家族の歩数が表示されません。「今日は何歩歩きました」の通知も届きません。</p><div class="a"><p>Anbu は安否の信号と一緒に<strong>その日の歩数</strong>を送り、家族がどれくらい動いたか分かるようにしています。安否を送る方のスマホで歩数の権限がオフになっていると、<strong>安否の信号はそのまま届きますが、歩数だけが抜けます。</strong></p><p>そのスマホでアプリを開き、安全コードの下に<b>「歩数の権限が拒否されています。ここをタップして許可してください。」</b>という赤いお知らせがないか確認してください。タップすると権限を再度リクエストします。</p></div></div><div class="qa"><p class="q">歩数以外も見ていますか。</p><div class="a"><p>歩数のみを送信します。どこへ行かれたか、どのアプリを使われたかは確認しません。</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">赤いお知らせをタップすると、<strong>Android が表示する権限リクエスト</strong>が出ます。そこで許可すれば完了です。<br>ただし、以前に何度も拒否している場合、Android はそのリクエストを表示しなくなります。そのときは下のウィンドウが代わりに表示されます。</p><div class="scrim"><div class="dlg"><p class="dlg-title">権限設定が必要</p><div class="dlg-body"><p>アプリ設定で身体活動（モーションとフィットネス）の権限を許可してください。</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>キャンセル</button><button class="dlg-btn" type="button" tabindex="-1" disabled>設定へ移動</button></div></div></div></div></section>
 <section class="topic" id="location" data-spot="location"><h2>緊急リクエストに位置がありません</h2><button class="show-me" type="button" data-show="location" aria-expanded="false" data-open="画面のどこにあるか見る"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>画面のどこにあるか見る</span></button><div class="qa"><p class="q">緊急の助けを求める連絡を受け取りましたが、通知に [🗺️ 位置を表示] ボタンがありません。</p><div class="a"><p>緊急ボタンを押したときに<strong>現在地を一緒に送るには</strong>位置情報の権限が必要です。権限がオフでも緊急通知そのものは家族全員にそのまま届きますが、どこにいるかは一緒に届きません。</p><p>安否を送る方のスマホでアプリを開き、[助けが必要です] ボタンの下に赤いお知らせがないか確認してください。タップすると権限を再度リクエストします。</p></div></div><div class="qa"><p class="q">普段も位置を見ていますか。</p><div class="a"><p>いいえ。普段は位置情報を一切収集しません。[助けが必要です] を押した<strong>その瞬間の位置を1回だけ</strong>確認して家族に伝え、この情報は1日経つと削除されます。</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">赤いお知らせをタップすると、<strong>Android が表示する権限リクエスト</strong>が出ます。そこで許可すれば完了です。<br>ただし、以前に何度も拒否している場合、Android はそのリクエストを表示しなくなります。そのときは下のウィンドウが代わりに表示されます。</p><div class="pf-tabs"><button class="pf-tab" type="button" data-pf="0" aria-pressed="true">Android</button><button class="pf-tab" type="button" data-pf="1" aria-pressed="false">iPhone</button></div><div class="scrim"><div class="dlg"><p class="dlg-title">位置情報の権限設定が必要です</p><div class="dlg-body"><div class="pf-body" data-pf="0"><p>「権限」→「位置情報」の順に選択し、「アプリの使用中のみ許可」を選択してください。</p></div><div class="pf-body" data-pf="1" hidden><p>「Anbu」を選択し、「位置情報」で「このAppの使用中のみ許可」を選択してください。</p></div></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>キャンセル</button><button class="dlg-btn" type="button" tabindex="-1" disabled>設定へ移動</button></div></div></div></div></section>
-<section class="topic" id="hibernation" data-spot="hibernation"><h2>アプリを開くたびにウィンドウが出ます</h2><button class="show-me" type="button" data-show="hibernation" aria-expanded="false" data-open="画面のどこにあるか見る"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>画面のどこにあるか見る</span></button><div class="qa"><p class="q">アプリを開くたびに「自動的な権限の削除をオフにしてください」というウィンドウが表示されます。</p><div class="a"><p>Android には、長く開いていないアプリの権限を自動的に取り消す機能があります。Anbu は<strong>画面を開かなくても動くアプリ</strong>なので、かえってその対象になりやすく、権限がなくなると安否の送信が静かに止まります。</p><p>[設定を開く] を押して一度オフにしていただければ、このウィンドウはもう表示されません。</p></div></div><div class="qa"><p class="q">毎回出ますが [あとで] を押してもいいですか。</p><div class="a"><p>オフにしていただくまで、アプリを開くたびに表示され続けます。安否が止まると気づきにくいため、繰り返しお知らせしています。</p></div></div><div class="qa"><p class="q">家族の安否も一緒に見ていますが、私にはこのウィンドウが出ません。</p><div class="a"><p>家族の安否も見守っている場合は通知を確認するためにアプリをよく開くので、権限が自動的に取り消される状況になりにくいためです。そのためこのウィンドウは表示していません。</p></div></div></section>
 <section class="topic" id="etc"><h2>その他</h2><div class="qa"><p class="q">お知らせをタップしましたが、設定画面がうまく開きません。</p><div class="a"><p>端末メーカーによって設定画面の名称や場所が少しずつ異なります。設定アプリから <b>Anbu</b> を探して、権限の項目を直接ご確認ください。</p></div></div></section></main>
 
     <aside class="sticky">
-      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">画面全体</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">安否が遅い</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">歩数がない</button><button class="chip" type="button" data-spot="location" aria-pressed="false">位置がない</button><button class="chip" type="button" data-spot="hibernation" aria-pressed="false">ウィンドウが出続ける</button></div>
+      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">画面全体</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">安否が遅い</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">歩数がない</button><button class="chip" type="button" data-spot="location" aria-pressed="false">位置がない</button></div>
       <div class="stage">
         <div class="device" id="device">
           <div class="appbar">
@@ -454,20 +458,15 @@ footer .copy{margin-left:auto}
           </div>
         </div>
 
-        <div class="modal" id="modal" hidden>
-          <div class="dlg">
-            <p class="dlg-title" data-dialog-title></p>
-            <div class="dlg-body" data-dialog-body></div>
-            <div class="dlg-actions">
-              <button class="dlg-btn" data-key="common_later" tabindex="-1"></button>
-              <button class="dlg-btn" data-key="permission_hibernation_go_to_settings" tabindex="-1"></button>
-            </div>
-          </div>
-        </div>
       </div>
       <p class="caption">説明のため、3つのお知らせを1つの画面にまとめています。実際は該当する場合にのみ1つずつ表示され、対処が済むと消えます。</p>
     </aside>
   </div>
+
+  <!-- 해외여행 — 안전 홈 화면과 무관한 주제라 2단 그리드(.cols) 밖에 둔다.
+       안에 두면 넓은 화면에서는 sticky 목업이 옆에 붙고, 좁은 화면에서는 목업이
+       이 섹션 뒤에 와서 "화면 어딘가에 여행 설정이 있다"로 읽힌다. PRD-FAQ §2 -->
+  <section class="topic travel" id="travel"><h2>海外旅行に行くとき</h2><div class="qa"><p class="q">海外に到着したあと、家族に「注意」の通知が届きました。</p><div class="a"><p>安否はスマホに表示されている<strong>現地の時刻</strong>に合わせて届けられます。ところが、別の国に到着してから最初の1〜2日は変わった時刻がまだ伝わっていないため、出発前の国の時刻で安否を待つことになります。そのため時差によって<strong>安否がまだ届いていないように見え</strong>、家族に通知が送られたり、ご本人のスマホにも深夜に安否確認の通知が表示されたりすることがあります。</p><p>ご無事なのに時刻だけがずれている状態です。現地の時刻で最初の安否が届けば、自然に元に戻ります。</p></div></div><div class="qa"><p class="q">事前に防ぐことはできますか？</p><div class="a"><p>到着したら<strong>Anbuアプリを一度開いてください。</strong>アプリを開いた時点で変わった時刻が伝わり、それ以降は現地の時刻に合わせて安否を確認します。戻られたときも同じように一度開いてください。</p><p>おやすみモードの時間を設定している方も、旅行先に到着したらアプリを一度開いてください。そうすることで、通知を受け取らないと決めた時間（例：午後10時〜午前7時）が旅行先の時刻に合わせられます。開かないと出発前の国の時刻がそのまま適用され、旅行先で深夜に通知が鳴ったり、日中に通知が鳴らなくなったりすることがあります。</p></div></div><div class="qa"><p class="q">旅行先で安否の時刻を変える必要はありますか？</p><div class="a"><p>いいえ。設定した時刻は<strong>今いる場所の時刻</strong>で適用されます。午後6時に設定していれば、旅行先でも現地の午後6時に安否が届けられます。</p></div></div></section>
 </div>
 
 <footer><div class="wrap">
@@ -545,34 +544,12 @@ document.querySelector('[data-check-body]').textContent =
 document.querySelector('[data-daily-time]').textContent =
   S.heartbeat_daily_time.replace('@time','18:00');
 
-// 제목의 highlight 부분만 강조 — 앱 _buildHibernationTitle과 동일 규칙
-(function(){
-  var t = S.permission_hibernation_title, h = S.permission_hibernation_highlight;
-  var el = document.querySelector('[data-dialog-title]'), i = t.indexOf(h);
-  if (i < 0) { el.textContent = t; return; }
-  el.textContent = '';
-  el.append(t.slice(0, i));
-  var m = document.createElement('mark'); m.textContent = h; el.append(m);
-  el.append(t.slice(i + h.length));
-})();
-
-// 본문 \n\n → 문단
-(function(){
-  var body = document.querySelector('[data-dialog-body]');
-  S.permission_hibernation_message.split('\n\n').forEach(function(p){
-    var el = document.createElement('p'); el.textContent = p.trim(); body.append(el);
-  });
-})();
-
 // 스포트라이트
-var device = document.getElementById('device'), modal = document.getElementById('modal');
+var device = document.getElementById('device');
 var chips = document.querySelectorAll('.chip');
 
 function show(spot){
-  var isDialog = spot === 'hibernation';
-  // 다이얼로그일 때는 스크림이 화면을 덮으므로 별도 dim을 걸지 않는다
-  device.classList.toggle('dimmed', spot !== 'all' && !isDialog);
-  modal.hidden = !isDialog;
+  device.classList.toggle('dimmed', spot !== 'all');
   document.querySelectorAll('.spot').forEach(function(el){
     el.classList.toggle('on', el.dataset.spot === spot);
   });

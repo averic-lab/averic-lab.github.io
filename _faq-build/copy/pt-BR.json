@@ -13,7 +13,6 @@
   "spot_battery": "Sinal atrasado",
   "spot_activity": "Sem passos",
   "spot_location": "Sem localização",
-  "spot_hibernation": "Uma janela aparece sempre",
 
   "sections": [
     {
@@ -100,32 +99,6 @@
       ]
     },
     {
-      "id": "hibernation",
-      "spot": "hibernation",
-      "heading": "Aparece uma janela toda vez que abro o aplicativo",
-      "items": [
-        {
-          "q": "Toda vez que abro o aplicativo aparece uma janela dizendo “@permission_hibernation_title”.",
-          "a": [
-            "O Android tem um recurso que remove automaticamente as permissões de aplicativos que ficam muito tempo sem ser abertos. O Anbu é <strong>um aplicativo que funciona sem que você abra a tela</strong>, o que justamente o torna um alvo fácil — e, sem as permissões, o envio para silenciosamente.",
-            "Toque em [@permission_hibernation_go_to_settings] e desative uma vez: esta janela não aparecerá mais."
-          ]
-        },
-        {
-          "q": "Aparece toda vez. Posso simplesmente tocar em [@common_later]?",
-          "a": [
-            "Ela continuará aparecendo a cada abertura até você desativar a configuração. Como é difícil perceber que o envio parou, avisamos repetidamente."
-          ]
-        },
-        {
-          "q": "Eu também acompanho o bem-estar da minha família, mas para mim essa janela não aparece.",
-          "a": [
-            "Quem também cuida de familiares abre o aplicativo com frequência para ver os alertas, então raramente chega à situação em que as permissões são removidas automaticamente. Por isso essa janela não é exibida para você."
-          ]
-        }
-      ]
-    },
-    {
       "id": "etc",
       "spot": null,
       "heading": "Outros casos",
@@ -140,6 +113,31 @@
     }
   ],
 
+  "travel": {
+    "heading": "Quando você viaja para o exterior",
+    "items": [
+      {
+        "q": "Depois que cheguei ao exterior, minha família recebeu um alerta de “@notifications_level_caution”.",
+        "a": [
+          "O sinal é enviado de acordo com o <strong>horário local</strong> mostrado no seu celular. Mas, no primeiro ou nos dois primeiros dias depois de chegar a outro país, o novo horário ainda não foi repassado, então o sinal continua sendo esperado no horário do país de onde você saiu. Por causa do fuso horário, <strong>parece que o sinal não chegou</strong>: sua família pode receber um alerta, e o seu próprio celular pode mostrar um lembrete de madrugada.",
+          "Você está bem; só o horário está desencontrado. Assim que o primeiro sinal é enviado no horário local, tudo volta ao normal sozinho."
+        ]
+      },
+      {
+        "q": "Posso evitar isso antes?",
+        "a": [
+          "Ao chegar, <strong>abra o app Anbu uma vez.</strong> No momento em que você abre, o novo horário é repassado e, daí em diante, o sinal segue o horário local. Abra também uma vez quando voltar.",
+          "Se você configurou o horário de “Não perturbe”, abra o app uma vez também ao chegar. Assim, o período em que você escolheu não receber alertas (por exemplo, das 22:00 às 7:00) se ajusta ao horário local. Se não abrir, continua valendo o horário do país de partida, e os alertas podem tocar de madrugada ou ficar em silêncio durante o dia."
+        ]
+      },
+      {
+        "q": "Preciso mudar o horário do sinal durante a viagem?",
+        "a": [
+          "Não. O horário definido vale <strong>para o lugar onde você está agora</strong>. Se você definiu 18:00, durante a viagem o sinal também é enviado às 18:00 no horário local."
+        ]
+      }
+    ]
+  },
   "footer_home": "Início",
   "footer_privacy": "Política de Privacidade",
   "footer_terms": "Termos de Serviço",

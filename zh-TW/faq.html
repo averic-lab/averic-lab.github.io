@@ -229,6 +229,11 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 .pf-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .pf-body[hidden]{display:none}
 
+/* 해외여행 — 그리드 밖 전폭 블록. 본문 열과 같은 읽기 폭으로 묶는다 */
+.travel{max-width:760px;border-top:1px solid var(--line);margin-top:-40px;
+  padding-bottom:76px}
+@media(max-width:920px){.travel{margin-top:0}}
+
 /* 목업 패널 */
 .sticky{position:sticky;top:20px}
 .chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
@@ -375,11 +380,10 @@ footer .copy{margin-left:auto}
     <main><section class="topic" id="battery" data-spot="battery"><h2>問候延遲送達</h2><button class="show-me" type="button" data-show="battery" aria-expanded="false" data-open="查看在畫面中的位置"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>查看在畫面中的位置</span></button><div class="qa"><p class="q">自己的手機經常收到「💗 需要確認問候」的通知。似乎要打開應用程式，問候才會送出。</p><p class="q">家人的手機收到了<b>「注意」</b>提醒，內容是<b>「今天預定的問安尚未收到。請親自確認。」</b></p><div class="a"><p>為了節省電力，Android 會減緩或停止不常使用的應用程式。Anbu 每天只在設定的時刻短暫喚醒一次來傳送問候，若受到這項限制，<strong>就會錯過那個時刻，直到再次使用手機才會送出。</strong></p><p>如果超過設定時刻<strong>兩個小時仍未收到問候</strong>，家人就會收到上面的提醒。即使傳送問候的人平安無事、只是傳送延遲，也可能收到這則提醒。</p><p>請在傳送問候一方的手機上打開應用程式，查看畫面上方是否有<b>「需要解除電池使用限制」</b>這則黃色提示。點選後會直接進入設定畫面，解除一次後提示就會消失。</p></div></div><div class="qa"><p class="q">為什麼只有這則提示是黃色的？</p><div class="a"><p>這表示問候並未完全中斷，只是<strong>可能會延遲</strong>，所以用黃色。當功能確實被阻擋時會顯示為紅色。</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">點選黃色提示後會立即跳出這個視窗。</p><div class="scrim"><div class="dlg"><p class="dlg-title">解除電池使用限制</p><div class="dlg-body"><p>當手機進入省電模式時，傳送給守護者的平安訊號可能延遲或遺失。</p><p>點選下方[開啟設定]後，請將「電池」設定為「無限制」。如此可以確保每天準時穩定地傳輸平安訊號。</p><p>※ 顯示文字可能因裝置製造商而略有不同。</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>稍後</button><button class="dlg-btn" type="button" tabindex="-1" disabled>開啟設定</button></div></div></div></div></section>
 <section class="topic" id="activity" data-spot="activity"><h2>看不到步數</h2><button class="show-me" type="button" data-show="activity" aria-expanded="false" data-open="查看在畫面中的位置"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>查看在畫面中的位置</span></button><div class="qa"><p class="q">看不到家人的步數。「今天走了 N 步」的通知也沒有收到。</p><div class="a"><p>Anbu 會在問候訊號之外一併傳送<strong>當天的步數</strong>，讓家人了解活動情形。若傳送問候一方的手機關閉了步數權限，<strong>問候訊號照常送達，只是步數會缺少。</strong></p><p>請在那支手機上打開應用程式，查看安全碼下方是否有<b>「計步權限已被拒絕。點擊此處授予權限。」</b>這則紅色提示。點選後會重新要求權限。</p></div></div><div class="qa"><p class="q">除了步數還會查看其他資料嗎？</p><div class="a"><p>只傳送步數。不會查看去過哪裡，也不會查看使用了哪些應用程式。</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">點選紅色提示後，會跳出 <strong>Android 本身的權限要求</strong>。在那裡允許即可完成。<br>不過，若先前已多次拒絕，Android 就不會再顯示該要求。這時會改為顯示下面的視窗。</p><div class="scrim"><div class="dlg"><p class="dlg-title">需要權限設定</p><div class="dlg-body"><p>請在應用程式設定中允許體能活動（動態與健身）權限。</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>取消</button><button class="dlg-btn" type="button" tabindex="-1" disabled>前往設定</button></div></div></div></div></section>
 <section class="topic" id="location" data-spot="location"><h2>緊急求助沒有附上位置</h2><button class="show-me" type="button" data-show="location" aria-expanded="false" data-open="查看在畫面中的位置"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>查看在畫面中的位置</span></button><div class="qa"><p class="q">收到了緊急求助，但通知上沒有 [🗺️ 檢視位置] 按鈕。</p><div class="a"><p>按下緊急按鈕時<strong>要一併傳送目前位置</strong>需要位置權限。沒有權限時，緊急通知本身仍會照常送達所有家人，但不會附上所在位置。</p><p>請在傳送問候一方的手機上打開應用程式，查看 [我需要幫助] 按鈕下方是否有紅色提示。點選後會重新要求權限。</p></div></div><div class="qa"><p class="q">平時也在查看我的位置嗎？</p><div class="a"><p>不會。平時完全不收集位置資訊。只有在按下 [我需要幫助] 時，才會<strong>取得那一刻的位置一次</strong>並轉達給家人，該資訊在一天後就會刪除。</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">點選紅色提示後，會跳出 <strong>Android 本身的權限要求</strong>。在那裡允許即可完成。<br>不過，若先前已多次拒絕，Android 就不會再顯示該要求。這時會改為顯示下面的視窗。</p><div class="pf-tabs"><button class="pf-tab" type="button" data-pf="0" aria-pressed="true">Android</button><button class="pf-tab" type="button" data-pf="1" aria-pressed="false">iPhone</button></div><div class="scrim"><div class="dlg"><p class="dlg-title">需要位置權限設定</p><div class="dlg-body"><div class="pf-body" data-pf="0"><p>依序選擇「權限」→「位置」,然後選擇「僅在使用此應用程式時允許」。</p></div><div class="pf-body" data-pf="1" hidden><p>找到並選擇「Anbu」,然後在「位置」中選擇「使用App期間」。</p></div></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>取消</button><button class="dlg-btn" type="button" tabindex="-1" disabled>前往設定</button></div></div></div></div></section>
-<section class="topic" id="hibernation" data-spot="hibernation"><h2>每次打開應用程式都會跳出視窗</h2><button class="show-me" type="button" data-show="hibernation" aria-expanded="false" data-open="查看在畫面中的位置"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>查看在畫面中的位置</span></button><div class="qa"><p class="q">每次打開應用程式都會跳出「請關閉「自動撤銷權限」」的視窗。</p><div class="a"><p>Android 有一項功能，會自動收回長期未開啟應用程式的權限。Anbu 是<strong>不打開畫面也會自行運作的應用程式</strong>，反而更容易成為對象，一旦權限消失，問候就會悄悄停止。</p><p>點選 [開啟設定] 關閉一次後，這個視窗就不會再出現。</p></div></div><div class="qa"><p class="q">每次都出現，可以直接按 [稍後] 嗎？</p><div class="a"><p>在關閉該設定之前，每次打開應用程式都會繼續出現。因為問候一旦停止很難察覺，所以我們會反覆提醒。</p></div></div><div class="qa"><p class="q">我同時也在關心家人的問候，但我這邊不會出現這個視窗。</p><div class="a"><p>同時守護家人問候的情況下，為了查看提醒會經常打開應用程式，因此很少會遇到權限被自動收回的情形。所以不會向您顯示這個視窗。</p></div></div></section>
 <section class="topic" id="etc"><h2>其他</h2><div class="qa"><p class="q">點選提示後設定畫面沒有正常開啟。</p><div class="a"><p>設定畫面的名稱和位置因裝置製造商而略有不同。請在系統設定中找到 <b>Anbu</b>，直接查看權限項目。</p></div></div></section></main>
 
     <aside class="sticky">
-      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">整個畫面</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">問候延遲</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">沒有步數</button><button class="chip" type="button" data-spot="location" aria-pressed="false">沒有位置</button><button class="chip" type="button" data-spot="hibernation" aria-pressed="false">視窗反覆出現</button></div>
+      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">整個畫面</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">問候延遲</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">沒有步數</button><button class="chip" type="button" data-spot="location" aria-pressed="false">沒有位置</button></div>
       <div class="stage">
         <div class="device" id="device">
           <div class="appbar">
@@ -454,20 +458,15 @@ footer .copy{margin-left:auto}
           </div>
         </div>
 
-        <div class="modal" id="modal" hidden>
-          <div class="dlg">
-            <p class="dlg-title" data-dialog-title></p>
-            <div class="dlg-body" data-dialog-body></div>
-            <div class="dlg-actions">
-              <button class="dlg-btn" data-key="common_later" tabindex="-1"></button>
-              <button class="dlg-btn" data-key="permission_hibernation_go_to_settings" tabindex="-1"></button>
-            </div>
-          </div>
-        </div>
       </div>
       <p class="caption">為方便說明，這裡將三種提示放在同一個畫面中。實際上只在符合情況時逐一出現，處理完成後就會消失。</p>
     </aside>
   </div>
+
+  <!-- 해외여행 — 안전 홈 화면과 무관한 주제라 2단 그리드(.cols) 밖에 둔다.
+       안에 두면 넓은 화면에서는 sticky 목업이 옆에 붙고, 좁은 화면에서는 목업이
+       이 섹션 뒤에 와서 "화면 어딘가에 여행 설정이 있다"로 읽힌다. PRD-FAQ §2 -->
+  <section class="topic travel" id="travel"><h2>出國旅行時</h2><div class="qa"><p class="q">抵達國外後，家人收到了「注意」提醒。</p><div class="a"><p>問候是依照手機上顯示的<strong>當地時間</strong>傳送的。但抵達另一個國家後的頭一兩天，新的時間還沒有傳過去，所以仍依出發前所在國家的時間等待問候。因為時差，<strong>看起來像是問候還沒有到</strong>，家人可能會收到提醒，您自己的手機也可能在深夜跳出問候確認提醒。</p><p>您平安無事，只是時間對不上。依當地時間傳出第一則問候後，就會自動恢復正常。</p></div></div><div class="qa"><p class="q">可以事先避免嗎？</p><div class="a"><p>抵達後<strong>請開啟一次 Anbu 應用程式。</strong>開啟應用程式的那一刻，新的時間就會傳過去，之後會依當地時間確認問候。回來的時候也請同樣開啟一次。</p><p>設定了勿擾時間的使用者，抵達旅行地後也請開啟一次應用程式。這樣，您設定的不接收提醒的時間（例如晚上10點到早上7點）才會依旅行地時間調整。如果不開啟，出發前所在國家的時間會繼續生效，在旅行地可能會半夜響起提醒，或白天提醒變得靜音。</p></div></div><div class="qa"><p class="q">在旅行地需要更改問候時間嗎？</p><div class="a"><p>不需要。設定的時間會依<strong>您現在所在地的時間</strong>生效。如果設定為下午6點，在旅行地也會在當地下午6點傳送問候。</p></div></div></section>
 </div>
 
 <footer><div class="wrap">
@@ -545,34 +544,12 @@ document.querySelector('[data-check-body]').textContent =
 document.querySelector('[data-daily-time]').textContent =
   S.heartbeat_daily_time.replace('@time','18:00');
 
-// 제목의 highlight 부분만 강조 — 앱 _buildHibernationTitle과 동일 규칙
-(function(){
-  var t = S.permission_hibernation_title, h = S.permission_hibernation_highlight;
-  var el = document.querySelector('[data-dialog-title]'), i = t.indexOf(h);
-  if (i < 0) { el.textContent = t; return; }
-  el.textContent = '';
-  el.append(t.slice(0, i));
-  var m = document.createElement('mark'); m.textContent = h; el.append(m);
-  el.append(t.slice(i + h.length));
-})();
-
-// 본문 \n\n → 문단
-(function(){
-  var body = document.querySelector('[data-dialog-body]');
-  S.permission_hibernation_message.split('\n\n').forEach(function(p){
-    var el = document.createElement('p'); el.textContent = p.trim(); body.append(el);
-  });
-})();
-
 // 스포트라이트
-var device = document.getElementById('device'), modal = document.getElementById('modal');
+var device = document.getElementById('device');
 var chips = document.querySelectorAll('.chip');
 
 function show(spot){
-  var isDialog = spot === 'hibernation';
-  // 다이얼로그일 때는 스크림이 화면을 덮으므로 별도 dim을 걸지 않는다
-  device.classList.toggle('dimmed', spot !== 'all' && !isDialog);
-  modal.hidden = !isDialog;
+  device.classList.toggle('dimmed', spot !== 'all');
   document.querySelectorAll('.spot').forEach(function(el){
     el.classList.toggle('on', el.dataset.spot === spot);
   });

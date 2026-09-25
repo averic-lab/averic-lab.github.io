@@ -229,6 +229,11 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 .pf-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .pf-body[hidden]{display:none}
 
+/* 해외여행 — 그리드 밖 전폭 블록. 본문 열과 같은 읽기 폭으로 묶는다 */
+.travel{max-width:760px;border-top:1px solid var(--line);margin-top:-40px;
+  padding-bottom:76px}
+@media(max-width:920px){.travel{margin-top:0}}
+
 /* 목업 패널 */
 .sticky{position:sticky;top:20px}
 .chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
@@ -375,11 +380,10 @@ footer .copy{margin-left:auto}
     <main><section class="topic" id="battery" data-spot="battery"><h2>Kabar datang terlambat</h2><button class="show-me" type="button" data-show="battery" aria-expanded="false" data-open="Lihat letaknya di layar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Lihat letaknya di layar</span></button><div class="qa"><p class="q">Ponsel saya sering menerima notifikasi “💗 Perlu pemeriksaan keselamatan”. Sepertinya kabar baru terkirim saat saya membuka aplikasi.</p><p class="q">Keluarga saya menerima peringatan <b>“Perhatian”</b> yang berbunyi <b>“Pemeriksaan kesejahteraan terjadwal hari ini belum diterima. Silakan periksa langsung.”</b></p><div class="a"><p>Untuk menghemat baterai, Android memperlambat atau menghentikan aplikasi yang jarang dipakai. Anbu bangun sebentar sekali sehari pada waktu yang ditetapkan untuk mengirim kabar, sehingga bila pembatasan ini berlaku, <strong>momen tersebut terlewat dan tidak ada yang terkirim sampai ponsel digunakan lagi.</strong></p><p>Jika <strong>dua jam setelah waktu yang ditetapkan</strong> kabar belum juga datang, keluarga akan menerima peringatan di atas. Ini bisa terjadi meskipun pengirim baik-baik saja dan hanya pengirimannya yang tertunda.</p><p>Di ponsel pengirim, buka aplikasi dan periksa bagian atas layar apakah ada pemberitahuan kuning <b>“Perlu menonaktifkan pembatasan penggunaan baterai”</b>. Menyentuhnya langsung menuju layar pengaturan, dan setelah pembatasan dilepas sekali, pemberitahuan itu akan hilang.</p></div></div><div class="qa"><p class="q">Mengapa hanya pemberitahuan ini yang berwarna kuning?</p><div class="a"><p>Artinya kabar tidak berhenti sama sekali, melainkan <strong>hanya bisa tertunda</strong>. Pemberitahuan berwarna merah menandakan sebuah fungsi benar-benar terhalang.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">Menyentuh pemberitahuan kuning langsung membuka jendela ini.</p><div class="scrim"><div class="dlg"><p class="dlg-title">Nonaktifkan pembatasan penggunaan baterai</p><div class="dlg-body"><p>Ketika ponsel Anda masuk ke mode hemat daya, sinyal kesejahteraan yang dikirim ke pelindung Anda dapat terlambat atau terlewat.</p><p>Setelah mengetuk [Buka Pengaturan] di bawah, atur "Baterai" → "Tidak Dibatasi". Dengan begitu, sinyal kesejahteraan akan dikirim dengan andal pada waktu yang dijadwalkan setiap hari.</p><p>※ Istilah yang tepat dapat bervariasi tergantung pabrikan perangkat.</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>Nanti</button><button class="dlg-btn" type="button" tabindex="-1" disabled>Buka Pengaturan</button></div></div></div></div></section>
 <section class="topic" id="activity" data-spot="activity"><h2>Jumlah langkah tidak muncul</h2><button class="show-me" type="button" data-show="activity" aria-expanded="false" data-open="Lihat letaknya di layar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Lihat letaknya di layar</span></button><div class="qa"><p class="q">Jumlah langkah anggota keluarga saya tidak muncul. Notifikasi “Hari ini berjalan N langkah” juga tidak pernah datang.</p><div class="a"><p>Bersama sinyal kabar, Anbu mengirimkan <strong>jumlah langkah hari itu</strong> agar keluarga tahu seberapa banyak bergerak. Jika izin dimatikan di ponsel pengirim, <strong>sinyal kabar tetap sampai, hanya jumlah langkahnya yang hilang.</strong></p><p>Di ponsel tersebut, buka aplikasi dan periksa di bawah kode keselamatan apakah ada pemberitahuan merah <b>“Izin penghitung langkah ditolak. Ketuk di sini untuk mengizinkan.”</b>. Menyentuhnya akan meminta izin kembali.</p></div></div><div class="qa"><p class="q">Apakah ada hal lain yang dilihat selain langkah?</p><div class="a"><p>Hanya jumlah langkah yang dikirim. Kami tidak memeriksa ke mana seseorang pergi maupun aplikasi apa yang digunakan.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">Menyentuh pemberitahuan merah akan memunculkan <strong>permintaan izin dari Android sendiri</strong>. Cukup izinkan di sana.<br>Namun bila sebelumnya sudah beberapa kali ditolak, Android tidak lagi menampilkan permintaan itu. Saat itu jendela di bawah muncul sebagai gantinya.</p><div class="scrim"><div class="dlg"><p class="dlg-title">Izin Diperlukan</p><div class="dlg-body"><p>Harap izinkan izin Aktivitas Fisik (Gerakan & Kebugaran) di pengaturan aplikasi.</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>Batal</button><button class="dlg-btn" type="button" tabindex="-1" disabled>Buka Pengaturan</button></div></div></div></div></section>
 <section class="topic" id="location" data-spot="location"><h2>Permintaan darurat datang tanpa lokasi</h2><button class="show-me" type="button" data-show="location" aria-expanded="false" data-open="Lihat letaknya di layar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Lihat letaknya di layar</span></button><div class="qa"><p class="q">Saya menerima permintaan bantuan darurat, tetapi tidak ada tombol [🗺️ Lihat lokasi] pada notifikasinya.</p><div class="a"><p>Izin lokasi diperlukan <strong>agar lokasi saat itu ikut terkirim</strong> ketika tombol darurat ditekan. Tanpa izin tersebut, notifikasi darurat tetap sampai ke seluruh keluarga, tetapi keberadaannya tidak disertakan.</p><p>Di ponsel pengirim, buka aplikasi dan periksa di bawah tombol [Saya butuh bantuan] apakah ada pemberitahuan merah. Menyentuhnya akan meminta izin kembali.</p></div></div><div class="qa"><p class="q">Apakah lokasi saya dipantau sepanjang waktu?</p><div class="a"><p>Tidak. Dalam keadaan biasa kami sama sekali tidak mengumpulkan lokasi. Hanya ketika [Saya butuh bantuan] ditekan, lokasi <strong>pada saat itu diambil satu kali</strong> lalu diteruskan ke keluarga; informasi tersebut dihapus setelah satu hari.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">Menyentuh pemberitahuan merah akan memunculkan <strong>permintaan izin dari Android sendiri</strong>. Cukup izinkan di sana.<br>Namun bila sebelumnya sudah beberapa kali ditolak, Android tidak lagi menampilkan permintaan itu. Saat itu jendela di bawah muncul sebagai gantinya.</p><div class="pf-tabs"><button class="pf-tab" type="button" data-pf="0" aria-pressed="true">Android</button><button class="pf-tab" type="button" data-pf="1" aria-pressed="false">iPhone</button></div><div class="scrim"><div class="dlg"><p class="dlg-title">Izin Lokasi Diperlukan</p><div class="dlg-body"><div class="pf-body" data-pf="0"><p>Pilih 'Izin' → 'Lokasi', lalu pilih 'Izinkan hanya saat menggunakan aplikasi'.</p></div><div class="pf-body" data-pf="1" hidden><p>Temukan dan pilih 'Anbu', lalu di 'Lokasi' pilih 'Ketika Menggunakan App Ini'.</p></div></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>Batal</button><button class="dlg-btn" type="button" tabindex="-1" disabled>Buka Pengaturan</button></div></div></div></div></section>
-<section class="topic" id="hibernation" data-spot="hibernation"><h2>Setiap membuka aplikasi muncul jendela</h2><button class="show-me" type="button" data-show="hibernation" aria-expanded="false" data-open="Lihat letaknya di layar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Lihat letaknya di layar</span></button><div class="qa"><p class="q">Setiap kali membuka aplikasi, muncul jendela bertuliskan “Matikan penghapusan izin otomatis”.</p><div class="a"><p>Android memiliki fitur yang otomatis mencabut izin aplikasi yang lama tidak dibuka. Anbu adalah <strong>aplikasi yang bekerja tanpa perlu membuka layar</strong>, justru karena itu mudah menjadi sasaran; dan bila izinnya hilang, pengiriman kabar berhenti tanpa disadari.</p><p>Sentuh [Buka Pengaturan] dan matikan sekali saja, maka jendela ini tidak akan muncul lagi.</p></div></div><div class="qa"><p class="q">Muncul setiap kali. Bolehkah saya cukup menyentuh [Nanti]?</p><div class="a"><p>Selama pengaturan itu belum dimatikan, jendela akan terus muncul setiap kali aplikasi dibuka. Karena berhentinya pengiriman sulit disadari, kami mengingatkan berulang kali.</p></div></div><div class="qa"><p class="q">Saya juga memantau kabar keluarga, tetapi jendela ini tidak pernah muncul pada saya.</p><div class="a"><p>Orang yang sekaligus menjaga keluarganya sering membuka aplikasi untuk memeriksa notifikasi, sehingga jarang berada dalam situasi izin dicabut secara otomatis. Karena itu jendela ini tidak ditampilkan kepada Anda.</p></div></div></section>
 <section class="topic" id="etc"><h2>Lainnya</h2><div class="qa"><p class="q">Saya sudah menyentuh pemberitahuannya, tetapi layar pengaturan tidak terbuka dengan benar.</p><div class="a"><p>Nama dan letak layar pengaturan sedikit berbeda tergantung produsen perangkat. Silakan buka aplikasi Pengaturan, cari <b>Anbu</b>, lalu periksa bagian izin secara langsung.</p></div></div></section></main>
 
     <aside class="sticky">
-      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">Seluruh layar</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">Kabar terlambat</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">Tidak ada langkah</button><button class="chip" type="button" data-spot="location" aria-pressed="false">Tidak ada lokasi</button><button class="chip" type="button" data-spot="hibernation" aria-pressed="false">Jendela muncul terus</button></div>
+      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">Seluruh layar</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">Kabar terlambat</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">Tidak ada langkah</button><button class="chip" type="button" data-spot="location" aria-pressed="false">Tidak ada lokasi</button></div>
       <div class="stage">
         <div class="device" id="device">
           <div class="appbar">
@@ -454,20 +458,15 @@ footer .copy{margin-left:auto}
           </div>
         </div>
 
-        <div class="modal" id="modal" hidden>
-          <div class="dlg">
-            <p class="dlg-title" data-dialog-title></p>
-            <div class="dlg-body" data-dialog-body></div>
-            <div class="dlg-actions">
-              <button class="dlg-btn" data-key="common_later" tabindex="-1"></button>
-              <button class="dlg-btn" data-key="permission_hibernation_go_to_settings" tabindex="-1"></button>
-            </div>
-          </div>
-        </div>
       </div>
       <p class="caption">Untuk penjelasan, ketiga pemberitahuan ditampilkan bersama dalam satu layar. Sebenarnya semuanya muncul satu per satu, hanya bila memang berlaku, dan hilang setelah diatasi.</p>
     </aside>
   </div>
+
+  <!-- 해외여행 — 안전 홈 화면과 무관한 주제라 2단 그리드(.cols) 밖에 둔다.
+       안에 두면 넓은 화면에서는 sticky 목업이 옆에 붙고, 좁은 화면에서는 목업이
+       이 섹션 뒤에 와서 "화면 어딘가에 여행 설정이 있다"로 읽힌다. PRD-FAQ §2 -->
+  <section class="topic travel" id="travel"><h2>Saat Anda bepergian ke luar negeri</h2><div class="qa"><p class="q">Setelah tiba di luar negeri, keluarga saya menerima peringatan “Perhatian”.</p><div class="a"><p>Kabar dikirim sesuai <strong>waktu setempat</strong> yang ditampilkan di ponsel. Namun, pada satu atau dua hari pertama setelah tiba di negara lain, waktu yang baru belum diteruskan, sehingga kabar masih ditunggu menurut waktu negara yang Anda tinggalkan. Karena perbedaan waktu, <strong>kabar tampak seolah belum datang</strong>: keluarga bisa menerima peringatan, dan ponsel Anda sendiri juga bisa menampilkan pengingat pada tengah malam.</p><p>Anda baik-baik saja, hanya waktunya yang bergeser. Begitu kabar pertama terkirim menurut waktu setempat, semuanya kembali normal dengan sendirinya.</p></div></div><div class="qa"><p class="q">Bisakah saya mencegahnya sebelumnya?</p><div class="a"><p>Setelah tiba, <strong>buka aplikasi Anbu satu kali.</strong> Begitu dibuka, waktu yang baru langsung diteruskan, dan sejak itu kabar mengikuti waktu setempat. Saat kembali pulang, buka juga satu kali.</p><p>Jika Anda mengatur jam Jangan Ganggu, buka juga aplikasi satu kali saat tiba. Dengan begitu, jam yang Anda pilih untuk tidak menerima peringatan (misalnya 22:00 sampai 07:00) menyesuaikan dengan waktu setempat. Jika tidak dibuka, waktu negara asal tetap berlaku, sehingga peringatan bisa berbunyi tengah malam atau diam pada siang hari.</p></div></div><div class="qa"><p class="q">Apakah saya perlu mengubah jam kabar selama bepergian?</p><div class="a"><p>Tidak. Jam yang Anda tetapkan berlaku <strong>menurut tempat Anda berada sekarang</strong>. Jika Anda menetapkan 18:00, selama bepergian kabar juga dikirim pukul 18:00 waktu setempat.</p></div></div></section>
 </div>
 
 <footer><div class="wrap">
@@ -545,34 +544,12 @@ document.querySelector('[data-check-body]').textContent =
 document.querySelector('[data-daily-time]').textContent =
   S.heartbeat_daily_time.replace('@time','18:00');
 
-// 제목의 highlight 부분만 강조 — 앱 _buildHibernationTitle과 동일 규칙
-(function(){
-  var t = S.permission_hibernation_title, h = S.permission_hibernation_highlight;
-  var el = document.querySelector('[data-dialog-title]'), i = t.indexOf(h);
-  if (i < 0) { el.textContent = t; return; }
-  el.textContent = '';
-  el.append(t.slice(0, i));
-  var m = document.createElement('mark'); m.textContent = h; el.append(m);
-  el.append(t.slice(i + h.length));
-})();
-
-// 본문 \n\n → 문단
-(function(){
-  var body = document.querySelector('[data-dialog-body]');
-  S.permission_hibernation_message.split('\n\n').forEach(function(p){
-    var el = document.createElement('p'); el.textContent = p.trim(); body.append(el);
-  });
-})();
-
 // 스포트라이트
-var device = document.getElementById('device'), modal = document.getElementById('modal');
+var device = document.getElementById('device');
 var chips = document.querySelectorAll('.chip');
 
 function show(spot){
-  var isDialog = spot === 'hibernation';
-  // 다이얼로그일 때는 스크림이 화면을 덮으므로 별도 dim을 걸지 않는다
-  device.classList.toggle('dimmed', spot !== 'all' && !isDialog);
-  modal.hidden = !isDialog;
+  device.classList.toggle('dimmed', spot !== 'all');
   document.querySelectorAll('.spot').forEach(function(el){
     el.classList.toggle('on', el.dataset.spot === spot);
   });

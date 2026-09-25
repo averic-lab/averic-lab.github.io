@@ -13,7 +13,6 @@
   "spot_battery": "Nouvelles en retard",
   "spot_activity": "Pas de nombre de pas",
   "spot_location": "Pas de position",
-  "spot_hibernation": "Une fenêtre revient sans cesse",
 
   "sections": [
     {
@@ -100,32 +99,6 @@
       ]
     },
     {
-      "id": "hibernation",
-      "spot": "hibernation",
-      "heading": "Une fenêtre s'affiche à chaque ouverture",
-      "items": [
-        {
-          "q": "À chaque ouverture de l'application, une fenêtre « @permission_hibernation_title » apparaît.",
-          "a": [
-            "Android retire automatiquement les autorisations des applications restées longtemps sans être ouvertes. Anbu est <strong>une application qui fonctionne sans qu'on ouvre l'écran</strong>, ce qui la rend justement vulnérable : sans autorisations, l'envoi des nouvelles s'arrête silencieusement.",
-            "Touchez [@permission_hibernation_go_to_settings] et désactivez-le une fois : cette fenêtre ne réapparaîtra plus."
-          ]
-        },
-        {
-          "q": "Elle revient à chaque fois. Puis-je simplement toucher [@common_later] ?",
-          "a": [
-            "Tant que le réglage n'est pas désactivé, elle continuera d'apparaître à chaque ouverture. Comme un envoi interrompu passe facilement inaperçu, nous le rappelons régulièrement."
-          ]
-        },
-        {
-          "q": "Je veille aussi sur les nouvelles de ma famille, mais cette fenêtre ne s'affiche jamais chez moi.",
-          "a": [
-            "Lorsqu'on veille également sur ses proches, on ouvre souvent l'application pour consulter les alertes : la situation où les autorisations sont retirées automatiquement se présente donc rarement. C'est pourquoi cette fenêtre ne vous est pas montrée."
-          ]
-        }
-      ]
-    },
-    {
       "id": "etc",
       "spot": null,
       "heading": "Divers",
@@ -140,6 +113,31 @@
     }
   ],
 
+  "travel": {
+    "heading": "Quand vous voyagez à l'étranger",
+    "items": [
+      {
+        "q": "Après mon arrivée à l'étranger, ma famille a reçu une alerte « @notifications_level_caution ».",
+        "a": [
+          "Les nouvelles sont envoyées selon l'<strong>heure locale</strong> affichée sur votre téléphone. Mais pendant le premier ou les deux premiers jours après votre arrivée dans un autre pays, la nouvelle heure n'a pas encore été transmise : les nouvelles sont donc encore attendues à l'heure du pays que vous avez quitté. À cause du décalage horaire, <strong>on dirait qu'aucune nouvelle n'est arrivée</strong> : votre famille peut recevoir une alerte, et votre propre téléphone peut afficher un rappel en pleine nuit.",
+          "Vous allez bien, c'est seulement l'heure qui est décalée. Dès que la première nouvelle part à l'heure locale, tout redevient normal de lui-même."
+        ]
+      },
+      {
+        "q": "Puis-je l'éviter à l'avance ?",
+        "a": [
+          "À votre arrivée, <strong>ouvrez une fois l'application Anbu.</strong> Dès que vous l'ouvrez, la nouvelle heure est transmise et les nouvelles suivent ensuite l'heure locale. Ouvrez-la aussi une fois à votre retour.",
+          "Si vous avez défini des horaires « Ne pas déranger », ouvrez aussi l'application une fois à votre arrivée. C'est ainsi que la plage où vous ne souhaitez pas recevoir d'alertes (par exemple de 22:00 à 7:00) s'aligne sur l'heure locale. Sinon, l'heure du pays de départ reste appliquée : des alertes peuvent sonner en pleine nuit ou rester silencieuses pendant la journée."
+        ]
+      },
+      {
+        "q": "Dois-je changer l'heure des nouvelles en voyage ?",
+        "a": [
+          "Non. L'heure définie s'applique <strong>à l'endroit où vous vous trouvez</strong>. Si vous avez choisi 18:00, les nouvelles partent aussi à 18:00 heure locale pendant votre voyage."
+        ]
+      }
+    ]
+  },
   "footer_home": "Accueil",
   "footer_privacy": "Politique de confidentialité",
   "footer_terms": "Conditions d'utilisation",

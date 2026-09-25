@@ -13,7 +13,6 @@
   "spot_battery": "Tin báo đến muộn",
   "spot_activity": "Không có số bước",
   "spot_location": "Không có vị trí",
-  "spot_hibernation": "Cửa sổ hiện liên tục",
 
   "sections": [
     {
@@ -100,32 +99,6 @@
       ]
     },
     {
-      "id": "hibernation",
-      "spot": "hibernation",
-      "heading": "Mỗi lần mở ứng dụng lại hiện cửa sổ",
-      "items": [
-        {
-          "q": "Mỗi lần mở ứng dụng lại hiện cửa sổ “@permission_hibernation_title”.",
-          "a": [
-            "Android có tính năng tự động thu hồi quyền của những ứng dụng lâu ngày không mở. Anbu là <strong>ứng dụng hoạt động mà không cần mở màn hình</strong>, nên lại càng dễ rơi vào diện này; khi quyền bị mất, việc gửi tin báo sẽ lặng lẽ dừng lại.",
-            "Chạm [@permission_hibernation_go_to_settings] và tắt một lần thì cửa sổ này sẽ không hiện nữa."
-          ]
-        },
-        {
-          "q": "Lần nào cũng hiện. Tôi chỉ chạm [@common_later] có được không?",
-          "a": [
-            "Cho đến khi bạn tắt cài đặt đó, cửa sổ vẫn sẽ hiện mỗi lần mở ứng dụng. Vì rất khó nhận ra khi việc gửi tin báo đã dừng, nên chúng tôi nhắc lại nhiều lần."
-          ]
-        },
-        {
-          "q": "Tôi cũng đang theo dõi tin báo của gia đình, nhưng tôi không thấy cửa sổ này.",
-          "a": [
-            "Người đồng thời dõi theo gia đình sẽ mở ứng dụng thường xuyên để xem thông báo, nên hiếm khi rơi vào tình huống quyền bị thu hồi tự động. Vì vậy cửa sổ này không hiện với bạn."
-          ]
-        }
-      ]
-    },
-    {
       "id": "etc",
       "spot": null,
       "heading": "Khác",
@@ -140,6 +113,31 @@
     }
   ],
 
+  "travel": {
+    "heading": "Khi bạn đi du lịch nước ngoài",
+    "items": [
+      {
+        "q": "Sau khi đến nước ngoài, gia đình tôi nhận được cảnh báo “@notifications_level_caution”.",
+        "a": [
+          "Tin báo được gửi theo <strong>giờ địa phương</strong> hiển thị trên điện thoại. Nhưng trong một hai ngày đầu sau khi đến một nước khác, giờ mới chưa được chuyển đi, nên tin báo vẫn được chờ theo giờ của nước bạn vừa rời đi. Do chênh lệch múi giờ, <strong>trông như thể tin báo chưa đến</strong>: gia đình có thể nhận được cảnh báo, và điện thoại của chính bạn cũng có thể hiện lời nhắc vào lúc nửa đêm.",
+          "Bạn vẫn bình an, chỉ có giờ bị lệch. Khi tin báo đầu tiên được gửi theo giờ địa phương, mọi thứ sẽ tự trở lại bình thường."
+        ]
+      },
+      {
+        "q": "Tôi có thể ngăn điều này trước không?",
+        "a": [
+          "Sau khi đến nơi, <strong>hãy mở ứng dụng Anbu một lần.</strong> Ngay khi bạn mở, giờ mới được chuyển đi và từ đó tin báo sẽ theo giờ địa phương. Khi trở về, bạn cũng hãy mở một lần như vậy.",
+          "Nếu bạn đã đặt giờ Không làm phiền, khi đến nơi bạn cũng hãy mở ứng dụng một lần. Nhờ vậy, khoảng thời gian bạn chọn không nhận cảnh báo (ví dụ từ 22:00 đến 7:00) sẽ được điều chỉnh theo giờ địa phương. Nếu không mở, giờ của nước bạn đã rời đi vẫn được áp dụng, nên cảnh báo có thể reo lúc nửa đêm hoặc im lặng vào ban ngày."
+        ]
+      },
+      {
+        "q": "Khi đi du lịch, tôi có cần đổi giờ gửi tin báo không?",
+        "a": [
+          "Không. Giờ đã đặt được áp dụng <strong>theo nơi bạn đang ở</strong>. Nếu bạn đặt 18:00 thì khi đi du lịch, tin báo cũng được gửi lúc 18:00 giờ địa phương."
+        ]
+      }
+    ]
+  },
   "footer_home": "Trang chủ",
   "footer_privacy": "Chính sách bảo mật",
   "footer_terms": "Điều khoản dịch vụ",

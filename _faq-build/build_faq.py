@@ -102,10 +102,25 @@ def render_sections(copy, app):
     return "\n".join(out)
 
 
+def render_travel(copy, app):
+    """해외여행 섹션 — 안전 홈 화면과 무관해 `.cols` 밖에 렌더한다(PRD-FAQ §2).
+
+    [화면에서 어디에 있는지 보기] 버튼·다이얼로그 데모가 없다. 구조는 sections와 같다.
+    """
+    sec = copy["travel"]
+    items = []
+    for it in sec["items"]:
+        body = "".join(f"<p>{interpolate(p, app)}</p>" for p in it["a"])
+        items.append(f'<div class="qa"><p class="q">{interpolate(it["q"], app)}</p>'
+                     f'<div class="a">{body}</div></div>')
+    return (f'<section class="topic travel" id="travel">'
+            f'<h2>{sec["heading"]}</h2>{"".join(items)}</section>')
+
+
 def render_chips(copy, available_spots):
+    # 휴면 칩은 2026-09-25 삭제 — 앱이 그 다이얼로그를 없앴다(PRD-FAQ §2)
     order = [("all", copy["spot_all"]), ("battery", copy["spot_battery"]),
-             ("activity", copy["spot_activity"]), ("location", copy["spot_location"]),
-             ("hibernation", copy["spot_hibernation"])]
+             ("activity", copy["spot_activity"]), ("location", copy["spot_location"])]
     return "".join(
         f'<button class="chip" type="button" data-spot="{k}" '
         f'aria-pressed="{"true" if k == "all" else "false"}">{esc(v)}</button>'
@@ -135,6 +150,7 @@ def build(code, copy, app):
         "LEAD": copy["page_lead"],
         "CHIPS": render_chips(copy, None),
         "SECTIONS": render_sections(copy, app),
+        "TRAVEL": render_travel(copy, app),
         "MOCKUP_CAPTION": copy["mockup_caption"],
         "BACK_TO_ANSWER": esc(copy["back_to_answer"]),
         "APP_STRINGS": json.dumps(app, ensure_ascii=False),

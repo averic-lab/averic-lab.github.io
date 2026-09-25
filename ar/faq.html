@@ -229,6 +229,11 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 .pf-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .pf-body[hidden]{display:none}
 
+/* 해외여행 — 그리드 밖 전폭 블록. 본문 열과 같은 읽기 폭으로 묶는다 */
+.travel{max-width:760px;border-top:1px solid var(--line);margin-top:-40px;
+  padding-bottom:76px}
+@media(max-width:920px){.travel{margin-top:0}}
+
 /* 목업 패널 */
 .sticky{position:sticky;top:20px}
 .chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
@@ -375,11 +380,10 @@ footer .copy{margin-left:auto}
     <main><section class="topic" id="battery" data-spot="battery"><h2>رسالة الاطمئنان تصل متأخرة</h2><button class="show-me" type="button" data-show="battery" aria-expanded="false" data-open="اعرض موضعه على الشاشة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>اعرض موضعه على الشاشة</span></button><div class="qa"><p class="q">يصلني كثيرًا إشعار «💗 يلزم التحقق من الاطمئنان» على هاتفي. يبدو أن الإرسال لا يتم إلا عند فتح التطبيق.</p><p class="q">وصل عائلتي تنبيه <b>«تنبيه»</b> نصه <b>«لم يتم استلام فحص الاطمئنان المجدول لليوم بعد. يرجى التحقق شخصياً.»</b></p><div class="a"><p>توفيرًا للبطارية، يُبطئ Android التطبيقات قليلة الاستخدام أو يوقفها. يستيقظ Anbu لحظة واحدة يوميًا في الوقت المحدد لإرسال الرسالة، وعند تطبيق هذا التقييد <strong>تفوت تلك اللحظة ولا يُرسل شيء حتى يُستخدم الهاتف مجددًا.</strong></p><p>إذا لم تصل أي رسالة بعد <strong>ساعتين من الوقت المحدد</strong>، تصل العائلة التنبيه أعلاه. وقد يحدث ذلك حتى لو كان المُرسِل بخير تمامًا وتأخر الإرسال فقط.</p><p>على هاتف المُرسِل، افتح التطبيق وانظر أعلى الشاشة هل يوجد التنبيه الأصفر <b>«يلزم إلغاء قيود استخدام البطارية»</b>. الضغط عليه ينقلك مباشرة إلى الإعدادات، وبعد رفع التقييد مرة واحدة يختفي التنبيه.</p></div></div><div class="qa"><p class="q">لماذا هذا التنبيه وحده باللون الأصفر؟</p><div class="a"><p>يعني ذلك أن الرسائل لم تتوقف كليًا، بل <strong>قد تتأخر فقط</strong>. أما التنبيهات الحمراء فتعني أن إحدى الوظائف معطلة فعلًا.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">الضغط على التنبيه الأصفر يفتح هذه النافذة فورًا.</p><div class="scrim"><div class="dlg"><p class="dlg-title">إلغاء قيود استخدام البطارية</p><div class="dlg-body"><p>عندما يدخل هاتفك في وضع توفير الطاقة، قد تصل إشارات الاطمئنان إلى وليّ أمرك متأخرةً أو يتم تفويتها.</p><p>بعد الضغط على [فتح الإعدادات] أدناه، اضبط "البطارية" → "بدون قيود". بهذا تُرسَل إشارات الاطمئنان بشكل موثوق في الوقت المحدد كل يوم.</p><p>※ قد تختلف الصياغة الدقيقة حسب الشركة المصنّعة للجهاز.</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>لاحقاً</button><button class="dlg-btn" type="button" tabindex="-1" disabled>فتح الإعدادات</button></div></div></div></div></section>
 <section class="topic" id="activity" data-spot="activity"><h2>عدد الخطوات لا يظهر</h2><button class="show-me" type="button" data-show="activity" aria-expanded="false" data-open="اعرض موضعه على الشاشة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>اعرض موضعه على الشاشة</span></button><div class="qa"><p class="q">عدد خطوات قريبي لا يظهر. ولا يصل إشعار «مشيت اليوم N خطوة» أبدًا.</p><div class="a"><p>يرسل Anbu مع إشارة الاطمئنان <strong>عدد خطوات ذلك اليوم</strong> ليرى الأهل مقدار الحركة. وإذا كان الإذن معطلًا على هاتف المُرسِل، <strong>تظل الإشارة تصل كالمعتاد، لكن عدد الخطوات ينقص.</strong></p><p>على ذلك الهاتف، افتح التطبيق وانظر أسفل رمز الأمان هل يوجد التنبيه الأحمر <b>«تم رفض إذن عداد الخطوات. انقر هنا للسماح.»</b>. الضغط عليه يطلب الإذن من جديد.</p></div></div><div class="qa"><p class="q">هل يُطّلع على شيء آخر غير الخطوات؟</p><div class="a"><p>يُرسل عدد الخطوات فقط. لا نتحقق من الأماكن التي زارها الشخص ولا من التطبيقات التي استخدمها.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">الضغط على التنبيه الأحمر يُظهر <strong>طلب الإذن الخاص بنظام Android</strong>. يكفي الموافقة هناك.<br>لكن إن سبق أن رفضته عدة مرات، فلن يعرض Android ذلك الطلب مجددًا. عندئذٍ تظهر النافذة أدناه بدلًا منه.</p><div class="scrim"><div class="dlg"><p class="dlg-title">مطلوب إذن</p><div class="dlg-body"><p>يرجى السماح بإذن النشاط البدني (الحركة واللياقة) في إعدادات التطبيق.</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>إلغاء</button><button class="dlg-btn" type="button" tabindex="-1" disabled>الانتقال إلى الإعدادات</button></div></div></div></div></section>
 <section class="topic" id="location" data-spot="location"><h2>وصل طلب الطوارئ دون موقع</h2><button class="show-me" type="button" data-show="location" aria-expanded="false" data-open="اعرض موضعه على الشاشة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>اعرض موضعه على الشاشة</span></button><div class="qa"><p class="q">وصلني طلب مساعدة عاجل، لكن لا يوجد زر [🗺️ عرض الموقع] في التنبيه.</p><div class="a"><p>إذن الموقع لازم <strong>لإرسال الموقع الحالي مع الطلب</strong> عند الضغط على زر الطوارئ. ومن دونه يصل تنبيه الطوارئ إلى جميع أفراد العائلة كالمعتاد، لكن مكان وجود الشخص لا يُرفق معه.</p><p>على هاتف المُرسِل، افتح التطبيق وانظر أسفل زر [أحتاج مساعدة] هل يوجد تنبيه أحمر. الضغط عليه يطلب الإذن من جديد.</p></div></div><div class="qa"><p class="q">هل يُتتبع موقعي طوال الوقت؟</p><div class="a"><p>لا. في الأحوال العادية لا نجمع أي بيانات موقع إطلاقًا. فقط عند الضغط على [أحتاج مساعدة] يُؤخذ <strong>موقع تلك اللحظة مرة واحدة</strong> ويُنقل إلى العائلة، وتُحذف هذه المعلومة بعد يوم واحد.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">الضغط على التنبيه الأحمر يُظهر <strong>طلب الإذن الخاص بنظام Android</strong>. يكفي الموافقة هناك.<br>لكن إن سبق أن رفضته عدة مرات، فلن يعرض Android ذلك الطلب مجددًا. عندئذٍ تظهر النافذة أدناه بدلًا منه.</p><div class="pf-tabs"><button class="pf-tab" type="button" data-pf="0" aria-pressed="true">Android</button><button class="pf-tab" type="button" data-pf="1" aria-pressed="false">iPhone</button></div><div class="scrim"><div class="dlg"><p class="dlg-title">إذن الموقع مطلوب</p><div class="dlg-body"><div class="pf-body" data-pf="0"><p>اختر «الأذونات» ← «الموقع»، ثم اختر «السماح فقط أثناء استخدام التطبيق».</p></div><div class="pf-body" data-pf="1" hidden><p>ابحث عن «Anbu» واختره، ثم في «الموقع» اختر «عند استخدام التطبيق».</p></div></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>إلغاء</button><button class="dlg-btn" type="button" tabindex="-1" disabled>الانتقال إلى الإعدادات</button></div></div></div></div></section>
-<section class="topic" id="hibernation" data-spot="hibernation"><h2>تظهر نافذة في كل مرة أفتح فيها التطبيق</h2><button class="show-me" type="button" data-show="hibernation" aria-expanded="false" data-open="اعرض موضعه على الشاشة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>اعرض موضعه على الشاشة</span></button><div class="qa"><p class="q">في كل مرة أفتح فيها التطبيق تظهر نافذة مكتوب فيها «الرجاء إيقاف الإزالة التلقائية للأذونات».</p><div class="a"><p>في Android خاصية تسحب تلقائيًا أذونات التطبيقات التي لم تُفتح منذ مدة طويلة. و Anbu <strong>تطبيق يعمل دون الحاجة إلى فتح الشاشة</strong>، ولهذا يقع في هذه الخانة بسهولة؛ وعند زوال الأذونات يتوقف إرسال الرسائل بهدوء.</p><p>اضغط [فتح الإعدادات] وأوقف الخاصية مرة واحدة، فلن تظهر هذه النافذة بعدها.</p></div></div><div class="qa"><p class="q">تظهر في كل مرة. هل يمكنني الاكتفاء بالضغط على [لاحقاً]؟</p><div class="a"><p>ستظل تظهر عند كل فتح للتطبيق حتى توقف ذلك الإعداد. ولأن توقف الإرسال يصعب ملاحظته، فإننا ننبّه إليه مرارًا.</p></div></div><div class="qa"><p class="q">أنا أتابع أيضًا رسائل عائلتي، لكن هذه النافذة لا تظهر لي.</p><div class="a"><p>من يرعى أفراد عائلته في الوقت نفسه يفتح التطبيق كثيرًا لمتابعة التنبيهات، فنادرًا ما يصل إلى حالة سحب الأذونات تلقائيًا. لذلك لا تُعرض له هذه النافذة.</p></div></div></section>
 <section class="topic" id="etc"><h2>أمور أخرى</h2><div class="qa"><p class="q">ضغطت على التنبيه، لكن شاشة الإعدادات لم تُفتح كما ينبغي.</p><div class="a"><p>يختلف اسم شاشة الإعدادات وموضعها قليلًا بحسب الشركة المصنّعة. افتح تطبيق الإعدادات وابحث عن <b>Anbu</b>، ثم تحقق من قسم الأذونات مباشرة.</p></div></div></section></main>
 
     <aside class="sticky">
-      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">الشاشة كاملة</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">الرسالة متأخرة</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">لا توجد خطوات</button><button class="chip" type="button" data-spot="location" aria-pressed="false">لا يوجد موقع</button><button class="chip" type="button" data-spot="hibernation" aria-pressed="false">نافذة تظهر باستمرار</button></div>
+      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">الشاشة كاملة</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">الرسالة متأخرة</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">لا توجد خطوات</button><button class="chip" type="button" data-spot="location" aria-pressed="false">لا يوجد موقع</button></div>
       <div class="stage">
         <div class="device" id="device">
           <div class="appbar">
@@ -454,20 +458,15 @@ footer .copy{margin-left:auto}
           </div>
         </div>
 
-        <div class="modal" id="modal" hidden>
-          <div class="dlg">
-            <p class="dlg-title" data-dialog-title></p>
-            <div class="dlg-body" data-dialog-body></div>
-            <div class="dlg-actions">
-              <button class="dlg-btn" data-key="common_later" tabindex="-1"></button>
-              <button class="dlg-btn" data-key="permission_hibernation_go_to_settings" tabindex="-1"></button>
-            </div>
-          </div>
-        </div>
       </div>
       <p class="caption">جُمعت التنبيهات الثلاثة هنا في شاشة واحدة لغرض الشرح. أما في الواقع فتظهر واحدًا تلو الآخر، وفقط عند انطباقها، وتختفي بعد المعالجة.</p>
     </aside>
   </div>
+
+  <!-- 해외여행 — 안전 홈 화면과 무관한 주제라 2단 그리드(.cols) 밖에 둔다.
+       안에 두면 넓은 화면에서는 sticky 목업이 옆에 붙고, 좁은 화면에서는 목업이
+       이 섹션 뒤에 와서 "화면 어딘가에 여행 설정이 있다"로 읽힌다. PRD-FAQ §2 -->
+  <section class="topic travel" id="travel"><h2>عند السفر إلى الخارج</h2><div class="qa"><p class="q">بعد وصولي إلى الخارج، تلقّت عائلتي تنبيه «تنبيه».</p><div class="a"><p>تُرسَل الرسالة وفق <strong>التوقيت المحلي</strong> الظاهر على هاتفك. لكن في اليوم أو اليومين الأولين بعد الوصول إلى بلد آخر لا يكون التوقيت الجديد قد وصل بعد، فتظل الرسالة منتظَرة وفق توقيت البلد الذي غادرته. وبسبب فارق التوقيت <strong>يبدو كأن الرسالة لم تصل</strong>، فقد يصل تنبيه إلى العائلة، وقد يظهر على هاتفك أنت أيضًا تذكير في منتصف الليل.</p><p>أنت بخير، والتوقيت فقط هو المختلف. بمجرد إرسال أول رسالة وفق التوقيت المحلي يعود كل شيء إلى طبيعته تلقائيًا.</p></div></div><div class="qa"><p class="q">هل يمكنني منع ذلك مسبقًا؟</p><div class="a"><p>بعد الوصول <strong>افتح تطبيق Anbu مرة واحدة.</strong> في اللحظة التي تفتحه فيها يُنقَل التوقيت الجديد، ومن بعدها تُرسَل الرسالة وفق التوقيت المحلي. وافتحه مرة واحدة كذلك عند عودتك.</p><p>إذا كنت قد ضبطت أوقات «وضع عدم الإزعاج»، فافتح التطبيق أيضًا مرة واحدة عند الوصول. بهذا تتوافق الأوقات التي اخترت ألّا تتلقى فيها تنبيهات (مثلًا من 10 مساءً إلى 7 صباحًا) مع التوقيت المحلي. وإن لم تفعل يبقى توقيت بلد المغادرة ساريًا، فقد ترنّ التنبيهات في منتصف الليل أو تبقى صامتة في النهار.</p></div></div><div class="qa"><p class="q">هل عليّ تغيير وقت الرسالة أثناء السفر؟</p><div class="a"><p>لا. يُطبَّق الوقت الذي ضبطته <strong>على المكان الذي أنت فيه الآن</strong>. فإذا ضبطته على 6 مساءً، تُرسَل الرسالة أثناء السفر أيضًا في 6 مساءً بالتوقيت المحلي.</p></div></div></section>
 </div>
 
 <footer><div class="wrap">
@@ -545,34 +544,12 @@ document.querySelector('[data-check-body]').textContent =
 document.querySelector('[data-daily-time]').textContent =
   S.heartbeat_daily_time.replace('@time','18:00');
 
-// 제목의 highlight 부분만 강조 — 앱 _buildHibernationTitle과 동일 규칙
-(function(){
-  var t = S.permission_hibernation_title, h = S.permission_hibernation_highlight;
-  var el = document.querySelector('[data-dialog-title]'), i = t.indexOf(h);
-  if (i < 0) { el.textContent = t; return; }
-  el.textContent = '';
-  el.append(t.slice(0, i));
-  var m = document.createElement('mark'); m.textContent = h; el.append(m);
-  el.append(t.slice(i + h.length));
-})();
-
-// 본문 \n\n → 문단
-(function(){
-  var body = document.querySelector('[data-dialog-body]');
-  S.permission_hibernation_message.split('\n\n').forEach(function(p){
-    var el = document.createElement('p'); el.textContent = p.trim(); body.append(el);
-  });
-})();
-
 // 스포트라이트
-var device = document.getElementById('device'), modal = document.getElementById('modal');
+var device = document.getElementById('device');
 var chips = document.querySelectorAll('.chip');
 
 function show(spot){
-  var isDialog = spot === 'hibernation';
-  // 다이얼로그일 때는 스크림이 화면을 덮으므로 별도 dim을 걸지 않는다
-  device.classList.toggle('dimmed', spot !== 'all' && !isDialog);
-  modal.hidden = !isDialog;
+  device.classList.toggle('dimmed', spot !== 'all');
   document.querySelectorAll('.spot').forEach(function(el){
     el.classList.toggle('on', el.dataset.spot === spot);
   });

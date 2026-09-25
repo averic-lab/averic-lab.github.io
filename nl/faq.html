@@ -229,6 +229,11 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 .pf-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .pf-body[hidden]{display:none}
 
+/* 해외여행 — 그리드 밖 전폭 블록. 본문 열과 같은 읽기 폭으로 묶는다 */
+.travel{max-width:760px;border-top:1px solid var(--line);margin-top:-40px;
+  padding-bottom:76px}
+@media(max-width:920px){.travel{margin-top:0}}
+
 /* 목업 패널 */
 .sticky{position:sticky;top:20px}
 .chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
@@ -375,11 +380,10 @@ footer .copy{margin-left:auto}
     <main><section class="topic" id="battery" data-spot="battery"><h2>Het teken komt te laat aan</h2><button class="show-me" type="button" data-show="battery" aria-expanded="false" data-open="Laat zien waar dit staat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Laat zien waar dit staat</span></button><div class="qa"><p class="q">Ik krijg vaak de melding “💗 Welzijnscontrole nodig” op mijn telefoon. Het lijkt of er pas verzonden wordt als ik de app open.</p><p class="q">Mijn familie kreeg een melding <b>“Let op”</b> met de tekst <b>“De geplande welzijnscontrole van vandaag is nog niet ontvangen. Controleer persoonlijk.”</b></p><div class="a"><p>Om accu te sparen vertraagt of stopt Android apps die weinig gebruikt worden. Anbu wordt eenmaal per dag op het ingestelde tijdstip even wakker om het teken te versturen; geldt die beperking, dan <strong>wordt dat moment gemist en gebeurt er niets tot de telefoon weer gebruikt wordt.</strong></p><p>Komt er <strong>twee uur na het ingestelde tijdstip</strong> nog geen teken binnen, dan krijgt de familie bovenstaande melding. Dat kan ook gebeuren terwijl het met de verzender prima gaat en alleen de verzending vertraagd was.</p><p>Open op de telefoon van de verzender de app en kijk bovenaan of daar de gele melding <b>“Batterijgebruiksbeperking moet worden uitgeschakeld”</b> staat. Tikken brengt u direct naar de instellingen; zodra de beperking eenmaal is opgeheven, verdwijnt de melding.</p></div></div><div class="qa"><p class="q">Waarom is alleen deze melding geel?</p><div class="a"><p>Het betekent dat de tekens niet helemaal gestopt zijn, maar <strong>vertraging kunnen oplopen</strong>. Meldingen in rood betekenen dat een functie werkelijk geblokkeerd is.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">Op de gele melding tikken opent dit venster meteen.</p><div class="scrim"><div class="dlg"><p class="dlg-title">Batterijgebruiksbeperking uitschakelen</p><div class="dlg-body"><p>Wanneer uw telefoon in energiebesparende modus gaat, kunnen welzijnssignalen naar uw beschermer te laat aankomen of gemist worden.</p><p>Na op [Instellingen openen] hieronder te tikken, stelt u "Batterij" → "Onbeperkt" in. Zo worden welzijnssignalen elke dag betrouwbaar op de geplande tijd verzonden.</p><p>※ De exacte tekst kan per fabrikant verschillen.</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>Later</button><button class="dlg-btn" type="button" tabindex="-1" disabled>Instellingen openen</button></div></div></div></div></section>
 <section class="topic" id="activity" data-spot="activity"><h2>Het aantal stappen wordt niet getoond</h2><button class="show-me" type="button" data-show="activity" aria-expanded="false" data-open="Laat zien waar dit staat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Laat zien waar dit staat</span></button><div class="qa"><p class="q">De stappen van mijn familielid worden niet getoond. De melding “Vandaag N stappen gelopen” komt nooit binnen.</p><div class="a"><p>Samen met het teken stuurt Anbu <strong>het aantal stappen van die dag</strong>, zodat de familie ziet hoeveel er bewogen is. Staat de toestemming uit op de telefoon van de verzender, dan <strong>komt het teken nog steeds aan, maar ontbreken de stappen.</strong></p><p>Open op die telefoon de app en kijk onder de veiligheidscode of daar de rode melding <b>“Stappenteller-toestemming geweigerd. Tik hier om toe te staan.”</b> staat. Tikken vraagt de toestemming opnieuw aan.</p></div></div><div class="qa"><p class="q">Wordt er behalve stappen nog iets bekeken?</p><div class="a"><p>Alleen het aantal stappen wordt doorgegeven. We kijken niet waar iemand is geweest of welke apps zijn gebruikt.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">Op de rode melding tikken roept <strong>het toestemmingsverzoek van Android zelf</strong> op. Daar toestaan is genoeg.<br>Hebt u echter al meerdere keren geweigerd, dan toont Android dat verzoek niet meer. Dan verschijnt in plaats daarvan het venster hieronder.</p><div class="scrim"><div class="dlg"><p class="dlg-title">Toestemming vereist</p><div class="dlg-body"><p>Sta de machtiging Fysieke activiteit (Beweging en Fitness) toe in de app-instellingen.</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>Annuleren</button><button class="dlg-btn" type="button" tabindex="-1" disabled>Ga naar Instellingen</button></div></div></div></div></section>
 <section class="topic" id="location" data-spot="location"><h2>Het noodverzoek kwam zonder locatie</h2><button class="show-me" type="button" data-show="location" aria-expanded="false" data-open="Laat zien waar dit staat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Laat zien waar dit staat</span></button><div class="qa"><p class="q">Ik kreeg een dringend hulpverzoek, maar er staat geen knop [🗺️ Locatie bekijken] bij de melding.</p><div class="a"><p>Locatietoestemming is nodig <strong>om de huidige locatie mee te sturen</strong> wanneer op de noodknop wordt gedrukt. Zonder die toestemming bereikt de noodmelding nog steeds de hele familie, maar gaat de verblijfplaats niet mee.</p><p>Open op de telefoon van de verzender de app en kijk onder de knop [Ik heb hulp nodig] of daar een rode melding staat. Tikken vraagt de toestemming opnieuw aan.</p></div></div><div class="qa"><p class="q">Wordt mijn locatie voortdurend gevolgd?</p><div class="a"><p>Nee. In gewone omstandigheden verzamelen we helemaal geen locatie. Alleen bij het indrukken van [Ik heb hulp nodig] wordt <strong>eenmalig de locatie van dat moment</strong> opgehaald en aan de familie doorgegeven; die gegevens worden na een dag gewist.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">Op de rode melding tikken roept <strong>het toestemmingsverzoek van Android zelf</strong> op. Daar toestaan is genoeg.<br>Hebt u echter al meerdere keren geweigerd, dan toont Android dat verzoek niet meer. Dan verschijnt in plaats daarvan het venster hieronder.</p><div class="pf-tabs"><button class="pf-tab" type="button" data-pf="0" aria-pressed="true">Android</button><button class="pf-tab" type="button" data-pf="1" aria-pressed="false">iPhone</button></div><div class="scrim"><div class="dlg"><p class="dlg-title">Locatietoestemming vereist</p><div class="dlg-body"><div class="pf-body" data-pf="0"><p>Selecteer 'Rechten' → 'Locatie' en kies 'Alleen toestaan bij gebruik van de app'.</p></div><div class="pf-body" data-pf="1" hidden><p>Zoek en selecteer 'Anbu', kies vervolgens bij 'Locatie' de optie 'Bij gebruik van de app'.</p></div></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>Annuleren</button><button class="dlg-btn" type="button" tabindex="-1" disabled>Ga naar Instellingen</button></div></div></div></div></section>
-<section class="topic" id="hibernation" data-spot="hibernation"><h2>Elke keer dat ik de app open verschijnt een venster</h2><button class="show-me" type="button" data-show="hibernation" aria-expanded="false" data-open="Laat zien waar dit staat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Laat zien waar dit staat</span></button><div class="qa"><p class="q">Elke keer dat ik de app open verschijnt een venster met “Schakel automatische verwijdering van rechten uit”.</p><div class="a"><p>Android heeft een functie die toestemmingen automatisch intrekt bij apps die lang niet geopend zijn. Anbu is <strong>een app die werkt zonder dat u het scherm opent</strong> — juist daardoor is het een gemakkelijk doelwit, en zonder toestemmingen stopt het versturen ongemerkt.</p><p>Tik op [Instellingen openen] en zet het één keer uit; daarna verschijnt dit venster niet meer.</p></div></div><div class="qa"><p class="q">Het komt elke keer terug. Mag ik gewoon op [Later] tikken?</p><div class="a"><p>Zolang u de instelling niet uitzet, blijft het bij elke opening verschijnen. Omdat een gestopte verzending moeilijk op te merken is, herinneren we u er herhaaldelijk aan.</p></div></div><div class="qa"><p class="q">Ik houd ook het welzijn van mijn familie in de gaten, maar dit venster zie ik nooit.</p><div class="a"><p>Wie ook over familieleden waakt, opent de app vaak om meldingen te bekijken en komt daardoor zelden in de situatie dat toestemmingen automatisch worden ingetrokken. Daarom wordt dit venster u niet getoond.</p></div></div></section>
 <section class="topic" id="etc"><h2>Overige</h2><div class="qa"><p class="q">Ik heb op de melding getikt, maar het instellingenscherm opent niet goed.</p><div class="a"><p>Naam en plaats van het instellingenscherm verschillen iets per fabrikant. Open Instellingen, zoek <b>Anbu</b> op en bekijk het onderdeel toestemmingen rechtstreeks.</p></div></div></section></main>
 
     <aside class="sticky">
-      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">Hele scherm</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">Teken komt laat</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">Geen stappen</button><button class="chip" type="button" data-spot="location" aria-pressed="false">Geen locatie</button><button class="chip" type="button" data-spot="hibernation" aria-pressed="false">Venster blijft terugkomen</button></div>
+      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">Hele scherm</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">Teken komt laat</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">Geen stappen</button><button class="chip" type="button" data-spot="location" aria-pressed="false">Geen locatie</button></div>
       <div class="stage">
         <div class="device" id="device">
           <div class="appbar">
@@ -454,20 +458,15 @@ footer .copy{margin-left:auto}
           </div>
         </div>
 
-        <div class="modal" id="modal" hidden>
-          <div class="dlg">
-            <p class="dlg-title" data-dialog-title></p>
-            <div class="dlg-body" data-dialog-body></div>
-            <div class="dlg-actions">
-              <button class="dlg-btn" data-key="common_later" tabindex="-1"></button>
-              <button class="dlg-btn" data-key="permission_hibernation_go_to_settings" tabindex="-1"></button>
-            </div>
-          </div>
-        </div>
       </div>
       <p class="caption">Ter uitleg staan de drie meldingen hier samen op één scherm. In werkelijkheid verschijnen ze één voor één, alleen wanneer ze van toepassing zijn, en verdwijnen ze zodra het is opgelost.</p>
     </aside>
   </div>
+
+  <!-- 해외여행 — 안전 홈 화면과 무관한 주제라 2단 그리드(.cols) 밖에 둔다.
+       안에 두면 넓은 화면에서는 sticky 목업이 옆에 붙고, 좁은 화면에서는 목업이
+       이 섹션 뒤에 와서 "화면 어딘가에 여행 설정이 있다"로 읽힌다. PRD-FAQ §2 -->
+  <section class="topic travel" id="travel"><h2>Als u naar het buitenland reist</h2><div class="qa"><p class="q">Na aankomst in het buitenland kreeg mijn familie een melding ‘Let op’.</p><div class="a"><p>Het teken wordt verstuurd volgens de <strong>lokale tijd</strong> op uw telefoon. Maar de eerste dag of twee na aankomst in een ander land is de nieuwe tijd nog niet doorgegeven, dus wordt het teken nog verwacht volgens de tijd van het land dat u verliet. Door het tijdsverschil <strong>lijkt het alsof het teken niet is aangekomen</strong>: uw familie kan een melding krijgen en ook uw eigen telefoon kan midden in de nacht een herinnering tonen.</p><p>Met u is alles in orde, alleen de tijd klopt niet. Zodra het eerste teken op lokale tijd wordt verstuurd, is alles vanzelf weer normaal.</p></div></div><div class="qa"><p class="q">Kan ik dit vooraf voorkomen?</p><div class="a"><p>Open na aankomst <strong>de Anbu-app één keer.</strong> Zodra u de app opent, wordt de nieuwe tijd doorgegeven en volgt het teken vanaf dan de lokale tijd. Open de app ook één keer als u terug bent.</p><p>Hebt u ‘Niet storen’-tijden ingesteld, open de app dan ook één keer bij aankomst. Zo schuiven de uren waarin u geen meldingen wilt krijgen (bijvoorbeeld 22:00 tot 7:00) mee naar de lokale tijd. Doet u dat niet, dan blijft de tijd van het vertrekland gelden en kunnen meldingen midden in de nacht klinken of overdag stil blijven.</p></div></div><div class="qa"><p class="q">Moet ik de tijd van het teken op reis aanpassen?</p><div class="a"><p>Nee. De ingestelde tijd geldt <strong>voor de plek waar u nu bent</strong>. Hebt u 18:00 ingesteld, dan wordt het teken op reis ook om 18:00 lokale tijd verstuurd.</p></div></div></section>
 </div>
 
 <footer><div class="wrap">
@@ -545,34 +544,12 @@ document.querySelector('[data-check-body]').textContent =
 document.querySelector('[data-daily-time]').textContent =
   S.heartbeat_daily_time.replace('@time','18:00');
 
-// 제목의 highlight 부분만 강조 — 앱 _buildHibernationTitle과 동일 규칙
-(function(){
-  var t = S.permission_hibernation_title, h = S.permission_hibernation_highlight;
-  var el = document.querySelector('[data-dialog-title]'), i = t.indexOf(h);
-  if (i < 0) { el.textContent = t; return; }
-  el.textContent = '';
-  el.append(t.slice(0, i));
-  var m = document.createElement('mark'); m.textContent = h; el.append(m);
-  el.append(t.slice(i + h.length));
-})();
-
-// 본문 \n\n → 문단
-(function(){
-  var body = document.querySelector('[data-dialog-body]');
-  S.permission_hibernation_message.split('\n\n').forEach(function(p){
-    var el = document.createElement('p'); el.textContent = p.trim(); body.append(el);
-  });
-})();
-
 // 스포트라이트
-var device = document.getElementById('device'), modal = document.getElementById('modal');
+var device = document.getElementById('device');
 var chips = document.querySelectorAll('.chip');
 
 function show(spot){
-  var isDialog = spot === 'hibernation';
-  // 다이얼로그일 때는 스크림이 화면을 덮으므로 별도 dim을 걸지 않는다
-  device.classList.toggle('dimmed', spot !== 'all' && !isDialog);
-  modal.hidden = !isDialog;
+  device.classList.toggle('dimmed', spot !== 'all');
   document.querySelectorAll('.spot').forEach(function(el){
     el.classList.toggle('on', el.dataset.spot === spot);
   });

@@ -13,7 +13,6 @@
   "spot_battery": "Kabar terlambat",
   "spot_activity": "Tidak ada langkah",
   "spot_location": "Tidak ada lokasi",
-  "spot_hibernation": "Jendela muncul terus",
 
   "sections": [
     {
@@ -100,32 +99,6 @@
       ]
     },
     {
-      "id": "hibernation",
-      "spot": "hibernation",
-      "heading": "Setiap membuka aplikasi muncul jendela",
-      "items": [
-        {
-          "q": "Setiap kali membuka aplikasi, muncul jendela bertuliskan “@permission_hibernation_title”.",
-          "a": [
-            "Android memiliki fitur yang otomatis mencabut izin aplikasi yang lama tidak dibuka. Anbu adalah <strong>aplikasi yang bekerja tanpa perlu membuka layar</strong>, justru karena itu mudah menjadi sasaran; dan bila izinnya hilang, pengiriman kabar berhenti tanpa disadari.",
-            "Sentuh [@permission_hibernation_go_to_settings] dan matikan sekali saja, maka jendela ini tidak akan muncul lagi."
-          ]
-        },
-        {
-          "q": "Muncul setiap kali. Bolehkah saya cukup menyentuh [@common_later]?",
-          "a": [
-            "Selama pengaturan itu belum dimatikan, jendela akan terus muncul setiap kali aplikasi dibuka. Karena berhentinya pengiriman sulit disadari, kami mengingatkan berulang kali."
-          ]
-        },
-        {
-          "q": "Saya juga memantau kabar keluarga, tetapi jendela ini tidak pernah muncul pada saya.",
-          "a": [
-            "Orang yang sekaligus menjaga keluarganya sering membuka aplikasi untuk memeriksa notifikasi, sehingga jarang berada dalam situasi izin dicabut secara otomatis. Karena itu jendela ini tidak ditampilkan kepada Anda."
-          ]
-        }
-      ]
-    },
-    {
       "id": "etc",
       "spot": null,
       "heading": "Lainnya",
@@ -140,6 +113,31 @@
     }
   ],
 
+  "travel": {
+    "heading": "Saat Anda bepergian ke luar negeri",
+    "items": [
+      {
+        "q": "Setelah tiba di luar negeri, keluarga saya menerima peringatan “@notifications_level_caution”.",
+        "a": [
+          "Kabar dikirim sesuai <strong>waktu setempat</strong> yang ditampilkan di ponsel. Namun, pada satu atau dua hari pertama setelah tiba di negara lain, waktu yang baru belum diteruskan, sehingga kabar masih ditunggu menurut waktu negara yang Anda tinggalkan. Karena perbedaan waktu, <strong>kabar tampak seolah belum datang</strong>: keluarga bisa menerima peringatan, dan ponsel Anda sendiri juga bisa menampilkan pengingat pada tengah malam.",
+          "Anda baik-baik saja, hanya waktunya yang bergeser. Begitu kabar pertama terkirim menurut waktu setempat, semuanya kembali normal dengan sendirinya."
+        ]
+      },
+      {
+        "q": "Bisakah saya mencegahnya sebelumnya?",
+        "a": [
+          "Setelah tiba, <strong>buka aplikasi Anbu satu kali.</strong> Begitu dibuka, waktu yang baru langsung diteruskan, dan sejak itu kabar mengikuti waktu setempat. Saat kembali pulang, buka juga satu kali.",
+          "Jika Anda mengatur jam Jangan Ganggu, buka juga aplikasi satu kali saat tiba. Dengan begitu, jam yang Anda pilih untuk tidak menerima peringatan (misalnya 22:00 sampai 07:00) menyesuaikan dengan waktu setempat. Jika tidak dibuka, waktu negara asal tetap berlaku, sehingga peringatan bisa berbunyi tengah malam atau diam pada siang hari."
+        ]
+      },
+      {
+        "q": "Apakah saya perlu mengubah jam kabar selama bepergian?",
+        "a": [
+          "Tidak. Jam yang Anda tetapkan berlaku <strong>menurut tempat Anda berada sekarang</strong>. Jika Anda menetapkan 18:00, selama bepergian kabar juga dikirim pukul 18:00 waktu setempat."
+        ]
+      }
+    ]
+  },
   "footer_home": "Beranda",
   "footer_privacy": "Kebijakan Privasi",
   "footer_terms": "Ketentuan Layanan",

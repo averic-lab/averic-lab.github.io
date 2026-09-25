@@ -13,7 +13,6 @@
   "spot_battery": "Znak życia się opóźnia",
   "spot_activity": "Brak kroków",
   "spot_location": "Brak lokalizacji",
-  "spot_hibernation": "Okno wciąż się pojawia",
 
   "sections": [
     {
@@ -100,32 +99,6 @@
       ]
     },
     {
-      "id": "hibernation",
-      "spot": "hibernation",
-      "heading": "Za każdym otwarciem aplikacji pojawia się okno",
-      "items": [
-        {
-          "q": "Za każdym razem, gdy otwieram aplikację, pojawia się okno „@permission_hibernation_title”.",
-          "a": [
-            "Android ma funkcję, która automatycznie odbiera uprawnienia aplikacjom długo nieotwieranym. Anbu to <strong>aplikacja działająca bez otwierania ekranu</strong>, więc tym łatwiej staje się celem — a gdy uprawnienia znikną, wysyłanie znaków życia po cichu ustaje.",
-            "Dotknij [@permission_hibernation_go_to_settings] i wyłącz tę funkcję raz — okno przestanie się pojawiać."
-          ]
-        },
-        {
-          "q": "Pojawia się za każdym razem. Czy mogę po prostu dotykać [@common_later]?",
-          "a": [
-            "Dopóki nie wyłączysz tego ustawienia, będzie się pojawiać przy każdym otwarciu. Ponieważ przerwane wysyłanie trudno zauważyć, przypominamy o tym wielokrotnie."
-          ]
-        },
-        {
-          "q": "Ja także czuwam nad znakami życia rodziny, ale u mnie to okno się nie pojawia.",
-          "a": [
-            "Kto jednocześnie czuwa nad bliskimi, często otwiera aplikację, aby sprawdzić powiadomienia, więc rzadko dochodzi do sytuacji, w której uprawnienia zostają odebrane automatycznie. Dlatego to okno nie jest pokazywane."
-          ]
-        }
-      ]
-    },
-    {
       "id": "etc",
       "spot": null,
       "heading": "Pozostałe",
@@ -140,6 +113,31 @@
     }
   ],
 
+  "travel": {
+    "heading": "Gdy wyjeżdżasz za granicę",
+    "items": [
+      {
+        "q": "Po przylocie za granicę moja rodzina dostała powiadomienie „@notifications_level_caution”.",
+        "a": [
+          "Znak życia jest wysyłany według <strong>czasu lokalnego</strong> widocznego w telefonie. Jednak przez pierwszy dzień lub dwa po przyjeździe do innego kraju nowy czas nie został jeszcze przekazany, więc znak życia jest nadal oczekiwany według czasu kraju, z którego wyjechałeś. Przez różnicę czasu <strong>wygląda to tak, jakby znak życia nie dotarł</strong>: rodzina może dostać powiadomienie, a na twoim telefonie w środku nocy może pojawić się przypomnienie.",
+          "Z tobą wszystko w porządku, przesunął się tylko czas. Gdy pierwszy znak życia zostanie wysłany według czasu lokalnego, wszystko samo wróci do normy."
+        ]
+      },
+      {
+        "q": "Czy mogę temu zapobiec?",
+        "a": [
+          "Po przyjeździe <strong>otwórz raz aplikację Anbu.</strong> W chwili otwarcia nowy czas zostaje przekazany i od tego momentu znak życia jest wysyłany według czasu lokalnego. Po powrocie też otwórz ją raz.",
+          "Jeśli ustawiłeś godziny trybu „Nie przeszkadzać”, po przyjeździe również otwórz aplikację raz. Dzięki temu czas, w którym nie chcesz dostawać powiadomień (na przykład od 22:00 do 7:00), dopasuje się do czasu lokalnego. Jeśli tego nie zrobisz, nadal obowiązuje czas kraju wyjazdu i powiadomienia mogą dzwonić w środku nocy albo milczeć w ciągu dnia."
+        ]
+      },
+      {
+        "q": "Czy w podróży muszę zmienić godzinę znaku życia?",
+        "a": [
+          "Nie. Ustawiona godzina obowiązuje <strong>tam, gdzie teraz jesteś</strong>. Jeśli ustawiłeś 18:00, w podróży znak życia też zostanie wysłany o 18:00 czasu lokalnego."
+        ]
+      }
+    ]
+  },
   "footer_home": "Strona główna",
   "footer_privacy": "Polityka prywatności",
   "footer_terms": "Warunki korzystania",

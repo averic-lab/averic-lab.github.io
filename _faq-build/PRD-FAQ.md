@@ -35,18 +35,38 @@
 **재현도 기준은 "픽셀 일치"가 아니다.** 비교할 원본 스크린샷 자체가 없으므로, 기준은 **같은 것으로 알아볼 수 있고 · 문구가 실제와 같고 · 색·간격이 소스 값과 같을 것**이다. 앱과 웹의 글꼴 렌더링 차이로 자간이 미세하게 다른 것은 허용된 차이다.
 
 
-## 2. 다루는 주제 (4개)
+## 2. 다루는 주제 (3개 + 목업 없는 해외여행 섹션)
 
-safety_home 화면의 권한 관련 안내 4가지. **이 범위를 넓히지 말 것** — 안전코드 카드·상태 카드 등 나머지 UI는 "경고가 어디 있는지" 보여주는 맥락으로만 그리고, 그 자체를 설명하지 않는다.
+safety_home 화면의 권한 관련 안내 3가지. **이 범위를 넓히지 말 것** — 안전코드 카드·상태 카드 등 나머지 UI는 "경고가 어디 있는지" 보여주는 맥락으로만 그리고, 그 자체를 설명하지 않는다.
 
 | # | 주제 | 앱 소스 | 표시 조건 |
 | --- | --- | --- | --- |
 | ① | 배터리 사용 제한 | `battery_optimization_warning.dart` | `batteryUnrestricted == false` · Android |
 | ② | 걸음수 권한 거부 | `activity_permission_warning.dart` | `activityPermissionDenied == true` |
 | ③ | 위치 권한 거부 | `location_permission_warning.dart` | `locationPermissionDenied == true` |
-| ④ | 휴면(자동 권한 해제) 안내 | `subject_home_controller.dart` `_checkHibernationSetting()` | `isAutoRevokeWhitelisted == false` · Android · **S 모드 전용** |
 
-④는 **S 모드에서만** 나타난다(G+S 제외는 의도된 설계 — 앱 저장소 `PRD-FrontEnd.md` §9.3 참조). FAQ에서 "보호자 겸용으로 쓰면 이 안내가 안 뜬다"는 사실을 언급할지는 카피 작성 시 결정한다.
+**④ 휴면(자동 권한 해제) 안내는 삭제됐다 (2026-09-25).** 앱이 그 다이얼로그를 2026-09-13에
+없앴으므로(앱 저장소 `PRD-FrontEnd.md` §9.3) FAQ 섹션·칩(`spot_hibernation`)·목업 모달·JS를
+함께 지웠다. ⚠️ `permission_hibernation_*` 키는 `extract_strings.py`의 `KEYS`에 **남아 있다** —
+`permission_hibernation_go_to_settings`는 배터리 다이얼로그 버튼([설정 열기])으로 여전히 쓰이고,
+나머지 셋은 앱 저장소가 "웹 계약 키"로 보존하고 있어 지금 빼면 두 저장소 문서가 어긋난다.
+
+### 해외여행 섹션 — safety_home과 무관한 별도 블록 (2026-09-25)
+
+앱이 기기 시간대를 서버에 계속 갱신하게 되면서(앱 저장소 `PRD-FrontEnd.md` §2.2.3) 생긴
+**사용자 행동 안내** 하나를 담는다: 해외에 도착한 뒤 처음 하루 이틀은 서버가 이전 나라의
+시각으로 안부를 기다려 가족에게 "주의" 알림이 갈 수 있고, **도착해서 앱을 한 번 열면** 그
+자리에서 바뀐 시간대가 전달되어 이를 막는다.
+
+- ⚠️ **목업(`.cols`의 sticky 안전 홈 화면) 바깥에 둔다.** 이 주제는 안전 홈 화면의 어떤
+  안내와도 관계가 없어, 옆에 그 화면이 붙어 있으면 "화면 어딘가에 해외여행 설정이 있다"로
+  읽힌다. 그래서 `.cols` 그리드가 끝난 **뒤** `{{TRAVEL}}` 자리에 전폭 블록으로 렌더한다 —
+  넓은 화면에서는 sticky 목업이 그리드 끝에서 멈추고, 좁은 화면에서는 목업이 이 섹션 **앞**에
+  온다. 섹션 목록(`sections`)에 넣으면 두 조건이 모두 깨진다.
+- `[화면에서 어디에 있는지 보기]` 버튼·칩·다이얼로그 데모가 **없다**(`spot` 없음).
+- 카피는 `copy/{lang}.json`의 최상위 `travel`(`heading` + `items`) — `sections`와 같은 형식.
+- ⚠️ **시간대 동기화가 들어간 앱 버전이 출시되기 전에는 게시하지 말 것.** 구버전 앱은 시간대를 보내지
+  않아 "앱을 한 번 열어 주세요"가 아무 효과가 없다.
 
 
 ## 3. 아키텍처 — 3단계
@@ -112,7 +132,7 @@ safety_home 화면의 권한 관련 안내 4가지. **이 범위를 넓히지 �
 | 구분 | 키 |
 | --- | --- |
 | 경고 3종 | `stability_battery_warning_short`, `gs_activity_permission_denied_warning`, `location_permission_warning` |
-| 휴면 다이얼로그 | `permission_hibernation_title`, `_highlight`, `_message`, `_go_to_settings`, `common_later` |
+| 다이얼로그 버튼 | `permission_hibernation_go_to_settings`(배터리 [설정 열기]), `common_later` — `permission_hibernation_title`·`_highlight`·`_message`는 FAQ에서 더 이상 쓰지 않지만 §2의 이유로 `KEYS`에 남아 있다 |
 | 화면 맥락 | `app_name`, `subject_home_share_title`, `subject_home_check_title_last`, `subject_home_check_body_reported`, `heartbeat_schedule_change`, `heartbeat_daily_time`, `subject_home_report_button`, `_desc`, `subject_home_emergency_button`, `_desc` |
 
 ### 실행
@@ -145,8 +165,8 @@ git diff app-strings.json                     # 무엇이 바뀌었는지 확인
 | ② 걸음수 | `EdgeInsets.only(top: 12)` |
 | ③ 위치 | `EdgeInsets.only(top: 12)` |
 
-### ④ 휴면 다이얼로그
-화면 위에 **겹쳐 뜨는 모달**로 표현한다.
+### ~~④ 휴면 다이얼로그~~ — 삭제됨 (2026-09-25, §2)
+아래 값은 기록으로만 남긴다. 목업 모달(`#modal`)과 그 JS는 템플릿에서 제거됐다.
 
 | 항목 | 값 | 근거 |
 | --- | --- | --- |
@@ -217,7 +237,8 @@ from build import META, ORDER   # 단일 출처
 1. 헤더 — 사이트 로고 + 언어 스위처
 2. 도입부 — eyebrow / 제목 / 리드
 3. 본문 2단 — 좌: 주제별 Q&A, 우: 목업(넓은 화면에서 sticky)
-4. 푸터 — 홈·개인정보처리방침·이용약관 링크
+4. **해외여행 섹션 — 2단 그리드 밖, 목업 없음**(§2)
+5. 푸터 — 홈·개인정보처리방침·이용약관 링크
 
 ### 상호작용
 - `[화면에서 어디에 있는지 보기]`는 **제목 바로 아래**에 둔다 — 주제를 알자마자 위치를 찾을 수 있어야 한다. 답변 끝에 두면 정작 궁금한 시점에 보이지 않는다.
@@ -319,7 +340,7 @@ cd .. && git add -A && git commit -m "..." && git push
 3. `app-strings.json`은 손으로 고치지 말 것. `extract_strings.py`로만 갱신한다. 소비자가 셋(`build_faq` · `build_guide` · `i18n/build`)이므로 키를 뺄 때는 셋 다 확인한다.
 4. 추출 스크립트는 키가 하나라도 없으면 **실패해야 한다**. 폴백으로 넘어가지 말 것.
 5. 카피 안의 `@키`는 **번역하지 않는다**. 앱 문구로 치환되는 자리다.
-6. 재현 범위는 §2의 4개 주제로 한정한다.
+6. 재현 범위는 §2의 3개 주제로 한정한다. 해외여행 섹션은 목업 없이 `.cols` **밖**에 둔다 — 안으로 옮기면 안전 홈 화면이 따라붙는다.
 7. 내부 문서를 새로 추가할 때는 `_` 접두 폴더에 두거나 `_config.yml`의 `exclude`에 추가한다(상세는 저장소 `CLAUDE.md`).
 8. **앱 화면 복제 CSS는 한 벌만 둔다.** 두 템플릿은 각자 **본문 마크업**만 갖고, 기기 폭·색·글꼴 크기 같은 재현 값은 `mockup.css`(공용) / `guide-mockup.css`(사용설명 전용 위젯)를 인라인해 쓴다. 값을 템플릿에 복붙하면 한쪽만 고쳐져 어긋난다. `mockup.css`를 고쳤으면 **두 페이지를 모두 재빌드해 확인**한다.
 9. **`@`가 든 앱 문구를 그냥 추출하지 않는다.** 앱이 `trParams`로 채우는 자리표시자(`@days`, `@version`)라 페이지에 그대로 나가면 사용자가 `@days`를 본다. 템플릿이 직접 채울 것만 `extract_strings.py`의 `PLACEHOLDER_OK`에 넣고, 나머지는 추출하지 않고 목업에서 그 요소를 뺀다(앱에서도 조건부로만 보이는 것들이다). 검사는 `extract_strings.py`가 한다.

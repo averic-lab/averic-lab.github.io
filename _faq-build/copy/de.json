@@ -13,7 +13,6 @@
   "spot_battery": "Wohlbefindens-Meldung verspätet",
   "spot_activity": "Keine Schritte",
   "spot_location": "Kein Standort",
-  "spot_hibernation": "Fenster erscheint immer wieder",
 
   "sections": [
     {
@@ -100,32 +99,6 @@
       ]
     },
     {
-      "id": "hibernation",
-      "spot": "hibernation",
-      "heading": "Bei jedem Öffnen der App erscheint ein Fenster",
-      "items": [
-        {
-          "q": "Jedes Mal, wenn ich die App öffne, erscheint das Fenster „@permission_hibernation_title“.",
-          "a": [
-            "Android entzieht Apps, die lange nicht geöffnet wurden, automatisch die Berechtigungen. Anbu ist <strong>eine App, die auch ohne Öffnen des Bildschirms arbeitet</strong> — gerade deshalb ist sie davon leicht betroffen, und ohne Berechtigungen enden die Wohlbefindens-Meldungen unbemerkt.",
-            "Tippen Sie auf [@permission_hibernation_go_to_settings] und schalten Sie es einmal ab; danach erscheint dieses Fenster nicht mehr."
-          ]
-        },
-        {
-          "q": "Es erscheint jedes Mal. Kann ich einfach [@common_later] antippen?",
-          "a": [
-            "Bis Sie die Einstellung abschalten, erscheint es bei jedem Öffnen der App weiterhin. Da eine ausgebliebene Wohlbefindens-Meldung schwer zu bemerken ist, weisen wir wiederholt darauf hin."
-          ]
-        },
-        {
-          "q": "Ich behalte auch das Wohlbefinden meiner Familie im Blick, sehe dieses Fenster aber nie.",
-          "a": [
-            "Wer zugleich über Angehörige wacht, öffnet die App häufig, um Meldungen zu prüfen, und gerät daher selten in die Lage, dass Berechtigungen automatisch entzogen werden. Deshalb wird Ihnen dieses Fenster nicht angezeigt."
-          ]
-        }
-      ]
-    },
-    {
       "id": "etc",
       "spot": null,
       "heading": "Sonstiges",
@@ -140,6 +113,31 @@
     }
   ],
 
+  "travel": {
+    "heading": "Wenn Sie ins Ausland reisen",
+    "items": [
+      {
+        "q": "Nach der Ankunft im Ausland hat meine Familie einen Hinweis „@notifications_level_caution“ erhalten.",
+        "a": [
+          "Die Wohlbefindens-Meldung richtet sich nach der <strong>Ortszeit</strong>, die Ihr Telefon anzeigt. In den ersten ein, zwei Tagen nach der Ankunft in einem anderen Land ist die neue Zeit aber noch nicht übermittelt, sodass die Meldung weiterhin nach der Zeit des Landes erwartet wird, aus dem Sie abgereist sind. Wegen der Zeitverschiebung <strong>sieht es so aus, als sei keine Meldung eingetroffen</strong>: Die Familie kann einen Hinweis erhalten, und auch auf Ihrem eigenen Telefon kann mitten in der Nacht eine Erinnerung erscheinen.",
+          "Es geht Ihnen gut – nur die Zeit stimmt nicht. Sobald die erste Meldung nach Ortszeit gesendet wird, ist alles von selbst wieder normal."
+        ]
+      },
+      {
+        "q": "Kann ich das vorher verhindern?",
+        "a": [
+          "Öffnen Sie nach der Ankunft <strong>die Anbu-App einmal.</strong> Sobald Sie sie öffnen, wird die neue Zeit übermittelt, und ab dann richtet sich die Meldung nach der Ortszeit. Öffnen Sie sie auch nach Ihrer Rückkehr noch einmal.",
+          "Auch wer „Bitte nicht stören“-Zeiten eingestellt hat, sollte die App nach der Ankunft einmal öffnen. Nur so wird die Zeit, in der Sie keine Hinweise erhalten möchten (zum Beispiel 22:00 bis 7:00), an die Ortszeit angepasst. Sonst gilt weiter die Zeit des Abreiselandes, und Hinweise können mitten in der Nacht klingeln oder tagsüber stumm bleiben."
+        ]
+      },
+      {
+        "q": "Muss ich die Uhrzeit der Meldung auf Reisen ändern?",
+        "a": [
+          "Nein. Die eingestellte Uhrzeit gilt <strong>für den Ort, an dem Sie gerade sind</strong>. Haben Sie 18:00 eingestellt, wird die Meldung auch auf Reisen um 18:00 Ortszeit gesendet."
+        ]
+      }
+    ]
+  },
   "footer_home": "Startseite",
   "footer_privacy": "Datenschutzerklärung",
   "footer_terms": "Nutzungsbedingungen",

@@ -229,6 +229,11 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 .pf-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .pf-body[hidden]{display:none}
 
+/* 해외여행 — 그리드 밖 전폭 블록. 본문 열과 같은 읽기 폭으로 묶는다 */
+.travel{max-width:760px;border-top:1px solid var(--line);margin-top:-40px;
+  padding-bottom:76px}
+@media(max-width:920px){.travel{margin-top:0}}
+
 /* 목업 패널 */
 .sticky{position:sticky;top:20px}
 .chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
@@ -375,11 +380,10 @@ footer .copy{margin-left:auto}
     <main><section class="topic" id="battery" data-spot="battery"><h2>सूचना देर से पहुँचती है</h2><button class="show-me" type="button" data-show="battery" aria-expanded="false" data-open="स्क्रीन पर कहाँ है, देखें"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>स्क्रीन पर कहाँ है, देखें</span></button><div class="qa"><p class="q">मेरे फ़ोन पर अक्सर “💗 खैरियत की जांच ज़रूरी है” सूचना आती है। लगता है ऐप खोलने पर ही सूचना भेजी जाती है।</p><p class="q">मेरे परिवार को <b>“सावधानी”</b> चेतावनी मिली जिसमें लिखा था <b>“आज खैरियत की निर्धारित जांच अभी तक प्राप्त नहीं हुई है। कृपया व्यक्तिगत रूप से जांचें।”</b></p><div class="a"><p>बैटरी बचाने के लिए Android कम इस्तेमाल होने वाले ऐप्स को धीमा कर देता है या रोक देता है। Anbu दिन में एक बार तय समय पर थोड़ी देर के लिए जागकर सूचना भेजता है, इसलिए यह प्रतिबंध लगने पर <strong>वह क्षण चूक जाता है और फ़ोन दोबारा इस्तेमाल होने तक कुछ नहीं भेजा जाता।</strong></p><p>यदि तय समय के <strong>दो घंटे बाद तक भी कोई सूचना नहीं पहुँचती</strong>, तो परिवार को ऊपर दी गई चेतावनी जाती है। ऐसा तब भी हो सकता है जब भेजने वाले व्यक्ति बिलकुल ठीक हों और केवल भेजने में देर हुई हो।</p><p>भेजने वाले के फ़ोन पर ऐप खोलें और स्क्रीन के ऊपरी भाग में देखें कि <b>“बैटरी उपयोग प्रतिबंध हटाना आवश्यक है”</b> वाली पीली सूचना है या नहीं। टैप करने पर सीधे सेटिंग्स खुल जाती हैं, और एक बार प्रतिबंध हटाने पर सूचना गायब हो जाती है।</p></div></div><div class="qa"><p class="q">केवल यही सूचना पीली क्यों है?</p><div class="a"><p>इसका अर्थ है कि सूचनाएँ पूरी तरह रुकी नहीं हैं, बल्कि <strong>केवल देर हो सकती है</strong>। लाल रंग की सूचनाएँ बताती हैं कि कोई सुविधा वास्तव में रुकी हुई है।</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">पीली सूचना पर टैप करते ही यह विंडो तुरंत खुल जाती है।</p><div class="scrim"><div class="dlg"><p class="dlg-title">बैटरी उपयोग प्रतिबंध हटाना</p><div class="dlg-body"><p>जब आपका फ़ोन पावर-सेविंग मोड में जाता है, तो आपके अभिभावक को खैरियत के संकेत देर से पहुँच सकते हैं या छूट सकते हैं।</p><p>नीचे [सेटिंग्स खोलें] पर टैप करने के बाद, "बैटरी" → "बिना प्रतिबंध" सेट करें। इस तरह खैरियत के संकेत हर दिन निर्धारित समय पर विश्वसनीय रूप से पहुँचेंगे।</p><p>※ सटीक शब्द डिवाइस निर्माता के अनुसार भिन्न हो सकते हैं।</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>बाद में</button><button class="dlg-btn" type="button" tabindex="-1" disabled>सेटिंग्स खोलें</button></div></div></div></div></section>
 <section class="topic" id="activity" data-spot="activity"><h2>क़दमों की संख्या नहीं दिखती</h2><button class="show-me" type="button" data-show="activity" aria-expanded="false" data-open="स्क्रीन पर कहाँ है, देखें"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>स्क्रीन पर कहाँ है, देखें</span></button><div class="qa"><p class="q">मेरे परिजन के क़दम नहीं दिखते। “आज N क़दम चले” वाली सूचना भी कभी नहीं आती।</p><div class="a"><p>खैरियत के संकेत के साथ Anbu <strong>उस दिन के क़दमों की संख्या</strong> भी भेजता है ताकि परिवार देख सके कि कितनी गतिविधि हुई। यदि भेजने वाले के फ़ोन पर यह अनुमति बंद है, तो <strong>खैरियत का संकेत पहले की तरह पहुँचता रहता है, केवल क़दमों की संख्या छूट जाती है।</strong></p><p>उस फ़ोन पर ऐप खोलें और सुरक्षा कोड के नीचे देखें कि <b>“कदम गिनने की अनुमति अस्वीकार की गई। अनुमति देने के लिए यहां टैप करें।”</b> वाली लाल सूचना है या नहीं। टैप करने पर अनुमति फिर से माँगी जाएगी।</p></div></div><div class="qa"><p class="q">क़दमों के अलावा और कुछ भी देखा जाता है?</p><div class="a"><p>केवल क़दमों की संख्या भेजी जाती है। कहाँ गए और कौन-से ऐप इस्तेमाल किए, यह हम नहीं देखते।</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">लाल सूचना पर टैप करने से <strong>Android की अपनी अनुमति-माँग</strong> सामने आती है। वहीं अनुमति दे देना ही पर्याप्त है।<br>लेकिन यदि पहले कई बार मना कर चुके हैं, तो Android वह माँग दिखाना बंद कर देता है। तब उसकी जगह नीचे वाली विंडो दिखती है।</p><div class="scrim"><div class="dlg"><p class="dlg-title">अनुमति आवश्यक</p><div class="dlg-body"><p>कृपया ऐप सेटिंग्स में शारीरिक गतिविधि (गति और फ़िटनेस) अनुमति दें।</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>रद्द करें</button><button class="dlg-btn" type="button" tabindex="-1" disabled>सेटिंग्स पर जाएं</button></div></div></div></div></section>
 <section class="topic" id="location" data-spot="location"><h2>आपात अनुरोध में स्थान नहीं आया</h2><button class="show-me" type="button" data-show="location" aria-expanded="false" data-open="स्क्रीन पर कहाँ है, देखें"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>स्क्रीन पर कहाँ है, देखें</span></button><div class="qa"><p class="q">मुझे आपातकालीन सहायता का अनुरोध मिला, पर सूचना में [🗺️ स्थान देखें] बटन नहीं है।</p><div class="a"><p>आपात बटन दबाने पर <strong>वर्तमान स्थान भी साथ भेजने के लिए</strong> स्थान की अनुमति आवश्यक है। अनुमति न होने पर भी आपात सूचना पूरे परिवार तक पहुँचती है, बस यह नहीं जाता कि वे कहाँ हैं।</p><p>भेजने वाले के फ़ोन पर ऐप खोलें और [मुझे मदद चाहिए] बटन के नीचे देखें कि कोई लाल सूचना है या नहीं। टैप करने पर अनुमति फिर से माँगी जाएगी।</p></div></div><div class="qa"><p class="q">क्या हर समय मेरा स्थान देखा जाता है?</p><div class="a"><p>नहीं। सामान्य स्थिति में हम कोई भी स्थान-जानकारी एकत्र नहीं करते। केवल [मुझे मदद चाहिए] दबाने पर <strong>उसी क्षण का स्थान एक बार</strong> लिया जाता है और परिवार तक पहुँचाया जाता है; यह जानकारी एक दिन बाद मिटा दी जाती है।</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">लाल सूचना पर टैप करने से <strong>Android की अपनी अनुमति-माँग</strong> सामने आती है। वहीं अनुमति दे देना ही पर्याप्त है।<br>लेकिन यदि पहले कई बार मना कर चुके हैं, तो Android वह माँग दिखाना बंद कर देता है। तब उसकी जगह नीचे वाली विंडो दिखती है।</p><div class="pf-tabs"><button class="pf-tab" type="button" data-pf="0" aria-pressed="true">Android</button><button class="pf-tab" type="button" data-pf="1" aria-pressed="false">iPhone</button></div><div class="scrim"><div class="dlg"><p class="dlg-title">स्थान अनुमति आवश्यक</p><div class="dlg-body"><div class="pf-body" data-pf="0"><p>"अनुमतियाँ" → "स्थान" चुनें, फिर "केवल ऐप का उपयोग करते समय अनुमति दें" चुनें।</p></div><div class="pf-body" data-pf="1" hidden><p>"Anbu" खोजकर चुनें, फिर "स्थान" में "ऐप का उपयोग करते समय" चुनें।</p></div></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>रद्द करें</button><button class="dlg-btn" type="button" tabindex="-1" disabled>सेटिंग्स पर जाएं</button></div></div></div></div></section>
-<section class="topic" id="hibernation" data-spot="hibernation"><h2>ऐप खोलते ही हर बार विंडो आती है</h2><button class="show-me" type="button" data-show="hibernation" aria-expanded="false" data-open="स्क्रीन पर कहाँ है, देखें"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>स्क्रीन पर कहाँ है, देखें</span></button><div class="qa"><p class="q">हर बार ऐप खोलने पर “स्वचालित अनुमति हटाना बंद करें” वाली विंडो आती है।</p><div class="a"><p>Android में एक सुविधा है जो लंबे समय तक न खोले गए ऐप्स की अनुमतियाँ अपने आप वापस ले लेती है। Anbu <strong>ऐसा ऐप है जो स्क्रीन खोले बिना भी काम करता है</strong>, इसलिए उल्टा यही उसे आसान निशाना बना देता है — और अनुमतियाँ हटते ही सूचना भेजना चुपचाप रुक जाता है।</p><p>[सेटिंग्स खोलें] पर टैप करके इसे एक बार बंद कर दें, फिर यह विंडो दोबारा नहीं आएगी।</p></div></div><div class="qa"><p class="q">हर बार आती है। क्या मैं बस [बाद में] दबा सकता हूँ?</p><div class="a"><p>जब तक आप वह सेटिंग बंद नहीं करते, यह हर बार ऐप खोलने पर आती रहेगी। सूचना भेजना रुक जाए तो पता चलना कठिन होता है, इसीलिए हम बार-बार याद दिलाते हैं।</p></div></div><div class="qa"><p class="q">मैं भी अपने परिवार की सूचनाएँ देखता हूँ, पर मुझे यह विंडो कभी नहीं दिखती।</p><div class="a"><p>जो व्यक्ति साथ-साथ अपने परिजनों का ध्यान भी रखता है, वह सूचनाएँ देखने के लिए ऐप बार-बार खोलता है, इसलिए अनुमतियाँ अपने आप हटने की स्थिति शायद ही बनती है। इसीलिए यह विंडो आपको नहीं दिखाई जाती।</p></div></div></section>
 <section class="topic" id="etc"><h2>अन्य</h2><div class="qa"><p class="q">मैंने सूचना पर टैप किया, पर सेटिंग्स स्क्रीन ठीक से नहीं खुली।</p><div class="a"><p>सेटिंग्स स्क्रीन का नाम और स्थान निर्माता के अनुसार थोड़ा अलग होता है। कृपया सेटिंग्स ऐप खोलकर <b>Anbu</b> ढूँढ़ें और अनुमतियों वाला भाग सीधे जाँचें।</p></div></div></section></main>
 
     <aside class="sticky">
-      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">पूरी स्क्रीन</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">सूचना देर से</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">क़दम नहीं दिखते</button><button class="chip" type="button" data-spot="location" aria-pressed="false">स्थान नहीं है</button><button class="chip" type="button" data-spot="hibernation" aria-pressed="false">विंडो बार-बार आती है</button></div>
+      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">पूरी स्क्रीन</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">सूचना देर से</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">क़दम नहीं दिखते</button><button class="chip" type="button" data-spot="location" aria-pressed="false">स्थान नहीं है</button></div>
       <div class="stage">
         <div class="device" id="device">
           <div class="appbar">
@@ -454,20 +458,15 @@ footer .copy{margin-left:auto}
           </div>
         </div>
 
-        <div class="modal" id="modal" hidden>
-          <div class="dlg">
-            <p class="dlg-title" data-dialog-title></p>
-            <div class="dlg-body" data-dialog-body></div>
-            <div class="dlg-actions">
-              <button class="dlg-btn" data-key="common_later" tabindex="-1"></button>
-              <button class="dlg-btn" data-key="permission_hibernation_go_to_settings" tabindex="-1"></button>
-            </div>
-          </div>
-        </div>
       </div>
       <p class="caption">समझाने के लिए यहाँ तीनों सूचनाएँ एक ही स्क्रीन पर एक साथ दिखाई गई हैं। वास्तव में वे एक-एक करके, केवल तभी दिखती हैं जब लागू हों, और समाधान के बाद हट जाती हैं।</p>
     </aside>
   </div>
+
+  <!-- 해외여행 — 안전 홈 화면과 무관한 주제라 2단 그리드(.cols) 밖에 둔다.
+       안에 두면 넓은 화면에서는 sticky 목업이 옆에 붙고, 좁은 화면에서는 목업이
+       이 섹션 뒤에 와서 "화면 어딘가에 여행 설정이 있다"로 읽힌다. PRD-FAQ §2 -->
+  <section class="topic travel" id="travel"><h2>जब आप विदेश यात्रा पर जाएँ</h2><div class="qa"><p class="q">विदेश पहुँचने के बाद मेरे परिवार को “सावधानी” चेतावनी मिली।</p><div class="a"><p>सूचना फ़ोन पर दिख रहे <strong>स्थानीय समय</strong> के अनुसार भेजी जाती है। लेकिन दूसरे देश पहुँचने के बाद पहले एक-दो दिन नया समय अभी आगे नहीं पहुँचा होता, इसलिए सूचना का इंतज़ार अब भी उस देश के समय के अनुसार होता है जहाँ से आप निकले थे। समय के अंतर के कारण <strong>ऐसा लगता है कि सूचना अभी नहीं आई</strong>, इसलिए परिवार को चेतावनी जा सकती है और आपके अपने फ़ोन पर भी आधी रात को याद दिलाने वाली सूचना आ सकती है।</p><p>आप ठीक हैं, बस समय मेल नहीं खा रहा है। स्थानीय समय के अनुसार पहली सूचना जाते ही सब कुछ अपने आप सामान्य हो जाता है।</p></div></div><div class="qa"><p class="q">क्या इसे पहले से रोका जा सकता है?</p><div class="a"><p>पहुँचने के बाद <strong>Anbu ऐप को एक बार खोलें।</strong> खोलते ही नया समय आगे पहुँच जाता है, और उसके बाद सूचना स्थानीय समय के अनुसार भेजी जाती है। लौटने पर भी इसी तरह एक बार खोलें।</p><p>जिन्होंने परेशान न करें का समय सेट किया है, वे भी पहुँचने पर ऐप को एक बार खोलें। तभी वह समय जब आपने चेतावनियाँ न पाने का तय किया है (जैसे रात 22:00 से सुबह 07:00 तक), यात्रा वाली जगह के समय के अनुसार बदलेगा। न खोलने पर जिस देश से निकले थे उसी का समय लागू रहता है, इसलिए चेतावनियाँ आधी रात को बज सकती हैं या दिन में चुप रह सकती हैं।</p></div></div><div class="qa"><p class="q">क्या यात्रा में सूचना का समय बदलना होगा?</p><div class="a"><p>नहीं। तय किया गया समय <strong>आप अभी जहाँ हैं, वहाँ के समय</strong> के अनुसार लागू होता है। अगर आपने 18:00 तय किया है, तो यात्रा में भी सूचना स्थानीय समय से 18:00 बजे भेजी जाती है।</p></div></div></section>
 </div>
 
 <footer><div class="wrap">
@@ -545,34 +544,12 @@ document.querySelector('[data-check-body]').textContent =
 document.querySelector('[data-daily-time]').textContent =
   S.heartbeat_daily_time.replace('@time','18:00');
 
-// 제목의 highlight 부분만 강조 — 앱 _buildHibernationTitle과 동일 규칙
-(function(){
-  var t = S.permission_hibernation_title, h = S.permission_hibernation_highlight;
-  var el = document.querySelector('[data-dialog-title]'), i = t.indexOf(h);
-  if (i < 0) { el.textContent = t; return; }
-  el.textContent = '';
-  el.append(t.slice(0, i));
-  var m = document.createElement('mark'); m.textContent = h; el.append(m);
-  el.append(t.slice(i + h.length));
-})();
-
-// 본문 \n\n → 문단
-(function(){
-  var body = document.querySelector('[data-dialog-body]');
-  S.permission_hibernation_message.split('\n\n').forEach(function(p){
-    var el = document.createElement('p'); el.textContent = p.trim(); body.append(el);
-  });
-})();
-
 // 스포트라이트
-var device = document.getElementById('device'), modal = document.getElementById('modal');
+var device = document.getElementById('device');
 var chips = document.querySelectorAll('.chip');
 
 function show(spot){
-  var isDialog = spot === 'hibernation';
-  // 다이얼로그일 때는 스크림이 화면을 덮으므로 별도 dim을 걸지 않는다
-  device.classList.toggle('dimmed', spot !== 'all' && !isDialog);
-  modal.hidden = !isDialog;
+  device.classList.toggle('dimmed', spot !== 'all');
   document.querySelectorAll('.spot').forEach(function(el){
     el.classList.toggle('on', el.dataset.spot === spot);
   });

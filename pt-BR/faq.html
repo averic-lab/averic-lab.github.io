@@ -229,6 +229,11 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 .pf-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .pf-body[hidden]{display:none}
 
+/* 해외여행 — 그리드 밖 전폭 블록. 본문 열과 같은 읽기 폭으로 묶는다 */
+.travel{max-width:760px;border-top:1px solid var(--line);margin-top:-40px;
+  padding-bottom:76px}
+@media(max-width:920px){.travel{margin-top:0}}
+
 /* 목업 패널 */
 .sticky{position:sticky;top:20px}
 .chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
@@ -375,11 +380,10 @@ footer .copy{margin-left:auto}
     <main><section class="topic" id="battery" data-spot="battery"><h2>O sinal chega atrasado</h2><button class="show-me" type="button" data-show="battery" aria-expanded="false" data-open="Ver onde fica na tela"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Ver onde fica na tela</span></button><div class="qa"><p class="q">Recebo com frequência a notificação “💗 É preciso confirmar o bem-estar” no meu celular. Parece que o envio só acontece quando abro o aplicativo.</p><p class="q">Minha família recebeu um alerta <b>“Atenção”</b> dizendo <b>“A verificação de bem-estar agendada para hoje ainda não foi recebida. Por favor, verifique pessoalmente.”</b></p><div class="a"><p>Para economizar bateria, o Android desacelera ou interrompe aplicativos pouco usados. O Anbu acorda por um instante uma vez por dia, no horário definido, para enviar o sinal; com essa restrição ativa, <strong>esse momento é perdido e nada é enviado até o celular ser usado de novo.</strong></p><p>Se nenhum sinal chegar <strong>duas horas após o horário definido</strong>, a família recebe o alerta acima. Isso pode acontecer mesmo quando a pessoa está perfeitamente bem e apenas o envio atrasou.</p><p>No celular de quem envia, abra o aplicativo e veja se na parte de cima aparece o aviso amarelo <b>“É necessário desativar a restrição de uso de bateria”</b>. Ao tocar nele você vai direto para as configurações; depois de liberar uma vez, o aviso some.</p></div></div><div class="qa"><p class="q">Por que só este aviso é amarelo?</p><div class="a"><p>Significa que o sinal não parou por completo — ele <strong>pode apenas atrasar</strong>. Avisos em vermelho indicam que um recurso está de fato bloqueado.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">Ao tocar no aviso amarelo, esta janela abre na hora.</p><div class="scrim"><div class="dlg"><p class="dlg-title">Desativar a restrição de uso de bateria</p><div class="dlg-body"><p>Quando seu telefone entra no modo de economia de energia, os sinais de bem-estar enviados ao seu guardião podem chegar atrasados ou serem perdidos.</p><p>Após tocar em [Abrir configurações] abaixo, defina "Bateria" → "Sem restrições". Assim, os sinais de bem-estar são enviados de forma confiável no horário programado todos os dias.</p><p>※ O texto exato pode variar conforme o fabricante do dispositivo.</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>Depois</button><button class="dlg-btn" type="button" tabindex="-1" disabled>Abrir configurações</button></div></div></div></div></section>
 <section class="topic" id="activity" data-spot="activity"><h2>Os passos não aparecem</h2><button class="show-me" type="button" data-show="activity" aria-expanded="false" data-open="Ver onde fica na tela"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Ver onde fica na tela</span></button><div class="qa"><p class="q">Os passos do meu familiar não aparecem. A notificação “Hoje você caminhou N passos” nunca chega.</p><div class="a"><p>Junto com o sinal, o Anbu envia <strong>os passos do dia</strong> para que a família veja o quanto a pessoa se movimentou. Se a permissão estiver desativada no celular de quem envia, <strong>o sinal continua chegando, mas os passos ficam de fora.</strong></p><p>Nesse celular, abra o aplicativo e veja se abaixo do código de segurança aparece o aviso vermelho <b>“Permissão de pedômetro negada. Toque aqui para permitir.”</b>. Ao tocar nele, a permissão é pedida de novo.</p></div></div><div class="qa"><p class="q">Vocês olham algo além dos passos?</p><div class="a"><p>Somente os passos são enviados. Não verificamos por onde a pessoa andou nem quais aplicativos usou.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">Ao tocar no aviso vermelho aparece <strong>o pedido de permissão do próprio Android</strong>. Basta permitir ali.<br>Porém, se você já recusou várias vezes, o Android deixa de exibir esse pedido. Nesse caso aparece a janela abaixo.</p><div class="scrim"><div class="dlg"><p class="dlg-title">Permissão necessária</p><div class="dlg-body"><p>Permita a permissão Atividade física (Movimento e Atividade Física) nas configurações do aplicativo.</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>Cancelar</button><button class="dlg-btn" type="button" tabindex="-1" disabled>Ir para Configurações</button></div></div></div></div></section>
 <section class="topic" id="location" data-spot="location"><h2>O pedido de ajuda veio sem localização</h2><button class="show-me" type="button" data-show="location" aria-expanded="false" data-open="Ver onde fica na tela"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Ver onde fica na tela</span></button><div class="qa"><p class="q">Recebi um pedido de ajuda urgente, mas o alerta não tem o botão [🗺️ Ver localização].</p><div class="a"><p>A permissão de localização é necessária <strong>para enviar a localização atual junto</strong> quando o botão de emergência é pressionado. Sem ela, o alerta de emergência continua chegando a toda a família, mas o local não vai junto.</p><p>No celular de quem envia, abra o aplicativo e veja se abaixo do botão [Preciso de ajuda] aparece um aviso vermelho. Ao tocar nele, a permissão é pedida de novo.</p></div></div><div class="qa"><p class="q">Vocês acompanham minha localização o tempo todo?</p><div class="a"><p>Não. No dia a dia não coletamos localização nenhuma. Apenas ao pressionar [Preciso de ajuda] é feita <strong>uma única leitura naquele instante</strong>, repassada à família; essa informação é apagada depois de um dia.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">Ao tocar no aviso vermelho aparece <strong>o pedido de permissão do próprio Android</strong>. Basta permitir ali.<br>Porém, se você já recusou várias vezes, o Android deixa de exibir esse pedido. Nesse caso aparece a janela abaixo.</p><div class="pf-tabs"><button class="pf-tab" type="button" data-pf="0" aria-pressed="true">Android</button><button class="pf-tab" type="button" data-pf="1" aria-pressed="false">iPhone</button></div><div class="scrim"><div class="dlg"><p class="dlg-title">Permissão de localização necessária</p><div class="dlg-body"><div class="pf-body" data-pf="0"><p>Selecione 'Permissões' → 'Local' e escolha 'Permitir somente ao usar o app'.</p></div><div class="pf-body" data-pf="1" hidden><p>Localize e selecione 'Anbu', depois em 'Localização' escolha 'Ao Usar o App'.</p></div></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>Cancelar</button><button class="dlg-btn" type="button" tabindex="-1" disabled>Ir para Configurações</button></div></div></div></div></section>
-<section class="topic" id="hibernation" data-spot="hibernation"><h2>Aparece uma janela toda vez que abro o aplicativo</h2><button class="show-me" type="button" data-show="hibernation" aria-expanded="false" data-open="Ver onde fica na tela"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Ver onde fica na tela</span></button><div class="qa"><p class="q">Toda vez que abro o aplicativo aparece uma janela dizendo “Desative a remoção automática de permissões”.</p><div class="a"><p>O Android tem um recurso que remove automaticamente as permissões de aplicativos que ficam muito tempo sem ser abertos. O Anbu é <strong>um aplicativo que funciona sem que você abra a tela</strong>, o que justamente o torna um alvo fácil — e, sem as permissões, o envio para silenciosamente.</p><p>Toque em [Abrir configurações] e desative uma vez: esta janela não aparecerá mais.</p></div></div><div class="qa"><p class="q">Aparece toda vez. Posso simplesmente tocar em [Depois]?</p><div class="a"><p>Ela continuará aparecendo a cada abertura até você desativar a configuração. Como é difícil perceber que o envio parou, avisamos repetidamente.</p></div></div><div class="qa"><p class="q">Eu também acompanho o bem-estar da minha família, mas para mim essa janela não aparece.</p><div class="a"><p>Quem também cuida de familiares abre o aplicativo com frequência para ver os alertas, então raramente chega à situação em que as permissões são removidas automaticamente. Por isso essa janela não é exibida para você.</p></div></div></section>
 <section class="topic" id="etc"><h2>Outros casos</h2><div class="qa"><p class="q">Toquei no aviso, mas a tela de configurações não abriu direito.</p><div class="a"><p>O nome e o local da tela de configurações variam um pouco conforme o fabricante. Abra as Configurações, procure por <b>Anbu</b> e verifique diretamente a seção de permissões.</p></div></div></section></main>
 
     <aside class="sticky">
-      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">Tela inteira</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">Sinal atrasado</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">Sem passos</button><button class="chip" type="button" data-spot="location" aria-pressed="false">Sem localização</button><button class="chip" type="button" data-spot="hibernation" aria-pressed="false">Uma janela aparece sempre</button></div>
+      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">Tela inteira</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">Sinal atrasado</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">Sem passos</button><button class="chip" type="button" data-spot="location" aria-pressed="false">Sem localização</button></div>
       <div class="stage">
         <div class="device" id="device">
           <div class="appbar">
@@ -454,20 +458,15 @@ footer .copy{margin-left:auto}
           </div>
         </div>
 
-        <div class="modal" id="modal" hidden>
-          <div class="dlg">
-            <p class="dlg-title" data-dialog-title></p>
-            <div class="dlg-body" data-dialog-body></div>
-            <div class="dlg-actions">
-              <button class="dlg-btn" data-key="common_later" tabindex="-1"></button>
-              <button class="dlg-btn" data-key="permission_hibernation_go_to_settings" tabindex="-1"></button>
-            </div>
-          </div>
-        </div>
       </div>
       <p class="caption">Para explicar, os três avisos aparecem juntos nesta tela. Na prática eles surgem um de cada vez, apenas quando se aplicam, e somem depois de resolvidos.</p>
     </aside>
   </div>
+
+  <!-- 해외여행 — 안전 홈 화면과 무관한 주제라 2단 그리드(.cols) 밖에 둔다.
+       안에 두면 넓은 화면에서는 sticky 목업이 옆에 붙고, 좁은 화면에서는 목업이
+       이 섹션 뒤에 와서 "화면 어딘가에 여행 설정이 있다"로 읽힌다. PRD-FAQ §2 -->
+  <section class="topic travel" id="travel"><h2>Quando você viaja para o exterior</h2><div class="qa"><p class="q">Depois que cheguei ao exterior, minha família recebeu um alerta de “Atenção”.</p><div class="a"><p>O sinal é enviado de acordo com o <strong>horário local</strong> mostrado no seu celular. Mas, no primeiro ou nos dois primeiros dias depois de chegar a outro país, o novo horário ainda não foi repassado, então o sinal continua sendo esperado no horário do país de onde você saiu. Por causa do fuso horário, <strong>parece que o sinal não chegou</strong>: sua família pode receber um alerta, e o seu próprio celular pode mostrar um lembrete de madrugada.</p><p>Você está bem; só o horário está desencontrado. Assim que o primeiro sinal é enviado no horário local, tudo volta ao normal sozinho.</p></div></div><div class="qa"><p class="q">Posso evitar isso antes?</p><div class="a"><p>Ao chegar, <strong>abra o app Anbu uma vez.</strong> No momento em que você abre, o novo horário é repassado e, daí em diante, o sinal segue o horário local. Abra também uma vez quando voltar.</p><p>Se você configurou o horário de “Não perturbe”, abra o app uma vez também ao chegar. Assim, o período em que você escolheu não receber alertas (por exemplo, das 22:00 às 7:00) se ajusta ao horário local. Se não abrir, continua valendo o horário do país de partida, e os alertas podem tocar de madrugada ou ficar em silêncio durante o dia.</p></div></div><div class="qa"><p class="q">Preciso mudar o horário do sinal durante a viagem?</p><div class="a"><p>Não. O horário definido vale <strong>para o lugar onde você está agora</strong>. Se você definiu 18:00, durante a viagem o sinal também é enviado às 18:00 no horário local.</p></div></div></section>
 </div>
 
 <footer><div class="wrap">
@@ -545,34 +544,12 @@ document.querySelector('[data-check-body]').textContent =
 document.querySelector('[data-daily-time]').textContent =
   S.heartbeat_daily_time.replace('@time','18:00');
 
-// 제목의 highlight 부분만 강조 — 앱 _buildHibernationTitle과 동일 규칙
-(function(){
-  var t = S.permission_hibernation_title, h = S.permission_hibernation_highlight;
-  var el = document.querySelector('[data-dialog-title]'), i = t.indexOf(h);
-  if (i < 0) { el.textContent = t; return; }
-  el.textContent = '';
-  el.append(t.slice(0, i));
-  var m = document.createElement('mark'); m.textContent = h; el.append(m);
-  el.append(t.slice(i + h.length));
-})();
-
-// 본문 \n\n → 문단
-(function(){
-  var body = document.querySelector('[data-dialog-body]');
-  S.permission_hibernation_message.split('\n\n').forEach(function(p){
-    var el = document.createElement('p'); el.textContent = p.trim(); body.append(el);
-  });
-})();
-
 // 스포트라이트
-var device = document.getElementById('device'), modal = document.getElementById('modal');
+var device = document.getElementById('device');
 var chips = document.querySelectorAll('.chip');
 
 function show(spot){
-  var isDialog = spot === 'hibernation';
-  // 다이얼로그일 때는 스크림이 화면을 덮으므로 별도 dim을 걸지 않는다
-  device.classList.toggle('dimmed', spot !== 'all' && !isDialog);
-  modal.hidden = !isDialog;
+  device.classList.toggle('dimmed', spot !== 'all');
   document.querySelectorAll('.spot').forEach(function(el){
     el.classList.toggle('on', el.dataset.spot === spot);
   });

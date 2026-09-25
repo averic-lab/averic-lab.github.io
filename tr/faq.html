@@ -229,6 +229,11 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 .pf-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .pf-body[hidden]{display:none}
 
+/* 해외여행 — 그리드 밖 전폭 블록. 본문 열과 같은 읽기 폭으로 묶는다 */
+.travel{max-width:760px;border-top:1px solid var(--line);margin-top:-40px;
+  padding-bottom:76px}
+@media(max-width:920px){.travel{margin-top:0}}
+
 /* 목업 패널 */
 .sticky{position:sticky;top:20px}
 .chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
@@ -375,11 +380,10 @@ footer .copy{margin-left:auto}
     <main><section class="topic" id="battery" data-spot="battery"><h2>Haber geç ulaşıyor</h2><button class="show-me" type="button" data-show="battery" aria-expanded="false" data-open="Ekranda nerede olduğunu gör"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Ekranda nerede olduğunu gör</span></button><div class="qa"><p class="q">Telefonuma sık sık “💗 İyilik kontrolü gerekiyor” bildirimi geliyor. Sanki yalnızca uygulamayı açtığımda gönderiliyor.</p><p class="q">Aileme <b>“Dikkat”</b> uyarısı ile <b>“Bugün planlanan hal hatır kontrolü henüz alınmadı. Lütfen bizzat kontrol edin.”</b> mesajı geldi.</p><div class="a"><p>Pil tasarrufu için Android, seyrek kullanılan uygulamaları yavaşlatır veya durdurur. Anbu, haberi göndermek üzere günde bir kez belirlenen saatte kısa süreliğine uyanır; bu kısıtlama devredeyse <strong>o an kaçırılır ve telefon yeniden kullanılana kadar hiçbir şey gönderilmez.</strong></p><p>Belirlenen saatten <strong>iki saat sonra da haber ulaşmazsa</strong> aileye yukarıdaki uyarı gider. Gönderen kişi gayet iyiyken yalnızca gönderim geciktiğinde de bu uyarı gidebilir.</p><p>Gönderen kişinin telefonunda uygulamayı açın ve ekranın üst kısmında <b>“Pil kullanım kısıtlaması kapatılmalı”</b> sarı uyarısının olup olmadığına bakın. Dokunduğunuzda doğrudan ayarlara gider; kısıtlamayı bir kez kaldırdığınızda uyarı kaybolur.</p></div></div><div class="qa"><p class="q">Neden yalnızca bu uyarı sarı?</p><div class="a"><p>Haberlerin tamamen durmadığı, yalnızca <strong>gecikebileceği</strong> anlamına gelir. Kırmızı gösterilen uyarılar bir işlevin gerçekten engellendiğini belirtir.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">Sarı uyarıya dokunmak bu pencereyi hemen açar.</p><div class="scrim"><div class="dlg"><p class="dlg-title">Pil kullanım kısıtlamasını kaldırma</p><div class="dlg-body"><p>Telefonunuz güç tasarrufu moduna girdiğinde, koruyucunuza giden hal hatır sinyalleri gecikebilir veya kaybolabilir.</p><p>Aşağıdaki [Ayarları Aç] düğmesine dokunduktan sonra "Pil" → "Kısıtlama yok" ayarlayın. Böylece hal hatır sinyalleri her gün belirlenen saatte güvenilir bir şekilde iletilir.</p><p>※ Tam ifade cihaz üreticisine göre değişebilir.</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>Sonra</button><button class="dlg-btn" type="button" tabindex="-1" disabled>Ayarları Aç</button></div></div></div></div></section>
 <section class="topic" id="activity" data-spot="activity"><h2>Adım sayısı görünmüyor</h2><button class="show-me" type="button" data-show="activity" aria-expanded="false" data-open="Ekranda nerede olduğunu gör"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Ekranda nerede olduğunu gör</span></button><div class="qa"><p class="q">Yakınımın adım sayısı görünmüyor. “Bugün N adım yürüdünüz” bildirimi hiç gelmiyor.</p><div class="a"><p>Anbu, haber sinyaliyle birlikte <strong>o günün adım sayısını</strong> da gönderir; böylece aile ne kadar hareket edildiğini görebilir. Gönderen kişinin telefonunda izin kapalıysa <strong>haber sinyali yine ulaşır, yalnızca adım sayısı eksik kalır.</strong></p><p>O telefonda uygulamayı açın ve güvenlik kodunun altında <b>“Adım sayar izni reddedildi. İzin vermek için buraya dokunun.”</b> kırmızı uyarısının olup olmadığına bakın. Dokunduğunuzda izin yeniden istenir.</p></div></div><div class="qa"><p class="q">Adım dışında başka bir şeye bakılıyor mu?</p><div class="a"><p>Yalnızca adım sayısı gönderilir. Nereye gidildiğini veya hangi uygulamaların kullanıldığını incelemeyiz.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">Kırmızı uyarıya dokunmak <strong>Android'in kendi izin isteğini</strong> açar. Orada izin vermek yeterlidir.<br>Ancak daha önce birkaç kez reddettiyseniz Android bu isteği artık göstermez. O durumda bunun yerine aşağıdaki pencere görünür.</p><div class="scrim"><div class="dlg"><p class="dlg-title">İzin Gerekli</p><div class="dlg-body"><p>Lütfen uygulama ayarlarından Fiziksel aktivite (Hareket ve Fitness) iznine izin verin.</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>İptal</button><button class="dlg-btn" type="button" tabindex="-1" disabled>Ayarlara Git</button></div></div></div></div></section>
 <section class="topic" id="location" data-spot="location"><h2>Acil yardım isteği konumsuz geldi</h2><button class="show-me" type="button" data-show="location" aria-expanded="false" data-open="Ekranda nerede olduğunu gör"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Ekranda nerede olduğunu gör</span></button><div class="qa"><p class="q">Acil yardım isteği aldım ama bildirimde [🗺️ Konumu görüntüle] düğmesi yok.</p><div class="a"><p>Acil düğmesine basıldığında <strong>mevcut konumun da gönderilebilmesi için</strong> konum izni gerekir. İzin yoksa acil bildirimin kendisi yine ailenin tamamına ulaşır, ancak nerede olunduğu bilgisi eklenmez.</p><p>Gönderen kişinin telefonunda uygulamayı açın ve [Yardıma ihtiyacım var] düğmesinin altında kırmızı bir uyarı olup olmadığına bakın. Dokunduğunuzda izin yeniden istenir.</p></div></div><div class="qa"><p class="q">Konumum sürekli takip ediliyor mu?</p><div class="a"><p>Hayır. Normal koşullarda hiçbir konum toplamıyoruz. Yalnızca [Yardıma ihtiyacım var] düğmesine basıldığında <strong>o anki konum bir kez</strong> alınır ve aileye iletilir; bu bilgi bir gün sonra silinir.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">Kırmızı uyarıya dokunmak <strong>Android'in kendi izin isteğini</strong> açar. Orada izin vermek yeterlidir.<br>Ancak daha önce birkaç kez reddettiyseniz Android bu isteği artık göstermez. O durumda bunun yerine aşağıdaki pencere görünür.</p><div class="pf-tabs"><button class="pf-tab" type="button" data-pf="0" aria-pressed="true">Android</button><button class="pf-tab" type="button" data-pf="1" aria-pressed="false">iPhone</button></div><div class="scrim"><div class="dlg"><p class="dlg-title">Konum İzni Gerekli</p><div class="dlg-body"><div class="pf-body" data-pf="0"><p>'İzinler' → 'Konum' seçin, ardından 'Yalnızca uygulamayı kullanırken izin ver' seçeneğini seçin.</p></div><div class="pf-body" data-pf="1" hidden><p>'Anbu'yu bulup seçin, ardından 'Konum' altında 'Uygulamayı kullanırken' seçeneğini seçin.</p></div></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>İptal</button><button class="dlg-btn" type="button" tabindex="-1" disabled>Ayarlara Git</button></div></div></div></div></section>
-<section class="topic" id="hibernation" data-spot="hibernation"><h2>Uygulamayı her açtığımda bir pencere çıkıyor</h2><button class="show-me" type="button" data-show="hibernation" aria-expanded="false" data-open="Ekranda nerede olduğunu gör"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Ekranda nerede olduğunu gör</span></button><div class="qa"><p class="q">Uygulamayı her açtığımda “Otomatik izin kaldırmayı kapatın” penceresi çıkıyor.</p><div class="a"><p>Android'de, uzun süre açılmayan uygulamaların izinlerini otomatik olarak geri alan bir özellik vardır. Anbu <strong>ekranı açmadan da çalışan bir uygulama</strong> olduğu için tam da bu duruma düşmesi kolaydır; izinler kaybolduğunda haber gönderimi sessizce durur.</p><p>[Ayarları Aç] düğmesine dokunup bir kez kapatırsanız bu pencere bir daha çıkmaz.</p></div></div><div class="qa"><p class="q">Her seferinde çıkıyor. Sadece [Sonra] düğmesine dokunabilir miyim?</p><div class="a"><p>Ayarı kapatana kadar uygulamayı her açtığınızda çıkmaya devam eder. Gönderimin durduğunu fark etmek zor olduğu için tekrar tekrar hatırlatıyoruz.</p></div></div><div class="qa"><p class="q">Ben de ailemin haberlerini takip ediyorum ama bende bu pencere hiç çıkmıyor.</p><div class="a"><p>Aynı zamanda yakınlarını gözeten kişi, bildirimleri görmek için uygulamayı sık açtığından izinlerin otomatik geri alındığı duruma nadiren düşer. Bu nedenle bu pencere size gösterilmez.</p></div></div></section>
 <section class="topic" id="etc"><h2>Diğer</h2><div class="qa"><p class="q">Uyarıya dokundum ama ayarlar ekranı düzgün açılmadı.</p><div class="a"><p>Ayarlar ekranının adı ve yeri üreticiye göre biraz değişir. Ayarlar uygulamasını açıp <b>Anbu</b>'yu bulun ve izinler bölümünü doğrudan kontrol edin.</p></div></div></section></main>
 
     <aside class="sticky">
-      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">Tüm ekran</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">Haber gecikiyor</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">Adım yok</button><button class="chip" type="button" data-spot="location" aria-pressed="false">Konum yok</button><button class="chip" type="button" data-spot="hibernation" aria-pressed="false">Pencere sürekli çıkıyor</button></div>
+      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">Tüm ekran</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">Haber gecikiyor</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">Adım yok</button><button class="chip" type="button" data-spot="location" aria-pressed="false">Konum yok</button></div>
       <div class="stage">
         <div class="device" id="device">
           <div class="appbar">
@@ -454,20 +458,15 @@ footer .copy{margin-left:auto}
           </div>
         </div>
 
-        <div class="modal" id="modal" hidden>
-          <div class="dlg">
-            <p class="dlg-title" data-dialog-title></p>
-            <div class="dlg-body" data-dialog-body></div>
-            <div class="dlg-actions">
-              <button class="dlg-btn" data-key="common_later" tabindex="-1"></button>
-              <button class="dlg-btn" data-key="permission_hibernation_go_to_settings" tabindex="-1"></button>
-            </div>
-          </div>
-        </div>
       </div>
       <p class="caption">Anlatım kolaylığı için üç uyarı burada tek ekranda toplanmıştır. Gerçekte yalnızca ilgili durumlarda birer birer görünür ve sorun giderildiğinde kaybolur.</p>
     </aside>
   </div>
+
+  <!-- 해외여행 — 안전 홈 화면과 무관한 주제라 2단 그리드(.cols) 밖에 둔다.
+       안에 두면 넓은 화면에서는 sticky 목업이 옆에 붙고, 좁은 화면에서는 목업이
+       이 섹션 뒤에 와서 "화면 어딘가에 여행 설정이 있다"로 읽힌다. PRD-FAQ §2 -->
+  <section class="topic travel" id="travel"><h2>Yurt dışına seyahat ederken</h2><div class="qa"><p class="q">Yurt dışına vardıktan sonra aileme “Dikkat” uyarısı gitti.</p><div class="a"><p>Haber, telefonunuzda görünen <strong>yerel saate</strong> göre gönderilir. Ancak başka bir ülkeye vardıktan sonraki ilk bir iki gün yeni saat henüz iletilmediği için haber hâlâ ayrıldığınız ülkenin saatine göre beklenir. Saat farkı yüzünden <strong>haber henüz gelmemiş gibi görünür</strong>; ailenize uyarı gidebilir, sizin telefonunuzda da gece yarısı bir hatırlatma çıkabilir.</p><p>Siz iyisiniz, yalnızca saat kaymış durumda. Yerel saate göre ilk haber gönderildiğinde her şey kendiliğinden normale döner.</p></div></div><div class="qa"><p class="q">Bunu önceden önleyebilir miyim?</p><div class="a"><p>Vardıktan sonra <strong>Anbu uygulamasını bir kez açın.</strong> Açtığınız anda yeni saat iletilir ve o andan itibaren haber yerel saate göre gönderilir. Döndüğünüzde de aynı şekilde bir kez açın.</p><p>Rahatsız Etmeyin saatlerini ayarladıysanız, vardığınızda uygulamayı yine bir kez açın. Böylece uyarı almamayı seçtiğiniz saatler (örneğin 22:00 ile 07:00 arası) yerel saate göre ayarlanır. Açmazsanız ayrıldığınız ülkenin saati geçerli kalır; uyarılar gece yarısı çalabilir ya da gündüz sessiz kalabilir.</p></div></div><div class="qa"><p class="q">Seyahatte haber saatini değiştirmem gerekir mi?</p><div class="a"><p>Hayır. Belirlediğiniz saat <strong>şu an bulunduğunuz yerin saatine</strong> göre uygulanır. 18:00 olarak ayarladıysanız seyahatte de haber yerel saatle 18:00'de gönderilir.</p></div></div></section>
 </div>
 
 <footer><div class="wrap">
@@ -545,34 +544,12 @@ document.querySelector('[data-check-body]').textContent =
 document.querySelector('[data-daily-time]').textContent =
   S.heartbeat_daily_time.replace('@time','18:00');
 
-// 제목의 highlight 부분만 강조 — 앱 _buildHibernationTitle과 동일 규칙
-(function(){
-  var t = S.permission_hibernation_title, h = S.permission_hibernation_highlight;
-  var el = document.querySelector('[data-dialog-title]'), i = t.indexOf(h);
-  if (i < 0) { el.textContent = t; return; }
-  el.textContent = '';
-  el.append(t.slice(0, i));
-  var m = document.createElement('mark'); m.textContent = h; el.append(m);
-  el.append(t.slice(i + h.length));
-})();
-
-// 본문 \n\n → 문단
-(function(){
-  var body = document.querySelector('[data-dialog-body]');
-  S.permission_hibernation_message.split('\n\n').forEach(function(p){
-    var el = document.createElement('p'); el.textContent = p.trim(); body.append(el);
-  });
-})();
-
 // 스포트라이트
-var device = document.getElementById('device'), modal = document.getElementById('modal');
+var device = document.getElementById('device');
 var chips = document.querySelectorAll('.chip');
 
 function show(spot){
-  var isDialog = spot === 'hibernation';
-  // 다이얼로그일 때는 스크림이 화면을 덮으므로 별도 dim을 걸지 않는다
-  device.classList.toggle('dimmed', spot !== 'all' && !isDialog);
-  modal.hidden = !isDialog;
+  device.classList.toggle('dimmed', spot !== 'all');
   document.querySelectorAll('.spot').forEach(function(el){
     el.classList.toggle('on', el.dataset.spot === spot);
   });

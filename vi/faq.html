@@ -229,6 +229,11 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 .pf-tab:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .pf-body[hidden]{display:none}
 
+/* 해외여행 — 그리드 밖 전폭 블록. 본문 열과 같은 읽기 폭으로 묶는다 */
+.travel{max-width:760px;border-top:1px solid var(--line);margin-top:-40px;
+  padding-bottom:76px}
+@media(max-width:920px){.travel{margin-top:0}}
+
 /* 목업 패널 */
 .sticky{position:sticky;top:20px}
 .chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
@@ -375,11 +380,10 @@ footer .copy{margin-left:auto}
     <main><section class="topic" id="battery" data-spot="battery"><h2>Tin báo đến muộn</h2><button class="show-me" type="button" data-show="battery" aria-expanded="false" data-open="Xem vị trí trên màn hình"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Xem vị trí trên màn hình</span></button><div class="qa"><p class="q">Điện thoại của tôi thường xuyên nhận thông báo “💗 Cần xác nhận bình an”. Có vẻ chỉ khi mở ứng dụng thì tin báo mới được gửi.</p><p class="q">Gia đình tôi nhận được cảnh báo <b>“Chú ý”</b> với nội dung <b>“Kiểm tra bình an theo lịch hôm nay chưa được nhận. Vui lòng kiểm tra trực tiếp.”</b></p><div class="a"><p>Để tiết kiệm pin, Android làm chậm hoặc dừng các ứng dụng ít dùng. Anbu chỉ thức dậy trong chốc lát mỗi ngày một lần vào giờ đã đặt để gửi tin báo, nên nếu bị hạn chế này, <strong>khoảnh khắc đó sẽ bị bỏ lỡ và không có gì được gửi cho đến khi điện thoại được dùng lại.</strong></p><p>Nếu <strong>quá hai giờ so với giờ đã đặt</strong> mà vẫn chưa có tin báo, gia đình sẽ nhận được cảnh báo ở trên. Điều này có thể xảy ra ngay cả khi người gửi hoàn toàn bình an và chỉ là việc gửi bị chậm.</p><p>Trên điện thoại của người gửi, hãy mở ứng dụng và xem phía trên màn hình có thông báo màu vàng <b>“Cần tắt giới hạn sử dụng pin”</b> hay không. Chạm vào đó sẽ đi thẳng đến màn hình cài đặt; sau khi gỡ bỏ hạn chế một lần, thông báo sẽ biến mất.</p></div></div><div class="qa"><p class="q">Vì sao chỉ thông báo này có màu vàng?</p><div class="a"><p>Điều đó có nghĩa là tin báo chưa dừng hẳn, mà <strong>chỉ có thể bị chậm</strong>. Các thông báo màu đỏ cho biết một chức năng thực sự đang bị chặn.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">Chạm vào thông báo màu vàng sẽ mở ngay cửa sổ này.</p><div class="scrim"><div class="dlg"><p class="dlg-title">Tắt giới hạn sử dụng pin</p><div class="dlg-body"><p>Khi điện thoại của bạn vào chế độ tiết kiệm pin, tín hiệu bình an gửi đến người bảo vệ có thể đến muộn hoặc bị mất.</p><p>Sau khi nhấn [Mở cài đặt] bên dưới, hãy đặt "Pin" → "Không giới hạn". Khi đó, tín hiệu bình an sẽ được gửi một cách đáng tin cậy vào giờ đã định mỗi ngày.</p><p>※ Cách hiển thị có thể khác nhau tùy theo nhà sản xuất thiết bị.</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>Để sau</button><button class="dlg-btn" type="button" tabindex="-1" disabled>Mở cài đặt</button></div></div></div></div></section>
 <section class="topic" id="activity" data-spot="activity"><h2>Không thấy số bước</h2><button class="show-me" type="button" data-show="activity" aria-expanded="false" data-open="Xem vị trí trên màn hình"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Xem vị trí trên màn hình</span></button><div class="qa"><p class="q">Không thấy số bước của người thân. Thông báo “Hôm nay đã đi N bước” cũng không đến.</p><div class="a"><p>Cùng với tín hiệu bình an, Anbu gửi kèm <strong>số bước của ngày hôm đó</strong> để gia đình biết đã vận động bao nhiêu. Nếu quyền bị tắt trên điện thoại của người gửi, <strong>tín hiệu bình an vẫn đến bình thường, chỉ thiếu số bước.</strong></p><p>Trên điện thoại đó, hãy mở ứng dụng và xem bên dưới mã an toàn có thông báo màu đỏ <b>“Quyền đếm bước chân bị từ chối. Nhấn vào đây để cho phép.”</b> hay không. Chạm vào đó sẽ yêu cầu cấp quyền lại.</p></div></div><div class="qa"><p class="q">Ngoài số bước còn xem gì khác không?</p><div class="a"><p>Chỉ số bước được gửi đi. Chúng tôi không kiểm tra đã đi những đâu hay đã dùng ứng dụng nào.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">Chạm vào thông báo màu đỏ sẽ hiện <strong>yêu cầu cấp quyền của chính Android</strong>. Chỉ cần cho phép ở đó là xong.<br>Tuy nhiên, nếu trước đây đã từ chối nhiều lần, Android sẽ không hiện yêu cầu đó nữa. Khi ấy cửa sổ bên dưới sẽ xuất hiện thay thế.</p><div class="scrim"><div class="dlg"><p class="dlg-title">Cần cấp quyền</p><div class="dlg-body"><p>Vui lòng cấp quyền Hoạt động thể chất (Chuyển động và Thể hình) trong cài đặt ứng dụng.</p></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>Hủy</button><button class="dlg-btn" type="button" tabindex="-1" disabled>Đi đến Cài đặt</button></div></div></div></div></section>
 <section class="topic" id="location" data-spot="location"><h2>Yêu cầu khẩn cấp không kèm vị trí</h2><button class="show-me" type="button" data-show="location" aria-expanded="false" data-open="Xem vị trí trên màn hình"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Xem vị trí trên màn hình</span></button><div class="qa"><p class="q">Tôi nhận được yêu cầu trợ giúp khẩn cấp nhưng trên thông báo không có nút [🗺️ Xem vị trí].</p><div class="a"><p>Cần quyền vị trí <strong>để gửi kèm vị trí hiện tại</strong> khi nhấn nút khẩn cấp. Không có quyền này thì thông báo khẩn cấp vẫn đến với toàn bộ gia đình, nhưng nơi đang ở sẽ không được gửi kèm.</p><p>Trên điện thoại của người gửi, hãy mở ứng dụng và xem bên dưới nút [Tôi cần giúp đỡ] có thông báo màu đỏ hay không. Chạm vào đó sẽ yêu cầu cấp quyền lại.</p></div></div><div class="qa"><p class="q">Bình thường có theo dõi vị trí của tôi không?</p><div class="a"><p>Không. Bình thường chúng tôi hoàn toàn không thu thập vị trí. Chỉ khi nhấn [Tôi cần giúp đỡ], vị trí <strong>tại đúng thời điểm đó được lấy một lần</strong> và chuyển đến gia đình; thông tin này sẽ bị xóa sau một ngày.</p></div></div><div class="dlg-demo" hidden><p class="dlg-lead">Chạm vào thông báo màu đỏ sẽ hiện <strong>yêu cầu cấp quyền của chính Android</strong>. Chỉ cần cho phép ở đó là xong.<br>Tuy nhiên, nếu trước đây đã từ chối nhiều lần, Android sẽ không hiện yêu cầu đó nữa. Khi ấy cửa sổ bên dưới sẽ xuất hiện thay thế.</p><div class="pf-tabs"><button class="pf-tab" type="button" data-pf="0" aria-pressed="true">Android</button><button class="pf-tab" type="button" data-pf="1" aria-pressed="false">iPhone</button></div><div class="scrim"><div class="dlg"><p class="dlg-title">Cần quyền vị trí</p><div class="dlg-body"><div class="pf-body" data-pf="0"><p>Chọn 'Quyền' → 'Vị trí', sau đó chọn 'Chỉ cho phép khi đang sử dụng ứng dụng'.</p></div><div class="pf-body" data-pf="1" hidden><p>Tìm và chọn 'Anbu', sau đó trong mục 'Vị trí' chọn 'Khi đang sử dụng ứng dụng'.</p></div></div><div class="dlg-actions"><button class="dlg-btn" type="button" tabindex="-1" disabled>Hủy</button><button class="dlg-btn" type="button" tabindex="-1" disabled>Đi đến Cài đặt</button></div></div></div></div></section>
-<section class="topic" id="hibernation" data-spot="hibernation"><h2>Mỗi lần mở ứng dụng lại hiện cửa sổ</h2><button class="show-me" type="button" data-show="hibernation" aria-expanded="false" data-open="Xem vị trí trên màn hình"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Xem vị trí trên màn hình</span></button><div class="qa"><p class="q">Mỗi lần mở ứng dụng lại hiện cửa sổ “Hãy tắt tính năng tự động xóa quyền”.</p><div class="a"><p>Android có tính năng tự động thu hồi quyền của những ứng dụng lâu ngày không mở. Anbu là <strong>ứng dụng hoạt động mà không cần mở màn hình</strong>, nên lại càng dễ rơi vào diện này; khi quyền bị mất, việc gửi tin báo sẽ lặng lẽ dừng lại.</p><p>Chạm [Mở cài đặt] và tắt một lần thì cửa sổ này sẽ không hiện nữa.</p></div></div><div class="qa"><p class="q">Lần nào cũng hiện. Tôi chỉ chạm [Để sau] có được không?</p><div class="a"><p>Cho đến khi bạn tắt cài đặt đó, cửa sổ vẫn sẽ hiện mỗi lần mở ứng dụng. Vì rất khó nhận ra khi việc gửi tin báo đã dừng, nên chúng tôi nhắc lại nhiều lần.</p></div></div><div class="qa"><p class="q">Tôi cũng đang theo dõi tin báo của gia đình, nhưng tôi không thấy cửa sổ này.</p><div class="a"><p>Người đồng thời dõi theo gia đình sẽ mở ứng dụng thường xuyên để xem thông báo, nên hiếm khi rơi vào tình huống quyền bị thu hồi tự động. Vì vậy cửa sổ này không hiện với bạn.</p></div></div></section>
 <section class="topic" id="etc"><h2>Khác</h2><div class="qa"><p class="q">Tôi đã chạm vào thông báo nhưng màn hình cài đặt không mở đúng.</p><div class="a"><p>Tên và vị trí của màn hình cài đặt hơi khác nhau tùy nhà sản xuất. Hãy mở ứng dụng Cài đặt, tìm <b>Anbu</b> và kiểm tra trực tiếp mục quyền.</p></div></div></section></main>
 
     <aside class="sticky">
-      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">Toàn màn hình</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">Tin báo đến muộn</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">Không có số bước</button><button class="chip" type="button" data-spot="location" aria-pressed="false">Không có vị trí</button><button class="chip" type="button" data-spot="hibernation" aria-pressed="false">Cửa sổ hiện liên tục</button></div>
+      <div class="chips"><button class="chip" type="button" data-spot="all" aria-pressed="true">Toàn màn hình</button><button class="chip" type="button" data-spot="battery" aria-pressed="false">Tin báo đến muộn</button><button class="chip" type="button" data-spot="activity" aria-pressed="false">Không có số bước</button><button class="chip" type="button" data-spot="location" aria-pressed="false">Không có vị trí</button></div>
       <div class="stage">
         <div class="device" id="device">
           <div class="appbar">
@@ -454,20 +458,15 @@ footer .copy{margin-left:auto}
           </div>
         </div>
 
-        <div class="modal" id="modal" hidden>
-          <div class="dlg">
-            <p class="dlg-title" data-dialog-title></p>
-            <div class="dlg-body" data-dialog-body></div>
-            <div class="dlg-actions">
-              <button class="dlg-btn" data-key="common_later" tabindex="-1"></button>
-              <button class="dlg-btn" data-key="permission_hibernation_go_to_settings" tabindex="-1"></button>
-            </div>
-          </div>
-        </div>
       </div>
       <p class="caption">Để dễ giải thích, ba thông báo được đặt chung trên một màn hình. Trên thực tế, chúng chỉ xuất hiện từng cái một khi đúng trường hợp và sẽ biến mất sau khi xử lý xong.</p>
     </aside>
   </div>
+
+  <!-- 해외여행 — 안전 홈 화면과 무관한 주제라 2단 그리드(.cols) 밖에 둔다.
+       안에 두면 넓은 화면에서는 sticky 목업이 옆에 붙고, 좁은 화면에서는 목업이
+       이 섹션 뒤에 와서 "화면 어딘가에 여행 설정이 있다"로 읽힌다. PRD-FAQ §2 -->
+  <section class="topic travel" id="travel"><h2>Khi bạn đi du lịch nước ngoài</h2><div class="qa"><p class="q">Sau khi đến nước ngoài, gia đình tôi nhận được cảnh báo “Chú ý”.</p><div class="a"><p>Tin báo được gửi theo <strong>giờ địa phương</strong> hiển thị trên điện thoại. Nhưng trong một hai ngày đầu sau khi đến một nước khác, giờ mới chưa được chuyển đi, nên tin báo vẫn được chờ theo giờ của nước bạn vừa rời đi. Do chênh lệch múi giờ, <strong>trông như thể tin báo chưa đến</strong>: gia đình có thể nhận được cảnh báo, và điện thoại của chính bạn cũng có thể hiện lời nhắc vào lúc nửa đêm.</p><p>Bạn vẫn bình an, chỉ có giờ bị lệch. Khi tin báo đầu tiên được gửi theo giờ địa phương, mọi thứ sẽ tự trở lại bình thường.</p></div></div><div class="qa"><p class="q">Tôi có thể ngăn điều này trước không?</p><div class="a"><p>Sau khi đến nơi, <strong>hãy mở ứng dụng Anbu một lần.</strong> Ngay khi bạn mở, giờ mới được chuyển đi và từ đó tin báo sẽ theo giờ địa phương. Khi trở về, bạn cũng hãy mở một lần như vậy.</p><p>Nếu bạn đã đặt giờ Không làm phiền, khi đến nơi bạn cũng hãy mở ứng dụng một lần. Nhờ vậy, khoảng thời gian bạn chọn không nhận cảnh báo (ví dụ từ 22:00 đến 7:00) sẽ được điều chỉnh theo giờ địa phương. Nếu không mở, giờ của nước bạn đã rời đi vẫn được áp dụng, nên cảnh báo có thể reo lúc nửa đêm hoặc im lặng vào ban ngày.</p></div></div><div class="qa"><p class="q">Khi đi du lịch, tôi có cần đổi giờ gửi tin báo không?</p><div class="a"><p>Không. Giờ đã đặt được áp dụng <strong>theo nơi bạn đang ở</strong>. Nếu bạn đặt 18:00 thì khi đi du lịch, tin báo cũng được gửi lúc 18:00 giờ địa phương.</p></div></div></section>
 </div>
 
 <footer><div class="wrap">
@@ -545,34 +544,12 @@ document.querySelector('[data-check-body]').textContent =
 document.querySelector('[data-daily-time]').textContent =
   S.heartbeat_daily_time.replace('@time','18:00');
 
-// 제목의 highlight 부분만 강조 — 앱 _buildHibernationTitle과 동일 규칙
-(function(){
-  var t = S.permission_hibernation_title, h = S.permission_hibernation_highlight;
-  var el = document.querySelector('[data-dialog-title]'), i = t.indexOf(h);
-  if (i < 0) { el.textContent = t; return; }
-  el.textContent = '';
-  el.append(t.slice(0, i));
-  var m = document.createElement('mark'); m.textContent = h; el.append(m);
-  el.append(t.slice(i + h.length));
-})();
-
-// 본문 \n\n → 문단
-(function(){
-  var body = document.querySelector('[data-dialog-body]');
-  S.permission_hibernation_message.split('\n\n').forEach(function(p){
-    var el = document.createElement('p'); el.textContent = p.trim(); body.append(el);
-  });
-})();
-
 // 스포트라이트
-var device = document.getElementById('device'), modal = document.getElementById('modal');
+var device = document.getElementById('device');
 var chips = document.querySelectorAll('.chip');
 
 function show(spot){
-  var isDialog = spot === 'hibernation';
-  // 다이얼로그일 때는 스크림이 화면을 덮으므로 별도 dim을 걸지 않는다
-  device.classList.toggle('dimmed', spot !== 'all' && !isDialog);
-  modal.hidden = !isDialog;
+  device.classList.toggle('dimmed', spot !== 'all');
   document.querySelectorAll('.spot').forEach(function(el){
     el.classList.toggle('on', el.dataset.spot === spot);
   });

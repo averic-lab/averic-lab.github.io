@@ -13,7 +13,6 @@
   "spot_battery": "El aviso llega tarde",
   "spot_activity": "No hay pasos",
   "spot_location": "No hay ubicación",
-  "spot_hibernation": "Una ventana aparece siempre",
 
   "sections": [
     {
@@ -100,32 +99,6 @@
       ]
     },
     {
-      "id": "hibernation",
-      "spot": "hibernation",
-      "heading": "Aparece una ventana cada vez que abro la aplicación",
-      "items": [
-        {
-          "q": "Cada vez que abro la aplicación aparece una ventana que dice «@permission_hibernation_title».",
-          "a": [
-            "Android tiene una función que retira automáticamente los permisos de las aplicaciones que llevan mucho tiempo sin abrirse. Anbu es <strong>una aplicación que funciona sin necesidad de abrir la pantalla</strong>, lo que precisamente la convierte en candidata; y si los permisos desaparecen, el envío se detiene sin que se note.",
-            "Toque [@permission_hibernation_go_to_settings] y desactívelo una vez: esta ventana ya no volverá a aparecer."
-          ]
-        },
-        {
-          "q": "Aparece siempre. ¿Puedo tocar simplemente [@common_later]?",
-          "a": [
-            "Seguirá apareciendo cada vez que abra la aplicación hasta que desactive el ajuste. Como es difícil darse cuenta de que los avisos se han detenido, lo recordamos de forma repetida."
-          ]
-        },
-        {
-          "q": "Yo también sigo el bienestar de mi familia, pero a mí no me aparece esta ventana.",
-          "a": [
-            "Quien además vela por sus familiares abre la aplicación a menudo para consultar los avisos, así que rara vez llega a la situación en la que los permisos se retiran automáticamente. Por eso no le mostramos esta ventana."
-          ]
-        }
-      ]
-    },
-    {
       "id": "etc",
       "spot": null,
       "heading": "Otras cuestiones",
@@ -140,6 +113,31 @@
     }
   ],
 
+  "travel": {
+    "heading": "Cuando viaja al extranjero",
+    "items": [
+      {
+        "q": "Después de llegar al extranjero, mi familia recibió un aviso de «@notifications_level_caution».",
+        "a": [
+          "Los avisos se envían según la <strong>hora local</strong> que muestra su teléfono. Pero durante el primer o los dos primeros días tras llegar a otro país, la nueva hora aún no se ha transmitido, así que el aviso se sigue esperando con la hora del país del que salió. Por la diferencia horaria, <strong>parece que el aviso no ha llegado</strong>: su familia puede recibir una notificación y su propio teléfono puede mostrar un recordatorio de madrugada.",
+          "Usted está bien; solo la hora está desfasada. En cuanto se envía el primer aviso con la hora local, todo vuelve a la normalidad por sí solo."
+        ]
+      },
+      {
+        "q": "¿Puedo evitarlo de antemano?",
+        "a": [
+          "Al llegar, <strong>abra una vez la aplicación Anbu.</strong> En cuanto la abre, se transmite la nueva hora y a partir de ahí los avisos siguen la hora local. Ábrala también una vez cuando regrese.",
+          "Si tiene configurado un horario de «No molestar», abra también la aplicación una vez al llegar. Así, las horas en las que decidió no recibir notificaciones (por ejemplo, de 22:00 a 7:00) se ajustan a la hora local. Si no la abre, se sigue aplicando la hora del país de salida y las notificaciones pueden sonar en plena noche o quedar en silencio durante el día."
+        ]
+      },
+      {
+        "q": "¿Tengo que cambiar la hora del aviso durante el viaje?",
+        "a": [
+          "No. La hora que fijó se aplica <strong>al lugar donde se encuentra ahora</strong>. Si la fijó a las 18:00, durante el viaje el aviso también se envía a las 18:00 hora local."
+        ]
+      }
+    ]
+  },
   "footer_home": "Inicio",
   "footer_privacy": "Política de privacidad",
   "footer_terms": "Términos del servicio",

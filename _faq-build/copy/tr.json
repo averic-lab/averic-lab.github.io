@@ -13,7 +13,6 @@
   "spot_battery": "Haber gecikiyor",
   "spot_activity": "Adım yok",
   "spot_location": "Konum yok",
-  "spot_hibernation": "Pencere sürekli çıkıyor",
 
   "sections": [
     {
@@ -100,32 +99,6 @@
       ]
     },
     {
-      "id": "hibernation",
-      "spot": "hibernation",
-      "heading": "Uygulamayı her açtığımda bir pencere çıkıyor",
-      "items": [
-        {
-          "q": "Uygulamayı her açtığımda “@permission_hibernation_title” penceresi çıkıyor.",
-          "a": [
-            "Android'de, uzun süre açılmayan uygulamaların izinlerini otomatik olarak geri alan bir özellik vardır. Anbu <strong>ekranı açmadan da çalışan bir uygulama</strong> olduğu için tam da bu duruma düşmesi kolaydır; izinler kaybolduğunda haber gönderimi sessizce durur.",
-            "[@permission_hibernation_go_to_settings] düğmesine dokunup bir kez kapatırsanız bu pencere bir daha çıkmaz."
-          ]
-        },
-        {
-          "q": "Her seferinde çıkıyor. Sadece [@common_later] düğmesine dokunabilir miyim?",
-          "a": [
-            "Ayarı kapatana kadar uygulamayı her açtığınızda çıkmaya devam eder. Gönderimin durduğunu fark etmek zor olduğu için tekrar tekrar hatırlatıyoruz."
-          ]
-        },
-        {
-          "q": "Ben de ailemin haberlerini takip ediyorum ama bende bu pencere hiç çıkmıyor.",
-          "a": [
-            "Aynı zamanda yakınlarını gözeten kişi, bildirimleri görmek için uygulamayı sık açtığından izinlerin otomatik geri alındığı duruma nadiren düşer. Bu nedenle bu pencere size gösterilmez."
-          ]
-        }
-      ]
-    },
-    {
       "id": "etc",
       "spot": null,
       "heading": "Diğer",
@@ -140,6 +113,31 @@
     }
   ],
 
+  "travel": {
+    "heading": "Yurt dışına seyahat ederken",
+    "items": [
+      {
+        "q": "Yurt dışına vardıktan sonra aileme “@notifications_level_caution” uyarısı gitti.",
+        "a": [
+          "Haber, telefonunuzda görünen <strong>yerel saate</strong> göre gönderilir. Ancak başka bir ülkeye vardıktan sonraki ilk bir iki gün yeni saat henüz iletilmediği için haber hâlâ ayrıldığınız ülkenin saatine göre beklenir. Saat farkı yüzünden <strong>haber henüz gelmemiş gibi görünür</strong>; ailenize uyarı gidebilir, sizin telefonunuzda da gece yarısı bir hatırlatma çıkabilir.",
+          "Siz iyisiniz, yalnızca saat kaymış durumda. Yerel saate göre ilk haber gönderildiğinde her şey kendiliğinden normale döner."
+        ]
+      },
+      {
+        "q": "Bunu önceden önleyebilir miyim?",
+        "a": [
+          "Vardıktan sonra <strong>Anbu uygulamasını bir kez açın.</strong> Açtığınız anda yeni saat iletilir ve o andan itibaren haber yerel saate göre gönderilir. Döndüğünüzde de aynı şekilde bir kez açın.",
+          "Rahatsız Etmeyin saatlerini ayarladıysanız, vardığınızda uygulamayı yine bir kez açın. Böylece uyarı almamayı seçtiğiniz saatler (örneğin 22:00 ile 07:00 arası) yerel saate göre ayarlanır. Açmazsanız ayrıldığınız ülkenin saati geçerli kalır; uyarılar gece yarısı çalabilir ya da gündüz sessiz kalabilir."
+        ]
+      },
+      {
+        "q": "Seyahatte haber saatini değiştirmem gerekir mi?",
+        "a": [
+          "Hayır. Belirlediğiniz saat <strong>şu an bulunduğunuz yerin saatine</strong> göre uygulanır. 18:00 olarak ayarladıysanız seyahatte de haber yerel saatle 18:00'de gönderilir."
+        ]
+      }
+    ]
+  },
   "footer_home": "Ana sayfa",
   "footer_privacy": "Gizlilik Politikası",
   "footer_terms": "Kullanım Koşulları",

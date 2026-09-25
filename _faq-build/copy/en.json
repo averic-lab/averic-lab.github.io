@@ -13,7 +13,6 @@
   "spot_battery": "Check-in is late",
   "spot_activity": "No step count",
   "spot_location": "No location",
-  "spot_hibernation": "A window keeps appearing",
 
   "sections": [
     {
@@ -100,32 +99,6 @@
       ]
     },
     {
-      "id": "hibernation",
-      "spot": "hibernation",
-      "heading": "A window appears every time I open the app",
-      "items": [
-        {
-          "q": "Every time I open the app, a window saying “@permission_hibernation_title” appears.",
-          "a": [
-            "Android has a feature that removes permissions from apps you haven't opened in a long time. Anbu is <strong>an app that works without you opening the screen</strong>, which actually makes it a likely target — and if the permissions go away, check-ins quietly stop.",
-            "Tap [@permission_hibernation_go_to_settings] and turn it off once, and this window will no longer appear."
-          ]
-        },
-        {
-          "q": "It shows up every time. Can I just tap [@common_later]?",
-          "a": [
-            "It will keep appearing every time you open the app until you turn the setting off. Because a stopped check-in is hard to notice, we keep reminding you."
-          ]
-        },
-        {
-          "q": "I also keep an eye on my family's check-ins, but I never see this window.",
-          "a": [
-            "If you are also watching over family, you open the app often to check alerts, so you rarely end up in a situation where permissions get removed automatically. That is why this window is not shown to you."
-          ]
-        }
-      ]
-    },
-    {
       "id": "etc",
       "spot": null,
       "heading": "Anything else",
@@ -140,6 +113,31 @@
     }
   ],
 
+  "travel": {
+    "heading": "When you travel abroad",
+    "items": [
+      {
+        "q": "After I arrived abroad, my family got a “@notifications_level_caution” alert.",
+        "a": [
+          "Anbu sends check-ins by the <strong>local time</strong> shown on your phone. But for the first day or two after you arrive in another country, the new time hasn't been passed on yet, so the check-in is still expected on the time of the country you left. Because of the time difference, <strong>it looks as if the check-in hasn't arrived</strong>, so your family may get an alert, and your own phone may show a check-in reminder in the middle of the night.",
+          "You are fine — only the time is off. Once the first check-in goes out on local time, everything returns to normal on its own."
+        ]
+      },
+      {
+        "q": "Can I prevent this?",
+        "a": [
+          "After you arrive, <strong>please open the Anbu app once.</strong> The moment you open it, the new time is passed on, and from then on check-ins follow local time. Please open it once again when you come back, too.",
+          "If you have set Do Not Disturb hours, please also open the app once when you arrive. That way the hours you chose not to get alerts (for example, 10 PM to 7 AM) move to local time. If you don't, the time of the country you left stays in effect, so alerts may ring in the middle of the night or stay silent during the day."
+        ]
+      },
+      {
+        "q": "Do I need to change the check-in time while traveling?",
+        "a": [
+          "No. The time you set applies to <strong>wherever you are now</strong>. If you set 6 PM, the check-in goes out at 6 PM local time while you travel, too."
+        ]
+      }
+    ]
+  },
   "footer_home": "Home",
   "footer_privacy": "Privacy Policy",
   "footer_terms": "Terms of Service",
