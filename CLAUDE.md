@@ -92,6 +92,11 @@ Search Console 「적절한 표준 태그가 포함된 대체 페이지 12건」
 - 영상 파일: `media/shorts/<언어>/<id>.mp4` + 포스터 `.jpg`. 검토 페이지도 같은 파일을 쓴다.
   만드는 법은 `_shorts-build/README.md`.
 - **유튜브 전달**: 새 편·다국어판을 만들면 공유 드라이브(`내 드라이브/안부 쇼츠/`)에 mp4를 복사하고 `upload.json`에 항목을 추가한다(설명·태그는 사용자 확인 후). 규칙은 `_shorts-build/README.md` 「유튜브 전달」. 홈페이지 영상은 공개된 유튜브 영상으로 바꿀 예정이다(미구현).
+- ⚠️ **푸시 전 확인 (홈페이지 유튜브 재생이 구현되기 전까지)**: 공유 드라이브의 `publish.json`
+  (`~/Library/CloudStorage/GoogleDrive-anbucheck1018@gmail.com/내 드라이브/안부 쇼츠/publish.json`)에
+  `status`가 `unlisted`/`public`인 편이 있으면, 푸시 전에 **사용자에게 알린다** — 그 편부터 홈페이지를 유튜브 재생으로
+  바꿀 차례라는 뜻이다(`i18n/build.py`가 publish.json 을 읽게 구현, 못 읽으면 경고만 하고 기존 mp4 로 빌드).
+  구현되면 이 항목은 지운다.
 - 기본 컨트롤 대신 **가운데 버튼 하나**(재생 → 재생 중 숨김 → 끝나면 다시 보기). 영상을 탭하면 일시정지,
   한 편을 재생하면 다른 편은 멈춘다. 동작은 `site.js` 「숏폼 영상」 블록, 상태 클래스 `.is-playing`/`.is-ended`.
   버튼 이름(재생/다시 보기)과 영상 제목은 `shorts.json`의 언어별 값.
