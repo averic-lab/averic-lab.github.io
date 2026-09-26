@@ -166,9 +166,23 @@
     function start() {
       vboxes.forEach(function (o) { if (o !== box) o.querySelector('video').pause(); });
       if (v.ended) v.currentTime = 0;
+      if (v.readyState < 3) loading(true);
       var p = v.play();
-      if (p && p.catch) p.catch(function () {});
+      if (p && p.catch) p.catch(function () { loading(false); });
     }
+    // 로딩 표시: 포스터를 받는 동안 + 재생을 눌렀는데 아직 첫 프레임이 없거나 버퍼링 중일 때
+    function loading(on) { box.classList.toggle('is-loading', on); }
+    var poster = v.getAttribute('poster');
+    if (poster) {
+      var img = new Image();
+      img.onload = img.onerror = function () { if (v.paused || v.readyState >= 3) loading(false); };
+      img.src = poster;
+      if (!img.complete) loading(true);
+    }
+    v.addEventListener('waiting', function () { loading(true); });
+    v.addEventListener('playing', function () { loading(false); });
+    v.addEventListener('pause', function () { loading(false); });
+    v.addEventListener('error', function () { loading(false); });
     btn.addEventListener('click', start);
     v.addEventListener('click', function () { if (v.paused) start(); else v.pause(); });
     v.addEventListener('play', function () { box.classList.add('is-playing'); box.classList.remove('is-ended'); });

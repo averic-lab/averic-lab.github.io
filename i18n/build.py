@@ -254,10 +254,10 @@ def dawn_tail(code, strings):
     if not cfg or not cfg.get("videos"):
         return f'<p class="q3 reveal">{strings["dawn_q3_html"]}</p>'
     figs = video_figs(code, cfg["videos"], cfg["play"], cfg["replay"])
-    more = (f'\n    <a class="shorts-more reveal" href="/{code}/shorts.html">{strings["shorts_more"]}'
+    more = (f'\n    <a class="shorts-more" href="/{code}/shorts.html">{strings["shorts_more"]}'
             '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" '
             'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>')
-    return f'<div class="dawn-shorts vlist reveal">\n{figs}\n    </div>{more}'
+    return f'<div class="dawn-shorts vlist">\n{figs}\n    </div>{more}'
 
 
 def asset_ver():
