@@ -108,7 +108,8 @@ def build_mix(video):
     for c in cues["sfx"]:
         f = os.path.join(SFX_DIR, c["file"])
         on = onset(f)
-        length = min(duration(f) - on, SFX_MAX_LEN)
+        # 기본 2초 상한. 타이핑처럼 화면 동작 길이에 맞춰야 하는 소리는 cue 의 "len"(초)로 늘린다
+        length = min(duration(f) - on, float(c.get("len", SFX_MAX_LEN)))
         sfx.append({**c, "path": f, "on": on, "len": length, "t": float(c["t"])})
 
     # 1) 배경음악 트랙(더킹 포함)

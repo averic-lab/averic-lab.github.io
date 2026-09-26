@@ -8,7 +8,8 @@
     {"id": "living-alone", "page": "c.html", "title": "t_c", "date": "2026-09-24"},
     {"id": "busy-couple", "page": "d.html", "title": "t_d", "date": "2026-09-24"},
     {"id": "neighbor-friends", "page": "e.html", "title": "t_e", "date": "2026-09-24"},
-    {"id": "solo-trip", "page": "f.html", "title": "t_f", "date": "2026-09-25"}
+    {"id": "solo-trip", "page": "f.html", "title": "t_f", "date": "2026-09-25"},
+    {"id": "lost-mom", "page": "g.html", "title": "t_g", "date": "2026-09-26"}
   ],
   "langs": {
     "ko": {
@@ -38,7 +39,12 @@
       "f3": "여기는 초저녁인데,<br>집은 한밤중이겠지?", "f4": "아침에 눈을 뜨면<br>안부가 먼저 와 있다.",
       "f5": "즐겁게 여행하고<br>있구나.",
       "f_q1": "세계 어디를 가도", "f_q2": "<em>현지 시각에 맞게<br>안부가 전달됩니다.</em>",
-      "f_alias": "아들", "f_me": "내 휴대폰", "f_mom": "엄마의 휴대폰"
+      "f_alias": "아들", "f_me": "내 휴대폰", "f_mom": "엄마의 휴대폰",
+      "t_g": "길 잃은 엄마", "g1": "처음 와 본<br>동네.", "g2": "왔던 길이<br>어디였더라?",
+      "g3": "그럴 땐<br>이 버튼 하나.", "g4": "엄마가 있는 곳이<br>바로 보였다.",
+      "g_q1": "나를 위해<br>금방 달려와 준 딸이", "g_q2": "<em>너무 반가웠다.</em>",
+      "g_msg": "여기 어딘지 모르겠어", "g_alias": "엄마",
+      "g_mom": "엄마의 휴대폰", "g_daughter": "딸의 휴대폰"
     },
     "en": {
       "t_a": "Mom isn't picking up", "t_b": "Our daughter abroad", "play": "Play", "replay": "Replay",

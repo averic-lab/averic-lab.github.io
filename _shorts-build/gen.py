@@ -26,7 +26,12 @@ APP_KEYS = ["app_name", "app_guardian_title", "guardian_today_summary", "guardia
             "guardian_chart_y_axis_steps", "guardian_chart_x_axis_last_7_days",
             "guardian_last_check_now", "add_subject_button", "noti_steps_body",
             "add_subject_title", "add_subject_code_label", "add_subject_alias_label", "add_subject_connect",
-            "add_subject_success"]
+            "add_subject_success",
+            # 긴급 도움 요청(시장에서 길 잃은 날 편) — 앱 화면 그대로
+            "subject_home_emergency_button", "subject_home_emergency_desc",
+            "subject_home_emergency_confirm_title", "subject_home_emergency_confirm_body",
+            "subject_home_emergency_confirm_send", "common_cancel", "emergency_message_hint",
+            "emergency_sent_with_location", "notifications_view_location", "emergency_map_title"]
 SERVER_MESSAGES = os.path.join(os.path.dirname(ROOT), "anbucheck-server", "i18n", "messages.py")
 MEDIA = os.path.join(ROOT, "media", "shorts")
 PREVIEW = os.path.join(ROOT, "preview", "shorts")
@@ -86,6 +91,13 @@ def lang_data(code, cfg, site_tr, msgs):
         "as_success": a["add_subject_success"],
         "steps_tpl": a["noti_steps_body"],
         "push_title": msgs[locale]["push_auto_report_title"],
+        "em_btn": a["subject_home_emergency_button"], "em_desc": a["subject_home_emergency_desc"],
+        "em_title": a["subject_home_emergency_confirm_title"],
+        "em_body": a["subject_home_emergency_confirm_body"].replace("\n", "<br>"),
+        "em_send": a["subject_home_emergency_confirm_send"], "em_cancel": a["common_cancel"],
+        "em_hint": a["emergency_message_hint"], "em_sent": a["emergency_sent_with_location"],
+        "view_loc": a["notifications_view_location"], "map_title": a["emergency_map_title"],
+        "push_em_title": msgs[locale]["push_emergency_title"],
         "q1": q1.strip(), "q2": q2.strip(),
         # B — 부모 쪽 밤 11:40 과 그때 자녀 쪽 시각(실제 시간대로 계산), 보낸 메시지 21:12
         "b_now": utc_iso(s["home_tz"], 23, 40), "b_sent": utc_iso(s["home_tz"], 21, 12),

@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>숏폼 G — 길 잃은 엄마</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="shorts.css">
+<style>
+  /* 해 질 녘 도심 사거리를 위에서 비스듬히 내려다본다(아이소메트릭). 차와 사람이 흐르는데
+     모퉁이의 작은 보라색 사람(엄마)만 이쪽저쪽 가다 멈춘다 → 엄마가 긴급 버튼으로 위치와 한마디를 보낸다 →
+     딸의 폰: 알림 → 알림 목록 [위치 보기] → 같은 사거리 지도에 핀 → 거리가 비고 횡단보도 양쪽에 엄마와 딸,
+     초록불에 딸이 건너와 만난다. 얼굴·표정은 그리지 않는다(멀리서 본 미니어처).
+     긴급 요청은 "도움이 필요할 때만" — 길을 잃은 상황이라 맞는 사용이다.
+     움직임은 전부 render(ms) → extra(t): 신호·차·사람·창문 불빛·저묾·줌·타이핑·핀·만남. */
+  .scn { position: absolute; inset: 0; opacity: 0; }
+  .scn svg { display: block; width: 540px; height: 960px; }
+  .s-city { transform-origin: 150px 470px; }
+  .shade { position: absolute; inset: 0; background: #070918; opacity: 0; }
+  .cap { z-index: 8; }
+
+  .owner { position: absolute; left: 42px; z-index: 6; display: inline-flex; align-items: center; gap: 7px;
+    padding: 6px 13px 6px 10px; border-radius: 16px; background: rgba(10,12,40,.55); border: 1px solid rgba(255,255,255,.22);
+    font-size: 15px; font-weight: 600; color: #f1e6d6; }
+  .owner svg { width: 15px; height: 15px; flex: none; }
+  .o1, .o3 { top: 256px; }
+
+  /* 엄마 폰 — 안전 홈의 [도움이 필요해요] 버튼(긴급 색 #FFEBEE / #B71C1C) */
+  .emb { left: 42px; top: 296px; width: 400px; z-index: 5; border-radius: 18px; padding: 14px 18px;
+    background: #FFEBEE; border: 2px solid #B71C1C; display: flex; align-items: center; gap: 14px; transform-origin: center; }
+  .emb .ic { width: 44px; height: 44px; flex: none; border-radius: 50%; background: #B71C1C; color: #fff;
+    display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .emb .t1 { font-size: 21px; font-weight: 800; color: #B71C1C; }
+  .emb .t2 { font-size: 13px; color: #8a3a3a; margin-top: 2px; }
+  .ring { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; z-index: 6; border-radius: 50%;
+    border: 3px solid rgba(183,28,28,.7); pointer-events: none; }
+
+  /* 확인 창 — 앱 문구 그대로, 함께 전할 말 칸 */
+  .dlg { left: 42px; top: 404px; width: 400px; z-index: 6; border-radius: 22px; padding: 18px 20px 16px; background: #fff; }
+  .dlg .ttl { font-size: 19px; font-weight: 800; color: #B71C1C; }
+  .dlg .bd { margin-top: 6px; font-size: 13.5px; line-height: 1.45; color: #555a66; }
+  .dlg .in { margin-top: 12px; padding: 10px 12px; border-radius: 12px; border: 1.5px solid #D8DCE8; font-size: 17px;
+    font-weight: 600; min-height: 24px; color: #1a1c1c; }
+  .dlg .in .hint { color: #a3a8b4; font-weight: 500; }
+  .dlg .in .caret { display: inline-block; width: 2px; height: 19px; margin-inline-start: 1px; vertical-align: -3px; background: #B71C1C; }
+  .dlg .row { display: flex; justify-content: flex-end; align-items: center; gap: 14px; margin-top: 14px; }
+  .dlg .cancel { font-size: 15px; font-weight: 600; color: #757575; }
+  .dlg .send { padding: 10px 16px; border-radius: 14px; background: #B71C1C; color: #fff; font-size: 15px; font-weight: 700; }
+  .tst { left: 42px; top: 702px; width: 400px; z-index: 7; border-radius: 14px; padding: 11px 16px; background: #1f2a24;
+    color: #d6f5df; font-size: 14.5px; font-weight: 600; }
+
+  /* 딸 폰 — 긴급 알림(실제 서버 문구: 제목 + "별칭 · 원문") */
+  .fpush { left: 42px; top: 296px; width: 340px; --base: scale(1.25); transform-origin: top left; }
+  .fpush .now { margin-inline-start: auto; font-size: 10.5px; color: #9AA0AE; }
+  .fpush .ti { color: #B71C1C; }
+  /* 알림 목록의 긴급 카드 — [🗺️ 위치 보기]가 지도로 가는 유일한 길 */
+  .ncard { left: 42px; top: 440px; width: 400px; z-index: 5; border-radius: 18px; padding: 14px 18px 16px;
+    background: #fff; border-inline-start: 6px solid #E53935; }
+  .ncard .hd { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #E53935; }
+  .ncard .nm { margin-top: 6px; font-size: 17px; font-weight: 800; }
+  .ncard .ms { margin-top: 2px; font-size: 15px; color: #444; }
+  .ncard .vl { display: inline-block; margin-top: 12px; padding: 8px 14px; border-radius: 12px; background: #FDECEA;
+    color: #B71C1C; font-size: 14px; font-weight: 700; transform-origin: center; }
+  /* 긴급 위치 화면 — 특정 지도 앱을 흉내 내지 않은 단순한 그림 지도 */
+  .mapc { left: 42px; top: 440px; width: 400px; z-index: 5; border-radius: 18px; overflow: hidden; background: #fff; }
+  .mapc .hd { padding: 12px 16px; font-size: 16px; font-weight: 800; }
+  .mapc svg { display: block; width: 400px; height: 230px; }
+
+  /* 엔딩 — 한 문장을 나눠 보여주므로 줄 사이를 붙인다(흐름 배치) */
+  .end { padding-top: 270px; }
+  .end .q { position: relative; top: auto; left: auto; right: auto; margin: 0 64px 0 40px; }
+  .end .q2 { margin-top: 6px; }
+</style></head>
+<body><div class="v">
+
+  <!-- ① 해 질 녘 도심 사거리(위에서 비스듬히) — 도형은 전부 스크립트가 투영해 그린다 -->
+  <div class="scn s-city">
+    <svg viewBox="0 0 540 960" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="cSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b3f86"/><stop offset=".6" stop-color="#9a6a9a"/><stop offset="1" stop-color="#f3a77a"/></linearGradient>
+        <radialGradient id="cGlow"><stop offset="0" stop-color="#ffd9a0" stop-opacity=".6"/><stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/></radialGradient>
+        <radialGradient id="cVig" cx=".5" cy=".5" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".5"/></radialGradient>
+      </defs>
+      <rect width="540" height="960" fill="url(#cSky)"/>
+      <g class="ground"></g>
+      <g class="bback"></g>
+      <g class="dyn"></g>
+      <g class="bfront"></g>
+      <rect class="night" width="540" height="960" fill="#0d1035" opacity="0" style="mix-blend-mode:multiply"/>
+      <g class="glows"></g>
+      <g class="figs"></g>
+      <rect width="540" height="960" fill="url(#cVig)"/>
+    </svg>
+  </div>
+
+  <!-- ② 딸의 오후 — 창가 책상, 노트북, 머그잔 -->
+  <div class="scn s-home">
+    <svg viewBox="0 0 540 960" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2d5a"/><stop offset="1" stop-color="#3a3d72"/></linearGradient>
+        <linearGradient id="hSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a5a98"/><stop offset="1" stop-color="#e8a47e"/></linearGradient>
+      </defs>
+      <rect width="540" height="960" fill="url(#hWall)"/>
+      <rect x="60" y="250" width="420" height="300" rx="8" fill="#23264e"/>
+      <rect x="72" y="262" width="396" height="276" fill="url(#hSky)"/>
+      <g class="cloud" fill="#fff" opacity=".5"><ellipse cx="160" cy="320" rx="46" ry="14"/><ellipse cx="190" cy="312" rx="30" ry="12"/></g>
+      <path d="M72 538 V470 h40 v-30 h36 v50 h30 v-80 h44 v90 h34 v-40 h40 v20 h36 v-60 h50 v70 h46 V538 Z" fill="#4a4f80"/>
+      <rect x="268" y="262" width="5" height="276" fill="#23264e"/>
+      <rect y="640" width="540" height="24" fill="#5b4431"/>
+      <rect y="664" width="540" height="296" fill="#1e2044"/>
+      <path d="M150 640 L178 560 H330 L358 640 Z" fill="#c9ccd8"/><rect x="186" y="570" width="136" height="60" fill="#8fa3c8"/>
+      <rect x="400" y="596" width="36" height="44" rx="6" fill="#e8e4dc"/><path d="M436 606 c14 0 14 22 0 22" stroke="#e8e4dc" stroke-width="5" fill="none"/>
+      <g class="msteam" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"><path d="M410 588 c-6 -10 6 -16 0 -26"/><path d="M424 586 c-6 -10 6 -16 0 -26"/></g>
+      <rect x="40" y="580" width="44" height="60" rx="6" fill="#4d7a5a"/><path d="M62 580 c-20 -40 -10 -60 0 -70 c10 10 20 30 0 70" fill="#6fae6a"/>
+    </svg>
+  </div>
+  <div class="shade"></div>
+
+  <p class="cap" data-t="-1,3.4" data-fx="up" data-h="g1"></p>
+  <p class="cap" data-t="3.6,7.0" data-fx="up" data-h="g2"></p>
+  <p class="cap" data-t="7.2,12.8" data-fx="up" data-h="g3"></p>
+  <p class="cap" data-t="13.0,17.4" data-fx="up" data-h="g4"></p>
+
+  <!-- 엄마 폰: 버튼 → 확인 창(함께 전할 말) → 전송 -->
+  <div class="owner o1" data-t="7.4,12.8" data-fx="up"><svg viewBox="0 0 24 24" fill="none" stroke="#f1e6d6" stroke-width="2"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3" stroke-linecap="round"/></svg><span data-k="g_mom"></span></div>
+  <div class="emb float" data-t="7.4,12.8" data-fx="pop"><span class="ic">🚨</span><div><div class="t1" data-k="em_btn"></div><div class="t2" data-k="em_desc"></div></div></div>
+  <span class="ring" data-t="7.9,8.5" data-fx="pop"></span>
+  <div class="dlg float" data-t="8.4,12.8" data-fx="pop">
+    <div class="ttl" data-k="em_title"></div>
+    <div class="bd" data-h="em_body"></div>
+    <div class="in"><span class="typed"></span><span class="caret"></span><span class="hint" data-k="em_hint"></span></div>
+    <div class="row"><span class="cancel" data-k="em_cancel"></span><span class="send" data-k="em_send"></span></div>
+  </div>
+  <div class="tst float" data-t="11.8,12.8" data-fx="up">✓&nbsp;<span data-k="em_sent"></span></div>
+
+  <!-- 딸 폰: 긴급 알림 → 알림 목록 카드 → 긴급 위치 -->
+  <div class="owner o3" data-t="13.1,17.4" data-fx="up"><svg viewBox="0 0 24 24" fill="none" stroke="#f1e6d6" stroke-width="2"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3" stroke-linecap="round"/></svg><span data-k="g_daughter"></span></div>
+  <div class="push float fpush" data-t="13.3,17.4" data-fx="down">
+    <div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z"/></svg></span><span class="app" data-k="app_name"></span><span class="now" data-k="now"></span></div>
+    <div class="ti" data-k="push_em_title"></div>
+    <div class="bo t-push"></div>
+  </div>
+  <div class="ncard float" data-t="14.4,15.6" data-fx="up">
+    <div class="hd">🚨 <span data-k="push_em_title"></span></div>
+    <div class="nm" data-k="g_alias"></div>
+    <div class="ms" data-k="g_msg"></div>
+    <span class="vl" data-k="view_loc"></span>
+  </div>
+  <div class="mapc float" data-t="15.6,17.4" data-fx="pop">
+    <div class="hd" data-k="map_title"></div>
+    <svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg">
+      <rect width="400" height="230" fill="#e9efe4"/>
+      <g fill="#dde3d6"><rect x="12" y="12" width="140" height="68" rx="4"/><rect x="248" y="12" width="140" height="68" rx="4"/>
+        <rect x="12" y="150" width="140" height="68" rx="4"/><rect x="248" y="150" width="140" height="68" rx="4"/></g>
+      <g stroke="#fff" stroke-width="40"><path d="M-10 115 H410"/><path d="M200 -10 V240"/></g>
+      <g stroke="#e9efe4" stroke-width="4" stroke-dasharray="6 6"><path d="M150 96 V134 M250 96 V134 M180 88 H220 M180 142 H220"/></g>
+      <circle class="rip" cx="168" cy="150" r="10" fill="none" stroke="#E53935" stroke-width="3" opacity="0"/>
+      <g class="pin"><path d="M168 150 C152 128 152 110 168 106 C184 110 184 128 168 150 Z" fill="#E53935"/><circle cx="168" cy="120" r="6" fill="#fff"/></g>
+    </svg>
+  </div>
+
+</div>
+<script src="engine.js"></script>
+<script>
+  window.DURATION = 28.0;
+  // 효과음 — t 는 화면에 그 요소가 나타나는(또는 눌리는) 시각. 크기·앞 무음 보정은 audio.py.
+  window.SFX = [
+    { t: 7.9,  file: '4_탭_클릭/interface-device-click.mp3' },                             // 버튼 탭
+    { t: 8.4,  file: '1_푸시알림/dry-pop-up-notification-alert.mp3' },                     // 확인 창
+    { t: 8.9,  file: '6_타이핑/phone-soft-typing-on-a-digital-keyboard.mp3', len: 2.2 },   // 메시지 입력(글자가 다 찍히는 시간)
+    { t: 11.5, file: '4_탭_클릭/interface-device-click.mp3', len: 0.25 },                 // [긴급 요청 보내기]
+    { t: 11.8, file: '5_완료_확인/confirmation-tone.mp3' },                                 // 전송됨
+    { t: 13.3, file: '1_푸시알림/bell-notification.mp3', duck: true },                      // 딸 폰 긴급 알림
+    { t: 15.2, file: '4_탭_클릭/interface-device-click.mp3', len: 0.25 },                 // [위치 보기]
+    { t: 15.8, file: '1_푸시알림/dry-pop-up-notification-alert.mp3' },                     // 지도에 핀
+    { t: 20.4, file: '1_푸시알림/bubble-pop-up-alert-notification.mp3' },                  // 만남 — 하트
+    { t: 25.2, file: '3_페이지_넘김/page-forward-single-chime.mp3' },                       // 엔딩 로고(21.2 + 4.0)
+  ];
+  fillText();
+  const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
+  // 서버 실제 형식: 본문을 대상자 원문으로 치환하고 앞에 보호자가 붙인 별칭
+  $('.t-push').textContent = `${L.g_alias} · ${L.g_msg}`;
+  mountEnding(21.2, L.g_q1, L.g_q2);
+
+  const NS = 'http://www.w3.org/2000/svg';
+  const mk = (tag, a, parent) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; };
+  let seed = 7; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+  const ramp = (t, a, b) => ease((t - a) / (b - a));
+  const lin = (t, a, b) => Math.min(Math.max((t - a) / (b - a), 0), 1);
+
+  // ── 투영: 바닥 좌표(x, y) + 높이 h → 화면. 보는 쪽은 +x, +y 방향(오른쪽 아래·왼쪽 아래 면이 보인다)
+  const S = (x, y, h = 0) => [270 + (x - y) * 0.866, 470 + (x + y) * 0.5 - h];
+  const pts = (arr) => arr.map(([x, y, h]) => S(x, y, h).map(v => v.toFixed(1)).join(',')).join(' ');
+  const quad = (p, x0, y0, x1, y1, fill, h = 0) => mk('polygon', { points: pts([[x0, y0, h], [x1, y0, h], [x1, y1, h], [x0, y1, h]]), fill }, p);
+  const W = 60;                       // 도로 반폭 — 사거리는 |x|,|y| < 60, 보도는 60~80
+
+  // 바닥: 보도 → 차도 → 횡단보도·정지선·차선
+  const ground = $('.ground');
+  quad(ground, -1400, -1400, 1400, 1400, '#8a8196');
+  quad(ground, -1400, -W, 1400, W, '#3e3b52');
+  quad(ground, -W, -1400, W, 1400, '#3e3b52');
+  const zebra = (x0, y0, x1, y1, alongX) => {           // 줄무늬: 차가 달리는 방향과 나란히
+    for (let k = 0; k < 8; k++) {
+      if (alongX) { const y = -W + 6 + k * 15; quad(ground, x0, y, x1, y + 8, '#d8d4dc'); }
+      else { const x = -W + 6 + k * 15; quad(ground, x, y0, x + 8, y1, '#d8d4dc'); }
+    }
+  };
+  zebra(-94, 0, -68, 0, true); zebra(68, 0, 94, 0, true); zebra(0, -94, 0, -68, false); zebra(0, 68, 0, 94, false);
+  [[-100, -W, -98, 0], [98, 0, 100, W], [0, -100, W, -98], [-W, 98, 0, 100]].forEach(([a, b, c, d]) => quad(ground, a, b, c, d, '#cfcbd4'));
+  for (let d = 110; d < 900; d += 34) {                  // 가운데 점선
+    quad(ground, d, -1.5, d + 16, 1.5, '#e9c46a'); quad(ground, -d - 16, -1.5, -d, 1.5, '#e9c46a');
+    quad(ground, -1.5, d, 1.5, d + 16, '#e9c46a'); quad(ground, -1.5, -d - 16, 1.5, -d, '#e9c46a');
+  }
+
+  // 건물: 윗면 + 보이는 두 면(+x, +y), 창문은 제각각 다른 시각에 켜진다
+  const wins = [];
+  const TONE = [['#b7a9c9', '#7d6f94', '#5f5476'], ['#c2b39f', '#8a7c6a', '#6a5e50'], ['#a9b7c9', '#6f7f94', '#546076'], ['#c9a9a9', '#94706f', '#765454']];
+  function building(p, x0, y0, w, d, h) {
+    const [top, fx, fy] = TONE[Math.floor(rnd() * TONE.length)];
+    const x1 = x0 + w, y1 = y0 + d;
+    mk('polygon', { points: pts([[x1, y0, 0], [x1, y1, 0], [x1, y1, h], [x1, y0, h]]), fill: fx }, p);     // +x 면
+    mk('polygon', { points: pts([[x0, y1, 0], [x1, y1, 0], [x1, y1, h], [x0, y1, h]]), fill: fy }, p);     // +y 면
+    mk('polygon', { points: pts([[x0, y0, h], [x1, y0, h], [x1, y1, h], [x0, y1, h]]), fill: top }, p);    // 윗면
+    const floors = Math.max(1, Math.floor(h / 22));
+    const face = (along, len, place) => {
+      const cols = Math.max(1, Math.floor(len / 22));
+      for (let f = 0; f < floors; f++) for (let c = 0; c < cols; c++) {
+        if (rnd() < 0.15) continue;
+        const u0 = (c + 0.25) / cols, u1 = (c + 0.75) / cols, h0 = f * 22 + 7, h1 = h0 + 10;
+        const q = [[u0, h0], [u1, h0], [u1, h1], [u0, h1]].map(([u, hh]) => place(u, hh));
+        mk('polygon', { points: pts(q), fill: '#2e2944' }, p);
+        if (rnd() < 0.7) wins.push([mk('polygon', { points: pts(q), fill: '#ffcf8a', opacity: 0 }, p), 3.4 + rnd() * 3.6]);
+      }
+    };
+    face('y', d, (u, hh) => [x1, y0 + d * u, hh]);
+    face('x', w, (u, hh) => [x0 + w * u, y1, hh]);
+  }
+  // 뒤(위쪽) 블록은 차·사람보다 먼저, 나머지는 나중에 그린다(보는 쪽에 가까운 건물이 가린다)
+  const back = $('.bback'), front = $('.bfront');
+  [[-340, -340, 150, 150, 210], [-170, -340, 80, 120, 160], [-340, -170, 120, 80, 170], [-180, -180, 90, 90, 120]]
+    .forEach(b => building(back, ...b));
+  [[92, -340, 110, 120, 140], [220, -340, 110, 110, 110], [92, -200, 100, 108, 96], [210, -190, 120, 100, 124],
+   [-340, 92, 120, 110, 120], [-196, 92, 100, 96, 86], [-340, 222, 110, 110, 136], [-196, 206, 100, 110, 96],
+   [96, 96, 96, 80, 30]].forEach(b => building(front, ...b));
+  // 앞 블록의 가로수
+  [[210, 110], [250, 150], [120, 210], [170, 250]].forEach(([x, y]) => {
+    const [sx, sy] = S(x, y);
+    mk('path', { d: `M${sx} ${sy} V${sy - 16}`, stroke: '#4a3a2a', 'stroke-width': 3 }, front);
+    mk('circle', { cx: sx, cy: sy - 22, r: 11, fill: '#4f7a5a' }, front);
+  });
+
+  // 신호: 가로(A: x 방향) 초록 → 세로(B: y 방향) 초록 번갈아. 만남 장면(17.4~)에선 보행 신호가 초록으로
+  const greenA = t => t < 4.4 || (t >= 9.0 && t < 13.4);
+  const lights = [];
+  [[-72, -72], [72, -72], [-72, 72], [72, 72]].forEach(([x, y], i) => {
+    const [sx, sy] = S(x, y);
+    mk('path', { d: `M${sx} ${sy} V${sy - 34}`, stroke: '#2a2740', 'stroke-width': 2.5 }, front);
+    mk('rect', { x: sx - 4, y: sy - 46, width: 8, height: 13, rx: 2, fill: '#2a2740' }, front);
+    lights.push([mk('circle', { cx: sx, cy: sy - 42.5, r: 2.4, fill: '#e04a4a' }, front), mk('circle', { cx: sx, cy: sy - 36.5, r: 2.4, fill: '#3a3a3a' }, front), i]);
+  });
+
+  // 차: 차선을 따라 달리다 빨간불이면 정지선 앞에 줄을 선다(시간의 함수 — 매 프레임 처음부터 적분)
+  const dyn = $('.dyn');
+  const LANES = [                           // 진행축, 고정 좌표, 방향
+    { axis: 'x', fixed: -30, dir: +1, a: true }, { axis: 'x', fixed: 30, dir: -1, a: true },
+    { axis: 'y', fixed: 30, dir: +1, a: false }, { axis: 'y', fixed: -30, dir: -1, a: false }];
+  const CARC = ['#e0e4ea', '#d8453b', '#2f5a8a', '#f2c14e', '#3a3a44', '#6fae8a'];
+  const cars = [];
+  LANES.forEach((ln, li) => { for (let k = 0; k < 3; k++) cars.push({ ln, s0: k * 190 + li * 45, c: CARC[(li * 3 + k) % CARC.length], faces: [0, 1, 2].map(() => mk('polygon', {}, dyn)) }); });
+  const STOP = 420 - 104;                   // 진행 거리 기준 정지선(사거리 바깥)
+  function carDist(car, t) {
+    const green = car.ln.a ? greenA : (tt => !greenA(tt));
+    let d = car.s0; const v = 95, dt = 0.05;
+    const mates = cars.filter(c => c.ln === car.ln);
+    for (let tt = 0; tt < t; tt += dt) {
+      let nd = d + v * dt;
+      if (!green(tt) && d <= STOP) {
+        const ahead = mates.filter(c => c !== car && ((c.s0 - car.s0 + 760) % 760) < 380).length;
+        nd = Math.min(nd, STOP - 40 * Math.min(ahead, 2));
+      }
+      d = nd % 840;
+    }
+    return d;
+  }
+  function drawCar(car, t) {
+    const d = carDist(car, t) - 420, { axis, fixed, dir } = car.ln;
+    const cx = axis === 'x' ? dir * d : fixed, cy = axis === 'x' ? fixed : dir * d;
+    const hw = axis === 'x' ? 16 : 8, hd = axis === 'x' ? 8 : 16, h = 11;
+    const x0 = cx - hw, x1 = cx + hw, y0 = cy - hd, y1 = cy + hd;
+    const [fx, fy, top] = car.faces;
+    fx.setAttribute('points', pts([[x1, y0, 0], [x1, y1, 0], [x1, y1, h], [x1, y0, h]])); fx.setAttribute('fill', '#2a2836');
+    fy.setAttribute('points', pts([[x0, y1, 0], [x1, y1, 0], [x1, y1, h], [x0, y1, h]])); fy.setAttribute('fill', '#3a3848');
+    top.setAttribute('points', pts([[x0, y0, h], [x1, y0, h], [x1, y1, h], [x0, y1, h]])); top.setAttribute('fill', car.c);
+  }
+
+  // 사람(위에서 본 작은 모습): 발밑 그림자 + 몸(둥근 캡슐) + 머리
+  const figs = $('.figs');
+  function person(color, hair = '#2a2226', scale = 1) {
+    const g = mk('g', {}, figs);
+    mk('ellipse', { cx: 0, cy: 0, rx: 6 * scale, ry: 3 * scale, fill: '#000', opacity: .3 }, g);
+    mk('rect', { x: -4.5 * scale, y: -17 * scale, width: 9 * scale, height: 16 * scale, rx: 4.5 * scale, fill: color }, g);
+    mk('circle', { cx: 0, cy: -20 * scale, r: 4.4 * scale, fill: hair }, g);
+    return g;
+  }
+  // 오가는 사람들 — 보도를 따라 걷는다
+  const WALK = [];
+  const PC = ['#6f8fb8', '#b8866f', '#7fae8a', '#c9c2b8', '#8a6fb0', '#d8a45a', '#5a6a7a'];
+  [[-1, 'x', 70], [1, 'x', -70], [1, 'y', 70], [-1, 'y', -70], [1, 'x', 72], [-1, 'y', 72]].forEach(([dir, axis, fixed], i) => {
+    for (let k = 0; k < 2; k++) WALK.push({ g: person(PC[(i * 2 + k) % PC.length], '#2a2226', 1.2), dir, axis, fixed, s0: k * 260 + i * 70 });
+  });
+  // 엄마(보라색 카디건, 희끗한 머리)와 딸(노란 코트)
+  const mom = person('#8a5a8a', '#6e6468', 1.4), dau = person('#f2c14e', '#2a2226', 1.4);
+  const ringEl = mk('circle', { r: 17, fill: 'none', stroke: '#ffd4da', 'stroke-width': 2 }, figs);
+  figs.insertBefore(ringEl, mom);
+  const qm = mk('text', { 'font-size': 18, 'font-weight': 800, fill: '#fff', 'text-anchor': 'middle', 'font-family': '-apple-system, sans-serif' }, figs);
+  qm.textContent = '?';
+  const heart = mk('path', { d: 'M0 6 C-12 -2 -8 -12 0 -7 C8 -12 12 -2 0 6 Z', fill: '#ff6b81' }, figs);
+  const place = (el, x, y, extra = '') => { const [sx, sy] = S(x, y); el.setAttribute('transform', `translate(${sx.toFixed(1)} ${sy.toFixed(1)})${extra}`); };
+
+  // 가로등 불빛(저물면 켜진다)
+  const glows = $('.glows'), lamps = [];
+  [[-72, -150], [72, -150], [-150, 72], [150, -72], [-72, 150], [150, 72]].forEach(([x, y], i) => {
+    const [sx, sy] = S(x, y);
+    lamps.push([mk('circle', { cx: sx, cy: sy - 30, r: 30, fill: 'url(#cGlow)', opacity: 0 }, glows), 4.2 + i * 0.35]);
+  });
+
+  const city = $('.s-city'), home = $('.s-home'), shade = $('.shade'), night = $('.night');
+  const emb = $('.emb'), ring = $('.ring'), send = $('.send'), vl = $('.vl');
+  const typed = $('.typed'), caret = $('.caret'), hint = $('.dlg .hint');
+  const pin = $('.pin'), rip = $('.rip'), cloud = $('.cloud');
+  const chars = Array.from(L.g_msg);
+  const press = (t, a) => 1 - 0.05 * Math.sin(Math.PI * lin(t, a, a + 0.25));
+  const MOM = [-74, 80];                    // 남서쪽 모퉁이 — 남쪽 횡단보도의 서쪽 끝
+
+  window.extra = t => {
+    // 장면: 사거리(0~13) → 딸의 방(13~17.4) → 사거리의 밤, 만남(17.4~)
+    city.style.opacity = (1 - ramp(t, 12.8, 13.1) + ramp(t, 17.2, 17.6)).toFixed(3);
+    home.style.opacity = (ramp(t, 12.8, 13.1) - ramp(t, 17.2, 17.6)).toFixed(3);
+    shade.style.opacity = (0.62 * ramp(t, 7.0, 7.4) - 0.62 * ramp(t, 12.7, 13.0)
+                         + 0.45 * ramp(t, 13.0, 13.3) - 0.45 * ramp(t, 17.2, 17.6)).toFixed(3);
+    // 카메라: 처음엔 사거리 전체 → 엄마가 선 모퉁이로 다가감 → 만남 장면은 남쪽 횡단보도로 더 가까이
+    const meet = t >= 17.2;
+    // 만남 장면은 남쪽 횡단보도 가운데(화면 201,510)를 화면 가운데로 옮겨 온다
+    const z = meet ? 1.7 + 0.1 * ramp(t, 17.4, 21) : 1 + 0.3 * ramp(t, 0.5, 7.0);
+    city.style.transformOrigin = meet ? '201px 510px' : '150px 470px';
+    city.style.transform = meet ? `translate(69px, -30px) scale(${z.toFixed(4)})` : `scale(${z.toFixed(4)})`;
+    // 해가 저물고, 창문·가로등 불빛이 하나둘. 만남 장면은 밤
+    night.setAttribute('opacity', (meet ? 0.5 : 0.45 * lin(t, 0, 7.4)).toFixed(3));
+    wins.forEach(([w, on]) => w.setAttribute('opacity', (0.9 * (meet ? 1 : ramp(t, on, on + 0.3))).toFixed(3)));
+    lamps.forEach(([g, on]) => g.setAttribute('opacity', (meet ? 1 : ramp(t, on, on + 0.3)).toFixed(3)));
+    // 신호등 — 네 모퉁이, 만남 장면은 보행 초록(차 없음)
+    lights.forEach(([red, grn, i]) => {
+      const aGreen = meet ? false : greenA(t);
+      const mine = (i === 0 || i === 3) ? aGreen : !aGreen;     // 대각선끼리 같은 도로를 본다
+      red.setAttribute('fill', mine ? '#3a3a3a' : '#e04a4a');
+      grn.setAttribute('fill', mine || (meet && t > 18.6) ? '#4ade80' : '#3a3a3a');
+    });
+    // 차 — 만남 장면(거리가 빈 밤)에는 없다
+    cars.forEach(c => { c.faces.forEach(f => f.style.display = meet ? 'none' : ''); if (!meet && t < 13.2) drawCar(c, t); });
+    // 오가는 사람 — 만남 장면이 시작되면 하나둘 빠져나간다
+    WALK.forEach((w, i) => {
+      const d = ((w.s0 + 26 * t) % 700) - 350;
+      const x = w.axis === 'x' ? w.dir * d : w.fixed, y = w.axis === 'x' ? w.fixed : w.dir * d;
+      const inBox = Math.abs(x) < 64 && Math.abs(y) < 64;           // 사거리 한가운데로는 들어가지 않는다
+      place(w.g, x, y);
+      w.g.setAttribute('opacity', inBox || (meet && t > 17.6 + (i % 6) * 0.12) ? 0 : 1);
+    });
+
+    // 엄마: 처음엔 가만히 → 북쪽으로 몇 걸음, 멈춤, 돌아옴 → 동쪽(횡단보도)으로 몇 걸음, 멈춤, 돌아옴
+    let mx = MOM[0], my = MOM[1];
+    const step = (a, b) => Math.sin(Math.PI * lin(t, a, b));
+    if (!meet) { my -= 16 * step(3.8, 5.2); mx += 16 * step(5.4, 6.8); }
+    else { mx += 6 * ramp(t, 19.6, 20.2); }                          // 딸 쪽으로 한 걸음
+    place(mom, mx, my);
+    place(ringEl, mx, my, ` scale(${(1 + 0.25 * Math.sin(t * 4)).toFixed(3)} 0.5)`);
+    ringEl.setAttribute('opacity', meet ? 0 : (0.8 * ramp(t, 0.6, 1.2)).toFixed(3));
+    const [qx, qy] = S(mx, my);
+    qm.setAttribute('x', qx.toFixed(1)); qm.setAttribute('y', (qy - 40 - 2 * Math.sin(t * 5)).toFixed(1));
+    qm.setAttribute('opacity', (t > 3.9 && t < 7.0 ? 1 : 0));
+    // 딸: 만남 장면 — 횡단보도 동쪽 끝에 나타나 초록불에 건너온다
+    const dx = 74 - 132 * ramp(t, 18.8, 20.2);
+    place(dau, dx, 80);
+    dau.setAttribute('opacity', meet ? ramp(t, 17.8, 18.3).toFixed(3) : 0);
+    // 만나는 순간 하트
+    const hp = lin(t, 20.4, 20.9);
+    const [hx, hy] = S((mx + dx) / 2, 80);
+    heart.setAttribute('transform', `translate(${hx.toFixed(1)} ${(hy - 40 - 12 * hp).toFixed(1)}) scale(${(0.6 + 0.5 * ease(hp)).toFixed(3)})`);
+    heart.setAttribute('opacity', t < 20.4 ? 0 : (1 - 0.3 * lin(t, 20.9, 21.2)).toFixed(3));
+
+    // 엄마 폰: 버튼 누름 → 한 글자씩 천천히 → [보내기] 누름
+    emb.style.setProperty('--base', `scale(${press(t, 7.9).toFixed(3)})`);
+    const r = emb.getBoundingClientRect();
+    ring.style.left = (r.left + 44) + 'px'; ring.style.top = (r.top + r.height / 2) + 'px';
+    const n = Math.floor(chars.length * lin(t, 8.9, 11.1));
+    typed.textContent = chars.slice(0, n).join('');
+    hint.style.display = n ? 'none' : '';
+    caret.style.opacity = (t >= 8.9 && t < 11.1) || (t < 11.3 && Math.floor(t * 2.5) % 2 === 0) ? 1 : 0;
+    send.style.transform = `scale(${press(t, 11.5).toFixed(3)})`;
+    send.style.background = t > 11.5 && t < 11.8 ? '#8e1515' : '#B71C1C';
+
+    // 딸의 방: 구름이 흐르고 머그잔에 김
+    cloud.setAttribute('transform', `translate(${(20 * lin(t, 12.8, 17.4)).toFixed(1)} 0)`);
+    $$('.msteam path').forEach((p, i) => {
+      const s = ((t * 0.7 + i * 0.5) % 1);
+      p.setAttribute('transform', `translate(0 ${(-12 * s).toFixed(1)})`);
+      p.setAttribute('opacity', (0.8 * Math.sin(Math.PI * s)).toFixed(3));
+    });
+    // [위치 보기] 누름 → 같은 사거리 지도, 남서쪽 모퉁이에 핀
+    vl.style.transform = `scale(${press(t, 15.2).toFixed(3)})`;
+    const d = lin(t, 15.8, 16.3), bounce = d < 1 ? -60 * (1 - d) * (1 - d) : -6 * Math.abs(Math.sin((t - 16.3) * 6)) * Math.max(0, 1 - (t - 16.3) * 2);
+    pin.setAttribute('transform', `translate(0 ${bounce.toFixed(1)})`);
+    pin.setAttribute('opacity', t < 15.8 ? 0 : 1);
+    const rp = ((t - 16.2) % 1.2 + 1.2) % 1.2 / 1.2;
+    rip.setAttribute('r', (10 + 30 * rp).toFixed(1));
+    rip.setAttribute('opacity', t < 16.2 ? 0 : (0.8 * (1 - rp)).toFixed(3));
+  };
+</script>
+</body></html>
