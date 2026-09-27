@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>시험 — 불 꺼진 방의 딸</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="shorts.css">
+<style>
+  /* 시험 페이지 — a.html(전화 안 받는 엄마) 앞부분에 넣을 인물 장면.
+     불 꺼진 방, 창문 너머 달. 딸이 폰을 내려다보며 왔다 갔다 하다가 멈춰 서서 한숨을 쉰다.
+     움직임은 전부 extra(t) — CSS 애니메이션·트랜지션 없음. */
+  .scn { position: absolute; inset: 0; }
+  .scn svg { display: block; width: 540px; height: 960px; }
+  .glow { mix-blend-mode: screen; }
+  .cap { z-index: 8; }
+</style></head>
+<body><div class="v">
+
+  <p class="cap" data-t="-1,3.2" data-fx="up"><span data-h="a1"></span><small data-k="a1s"></small></p>
+  <p class="cap" data-t="3.5,6.6" data-fx="up" data-h="a2"></p>
+
+  <div class="scn">
+  <svg viewBox="0 0 540 960" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#171a38"/><stop offset="1" stop-color="#1f2346"/></linearGradient>
+      <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#15183a"/><stop offset="1" stop-color="#0b0d22"/></linearGradient>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0d1435"/><stop offset="1" stop-color="#26356f"/></linearGradient>
+      <radialGradient id="moonHalo"><stop offset="0" stop-color="#fff1c8" stop-opacity=".55"/>
+        <stop offset=".45" stop-color="#cfd6ff" stop-opacity=".16"/><stop offset="1" stop-color="#cfd6ff" stop-opacity="0"/></radialGradient>
+      <radialGradient id="phoneGlow"><stop offset="0" stop-color="#bcd7ff" stop-opacity=".75"/>
+        <stop offset=".3" stop-color="#7f9fe8" stop-opacity=".28"/><stop offset="1" stop-color="#5a6fc0" stop-opacity="0"/></radialGradient>
+      <radialGradient id="faceGlow"><stop offset="0" stop-color="#d9e8ff" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#d9e8ff" stop-opacity="0"/></radialGradient>
+      <linearGradient id="moonBeam" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#b9c6ff" stop-opacity=".13"/><stop offset="1" stop-color="#b9c6ff" stop-opacity="0"/></linearGradient>
+      <clipPath id="glass"><rect x="78" y="286" width="174" height="214"/></clipPath>
+      <clipPath id="eyeA"><ellipse cx="11" cy="-300" rx="5.2" ry="6.8"/></clipPath>
+      <clipPath id="eyeB"><ellipse cx="26" cy="-301" rx="4.4" ry="6.4"/></clipPath>
+    </defs>
+
+    <!-- 방 -->
+    <rect width="540" height="960" fill="url(#wall)"/>
+    <rect y="690" width="540" height="270" fill="url(#floor)"/>
+    <rect y="684" width="540" height="8" fill="#12142e"/>
+    <g stroke="#1b1f44" stroke-width="1.5" opacity=".7">
+      <line x1="0" y1="740" x2="540" y2="740"/><line x1="0" y1="805" x2="540" y2="805"/><line x1="0" y1="880" x2="540" y2="880"/>
+    </g>
+    <!-- 오른쪽 벽의 액자(어둠 속 윤곽만) -->
+    <rect x="382" y="352" width="66" height="82" rx="3" fill="#1c2046" stroke="#2a2f5c" stroke-width="4"/>
+    <path d="M392 424 L410 398 L422 412 L430 402 L440 424 Z" fill="#232857"/>
+
+    <!-- 창문 -->
+    <rect x="70" y="278" width="190" height="230" rx="4" fill="#262b56"/>
+    <g clip-path="url(#glass)">
+      <rect x="78" y="286" width="174" height="214" fill="url(#sky)"/>
+      <g id="stars" fill="#e8ecff">
+        <circle cx="104" cy="318" r="1.6"/><circle cx="140" cy="352" r="1.2"/><circle cx="96" cy="410" r="1.4"/>
+        <circle cx="232" cy="420" r="1.3"/><circle cx="150" cy="300" r="1"/><circle cx="118" cy="460" r="1.1"/>
+      </g>
+      <circle id="halo" cx="206" cy="336" r="70" fill="url(#moonHalo)"/>
+      <circle cx="206" cy="336" r="22" fill="#fff4d9"/>
+      <circle cx="199" cy="330" r="4" fill="#efe1bd"/><circle cx="212" cy="344" r="3" fill="#efe1bd"/>
+      <g id="cloud" fill="#4a5590" opacity=".7">
+        <ellipse cx="0" cy="0" rx="34" ry="9"/><ellipse cx="-14" cy="-6" rx="16" ry="9"/><ellipse cx="10" cy="-7" rx="18" ry="10"/>
+      </g>
+      <!-- 먼 건물 지붕선 -->
+      <path d="M78 500 L78 470 L110 470 L110 456 L150 456 L150 476 L196 476 L196 462 L252 462 L252 500 Z" fill="#101431"/>
+    </g>
+    <rect x="163" y="286" width="6" height="214" fill="#262b56"/>
+    <rect x="78" y="390" width="174" height="6" fill="#262b56"/>
+    <rect x="62" y="506" width="206" height="10" rx="3" fill="#2b3061"/>
+    <!-- 커튼 -->
+    <path d="M44 266 Q66 262 88 266 L84 560 Q70 566 60 560 Q50 566 42 560 Z" fill="#2e2856"/>
+    <path d="M58 272 L56 556 M72 270 L72 558" stroke="#241f47" stroke-width="3"/>
+    <path d="M242 266 Q264 262 286 266 L288 560 Q278 566 268 560 Q258 566 246 560 Z" fill="#2e2856"/>
+    <path d="M258 272 L260 556 M274 270 L274 558" stroke="#241f47" stroke-width="3"/>
+    <rect x="34" y="258" width="262" height="8" rx="4" fill="#353b6c"/>
+    <!-- 바닥의 달빛 -->
+    <path d="M86 692 L256 692 L352 900 L150 900 Z" fill="url(#moonBeam)"/>
+
+    <!-- 폰 불빛이 방에 퍼진다(인물 뒤) -->
+    <circle id="roomGlow" class="glow" cx="0" cy="0" r="230" fill="url(#phoneGlow)" opacity=".55"/>
+
+    <!-- 인물: 발 = 원점. 기본은 오른쪽을 보는 3/4 각도.
+         팔은 "굵은 외곽선 + 안쪽 색" 두 겹의 선으로 그려 어깨·팔꿈치가 둥글게 이어지게 한다 -->
+    <ellipse id="shadow" cx="0" cy="0" rx="50" ry="8" fill="#05060f" opacity=".55"/>
+    <g id="girl" stroke="#1a1426" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+      <!-- 다리(치마 아래로 종아리만 보인다) -->
+      <g id="legB"><path d="M-6 0 L6 0 L5.5 138 L-5.5 138 Z" fill="#26243d"/>
+        <path d="M-7 134 Q-9 148 4 148 L15 148 Q21 147 19 140 Q16 134 5 134 Z" fill="#1c1a2e"/></g>
+      <g id="legA"><path d="M-6.5 0 L6.5 0 L6 138 L-6 138 Z" fill="#302e4c"/>
+        <path d="M-7 134 Q-9 148 4 148 L16 148 Q22 147 20 140 Q17 134 5 134 Z" fill="#221f36"/></g>
+
+      <g id="upper">
+        <!-- 뒷머리: 등 뒤로 내려오는 긴 머리(몸통 뒤에 그려서 끝이 가려진다). 머리와 같이 회전 -->
+        <path id="hairBack" d="M-28 -318 Q-42 -272 -40 -226 Q-38 -196 -16 -194 Q2 -196 16 -204 L18 -262 L12 -318 Z" fill="#2c1f35"/>
+        <!-- 먼 팔(어깨에서 흔든다) -->
+        <g id="armB">
+          <path d="M0 0 L-1 58" fill="none" stroke="#1a1426" stroke-width="15"/>
+          <path d="M0 0 L-1 58" fill="none" stroke="#6d5f96" stroke-width="10"/>
+          <circle cx="-1" cy="64" r="6.5" fill="#d7b46c"/>
+        </g>
+        <!-- 긴 치마(밑단이 걸음에 따라 흔들린다) -->
+        <path id="skirt" fill="#7c4668"/>
+        <path id="skirtFold" fill="none" stroke="#63364f" stroke-width="2"/>
+        <!-- 상의 -->
+        <path d="M-22 -262 Q3 -268 28 -262 Q35 -257 34 -240 L30 -164 Q3 -157 -26 -164 L-30 -240 Q-31 -257 -22 -262 Z" fill="#8a7cb3"/>
+        <path d="M-8 -264 Q4 -250 16 -264" fill="#e3c070" stroke-width="2.2"/>
+        <path d="M-27 -170 Q3 -162 31 -170" fill="none" stroke="#6d5f96" stroke-width="3"/>
+        <!-- 목 -->
+        <rect x="-3" y="-272" width="11" height="10" fill="#d7b46c" stroke="none"/>
+
+        <!-- 머리(목에서 회전) -->
+        <g id="head">
+          <ellipse cx="4" cy="-300" rx="30" ry="33" fill="#e7c476"/>
+          <!-- 옆머리(얼굴 앞쪽): 관자놀이에서 턱 아래까지 볼 가장자리를 덮는다. 이목구비보다 먼저 그린다 -->
+          <path d="M30 -322 Q38 -318 40 -300 Q42 -278 36 -258 Q31 -262 30 -276 Q32 -292 30 -310 Z" fill="#2c1f35"/>
+          <!-- 볼 -->
+          <ellipse cx="28" cy="-287" rx="5" ry="3" fill="#e79a86" stroke="none" opacity=".5"/>
+          <ellipse cx="4" cy="-287" rx="5" ry="3" fill="#e79a86" stroke="none" opacity=".4"/>
+          <!-- 눈 -->
+          <ellipse cx="11" cy="-300" rx="5.2" ry="6.8" fill="#fbfaf5" stroke="none"/>
+          <ellipse cx="26" cy="-301" rx="4.4" ry="6.4" fill="#fbfaf5" stroke="none"/>
+          <g clip-path="url(#eyeA)" stroke="none">
+            <ellipse class="pup" data-cx="11.5" data-cy="-300" rx="2.8" ry="3.6" fill="#1a1426"/>
+            <rect class="lid" x="4" y="-308" width="15" height="0" fill="#e7c476"/>
+            <line class="lidl" x1="4" x2="19" y1="-308" y2="-308" stroke="#1a1426" stroke-width="2.2"/>
+          </g>
+          <g clip-path="url(#eyeB)" stroke="none">
+            <ellipse class="pup" data-cx="26.5" data-cy="-301" rx="2.5" ry="3.4" fill="#1a1426"/>
+            <rect class="lid" x="20" y="-308.5" width="13" height="0" fill="#e7c476"/>
+            <line class="lidl" x1="20" x2="33" y1="-308.5" y2="-308.5" stroke="#1a1426" stroke-width="2.2"/>
+          </g>
+          <ellipse cx="11" cy="-300" rx="5.2" ry="6.8" fill="none" stroke-width="2"/>
+          <ellipse cx="26" cy="-301" rx="4.4" ry="6.4" fill="none" stroke-width="2"/>
+          <!-- 속눈썹(바깥 끝) -->
+          <path d="M6 -305 L3 -308 M31 -305 L34 -308" fill="none" stroke-width="1.8"/>
+          <!-- 걱정하는 눈썹(안쪽 끝이 올라감) + 미간 주름 -->
+          <path id="browA" d="M5 -311 Q11 -313 16 -317" fill="none" stroke-width="2.4"/>
+          <path id="browB" d="M22 -317 Q27 -314 31 -311" fill="none" stroke-width="2.4"/>
+          <path d="M19 -315 L19 -311" fill="none" stroke-width="1.3" opacity=".7"/>
+          <!-- 코 -->
+          <path d="M31 -296 Q36 -291 31 -288" fill="none" stroke-width="2"/>
+          <!-- 입: 꾹 다문 입 / 한숨의 오 -->
+          <path id="mClose" d="M17 -280 Q22 -283 27 -279" fill="none" stroke-width="2.2"/>
+          <ellipse id="mOpen" cx="23" cy="-281" rx="3.5" ry="4.5" fill="#4a2230" stroke-width="2" opacity="0"/>
+          <!-- 앞머리: 옆으로 넘긴 긴 머리, 얼굴 옆으로 한 가닥 -->
+          <path d="M-31 -306 Q-31 -342 6 -343 Q40 -342 37 -310 Q34 -318 28 -321 Q16 -319 -2 -322 Q-10 -316 -10 -302 Q-8 -288 -12 -262 Q-24 -258 -30 -276 Q-33 -292 -31 -306 Z" fill="#2c1f35"/>
+          <path d="M-4 -318 Q-12 -300 -11 -282" fill="none" stroke="#45344f" stroke-width="1.6"/>
+        </g>
+
+        <!-- 가까운 팔: 어깨 → 팔꿈치 → 가슴 앞의 폰 -->
+        <path id="armA" d="M25 -254 L30 -204 L46 -224" fill="none" stroke="#1a1426" stroke-width="15"/>
+        <path d="M25 -254 L30 -204 L46 -224" fill="none" stroke="#8a7cb3" stroke-width="10"/>
+        <g id="phone">
+          <rect x="43" y="-246" width="12" height="21" rx="3" fill="#161a2c" transform="rotate(-18 49 -235)"/>
+          <path d="M43.5 -245 L45.5 -226" stroke="#cfe1ff" stroke-width="1.6" transform="rotate(-18 49 -235)"/>
+        </g>
+        <circle cx="48" cy="-226" r="6.5" fill="#e7c476"/>
+        <ellipse cx="44" cy="-230" rx="2.8" ry="4.2" fill="#e7c476" transform="rotate(-18 44 -230)"/>
+      </g>
+    </g>
+    <!-- 폰 불빛이 얼굴을 비춘다(인물 위) -->
+    <ellipse id="faceGlowEl" class="glow" cx="0" cy="0" rx="36" ry="42" fill="url(#faceGlow)"/>
+
+    <!-- 한숨(만화식 입김) -->
+    <g id="puff" fill="#dfe6ff" stroke="none" opacity="0">
+      <circle cx="0" cy="0" r="10"/><circle cx="12" cy="-5" r="8"/><circle cx="22" cy="2" r="6.5"/><circle cx="8" cy="7" r="6"/>
+    </g>
+    <g id="puff2" fill="#dfe6ff" stroke="none" opacity="0"><circle cx="0" cy="0" r="4.5"/></g>
+    <g id="puff3" fill="#dfe6ff" stroke="none" opacity="0"><circle cx="0" cy="0" r="3"/></g>
+
+    <rect width="540" height="960" fill="#000" opacity=".12"/>
+  </svg>
+  </div>
+
+</div>
+<script src="engine.js"></script>
+<script>
+  window.DURATION = 7.6;
+  fillText();
+
+  const $ = id => document.getElementById(id);
+  const clamp = (v, a = 0, b = 1) => Math.min(Math.max(v, a), b);
+  const lerp = (a, b, p) => a + (b - a) * p;
+  const smooth = p => { p = clamp(p); return p * p * (3 - 2 * p); };
+  const seg = (t, a, b) => smooth((t - a) / (b - a));
+  const bump = (t, a, b) => { const p = clamp((t - a) / (b - a)); return Math.sin(Math.PI * p); };
+
+  const FLOOR = 738, SCALE = 0.9;
+  const STEP = 0.52;                       // 한 걸음(초)
+  // 경로: 오른쪽으로 → 돌아서 왼쪽으로 → 돌아서 가운데까지 와서 멈춤
+  const legs = [
+    { a: 0.00, b: 1.70, x0: 190, x1: 350, f: 1 },
+    { a: 1.70, b: 1.98, turn: [1, -1], x: 350 },
+    { a: 1.98, b: 3.68, x0: 350, x1: 196, f: -1 },
+    { a: 3.68, b: 3.96, turn: [-1, 1], x: 196 },
+    { a: 3.96, b: 4.70, x0: 196, x1: 262, f: 1, stop: true },
+  ];
+  const STAND = 4.70;
+
+  function motion(t) {
+    for (const s of legs) {
+      if (t < s.a || t > s.b) continue;
+      const p = clamp((t - s.a) / (s.b - s.a));
+      if (s.turn) {                                                  // 반쯤에서 뒤집고 살짝 눌렸다 편다(종잇장처럼 얇아지지 않게)
+        const side = p < 0.5 ? s.turn[0] : s.turn[1];
+        return { x: s.x, sx: side * (0.82 + 0.18 * Math.abs(Math.cos(Math.PI * p))), walk: 0 };
+      }
+      const q = s.stop ? 1 - Math.pow(1 - p, 2) : p;           // 마지막 구간은 감속
+      return { x: lerp(s.x0, s.x1, q), sx: s.f, walk: s.stop ? 1 - p : 1 };
+    }
+    return { x: 262, sx: 1, walk: 0 };
+  }
+
+  const blinks = [1.25, 3.05, 4.95, 7.05];
+  function lidAmount(t, base) {
+    let b = 0;
+    for (const k of blinks) b = Math.max(b, bump(t, k, k + 0.16));
+    return Math.max(base, b);
+  }
+
+  const girl = $('girl'), upper = $('upper'), head = $('head');
+  const legA = $('legA'), legB = $('legB'), armB = $('armB');
+  const pups = document.querySelectorAll('.pup'), lids = document.querySelectorAll('.lid'), lidls = document.querySelectorAll('.lidl');
+  const EYE_TOP = [-307.5, -308], EYE_H = [15, 14];
+
+  window.extra = t => {
+    const m = motion(t);
+    const ph = (t / STEP) * Math.PI;                               // 걸음 위상
+    const w = m.walk;
+    const swing = Math.sin(ph) * 15 * w;
+
+    // 한숨: 멈춘 뒤 들이쉬기 → 내쉬기
+    const inhale = seg(t, 4.95, 5.45) * (1 - seg(t, 5.45, 6.55));  // 어깨가 올라갔다 내려감
+    const slump = seg(t, 5.45, 6.4) * (1 - 0.5 * seg(t, 6.9, 7.5)); // 내쉬며 고개와 어깨가 처짐
+    const breathIdle = Math.sin(t * 2.4) * 1.2 * (1 - w);
+
+    const bob = -Math.abs(Math.sin(ph)) * 5 * w;
+    const upY = bob - inhale * 7 + slump * 5 + breathIdle;
+
+    girl.setAttribute('transform', `translate(${m.x.toFixed(2)} ${FLOOR}) scale(${(m.sx * SCALE).toFixed(4)} ${SCALE})`);
+    legA.setAttribute('transform', `translate(7 -140) rotate(${(swing).toFixed(2)})`);
+    legB.setAttribute('transform', `translate(-8 -140) rotate(${(-swing).toFixed(2)})`);
+    upper.setAttribute('transform', `translate(0 ${upY.toFixed(2)})`);
+    armB.setAttribute('transform', `translate(-20 -254) rotate(${(-swing * 1.1 + slump * 3).toFixed(2)})`);
+    // 치마 밑단은 걸음 반대쪽으로 살짝 끌린다(치마는 upper 안이라 상체 오르내림 보정)
+    const k = -swing * 0.55, hy = -40 - upY;
+    $('skirt').setAttribute('d', `M-27 -170 L30 -170 Q42 -110 ${(46 + k).toFixed(1)} ${hy.toFixed(1)} Q${(26 + k).toFixed(1)} ${(hy + 5).toFixed(1)} ${(2 + k).toFixed(1)} ${(hy + 2).toFixed(1)} Q${(-22 + k).toFixed(1)} ${(hy + 5).toFixed(1)} ${(-42 + k).toFixed(1)} ${hy.toFixed(1)} Q-38 -110 -27 -170 Z`);
+    $('skirtFold').setAttribute('d', `M-4 -150 Q${(-10 + k * .6).toFixed(1)} -95 ${(-14 + k).toFixed(1)} ${(hy + 3).toFixed(1)} M16 -150 Q${(20 + k * .6).toFixed(1)} -95 ${(26 + k).toFixed(1)} ${(hy + 3).toFixed(1)}`);
+    const headRot = 7 * (w > 0 ? 1 : 0.8) + slump * 9 - inhale * 4 + Math.sin(ph * 2) * 1.2 * w;
+    head.setAttribute('transform', `rotate(${headRot.toFixed(2)} 3 -266)`);
+    $('hairBack').setAttribute('transform', `rotate(${(headRot * 0.5).toFixed(2)} 3 -266)`);
+
+    // 눈: 폰을 내려다본다. 내쉴 때 눈꺼풀이 반쯤 내려온다
+    const base = 0.3 + slump * 0.28 - inhale * 0.12;
+    const lid = lidAmount(t, base);
+    lids.forEach((r, i) => r.setAttribute('height', (EYE_H[i] * lid).toFixed(2)));
+    lidls.forEach((l, i) => { const y = (EYE_TOP[i] + EYE_H[i] * lid).toFixed(2); l.setAttribute('y1', y); l.setAttribute('y2', y); });
+    pups.forEach(p => { p.setAttribute('cx', +p.dataset.cx + 2); p.setAttribute('cy', +p.dataset.cy + 4 + slump); });
+
+    // 눈썹: 들이쉴 때 더 올라가고 내쉴 때 처진다
+    const br = inhale * 3 - slump * 1.5;
+    $('browA').setAttribute('transform', `translate(0 ${(-br).toFixed(2)})`);
+    $('browB').setAttribute('transform', `translate(0 ${(-br).toFixed(2)})`);
+
+    // 입: 내쉬는 동안만 '오'
+    const open = bump(t, 5.45, 6.45);
+    $('mOpen').setAttribute('opacity', open > 0.08 ? 1 : 0);
+    $('mOpen').setAttribute('ry', (2 + 3.8 * open).toFixed(2));
+    $('mOpen').setAttribute('rx', (2 + 2.8 * open).toFixed(2));
+    $('mClose').setAttribute('opacity', open > 0.08 ? 0 : 1);
+
+    // 폰 불빛 — 폰 위치를 따라간다. 화면 밝기가 아주 조금 일렁인다
+    const pr = $('phone').getBoundingClientRect();
+    const pcx = pr.left + pr.width / 2, pcy = pr.top + pr.height / 2;
+    const flick = 0.92 + 0.08 * Math.sin(t * 5.1) * Math.sin(t * 1.7);
+    const rg = $('roomGlow');
+    rg.setAttribute('cx', pcx.toFixed(1)); rg.setAttribute('cy', pcy.toFixed(1));
+    rg.setAttribute('opacity', (0.55 * flick).toFixed(3));
+    const hr = head.getBoundingClientRect();
+    const fg = $('faceGlowEl');
+    fg.setAttribute('cx', (hr.left + hr.width / 2 + m.sx * 14).toFixed(1));
+    fg.setAttribute('cy', (hr.top + hr.height * 0.62).toFixed(1));
+    fg.setAttribute('opacity', (0.6 * flick).toFixed(3));
+
+    $('shadow').setAttribute('cx', m.x.toFixed(1)); $('shadow').setAttribute('cy', FLOOR + 4);
+
+    // 입김 — 입에서 나와 바라보는 쪽 위로 번지며 사라진다
+    const mo = $('mOpen').getBoundingClientRect(), mc = $('mClose').getBoundingClientRect();
+    const mx = (mo.width ? mo.left + mo.width / 2 : mc.left + mc.width / 2), my = (mo.height ? mo.top + mo.height / 2 : mc.top + mc.height / 2);
+    const puffs = [['puff', 5.55, 1.8, 1.8], ['puff2', 5.75, 1.4, 1.2], ['puff3', 5.95, 1.2, 1.0]];
+    puffs.forEach(([id, a, dur, sc]) => {
+      const p = clamp((t - a) / dur), el = $(id);
+      if (t < a || p >= 1) { el.setAttribute('opacity', 0); return; }
+      const dx = m.sx * (14 + 70 * smooth(p)), dy = 6 - 46 * smooth(p);
+      const s = (0.35 + 0.9 * p) * sc;
+      const op = 0.55 * Math.min(1, p * 5) * (1 - smooth((p - 0.35) / 0.65));
+      el.setAttribute('transform', `translate(${(mx + dx).toFixed(1)} ${(my + dy).toFixed(1)}) scale(${s.toFixed(3)})`);
+      el.setAttribute('opacity', op.toFixed(3));
+    });
+
+    // 창밖: 구름이 달 앞을 천천히 지나고, 별이 반짝인다
+    $('cloud').setAttribute('transform', `translate(${(70 + t * 9).toFixed(1)} 372)`);
+    document.querySelectorAll('#stars circle').forEach((c, i) => c.setAttribute('opacity', (0.55 + 0.45 * Math.sin(t * (1.3 + i * 0.37) + i * 2.1)).toFixed(2)));
+  };
+</script>
+</body></html>
