@@ -19,7 +19,7 @@ import json
 import os
 import sys
 
-from common import (META, ORDER, ROOT, LANG_TO_STRINGS, css, esc, head_links,
+from common import (SITE, og_tags, META, ORDER, ROOT, LANG_TO_STRINGS, css, esc, head_links,
                     interpolate, load, load_copy, switcher)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -144,6 +144,8 @@ def build(code, copy, app):
         "META_TITLE": esc(copy["meta_title"]),
         "META_DESC": esc(copy["meta_desc"]),
         "HEAD_LINKS": head_links(code, available, "faq.html"),
+        "OG_TAGS": og_tags(f"{SITE}/{code}/faq.html", copy["meta_title"], copy["meta_desc"],
+                           META[code][2], app["app_name"]),
         "SWITCHER": switcher(code, available, "faq.html"),
         "EYEBROW": copy["page_eyebrow"],
         "TITLE": copy["page_title"],

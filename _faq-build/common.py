@@ -20,7 +20,7 @@ ROOT = os.path.dirname(HERE)
 
 # 언어 메타는 랜딩 빌더와 공유한다 (import 부작용 없음 — main()은 __main__ 가드 안)
 sys.path.insert(0, os.path.join(ROOT, "i18n"))
-from build import META, ORDER, LANG_TO_STRINGS, FLAG  # noqa: E402,F401
+from build import META, ORDER, LANG_TO_STRINGS, FLAG, SITE, og_tags  # noqa: E402,F401
 
 # LANG_TO_STRINGS(사이트 코드 → 앱 번역 파일 코드)는 build.py 가 단일 출처다.
 

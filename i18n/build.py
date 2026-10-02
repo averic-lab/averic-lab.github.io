@@ -7,6 +7,7 @@
   ko/en 카피를 translations.json 으로 옮기고 단일 출처로 통합했다.
 """
 import hashlib
+import html
 import json
 import os
 import re
@@ -98,6 +99,43 @@ def switcher(active, page=""):
             f'    </a>'
         )
     return "\n".join(rows)
+
+
+# ── 링크 공유 미리보기(Open Graph) ─────────────────────────────────────
+# 카카오톡·스레드·인스타그램 DM·페이스북·X 는 링크를 받으면 그 주소의 HTML 을 **JS 없이**
+# 읽어 og:* 태그로 카드를 그린다. 그래서 JS 라우터인 루트 index.html 에도 정적 태그가 필요하다.
+# 홈·영상·FAQ·사용설명·루트가 전부 이 함수 하나를 쓴다 — 페이지마다 따로 쓰면 필드가 조용히 어긋난다.
+SITE = "https://averic.co.kr"
+# ⚠️ 이미지를 바꿀 때는 **파일명을 바꾸거나 ?v= 를 올릴 것.** 카카오·메타는 이미지 주소 단위로
+#    오래 캐시해서, 같은 주소에 새 그림을 올리면 옛 그림이 계속 나간다.
+OG_IMAGE = SITE + "/og-image.png"
+
+
+def og_tags(url, title, desc, og_locale, site_name, tw_desc=None):
+    """og:* + twitter:* 메타 블록. 인자는 이스케이프 전 원문을 받는다.
+
+    og:image:width/height 는 선택 항목처럼 보이지만 빼면 메타(스레드·인스타)가 **처음 공유할 때**
+    이미지를 비동기로 받느라 그림 없는 카드를 내보낸다. 카카오도 크기를 보고 큰 카드로 그린다."""
+    e = lambda v: html.escape(v, quote=True)
+    alt = "안부 · Anbu"  # 이미지 속 글자 그대로 — 20개 언어가 이 한 장을 공유한다
+    return "\n".join([
+        '<meta property="og:type" content="website">',
+        f'<meta property="og:site_name" content="{e(site_name)}">',
+        f'<meta property="og:title" content="{e(title)}">',
+        f'<meta property="og:description" content="{e(desc)}">',
+        f'<meta property="og:url" content="{e(url)}">',
+        f'<meta property="og:image" content="{OG_IMAGE}">',
+        '<meta property="og:image:type" content="image/png">',
+        '<meta property="og:image:width" content="1200">',
+        '<meta property="og:image:height" content="630">',
+        f'<meta property="og:image:alt" content="{alt}">',
+        f'<meta property="og:locale" content="{og_locale}">',
+        '<meta name="twitter:card" content="summary_large_image">',
+        f'<meta name="twitter:title" content="{e(title)}">',
+        f'<meta name="twitter:description" content="{e(tw_desc or desc)}">',
+        f'<meta name="twitter:image" content="{OG_IMAGE}">',
+        f'<meta name="twitter:image:alt" content="{alt}">',
+    ])
 
 
 def head_links(active, page="", codes=None):
@@ -289,6 +327,8 @@ def build_page(code, strings, template, app_all):
     }
     repl.update(app_tokens(code, app_all))
     repl.update(strings)
+    repl["OG_TAGS"] = og_tags(f"{SITE}/{code}/", strings["og_title"], strings["og_desc"],
+                              og_locale, strings["brand"], strings["tw_desc"])
     repl["DAWN_TAIL"] = dawn_tail(code, strings)
     for key, val in repl.items():
         page = page.replace("{{" + key + "}}", val)
@@ -322,6 +362,9 @@ def build_shorts_page(code, strings, template, shorts_template):
         "SHORTS_GRID": f'  <div class="shorts-grid vlist">\n{video_figs(code, cfg["all"], cfg["play"], cfg["replay"], "    ")}\n  </div>',
     }
     repl.update(strings)
+    repl["OG_TAGS"] = og_tags(f"{SITE}/{code}/shorts.html",
+                              f'{strings["shorts_title"]} · {strings["brand"]}',
+                              strings["shorts_lead"], og_locale, strings["brand"])
     for key, val in repl.items():
         page = page.replace("{{" + key + "}}", val)
     return page
@@ -353,6 +396,37 @@ def patch_inplace(code):
     with open(path, "w", encoding="utf-8") as f:
         f.write(html)
     return n_menu, n_head
+
+
+ROOT_OG_BEGIN = "<!-- og:begin (자동 생성 — i18n/build.py 의 patch_root_og, 한국어 og_* 를 쓴다) -->"
+ROOT_OG_END = "<!-- og:end -->"
+
+
+def patch_root_og(ko):
+    """루트 index.html(언어 분기 JS 라우터)에 공유 미리보기 태그를 넣는다.
+
+    공유 앱의 수집기는 JS 를 실행하지 않아 리다이렉트를 따라가지 못한다. 그래서 가장 많이
+    공유되는 맨 주소 `averic.co.kr` 이 **그림 없는 카드**로 나가고 있었다(2026-09-28).
+    수집기는 언어를 알려 주지 않으므로 한 벌만 둘 수 있고, 주로 카카오톡으로 공유되므로
+    한국어를 쓴다. 루트는 noindex 라 검색에는 영향이 없다.
+    og:url 은 루트 자신이어야 한다 — /ko/ 를 가리키면 메타가 그 주소를 다시 수집한다.
+    **멱등** — 기존 블록을 지우고 다시 넣는다."""
+    path = os.path.join(ROOT, "index.html")
+    with open(path, encoding="utf-8") as f:
+        src = f.read()
+    src = re.sub(re.escape(ROOT_OG_BEGIN) + r".*?" + re.escape(ROOT_OG_END) + r"\n",
+                 "", src, flags=re.S)
+    anchor = re.search(r'^<meta name="theme-color"[^>]*>\n', src, re.M)
+    if not anchor:
+        sys.exit("오류: 루트 index.html 에서 theme-color 줄을 못 찾음 — og 태그를 넣을 수 없다")
+    block = "\n".join([ROOT_OG_BEGIN,
+                       og_tags(f"{SITE}/", ko["og_title"], ko["og_desc"], META["ko"][2],
+                               ko["brand"], ko["tw_desc"]),
+                       ROOT_OG_END]) + "\n"
+    new = src[:anchor.end()] + block + src[anchor.end():]
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(new)
+    print("  patched /index.html  (og 태그)")
 
 
 def main():
@@ -395,6 +469,10 @@ def main():
                 continue
             with open(os.path.join(ROOT, code, "shorts.html"), "w", encoding="utf-8") as f:
                 f.write(sp)
+
+    ko = dict(en)
+    ko.update({k: v for k, v in translations["ko"].items() if v})
+    patch_root_og(ko)
 
     if problems:
         print("\nPROBLEMS:")
