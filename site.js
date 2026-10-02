@@ -160,11 +160,45 @@
   // 가운데 버튼: 재생 → 재생 중 숨김 → 끝나면 다시 보기. 영상을 탭하면 일시정지.
   // 한 편을 재생하면 다른 편은 멈춘다.
   var vboxes = Array.prototype.slice.call(document.querySelectorAll('.vlist .vbox'));
+  // 유튜브로 재생하는 편(.vyt): 포스터+버튼만 있다가 누르면 iframe 을 만든다. 다른 편이 시작되면 포스터로 되돌린다.
+  function stopOthers(box) {
+    vboxes.forEach(function (o) {
+      if (o === box) return;
+      var ov = o.querySelector('video');
+      if (ov) ov.pause();
+      else if (o.classList.contains('is-yt')) resetYt(o);
+    });
+  }
+  function resetYt(box) {
+    var f = box.querySelector('.vframe');
+    if (f) f.parentNode.removeChild(f);
+    box.querySelector('.vposter').style.display = '';
+    box.classList.remove('is-yt');
+  }
+  function startYt(box) {
+    stopOthers(box);
+    var f = document.createElement('iframe');
+    f.className = 'vframe';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.getAttribute('data-yt') +
+      '?autoplay=1&playsinline=1&rel=0&hl=' + box.getAttribute('data-hl');
+    f.title = box.getAttribute('data-title') || '';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.setAttribute('allowfullscreen', '');
+    box.querySelector('.vposter').style.display = 'none';
+    box.insertBefore(f, box.firstChild);
+    box.classList.add('is-yt');
+  }
   vboxes.forEach(function (box) {
+    if (box.classList.contains('vyt')) {
+      var yb = box.querySelector('.vbtn');
+      yb.addEventListener('click', function () { startYt(box); });
+      box.querySelector('.vposter').addEventListener('click', function () { startYt(box); });
+      return;
+    }
     var v = box.querySelector('video'), btn = box.querySelector('.vbtn');
     function label(key) { btn.setAttribute('aria-label', btn.getAttribute('data-' + key)); }
     function start() {
-      vboxes.forEach(function (o) { if (o !== box) o.querySelector('video').pause(); });
+      stopOthers(box);
       if (v.ended) v.currentTime = 0;
       if (v.readyState < 3) loading(true);
       var p = v.play();

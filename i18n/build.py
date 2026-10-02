@@ -265,20 +265,58 @@ def _load_shorts():
 
 SHORTS = _load_shorts()
 
+
+PUBLISH_JSON = os.environ.get("PUBLISH_JSON") or os.path.expanduser(
+    "~/Library/CloudStorage/GoogleDrive-anbucheck1018@gmail.com/내 드라이브/안부 쇼츠/publish.json")
+
+
+def _load_youtube():
+    """{(편id, 언어): youtube_id} — 유튜브에 공개(unlisted/public)된 편만.
+
+    영상 페이지(/{언어}/shorts.html)가 이 편들을 mp4 대신 유튜브로 재생한다(저장소 용량 때문).
+    홈 해질녘 두 편은 이 값을 쓰지 않고 자체 플레이어(mp4)를 유지한다.
+    publish.json 은 공유 드라이브에 있어 이 Mac 이 아닌 곳에서는 못 읽는다 — 그때는 경고만 하고
+    전부 mp4 로 빌드한다(깨지지는 않지만 유튜브로 바뀐 편이 mp4 로 되돌아가므로 조심할 것).
+    status 가 private/scheduled/removed 이거나 youtube_id 가 없으면 mp4 그대로다."""
+    try:
+        with open(PUBLISH_JSON, encoding="utf-8") as f:
+            vids = json.load(f)["videos"]
+    except (OSError, ValueError, KeyError) as e:
+        print(f"  ⚠ publish.json 을 읽지 못함({e.__class__.__name__}) — 영상 페이지는 전부 mp4 로 빌드: {PUBLISH_JSON}")
+        return {}
+    out = {}
+    for v in vids.values():
+        if v.get("status") in ("unlisted", "public") and v.get("youtube_id"):
+            out[(v["id"], v["lang"])] = v["youtube_id"]
+    return out
+
+
+YOUTUBE = _load_youtube()
+
 _PLAY_SVG = '<svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>'
 _REPLAY_SVG = ('<svg class="i-replay" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7.5 6 12 10V7a5 5 0 1 1-5 5H5'
                'a7 7 0 1 0 7-7z"/></svg>')
 
 
-def video_figs(code, items, play, replay, indent="      "):
-    """영상 카드. 홈 해질녘과 영상 페이지가 같은 마크업·같은 버튼(site.js 「숏폼 영상」)을 쓴다."""
-    return "\n".join(
-        f'{indent}<figure class="vbox"><video src="/media/shorts/{code}/{v}.mp4" poster="/media/shorts/{code}/{v}.jpg" '
-        f'playsinline preload="none"></video>'
-        f'<button type="button" class="vbtn" aria-label="{play}: {cap}" '
-        f'data-play="{play}: {cap}" data-replay="{replay}: {cap}">{_PLAY_SVG}{_REPLAY_SVG}</button>'
-        f'<figcaption>{cap}</figcaption></figure>'
-        for v, cap in items)
+def video_figs(code, items, play, replay, indent="      ", youtube=False):
+    """영상 카드. 홈 해질녘과 영상 페이지가 같은 마크업·같은 버튼(site.js 「숏폼 영상」)을 쓴다.
+
+    youtube=True(영상 페이지만)이면 유튜브에 공개된 편은 <video> 대신 포스터+버튼만 둔다.
+    누를 때까지 유튜브를 불러오지 않는다(site.js 가 그때 iframe 을 만든다 — 속도·개인정보)."""
+    out = []
+    for v, cap in items:
+        yt = YOUTUBE.get((v, code)) if youtube else None
+        btn = (f'<button type="button" class="vbtn" aria-label="{play}: {cap}" '
+               f'data-play="{play}: {cap}" data-replay="{replay}: {cap}">{_PLAY_SVG}{_REPLAY_SVG}</button>')
+        if yt:
+            out.append(f'{indent}<figure class="vbox vyt" data-yt="{yt}" data-hl="{META[code][0]}" data-title="{cap}">'
+                       f'<img class="vposter" src="/media/shorts/{code}/{v}.jpg" alt="" loading="lazy">'
+                       f'{btn}<figcaption>{cap}</figcaption></figure>')
+        else:
+            out.append(f'{indent}<figure class="vbox"><video src="/media/shorts/{code}/{v}.mp4" '
+                       f'poster="/media/shorts/{code}/{v}.jpg" playsinline preload="none"></video>'
+                       f'{btn}<figcaption>{cap}</figcaption></figure>')
+    return "\n".join(out)
 
 
 def dawn_tail(code, strings):
@@ -359,7 +397,7 @@ def build_shorts_page(code, strings, template, shorts_template):
         "SWITCHER": switcher(code, "shorts.html"),
         "SHORTS_HEAD_LINKS": head_links(code, "shorts.html", codes),
         "ASSET_VER": asset_ver(),
-        "SHORTS_GRID": f'  <div class="shorts-grid vlist">\n{video_figs(code, cfg["all"], cfg["play"], cfg["replay"], "    ")}\n  </div>',
+        "SHORTS_GRID": f'  <div class="shorts-grid vlist">\n{video_figs(code, cfg["all"], cfg["play"], cfg["replay"], "    ", youtube=True)}\n  </div>',
     }
     repl.update(strings)
     repl["OG_TAGS"] = og_tags(f"{SITE}/{code}/shorts.html",
