@@ -108,7 +108,7 @@ def switcher(active, page=""):
 SITE = "https://averic.co.kr"
 # ⚠️ 이미지를 바꿀 때는 **파일명을 바꾸거나 ?v= 를 올릴 것.** 카카오·메타는 이미지 주소 단위로
 #    오래 캐시해서, 같은 주소에 새 그림을 올리면 옛 그림이 계속 나간다.
-OG_IMAGE = SITE + "/og-image.png"
+OG_IMAGE = SITE + "/og-image-2.png"
 
 
 def og_tags(url, title, desc, og_locale, site_name, tw_desc=None):

@@ -1,0 +1,46 @@
+<!doctype html>
+<!-- 공유 미리보기 이미지 소스 (1200×630). 언어 중립 — 번역할 글자가 없다.
+     렌더: python3 _seo/gen_og_image.py  →  og-image-2.png -->
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{position:relative;font-family:-apple-system,"Apple SD Gothic Neo","Helvetica Neue",Arial,sans-serif;
+ background:linear-gradient(160deg,#0a0e2a 0%,#1d1a4e 55%,#2a2058 100%);color:#fff}
+.glow{position:absolute;border-radius:50%}
+.g1{width:260px;height:260px;left:-10px;top:355px;background:radial-gradient(circle,rgba(255,214,150,.45),transparent 68%)}
+.g2{width:300px;height:300px;left:925px;top:5px;background:radial-gradient(circle,rgba(255,170,190,.5),transparent 68%)}
+.dot{position:absolute;width:14px;height:14px;border-radius:50%;background:#fff3d6}
+svg.line{position:absolute;left:0;top:0}
+.stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:.5}
+.center{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;flex-direction:column;align-items:center}
+.icon{margin-top:152px;width:96px;height:96px;border-radius:26px;background:linear-gradient(180deg,#ff8a95,#e54b5e);
+ box-shadow:0 10px 50px rgba(229,75,94,.5);display:flex;align-items:center;justify-content:center}
+h1{margin-top:34px;font-size:84px;line-height:1;font-weight:300;letter-spacing:-1px;display:flex;align-items:baseline;gap:18px}
+h1 .ko{font-weight:200}
+h1 .dotm{font-size:60px}
+h1 .en{font-weight:800;background:linear-gradient(180deg,#fff,#ffd9b0);-webkit-background-clip:text;color:transparent}
+.badges{margin-top:46px;display:flex;gap:18px}
+.b{height:52px;padding:0 26px;border-radius:26px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.22);
+ display:flex;align-items:center;gap:10px;font-size:25px;font-weight:600;letter-spacing:.3px;color:#f4ecff}
+.url{margin-top:44px;font-size:19px;font-weight:700;letter-spacing:5px;color:#e6c79a}
+</style></head><body>
+<div class="glow g1"></div><div class="glow g2"></div>
+<svg class="line" width="1200" height="630"><line x1="127" y1="470" x2="1072" y2="163" stroke="#d9c3a8" stroke-opacity=".6" stroke-width="2" stroke-dasharray="3 7" stroke-linecap="round"/></svg>
+<div class="dot" style="left:120px;top:463px"></div><div class="dot" style="left:1065px;top:156px"></div>
+<div class="stars" id="s"></div>
+<div class="center">
+ <div class="icon"><svg width="44" height="44" viewBox="0 0 100 100"><path fill="#fff" d="M50,86 C-10,52 12,8 50,32 C88,8 110,52 50,86 Z"/></svg></div>
+ <h1><span class="ko">안부</span><span class="dotm">·</span><span class="en">Anbu</span></h1>
+ <div class="badges">
+  <div class="b">Android</div>
+  <div class="b">iPhone</div>
+  <div class="b"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#f4ecff" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><ellipse cx="12" cy="12" rx="4" ry="9.5"/><path d="M2.5 12h19M4.2 7h15.6M4.2 17h15.6"/></svg>20</div>
+ </div>
+ <div class="url">AVERIC.CO.KR</div>
+</div>
+<script>
+// 별 — 고정 시드로 매번 같은 그림
+let x=7;const r=()=>(x=(x*16807)%2147483647)/2147483647;const s=document.getElementById('s');
+for(let i=0;i<46;i++){const e=document.createElement('i');e.style.left=r()*1200+'px';e.style.top=r()*630+'px';
+ e.style.opacity=.2+r()*.5;const z=1+r()*2;e.style.width=e.style.height=z+'px';s.appendChild(e)}
+</script></body></html>

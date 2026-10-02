@@ -44,7 +44,7 @@ Search Console 「적절한 표준 태그가 포함된 대체 페이지 12건」
 
 - `index.html` — 루트 스플래시(언어 자동 분기), `style.css`, `site.js`
   - ⚠️ 홈 20개 페이지는 `style.css?v=해시`·`site.js?v=해시`로 불러온다(`i18n/build.py`의 `asset_ver()`). GitHub Pages가 `max-age=600`이라 주소가 같으면 휴대폰이 새로고침해도 옛 CSS를 쓴다. **CSS·JS를 고치면 `python3 i18n/build.py`를 다시 돌려야** 해시가 바뀌어 즉시 반영된다.
-- `og-image.png` — 공유 미리보기(1200×630). 20개 언어가 이 한 장을 공유하므로 **문구는 언어 중립**으로 둔다(브랜드 + 도메인). 없으면 카톡·SNS 링크가 그림 없이 나간다
+- `og-image-2.png` — 공유 미리보기(1200×630). 20개 언어가 이 한 장을 공유하므로 **번역할 글자가 없다**(안부 · Anbu / Android · iPhone · 지구본 20 / 도메인). 소스는 `_seo/og-image.html`, `python3 _seo/gen_og_image.py [파일명]`로 렌더. ⚠️ **바꿀 때는 파일명을 올리고**(`og-image-3.png` …) `i18n/build.py`의 `OG_IMAGE`를 고쳐 `i18n/build.py`·`_faq-build/build_faq.py`·`build_guide.py`를 다시 돌린다 — 카카오·메타가 이미지 주소 단위로 캐시한다. 옛 `og-image.png`는 이미 공유된 링크의 캐시용으로 남겨 둔다. og 태그는 `i18n/build.py`의 `og_tags()` 한 곳에서 만들고, 루트 `index.html`은 한국어 `og_*`로 자동 패치된다
 - `ko/`, `en/`, `ja/` … (20개 언어 폴더) — 각 언어별 `index.html` / `privacy-policy.html` / `terms-of-service.html` / `faq.html` / `guide.html`
 - `i18n/` — 다국어 랜딩 빌드 도구(`build.py`, `template.html`, `translations.json`) — **20개 언어 `index.html` 전부를 생성**한다(단일 출처). `_` 접두가 아니라 Jekyll 기본 제외에 안 걸리므로 `_config.yml`의 `exclude`에 명시했다(2026-08-07 이전에는 `averic.co.kr/i18n/build.py`가 200으로 공개돼 있었다)
 - `_seo/` — SEO 도구(게시 제외). `patch_legal.py`(법적 페이지 canonical·hreflang), `gen_sitemap.py`(sitemap.xml). 상세는 아래 별도 절
