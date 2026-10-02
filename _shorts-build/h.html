@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>숏폼 H — 안부 앱 소개 (모션 그래픽)</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="shorts.css">
+<style>
+  /* 앱 소개 모션 그래픽 — 키네틱 타이포 + 박자에 맞춘 "빵빵" 터짐.
+     타임라인은 전부 "박 번호"로 쓴다(곡: Motivating Mornings 123.05 BPM, 원곡 박 8 부터 시작 → audio.py bgm_start).
+     모든 움직임은 render(ms)의 함수다 — CSS animation·Math.random·setTimeout 금지(README 규칙). */
+  .v { background: #0a0e2a; }
+  .bg { position: absolute; inset: 0; }
+  .glow { position: absolute; left: 50%; top: 46%; width: 1000px; height: 1000px; margin: -500px 0 0 -500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,.26), transparent 62%); opacity: 0; }
+  .stage { position: absolute; inset: 0; z-index: 5; transform-origin: 50% 50%; }
+  canvas { position: absolute; left: 0; top: 0; width: 540px; height: 960px; pointer-events: none; }
+  #cf { z-index: 30; }
+  .flash { position: absolute; inset: 0; z-index: 40; background: #fff; opacity: 0; pointer-events: none; }
+
+  .t, .box { position: absolute; transform-origin: 50% 55%; will-change: transform; }
+  /* 글자 — 안전 영역(오른쪽 475px) 안의 가운데 정렬. 한 줄 고정, 넘치면 fit() 이 글자 크기를 줄인다 */
+  .t { left: 20px; width: 455px; text-align: center; white-space: nowrap; font-weight: 900; letter-spacing: -1px; line-height: 1.15;
+    text-shadow: 0 4px 0 rgba(0,0,0,.16); }
+  .t .x { color: #d7263d; margin-inline-start: .15em; }
+
+  /* 앱 알림(홈페이지 목업 .push 재사용) */
+  .box.push { width: 340px; position: absolute; }
+  .box.push .now { margin-inline-start: auto; font-size: 10.5px; color: #9AA0AE; }
+
+  .phone2 { border: 6px solid #fff; background: linear-gradient(160deg, #232a66, #0a0e2a); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+  .phone2::before { content: ""; position: absolute; top: 10px; left: 50%; width: 46px; height: 8px; margin-left: -23px; border-radius: 6px; background: rgba(255,255,255,.18); }
+  .phone2 svg { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  .row { display: flex; align-items: center; justify-content: space-between; box-sizing: border-box; height: 46px; padding: 0 18px;
+    border-radius: 14px; background: rgba(255,255,255,.92); color: #1a1c1c; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .row i { width: 38px; height: 22px; border-radius: 12px; background: #c9ced8; position: relative; }
+  .row i::after { content: ""; position: absolute; left: 3px; top: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; }
+  .circ { width: 96px; height: 96px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 0 rgba(0,0,0,.16); }
+  .circ svg { width: 52px; height: 52px; }
+  .pill { box-sizing: border-box; width: 104px; height: 44px; border-radius: 22px; background: rgba(255,255,255,.94); color: #10163f;
+    display: flex; align-items: center; justify-content: center; font-size: 19px; font-weight: 800; white-space: nowrap; }
+  .chip { box-sizing: border-box; height: 50px; padding: 0 10px; border-radius: 25px; display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 800; color: #fff; white-space: nowrap; }
+  .card { box-sizing: border-box; width: 330px; height: 150px; border-radius: 28px; color: #fff; text-align: center; padding-top: 18px;
+    box-shadow: 0 12px 0 rgba(0,0,0,.14); }
+  .card .s { font-size: 26px; font-weight: 800; opacity: .92; }
+  .card .b { margin-top: 6px; font-size: 64px; font-weight: 900; line-height: 1.1; white-space: nowrap; }
+  .card .b.m { font-size: 40px; margin-top: 18px; }
+  .code2 { box-sizing: border-box; width: 340px; height: 110px; border-radius: 22px; background: linear-gradient(135deg, #00897B, #00695C); color: #fff;
+    text-align: center; padding-top: 24px; box-shadow: 0 12px 0 rgba(0,0,0,.14); }
+  .code2 .v8 { font-size: 46px; font-weight: 800; letter-spacing: 5px; line-height: 1.2; min-height: 56px; }
+  .form { box-sizing: border-box; width: 300px; padding: 18px; border-radius: 22px; background: rgba(255,255,255,.85); box-shadow: 0 12px 0 rgba(0,0,0,.12); }
+  .form i { display: block; height: 34px; border-radius: 10px; background: #d6d9e2; margin-bottom: 12px; }
+  .form i.b { margin: 4px 0 0; background: #8d94a8; height: 40px; }
+  .sos { box-sizing: border-box; width: 370px; height: 118px; border-radius: 30px; background: #fff; color: #d7263d; display: flex;
+    align-items: center; justify-content: center; text-align: center; font-weight: 900; font-size: 32px; padding: 0 14px; line-height: 1.2;
+    box-shadow: 0 12px 0 rgba(0,0,0,.2); }
+  .bar { position: absolute; bottom: 0; width: 38px; border-radius: 10px 10px 4px 4px; background: linear-gradient(180deg, #5eead4, #14b8a6); height: 0; }
+  .bar.last { background: linear-gradient(180deg, #ffd166, #ff8a3d); }
+</style></head>
+<body>
+<div class="v">
+  <div class="bg" id="bgA"></div>
+  <div class="bg" id="bgB"></div>
+  <div class="glow"></div>
+  <div class="stage"><canvas id="cb" width="1080" height="1920"></canvas></div>
+  <canvas id="cf" width="1080" height="1920"></canvas>
+  <div class="flash"></div>
+</div>
+<script src="engine.js"></script>
+<script>
+  // ── 박 그리드 ────────────────────────────────────────────────────────
+  const BPM = 123.05, B = 60 / BPM, BAR = 4 * B;       // 1박 0.4876초 · 1마디 1.9504초
+  window.DURATION = 18 * BAR;                            // 18마디 = 35.1초 (곡이 마디 4 에서 드롭, 마디 12 에서 재진입)
+  window.CRF = 28;                                       // 컨페티가 많아 18 이면 16MB — 28 이면 약 6MB(render.mjs 가 읽는다)
+  window.SFX = [];                                       // 효과음 없음 — 모든 소리는 음악 박자로만
+
+  const C = { navy: '#10163f', cream: '#fff8f0', coral: '#ff5f7a', pink: '#ff8a95', yellow: '#ffd166', teal: '#14b8a6',
+              indigo: '#5b6cff', orange: '#ff8a3d', red: '#d7263d', mint: '#5eead4' };
+  const stage = document.querySelector('.stage');
+  const clamp = (x, a = 0, b = 1) => Math.min(Math.max(x, a), b);
+  const kick = t => Math.exp(-((t / B) % 1) * 6);                       // 박마다 1 → 0 으로 식는 값
+  const spring = e => e <= 0 ? 0 : e >= 1 ? 1 : 1 - Math.exp(-5 * e) * Math.cos(e * 11);
+  const bounce = e => { const n = 7.5625, d = 2.75; if (e < 1 / d) return n * e * e; if (e < 2 / d) return n * (e -= 1.5 / d) * e + .75;
+    if (e < 2.5 / d) return n * (e -= 2.25 / d) * e + .9375; return n * (e -= 2.625 / d) * e + .984375; };
+
+  // ── 요소 만들기 ──────────────────────────────────────────────────────
+  const mk = (cls, css, html = '') => { const d = document.createElement('div'); d.className = cls; d.style.cssText = css; d.innerHTML = html; stage.appendChild(d); return d; };
+  const tx = (k, top, size, color, extra = '') => { const d = mk('t', `top:${top}px;font-size:${size}px;color:${color};${extra}`); d.dataset.k = k; return d; };
+  const svg = (path, size, fill, vb = 24) => `<svg viewBox="0 0 ${vb} ${vb}" width="${size}" height="${size}" fill="${fill}"><path d="${path}"/></svg>`;
+  const HEART = 'M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z';
+  const ICON = {
+    phone: 'M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z',
+    home: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z',
+    down: 'M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z',
+    key: 'M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z',
+    check: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z',
+    pin: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
+    power: 'M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z',
+    x: 'M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z',
+  };
+  const pushHTML = `<div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="${HEART}"/></svg></span><span class="app" data-k="app_name"></span><span class="now" data-k="now"></span></div>
+    <div class="ti" data-k="push_title"></div><div class="bo t-push"></div>`;
+
+  // ── 등장·퇴장 레지스트리 ─────────────────────────────────────────────
+  const REG = [], SHAKE = [];
+  const show = (el, a, z, kind, o = {}) => {
+    REG.push({ el, a: a * B, z: z * B, kind, o });
+    if (kind === 'slam' || kind === 'stamp') SHAKE.push({ t: a * B, amp: o.amp || 4 });
+    el.style.opacity = 0; return el;
+  };
+  const A = {
+    slam:  p => { const e = clamp(p / .2); return { o: clamp(p / .05), s: 1 + 1.5 * (1 - e) ** 2 - (p > .2 && p < .42 ? .07 * Math.sin((p - .2) / .22 * Math.PI) : 0), r: -6 * (1 - e) }; },
+    drop:  p => ({ o: clamp(p / .05), y: -260 * (1 - bounce(clamp(p / .55))) }),
+    rise:  p => ({ o: clamp(p / .08), y: 190 * (1 - spring(clamp(p / .5))) }),
+    sl:    p => ({ o: clamp(p / .05), x: -560 * (1 - spring(clamp(p / .5))) }),
+    sr:    p => ({ o: clamp(p / .05), x: 560 * (1 - spring(clamp(p / .5))) }),
+    pop:   p => ({ o: clamp(p / .05), s: spring(clamp(p / .45)) }),
+    stamp: p => { const e = clamp(p / .14); return { o: clamp(p / .04), s: 1 + 2.2 * (1 - e) ** 2, r: -10 * (1 - e) }; },
+    fade:  p => ({ o: clamp(p / .18) }),
+  };
+  function applyReg(t) {
+    for (const r of REG) {
+      const el = r.el, o = r.o, p = t - r.a;
+      if (p < 0 || t > r.z + .17) { el.style.opacity = 0; continue; }
+      let f = { o: 1, x: 0, y: 0, s: 1, r: 0, ...A[r.kind](p) };
+      if (o.idle) { const i = o.idle(t, p); if (i.s != null) f.s *= i.s; if (i.r != null) f.r += i.r; if (i.y != null) f.y += i.y; if (i.x != null) f.x += i.x; }
+      if (t > r.z) {
+        const q = clamp((t - r.z) / .16);
+        if (o.exit === 'L') { f.x -= 640 * q * q; f.r -= 16 * q; }
+        else if (o.exit === 'R') { f.x += 640 * q * q; f.r += 16 * q; }
+        else if (o.exit === 'D') { f.y += 520 * q * q; }
+        else { f.o *= 1 - q; f.s *= 1 + .12 * q; }
+      }
+      el.style.opacity = f.o.toFixed(3);
+      el.style.transform = `translate(${f.x.toFixed(1)}px,${f.y.toFixed(1)}px) rotate(${(f.r + (o.r0 || 0)).toFixed(2)}deg) scale(${(f.s * (o.s0 || 1)).toFixed(4)})`;
+    }
+  }
+
+  // ── "빵빵" 터짐 — 시드 고정 PRNG 로 입자를 한 번만 정하고, 시간 t 의 함수로 그린다 ──
+  const mulberry = a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  const SCENES = [[0, '#0a0e2a'], [8, '#15122e'], [16, '#ff5f7a'], [24, '#2b3a9e'], [28, '#ffd166'], [32, '#14b8a6'], [40, '#5b6cff'],
+                  [44, '#0f1537'], [48.5, '#ff8a3d'], [52, '#d7263d'], [56, '#fff1d6'], [60, '#2a2360']];
+  const LIGHT = new Set(['#ffd166', '#14b8a6', '#ff8a3d', '#fff1d6']);   // 밝은 배경 — 어두운 조각을 섞는다
+  const PAL_DARK = ['#ffd166', '#ff5f7a', '#fff8f0', '#5eead4', '#ff8a95', '#8ea0ff'];
+  const PAL_LIGHT = ['#10163f', '#ff5f7a', '#ffffff', '#5b6cff', '#d7263d', '#00897B'];
+  const sceneAt = t => { let i = 0; SCENES.forEach(([b], k) => { if (t >= b * B - 1e-6) i = k; }); return i; };
+  const palAt = t => LIGHT.has(SCENES[sceneAt(t)][1]) ? PAL_LIGHT : PAL_DARK;
+  const BURSTS = [];
+  const CFG = {
+    soft:  { n: 10, sp: [120, 260], ring: [90], rays: 0,  sz: [4, 7],  life: .8 },
+    small: { n: 16, sp: [160, 380], ring: [130], rays: 8,  sz: [6, 11], life: .9 },
+    mid:   { n: 34, sp: [220, 580], ring: [170, 250], rays: 12, sz: [7, 13], life: 1.1 },
+    big:   { n: 90, sp: [260, 860], ring: [220, 340, 480], rays: 18, sz: [8, 17], life: 1.6 },
+    wave:  { n: 0,  sp: [0, 0],     ring: [110, 190, 270], rays: 0, sz: [0, 0], life: .9 },
+  };
+  function burst(beat, x, y, kind = 'small', o = {}) {
+    const c = CFG[kind], rnd = mulberry(Math.round(beat * 1000) + Math.round(x) * 7 + Math.round(y) * 13 + kind.length);
+    const pal = o.pal || palAt(beat * B), ps = [];
+    for (let i = 0; i < c.n; i++) {
+      ps.push({ a: rnd() * 6.2832, v: c.sp[0] + rnd() * (c.sp[1] - c.sp[0]), sh: Math.floor(rnd() * 4), col: pal[Math.floor(rnd() * pal.length)],
+        sz: c.sz[0] + rnd() * (c.sz[1] - c.sz[0]), rot: rnd() * 6.28, rv: (rnd() - .5) * 14, life: c.life * (.7 + .5 * rnd()) });
+    }
+    BURSTS.push({ t0: beat * B, x, y, c, ps, pal, front: !!o.front, rays: c.rays, seed: rnd() * 6.28, dur: c.life * 1.3 });
+    if (kind === 'big') SHAKE.push({ t: beat * B, amp: 9 });
+    else if (kind === 'mid') SHAKE.push({ t: beat * B, amp: 4 });
+  }
+  const HEARTP = new Path2D('M0,26 C-36,4 -26,-26 0,-14 C26,-26 36,4 0,26 Z');
+  function drawBursts(ctx, t, front) {
+    ctx.setTransform(2, 0, 0, 2, 0, 0); ctx.clearRect(0, 0, 540, 960);
+    for (const b of BURSTS) {
+      if (b.front !== front) continue;
+      const tau = t - b.t0; if (tau < 0 || tau > b.dur) continue;
+      // 충격파 링
+      b.c.ring.forEach((R, i) => {
+        const q = clamp((tau - i * .07) / .55); if (q <= 0 || q >= 1) return;
+        const e = 1 - (1 - q) ** 3;
+        ctx.globalAlpha = 1 - q; ctx.lineWidth = 3 + 15 * (1 - q); ctx.strokeStyle = b.pal[i % b.pal.length];
+        ctx.beginPath(); ctx.arc(b.x, b.y, R * e, 0, 6.2832); ctx.stroke();
+      });
+      // 방사선
+      if (b.rays && tau < .38) {
+        const q = tau / .38; ctx.lineCap = 'round'; ctx.globalAlpha = 1 - q;
+        for (let k = 0; k < b.rays; k++) {
+          const a = k / b.rays * 6.2832 + b.seed, r0 = 30 + q * 190, r1 = r0 + 70 * (1 - q);
+          ctx.strokeStyle = b.pal[k % b.pal.length]; ctx.lineWidth = 6 * (1 - q) + 1.5;
+          ctx.beginPath(); ctx.moveTo(b.x + Math.cos(a) * r0, b.y + Math.sin(a) * r0); ctx.lineTo(b.x + Math.cos(a) * r1, b.y + Math.sin(a) * r1); ctx.stroke();
+        }
+      }
+      // 컨페티·하트·별
+      for (const p of b.ps) {
+        if (tau > p.life) continue;
+        const d = (1 - Math.exp(-3 * tau)) / 3;
+        const px = b.x + Math.cos(p.a) * p.v * d, py = b.y + Math.sin(p.a) * p.v * d + 0.5 * 760 * tau * tau;
+        ctx.globalAlpha = tau > p.life - .3 ? clamp((p.life - tau) / .3) : 1;
+        ctx.fillStyle = p.col; ctx.save(); ctx.translate(px, py); ctx.rotate(p.rot + p.rv * tau);
+        if (p.sh === 0) ctx.fillRect(-p.sz / 2, -p.sz / 3, p.sz, p.sz * .66);
+        else if (p.sh === 1) { ctx.beginPath(); ctx.arc(0, 0, p.sz / 2, 0, 6.2832); ctx.fill(); }
+        else if (p.sh === 2) { ctx.scale(p.sz / 40, p.sz / 40); ctx.fill(HEARTP); }
+        else { ctx.beginPath(); for (let k = 0; k < 10; k++) { const rr = k % 2 ? p.sz * .22 : p.sz * .55, aa = k / 10 * 6.2832; ctx.lineTo(Math.cos(aa) * rr, Math.sin(aa) * rr); } ctx.closePath(); ctx.fill(); }
+        ctx.restore();
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // ── 장면 구성 ────────────────────────────────────────────────────────
+  const CX = 247;                       // 안전 영역(위 77·오른쪽 475) 가운데
+  const TICK = [];                      // 매 프레임 불리는 개별 연출
+  const hid = (k, t) => t;
+
+  // 1 훅 (박 0–8) — 조용한 도입. 터짐도 작게
+  const a1 = show(tx('p_a1', 205, 56, C.cream), 0, 8, 'drop');
+  const a2 = show(tx('p_a2', 275, 88, C.pink), 2, 8, 'slam');
+  const a3 = show(tx('p_a3', 395, 60, C.yellow), 4, 8, 'slam', { idle: t => t > 6 * B ? { r: Math.sin(t * 52) * 1.8 } : {} });
+  burst(0, CX, 235, 'soft'); burst(2, CX, 320, 'soft'); burst(4, CX, 420, 'soft'); burst(6, CX, 420, 'soft');
+
+  // 2 문제 (박 8–16) — 전화·방문의 부담, 박마다 긴장을 쌓는다
+  show(tx('p_b1', 220, 52, C.cream), 8, 16, 'sl');
+  show(tx('p_b2', 300, 52, '#ff9aa8'), 10, 16, 'sr');
+  const ph = show(mk('box', `left:${CX - 130}px;top:410px`, svg(ICON.phone, 96, '#8f98c4')), 9, 15.7, 'pop', { idle: t => t > 12 * B ? { r: Math.sin(t * 40) * 3 } : {} });
+  const hm = show(mk('box', `left:${CX + 34}px;top:410px`, svg(ICON.home, 96, '#8f98c4')), 11, 15.7, 'pop', { idle: t => t > 12 * B ? { r: Math.sin(t * 44 + 1) * 3 } : {} });
+  show(mk('box', `left:${CX - 150}px;top:395px`, svg(ICON.x, 136, C.red)), 13, 15.7, 'stamp');
+  show(mk('box', `left:${CX + 14}px;top:395px`, svg(ICON.x, 136, C.red)), 14, 15.7, 'stamp');
+  burst(8, CX, 250, 'small'); burst(10, CX, 320, 'small'); burst(13, CX - 80, 460, 'small'); burst(14, CX + 80, 460, 'small');
+  [12, 13, 14, 15, 15.5].forEach((b, i) => burst(b, CX, 560, 'wave'));
+
+  // 3 드롭 (박 16–24) — 하트·"안부" 폭발, 푸시가 뜬다
+  const heart = show(mk('box', `left:${CX - 75}px;top:110px`, svg(HEART, 150, C.cream)), 16, 24, 'slam', { amp: 8, idle: t => ({ s: 1 + .09 * kick(t) }) });
+  const nm = show(tx('app_name', 280, 100, C.cream), 17, 24, 'stamp');
+  show(tx('p_c1', 398, 38, C.navy), 18, 24, 'sl');
+  show(tx('p_c2', 448, 44, C.navy), 20, 24, 'slam');
+  show(tx('p_c3', 502, 92, C.yellow, 'text-shadow:0 5px 0 #10163f33'), 21, 24, 'slam', { amp: 6 });
+  const push = mk('box push', `left:${CX - 170}px;top:622px`, pushHTML);
+  show(push, 22, 24, 'rise', { s0: 1.2 });
+  burst(16, CX, 190, 'big'); burst(17, CX, 330, 'mid'); burst(18, CX, 430, 'small'); burst(20, CX, 480, 'small');
+  burst(21, CX, 565, 'mid'); burst(22, CX, 690, 'mid'); burst(23, CX, 560, 'small');
+
+  // 4 앱이 꺼져도 (박 24–28)
+  show(tx('p_d1', 128, 64, C.cream), 24, 28, 'slam');
+  show(tx('p_d2', 208, 64, C.yellow), 26, 28, 'slam');
+  const phone = show(mk('box phone2', `left:${CX - 95}px;top:330px;width:190px;height:360px;border-radius:38px;`, svg(ICON.power, 64, '#5f6aa8')), 24.3, 28, 'pop');
+  const onHeart = show(mk('box', `left:${CX - 45}px;top:280px`, svg(HEART, 90, C.coral)), 26, 28, 'rise', { idle: t => ({ s: 1 + .1 * kick(t) }) });
+  show(mk('box', `left:${CX - 24}px;top:560px;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.14)`, ''), 24.3, 26, 'fade');
+  burst(24, CX, 160, 'mid'); burst(26, CX, 500, 'wave'); burst(26.5, CX, 500, 'wave'); burst(27, CX, 300, 'small'); burst(27.5, CX, 300, 'small');
+
+  // 5 회원가입 없음 (박 28–32)
+  show(tx('p_e1', 135, 68, C.navy, 'text-shadow:0 4px 0 #ffffff55'), 28, 32, 'slam', { amp: 6 });
+  show(mk('box form', `left:${CX - 150}px;top:260px`, '<i></i><i></i><i></i><i class="b"></i>'), 28.5, 30, 'pop', { exit: 'D' });
+  show(mk('box', `left:${CX - 85}px;top:255px`, svg(ICON.x, 170, C.red)), 29, 30, 'stamp', { exit: 'D' });
+  const codeCard = show(mk('box code2', `left:${CX - 170}px;top:440px`, '<div class="v8"></div>'), 30, 32, 'rise');
+  show(tx('p_e2', 600, 42, C.navy), 30.5, 32, 'sl');
+  burst(28, CX, 190, 'mid'); burst(29, CX, 340, 'small'); burst(30, CX, 495, 'small'); burst(31.4, CX, 495, 'mid');
+  TICK.push(t => { const n = clamp(Math.floor((t - 30.4 * B) / .12) + 1, 0, 8); codeCard.querySelector('.v8').textContent = 'K7M-4PXR'.slice(0, n); });
+
+  // 6 단순함 (박 32–40) — 복잡한 메뉴가 박마다 쓸려 나가고, 세 걸음으로 끝
+  const f1 = show(tx('p_f1', 125, 54, C.navy, 'text-shadow:0 4px 0 #ffffff44'), 32, 36, 'slam');
+  const f2 = show(tx('p_f2', 195, 54, C.navy, 'text-shadow:0 4px 0 #ffffff44'), 34, 36, 'slam');
+  const menu = L ? ['p_m1', 'p_m2', 'p_m3', 'p_m4', 'p_m5', 'p_m6'] : [];
+  menu.forEach((k, i) => {
+    const row = mk('box row', `left:${CX - 190}px;top:${290 + i * 56}px;width:380px;`, `<span data-k="${k}"></span><i></i>`);
+    const sweep = 33 + Math.floor(i / 2);
+    show(row, 32.1 + i * .08, sweep, 'pop', { exit: i % 2 ? 'R' : 'L' });
+  });
+  burst(33, CX, 380, 'small'); burst(34, CX, 440, 'small'); burst(35, CX, 500, 'mid');
+  show(tx('p_g1', 125, 68, C.navy, 'text-shadow:0 4px 0 #ffffff55'), 36, 40, 'slam', { amp: 6 });
+  show(tx('p_g2', 218, 46, C.navy), 37, 40, 'slam');
+  const steps = [['down', 'p_s1', 110], ['key', 'p_s2', 247], ['check', 'p_s3', 384]];
+  steps.forEach(([ic, k, cx], i) => {
+    const bb = 36 + i;
+    const c = show(mk('box circ', `left:${cx - 48}px;top:310px`, svg(ICON[ic], 52, i === 2 ? C.teal : C.navy)), bb, 40, 'pop', { idle: (t, p) => ({ y: -22 * Math.max(0, Math.sin(clamp(p / .45) * Math.PI)) }) });
+    show(tx(k, 430, 24, C.navy, `left:${cx - 80}px;width:160px;text-shadow:none`), bb + .3, 40, 'fade');
+    burst(bb, cx, 360, 'small');
+  });
+  [[178, 36.6], [315, 37.6]].forEach(([x, b]) => show(mk('box', `left:${x - 20}px;top:340px;width:40px;height:8px;border-radius:4px;background:${C.navy}`), b, 40, 'pop'));
+  show(tx('p_g3', 600, 50, C.cream, 'text-shadow:0 4px 0 #10163f55'), 38, 40, 'slam');
+  burst(39, CX, 360, 'big');
+
+  // 7 안드로이드도 아이폰도 (박 40–44)
+  show(tx('p_h1', 125, 60, C.cream), 40, 44, 'slam');
+  show(tx('p_h2', 205, 60, C.yellow), 42, 44, 'slam');
+  const dev = (left, camera) => `left:${left}px;top:330px;width:150px;height:290px;border-radius:30px;` + (camera ? '' : '');
+  show(mk('box phone2', dev(60, 1), `<div style="position:absolute;top:12px;left:50%;margin-left:-5px;width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3)"></div>` + svg(HEART, 54, C.coral)), 40, 44, 'sl');
+  show(mk('box phone2', dev(285, 0), svg(HEART, 54, C.coral)), 42, 44, 'sr');
+  show(tx('p_and', 640, 26, C.cream, 'left:45px;width:180px;text-shadow:none'), 40.5, 44, 'fade');
+  show(tx('p_ios', 640, 26, C.cream, 'left:270px;width:180px;text-shadow:none'), 42.5, 44, 'fade');
+  show(mk('box', `left:${CX - 36}px;top:430px`, svg(HEART, 72, C.yellow)), 43, 44, 'pop', { idle: t => ({ s: 1 + .12 * kick(t) }) });
+  burst(40, CX, 160, 'mid'); burst(41, 157, 480, 'small'); burst(42, CX, 240, 'mid'); burst(43, CX, 466, 'big');
+
+  // 8 걸음 수 (박 44–48) — 막대가 박 반 개씩 자란다. 박 47 은 곡이 한 박 빠지는 자리 → 숨 고르기
+  show(tx('p_i1', 125, 52, C.cream), 44, 48.5, 'slam');
+  show(tx('p_i2', 195, 52, C.yellow), 45, 48.5, 'slam');
+  const WEEK = [5800, 6420, 5100, 7260, 6840, 5530, 8420];
+  const chart = mk('box', `left:${CX - 190}px;top:330px;width:380px;height:290px`);
+  WEEK.forEach((v, i) => { const b = document.createElement('div'); b.className = 'bar' + (i === 6 ? ' last' : ''); b.style.left = (i * 54 + 2) + 'px'; chart.appendChild(b); });
+  show(chart, 44, 48.5, 'fade');
+  const num = show(tx('p_none', 270, 44, C.yellow), 46.5, 48.5, 'pop');
+  num.removeAttribute('data-k');
+  show(tx('steps', 650, 22, '#9aa3d1', 'text-shadow:none'), 44.5, 48.5, 'fade');
+  TICK.push(t => {
+    chart.querySelectorAll('.bar').forEach((b, i) => { const e = 1 - Math.pow(1 - clamp((t - (44 + i * .5) * B) / .3), 3); b.style.height = (WEEK[i] / 8420 * 270 * e).toFixed(1) + 'px'; });
+    num.textContent = fmtNum(Math.round(WEEK[6] * clamp((t - 46.5 * B) / (1.4 * B))));
+  });
+  burst(44, CX, 160, 'small'); burst(45, CX, 220, 'small'); burst(46, CX, 480, 'small'); burst(47, CX, 470, 'wave');
+
+  // 9 20개 언어 (박 48–52) — 재진입, 인사말이 터져 나온다
+  show(tx('p_j1', 120, 66, C.navy, 'text-shadow:0 4px 0 #ffffff55'), 48.5, 52, 'slam', { amp: 8 });
+  const HI = ['안녕하세요', 'Hello', 'こんにちは', '你好', '哈囉', 'Hallo', 'Bonjour', 'Hola', 'Ciao', 'Hoi', 'Olá', 'Привет', 'مرحبا', 'Merhaba',
+              'Cześć', 'Xin chào', 'สวัสดี', 'Hej', 'नमस्ते', 'Halo'];
+  const ORDER = [9, 2, 14, 5, 18, 0, 11, 7, 16, 3, 12, 1, 19, 8, 4, 15, 10, 6, 17, 13];
+  HI.forEach((w, i) => {
+    const r = Math.floor(i / 4), c = i % 4;
+    const pl = mk('box pill', `left:${24 + c * 114}px;top:${280 + r * 54}px`, `<span dir="auto">${w}</span>`);
+    show(pl, 48.5 + .03 + ORDER.indexOf(i) * .06 / B * 1.0 / 1, 52, 'pop');
+  });
+  show(tx('p_j2', 570, 36, C.navy, 'text-shadow:0 3px 0 #ffffff55'), 49.5, 52, 'sl');
+  ['ko-KR', 'en-US', 'de-DE'].forEach((loc, i) => {
+    const s = new Intl.DateTimeFormat(loc, { hour: 'numeric', minute: '2-digit', timeZone: 'UTC' }).format(wall(18, 0));
+    show(mk('box chip', `left:${40 + i * 150}px;top:640px;width:132px;background:${[C.navy, C.coral, C.indigo][i]}`, s), 50 + i * .4, 52, 'rise');
+  });
+  burst(48, CX, 430, 'small'); burst(48.5, CX, 430, 'big'); burst(49.5, CX, 330, 'mid'); burst(50, CX, 600, 'mid'); burst(51, CX, 640, 'small');
+
+  // 10 긴급 (박 52–56)
+  show(tx('p_k1', 118, 54, C.cream), 52, 56, 'slam');
+  const sos = show(mk('box sos', `left:${CX - 185}px;top:240px`, '<span data-k="em_btn"></span>'), 52.5, 56, 'pop', { idle: t => { const d = t - 53 * B; return { s: d > 0 && d < .22 ? 1 - .08 * Math.sin(d / .22 * Math.PI) : 1 }; } });
+  show(tx('p_k2', 560, 46, C.cream), 53, 56, 'slam');
+  show(mk('box', `left:${CX - 55}px;top:400px`, svg(ICON.pin, 110, C.yellow)), 54, 56, 'drop');
+  show(tx('p_k3', 620, 46, C.yellow), 55, 56, 'slam', { amp: 6 });
+  burst(52, CX, 170, 'mid'); burst(53, CX, 300, 'wave'); burst(53.5, CX, 300, 'wave'); burst(54, CX, 510, 'mid'); burst(55, CX, 645, 'mid');
+
+  // 11 요금 (박 56–60)
+  const card1 = show(mk('box card', `left:30px;top:150px;background:${C.teal}`, '<div class="s" data-k="p_l1"></div><div class="b" data-k="p_l2"></div>'), 56, 60, 'sl');
+  const card2 = show(mk('box card', `left:${475 - 330 - 6}px;top:330px;background:${C.indigo}`, '<div class="s" data-k="p_l3"></div><div class="b m" data-k="p_l4"></div>'), 57, 60, 'sr', { amp: 7 });
+  show(tx('p_l5', 520, 34, C.navy, 'text-shadow:none;opacity:.8'), 58, 60, 'rise');
+  burst(56, 200, 230, 'mid'); burst(57, CX, 330, 'big'); burst(58, CX, 535, 'mid'); burst(59, CX, 520, 'small');
+
+  // 12 엔딩 (박 60–72) — 공통 엔딩 문장, 로고는 박 68 에서 터진다
+  mountEnding(60 * B, L.q1, L.q2);
+  const endEl = document.querySelector('.end'), eq1 = endEl.querySelector('.q1'), eq2 = endEl.querySelector('.q2'), ebr = endEl.querySelector('.brand');
+  endEl.dataset.t = (60 * B).toFixed(3); eq1.dataset.t = (61 * B).toFixed(3); eq2.dataset.t = (64.5 * B).toFixed(3); ebr.dataset.t = (68 * B).toFixed(3);
+  burst(60, CX, 400, 'big', { front: true, pal: ['#ffd166', '#ff8a95', '#fff8f0', '#ffc4a3', '#e54b5e'] });
+  burst(68, CX, 530, 'big', { front: true, pal: ['#ffd166', '#ff8a95', '#fff8f0', '#ffc4a3', '#e54b5e'] });
+  burst(70, CX, 530, 'mid', { front: true, pal: ['#ffd166', '#ff8a95', '#fff8f0'] });
+
+  // ── 번호(숫자) 칸에는 데이터 키가 없다 — 위에서 비워 둔 num 외 키 확인용 ──
+  const FLASH = [[15, .28], [15.5, .38], [16, .85], [39, .55], [43, .45], [48.5, .75], [57, .5], [60, .8], [68, .55]];
+  const flashEl = document.querySelector('.flash'), bgA = document.getElementById('bgA'), bgB = document.getElementById('bgB'), glow = document.querySelector('.glow');
+  const cb = document.getElementById('cb').getContext('2d'), cf = document.getElementById('cf').getContext('2d');
+  // 글자가 자기 상자를 넘으면 글자 크기를 줄인다 — 언어마다 문장 길이가 다르다(독일어·러시아어 등). 상자마다 자기 폭을 기준으로 잰다.
+  const wd = e => Math.max(e.scrollWidth, e.offsetWidth);
+  const fitTo = (e, limit) => { let s = parseFloat(getComputedStyle(e).fontSize), g = 0; while (wd(e) > limit && s > 10 && g++ < 80) { s -= 1; e.style.fontSize = s + 'px'; } };
+  const FIT = () => {
+    document.querySelectorAll('.t, .card .b, .card .s, .chip').forEach(e => fitTo(e, e.clientWidth));
+    document.querySelectorAll('.pill span').forEach(e => fitTo(e, e.parentNode.clientWidth - 16));
+    document.querySelectorAll('.row span').forEach(e => fitTo(e, e.parentNode.clientWidth - 36 - 38 - 12));
+  };
+
+  fillText();
+  [f1, f2].forEach(e => e.insertAdjacentHTML('beforeend', '<span class="x">✕</span>'));
+  document.querySelectorAll('.t-push').forEach(e => { e.textContent = pushHTMLBody(); });
+  function pushHTMLBody() { return pushBody(L.p_alias, 6120); }
+  document.querySelectorAll('[data-k="steps"]').forEach(e => { e.textContent = L.steps; });
+  FIT();
+  document.fonts.ready.then(FIT);
+
+  window.extra = t => {
+    // 배경 — 장면이 바뀌는 박에서 가운데에서 원이 번져 나간다
+    const i = sceneAt(t), t0 = SCENES[i][0] * B, p = clamp((t - t0) / .3), e = 1 - Math.pow(1 - p, 3);
+    bgA.style.background = SCENES[Math.max(i - 1, 0)][1];
+    bgB.style.background = SCENES[i][1];
+    bgB.style.clipPath = i === 0 ? 'none' : `circle(${(e * 900).toFixed(0)}px at 50% 46%)`;
+    glow.style.opacity = (.35 * kick(t) + .1).toFixed(3);
+    // 무대 — 박마다 살짝 숨 쉬고, 터지는 순간 흔들린다
+    const inten = t < 16 * B ? .45 : 1;
+    let sx = 0, sy = 0;
+    for (const s of SHAKE) { const d = t - s.t; if (d >= 0 && d < .5) { const a = s.amp * Math.exp(-d * 9); sx += a * Math.sin(d * 72); sy += a * Math.cos(d * 83); } }
+    const bar = Math.exp(-(((t / BAR) % 1)) * 5);
+    stage.style.transform = `translate(${sx.toFixed(2)}px,${sy.toFixed(2)}px) scale(${(1 + inten * (.006 * kick(t) + .012 * bar)).toFixed(4)})`;
+    applyReg(t); TICK.forEach(f => f(t));
+    // 박 47 의 숨 고르기 — 화면이 살짝 가라앉았다가 재진입에서 터진다
+    if (t > 47 * B && t < 48.5 * B) stage.style.opacity = (1 - .35 * ((t - 47 * B) / (1.5 * B))).toFixed(3); else stage.style.opacity = 1;
+    let fl = 0; FLASH.forEach(([b, a]) => { const d = t - b * B; if (d >= 0) fl += a * Math.exp(-d * 13); });
+    flashEl.style.opacity = Math.min(fl, .92).toFixed(3);
+    drawBursts(cb, t, false); drawBursts(cf, t, true);
+  };
+</script>
+</body></html>

@@ -207,7 +207,10 @@ def main():
     if video.get("audio") is False:
         print(f"{vid}: audio false — 소리 없이 둔다")
         return
-    audio = build_mix({**video, "audio": cfg["audio"]})   # 배경음악은 모든 편 공통(shorts.json 최상위 audio)
+    # 배경음악은 모든 편 공통(shorts.json 최상위 audio). 편에서 "audio": {"bgm":…,"bgm_start":…} 로 덮어쓰면 그 편만 다른 곡
+    # (앱 소개 모션 그래픽처럼 시리즈와 성격이 다른 영상용 — 박자에 맞춘 편은 곡이 곧 타임라인이다)
+    own = video.get("audio") if isinstance(video.get("audio"), dict) else None
+    audio = build_mix({**video, "audio": {**cfg["audio"], **own} if own else cfg["audio"]})
     if "--mix-only" in rest:
         return
     mux(video, audio, [a for a in rest if not a.startswith("--")] or list(cfg["langs"]))

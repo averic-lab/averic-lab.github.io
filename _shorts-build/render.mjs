@@ -28,6 +28,8 @@ const page = await browser.newPage({ viewport: { width: 540, height: 960 }, devi
 await page.goto(pathToFileURL(path.join(here, page_)).href + '?lang=' + LANG);
 await page.evaluate(() => document.fonts.ready);
 const duration = await page.evaluate(() => window.DURATION);
+// 페이지가 window.CRF 로 화질을 낮출 수 있다 — 컨페티가 가득한 모션 그래픽(h.html)은 18 이면 편당 16MB 라 저장소에 20개 언어를 쌓을 수 없다
+const crf = await page.evaluate(() => window.CRF || 18);
 
 const shot = async ms => { await page.evaluate(m => window.render(m), ms); return page.screenshot({ type: 'png' }); };
 
@@ -59,7 +61,7 @@ if (rest[0] === '--cues') {
 } else {
   const out = rest[0];
   const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS), '-i', '-',
-    '-c:v', 'libx264', '-preset', 'slow', '-crf', '18', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out],
+    '-c:v', 'libx264', '-preset', 'slow', '-crf', String(crf), '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out],
     { stdio: ['pipe', 'inherit', 'inherit'] });
   const n = Math.round(duration * FPS);
   for (let i = 0; i < n; i++) {
