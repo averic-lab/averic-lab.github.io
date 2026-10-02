@@ -70,7 +70,7 @@
 <script>
   // ── 박 그리드 ────────────────────────────────────────────────────────
   const BPM = 123.05, B = 60 / BPM, BAR = 4 * B;       // 1박 0.4876초 · 1마디 1.9504초
-  window.DURATION = 18 * BAR;                            // 18마디 = 35.1초 (곡이 마디 4 에서 드롭, 마디 12 에서 재진입)
+  window.DURATION = 19 * BAR;                            // 19마디 = 37.1초 (곡이 마디 4 에서 드롭, 박 48 에서 재진입 — 장면 4 가 2마디라 재진입은 장면 7→8 경계)
   window.CRF = 28;                                       // 컨페티가 많아 18 이면 16MB — 28 이면 약 6MB(render.mjs 가 읽는다)
   window.SFX = [];                                       // 효과음 없음 — 모든 소리는 음악 박자로만
 
@@ -85,7 +85,7 @@
 
   // ── 요소 만들기 ──────────────────────────────────────────────────────
   const mk = (cls, css, html = '') => { const d = document.createElement('div'); d.className = cls; d.style.cssText = css; d.innerHTML = html; stage.appendChild(d); return d; };
-  const tx = (k, top, size, color, extra = '') => { const d = mk('t', `top:${top}px;font-size:${size}px;color:${color};${extra}`); d.dataset.k = k; return d; };
+  const tx = (k, top, size, color, extra = '', html = false) => { const d = mk('t', `top:${top}px;font-size:${size}px;color:${color};${extra}`); d.dataset[html ? 'h' : 'k'] = k; return d; };
   const svg = (path, size, fill, vb = 24) => `<svg viewBox="0 0 ${vb} ${vb}" width="${size}" height="${size}" fill="${fill}"><path d="${path}"/></svg>`;
   const HEART = 'M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z';
   const ICON = {
@@ -96,6 +96,10 @@
     check: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z',
     pin: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
     power: 'M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z',
+    battery: 'M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.34c.74 0 1.33-.6 1.33-1.33V5.33C17 4.6 16.4 4 15.67 4z',
+    refresh: 'M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z',
+    cloud: 'M19.35 10.04C18.67 6.59 15.64 4 12 4c-1.48 0-2.85.43-4.01 1.17l1.46 1.46C10.21 6.23 11.08 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3 0 1.13-.64 2.11-1.56 2.62l1.45 1.45C23.16 18.16 24 16.68 24 15c0-2.64-2.05-4.78-4.65-4.96zM3 5.27l2.75 2.74C2.56 8.15 0 10.77 0 14c0 3.31 2.69 6 6 6h11.73l2 2L21 20.73 4.27 4 3 5.27zM7.73 10l8 8H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h1.73z',
+    lunch: 'M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z',
     x: 'M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z',
   };
   const pushHTML = `<div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="${HEART}"/></svg></span><span class="app" data-k="app_name"></span><span class="now" data-k="now"></span></div>
@@ -103,7 +107,9 @@
 
   // ── 등장·퇴장 레지스트리 ─────────────────────────────────────────────
   const REG = [], SHAKE = [];
+  let SH = 0;                           // 박 이동 — 장면 4 가 2마디로 늘어난 뒤의 장면은 +4 (곡은 그대로라 박 번호만 민다)
   const show = (el, a, z, kind, o = {}) => {
+    a += SH; z += SH;
     REG.push({ el, a: a * B, z: z * B, kind, o });
     if (kind === 'slam' || kind === 'stamp') SHAKE.push({ t: a * B, amp: o.amp || 4 });
     el.style.opacity = 0; return el;
@@ -138,8 +144,8 @@
 
   // ── "빵빵" 터짐 — 시드 고정 PRNG 로 입자를 한 번만 정하고, 시간 t 의 함수로 그린다 ──
   const mulberry = a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
-  const SCENES = [[0, '#0a0e2a'], [8, '#15122e'], [16, '#ff5f7a'], [24, '#2b3a9e'], [28, '#ffd166'], [32, '#14b8a6'], [40, '#5b6cff'],
-                  [44, '#0f1537'], [48.5, '#ff8a3d'], [52, '#d7263d'], [56, '#fff1d6'], [60, '#2a2360']];
+  const SCENES = [[0, '#0a0e2a'], [8, '#15122e'], [16, '#ff5f7a'], [24, '#2b3a9e'], [32, '#ffd166'], [36, '#14b8a6'], [44, '#5b6cff'],
+                  [48, '#0f1537'], [52.5, '#ff8a3d'], [56, '#d7263d'], [60, '#fff1d6'], [66, '#2a2360']];
   const LIGHT = new Set(['#ffd166', '#14b8a6', '#ff8a3d', '#fff1d6']);   // 밝은 배경 — 어두운 조각을 섞는다
   const PAL_DARK = ['#ffd166', '#ff5f7a', '#fff8f0', '#5eead4', '#ff8a95', '#8ea0ff'];
   const PAL_LIGHT = ['#10163f', '#ff5f7a', '#ffffff', '#5b6cff', '#d7263d', '#00897B'];
@@ -154,6 +160,7 @@
     wave:  { n: 0,  sp: [0, 0],     ring: [110, 190, 270], rays: 0, sz: [0, 0], life: .9 },
   };
   function burst(beat, x, y, kind = 'small', o = {}) {
+    if (!o.abs) beat += SH;               // abs: 음악에 묶인 박(재진입)은 이동하지 않는다
     const c = CFG[kind], rnd = mulberry(Math.round(beat * 1000) + Math.round(x) * 7 + Math.round(y) * 13 + kind.length);
     const pal = o.pal || palAt(beat * B), ps = [];
     for (let i = 0; i < c.n; i++) {
@@ -235,13 +242,18 @@
   burst(16, CX, 190, 'big'); burst(17, CX, 330, 'mid'); burst(18, CX, 430, 'small'); burst(20, CX, 480, 'small');
   burst(21, CX, 565, 'mid'); burst(22, CX, 690, 'mid'); burst(23, CX, 560, 'small');
 
-  // 4 앱이 꺼져도 (박 24–28)
-  show(tx('p_d1', 128, 64, C.cream), 24, 28, 'slam');
-  show(tx('p_d2', 208, 64, C.yellow), 26, 28, 'slam');
-  const phone = show(mk('box phone2', `left:${CX - 95}px;top:330px;width:190px;height:360px;border-radius:38px;`, svg(ICON.power, 64, '#5f6aa8')), 24.3, 28, 'pop');
-  const onHeart = show(mk('box', `left:${CX - 45}px;top:280px`, svg(HEART, 90, C.coral)), 26, 28, 'rise', { idle: t => ({ s: 1 + .1 * kick(t) }) });
-  show(mk('box', `left:${CX - 24}px;top:560px;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.14)`, ''), 24.3, 26, 'fade');
-  burst(24, CX, 160, 'mid'); burst(26, CX, 500, 'wave'); burst(26.5, CX, 500, 'wave'); burst(27, CX, 300, 'small'); burst(27.5, CX, 300, 'small');
+  // 4 앱이 꺼져도 (박 24–32, 2마디) — 절전·앱 꺼짐·재부팅·통신 끊김, 그래도 안부는 도착한다
+  const phone = show(mk('box phone2', `left:${CX - 95}px;top:310px;width:190px;height:360px;border-radius:38px;`, ''), 24, 32, 'pop');
+  [['p_d1', 24, 25.5, 'battery'], ['p_d2', 25.5, 27, 'power'], ['p_d3', 27, 28.5, 'refresh'], ['p_d4', 28.5, 30, 'cloud']].forEach(([k, a0, z0, ic], i) => {
+    show(tx(k, 128, 50, i % 2 ? C.yellow : C.cream, 'line-height:1.18', true), a0, z0, 'slam');
+    show(mk('box', `left:${CX - 36}px;top:444px`, svg(ICON[ic], 72, '#9fb0ff')), a0 + .1, z0, 'pop');
+    burst(a0, CX, 490, i ? 'small' : 'mid');
+  });
+  show(tx('p_d5', 128, 62, C.yellow, 'line-height:1.18', true), 30, 32, 'slam', { amp: 8 });
+  show(mk('box push', `left:${CX - 170}px;top:450px`, pushHTML), 30, 32, 'rise', { s0: 1.2 });
+  show(tx('p_d6', 716, 19, '#c9cfe6', 'text-shadow:none;font-weight:600'), 30.5, 32, 'fade');
+  burst(30, CX, 490, 'big'); burst(31, CX, 300, 'small');
+  SH = 4;                               // 여기부터 +4박 (장면 5~12)
 
   // 5 회원가입 없음 (박 28–32)
   show(tx('p_e1', 135, 68, C.navy, 'text-shadow:0 4px 0 #ffffff55'), 28, 32, 'slam', { amp: 6 });
@@ -250,7 +262,7 @@
   const codeCard = show(mk('box code2', `left:${CX - 170}px;top:440px`, '<div class="v8"></div>'), 30, 32, 'rise');
   show(tx('p_e2', 600, 42, C.navy), 30.5, 32, 'sl');
   burst(28, CX, 190, 'mid'); burst(29, CX, 340, 'small'); burst(30, CX, 495, 'small'); burst(31.4, CX, 495, 'mid');
-  TICK.push(t => { const n = clamp(Math.floor((t - 30.4 * B) / .12) + 1, 0, 8); codeCard.querySelector('.v8').textContent = 'K7M-4PXR'.slice(0, n); });
+  TICK.push(t => { const n = clamp(Math.floor((t - (30.4 + SH) * B) / .12) + 1, 0, 8); codeCard.querySelector('.v8').textContent = 'K7M-4PXR'.slice(0, n); });
 
   // 6 단순함 (박 32–40) — 복잡한 메뉴가 박마다 쓸려 나가고, 세 걸음으로 끝
   const f1 = show(tx('p_f1', 125, 54, C.navy, 'text-shadow:0 4px 0 #ffffff44'), 32, 36, 'slam');
@@ -297,8 +309,8 @@
   num.removeAttribute('data-k');
   show(tx('steps', 650, 22, '#9aa3d1', 'text-shadow:none'), 44.5, 48.5, 'fade');
   TICK.push(t => {
-    chart.querySelectorAll('.bar').forEach((b, i) => { const e = 1 - Math.pow(1 - clamp((t - (44 + i * .5) * B) / .3), 3); b.style.height = (WEEK[i] / 8420 * 270 * e).toFixed(1) + 'px'; });
-    num.textContent = fmtNum(Math.round(WEEK[6] * clamp((t - 46.5 * B) / (1.4 * B))));
+    chart.querySelectorAll('.bar').forEach((b, i) => { const e = 1 - Math.pow(1 - clamp((t - (44 + SH + i * .5) * B) / .3), 3); b.style.height = (WEEK[i] / 8420 * 270 * e).toFixed(1) + 'px'; });
+    num.textContent = fmtNum(Math.round(WEEK[6] * clamp((t - (46.5 + SH) * B) / (1.4 * B))));
   });
   burst(44, CX, 160, 'small'); burst(45, CX, 220, 'small'); burst(46, CX, 480, 'small'); burst(47, CX, 470, 'wave');
 
@@ -317,7 +329,7 @@
     const s = new Intl.DateTimeFormat(loc, { hour: 'numeric', minute: '2-digit', timeZone: 'UTC' }).format(wall(18, 0));
     show(mk('box chip', `left:${40 + i * 150}px;top:640px;width:132px;background:${[C.navy, C.coral, C.indigo][i]}`, s), 50 + i * .4, 52, 'rise');
   });
-  burst(48, CX, 430, 'small'); burst(48.5, CX, 430, 'big'); burst(49.5, CX, 330, 'mid'); burst(50, CX, 600, 'mid'); burst(51, CX, 640, 'small');
+  burst(48.5, CX, 430, 'big', { abs: true }); burst(48, CX, 430, 'small', { abs: true }); burst(48.5, CX, 430, 'mid'); burst(49.5, CX, 330, 'mid'); burst(50, CX, 600, 'mid'); burst(51, CX, 640, 'small');
 
   // 10 긴급 (박 52–56)
   show(tx('p_k1', 118, 54, C.cream), 52, 56, 'slam');
@@ -327,22 +339,24 @@
   show(tx('p_k3', 620, 46, C.yellow), 55, 56, 'slam', { amp: 6 });
   burst(52, CX, 170, 'mid'); burst(53, CX, 300, 'wave'); burst(53.5, CX, 300, 'wave'); burst(54, CX, 510, 'mid'); burst(55, CX, 645, 'mid');
 
-  // 11 요금 (박 56–60)
-  const card1 = show(mk('box card', `left:30px;top:150px;background:${C.teal}`, '<div class="s" data-k="p_l1"></div><div class="b" data-k="p_l2"></div>'), 56, 60, 'sl');
-  const card2 = show(mk('box card', `left:${475 - 330 - 6}px;top:330px;background:${C.indigo}`, '<div class="s" data-k="p_l3"></div><div class="b m" data-k="p_l4"></div>'), 57, 60, 'sr', { amp: 7 });
-  show(tx('p_l5', 520, 34, C.navy, 'text-shadow:none;opacity:.8'), 58, 60, 'rise');
-  burst(56, 200, 230, 'mid'); burst(57, CX, 330, 'big'); burst(58, CX, 535, 'mid'); burst(59, CX, 520, 'small');
+  // 11 요금 (박 60–66, 1.5마디) — 연 $9.99 는 점심 한 끼 정도. 마지막 한 줄을 2박 동안 읽히게 둔다
+  show(mk('box card', `left:30px;top:120px;background:${C.teal}`, '<div class="s" data-k="p_l1"></div><div class="b" data-k="p_l2"></div>'), 56, 62, 'sl');
+  show(mk('box card', `left:120px;top:290px;background:${C.indigo}`, '<div class="s" data-k="p_l3"></div><div class="b m" data-k="p_l4"></div>'), 57, 62, 'sr', { amp: 7 });
+  show(tx('p_l5', 462, 44, C.navy, 'text-shadow:none'), 58.5, 62, 'slam');
+  show(mk('box', `left:${CX - 48}px;top:528px`, svg(ICON.lunch, 96, C.coral)), 59.5, 62, 'pop', { idle: t => ({ s: 1 + .1 * kick(t) }) });
+  show(tx('p_l6', 640, 58, C.navy, 'text-shadow:0 4px 0 #ff5f7a55'), 60, 62, 'slam', { amp: 8 });
+  burst(56, 200, 200, 'mid'); burst(57, CX, 330, 'big'); burst(58.5, CX, 485, 'mid'); burst(59.5, CX, 575, 'small'); burst(60, CX, 660, 'big');
 
   // 12 엔딩 (박 60–72) — 공통 엔딩 문장, 로고는 박 68 에서 터진다
-  mountEnding(60 * B, L.q1, L.q2);
+  mountEnding((62 + SH) * B, L.q1, L.q2);
   const endEl = document.querySelector('.end'), eq1 = endEl.querySelector('.q1'), eq2 = endEl.querySelector('.q2'), ebr = endEl.querySelector('.brand');
-  endEl.dataset.t = (60 * B).toFixed(3); eq1.dataset.t = (61 * B).toFixed(3); eq2.dataset.t = (64.5 * B).toFixed(3); ebr.dataset.t = (68 * B).toFixed(3);
-  burst(60, CX, 400, 'big', { front: true, pal: ['#ffd166', '#ff8a95', '#fff8f0', '#ffc4a3', '#e54b5e'] });
+  endEl.dataset.t = ((62 + SH) * B).toFixed(3); eq1.dataset.t = ((63 + SH) * B).toFixed(3); eq2.dataset.t = ((65.5 + SH) * B).toFixed(3); ebr.dataset.t = ((68 + SH) * B).toFixed(3);
+  burst(62, CX, 400, 'big', { front: true, pal: ['#ffd166', '#ff8a95', '#fff8f0', '#ffc4a3', '#e54b5e'] });
   burst(68, CX, 530, 'big', { front: true, pal: ['#ffd166', '#ff8a95', '#fff8f0', '#ffc4a3', '#e54b5e'] });
   burst(70, CX, 530, 'mid', { front: true, pal: ['#ffd166', '#ff8a95', '#fff8f0'] });
 
   // ── 번호(숫자) 칸에는 데이터 키가 없다 — 위에서 비워 둔 num 외 키 확인용 ──
-  const FLASH = [[15, .28], [15.5, .38], [16, .85], [39, .55], [43, .45], [48.5, .75], [57, .5], [60, .8], [68, .55]];
+  const FLASH = [[15, .28], [15.5, .38], [16, .85], [30, .6], [43, .55], [47, .45], [48.5, .75], [61, .5], [64, .45], [66, .8], [72, .55]];
   const flashEl = document.querySelector('.flash'), bgA = document.getElementById('bgA'), bgB = document.getElementById('bgB'), glow = document.querySelector('.glow');
   const cb = document.getElementById('cb').getContext('2d'), cf = document.getElementById('cf').getContext('2d');
   // 글자가 자기 상자를 넘으면 글자 크기를 줄인다 — 언어마다 문장 길이가 다르다(독일어·러시아어 등). 상자마다 자기 폭을 기준으로 잰다.
