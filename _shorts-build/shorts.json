@@ -3,14 +3,14 @@
   "audio": {"_doc": "모든 편 공통 배경음악 — 편마다 바꾸지 않는다(같은 곡·같은 시작점이라야 '그 쇼츠'로 기억된다). 편에서 \"audio\": false 면 소리 없이.",
             "bgm": "well-be-okay.mp3", "bgm_start": 0},
   "videos": [
-    {"id": "mom-call", "page": "a.html", "title": "t_a", "date": "2026-09-19", "home": true},
+    {"id": "mom-call", "page": "a.html", "title": "t_a", "date": "2026-09-19"},
+    {"id": "app-intro", "page": "h.html", "title": "t_p", "date": "2026-10-02", "home": true, "audio": {"bgm": "motivating-mornings.mp3", "bgm_start": 4.395}},
     {"id": "daughter-abroad", "page": "b.html", "title": "t_b", "date": "2026-09-19", "home": true},
     {"id": "living-alone", "page": "c.html", "title": "t_c", "date": "2026-09-24"},
     {"id": "busy-couple", "page": "d.html", "title": "t_d", "date": "2026-09-24"},
     {"id": "neighbor-friends", "page": "e.html", "title": "t_e", "date": "2026-09-24"},
     {"id": "solo-trip", "page": "f.html", "title": "t_f", "date": "2026-09-25"},
-    {"id": "lost-mom", "page": "g.html", "title": "t_g", "date": "2026-09-26"},
-    {"id": "app-intro", "page": "h.html", "title": "t_p", "date": "2026-10-02", "audio": {"bgm": "motivating-mornings.mp3", "bgm_start": 4.395}}
+    {"id": "lost-mom", "page": "g.html", "title": "t_g", "date": "2026-09-26"}
   ],
   "langs": {
     "ko": {
@@ -73,7 +73,19 @@
       "b3": "She didn't do a thing,", "b3s": "yet her check-in arrived first.", "b4": "Even without a call,<br>we know she's okay.",
       "daughter": "Emma", "home_city": "New York", "home_tz": "America/New_York", "away_city": "Sydney", "away_tz": "Australia/Sydney",
       "bubble": "Doing okay? Eating well?", "unread": "Not read yet", "dnote": "Her phone<br>The app was never opened",
-      "now": "now", "brand_sub": "Daily check-ins, sent automatically", "store": "Search “Anbu” in your app store"
+      "now": "now", "brand_sub": "Daily check-ins, sent automatically", "store": "Search “Anbu” in your app store",
+      "t_p": "Meet Anbu", "p_a1": "A loved one", "p_a2": "living alone,", "p_a3": "Do you worry every day?",
+      "p_b1": "Calls feel like a burden", "p_b2": "Visits are hard to fit in", "p_c1": "Without opening the app,", "p_c2": "every day,",
+      "p_c3": "automatically", "p_d1": "Even when the phone<br>goes into deep sleep,", "p_d2": "even when the app is closed,", "p_d3": "even after a reboot,",
+      "p_d4": "even without a signal,", "p_d5": "the check-in<br>never stops", "p_d6": "Except when the phone is fully powered off", "p_e1": "No sign-up",
+      "p_e2": "One code to connect", "p_f1": "Complicated settings", "p_f2": "Unneeded features", "p_m1": "Advanced settings",
+      "p_m2": "Notification details", "p_m3": "Integrations", "p_m4": "Permissions", "p_m5": "Options",
+      "p_m6": "Themes", "p_g1": "Even a kid", "p_g2": "can use it in minutes", "p_g3": "As simple as it gets",
+      "p_s1": "Install", "p_s2": "Enter code", "p_s3": "Done", "p_h1": "Android too,",
+      "p_h2": "iPhone too", "p_and": "Android", "p_ios": "iPhone", "p_i1": "Their day,",
+      "p_i2": "in steps", "p_j1": "20 languages", "p_j2": "Each country's own clock", "p_k1": "When you need help",
+      "p_k2": "One tap,", "p_k3": "just that moment's location", "p_l1": "For the one sharing", "p_l2": "Free",
+      "p_l3": "For the caregiver", "p_l4": "3-month free trial", "p_l5": "then $9.99/year", "p_l6": "About the price of lunch"
     },
     "ja": {
       "t_a": "電話に出ない母", "t_b": "留学中の娘", "play": "再生", "replay": "もう一度見る",
@@ -84,7 +96,19 @@
       "b3": "娘は何も<br>していないのに、", "b3s": "安否が先に届きました。", "b4": "連絡しなくても、<br>元気だとわかります。",
       "daughter": "さくら", "home_city": "東京", "home_tz": "Asia/Tokyo", "away_city": "ロンドン", "away_tz": "Europe/London",
       "bubble": "元気？ちゃんと食べてる？", "unread": "未読", "dnote": "娘のスマホ<br>アプリは開いていません",
-      "now": "今", "brand_sub": "毎日、自動で届く安否", "store": "ストアで「Anbu」を検索"
+      "now": "今", "brand_sub": "毎日、自動で届く安否", "store": "ストアで「Anbu」を検索",
+      "t_p": "Anbuのご紹介", "p_a1": "ひとりで暮らす", "p_a2": "大切な人、", "p_a3": "毎日心配ですよね？",
+      "p_b1": "電話は気が引けて", "p_b2": "訪ねるのも大変", "p_c1": "アプリを開かなくても、", "p_c2": "毎日",
+      "p_c3": "自動で", "p_d1": "スマホが<br>省電力モードでも、", "p_d2": "アプリが終了していても、", "p_d3": "再起動しても、",
+      "p_d4": "通信が途切れても", "p_d5": "安否は<br>止まりません", "p_d6": "電源が完全に切れた場合を除く", "p_e1": "会員登録なし",
+      "p_e2": "コード1つでつながる", "p_f1": "複雑な設定", "p_f2": "余計な機能", "p_m1": "詳細設定",
+      "p_m2": "通知の詳細", "p_m3": "連携", "p_m4": "権限", "p_m5": "オプション",
+      "p_m6": "テーマ", "p_g1": "小学生でも", "p_g2": "すぐ使える", "p_g3": "とことんシンプル",
+      "p_s1": "インストール", "p_s2": "コード入力", "p_s3": "完了", "p_h1": "Androidも",
+      "p_h2": "iPhoneも", "p_and": "Android", "p_ios": "iPhone", "p_i1": "歩数でわかる",
+      "p_i2": "今日の1日", "p_j1": "20の言語", "p_j2": "時刻表記もその国のまま", "p_k1": "助けが必要なとき",
+      "p_k2": "ボタンひとつ、", "p_k3": "その瞬間の位置だけ", "p_l1": "送る側", "p_l2": "無料",
+      "p_l3": "見守る側", "p_l4": "3ヶ月無料お試し", "p_l5": "その後 年額 $9.99", "p_l6": "ランチ1回分くらい"
     },
     "zh-CN": {
       "t_a": "不接电话的妈妈", "t_b": "在国外留学的女儿", "play": "播放", "replay": "重播",
@@ -95,7 +119,19 @@
       "b3": "女儿什么都没做，", "b3s": "平安却先到了。", "b4": "不用联系，<br>也知道她过得好。",
       "daughter": "小雨", "home_city": "上海", "home_tz": "Asia/Shanghai", "away_city": "多伦多", "away_tz": "America/Toronto",
       "bubble": "过得好吗？有好好吃饭吗？", "unread": "未读", "dnote": "女儿的手机<br>没有打开应用",
-      "now": "现在", "brand_sub": "每天自动送达的平安", "store": "在应用商店搜索“Anbu”"
+      "now": "现在", "brand_sub": "每天自动送达的平安", "store": "在应用商店搜索“Anbu”",
+      "t_p": "Anbu 应用介绍", "p_a1": "独自生活的", "p_a2": "重要的人，", "p_a3": "你每天都在担心吗？",
+      "p_b1": "打电话怕打扰", "p_b2": "上门探望又不方便", "p_c1": "不用打开应用，", "p_c2": "每天",
+      "p_c3": "自动送达", "p_d1": "即使手机进入<br>深度省电，", "p_d2": "即使应用已关闭，", "p_d3": "即使手机重启，",
+      "p_d4": "即使网络中断，", "p_d5": "安好信号<br>也不会停", "p_d6": "手机完全关机时除外", "p_e1": "无需注册",
+      "p_e2": "一个代码就能连接", "p_f1": "复杂的设置", "p_f2": "多余的功能", "p_m1": "高级设置",
+      "p_m2": "通知详情", "p_m3": "关联", "p_m4": "权限", "p_m5": "选项",
+      "p_m6": "主题", "p_g1": "连小学生", "p_g2": "也能马上上手", "p_g3": "尽可能简单",
+      "p_s1": "安装", "p_s2": "输入代码", "p_s3": "完成", "p_h1": "支持 Android",
+      "p_h2": "也支持 iPhone", "p_and": "Android", "p_ios": "iPhone", "p_i1": "用步数看",
+      "p_i2": "今天一整天", "p_j1": "20 种语言", "p_j2": "时间也照各国写法", "p_k1": "需要帮助时",
+      "p_k2": "按一下按钮，", "p_k3": "只发送那一刻的位置", "p_l1": "发送方", "p_l2": "免费",
+      "p_l3": "守护方", "p_l4": "3 个月免费试用", "p_l5": "之后 $9.99/年", "p_l6": "约等于一顿火锅的钱"
     },
     "zh-TW": {
       "t_a": "不接電話的媽媽", "t_b": "出國留學的女兒", "play": "播放", "replay": "重播",
@@ -106,7 +142,19 @@
       "b3": "女兒什麼都沒做，", "b3s": "平安卻先到了。", "b4": "不用聯絡，<br>也知道她過得好。",
       "daughter": "怡君", "home_city": "台北", "home_tz": "Asia/Taipei", "away_city": "洛杉磯", "away_tz": "America/Los_Angeles",
       "bubble": "過得好嗎？有好好吃飯嗎？", "unread": "未讀", "dnote": "女兒的手機<br>沒有打開 App",
-      "now": "現在", "brand_sub": "每天自動送達的平安", "store": "在 App 商店搜尋「Anbu」"
+      "now": "現在", "brand_sub": "每天自動送達的平安", "store": "在 App 商店搜尋「Anbu」",
+      "t_p": "Anbu 應用程式介紹", "p_a1": "一個人生活的", "p_a2": "重要的人，", "p_a3": "你每天都在擔心嗎？",
+      "p_b1": "打電話怕打擾", "p_b2": "登門探望又不方便", "p_c1": "不用打開應用程式，", "p_c2": "每天",
+      "p_c3": "自動送達", "p_d1": "即使手機進入<br>深度省電，", "p_d2": "即使應用程式已關閉，", "p_d3": "即使手機重新開機，",
+      "p_d4": "即使網路中斷，", "p_d5": "安好訊號<br>也不會停", "p_d6": "手機完全關機時除外", "p_e1": "免註冊",
+      "p_e2": "一組代碼就能連線", "p_f1": "複雜的設定", "p_f2": "多餘的功能", "p_m1": "進階設定",
+      "p_m2": "通知詳情", "p_m3": "連結", "p_m4": "權限", "p_m5": "選項",
+      "p_m6": "主題", "p_g1": "連小學生", "p_g2": "也能馬上上手", "p_g3": "盡可能簡單",
+      "p_s1": "安裝", "p_s2": "輸入代碼", "p_s3": "完成", "p_h1": "支援 Android",
+      "p_h2": "也支援 iPhone", "p_and": "Android", "p_ios": "iPhone", "p_i1": "用步數看",
+      "p_i2": "今天一整天", "p_j1": "20 種語言", "p_j2": "時間也照各國寫法", "p_k1": "需要幫助時",
+      "p_k2": "按一下按鈕，", "p_k3": "只傳送那一刻的位置", "p_l1": "傳送方", "p_l2": "免費",
+      "p_l3": "守護方", "p_l4": "3 個月免費試用", "p_l5": "之後 $9.99/年", "p_l6": "約一人份小火鍋的錢"
     },
     "de": {
       "t_a": "Mama geht nicht ran", "t_b": "Unsere Tochter im Ausland", "play": "Abspielen", "replay": "Erneut ansehen",
@@ -117,7 +165,19 @@
       "b3": "Sie hat nichts getan,", "b3s": "und trotzdem kam ihr Lebenszeichen.", "b4": "Auch ohne Anruf<br>wissen wir: Es geht ihr gut.",
       "daughter": "Lena", "home_city": "Berlin", "home_tz": "Europe/Berlin", "away_city": "New York", "away_tz": "America/New_York",
       "bubble": "Alles gut? Isst du ordentlich?", "unread": "Noch nicht gelesen", "dnote": "Ihr Handy<br>App nicht geöffnet",
-      "now": "jetzt", "brand_sub": "Jeden Tag automatisch ein Lebenszeichen", "store": "Im Store nach „Anbu“ suchen"
+      "now": "jetzt", "brand_sub": "Jeden Tag automatisch ein Lebenszeichen", "store": "Im Store nach „Anbu“ suchen",
+      "t_p": "Anbu im Überblick", "p_a1": "Ein lieber Mensch,", "p_a2": "der allein lebt —", "p_a3": "täglich in Sorge?",
+      "p_b1": "Anrufen ist ein Aufwand", "p_b2": "Besuchen ist schwer", "p_c1": "Ohne die App zu öffnen,", "p_c2": "jeden Tag",
+      "p_c3": "automatisch", "p_d1": "Auch im tiefen<br>Energiesparmodus,", "p_d2": "auch bei geschlossener App,", "p_d3": "auch nach einem Neustart,",
+      "p_d4": "auch ohne Verbindung,", "p_d5": "die Meldung<br>hört nicht auf", "p_d6": "Außer bei ganz ausgeschaltetem Handy", "p_e1": "Ohne Registrierung",
+      "p_e2": "Ein Code genügt", "p_f1": "Komplizierte Einstellungen", "p_f2": "Unnötige Funktionen", "p_m1": "Erweitert",
+      "p_m2": "Benachrichtigungen", "p_m3": "Verknüpfungen", "p_m4": "Berechtigungen", "p_m5": "Optionen",
+      "p_m6": "Designs", "p_g1": "Sogar ein Kind", "p_g2": "kommt sofort klar", "p_g3": "So einfach wie möglich",
+      "p_s1": "Installieren", "p_s2": "Code eingeben", "p_s3": "Fertig", "p_h1": "Auf Android",
+      "p_h2": "und auf iPhone", "p_and": "Android", "p_ios": "iPhone", "p_i1": "Der Tag",
+      "p_i2": "in Schritten", "p_j1": "20 Sprachen", "p_j2": "Uhrzeit wie im jeweiligen Land", "p_k1": "Wenn Sie Hilfe brauchen",
+      "p_k2": "Ein Knopfdruck,", "p_k3": "nur der Standort in diesem Moment", "p_l1": "Für die teilende Person", "p_l2": "Gratis",
+      "p_l3": "Für die begleitende Person", "p_l4": "3 Monate gratis testen", "p_l5": "danach $9.99/Jahr", "p_l6": "So viel wie ein Mittagessen"
     },
     "fr": {
       "t_a": "Maman ne répond pas", "t_b": "Notre fille à l’étranger", "play": "Lire", "replay": "Revoir",
@@ -128,7 +188,19 @@
       "b3": "Elle n’a rien fait,", "b3s": "et pourtant ses nouvelles sont arrivées.", "b4": "Sans même appeler,<br>on sait qu’elle va bien.",
       "daughter": "Chloé", "home_city": "Paris", "home_tz": "Europe/Paris", "away_city": "Montréal", "away_tz": "America/Toronto",
       "bubble": "Ça va ? Tu manges bien ?", "unread": "Pas encore lu", "dnote": "Son téléphone<br>Appli jamais ouverte",
-      "now": "maintenant", "brand_sub": "Des nouvelles chaque jour, automatiquement", "store": "Cherchez « Anbu » dans votre store"
+      "now": "maintenant", "brand_sub": "Des nouvelles chaque jour, automatiquement", "store": "Cherchez « Anbu » dans votre store",
+      "t_p": "Présentation d'Anbu", "p_a1": "Un proche", "p_a2": "qui vit seul,", "p_a3": "vous inquiète chaque jour ?",
+      "p_b1": "Appeler, c'est pesant", "p_b2": "Rendre visite, compliqué", "p_c1": "Sans ouvrir l'application,", "p_c2": "chaque jour,",
+      "p_c3": "automatiquement", "p_d1": "Même quand le téléphone<br>passe en veille profonde,", "p_d2": "même application fermée,", "p_d3": "même après un redémarrage,",
+      "p_d4": "même sans réseau,", "p_d5": "le signe de vie<br>ne s'arrête pas", "p_d6": "Sauf téléphone complètement éteint", "p_e1": "Sans inscription",
+      "p_e2": "Un code suffit", "p_f1": "Réglages compliqués", "p_f2": "Fonctions inutiles", "p_m1": "Réglages avancés",
+      "p_m2": "Détails notifs", "p_m3": "Intégrations", "p_m4": "Autorisations", "p_m5": "Options",
+      "p_m6": "Thèmes", "p_g1": "Même un enfant", "p_g2": "s'y met en un instant", "p_g3": "Aussi simple que possible",
+      "p_s1": "Installer", "p_s2": "Saisir le code", "p_s3": "Terminé", "p_h1": "Android,",
+      "p_h2": "iPhone aussi", "p_and": "Android", "p_ios": "iPhone", "p_i1": "La journée",
+      "p_i2": "en nombre de pas", "p_j1": "20 langues", "p_j2": "L'heure comme dans chaque pays", "p_k1": "En cas de besoin d'aide",
+      "p_k2": "Un seul bouton,", "p_k3": "seulement la position de l'instant", "p_l1": "Pour qui partage", "p_l2": "Gratuit",
+      "p_l3": "Pour l'aidant", "p_l4": "3 mois d'essai offerts", "p_l5": "puis $9.99/an", "p_l6": "à peu près le prix d'un déjeuner"
     },
     "es": {
       "t_a": "Mamá no contesta", "t_b": "Nuestra hija en el extranjero", "play": "Reproducir", "replay": "Volver a ver",
@@ -139,7 +211,19 @@
       "b3": "Ella no hizo nada,", "b3s": "y aun así llegó su aviso.", "b4": "Sin llamar,<br>sabemos que está bien.",
       "daughter": "Lucía", "home_city": "Madrid", "home_tz": "Europe/Madrid", "away_city": "Nueva York", "away_tz": "America/New_York",
       "bubble": "¿Todo bien? ¿Comes bien?", "unread": "Sin leer", "dnote": "Su teléfono<br>No abrió la app",
-      "now": "ahora", "brand_sub": "Cada día, noticias automáticas", "store": "Busca «Anbu» en tu tienda de apps"
+      "now": "ahora", "brand_sub": "Cada día, noticias automáticas", "store": "Busca «Anbu» en tu tienda de apps",
+      "t_p": "Conoce Anbu", "p_a1": "Esa persona querida", "p_a2": "que vive sola,", "p_a3": "¿te preocupa cada día?",
+      "p_b1": "Llamar se hace cuesta arriba", "p_b2": "Visitar, aún más", "p_c1": "Sin abrir la app,", "p_c2": "cada día,",
+      "p_c3": "automáticamente", "p_d1": "Aunque el teléfono<br>entre en ahorro profundo,", "p_d2": "aunque la app esté cerrada,", "p_d3": "aunque se reinicie,",
+      "p_d4": "aunque se corte la conexión,", "p_d5": "la señal<br>no se detiene", "p_d6": "Salvo con el teléfono totalmente apagado", "p_e1": "Sin registro",
+      "p_e2": "Un código y listo", "p_f1": "Ajustes complicados", "p_f2": "Funciones innecesarias", "p_m1": "Ajustes avanzados",
+      "p_m2": "Detalle de avisos", "p_m3": "Integraciones", "p_m4": "Permisos", "p_m5": "Opciones",
+      "p_m6": "Temas", "p_g1": "Hasta un niño", "p_g2": "lo usa en un momento", "p_g3": "Lo más sencillo posible",
+      "p_s1": "Instalar", "p_s2": "Introducir código", "p_s3": "Listo", "p_h1": "En Android,",
+      "p_h2": "y en iPhone", "p_and": "Android", "p_ios": "iPhone", "p_i1": "El día",
+      "p_i2": "en pasos", "p_j1": "20 idiomas", "p_j2": "La hora, como en cada país", "p_k1": "Cuando necesites ayuda",
+      "p_k2": "Un solo botón,", "p_k3": "solo la ubicación de ese instante", "p_l1": "Para quien envía", "p_l2": "Gratis",
+      "p_l3": "Para quien cuida", "p_l4": "3 meses de prueba gratis", "p_l5": "luego $9.99/año", "p_l6": "más o menos lo que cuesta un almuerzo"
     },
     "it": {
       "t_a": "La mamma non risponde", "t_b": "Nostra figlia all’estero", "play": "Riproduci", "replay": "Rivedi",
@@ -150,7 +234,19 @@
       "b3": "Lei non ha fatto nulla,", "b3s": "eppure è arrivato il suo segnale.", "b4": "Anche senza chiamare,<br>sappiamo che sta bene.",
       "daughter": "Giulia", "home_city": "Milano", "home_tz": "Europe/Rome", "away_city": "New York", "away_tz": "America/New_York",
       "bubble": "Tutto bene? Mangi bene?", "unread": "Non ancora letto", "dnote": "Il suo telefono<br>App mai aperta",
-      "now": "ora", "brand_sub": "Ogni giorno un segnale, in automatico", "store": "Cerca «Anbu» nello store"
+      "now": "ora", "brand_sub": "Ogni giorno un segnale, in automatico", "store": "Cerca «Anbu» nello store",
+      "t_p": "Scopri Anbu", "p_a1": "Una persona cara", "p_a2": "che vive da sola,", "p_a3": "ti preoccupa ogni giorno?",
+      "p_b1": "Telefonare pesa", "p_b2": "Andare a trovarla è difficile", "p_c1": "Senza aprire l'app,", "p_c2": "ogni giorno,",
+      "p_c3": "in automatico", "p_d1": "Anche se il telefono<br>va in risparmio profondo,", "p_d2": "anche con l'app chiusa,", "p_d3": "anche dopo un riavvio,",
+      "p_d4": "anche senza connessione,", "p_d5": "il segnale<br>non si ferma", "p_d6": "Tranne a telefono completamente spento", "p_e1": "Senza registrazione",
+      "p_e2": "Basta un codice", "p_f1": "Impostazioni complicate", "p_f2": "Funzioni inutili", "p_m1": "Impostazioni avanzate",
+      "p_m2": "Dettagli notifiche", "p_m3": "Integrazioni", "p_m4": "Permessi", "p_m5": "Opzioni",
+      "p_m6": "Temi", "p_g1": "Anche un bambino", "p_g2": "lo usa subito", "p_g3": "Il più semplice possibile",
+      "p_s1": "Installa", "p_s2": "Inserisci il codice", "p_s3": "Fatto", "p_h1": "Su Android,",
+      "p_h2": "e su iPhone", "p_and": "Android", "p_ios": "iPhone", "p_i1": "La giornata",
+      "p_i2": "in passi", "p_j1": "20 lingue", "p_j2": "L'ora come in ogni paese", "p_k1": "Quando serve aiuto",
+      "p_k2": "Un solo pulsante,", "p_k3": "solo la posizione di quel momento", "p_l1": "Per chi invia", "p_l2": "Gratis",
+      "p_l3": "Per chi si prende cura", "p_l4": "3 mesi di prova gratis", "p_l5": "poi $9.99/anno", "p_l6": "più o meno il prezzo di un pranzo"
     },
     "pt-BR": {
       "t_a": "Mãe não atende", "t_b": "Nossa filha no exterior", "play": "Reproduzir", "replay": "Assistir de novo",
@@ -161,7 +257,19 @@
       "b3": "Ela não fez nada,", "b3s": "e mesmo assim o sinal chegou.", "b4": "Mesmo sem ligar,<br>sabemos que ela está bem.",
       "daughter": "Ana", "home_city": "São Paulo", "home_tz": "America/Sao_Paulo", "away_city": "Sydney", "away_tz": "Australia/Sydney",
       "bubble": "Tudo bem? Tá comendo direito?", "unread": "Não lida", "dnote": "O celular dela<br>App não foi aberto",
-      "now": "agora", "brand_sub": "Todo dia um sinal, automaticamente", "store": "Procure “Anbu” na loja de apps"
+      "now": "agora", "brand_sub": "Todo dia um sinal, automaticamente", "store": "Procure “Anbu” na loja de apps",
+      "t_p": "Conheça o Anbu", "p_a1": "Alguém querido", "p_a2": "que mora sozinho,", "p_a3": "preocupa você todo dia?",
+      "p_b1": "Ligar pesa", "p_b2": "Visitar é difícil", "p_c1": "Sem abrir o app,", "p_c2": "todo dia,",
+      "p_c3": "automaticamente", "p_d1": "Mesmo com o celular<br>em economia profunda,", "p_d2": "mesmo com o app fechado,", "p_d3": "mesmo após reiniciar,",
+      "p_d4": "mesmo sem conexão,", "p_d5": "o sinal<br>não para", "p_d6": "Exceto com o celular totalmente desligado", "p_e1": "Sem cadastro",
+      "p_e2": "Um código e pronto", "p_f1": "Configurações complicadas", "p_f2": "Recursos desnecessários", "p_m1": "Ajustes avançados",
+      "p_m2": "Detalhes de avisos", "p_m3": "Integrações", "p_m4": "Permissões", "p_m5": "Opções",
+      "p_m6": "Temas", "p_g1": "Até uma criança", "p_g2": "usa em um instante", "p_g3": "O mais simples possível",
+      "p_s1": "Instalar", "p_s2": "Digitar o código", "p_s3": "Pronto", "p_h1": "No Android,",
+      "p_h2": "e no iPhone", "p_and": "Android", "p_ios": "iPhone", "p_i1": "O dia",
+      "p_i2": "em passos", "p_j1": "20 idiomas", "p_j2": "A hora como em cada país", "p_k1": "Quando precisar de ajuda",
+      "p_k2": "Um botão,", "p_k3": "só a localização daquele momento", "p_l1": "Para quem envia", "p_l2": "Grátis",
+      "p_l3": "Para quem cuida", "p_l4": "3 meses grátis", "p_l5": "depois $9.99/ano", "p_l6": "mais ou menos o preço de um almoço"
     },
     "ru": {
       "t_a": "Мама не берёт трубку", "t_b": "Дочь учится за границей", "play": "Смотреть", "replay": "Смотреть снова",
@@ -172,7 +280,19 @@
       "b3": "Она ничего не делала,", "b3s": "а весточка уже пришла.", "b4": "Даже без звонка<br>мы знаем: у неё всё хорошо.",
       "daughter": "Аня", "home_city": "Москва", "home_tz": "Europe/Moscow", "away_city": "Нью-Йорк", "away_tz": "America/New_York",
       "bubble": "Как ты? Хорошо питаешься?", "unread": "Не прочитано", "dnote": "Её телефон<br>Приложение не открывали",
-      "now": "сейчас", "brand_sub": "Весточка каждый день — автоматически", "store": "Найдите «Anbu» в магазине приложений"
+      "now": "сейчас", "brand_sub": "Весточка каждый день — автоматически", "store": "Найдите «Anbu» в магазине приложений",
+      "t_p": "Знакомьтесь: Anbu", "p_a1": "Близкий человек,", "p_a2": "живущий один,", "p_a3": "волнуетесь каждый день?",
+      "p_b1": "Звонить — неловко", "p_b2": "Приехать — трудно", "p_c1": "Не открывая приложение,", "p_c2": "каждый день",
+      "p_c3": "автоматически", "p_d1": "Даже если телефон<br>в глубоком сне,", "p_d2": "даже если приложение закрыто,", "p_d3": "даже после перезагрузки,",
+      "p_d4": "даже без связи,", "p_d5": "сигнал<br>не прекращается", "p_d6": "Кроме полностью выключенного телефона", "p_e1": "Без регистрации",
+      "p_e2": "Достаточно одного кода", "p_f1": "Сложные настройки", "p_f2": "Лишние функции", "p_m1": "Доп. настройки",
+      "p_m2": "Уведомления", "p_m3": "Интеграции", "p_m4": "Разрешения", "p_m5": "Опции",
+      "p_m6": "Темы", "p_g1": "Даже ребёнок", "p_g2": "освоит сразу", "p_g3": "Проще некуда",
+      "p_s1": "Установка", "p_s2": "Ввод кода", "p_s3": "Готово", "p_h1": "И на Android,",
+      "p_h2": "и на iPhone", "p_and": "Android", "p_ios": "iPhone", "p_i1": "День",
+      "p_i2": "в шагах", "p_j1": "20 языков", "p_j2": "Время — как принято в стране", "p_k1": "Если нужна помощь",
+      "p_k2": "Одна кнопка,", "p_k3": "только место в этот миг", "p_l1": "Для отправляющего", "p_l2": "Бесплатно",
+      "p_l3": "Для опекуна", "p_l4": "3 месяца бесплатно", "p_l5": "затем $9.99/год", "p_l6": "примерно как один обед"
     },
     "nl": {
       "t_a": "Mama neemt niet op", "t_b": "Onze dochter in het buitenland", "play": "Afspelen", "replay": "Opnieuw bekijken",
@@ -183,7 +303,19 @@
       "b3": "Zij deed niets,", "b3s": "en toch kwam haar teken van leven.", "b4": "Ook zonder te bellen<br>weten we dat het goed gaat.",
       "daughter": "Sophie", "home_city": "Amsterdam", "home_tz": "Europe/Amsterdam", "away_city": "Toronto", "away_tz": "America/Toronto",
       "bubble": "Gaat het goed? Eet je wel goed?", "unread": "Nog niet gelezen", "dnote": "Haar telefoon<br>App niet geopend",
-      "now": "nu", "brand_sub": "Elke dag automatisch een teken van leven", "store": "Zoek „Anbu” in je app store"
+      "now": "nu", "brand_sub": "Elke dag automatisch een teken van leven", "store": "Zoek „Anbu” in je app store",
+      "t_p": "Maak kennis met Anbu", "p_a1": "Een dierbare", "p_a2": "die alleen woont,", "p_a3": "maakt u zich elke dag zorgen?",
+      "p_b1": "Bellen voelt zwaar", "p_b2": "Langsgaan is lastig", "p_c1": "Zonder de app te openen,", "p_c2": "elke dag,",
+      "p_c3": "automatisch", "p_d1": "Ook als de telefoon<br>in diepe slaapstand gaat,", "p_d2": "ook met de app gesloten,", "p_d3": "ook na een herstart,",
+      "p_d4": "ook zonder verbinding,", "p_d5": "het teken<br>stopt niet", "p_d6": "Behalve bij een volledig uitgeschakelde telefoon", "p_e1": "Zonder account",
+      "p_e2": "Eén code is genoeg", "p_f1": "Ingewikkelde instellingen", "p_f2": "Overbodige functies", "p_m1": "Geavanceerd",
+      "p_m2": "Meldingsdetails", "p_m3": "Koppelingen", "p_m4": "Rechten", "p_m5": "Opties",
+      "p_m6": "Thema's", "p_g1": "Zelfs een kind", "p_g2": "snapt het meteen", "p_g3": "Zo eenvoudig mogelijk",
+      "p_s1": "Installeren", "p_s2": "Code invoeren", "p_s3": "Klaar", "p_h1": "Op Android,",
+      "p_h2": "en op iPhone", "p_and": "Android", "p_ios": "iPhone", "p_i1": "De dag",
+      "p_i2": "in stappen", "p_j1": "20 talen", "p_j2": "De tijd zoals elk land hem schrijft", "p_k1": "Als u hulp nodig heeft",
+      "p_k2": "Eén druk op de knop,", "p_k3": "alleen de locatie van dat moment", "p_l1": "Voor wie deelt", "p_l2": "Gratis",
+      "p_l3": "Voor de mantelzorger", "p_l4": "3 maanden gratis proberen", "p_l5": "daarna $9.99/jaar", "p_l6": "ongeveer de prijs van een lunch"
     },
     "pl": {
       "t_a": "Mama nie odbiera", "t_b": "Córka na studiach za granicą", "play": "Odtwórz", "replay": "Obejrzyj ponownie",
@@ -194,7 +326,19 @@
       "b3": "Nic nie zrobiła,", "b3s": "a znak od niej już dotarł.", "b4": "Nawet bez telefonu<br>wiemy, że u niej dobrze.",
       "daughter": "Zosia", "home_city": "Warszawa", "home_tz": "Europe/Warsaw", "away_city": "Chicago", "away_tz": "America/Chicago",
       "bubble": "Wszystko dobrze? Jesz porządnie?", "unread": "Jeszcze nieprzeczytane", "dnote": "Jej telefon<br>Aplikacja nieotwierana",
-      "now": "teraz", "brand_sub": "Codzienny znak, automatycznie", "store": "Wyszukaj „Anbu” w sklepie z aplikacjami"
+      "now": "teraz", "brand_sub": "Codzienny znak, automatycznie", "store": "Wyszukaj „Anbu” w sklepie z aplikacjami",
+      "t_p": "Poznaj Anbu", "p_a1": "Bliska osoba,", "p_a2": "która mieszka sama,", "p_a3": "martwisz się każdego dnia?",
+      "p_b1": "Dzwonienie to kłopot", "p_b2": "Odwiedziny — trudne", "p_c1": "Bez otwierania aplikacji,", "p_c2": "codziennie",
+      "p_c3": "automatycznie", "p_d1": "Nawet gdy telefon<br>zapadnie w głęboki sen,", "p_d2": "nawet przy zamkniętej aplikacji,", "p_d3": "nawet po restarcie,",
+      "p_d4": "nawet bez zasięgu,", "p_d5": "sygnał<br>nie ustaje", "p_d6": "Poza całkowicie wyłączonym telefonem", "p_e1": "Bez rejestracji",
+      "p_e2": "Wystarczy jeden kod", "p_f1": "Skomplikowane ustawienia", "p_f2": "Zbędne funkcje", "p_m1": "Ustawienia zaawansowane",
+      "p_m2": "Szczegóły powiadomień", "p_m3": "Integracje", "p_m4": "Uprawnienia", "p_m5": "Opcje",
+      "p_m6": "Motywy", "p_g1": "Nawet dziecko", "p_g2": "ogarnie to od razu", "p_g3": "Tak prosto, jak się da",
+      "p_s1": "Instalacja", "p_s2": "Wpisz kod", "p_s3": "Gotowe", "p_h1": "Na Androidzie",
+      "p_h2": "i na iPhonie", "p_and": "Android", "p_ios": "iPhone", "p_i1": "Dzień",
+      "p_i2": "w krokach", "p_j1": "20 języków", "p_j2": "Godzina jak w danym kraju", "p_k1": "Gdy potrzebna pomoc",
+      "p_k2": "Jeden przycisk,", "p_k3": "tylko lokalizacja z tej chwili", "p_l1": "Dla wysyłającego", "p_l2": "Bezpłatnie",
+      "p_l3": "Dla opiekuna", "p_l4": "3 miesiące gratis", "p_l5": "potem $9.99/rok", "p_l6": "mniej więcej tyle co obiad"
     },
     "tr": {
       "t_a": "Annem telefonu açmıyor", "t_b": "Yurt dışındaki kızımız", "play": "Oynat", "replay": "Yeniden izle",
@@ -205,7 +349,19 @@
       "b3": "O hiçbir şey yapmadı,", "b3s": "ama haberi önce geldi.", "b4": "Aramasak da<br>iyi olduğunu biliyoruz.",
       "daughter": "Elif", "home_city": "İstanbul", "home_tz": "Europe/Istanbul", "away_city": "Toronto", "away_tz": "America/Toronto",
       "bubble": "İyi misin? Düzgün yemek yiyor musun?", "unread": "Henüz okunmadı", "dnote": "Onun telefonu<br>Uygulamayı açmadı",
-      "now": "şimdi", "brand_sub": "Her gün otomatik gelen haber", "store": "Mağazada “Anbu” aratın"
+      "now": "şimdi", "brand_sub": "Her gün otomatik gelen haber", "store": "Mağazada “Anbu” aratın",
+      "t_p": "Anbu ile tanışın", "p_a1": "Tek başına yaşayan", "p_a2": "sevdiğiniz biri,", "p_a3": "her gün endişeleniyor musunuz?",
+      "p_b1": "Aramak yük gibi", "p_b2": "Ziyaret etmek zor", "p_c1": "Uygulamayı açmadan,", "p_c2": "her gün",
+      "p_c3": "otomatik", "p_d1": "Telefon derin uykuya<br>geçse bile,", "p_d2": "uygulama kapalı olsa bile,", "p_d3": "yeniden başlasa bile,",
+      "p_d4": "bağlantı kopsa bile,", "p_d5": "haber<br>kesilmez", "p_d6": "Telefon tamamen kapalıysa hariç", "p_e1": "Üyelik yok",
+      "p_e2": "Tek kodla bağlan", "p_f1": "Karmaşık ayarlar", "p_f2": "Gereksiz özellikler", "p_m1": "Gelişmiş ayarlar",
+      "p_m2": "Bildirim ayrıntıları", "p_m3": "Entegrasyonlar", "p_m4": "İzinler", "p_m5": "Seçenekler",
+      "p_m6": "Temalar", "p_g1": "Bir çocuk bile", "p_g2": "hemen kullanır", "p_g3": "Olabildiğince yalın",
+      "p_s1": "Kur", "p_s2": "Kodu gir", "p_s3": "Tamam", "p_h1": "Android'de de,",
+      "p_h2": "iPhone'da da", "p_and": "Android", "p_ios": "iPhone", "p_i1": "Gün",
+      "p_i2": "adımlarla", "p_j1": "20 dil", "p_j2": "Saat, her ülkenin yazımıyla", "p_k1": "Yardım gerektiğinde",
+      "p_k2": "Tek düğme,", "p_k3": "yalnızca o anki konum", "p_l1": "Gönderen için", "p_l2": "Ücretsiz",
+      "p_l3": "Takip eden için", "p_l4": "3 ay ücretsiz deneme", "p_l5": "sonra $9.99/yıl", "p_l6": "yaklaşık bir öğle yemeği kadar"
     },
     "vi": {
       "t_a": "Mẹ không nghe máy", "t_b": "Con gái đi du học", "play": "Phát", "replay": "Xem lại",
@@ -216,7 +372,19 @@
       "b3": "Con không làm gì cả,", "b3s": "vậy mà tin bình an đã đến.", "b4": "Không cần liên lạc,<br>vẫn biết con ổn.",
       "daughter": "Linh", "home_city": "Hà Nội", "home_tz": "Asia/Ho_Chi_Minh", "away_city": "Los Angeles", "away_tz": "America/Los_Angeles",
       "bubble": "Con ổn không? Ăn uống đầy đủ chứ?", "unread": "Chưa đọc", "dnote": "Điện thoại của con<br>Không mở ứng dụng",
-      "now": "bây giờ", "brand_sub": "Tin bình an mỗi ngày, tự động", "store": "Tìm “Anbu” trên kho ứng dụng"
+      "now": "bây giờ", "brand_sub": "Tin bình an mỗi ngày, tự động", "store": "Tìm “Anbu” trên kho ứng dụng",
+      "t_p": "Giới thiệu Anbu", "p_a1": "Người thân yêu", "p_a2": "sống một mình,", "p_a3": "ngày nào cũng lo?",
+      "p_b1": "Gọi điện thì ngại", "p_b2": "Đến thăm thì khó", "p_c1": "Không cần mở ứng dụng,", "p_c2": "mỗi ngày",
+      "p_c3": "tự động", "p_d1": "Dù điện thoại vào<br>chế độ ngủ sâu,", "p_d2": "dù ứng dụng đã đóng,", "p_d3": "dù khởi động lại,",
+      "p_d4": "dù mất kết nối,", "p_d5": "tín hiệu bình an<br>vẫn không dừng", "p_d6": "Trừ khi điện thoại tắt hẳn nguồn", "p_e1": "Không cần đăng ký",
+      "p_e2": "Chỉ một mã là kết nối", "p_f1": "Cài đặt phức tạp", "p_f2": "Tính năng thừa", "p_m1": "Cài đặt nâng cao",
+      "p_m2": "Chi tiết thông báo", "p_m3": "Liên kết", "p_m4": "Quyền", "p_m5": "Tùy chọn",
+      "p_m6": "Giao diện", "p_g1": "Trẻ em cũng", "p_g2": "dùng được ngay", "p_g3": "Đơn giản hết mức",
+      "p_s1": "Tải app", "p_s2": "Nhập mã", "p_s3": "Xong", "p_h1": "Có Android,",
+      "p_h2": "có cả iPhone", "p_and": "Android", "p_ios": "iPhone", "p_i1": "Một ngày",
+      "p_i2": "qua số bước chân", "p_j1": "20 ngôn ngữ", "p_j2": "Giờ viết theo từng nước", "p_k1": "Khi cần giúp đỡ",
+      "p_k2": "Một nút bấm,", "p_k3": "chỉ gửi vị trí lúc đó", "p_l1": "Cho người chia sẻ", "p_l2": "Miễn phí",
+      "p_l3": "Cho người theo dõi", "p_l4": "Dùng thử 3 tháng", "p_l5": "sau đó $9.99/năm", "p_l6": "bằng một bữa ăn nhà hàng"
     },
     "th": {
       "t_a": "แม่ไม่รับสาย", "t_b": "ลูกสาวที่ไปเรียนต่างประเทศ", "play": "เล่น", "replay": "ดูอีกครั้ง",
@@ -227,7 +395,19 @@
       "b3": "ลูกไม่ได้ทำอะไรเลย", "b3s": "แต่ข่าวคราวก็มาถึงก่อน", "b4": "ไม่ต้องติดต่อ<br>ก็รู้ว่าลูกสบายดี",
       "daughter": "ฝ้าย", "home_city": "กรุงเทพฯ", "home_tz": "Asia/Bangkok", "away_city": "ลอนดอน", "away_tz": "Europe/London",
       "bubble": "สบายดีไหม กินข้าวหรือยัง", "unread": "ยังไม่ได้อ่าน", "dnote": "โทรศัพท์ของลูก<br>ไม่ได้เปิดแอป",
-      "now": "ตอนนี้", "brand_sub": "ส่งข่าวคราวอัตโนมัติทุกวัน", "store": "ค้นหา “Anbu” ในสโตร์"
+      "now": "ตอนนี้", "brand_sub": "ส่งข่าวคราวอัตโนมัติทุกวัน", "store": "ค้นหา “Anbu” ในสโตร์",
+      "t_p": "รู้จัก Anbu", "p_a1": "คนสำคัญของคุณ", "p_a2": "ที่อยู่คนเดียว", "p_a3": "คุณเป็นห่วงทุกวันหรือเปล่า",
+      "p_b1": "โทรไปก็เกรงใจ", "p_b2": "ไปเยี่ยมก็ไม่สะดวก", "p_c1": "ไม่ต้องเปิดแอป", "p_c2": "ทุกวัน",
+      "p_c3": "ส่งให้อัตโนมัติ", "p_d1": "แม้โทรศัพท์เข้าสู่<br>โหมดประหยัดพลังงาน", "p_d2": "แม้ปิดแอปไว้", "p_d3": "แม้รีสตาร์ตเครื่อง",
+      "p_d4": "แม้สัญญาณขาด", "p_d5": "สัญญาณความปลอดภัย<br>ก็ไม่หยุด", "p_d6": "ยกเว้นเมื่อปิดเครื่องสนิท", "p_e1": "ไม่ต้องสมัครสมาชิก",
+      "p_e2": "ใช้รหัสเดียวก็เชื่อมต่อ", "p_f1": "ตั้งค่ายุ่งยาก", "p_f2": "ฟีเจอร์ที่ไม่จำเป็น", "p_m1": "ตั้งค่าขั้นสูง",
+      "p_m2": "รายละเอียดแจ้งเตือน", "p_m3": "การเชื่อมต่อ", "p_m4": "สิทธิ์", "p_m5": "ตัวเลือก",
+      "p_m6": "ธีม", "p_g1": "เด็กก็", "p_g2": "ใช้ได้ทันที", "p_g3": "เรียบง่ายที่สุด",
+      "p_s1": "ติดตั้ง", "p_s2": "ใส่รหัส", "p_s3": "เสร็จ", "p_h1": "ทั้ง Android",
+      "p_h2": "และ iPhone", "p_and": "Android", "p_ios": "iPhone", "p_i1": "ดูวันนี้",
+      "p_i2": "ผ่านจำนวนก้าว", "p_j1": "20 ภาษา", "p_j2": "เวลาตามแต่ละประเทศ", "p_k1": "เมื่อต้องการความช่วยเหลือ",
+      "p_k2": "กดปุ่มเดียว", "p_k3": "ส่งแค่ตำแหน่งตอนนั้น", "p_l1": "สำหรับผู้ส่ง", "p_l2": "ฟรี",
+      "p_l3": "สำหรับผู้ดูแล", "p_l4": "ทดลองฟรี 3 เดือน", "p_l5": "จากนั้น $9.99/ปี", "p_l6": "เท่าราคาบุฟเฟ่ต์หนึ่งมื้อ"
     },
     "id": {
       "t_a": "Ibu tidak mengangkat telepon", "t_b": "Putri kami kuliah di luar negeri", "play": "Putar", "replay": "Tonton lagi",
@@ -238,7 +418,19 @@
       "b3": "Dia tidak melakukan apa pun,", "b3s": "tapi kabarnya sudah sampai.", "b4": "Tanpa menghubungi pun,<br>kami tahu dia baik-baik saja.",
       "daughter": "Putri", "home_city": "Jakarta", "home_tz": "Asia/Jakarta", "away_city": "London", "away_tz": "Europe/London",
       "bubble": "Kamu baik-baik saja? Makan yang teratur ya?", "unread": "Belum dibaca", "dnote": "Ponselnya<br>Aplikasi tidak dibuka",
-      "now": "sekarang", "brand_sub": "Kabar setiap hari, otomatis", "store": "Cari “Anbu” di toko aplikasi"
+      "now": "sekarang", "brand_sub": "Kabar setiap hari, otomatis", "store": "Cari “Anbu” di toko aplikasi",
+      "t_p": "Kenali Anbu", "p_a1": "Orang tersayang", "p_a2": "yang tinggal sendiri,", "p_a3": "khawatir setiap hari?",
+      "p_b1": "Menelepon terasa berat", "p_b2": "Berkunjung pun sulit", "p_c1": "Tanpa membuka aplikasi,", "p_c2": "setiap hari",
+      "p_c3": "otomatis", "p_d1": "Meski ponsel masuk<br>mode hemat daya dalam,", "p_d2": "meski aplikasi ditutup,", "p_d3": "meski ponsel restart,",
+      "p_d4": "meski koneksi terputus,", "p_d5": "kabar<br>tidak berhenti", "p_d6": "Kecuali ponsel mati total", "p_e1": "Tanpa daftar akun",
+      "p_e2": "Cukup satu kode", "p_f1": "Pengaturan rumit", "p_f2": "Fitur tak perlu", "p_m1": "Pengaturan lanjut",
+      "p_m2": "Detail notifikasi", "p_m3": "Integrasi", "p_m4": "Izin", "p_m5": "Opsi",
+      "p_m6": "Tema", "p_g1": "Anak-anak pun", "p_g2": "langsung bisa pakai", "p_g3": "Sesederhana mungkin",
+      "p_s1": "Pasang", "p_s2": "Masukkan kode", "p_s3": "Selesai", "p_h1": "Di Android",
+      "p_h2": "dan di iPhone", "p_and": "Android", "p_ios": "iPhone", "p_i1": "Hari ini",
+      "p_i2": "lewat langkah kaki", "p_j1": "20 bahasa", "p_j2": "Waktu sesuai tiap negara", "p_k1": "Saat butuh bantuan",
+      "p_k2": "Satu tombol,", "p_k3": "hanya lokasi saat itu", "p_l1": "Untuk yang berbagi kabar", "p_l2": "Gratis",
+      "p_l3": "Untuk pemantau", "p_l4": "Uji coba gratis 3 bulan", "p_l5": "lalu $9.99/tahun", "p_l6": "seharga makan berdua di restoran"
     },
     "sv": {
       "t_a": "Mamma svarar inte", "t_b": "Dottern som pluggar utomlands", "play": "Spela upp", "replay": "Se igen",
@@ -249,7 +441,19 @@
       "b3": "Hon gjorde ingenting,", "b3s": "men livstecknet kom ändå.", "b4": "Även utan att ringa<br>vet vi att hon mår bra.",
       "daughter": "Ella", "home_city": "Stockholm", "home_tz": "Europe/Stockholm", "away_city": "Vancouver", "away_tz": "America/Vancouver",
       "bubble": "Mår du bra? Äter du ordentligt?", "unread": "Inte läst än", "dnote": "Hennes telefon<br>Appen öppnades inte",
-      "now": "nu", "brand_sub": "Ett livstecken varje dag, automatiskt", "store": "Sök efter ”Anbu” i appbutiken"
+      "now": "nu", "brand_sub": "Ett livstecken varje dag, automatiskt", "store": "Sök efter ”Anbu” i appbutiken",
+      "t_p": "Möt Anbu", "p_a1": "Någon du bryr dig om", "p_a2": "som bor ensam,", "p_a3": "oroar du dig varje dag?",
+      "p_b1": "Att ringa känns tungt", "p_b2": "Att hälsa på är svårt", "p_c1": "Utan att öppna appen,", "p_c2": "varje dag,",
+      "p_c3": "automatiskt", "p_d1": "Även när telefonen<br>går i djupt energisparläge,", "p_d2": "även med appen stängd,", "p_d3": "även efter en omstart,",
+      "p_d4": "även utan uppkoppling,", "p_d5": "livstecknet<br>upphör inte", "p_d6": "Utom när telefonen är helt avstängd", "p_e1": "Ingen registrering",
+      "p_e2": "En kod räcker", "p_f1": "Krångliga inställningar", "p_f2": "Onödiga funktioner", "p_m1": "Avancerat",
+      "p_m2": "Aviseringsdetaljer", "p_m3": "Kopplingar", "p_m4": "Behörigheter", "p_m5": "Alternativ",
+      "p_m6": "Teman", "p_g1": "Även ett barn", "p_g2": "fixar det direkt", "p_g3": "Så enkelt som möjligt",
+      "p_s1": "Installera", "p_s2": "Ange kod", "p_s3": "Klart", "p_h1": "På Android",
+      "p_h2": "och på iPhone", "p_and": "Android", "p_ios": "iPhone", "p_i1": "Dagen",
+      "p_i2": "i steg", "p_j1": "20 språk", "p_j2": "Klockan som i varje land", "p_k1": "När du behöver hjälp",
+      "p_k2": "En knapp,", "p_k3": "bara platsen i det ögonblicket", "p_l1": "För den som delar", "p_l2": "Gratis",
+      "p_l3": "För anhörigen", "p_l4": "3 månader gratis", "p_l5": "sedan $9.99/år", "p_l6": "ungefär som en lunch"
     },
     "hi": {
       "t_a": "माँ फ़ोन नहीं उठा रहीं", "t_b": "विदेश में पढ़ती बेटी", "play": "चलाएँ", "replay": "फिर से देखें",
@@ -260,7 +464,19 @@
       "b3": "उसने कुछ नहीं किया,", "b3s": "फिर भी उसकी ख़बर पहले आ गई।", "b4": "बिना संपर्क किए भी<br>पता है कि वह ठीक है।",
       "daughter": "प्रिया", "home_city": "दिल्ली", "home_tz": "Asia/Kolkata", "away_city": "टोरंटो", "away_tz": "America/Toronto",
       "bubble": "ठीक हो? खाना ठीक से खा रही हो?", "unread": "अभी पढ़ा नहीं", "dnote": "उसका फ़ोन<br>ऐप नहीं खोला",
-      "now": "अभी", "brand_sub": "हर दिन अपने-आप पहुँचती कुशलता", "store": "ऐप स्टोर में “Anbu” खोजें"
+      "now": "अभी", "brand_sub": "हर दिन अपने-आप पहुँचती कुशलता", "store": "ऐप स्टोर में “Anbu” खोजें",
+      "t_p": "Anbu से मिलिए", "p_a1": "अकेले रहने वाला", "p_a2": "कोई अपना,", "p_a3": "रोज़ फ़िक्र रहती है?",
+      "p_b1": "फ़ोन करना भारी लगता है", "p_b2": "मिलने जाना मुश्किल", "p_c1": "ऐप खोले बिना,", "p_c2": "हर दिन",
+      "p_c3": "अपने-आप", "p_d1": "फ़ोन गहरी बैटरी-बचत में<br>चला जाए तब भी,", "p_d2": "ऐप बंद हो तब भी,", "p_d3": "फ़ोन रीस्टार्ट हो तब भी,",
+      "p_d4": "नेटवर्क कट जाए तब भी,", "p_d5": "खैरियत<br>रुकती नहीं", "p_d6": "फ़ोन पूरी तरह बंद हो तो छोड़कर", "p_e1": "साइन-अप नहीं",
+      "p_e2": "बस एक कोड से जुड़ें", "p_f1": "जटिल सेटिंग्स", "p_f2": "फ़ालतू फ़ीचर", "p_m1": "एडवांस्ड सेटिंग",
+      "p_m2": "सूचना विवरण", "p_m3": "इंटीग्रेशन", "p_m4": "अनुमतियाँ", "p_m5": "विकल्प",
+      "p_m6": "थीम", "p_g1": "बच्चा भी", "p_g2": "तुरंत चला ले", "p_g3": "जितना हो सके सरल",
+      "p_s1": "इंस्टॉल", "p_s2": "कोड डालें", "p_s3": "हो गया", "p_h1": "Android पर भी,",
+      "p_h2": "iPhone पर भी", "p_and": "Android", "p_ios": "iPhone", "p_i1": "आज का दिन",
+      "p_i2": "कदमों में", "p_j1": "20 भाषाएँ", "p_j2": "समय हर देश के ढंग से", "p_k1": "मदद चाहिए तो",
+      "p_k2": "एक बटन,", "p_k3": "बस उसी पल की लोकेशन", "p_l1": "भेजने वाले के लिए", "p_l2": "मुफ़्त",
+      "p_l3": "देखभाल करने वाले के लिए", "p_l4": "3 महीने मुफ़्त ट्रायल", "p_l5": "फिर $9.99/वर्ष", "p_l6": "रेस्तरां में दो लोगों के खाने के बराबर"
     },
     "ar": {
       "t_a": "أمي لا تردّ", "t_b": "ابنتنا في الغربة", "play": "تشغيل", "replay": "إعادة المشاهدة",
@@ -271,7 +487,19 @@
       "b3": "لم تفعل شيئاً،", "b3s": "ومع ذلك وصل اطمئنانها.", "b4": "حتى دون اتصال<br>نعرف أنها بخير.",
       "daughter": "سارة", "home_city": "الرياض", "home_tz": "Asia/Riyadh", "away_city": "بوسطن", "away_tz": "America/New_York",
       "bubble": "كيف حالك؟ هل تأكلين جيداً؟", "unread": "لم تُقرأ بعد", "dnote": "هاتفها<br>لم تفتح التطبيق",
-      "now": "الآن", "brand_sub": "اطمئنان يومي يصل تلقائياً", "store": "ابحث عن ”Anbu“ في متجر التطبيقات"
+      "now": "الآن", "brand_sub": "اطمئنان يومي يصل تلقائياً", "store": "ابحث عن ”Anbu“ في متجر التطبيقات",
+      "t_p": "تعرّف على Anbu", "p_a1": "شخص عزيز", "p_a2": "يعيش وحده،", "p_a3": "هل تقلق عليه كل يوم؟",
+      "p_b1": "الاتصال يُثقل عليك", "p_b2": "والزيارة صعبة", "p_c1": "دون فتح التطبيق،", "p_c2": "كل يوم",
+      "p_c3": "تلقائيًا", "p_d1": "حتى لو دخل الهاتف<br>في سبات عميق،", "p_d2": "حتى لو أُغلق التطبيق،", "p_d3": "حتى بعد إعادة التشغيل،",
+      "p_d4": "حتى لو انقطع الاتصال،", "p_d5": "الإشارة<br>لا تتوقف", "p_d6": "إلا إذا كان الهاتف مُطفأً تمامًا", "p_e1": "بلا تسجيل",
+      "p_e2": "رمز واحد يكفي", "p_f1": "إعدادات معقدة", "p_f2": "ميزات غير لازمة", "p_m1": "إعدادات متقدمة",
+      "p_m2": "تفاصيل الإشعارات", "p_m3": "الربط", "p_m4": "الأذونات", "p_m5": "خيارات",
+      "p_m6": "السمات", "p_g1": "حتى الطفل", "p_g2": "يستخدمه فورًا", "p_g3": "بأبسط ما يمكن",
+      "p_s1": "تثبيت", "p_s2": "إدخال الرمز", "p_s3": "تم", "p_h1": "على أندرويد",
+      "p_h2": "وعلى آيفون", "p_and": "أندرويد", "p_ios": "آيفون", "p_i1": "اليوم",
+      "p_i2": "بالخطوات", "p_j1": "20 لغة", "p_j2": "الوقت بصيغة كل بلد", "p_k1": "عند الحاجة إلى مساعدة",
+      "p_k2": "زر واحد،", "p_k3": "موقع تلك اللحظة فقط", "p_l1": "لمن يُرسل", "p_l2": "مجاني",
+      "p_l3": "لمقدّم الرعاية", "p_l4": "تجربة مجانية 3 أشهر", "p_l5": "ثم $9.99 سنويًا", "p_l6": "تقريبًا ثمن وجبة غداء"
     }
   }
 }

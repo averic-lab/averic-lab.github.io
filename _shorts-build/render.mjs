@@ -29,7 +29,7 @@ await page.goto(pathToFileURL(path.join(here, page_)).href + '?lang=' + LANG);
 await page.evaluate(() => document.fonts.ready);
 const duration = await page.evaluate(() => window.DURATION);
 // 페이지가 window.CRF 로 화질을 낮출 수 있다 — 컨페티가 가득한 모션 그래픽(h.html)은 18 이면 편당 16MB 라 저장소에 20개 언어를 쌓을 수 없다
-const crf = await page.evaluate(() => window.CRF || 18);
+const crf = process.env.CRF || await page.evaluate(() => window.CRF || 18);   // 환경변수 CRF=18 로 유튜브용 고화질 원본을 따로 만든다(저장소 사본과 별개)
 
 const shot = async ms => { await page.evaluate(m => window.render(m), ms); return page.screenshot({ type: 'png' }); };
 
