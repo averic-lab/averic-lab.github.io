@@ -239,6 +239,12 @@ def app_tokens(code, app_all):
 # 「해질녘」 ③ 자리를 숏폼 영상으로 바꾼 언어. 영상 끝(공통 엔딩)에 ③ 문장이 그대로 들어 있으므로
 # 문장을 지우고 영상을 둔다. 영상이 없는 언어는 지금처럼 ③ 문장을 보여 준다.
 # 파일은 media/shorts/<code>/ — 만드는 법은 _shorts-build/README.md.
+def media_name(code, vid):
+    """media/shorts/<언어>/ 안의 파일명(확장자 제외). 한국어만 <편id> 그대로, 나머지는 <편id>-<언어코드>
+    (daughter-abroad-ja). 파일만 따로 내려받아도 어느 나라 영상인지 알 수 있게 하려는 규칙이다."""
+    return vid if code == "ko" else f"{vid}-{code}"
+
+
 def _load_shorts():
     """홈 해질녘에 넣을 숏폼(_shorts-build/shorts.json 의 home:true 편).
 
@@ -250,7 +256,7 @@ def _load_shorts():
     with open(path, encoding="utf-8") as f:
         cfg = json.load(f)
     home = [v for v in cfg["videos"] if v.get("home")]
-    have = lambda code, v: os.path.exists(os.path.join(ROOT, "media", "shorts", code, v["id"] + ".mp4"))
+    have = lambda code, v: os.path.exists(os.path.join(ROOT, "media", "shorts", code, media_name(code, v["id"]) + ".mp4"))
     # 영상 페이지(/{code}/shorts.html)는 그 언어로 렌더된 편 전부 — 최신 날짜가 위, 같은 날짜는 목록 순서
     newest = sorted(cfg["videos"], key=lambda v: v["date"], reverse=True)
     out = {}
@@ -310,11 +316,11 @@ def video_figs(code, items, play, replay, indent="      ", youtube=False):
                f'data-play="{play}: {cap}" data-replay="{replay}: {cap}">{_PLAY_SVG}{_REPLAY_SVG}</button>')
         if yt:
             out.append(f'{indent}<figure class="vbox vyt" data-yt="{yt}" data-hl="{META[code][0]}" data-title="{cap}">'
-                       f'<img class="vposter" src="/media/shorts/{code}/{v}.jpg" alt="" loading="lazy">'
+                       f'<img class="vposter" src="/media/shorts/{code}/{media_name(code, v)}.jpg" alt="" loading="lazy">'
                        f'{btn}<figcaption>{cap}</figcaption></figure>')
         else:
-            out.append(f'{indent}<figure class="vbox"><video src="/media/shorts/{code}/{v}.mp4" '
-                       f'poster="/media/shorts/{code}/{v}.jpg" playsinline preload="none"></video>'
+            out.append(f'{indent}<figure class="vbox"><video src="/media/shorts/{code}/{media_name(code, v)}.mp4" '
+                       f'poster="/media/shorts/{code}/{media_name(code, v)}.jpg" playsinline preload="none"></video>'
                        f'{btn}<figcaption>{cap}</figcaption></figure>')
     return "\n".join(out)
 

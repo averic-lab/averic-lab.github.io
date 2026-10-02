@@ -21,10 +21,11 @@ for l in sys.argv[1].split():
 PY
 )
 render_one() {
-  local lang=$1 page=$2 id=$3 out="../media/shorts/$1"
+  local lang=$1 page=$2 id=$3 out="../media/shorts/$1" name=$3
+  [ "$lang" != "ko" ] && name="$3-$lang"   # 한국어만 <편id>, 나머지는 <편id>-<언어코드>
   mkdir -p "$out"
-  node render.mjs "$page" "$out/$id.mp4" --lang "$lang" >/dev/null
-  ffmpeg -y -loglevel error -ss 1 -i "$out/$id.mp4" -frames:v 1 -q:v 3 -vf scale=540:-1 "$out/$id.jpg"
+  node render.mjs "$page" "$out/$name.mp4" --lang "$lang" >/dev/null
+  ffmpeg -y -loglevel error -ss 1 -i "$out/$name.mp4" -frames:v 1 -q:v 3 -vf scale=540:-1 "$out/$name.jpg"
   echo "완료 $lang/$id"
 }
 export -f render_one

@@ -182,7 +182,8 @@ def report(video, sfx, integ, tp, st, pre, bed):
 def mux(video, audio, langs):
     n = 0
     for code in langs:
-        mp4 = os.path.join(MEDIA, code, f"{video['id']}.mp4")
+        name = video['id'] if code == 'ko' else f"{video['id']}-{code}"  # i18n/build.py media_name 과 같은 규칙
+        mp4 = os.path.join(MEDIA, code, f"{name}.mp4")
         if not os.path.exists(mp4):
             continue
         tmp = mp4 + ".tmp.mp4"

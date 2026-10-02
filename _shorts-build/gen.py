@@ -105,8 +105,13 @@ def lang_data(code, cfg, site_tr, msgs):
     return s
 
 
+def media_name(code, vid):
+    """i18n/build.py 의 media_name 과 같은 규칙: 한국어만 <편id>, 나머지는 <편id>-<언어코드>"""
+    return vid if code == "ko" else f"{vid}-{code}"
+
+
 def rendered(code, vid):
-    return os.path.exists(os.path.join(MEDIA, code, f"{vid}.mp4"))
+    return os.path.exists(os.path.join(MEDIA, code, f"{media_name(code, vid)}.mp4"))
 
 
 PAGE_HEAD = """<!doctype html>
@@ -183,7 +188,7 @@ def gen_preview(cfg):
         for v in sorted(cfg["videos"], key=lambda v: v["date"], reverse=True):
             if not rendered(code, v["id"]):
                 continue
-            src = f"../../../media/shorts/{code}/{v['id']}"
+            src = f"../../../media/shorts/{code}/{media_name(code, v['id'])}"
             local = html.escape(L[v["title"]])
             kor = html.escape(ko[v["title"]])
             sub = "" if code == "ko" else f"<span>{kor}</span> · "
