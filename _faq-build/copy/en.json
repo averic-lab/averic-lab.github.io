@@ -1,44 +1,45 @@
 {
   "lang_name": "English",
-  "meta_title": "When check-ins aren't getting through — Anbu",
-  "meta_desc": "What to check when a check-in arrives late, or steps and location don't come with it.",
+  "meta_title": "When wellness checks aren't getting through — Anbu",
+  "meta_desc": "What to check when a wellness check arrives late, or steps and location don't come with it.",
   "page_eyebrow": "Frequently asked",
-  "page_title": "When check-ins aren't getting through",
-  "page_lead": "Sometimes a check-in arrives late, or steps and location don't come with it. In most cases, <strong>turning on one permission on the sender's phone</strong> fixes it.",
+  "page_title": "When wellness checks aren't getting through",
+  "page_lead": "Sometimes a wellness check arrives late, or steps and location don't come with it. In most cases, <strong>turning on one permission on the sender's phone</strong> fixes it.",
   "mockup_caption": "All three notices are shown together here for explanation. In reality they appear one at a time, only when they apply, and disappear once resolved.",
   "mockup_hint": "See where this is on screen",
   "back_to_answer": "Back to the answer",
-
   "spot_all": "Whole screen",
-  "spot_battery": "Check-in is late",
+  "spot_battery": "Wellness check is late",
   "spot_activity": "No step count",
   "spot_location": "No location",
-
   "sections": [
     {
       "id": "battery",
       "spot": "battery",
-      "heading": "Check-ins arrive late",
+      "heading": "Wellness checks arrive late",
       "dialog": {
         "lead": "Tapping the yellow notice opens this window right away.",
         "title": "@stability_battery_dialog_title",
         "body": "@stability_battery_dialog_message",
-        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+        "buttons": [
+          "@common_later",
+          "@permission_hibernation_go_to_settings"
+        ]
       },
       "items": [
         {
-          "q": "I keep getting a “💗 Wellness check needed” notification on my phone. It seems the check-in is only sent when I open the app.",
+          "q": "I keep getting a “💗 Wellness check needed” notification on my phone. It seems my wellness check only goes out when I open the app.",
           "q2": "My family got a <b>“@notifications_level_caution”</b> alert saying <b>“@noti_caution_missing_body”</b>",
           "a": [
-            "To save battery, Android slows down or stops apps you don't use often. Anbu wakes up briefly once a day at the set time to send your check-in, so if this restriction applies, <strong>it misses that moment and nothing is sent until you use your phone again.</strong>",
-            "If no check-in arrives within <strong>two hours past the set time</strong>, your family receives the alert above. This can happen even when the sender is perfectly fine and only the delivery was delayed.",
+            "To save battery, Android slows down or stops apps you don't use often. Anbu runs briefly once a day around the set time to send the wellness check, so when this restriction applies, <strong>it can miss the set time and arrive much later.</strong> That is when the notification above appears.",
+            "If no wellness check arrives within <strong>two hours past the set time</strong>, your family receives the alert above. This can happen even when the sender is perfectly fine and only the delivery was delayed.",
             "On the sender's phone, open the app and look near the top for a yellow notice saying <b>“@stability_battery_warning_short”</b>. Tapping it goes straight to the settings screen, and once you lift the restriction the notice disappears."
           ]
         },
         {
           "q": "Why is this the only notice in yellow?",
           "a": [
-            "It means check-ins are not stopped altogether — they <strong>may just be delayed</strong>. Notices shown in red mean a feature is actually blocked."
+            "It means wellness checks are not stopped altogether — they <strong>may just be delayed</strong>. Notices shown in red mean a feature is actually blocked."
           ]
         }
       ]
@@ -51,13 +52,16 @@
         "lead": "Tapping the red notice brings up <strong>Android's own permission request</strong>. Allowing it there is all you need.<br>However, if you have already declined several times, Android stops showing that request. The window below appears instead.",
         "title": "@gs_activity_permission_settings_title",
         "body": "@gs_activity_permission_settings_body",
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
-          "q": "My family member's step count isn't showing. The “You walked N steps today” notification never arrives.",
+          "q": "My family member's step count isn't showing. The “They walked N steps today” notification never arrives.",
           "a": [
-            "Along with the check-in signal, Anbu sends <strong>that day's step count</strong> so family can see how much they moved. If the step permission is off on the sender's phone, <strong>the check-in still goes through, but the step count is left out.</strong>",
+            "Each day's wellness check carries <strong>that day's step count</strong>, so family can see how much they moved. If the step permission is off on the sender's phone, <strong>the wellness check still goes through, but the step count is left out.</strong>",
             "On that phone, open the app and look below the safety code for a red notice saying <b>“@gs_activity_permission_denied_warning”</b>. Tapping it asks for the permission again."
           ]
         },
@@ -77,10 +81,19 @@
         "lead": "Tapping the red notice brings up <strong>Android's own permission request</strong>. Allowing it there is all you need.<br>However, if you have already declined several times, Android stops showing that request. The window below appears instead.",
         "title": "@location_permission_settings_title",
         "variants": [
-          { "label": "Android", "body": "@location_permission_settings_body_android" },
-          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+          {
+            "label": "Android",
+            "body": "@location_permission_settings_body_android"
+          },
+          {
+            "label": "iPhone",
+            "body": "@location_permission_settings_body_ios"
+          }
         ],
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
@@ -93,7 +106,7 @@
         {
           "q": "Are you tracking my location all the time?",
           "a": [
-            "No. We collect no location at all under normal circumstances. Only when [@subject_home_emergency_button] is pressed do we take <strong>a single reading at that moment</strong> and pass it to family, and that information is erased after a day."
+            "No. We collect no location at all under normal circumstances. Only when [@subject_home_emergency_button] is pressed do we take <strong>a single reading at that moment</strong> and pass it to family, and that location is erased at midnight that day."
           ]
         }
       ]
@@ -112,28 +125,27 @@
       ]
     }
   ],
-
   "travel": {
     "heading": "When you travel abroad",
     "items": [
       {
         "q": "After I arrived abroad, my family got a “@notifications_level_caution” alert.",
         "a": [
-          "Anbu sends check-ins by the <strong>local time</strong> shown on your phone. But for the first day or two after you arrive in another country, the new time hasn't been passed on yet, so the check-in is still expected on the time of the country you left. Because of the time difference, <strong>it looks as if the check-in hasn't arrived</strong>, so your family may get an alert, and your own phone may show a check-in reminder in the middle of the night.",
-          "You are fine — only the time is off. Once the first check-in goes out on local time, everything returns to normal on its own."
+          "Anbu sends wellness checks by the <strong>local time</strong> shown on your phone. But for the first day or two after you arrive in another country, the new time hasn't been passed on yet, so the wellness check is still expected on the time of the country you left. Because of the time difference, <strong>it looks as if the wellness check hasn't arrived</strong>, so your family may get an alert, and your own phone may show a wellness check reminder in the middle of the night.",
+          "You are fine — only the time is off. Once the first wellness check goes out on local time, everything returns to normal on its own."
         ]
       },
       {
         "q": "Can I prevent this?",
         "a": [
-          "After you arrive, <strong>please open the Anbu app once.</strong> The moment you open it, the new time is passed on, and from then on check-ins follow local time. Please open it once again when you come back, too.",
+          "After you arrive, <strong>please open the Anbu app once.</strong> The moment you open it, the new time is passed on, and from then on wellness checks follow local time. Please open it once again when you come back, too.",
           "If you have set Do Not Disturb hours, please also open the app once when you arrive. That way the hours you chose not to get alerts (for example, 10 PM to 7 AM) move to local time. If you don't, the time of the country you left stays in effect, so alerts may ring in the middle of the night or stay silent during the day."
         ]
       },
       {
-        "q": "Do I need to change the check-in time while traveling?",
+        "q": "Do I need to change the wellness check time while traveling?",
         "a": [
-          "No. The time you set applies to <strong>wherever you are now</strong>. If you set 6 PM, the check-in goes out at 6 PM local time while you travel, too."
+          "No. The time you set applies to <strong>wherever you are now</strong>. If you set 6 PM, the wellness check goes out around 6 PM local time while you travel, too."
         ]
       }
     ]

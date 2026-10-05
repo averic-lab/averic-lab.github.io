@@ -1,10 +1,10 @@
 {
   "lang_name": "Français",
   "meta_title": "Se relier à sa famille avec le code de sécurité — Anbu",
-  "meta_desc": "Pas à pas sur les vrais écrans de l'application : créer un code de sécurité, le transmettre, et la famille s'y relie.",
+  "meta_desc": "Suivez pas à pas, sur les vrais écrans de l’application, la création d’un code de sécurité, sa transmission à votre famille et la connexion avec ce code.",
   "page_eyebrow": "Mode d'emploi",
   "page_title": "Se relier à sa famille avec le code de sécurité",
-  "page_lead": "Anbu relie les personnes par un seul <strong>code de sécurité</strong>. Vous créez le code sur votre téléphone et le transmettez ; votre famille le saisit sur le sien.",
+  "page_lead": "Anbu relie les personnes par un seul <strong>code de sécurité</strong>. Vous créez le code sur votre téléphone et le transmettez ; votre famille le saisit sur le sien.",
   "phone_me": "Mon téléphone — celui qui crée le code",
   "phone_family": "Le téléphone de la famille — celui qui veille sur moi",
   "demo": {
@@ -20,10 +20,10 @@
   "steps": [
     {
       "h": "Dans les réglages, appuyez sur [@gs_enable_button]",
-      "d": "Ouvrez l'onglet <b>@nav_settings</b> en bas de l'écran : le bouton se trouve tout en haut. Vous passez de « veiller sur sa famille » à <b>envoyer aussi son propre signal</b>."
+      "d": "Ouvrez l’onglet <b>@nav_settings</b> en bas de l’écran de l’aidant : le bouton se trouve tout en haut. Jusqu’ici, vous veilliez seulement sur votre famille ; désormais, <b>vous donnez aussi de vos nouvelles</b>."
     },
     {
-      "h": "Confirmez l'activation",
+      "h": "Dans la fenêtre de confirmation, appuyez sur [@gs_enable_confirm]",
       "d": "@gs_enable_dialog_body"
     },
     {
@@ -48,16 +48,16 @@
     },
     {
       "h": "Ajoutez un numéro (facultatif)",
-      "d": "Voici la fiche de cette personne sur l'écran d'accueil de la famille. Le numéro est <b>facultatif</b> : même renseigné, il n'arrive jamais sur notre serveur et reste <b>uniquement sur le téléphone de la famille</b>.",
+      "d": "Voici la fiche de cette personne sur l'écran d'accueil de la famille. Le numéro est <b>facultatif</b> : même renseigné, il n'arrive jamais sur notre serveur et reste <b>uniquement sur le téléphone de la famille</b>.",
       "illus": "cards",
-      "d_after": "Après avoir appelé et vous être assuré que tout va bien, appuyez sur <b>[@guardian_confirm_safety]</b>. L'alerte est levée, l'affichage revient à la normale, et <b>les autres proches qui veillent</b> reçoivent un avis de confirmation."
+      "d_after": "Après avoir appelé et constaté que tout va bien, appuyez sur <b>[@guardian_confirm_safety]</b>. L’alerte est levée, l’affichage revient à la normale, et <b>les autres aidants qui veillent avec vous</b> reçoivent une notification de confirmation."
     },
     {
       "h": "Appuyez sur [@add_subject_connect], c'est terminé",
       "d": "Le bouton s'active dès que le code et le surnom sont remplis. Une pression relie les deux appareils, et la fiche vue plus haut apparaît sur l'écran d'accueil de la famille."
     }
   ],
-  "note": "Une fois relié, il n'y a plus rien à faire. Anbu envoie le signal <strong>tout seul, chaque jour à l'heure fixée</strong>, et prévient la famille si cette heure passe sans signal. Si le signal tarde ou si les pas restent vides, consultez la <a href=\"faq.html\">FAQ</a>.",
+  "note": "Une fois la connexion établie, il n’y a plus rien à faire. Les nouvelles partent <strong>d’elles-mêmes chaque jour, vers l’heure définie</strong>, et si elles ne sont pas arrivées deux heures après cette heure, la famille est prévenue. Si les nouvelles tardent ou si le nombre de pas reste vide, consultez la <a href=\"faq.html\">FAQ</a>.",
   "footer_home": "Accueil",
   "footer_faq": "Questions fréquentes",
   "footer_privacy": "Politique de confidentialité",

@@ -1,44 +1,45 @@
 {
   "lang_name": "Português",
-  "meta_title": "Quando o sinal de bem-estar não chega — Anbu",
-  "meta_desc": "O que verificar quando o sinal chega atrasado ou os passos e a localização não vêm junto.",
+  "meta_title": "Quando o check-in não chega — Anbu",
+  "meta_desc": "O que verificar quando o check-in chega atrasado ou os passos e a localização não vêm junto.",
   "page_eyebrow": "Perguntas frequentes",
-  "page_title": "Quando o sinal de bem-estar não chega",
-  "page_lead": "Às vezes o sinal chega atrasado, ou os passos e a localização não vêm junto. Na maioria dos casos, <strong>basta ativar uma permissão no celular de quem envia</strong>.",
+  "page_title": "Quando o check-in não chega",
+  "page_lead": "Às vezes o check-in chega atrasado, ou os passos e a localização não vêm junto. Na maioria dos casos, <strong>basta ativar uma permissão no celular de quem envia</strong>.",
   "mockup_caption": "Para explicar, os três avisos aparecem juntos nesta tela. Na prática eles surgem um de cada vez, apenas quando se aplicam, e somem depois de resolvidos.",
   "mockup_hint": "Ver onde fica na tela",
   "back_to_answer": "Voltar à resposta",
-
   "spot_all": "Tela inteira",
-  "spot_battery": "Sinal atrasado",
+  "spot_battery": "Check-in atrasado",
   "spot_activity": "Sem passos",
   "spot_location": "Sem localização",
-
   "sections": [
     {
       "id": "battery",
       "spot": "battery",
-      "heading": "O sinal chega atrasado",
+      "heading": "O check-in chega atrasado",
       "dialog": {
         "lead": "Ao tocar no aviso amarelo, esta janela abre na hora.",
         "title": "@stability_battery_dialog_title",
         "body": "@stability_battery_dialog_message",
-        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+        "buttons": [
+          "@common_later",
+          "@permission_hibernation_go_to_settings"
+        ]
       },
       "items": [
         {
-          "q": "Recebo com frequência a notificação “💗 É preciso confirmar o bem-estar” no meu celular. Parece que o envio só acontece quando abro o aplicativo.",
+          "q": "Recebo com frequência a notificação “💗 Confirme que está tudo bem” no meu celular. Parece que o envio só acontece quando abro o aplicativo.",
           "q2": "Minha família recebeu um alerta <b>“@notifications_level_caution”</b> dizendo <b>“@noti_caution_missing_body”</b>",
           "a": [
-            "Para economizar bateria, o Android desacelera ou interrompe aplicativos pouco usados. O Anbu acorda por um instante uma vez por dia, no horário definido, para enviar o sinal; com essa restrição ativa, <strong>esse momento é perdido e nada é enviado até o celular ser usado de novo.</strong>",
-            "Se nenhum sinal chegar <strong>duas horas após o horário definido</strong>, a família recebe o alerta acima. Isso pode acontecer mesmo quando a pessoa está perfeitamente bem e apenas o envio atrasou.",
+            "Para economizar bateria, o Android desacelera ou interrompe aplicativos pouco usados. O Anbu é executado por um instante uma vez por dia, por volta do horário definido, para enviar o check-in; com essa restrição ativa, <strong>o horário definido pode ser perdido e o check-in chegar com muito atraso.</strong> A notificação acima aparece nesses casos.",
+            "Se o check-in não chegar <strong>duas horas após o horário definido</strong>, a família recebe o alerta acima. Isso pode acontecer mesmo quando a pessoa está perfeitamente bem e apenas o envio atrasou.",
             "No celular de quem envia, abra o aplicativo e veja se na parte de cima aparece o aviso amarelo <b>“@stability_battery_warning_short”</b>. Ao tocar nele você vai direto para as configurações; depois de liberar uma vez, o aviso some."
           ]
         },
         {
           "q": "Por que só este aviso é amarelo?",
           "a": [
-            "Significa que o sinal não parou por completo — ele <strong>pode apenas atrasar</strong>. Avisos em vermelho indicam que um recurso está de fato bloqueado."
+            "Significa que os check-ins não pararam por completo — eles <strong>podem apenas atrasar</strong>. Avisos em vermelho indicam que um recurso está de fato bloqueado."
           ]
         }
       ]
@@ -51,13 +52,16 @@
         "lead": "Ao tocar no aviso vermelho aparece <strong>o pedido de permissão do próprio Android</strong>. Basta permitir ali.<br>Porém, se você já recusou várias vezes, o Android deixa de exibir esse pedido. Nesse caso aparece a janela abaixo.",
         "title": "@gs_activity_permission_settings_title",
         "body": "@gs_activity_permission_settings_body",
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
           "q": "Os passos do meu familiar não aparecem. A notificação “Hoje você caminhou N passos” nunca chega.",
           "a": [
-            "Junto com o sinal, o Anbu envia <strong>os passos do dia</strong> para que a família veja o quanto a pessoa se movimentou. Se a permissão estiver desativada no celular de quem envia, <strong>o sinal continua chegando, mas os passos ficam de fora.</strong>",
+            "O check-in de cada dia leva <strong>os passos do dia</strong>, para que a família veja o quanto a pessoa se movimentou. Se a permissão estiver desativada no celular de quem envia, <strong>o check-in continua chegando, mas os passos ficam de fora.</strong>",
             "Nesse celular, abra o aplicativo e veja se abaixo do código de segurança aparece o aviso vermelho <b>“@gs_activity_permission_denied_warning”</b>. Ao tocar nele, a permissão é pedida de novo."
           ]
         },
@@ -77,10 +81,19 @@
         "lead": "Ao tocar no aviso vermelho aparece <strong>o pedido de permissão do próprio Android</strong>. Basta permitir ali.<br>Porém, se você já recusou várias vezes, o Android deixa de exibir esse pedido. Nesse caso aparece a janela abaixo.",
         "title": "@location_permission_settings_title",
         "variants": [
-          { "label": "Android", "body": "@location_permission_settings_body_android" },
-          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+          {
+            "label": "Android",
+            "body": "@location_permission_settings_body_android"
+          },
+          {
+            "label": "iPhone",
+            "body": "@location_permission_settings_body_ios"
+          }
         ],
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
@@ -93,7 +106,7 @@
         {
           "q": "Vocês acompanham minha localização o tempo todo?",
           "a": [
-            "Não. No dia a dia não coletamos localização nenhuma. Apenas ao pressionar [@subject_home_emergency_button] é feita <strong>uma única leitura naquele instante</strong>, repassada à família; essa informação é apagada depois de um dia."
+            "Não. No dia a dia não coletamos localização nenhuma. Apenas ao pressionar [@subject_home_emergency_button] é feita <strong>uma única leitura naquele instante</strong>, repassada à família; essa localização é apagada à meia-noite desse mesmo dia."
           ]
         }
       ]
@@ -112,28 +125,27 @@
       ]
     }
   ],
-
   "travel": {
     "heading": "Quando você viaja para o exterior",
     "items": [
       {
         "q": "Depois que cheguei ao exterior, minha família recebeu um alerta de “@notifications_level_caution”.",
         "a": [
-          "O sinal é enviado de acordo com o <strong>horário local</strong> mostrado no seu celular. Mas, no primeiro ou nos dois primeiros dias depois de chegar a outro país, o novo horário ainda não foi repassado, então o sinal continua sendo esperado no horário do país de onde você saiu. Por causa do fuso horário, <strong>parece que o sinal não chegou</strong>: sua família pode receber um alerta, e o seu próprio celular pode mostrar um lembrete de madrugada.",
-          "Você está bem; só o horário está desencontrado. Assim que o primeiro sinal é enviado no horário local, tudo volta ao normal sozinho."
+          "O check-in é enviado de acordo com o <strong>horário local</strong> mostrado no seu celular. Mas, no primeiro ou nos dois primeiros dias depois de chegar a outro país, o novo horário ainda não foi repassado, então o check-in continua sendo esperado no horário do país de onde você saiu. Por causa do fuso horário, <strong>parece que o check-in não chegou</strong>: sua família pode receber um alerta, e o seu próprio celular pode mostrar um lembrete de madrugada.",
+          "Você está bem; só o horário está desencontrado. Assim que o primeiro check-in é enviado no horário local, tudo volta ao normal sozinho."
         ]
       },
       {
         "q": "Posso evitar isso antes?",
         "a": [
-          "Ao chegar, <strong>abra o app Anbu uma vez.</strong> No momento em que você abre, o novo horário é repassado e, daí em diante, o sinal segue o horário local. Abra também uma vez quando voltar.",
+          "Ao chegar, <strong>abra o app Anbu uma vez.</strong> No momento em que você abre, o novo horário é repassado e, daí em diante, o check-in segue o horário local. Abra também uma vez quando voltar.",
           "Se você configurou o horário de “Não perturbe”, abra o app uma vez também ao chegar. Assim, o período em que você escolheu não receber alertas (por exemplo, das 22:00 às 7:00) se ajusta ao horário local. Se não abrir, continua valendo o horário do país de partida, e os alertas podem tocar de madrugada ou ficar em silêncio durante o dia."
         ]
       },
       {
-        "q": "Preciso mudar o horário do sinal durante a viagem?",
+        "q": "Preciso mudar o horário do check-in durante a viagem?",
         "a": [
-          "Não. O horário definido vale <strong>para o lugar onde você está agora</strong>. Se você definiu 18:00, durante a viagem o sinal também é enviado às 18:00 no horário local."
+          "Não. O horário definido vale <strong>para o lugar onde você está agora</strong>. Se você definiu 18:00, durante a viagem o check-in também é enviado por volta das 18:00 no horário local."
         ]
       }
     ]

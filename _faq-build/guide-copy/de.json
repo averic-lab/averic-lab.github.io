@@ -20,15 +20,15 @@
   "steps": [
     {
       "h": "In den Einstellungen auf [@gs_enable_button] tippen",
-      "d": "Öffnen Sie unten den Reiter <b>@nav_settings</b> — die Schaltfläche steht ganz oben. Aus „nur nach der Familie sehen“ wird <b>auch die eigene Wohlbefindens-Meldung senden</b>."
+      "d": "Öffnen Sie in der Ansicht für Kontaktpersonen unten den Reiter <b>@nav_settings</b> — die Schaltfläche steht ganz oben. Statt nur nach Ihrer Familie zu sehen, <b>senden Sie dann auch selbst ein Lebenszeichen</b>."
     },
     {
-      "h": "Im Bestätigungsfenster aktivieren",
+      "h": "Im Bestätigungsfenster auf [@gs_enable_confirm] tippen",
       "d": "@gs_enable_dialog_body"
     },
     {
       "h": "Der Sicherheitscode entsteht",
-      "d": "Die leere Stelle füllt sich mit einem <b>7-stelligen Code</b>. Pro Gerät wird genau einer vergeben, und nach Löschen und Neuinstallation kommt derselbe Code zurück."
+      "d": "Die leere Stelle füllt sich mit einem <b>Code aus 7 Zeichen</b>. Pro Gerät wird genau ein Code vergeben, und wird die App gelöscht und neu installiert, kommt derselbe Code zurück."
     },
     {
       "h": "Code kopieren oder teilen und der Familie mitteilen",
@@ -50,14 +50,14 @@
       "h": "Telefonnummer eintragen (optional)",
       "d": "So sieht die Karte dieser Person auf dem Startbildschirm der Familie aus. Die Nummer ist <b>freiwillig</b> — und selbst wenn sie eingetragen wird, gelangt sie nicht auf unseren Server, sondern bleibt <b>nur auf dem Telefon der Familie</b>.",
       "illus": "cards",
-      "d_after": "Wenn Sie angerufen und sich selbst vergewissert haben, tippen Sie auf <b>[@guardian_confirm_safety]</b>. Die Warnung wird aufgehoben, die Anzeige steht wieder auf normal, und <b>die übrigen mitschauenden Angehörigen</b> erhalten eine Bestätigung."
+      "d_after": "Wenn Sie angerufen und sich selbst vergewissert haben, dass alles in Ordnung ist, tippen Sie auf <b>[@guardian_confirm_safety]</b>. Die Warnung wird aufgehoben, die Karte zeigt wieder „Normal“, und <b>die anderen Kontaktpersonen, die ebenfalls nach dieser Person sehen,</b> werden benachrichtigt, dass alles in Ordnung ist."
     },
     {
       "h": "Auf [@add_subject_connect] tippen — fertig",
       "d": "Sobald Code und Name ausgefüllt sind, färbt sich die Schaltfläche. Ein Tippen verbindet, und die oben gezeigte Karte erscheint auf dem Startbildschirm der Familie."
     }
   ],
-  "note": "Nach der Verbindung bleibt nichts weiter zu tun. Anbu sendet die Wohlbefindens-Meldung <strong>jeden Tag zur eingestellten Zeit von selbst</strong> und meldet sich bei der Familie, wenn diese Zeit ohne Signal verstreicht. Kommt das Signal spät oder bleiben die Schritte leer, hilft die <a href=\"faq.html\">Hilfe-Seite</a> weiter.",
+  "note": "Nach der Verbindung ist nichts weiter zu tun. Das Lebenszeichen kommt <strong>jeden Tag rund um die eingestellte Uhrzeit von selbst</strong> an. Ist es zwei Stunden nach dieser Uhrzeit noch nicht angekommen, wird die Familie benachrichtigt. Kommt das Lebenszeichen spät oder fehlen die Schritte, hilft die Seite <a href=\"faq.html\">Häufige Fragen</a> weiter.",
   "footer_home": "Startseite",
   "footer_faq": "Häufige Fragen",
   "footer_privacy": "Datenschutzerklärung",

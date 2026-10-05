@@ -82,7 +82,7 @@
       <td>Dostarczanie powiadomień o kontroli samopoczucia i alertów</td>
     </tr>
     <tr>
-      <td>Dane o samopoczuciu (Osoba chroniona)</td>
+      <td>Dane o samopoczuciu (Podopieczny)</td>
       <td>Poziom baterii, czas wysłania heartbeat</td>
       <td>Określanie stanu samopoczucia i wysyłanie alertów do opiekunów</td>
     </tr>
@@ -96,14 +96,14 @@
   </thead>
   <tbody>
     <tr>
-      <td>Liczba kroków (Osoba chroniona)</td>
+      <td>Liczba kroków (Podopieczny)</td>
       <td>Kroki wykonane od ostatniego heartbeat (steps_delta)</td>
       <td>Weryfikacja aktywności (nie zbierane w przypadku odmowy uprawnień)</td>
     </tr>
     <tr>
-      <td>Opcjonalne (Osoba chroniona)</td>
+      <td>Opcjonalne (Podopieczny)</td>
       <td>Dane lokalizacyjne (szerokość geograficzna, długość geograficzna, dokładność, znacznik czasu pobrania)</td>
-      <td>Przekazywane opiekunom jednorazowo wyłącznie wtedy, gdy osoba chroniona samodzielnie naciśnie przycisk pilnej prośby o pomoc [🚨 Potrzebuje pomocy]. Nie są zbierane podczas zwykłych kontroli samopoczucia. W przypadku odmowy uprawnień lokalizacyjnych lub niepowodzenia odbioru sygnału GPS alert pilny zostanie wysłany bez informacji o lokalizacji.</td>
+      <td>Przekazywane opiekunom jednorazowo wyłącznie wtedy, gdy podopieczny samodzielnie naciśnie przycisk pilnej prośby o pomoc [🚨 Potrzebuje pomocy]. Nie są zbierane podczas zwykłych kontroli samopoczucia. W przypadku odmowy uprawnień lokalizacyjnych lub niepowodzenia odbioru sygnału GPS alert pilny zostanie wysłany bez informacji o lokalizacji.</td>
     </tr>
     <tr>
       <td>Subskrypcja (Opiekun)</td>
@@ -137,9 +137,9 @@
 <h2>2. W jaki sposób wykorzystujemy Twoje informacje</h2>
 <p>Zebrane informacje wykorzystujemy wyłącznie w następujących celach:</p>
 <ol>
-  <li><strong>Usługa kontroli samopoczucia:</strong> Zbieranie sygnałów heartbeat z urządzenia osoby chronionej i powiadamianie opiekunów o stanie samopoczucia.</li>
-  <li><strong>Powiadomienia o alertach:</strong> Wysyłanie stopniowanych alertów (Uwaga &rarr; Ostrzeżenie &rarr; Pilne) do opiekunów w przypadku nieotrzymania heartbeat od osoby chronionej.</li>
-  <li><strong>Obsługa pilnych próśb o pomoc:</strong> Gdy osoba chroniona samodzielnie naciśnie przycisk pilnej prośby o pomoc, niezwłocznie powiadamiamy wszystkich powiązanych opiekunów. Jeżeli użytkownik wyrazi zgodę na udostępnienie lokalizacji, wraz z alertem przekazujemy aktualną pozycję (szerokość geograficzna, długość geograficzna, dokładność).</li>
+  <li><strong>Usługa kontroli samopoczucia:</strong> Zbieranie znaków życia (heartbeat) z urządzenia podopiecznego i powiadamianie opiekunów o stanie samopoczucia.</li>
+  <li><strong>Powiadomienia o alertach:</strong> Wysyłanie stopniowanych alertów (Uwaga &rarr; Ostrzeżenie &rarr; Pilne) do opiekunów w przypadku nieotrzymania heartbeat od podopiecznego.</li>
+  <li><strong>Obsługa pilnych próśb o pomoc:</strong> Gdy podopieczny samodzielnie naciśnie przycisk pilnej prośby o pomoc, niezwłocznie powiadamiamy wszystkich powiązanych opiekunów. Jeżeli użytkownik wyrazi zgodę na udostępnienie lokalizacji, wraz z alertem przekazujemy aktualną pozycję (szerokość geograficzna, długość geograficzna, dokładność).</li>
   <li><strong>Monitorowanie stanu urządzenia:</strong> Informowanie opiekunów o niskim poziomie baterii, zamknięciu aplikacji lub innych warunkach mogących wpłynąć na kontrole samopoczucia.</li>
   <li><strong>Zarządzanie subskrypcja:</strong> Weryfikacja potwierdzeń zakupów w aplikacji i zarządzanie dostępem opiekunów do usługi.</li>
   <li><strong>Ulepszanie usługi:</strong> Diagnozowanie błędów i poprawa niezawodności usługi.</li>
@@ -164,12 +164,12 @@
     <tr>
       <td>Rekordy powiadomień o alertach</td>
       <td>Tylko bieżący dzień</td>
-      <td>Usuwane codziennie o północy (lokalna strefa czasowa osoby chronionej)</td>
+      <td>Usuwane codziennie o północy (lokalna strefa czasowa podopiecznego)</td>
     </tr>
     <tr>
       <td>Dane lokalizacyjne z pilnej prośby o pomoc</td>
       <td>Do 24 godzin</td>
-      <td>Usuwane wraz z rekordami powiadomień automatycznie o północy w lokalnej strefie czasowej urządzenia osoby chronionej</td>
+      <td>Usuwane wraz z rekordami powiadomień automatycznie o północy w lokalnej strefie czasowej urządzenia podopiecznego</td>
     </tr>
     <tr>
       <td>Informacje o subskrypcji</td>
@@ -187,8 +187,8 @@
 <h2>4. Udostępnianie danych</h2>
 <p>Nie sprzedajemy, nie handlujemy ani nie wynajmujemy Twoich informacji osobom trzecim. Udostępniamy informacje wyłącznie w następujących ograniczonych okolicznościach:</p>
 <ol>
-  <li><strong>Połączenie Opiekun-Osoba chroniona:</strong> Gdy osoba chroniona udostępnia swój kod zaproszenia opiekunowi, opiekun otrzymuje informacje o stanie samopoczucia osoby chronionej (heartbeat otrzymany/nieodebrany, poziom baterii). Żadne dane osobowe nie są udostępniane — jedynie dane o samopoczuciu na poziomie urządzenia.</li>
-  <li><strong>Przekazywanie lokalizacji w pilnej prośbie o pomoc:</strong> Gdy osoba chroniona samodzielnie naciśnie w aplikacji przycisk pilnej prośby o pomoc [🚨 Potrzebuje pomocy] i wyrazi zgodę na udostępnienie informacji o lokalizacji, bieżąca pozycja (szerokość geograficzna, długość geograficzna, dokładność) zostanie jednorazowo przekazana wszystkim powiązanym opiekunom. W przypadku odmowy uprawnień lokalizacyjnych lub niemożności uzyskania sygnału GPS alert pilny zostanie wysłany bez informacji o lokalizacji.</li>
+  <li><strong>Połączenie Opiekun-Podopieczny:</strong> Gdy podopieczny udostępnia swój kod zaproszenia opiekunowi, opiekun otrzymuje informacje o stanie samopoczucia podopiecznego (heartbeat otrzymany/nieodebrany, poziom baterii). Żadne dane osobowe nie są udostępniane — jedynie dane o samopoczuciu na poziomie urządzenia.</li>
+  <li><strong>Przekazywanie lokalizacji w pilnej prośbie o pomoc:</strong> Gdy podopieczny samodzielnie naciśnie w aplikacji przycisk pilnej prośby o pomoc [🚨 Potrzebuje pomocy] i wyrazi zgodę na udostępnienie informacji o lokalizacji, bieżąca pozycja (szerokość geograficzna, długość geograficzna, dokładność) zostanie jednorazowo przekazana wszystkim powiązanym opiekunom. W przypadku odmowy uprawnień lokalizacyjnych lub niemożności uzyskania sygnału GPS alert pilny zostanie wysłany bez informacji o lokalizacji.</li>
   <li><strong>Wymogi prawne:</strong> Gdy jest to wymagane przez obowiązujące prawo, przepisy lub ważny proces prawny.</li>
 </ol>
 
@@ -253,7 +253,7 @@
   <ul>
     <li>Konto użytkownika i informacje o urządzeniu</li>
     <li>Wszystkie logi heartbeat</li>
-    <li>Rekordy połączeń Opiekun-Osoba chroniona</li>
+    <li>Rekordy połączeń Opiekun-Podopieczny</li>
     <li>Informacje o subskrypcji</li>
     <li>Rekordy powiadomień o alertach</li>
     <li>Ustawienia powiadomień</li>

@@ -20,10 +20,10 @@
   "steps": [
     {
       "h": "Di pengaturan, ketuk [@gs_enable_button]",
-      "d": "Buka tab <b>@nav_settings</b> di bagian bawah — tombolnya ada paling atas. Anda beralih dari sekadar menjaga keluarga menjadi <b>ikut mengirim sinyal sendiri</b>."
+      "d": "Buka tab <b>@nav_settings</b> di bagian bawah — tombolnya ada paling atas. Anda beralih dari sekadar menjaga keluarga menjadi <b>ikut mengirim kabar sendiri</b>."
     },
     {
-      "h": "Konfirmasi untuk mengaktifkan",
+      "h": "Ketuk [@gs_enable_confirm] di jendela konfirmasi",
       "d": "@gs_enable_dialog_body"
     },
     {
@@ -50,14 +50,14 @@
       "h": "Isi nomor telepon (opsional)",
       "d": "Beginilah kartu orang ini terlihat di layar utama keluarga. Nomor ini <b>opsional</b>, dan sekalipun diisi tidak dikirim ke server kami — hanya tersimpan <b>di ponsel keluarga</b>.",
       "illus": "cards",
-      "d_after": "Setelah menelepon dan memastikan sendiri bahwa semuanya baik, ketuk <b>[@guardian_confirm_safety]</b>. Peringatan dicabut, status kembali normal, dan <b>anggota keluarga lain yang ikut menjaga</b> menerima pemberitahuan konfirmasi."
+      "d_after": "Setelah menelepon dan memastikan sendiri bahwa semuanya baik, ketuk <b>[@guardian_confirm_safety]</b>. Peringatan dicabut, status kembali normal, dan <b>pendamping lain</b> menerima pemberitahuan konfirmasi."
     },
     {
       "h": "Ketuk [@add_subject_connect], selesai",
       "d": "Tombol menyala begitu kode dan nama panggilan terisi. Sekali ketuk langsung terhubung, dan kartu yang tadi terlihat muncul di layar utama keluarga."
     }
   ],
-  "note": "Setelah terhubung tidak ada lagi yang perlu dilakukan. Anbu mengirim sinyal <strong>sendiri, setiap hari pada waktu yang ditentukan</strong>, dan memberi tahu keluarga bila waktu itu lewat tanpa sinyal. Bila sinyal terlambat atau langkah tampak kosong, lihat <a href=\"faq.html\">pertanyaan umum</a>.",
+  "note": "Setelah terhubung tidak ada lagi yang perlu dilakukan. Anbu mengirim kabar <strong>sendiri, setiap hari sekitar waktu yang ditentukan</strong>, dan memberi tahu keluarga bila dua jam berlalu dari waktu itu tanpa kabar. Bila kabar terlambat atau langkah tampak kosong, lihat <a href=\"faq.html\">pertanyaan umum</a>.",
   "footer_home": "Beranda",
   "footer_faq": "Pertanyaan umum",
   "footer_privacy": "Kebijakan Privasi",

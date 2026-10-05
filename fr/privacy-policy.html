@@ -82,9 +82,9 @@
       <td>Envoi des notifications de v&eacute;rification de bien-&ecirc;tre et des alertes</td>
     </tr>
     <tr>
-      <td>Donn&eacute;es de bien-&ecirc;tre (Personne prot&eacute;g&eacute;e)</td>
+      <td>Donn&eacute;es de bien-&ecirc;tre (Proche)</td>
       <td>Niveau de batterie, heure de transmission du heartbeat</td>
-      <td>D&eacute;termination de l'&eacute;tat de bien-&ecirc;tre et envoi d'alertes au protecteur</td>
+      <td>D&eacute;termination de l'&eacute;tat de bien-&ecirc;tre et envoi d'alertes &agrave; l'aidant</td>
     </tr>
   </tbody>
 </table>
@@ -96,17 +96,17 @@
   </thead>
   <tbody>
     <tr>
-      <td>Nombre de pas (Personne prot&eacute;g&eacute;e)</td>
+      <td>Nombre de pas (Proche)</td>
       <td>Pas effectu&eacute;s depuis le dernier heartbeat (steps_delta)</td>
       <td>V&eacute;rification de l'activit&eacute; (non collect&eacute; si l'autorisation est refus&eacute;e)</td>
     </tr>
     <tr>
-      <td>Donn&eacute;es de localisation (Personne prot&eacute;g&eacute;e &mdash; facultatif)</td>
+      <td>Donn&eacute;es de localisation (Proche &mdash; facultatif)</td>
       <td>Latitude, longitude, pr&eacute;cision et horodatage de la mesure</td>
-      <td>Transmission unique au(x) protecteur(s) lorsque la personne prot&eacute;g&eacute;e appuie elle-m&ecirc;me sur le bouton [&#128680; J'ai besoin d'aide]. Aucune collecte lors des v&eacute;rifications p&eacute;riodiques de bien-&ecirc;tre. En cas de refus de l'autorisation de localisation ou d'&eacute;chec du GPS, l'alerte d'urgence est envoy&eacute;e sans localisation.</td>
+      <td>Transmission unique au(x) aidant(s) lorsque le proche appuie lui-m&ecirc;me sur le bouton [&#128680; J'ai besoin d'aide]. Aucune collecte lors des v&eacute;rifications p&eacute;riodiques de bien-&ecirc;tre. En cas de refus de l'autorisation de localisation ou d'&eacute;chec du GPS, l'alerte d'urgence est envoy&eacute;e sans localisation.</td>
     </tr>
     <tr>
-      <td>Abonnement (Protecteur)</td>
+      <td>Abonnement (Aidant)</td>
       <td>Re&ccedil;u d'achat int&eacute;gr&eacute; (Apple/Google)</td>
       <td>V&eacute;rification de l'abonnement et acc&egrave;s au service</td>
     </tr>
@@ -130,11 +130,11 @@
 <h2>2. Comment nous utilisons vos informations</h2>
 <p>Nous utilisons les informations collect&eacute;es uniquement aux fins suivantes :</p>
 <ol>
-  <li><strong>Service de v&eacute;rification de bien-&ecirc;tre :</strong> Collecte des signaux heartbeat depuis l'appareil de la personne prot&eacute;g&eacute;e et notification aux protecteurs de l'&eacute;tat de bien-&ecirc;tre.</li>
-  <li><strong>Notifications d'alerte :</strong> Envoi d'alertes progressives (Attention &rarr; Avertissement &rarr; Urgence) aux protecteurs lorsque le heartbeat d'une personne prot&eacute;g&eacute;e n'est pas re&ccedil;u.</li>
-  <li><strong>Traitement des demandes d'aide d'urgence :</strong> Lorsque la personne prot&eacute;g&eacute;e appuie elle-m&ecirc;me sur le bouton d'urgence, transmission imm&eacute;diate d'une notification &agrave; tous les protecteurs connect&eacute;s. Si l'utilisateur a consenti au partage de sa localisation, la position actuelle (latitude, longitude et pr&eacute;cision) est jointe &agrave; cette notification.</li>
-  <li><strong>Surveillance de l'&eacute;tat de l'appareil :</strong> Information des protecteurs en cas de batterie faible, de fermeture de l'application ou d'autres conditions susceptibles d'affecter les v&eacute;rifications de bien-&ecirc;tre.</li>
-  <li><strong>Gestion des abonnements :</strong> V&eacute;rification des re&ccedil;us d'achat int&eacute;gr&eacute; et gestion de l'acc&egrave;s au service pour les protecteurs.</li>
+  <li><strong>Service de v&eacute;rification de bien-&ecirc;tre :</strong> Collecte des heartbeats depuis l'appareil du proche et notification aux aidants de l'&eacute;tat de bien-&ecirc;tre.</li>
+  <li><strong>Notifications d'alerte :</strong> Envoi d'alertes progressives (Attention &rarr; Avertissement &rarr; Urgence) aux aidants lorsque le heartbeat d'un proche n'est pas re&ccedil;u.</li>
+  <li><strong>Traitement des demandes d'aide d'urgence :</strong> Lorsque le proche appuie lui-m&ecirc;me sur le bouton d'urgence, transmission imm&eacute;diate d'une notification &agrave; tous les aidants connect&eacute;s. Si l'utilisateur a consenti au partage de sa localisation, la position actuelle (latitude, longitude et pr&eacute;cision) est jointe &agrave; cette notification.</li>
+  <li><strong>Surveillance de l'&eacute;tat de l'appareil :</strong> Information des aidants en cas de batterie faible, de fermeture de l'application ou d'autres conditions susceptibles d'affecter les v&eacute;rifications de bien-&ecirc;tre.</li>
+  <li><strong>Gestion des abonnements :</strong> V&eacute;rification des re&ccedil;us d'achat int&eacute;gr&eacute; et gestion de l'acc&egrave;s au service pour les aidants.</li>
   <li><strong>Am&eacute;lioration du service :</strong> Diagnostic des erreurs et am&eacute;lioration de la fiabilit&eacute; du service.</li>
 </ol>
 
@@ -157,12 +157,12 @@
     <tr>
       <td>Historique des notifications d'alerte</td>
       <td>Jour en cours uniquement</td>
-      <td>Supprim&eacute; quotidiennement &agrave; minuit (fuseau horaire local de la personne prot&eacute;g&eacute;e)</td>
+      <td>Supprim&eacute; quotidiennement &agrave; minuit (fuseau horaire local du proche)</td>
     </tr>
     <tr>
       <td>Localisation jointe &agrave; une demande d'aide d'urgence</td>
       <td>Jusqu'&agrave; 24 heures</td>
-      <td>Supprim&eacute;e automatiquement &agrave; minuit (fuseau horaire local de la personne prot&eacute;g&eacute;e), en m&ecirc;me temps que l'historique des notifications</td>
+      <td>Supprim&eacute;e automatiquement &agrave; minuit (fuseau horaire local du proche), en m&ecirc;me temps que l'historique des notifications</td>
     </tr>
     <tr>
       <td>Informations d'abonnement</td>
@@ -180,8 +180,8 @@
 <h2>4. Partage des donn&eacute;es</h2>
 <p>Nous ne vendons, n'&eacute;changeons ni ne louons vos informations &agrave; des tiers. Nous ne partageons des informations que dans les circonstances limit&eacute;es suivantes :</p>
 <ol>
-  <li><strong>Connexion Protecteur-Personne prot&eacute;g&eacute;e :</strong> Lorsqu'une personne prot&eacute;g&eacute;e partage son code d'invitation avec un protecteur, celui-ci re&ccedil;oit l'&eacute;tat de bien-&ecirc;tre de la personne prot&eacute;g&eacute;e (heartbeat re&ccedil;u/manqu&eacute;, niveau de batterie). Aucune information personnelle n'est partag&eacute;e &mdash; uniquement des donn&eacute;es de bien-&ecirc;tre au niveau de l'appareil.</li>
-  <li><strong>Partage de localisation lors d'une demande d'aide d'urgence :</strong> Lorsque la personne prot&eacute;g&eacute;e appuie elle-m&ecirc;me sur le bouton [&#128680; J'ai besoin d'aide] dans l'application et a consenti au partage de sa localisation, sa position actuelle (latitude, longitude et pr&eacute;cision) est transmise une seule fois &agrave; l'ensemble des protecteurs connect&eacute;s. En cas de refus de l'autorisation de localisation ou si le signal GPS ne peut &ecirc;tre obtenu, l'alerte d'urgence est transmise sans information de localisation.</li>
+  <li><strong>Connexion Aidant-Proche :</strong> Lorsqu'un proche partage son code d'invitation avec un aidant, celui-ci re&ccedil;oit l'&eacute;tat de bien-&ecirc;tre du proche (heartbeat re&ccedil;u/manqu&eacute;, niveau de batterie). Aucune information personnelle n'est partag&eacute;e &mdash; uniquement des donn&eacute;es de bien-&ecirc;tre au niveau de l'appareil.</li>
+  <li><strong>Partage de localisation lors d'une demande d'aide d'urgence :</strong> Lorsque le proche appuie lui-m&ecirc;me sur le bouton [&#128680; J'ai besoin d'aide] dans l'application et a consenti au partage de sa localisation, sa position actuelle (latitude, longitude et pr&eacute;cision) est transmise une seule fois &agrave; l'ensemble des aidants connect&eacute;s. En cas de refus de l'autorisation de localisation ou si le signal GPS ne peut &ecirc;tre obtenu, l'alerte d'urgence est transmise sans information de localisation.</li>
   <li><strong>Obligations l&eacute;gales :</strong> Lorsque la loi, la r&eacute;glementation ou une proc&eacute;dure juridique valide l'exige.</li>
 </ol>
 
@@ -246,7 +246,7 @@
   <ul>
     <li>Compte utilisateur et informations sur l'appareil</li>
     <li>Tous les journaux de heartbeat</li>
-    <li>Enregistrements de connexion protecteur-personne prot&eacute;g&eacute;e</li>
+    <li>Enregistrements de connexion aidant-proche</li>
     <li>Informations d'abonnement</li>
     <li>Historique des notifications d'alerte</li>
     <li>Param&egrave;tres de notification</li>

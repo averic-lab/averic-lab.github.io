@@ -82,9 +82,9 @@
       <td>Leverans av h&auml;lsokontrollaviseringar och varningar</td>
     </tr>
     <tr>
-      <td>H&auml;lsodata (Skyddad person)</td>
+      <td>H&auml;lsodata (N&auml;rst&aring;ende)</td>
       <td>Batteriniv&aring;, tidpunkt f&ouml;r heartbeat-&ouml;verf&ouml;ring</td>
-      <td>Bed&ouml;mning av h&auml;lsostatus och utskick av varningar till v&aring;rdgivare</td>
+      <td>Bed&ouml;mning av h&auml;lsostatus och utskick av varningar till kontaktpersoner</td>
     </tr>
   </tbody>
 </table>
@@ -96,17 +96,17 @@
   </thead>
   <tbody>
     <tr>
-      <td>Stegr&auml;kning (Skyddad person)</td>
+      <td>Stegr&auml;kning (N&auml;rst&aring;ende)</td>
       <td>Antal steg sedan senaste heartbeat (steps_delta)</td>
       <td>Aktivitetsverifiering (samlas inte in om tillst&aring;nd nekas)</td>
     </tr>
     <tr>
-      <td>Platsdata (Skyddad person, frivilligt)</td>
+      <td>Platsdata (N&auml;rst&aring;ende, frivilligt)</td>
       <td>Latitud, longitud, noggrannhet och tidsst&auml;mpel f&ouml;r registreringen</td>
-      <td>Delas endast en g&aring;ng med anslutna v&aring;rdgivare n&auml;r den skyddade personen sj&auml;lv trycker p&aring; knappen [🚨 Jag beh&ouml;ver hj&auml;lp]. Ingen platsdata samlas in vid den ordinarie h&auml;lsokontrollen (heartbeat). Om platsbeh&ouml;righeten nekas eller om GPS-position inte kan fastst&auml;llas skickas n&ouml;daviseringen utan platsdata.</td>
+      <td>Delas endast en g&aring;ng med anslutna kontaktpersoner n&auml;r den n&auml;rst&aring;ende sj&auml;lv trycker p&aring; knappen [🚨 Jag beh&ouml;ver hj&auml;lp]. Ingen platsdata samlas in vid den ordinarie h&auml;lsokontrollen (heartbeat). Om platsbeh&ouml;righeten nekas eller om GPS-position inte kan fastst&auml;llas skickas n&ouml;daviseringen utan platsdata.</td>
     </tr>
     <tr>
-      <td>Prenumeration (V&aring;rdgivare)</td>
+      <td>Prenumeration (Kontaktperson)</td>
       <td>Kvitto f&ouml;r k&ouml;p i appen (Apple/Google)</td>
       <td>Prenumerationsverifiering och &aring;tkomst till tj&auml;nsten</td>
     </tr>
@@ -130,17 +130,17 @@
 <h3>1.4 Insamlingss&auml;tt</h3>
 <ul>
   <li>Enhets- och h&auml;lsodata skickas automatiskt till v&aring;ra servrar vid varje heartbeat-&ouml;verf&ouml;ring.</li>
-  <li>Platsdata samlas in en enda g&aring;ng i f&ouml;rgrunden, och endast n&auml;r den skyddade personen sj&auml;lv trycker p&aring; knappen f&ouml;r n&ouml;dhj&auml;lp och platsbeh&ouml;righet har beviljats. Platsdata samlas aldrig in i bakgrunden.</li>
+  <li>Platsdata samlas in en enda g&aring;ng i f&ouml;rgrunden, och endast n&auml;r den n&auml;rst&aring;ende sj&auml;lv trycker p&aring; knappen f&ouml;r n&ouml;dhj&auml;lp och platsbeh&ouml;righet har beviljats. Platsdata samlas aldrig in i bakgrunden.</li>
 </ul>
 
 <h2>2. Hur vi anv&auml;nder din information</h2>
 <p>Vi anv&auml;nder den insamlade informationen uteslutande f&ouml;r f&ouml;ljande syften:</p>
 <ol>
-  <li><strong>H&auml;lsokontrolltj&auml;nst:</strong> Insamling av heartbeat-signaler fr&aring;n den skyddade personens enhet och avisering av v&aring;rdgivare om h&auml;lsostatus.</li>
-  <li><strong>Varningsaviseringar:</strong> Utskick av stegvisa varningar (Observera &rarr; Varning &rarr; Akut) till v&aring;rdgivare n&auml;r en skyddad persons heartbeat inte mottas.</li>
-  <li><strong>Hantering av n&ouml;dhj&auml;lpsbeg&auml;ran:</strong> N&auml;r en skyddad person sj&auml;lv trycker p&aring; knappen [🚨 Jag beh&ouml;ver hj&auml;lp] vidarebefordrar vi aviseringen omedelbart till samtliga anslutna v&aring;rdgivare. Om anv&auml;ndaren har samtyckt till att dela platsdata skickas dessutom den aktuella positionen (latitud, longitud och noggrannhet).</li>
-  <li><strong>Enhetsstatusbevakning:</strong> Informera v&aring;rdgivare om l&aring;gt batteri, appavslutning eller andra f&ouml;rh&aring;llanden som kan p&aring;verka h&auml;lsokontroller.</li>
-  <li><strong>Prenumerationshantering:</strong> Verifiering av kvitton f&ouml;r k&ouml;p i appen och hantering av v&aring;rdgivares tj&auml;nst&aring;tkomst.</li>
+  <li><strong>H&auml;lsokontrolltj&auml;nst:</strong> Insamling av heartbeat-incheckningar fr&aring;n den n&auml;rst&aring;endes enhet och avisering av kontaktpersoner om h&auml;lsostatus.</li>
+  <li><strong>Varningsaviseringar:</strong> Utskick av stegvisa varningar (Observera &rarr; Varning &rarr; Akut) till kontaktpersoner n&auml;r en n&auml;rst&aring;endes heartbeat inte mottas.</li>
+  <li><strong>Hantering av n&ouml;dhj&auml;lpsbeg&auml;ran:</strong> N&auml;r en n&auml;rst&aring;ende sj&auml;lv trycker p&aring; knappen [🚨 Jag beh&ouml;ver hj&auml;lp] vidarebefordrar vi aviseringen omedelbart till samtliga anslutna kontaktpersoner. Om anv&auml;ndaren har samtyckt till att dela platsdata skickas dessutom den aktuella positionen (latitud, longitud och noggrannhet).</li>
+  <li><strong>Enhetsstatusbevakning:</strong> Informera kontaktpersoner om l&aring;gt batteri, appavslutning eller andra f&ouml;rh&aring;llanden som kan p&aring;verka h&auml;lsokontroller.</li>
+  <li><strong>Prenumerationshantering:</strong> Verifiering av kvitton f&ouml;r k&ouml;p i appen och hantering av kontaktpersons tj&auml;nst&aring;tkomst.</li>
   <li><strong>Tj&auml;nstef&ouml;rb&auml;ttring:</strong> Fels&ouml;kning och f&ouml;rb&auml;ttring av tj&auml;nstens tillf&ouml;rlitlighet.</li>
 </ol>
 
@@ -163,12 +163,12 @@
     <tr>
       <td>Varningsaviseringsposter</td>
       <td>Endast aktuell dag</td>
-      <td>Raderas dagligen vid midnatt (skyddad persons lokala tidszon)</td>
+      <td>Raderas dagligen vid midnatt (n&auml;rst&aring;endes lokala tidszon)</td>
     </tr>
     <tr>
       <td>Platsdata fr&aring;n n&ouml;dhj&auml;lpsbeg&auml;ran</td>
       <td>Upp till 24 timmar</td>
-      <td>Raderas automatiskt tillsammans med tillh&ouml;rande aviseringsposter vid midnatt enligt den lokala tidszonen f&ouml;r den skyddade personens enhet</td>
+      <td>Raderas automatiskt tillsammans med tillh&ouml;rande aviseringsposter vid midnatt enligt den lokala tidszonen f&ouml;r den n&auml;rst&aring;endes enhet</td>
     </tr>
     <tr>
       <td>Prenumerationsinformation</td>
@@ -186,8 +186,8 @@
 <h2>4. Delning av data</h2>
 <p>Vi s&auml;ljer, byter eller hyr inte ut din information till tredje part. Vi delar information endast under f&ouml;ljande begr&auml;nsade omst&auml;ndigheter:</p>
 <ol>
-  <li><strong>Koppling mellan v&aring;rdgivare och skyddad person:</strong> N&auml;r en skyddad person delar sin inbjudningskod med en v&aring;rdgivare f&aring;r v&aring;rdgivaren den skyddade personens h&auml;lsostatus (heartbeat mottaget/uteblivet, batteriniv&aring;). Inga personuppgifter delas &mdash; bara h&auml;lsodata p&aring; enhetsniv&aring;.</li>
-  <li><strong>Delning av plats vid n&ouml;dhj&auml;lpsbeg&auml;ran:</strong> N&auml;r den skyddade personen sj&auml;lv trycker p&aring; knappen [🚨 Jag beh&ouml;ver hj&auml;lp] i appen och har samtyckt till att dela platsdata, delas den aktuella positionen (latitud, longitud och noggrannhet) en g&aring;ng med samtliga anslutna v&aring;rdgivare. Om platsbeh&ouml;righeten nekas eller om GPS-position inte kan fastst&auml;llas skickas n&ouml;daviseringen utan platsdata.</li>
+  <li><strong>Koppling mellan kontaktperson och n&auml;rst&aring;ende:</strong> N&auml;r en n&auml;rst&aring;ende delar sin inbjudningskod med en kontaktperson f&aring;r kontaktpersonen den n&auml;rst&aring;endes h&auml;lsostatus (heartbeat mottaget/uteblivet, batteriniv&aring;). Inga personuppgifter delas &mdash; bara h&auml;lsodata p&aring; enhetsniv&aring;.</li>
+  <li><strong>Delning av plats vid n&ouml;dhj&auml;lpsbeg&auml;ran:</strong> N&auml;r den n&auml;rst&aring;ende sj&auml;lv trycker p&aring; knappen [🚨 Jag beh&ouml;ver hj&auml;lp] i appen och har samtyckt till att dela platsdata, delas den aktuella positionen (latitud, longitud och noggrannhet) en g&aring;ng med samtliga anslutna kontaktpersoner. Om platsbeh&ouml;righeten nekas eller om GPS-position inte kan fastst&auml;llas skickas n&ouml;daviseringen utan platsdata.</li>
   <li><strong>R&auml;ttsliga krav:</strong> N&auml;r det kr&auml;vs enligt till&auml;mplig lag, f&ouml;rordning eller giltigt r&auml;ttsligt f&ouml;rfarande.</li>
 </ol>
 
@@ -252,7 +252,7 @@
   <ul>
     <li>Anv&auml;ndarkonto och enhetsinformation</li>
     <li>Alla heartbeat-loggar</li>
-    <li>Kopplingsposter mellan v&aring;rdgivare och skyddad person</li>
+    <li>Kopplingsposter mellan kontaktperson och n&auml;rst&aring;ende</li>
     <li>Prenumerationsinformation</li>
     <li>Varningsaviseringsposter</li>
     <li>Aviseringsinst&auml;llningar</li>

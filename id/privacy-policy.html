@@ -82,9 +82,9 @@
       <td>Mengirimkan notifikasi pemeriksaan kesejahteraan dan peringatan</td>
     </tr>
     <tr>
-      <td>Data Kesejahteraan (Orang yang Dilindungi)</td>
+      <td>Data Kesejahteraan (Orang Tersayang)</td>
       <td>Level baterai, waktu pengiriman heartbeat</td>
-      <td>Menentukan status kesejahteraan dan mengirim peringatan ke Pelindung</td>
+      <td>Menentukan status kesejahteraan dan mengirim peringatan ke Pendamping</td>
     </tr>
   </tbody>
 </table>
@@ -96,17 +96,17 @@
   </thead>
   <tbody>
     <tr>
-      <td>Jumlah Langkah (Orang yang Dilindungi)</td>
+      <td>Jumlah Langkah (Orang Tersayang)</td>
       <td>Langkah yang diambil sejak heartbeat terakhir (steps_delta)</td>
       <td>Verifikasi aktivitas (tidak dikumpulkan jika izin ditolak)</td>
     </tr>
     <tr>
-      <td>Data Lokasi (Opsional — Orang yang Dilindungi)</td>
+      <td>Data Lokasi (Opsional — Orang Tersayang)</td>
       <td>Garis lintang (latitude), garis bujur (longitude), akurasi (accuracy), waktu pengambilan (timestamp)</td>
-      <td>Hanya dikirim satu kali kepada Pelindung ketika Orang yang Dilindungi menekan sendiri tombol permintaan bantuan darurat [🚨 Saya butuh bantuan]. Tidak dikumpulkan selama pemeriksaan heartbeat berkala. Jika izin lokasi ditolak atau GPS gagal, notifikasi darurat tetap dikirim tanpa lokasi.</td>
+      <td>Hanya dikirim satu kali kepada Pendamping ketika Orang Tersayang menekan sendiri tombol permintaan bantuan darurat [🚨 Saya butuh bantuan]. Tidak dikumpulkan selama pemeriksaan heartbeat berkala. Jika izin lokasi ditolak atau GPS gagal, notifikasi darurat tetap dikirim tanpa lokasi.</td>
     </tr>
     <tr>
-      <td>Langganan (Pelindung)</td>
+      <td>Langganan (Pendamping)</td>
       <td>Bukti pembelian dalam aplikasi (Apple/Google)</td>
       <td>Verifikasi langganan dan akses layanan</td>
     </tr>
@@ -121,7 +121,7 @@
 <h3>1.3 Informasi yang TIDAK Kami Kumpulkan</h3>
 <ul>
   <li>Nama, nomor telepon, alamat email, atau informasi pengenal pribadi apa pun</li>
-  <li>Data lokasi selama pemeriksaan kesejahteraan berkala (heartbeat) — kami sama sekali tidak melakukan pelacakan lokasi di latar belakang. Lokasi hanya dikumpulkan satu kali ketika Orang yang Dilindungi menekan sendiri tombol permintaan bantuan darurat [🚨 Saya butuh bantuan] (lihat Bagian 1.2).</li>
+  <li>Data lokasi selama pemeriksaan kesejahteraan berkala (heartbeat) — kami sama sekali tidak melakukan pelacakan lokasi di latar belakang. Lokasi hanya dikumpulkan satu kali ketika Orang Tersayang menekan sendiri tombol permintaan bantuan darurat [🚨 Saya butuh bantuan] (lihat Bagian 1.2).</li>
   <li>Foto, kontak, atau data lain yang tersimpan di perangkat Anda</li>
   <li>Log panggilan, pesan teks, atau riwayat penjelajahan</li>
   <li>Informasi metode pembayaran seperti nomor kartu atau informasi rekening bank &mdash; hanya diproses oleh sistem pembayaran Apple dan Google</li>
@@ -130,11 +130,11 @@
 <h2>2. Bagaimana Kami Menggunakan Informasi Anda</h2>
 <p>Kami menggunakan informasi yang dikumpulkan semata-mata untuk tujuan berikut:</p>
 <ol>
-  <li><strong>Layanan Pemeriksaan Kesejahteraan:</strong> Mengumpulkan sinyal heartbeat dari perangkat Orang yang Dilindungi dan memberi tahu Pelindung tentang status kesejahteraan.</li>
-  <li><strong>Notifikasi Peringatan:</strong> Mengirim peringatan bertahap (Perhatian &rarr; Peringatan &rarr; Darurat) kepada Pelindung ketika heartbeat Orang yang Dilindungi tidak diterima.</li>
-  <li><strong>Pemrosesan Permintaan Bantuan Darurat:</strong> Ketika Orang yang Dilindungi menekan sendiri tombol bantuan darurat, sistem segera meneruskan notifikasi kepada seluruh Pelindung yang terhubung. Jika pengguna menyetujui untuk membagikan informasi lokasi, lokasi saat ini (garis lintang, garis bujur, akurasi) juga akan disertakan.</li>
-  <li><strong>Pemantauan Status Perangkat:</strong> Menginformasikan Pelindung tentang baterai rendah, penutupan aplikasi, atau kondisi lain yang dapat memengaruhi pemeriksaan kesejahteraan.</li>
-  <li><strong>Manajemen Langganan:</strong> Memverifikasi bukti pembelian dalam aplikasi dan mengelola akses layanan Pelindung.</li>
+  <li><strong>Layanan Pemeriksaan Kesejahteraan:</strong> Mengumpulkan kabar heartbeat dari perangkat Orang Tersayang dan memberi tahu Pendamping tentang status kesejahteraan.</li>
+  <li><strong>Notifikasi Peringatan:</strong> Mengirim peringatan bertahap (Perhatian &rarr; Peringatan &rarr; Darurat) kepada Pendamping ketika heartbeat Orang Tersayang tidak diterima.</li>
+  <li><strong>Pemrosesan Permintaan Bantuan Darurat:</strong> Ketika Orang Tersayang menekan sendiri tombol bantuan darurat, sistem segera meneruskan notifikasi kepada seluruh Pendamping yang terhubung. Jika pengguna menyetujui untuk membagikan informasi lokasi, lokasi saat ini (garis lintang, garis bujur, akurasi) juga akan disertakan.</li>
+  <li><strong>Pemantauan Status Perangkat:</strong> Menginformasikan Pendamping tentang baterai rendah, penutupan aplikasi, atau kondisi lain yang dapat memengaruhi pemeriksaan kesejahteraan.</li>
+  <li><strong>Manajemen Langganan:</strong> Memverifikasi bukti pembelian dalam aplikasi dan mengelola akses layanan Pendamping.</li>
   <li><strong>Peningkatan Layanan:</strong> Mendiagnosis kesalahan dan meningkatkan keandalan layanan.</li>
 </ol>
 
@@ -157,12 +157,12 @@
     <tr>
       <td>Catatan notifikasi peringatan</td>
       <td>Hanya hari ini</td>
-      <td>Dihapus setiap tengah malam (zona waktu lokal Orang yang Dilindungi)</td>
+      <td>Dihapus setiap tengah malam (zona waktu lokal Orang Tersayang)</td>
     </tr>
     <tr>
       <td>Informasi lokasi pada permintaan bantuan darurat</td>
       <td>Maksimal 24 jam</td>
-      <td>Otomatis dihapus bersama dengan catatan notifikasi pada tengah malam berdasarkan zona waktu perangkat Orang yang Dilindungi</td>
+      <td>Otomatis dihapus bersama dengan catatan notifikasi pada tengah malam berdasarkan zona waktu perangkat Orang Tersayang</td>
     </tr>
     <tr>
       <td>Informasi langganan</td>
@@ -180,8 +180,8 @@
 <h2>4. Berbagi Data</h2>
 <p>Kami tidak menjual, memperdagangkan, atau menyewakan informasi Anda kepada pihak ketiga. Kami membagikan informasi hanya dalam keadaan terbatas berikut:</p>
 <ol>
-  <li><strong>Koneksi Pelindung-Orang yang Dilindungi:</strong> Ketika Orang yang Dilindungi membagikan Kode Undangan mereka kepada Pelindung, Pelindung menerima status kesejahteraan Orang yang Dilindungi (heartbeat diterima/tidak diterima, level baterai). Tidak ada informasi pribadi yang dibagikan &mdash; hanya data kesejahteraan tingkat perangkat.</li>
-  <li><strong>Pengiriman lokasi saat permintaan bantuan darurat:</strong> Hanya ketika Orang yang Dilindungi menekan sendiri tombol [🚨 Saya butuh bantuan] di dalam aplikasi dan menyetujui pembagian informasi lokasi, lokasi saat ini (garis lintang, garis bujur, akurasi) akan dikirimkan satu kali kepada seluruh Pelindung yang terhubung. Jika izin lokasi ditolak atau perangkat tidak menerima sinyal GPS, hanya notifikasi darurat yang dikirim tanpa lokasi.</li>
+  <li><strong>Koneksi Pendamping-Orang Tersayang:</strong> Ketika Orang Tersayang membagikan Kode Undangan mereka kepada Pendamping, Pendamping menerima status kesejahteraan Orang Tersayang (heartbeat diterima/tidak diterima, level baterai). Tidak ada informasi pribadi yang dibagikan &mdash; hanya data kesejahteraan tingkat perangkat.</li>
+  <li><strong>Pengiriman lokasi saat permintaan bantuan darurat:</strong> Hanya ketika Orang Tersayang menekan sendiri tombol [🚨 Saya butuh bantuan] di dalam aplikasi dan menyetujui pembagian informasi lokasi, lokasi saat ini (garis lintang, garis bujur, akurasi) akan dikirimkan satu kali kepada seluruh Pendamping yang terhubung. Jika izin lokasi ditolak atau perangkat tidak menerima sinyal GPS, hanya notifikasi darurat yang dikirim tanpa lokasi.</li>
   <li><strong>Persyaratan Hukum:</strong> Ketika diwajibkan oleh hukum, peraturan, atau proses hukum yang berlaku.</li>
 </ol>
 
@@ -246,7 +246,7 @@
   <ul>
     <li>Akun pengguna dan informasi perangkat</li>
     <li>Semua log heartbeat</li>
-    <li>Catatan koneksi Pelindung-Orang yang Dilindungi</li>
+    <li>Catatan koneksi Pendamping-Orang Tersayang</li>
     <li>Informasi langganan</li>
     <li>Catatan notifikasi peringatan</li>
     <li>Pengaturan notifikasi</li>

@@ -84,7 +84,7 @@
     <tr>
       <td>Dados de Bem-estar (Pessoa Protegida)</td>
       <td>Nível de bateria, horário de transmissão do heartbeat</td>
-      <td>Determinação do estado de bem-estar e envio de alertas ao guardião</td>
+      <td>Determinação do estado de bem-estar e envio de alertas ao cuidador</td>
     </tr>
   </tbody>
 </table>
@@ -103,7 +103,7 @@
     <tr>
       <td>Dados de Localização (Pessoa Protegida &mdash; opcional)</td>
       <td>Latitude, longitude, precisão e horário da captura</td>
-      <td>Transmissão única ao(s) guardião(ões) quando a pessoa protegida pressiona o próprio botão [&#128680; Preciso de ajuda]. Não há coleta durante as verificações periódicas de bem-estar. Se a permissão de localização for negada ou o GPS falhar, o alerta de emergência e enviado sem informações de localização.</td>
+      <td>Transmissão única ao(s) cuidador(es) quando o ente querido pressiona o próprio botão [&#128680; Preciso de ajuda]. Não há coleta durante as verificações periódicas de bem-estar. Se a permissão de localização for negada ou o GPS falhar, o alerta de emergência e enviado sem informações de localização.</td>
     </tr>
     <tr>
       <td>Assinatura (Protetor)</td>
@@ -130,11 +130,11 @@
 <h2>2. Como Utilizamos Suas Informações</h2>
 <p>Utilizamos as informações coletadas exclusivamente para as seguintes finalidades:</p>
 <ol>
-  <li><strong>Serviço de Verificação de Bem-estar:</strong> Coletar sinais de heartbeat do dispositivo da pessoa protegida e notificar os guardiões sobre o estado de bem-estar.</li>
-  <li><strong>Notificações de Alerta:</strong> Enviar alertas progressivos (Atenção → Aviso → Urgente) aos guardiões quando o heartbeat da pessoa protegida não for recebido.</li>
-  <li><strong>Atendimento a Pedidos de Ajuda de Emergência:</strong> Quando a pessoa protegida pressiona o próprio botão de emergência, uma notificação e enviada imediatamente a todos os guardiões conectados. Caso o usuário tenha consentido com o compartilhamento de localização, a posição atual (latitude, longitude e precisão) e anexada a essa notificação.</li>
-  <li><strong>Monitoramento do Estado do Dispositivo:</strong> Informar os guardiões sobre bateria baixa, encerramento do aplicativo ou outras condições que possam afetar as verificações de bem-estar.</li>
-  <li><strong>Gestão de Assinaturas:</strong> Verificar comprovantes de compras no aplicativo e gerenciar o acesso ao serviço do guardião.</li>
+  <li><strong>Serviço de Verificação de Bem-estar:</strong> Coletar sinais de heartbeat do dispositivo do ente querido e notificar os cuidadores sobre o estado de bem-estar.</li>
+  <li><strong>Notificações de Alerta:</strong> Enviar alertas progressivos (Atenção → Aviso → Urgente) aos cuidadores quando o heartbeat do ente querido não for recebido.</li>
+  <li><strong>Atendimento a Pedidos de Ajuda de Emergência:</strong> Quando o ente querido pressiona o próprio botão de emergência, uma notificação e enviada imediatamente a todos os cuidadores conectados. Caso o usuário tenha consentido com o compartilhamento de localização, a posição atual (latitude, longitude e precisão) e anexada a essa notificação.</li>
+  <li><strong>Monitoramento do Estado do Dispositivo:</strong> Informar os cuidadores sobre bateria baixa, encerramento do aplicativo ou outras condições que possam afetar as verificações de bem-estar.</li>
+  <li><strong>Gestão de Assinaturas:</strong> Verificar comprovantes de compras no aplicativo e gerenciar o acesso ao serviço do cuidador.</li>
   <li><strong>Melhoria do Serviço:</strong> Diagnosticar erros e melhorar a confiabilidade do serviço.</li>
 </ol>
 
@@ -157,12 +157,12 @@
     <tr>
       <td>Registros de notificações de alerta</td>
       <td>Somente o dia atual</td>
-      <td>Excluídos diariamente a meia-noite (fuso horário local da pessoa protegida)</td>
+      <td>Excluídos diariamente a meia-noite (fuso horário local do ente querido)</td>
     </tr>
     <tr>
       <td>Localização anexada a um pedido de ajuda de emergência</td>
       <td>Até 24 horas</td>
-      <td>Excluída automaticamente a meia-noite (fuso horário local da pessoa protegida), juntamente com os registros de notificações</td>
+      <td>Excluída automaticamente a meia-noite (fuso horário local do ente querido), juntamente com os registros de notificações</td>
     </tr>
     <tr>
       <td>Informações de assinatura</td>
@@ -180,8 +180,8 @@
 <h2>4. Compartilhamento de Dados</h2>
 <p>Não vendemos, negociamos ou alugamos suas informações a terceiros. Compartilhamos informações apenas nas seguintes circunstâncias limitadas:</p>
 <ol>
-  <li><strong>Conexão Protetor-Pessoa Protegida:</strong> Quando uma pessoa protegida compartilha seu código de convite com um guardião, o guardião recebe o estado de bem-estar da pessoa protegida (heartbeat recebido/não recebido, nível de bateria). Nenhuma informação pessoal e compartilhada — apenas dados de bem-estar em nível de dispositivo.</li>
-  <li><strong>Compartilhamento de Localização em Pedido de Ajuda de Emergência:</strong> Quando a pessoa protegida pressiona o próprio botão [&#128680; Preciso de ajuda] no aplicativo e consente com o compartilhamento de localização, sua posição atual (latitude, longitude e precisão) e transmitida uma única vez a todos os guardiões conectados. Caso a permissão de localização seja negada ou não seja possível obter o sinal de GPS, o alerta de emergência ainda assim e enviado, porém sem informações de localização.</li>
+  <li><strong>Conexão Protetor-Pessoa Protegida:</strong> Quando um ente querido compartilha seu código de convite com um cuidador, o cuidador recebe o estado de bem-estar do ente querido (heartbeat recebido/não recebido, nível de bateria). Nenhuma informação pessoal e compartilhada — apenas dados de bem-estar em nível de dispositivo.</li>
+  <li><strong>Compartilhamento de Localização em Pedido de Ajuda de Emergência:</strong> Quando o ente querido pressiona o próprio botão [&#128680; Preciso de ajuda] no aplicativo e consente com o compartilhamento de localização, sua posição atual (latitude, longitude e precisão) e transmitida uma única vez a todos os cuidadores conectados. Caso a permissão de localização seja negada ou não seja possível obter o sinal de GPS, o alerta de emergência ainda assim e enviado, porém sem informações de localização.</li>
   <li><strong>Requisitos Legais:</strong> Quando exigido por lei aplicável, regulamentação ou processo legal válido.</li>
 </ol>
 
@@ -259,7 +259,7 @@
   <ul>
     <li>Conta de usuário e informações do dispositivo</li>
     <li>Todos os registros de heartbeat</li>
-    <li>Registros de conexão guardião-pessoa protegida</li>
+    <li>Registros de conexão cuidador-ente querido</li>
     <li>Informações de assinatura</li>
     <li>Registros de notificações de alerta</li>
     <li>Configurações de notificação</li>

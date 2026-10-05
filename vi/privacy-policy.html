@@ -82,9 +82,9 @@
       <td>Gửi thông báo kiểm tra bình an và cảnh báo</td>
     </tr>
     <tr>
-      <td>Dữ liệu Sức khỏe (Người được bảo vệ)</td>
+      <td>Dữ liệu Sức khỏe (Người thân)</td>
       <td>Mức pin, thời gian truyền heartbeat</td>
-      <td>Xác định tình trạng bình an và gửi cảnh báo cho người bảo vệ</td>
+      <td>Xác định tình trạng bình an và gửi cảnh báo cho người chăm sóc</td>
     </tr>
   </tbody>
 </table>
@@ -96,17 +96,17 @@
   </thead>
   <tbody>
     <tr>
-      <td>Số bước chân (Người được bảo vệ)</td>
+      <td>Số bước chân (Người thân)</td>
       <td>Số bước đã đi kể từ lần heartbeat trước (steps_delta)</td>
       <td>Xác minh hoạt động (không thu thập nếu quyền bị từ chối)</td>
     </tr>
     <tr>
-      <td>Dữ liệu vị trí (Tùy chọn — Người được bảo vệ)</td>
+      <td>Dữ liệu vị trí (Tùy chọn — Người thân)</td>
       <td>Vĩ độ (latitude), kinh độ (longitude), độ chính xác (accuracy), thời điểm thu thập (timestamp)</td>
-      <td>Chỉ được chuyển một lần đến Người bảo vệ khi Người được bảo vệ chủ động nhấn nút yêu cầu trợ giúp khẩn cấp [🚨 Tôi cần giúp đỡ]. Không thu thập trong các đợt kiểm tra heartbeat định kỳ. Nếu quyền vị trí bị từ chối hoặc không có tín hiệu GPS, thông báo khẩn cấp vẫn được gửi mà không kèm vị trí.</td>
+      <td>Chỉ được chuyển một lần đến Người chăm sóc khi Người thân chủ động nhấn nút yêu cầu trợ giúp khẩn cấp [🚨 Tôi cần giúp đỡ]. Không thu thập trong các đợt kiểm tra heartbeat định kỳ. Nếu quyền vị trí bị từ chối hoặc không có tín hiệu GPS, thông báo khẩn cấp vẫn được gửi mà không kèm vị trí.</td>
     </tr>
     <tr>
-      <td>Đăng ký (Người bảo vệ)</td>
+      <td>Đăng ký (Người chăm sóc)</td>
       <td>Biên lai mua hàng trong ứng dụng (Apple/Google)</td>
       <td>Xác minh đăng ký và truy cập dịch vụ</td>
     </tr>
@@ -121,7 +121,7 @@
 <h3>1.3 Thông tin Chúng tôi KHÔNG Thu thập</h3>
 <ul>
   <li>Tên, số điện thoại, địa chỉ email hoặc bất kỳ thông tin nhận dạng cá nhân nào</li>
-  <li>Dữ liệu vị trí trong các đợt kiểm tra an toàn định kỳ (heartbeat) — chúng tôi tuyệt đối không theo dõi vị trí ở chế độ nền. Vị trí chỉ được thu thập một lần khi Người được bảo vệ chủ động nhấn nút yêu cầu trợ giúp khẩn cấp [🚨 Tôi cần giúp đỡ] (xem Mục 1.2).</li>
+  <li>Dữ liệu vị trí trong các đợt kiểm tra an toàn định kỳ (heartbeat) — chúng tôi tuyệt đối không theo dõi vị trí ở chế độ nền. Vị trí chỉ được thu thập một lần khi Người thân chủ động nhấn nút yêu cầu trợ giúp khẩn cấp [🚨 Tôi cần giúp đỡ] (xem Mục 1.2).</li>
   <li>Ảnh, danh bạ hoặc dữ liệu khác được lưu trên thiết bị của bạn</li>
   <li>Nhật ký cuộc gọi, tin nhắn văn bản hoặc lịch sử duyệt web</li>
   <li>Thông tin phương thức thanh toán như số thẻ hoặc thông tin tài khoản ngân hàng &mdash; chỉ được xử lý bởi hệ thống thanh toán của Apple và Google</li>
@@ -130,11 +130,11 @@
 <h2>2. Cách Chúng tôi Sử dụng Thông tin của Bạn</h2>
 <p>Chúng tôi chỉ sử dụng thông tin thu thập được cho các mục đích sau:</p>
 <ol>
-  <li><strong>Dịch vụ Kiểm tra Sức khỏe:</strong> Thu thập tín hiệu heartbeat từ thiết bị của người được bảo vệ và thông báo cho người bảo vệ về tình trạng bình an.</li>
-  <li><strong>Thông báo Cảnh báo:</strong> Gửi cảnh báo theo từng cấp độ (Chú ý → Cảnh báo → Khẩn cấp) cho người bảo vệ khi không nhận được heartbeat từ người được bảo vệ.</li>
-  <li><strong>Xử lý Yêu cầu Trợ giúp Khẩn cấp:</strong> Khi người được bảo vệ chủ động nhấn nút trợ giúp khẩn cấp, hệ thống lập tức chuyển thông báo đến toàn bộ người bảo vệ đã kết nối. Nếu người dùng đồng ý cung cấp thông tin vị trí, vị trí hiện tại (vĩ độ, kinh độ, độ chính xác) sẽ được gửi kèm.</li>
-  <li><strong>Giám sát Tình trạng Thiết bị:</strong> Thông báo cho người bảo vệ về pin yếu, ứng dụng bị tắt hoặc các tình trạng khác có thể ảnh hưởng đến việc kiểm tra bình an.</li>
-  <li><strong>Quản lý Đăng ký:</strong> Xác minh biên lai mua hàng trong ứng dụng và quản lý quyền truy cập dịch vụ của người bảo vệ.</li>
+  <li><strong>Dịch vụ Tin Bình an:</strong> Thu thập tin heartbeat từ thiết bị của người thân và thông báo cho người chăm sóc về tình trạng bình an.</li>
+  <li><strong>Thông báo Cảnh báo:</strong> Gửi cảnh báo theo từng cấp độ (Chú ý → Cảnh báo → Khẩn cấp) cho người chăm sóc khi không nhận được heartbeat từ người thân.</li>
+  <li><strong>Xử lý Yêu cầu Trợ giúp Khẩn cấp:</strong> Khi người thân chủ động nhấn nút trợ giúp khẩn cấp, hệ thống lập tức chuyển thông báo đến toàn bộ người chăm sóc đã kết nối. Nếu người dùng đồng ý cung cấp thông tin vị trí, vị trí hiện tại (vĩ độ, kinh độ, độ chính xác) sẽ được gửi kèm.</li>
+  <li><strong>Giám sát Tình trạng Thiết bị:</strong> Thông báo cho người chăm sóc về pin yếu, ứng dụng bị tắt hoặc các tình trạng khác có thể ảnh hưởng đến việc kiểm tra bình an.</li>
+  <li><strong>Quản lý Đăng ký:</strong> Xác minh biên lai mua hàng trong ứng dụng và quản lý quyền truy cập dịch vụ của người chăm sóc.</li>
   <li><strong>Cải thiện Dịch vụ:</strong> Chẩn đoán lỗi và nâng cao độ tin cậy của dịch vụ.</li>
 </ol>
 
@@ -157,12 +157,12 @@
     <tr>
       <td>Bản ghi thông báo cảnh báo</td>
       <td>Chỉ trong ngày hiện tại</td>
-      <td>Xóa hàng ngày vào lúc nửa đêm (theo múi giờ địa phương của người được bảo vệ)</td>
+      <td>Xóa hàng ngày vào lúc nửa đêm (theo múi giờ địa phương của người thân)</td>
     </tr>
     <tr>
       <td>Thông tin vị trí trong yêu cầu trợ giúp khẩn cấp</td>
       <td>Tối đa 24 giờ</td>
-      <td>Tự động xóa cùng với bản ghi thông báo vào nửa đêm theo múi giờ thiết bị của người được bảo vệ</td>
+      <td>Tự động xóa cùng với bản ghi thông báo vào nửa đêm theo múi giờ thiết bị của người thân</td>
     </tr>
     <tr>
       <td>Thông tin đăng ký</td>
@@ -180,8 +180,8 @@
 <h2>4. Chia sẻ Dữ liệu</h2>
 <p>Chúng tôi không bán, trao đổi hoặc cho thuê thông tin của bạn cho bên thứ ba. Chúng tôi chỉ chia sẻ thông tin trong các trường hợp hạn chế sau:</p>
 <ol>
-  <li><strong>Kết nối Người bảo vệ - Người được bảo vệ:</strong> Khi người được bảo vệ chia sẻ mã mời với người bảo vệ, người bảo vệ sẽ nhận được tình trạng bình an của người được bảo vệ (heartbeat đã nhận/bị thiếu, mức pin). Không có thông tin cá nhân nào được chia sẻ — chỉ có dữ liệu bình an ở cấp thiết bị.</li>
-  <li><strong>Cung cấp vị trí khi có yêu cầu trợ giúp khẩn cấp:</strong> Chỉ khi Người được bảo vệ tự bấm nút [🚨 Tôi cần giúp đỡ] trong ứng dụng và đồng ý chia sẻ thông tin vị trí, vị trí hiện tại (vĩ độ, kinh độ, độ chính xác) sẽ được chuyển một lần đến toàn bộ người bảo vệ đã kết nối. Nếu quyền vị trí bị từ chối hoặc thiết bị không nhận được tín hiệu GPS, thông báo khẩn cấp vẫn được gửi đi nhưng không kèm vị trí.</li>
+  <li><strong>Kết nối Người chăm sóc - Người thân:</strong> Khi người thân chia sẻ mã mời với người chăm sóc, người chăm sóc sẽ nhận được tình trạng bình an của người thân (heartbeat đã nhận/bị thiếu, mức pin). Không có thông tin cá nhân nào được chia sẻ — chỉ có dữ liệu bình an ở cấp thiết bị.</li>
+  <li><strong>Cung cấp vị trí khi có yêu cầu trợ giúp khẩn cấp:</strong> Chỉ khi Người thân tự bấm nút [🚨 Tôi cần giúp đỡ] trong ứng dụng và đồng ý chia sẻ thông tin vị trí, vị trí hiện tại (vĩ độ, kinh độ, độ chính xác) sẽ được chuyển một lần đến toàn bộ người chăm sóc đã kết nối. Nếu quyền vị trí bị từ chối hoặc thiết bị không nhận được tín hiệu GPS, thông báo khẩn cấp vẫn được gửi đi nhưng không kèm vị trí.</li>
   <li><strong>Yêu cầu Pháp lý:</strong> Khi được yêu cầu bởi luật pháp, quy định hoặc quy trình pháp lý hợp lệ.</li>
 </ol>
 
@@ -227,7 +227,7 @@
   <li>Chuyển đổi dữ liệu</li>
   <li>Khiếu nại với cơ quan bảo vệ dữ liệu tại địa phương của bạn</li>
 </ul>
-<p>Cơ sở pháp lý của chúng tôi để xử lý dữ liệu là <strong>lợi ích hợp pháp</strong> (cung cấp dịch vụ kiểm tra bình an mà bạn đã chọn tham gia) và <strong>sự đồng ý</strong> (đối với các quyền tùy chọn như đếm bước chân).</p>
+<p>Cơ sở pháp lý của chúng tôi để xử lý dữ liệu là <strong>lợi ích hợp pháp</strong> (cung cấp dịch vụ tin bình an mà bạn đã chọn tham gia) và <strong>sự đồng ý</strong> (đối với các quyền tùy chọn như đếm bước chân).</p>
 
 <h3>Đối với Người dùng tại California (CCPA)</h3>
 <p>Theo Đạo luật Bảo mật Người tiêu dùng California, cư dân California có quyền:</p>
@@ -246,7 +246,7 @@
   <ul>
     <li>Tài khoản người dùng và thông tin thiết bị</li>
     <li>Tất cả nhật ký heartbeat</li>
-    <li>Bản ghi kết nối người bảo vệ - người được bảo vệ</li>
+    <li>Bản ghi kết nối người chăm sóc - người thân</li>
     <li>Thông tin đăng ký</li>
     <li>Bản ghi thông báo cảnh báo</li>
     <li>Cài đặt thông báo</li>

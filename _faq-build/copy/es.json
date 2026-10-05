@@ -1,19 +1,17 @@
 {
   "lang_name": "Español",
-  "meta_title": "Cuando el aviso de bienestar no llega — Anbu",
+  "meta_title": "Cuando el aviso no llega — Anbu",
   "meta_desc": "Qué comprobar cuando el aviso llega tarde o los pasos y la ubicación no llegan con él.",
   "page_eyebrow": "Preguntas frecuentes",
-  "page_title": "Cuando el aviso de bienestar no llega",
+  "page_title": "Cuando el aviso no llega",
   "page_lead": "A veces el aviso llega tarde, o los pasos y la ubicación no lo acompañan. En la mayoría de los casos, <strong>basta con activar un permiso en el teléfono de quien envía</strong>.",
   "mockup_caption": "Para explicarlo, aquí se muestran los tres avisos en una misma pantalla. En realidad aparecen de uno en uno, solo cuando corresponde, y desaparecen una vez resuelto.",
   "mockup_hint": "Ver dónde está en la pantalla",
   "back_to_answer": "Volver a la respuesta",
-
   "spot_all": "Pantalla completa",
   "spot_battery": "El aviso llega tarde",
   "spot_activity": "No hay pasos",
   "spot_location": "No hay ubicación",
-
   "sections": [
     {
       "id": "battery",
@@ -23,14 +21,17 @@
         "lead": "Al tocar el aviso amarillo se abre esta ventana de inmediato.",
         "title": "@stability_battery_dialog_title",
         "body": "@stability_battery_dialog_message",
-        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+        "buttons": [
+          "@common_later",
+          "@permission_hibernation_go_to_settings"
+        ]
       },
       "items": [
         {
-          "q": "Recibo con frecuencia la notificación «💗 Se necesita comprobar el bienestar» en mi teléfono. Parece que solo se envía cuando abro la aplicación.",
+          "q": "Recibo con frecuencia la notificación «💗 Confirme que está bien» en mi teléfono. Parece que solo se envía cuando abro la aplicación.",
           "q2": "Mi familia recibió un aviso <b>«@notifications_level_caution»</b> que decía <b>«@noti_caution_missing_body»</b>",
           "a": [
-            "Para ahorrar batería, Android ralentiza o detiene las aplicaciones que se usan poco. Anbu se activa brevemente una vez al día a la hora fijada para enviar el aviso, así que si se aplica esta restricción, <strong>se pierde ese momento y no se envía nada hasta que se vuelve a usar el teléfono.</strong>",
+            "Para ahorrar batería, Android ralentiza o detiene las aplicaciones que se usan poco. Anbu se ejecuta brevemente una vez al día, en torno a la hora fijada, para enviar el aviso, así que si se aplica esta restricción, <strong>puede perderse esa hora y el aviso llegar con mucho retraso.</strong> La notificación anterior aparece en esos casos.",
             "Si no llega ningún aviso <strong>pasadas dos horas de la hora fijada</strong>, la familia recibe la notificación anterior. Esto puede ocurrir incluso cuando la persona está perfectamente bien y solo se retrasó el envío.",
             "En el teléfono de quien envía, abra la aplicación y compruebe si en la parte superior aparece el aviso amarillo <b>«@stability_battery_warning_short»</b>. Al tocarlo se va directamente a los ajustes y, una vez levantada la restricción, el aviso desaparece."
           ]
@@ -51,13 +52,16 @@
         "lead": "Al tocar el aviso rojo aparece <strong>la solicitud de permiso propia de Android</strong>. Con aceptarla allí es suficiente.<br>Sin embargo, si ya se ha rechazado varias veces, Android deja de mostrarla. En ese caso aparece la ventana de abajo.",
         "title": "@gs_activity_permission_settings_title",
         "body": "@gs_activity_permission_settings_body",
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
           "q": "No se ven los pasos de mi familiar. La notificación «Hoy ha caminado N pasos» nunca llega.",
           "a": [
-            "Junto con la señal de bienestar, Anbu envía <strong>los pasos de ese día</strong> para que la familia vea cuánto se ha movido. Si el permiso está desactivado en el teléfono de quien envía, <strong>la señal sigue llegando, pero faltan los pasos.</strong>",
+            "El aviso diario lleva <strong>los pasos de ese día</strong>, para que la familia vea cuánto se ha movido. Si el permiso está desactivado en el teléfono de quien envía, <strong>el aviso sigue llegando, pero faltan los pasos.</strong>",
             "En ese teléfono, abra la aplicación y compruebe si debajo del código de seguridad aparece el aviso rojo <b>«@gs_activity_permission_denied_warning»</b>. Al tocarlo se vuelve a solicitar el permiso."
           ]
         },
@@ -77,10 +81,19 @@
         "lead": "Al tocar el aviso rojo aparece <strong>la solicitud de permiso propia de Android</strong>. Con aceptarla allí es suficiente.<br>Sin embargo, si ya se ha rechazado varias veces, Android deja de mostrarla. En ese caso aparece la ventana de abajo.",
         "title": "@location_permission_settings_title",
         "variants": [
-          { "label": "Android", "body": "@location_permission_settings_body_android" },
-          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+          {
+            "label": "Android",
+            "body": "@location_permission_settings_body_android"
+          },
+          {
+            "label": "iPhone",
+            "body": "@location_permission_settings_body_ios"
+          }
         ],
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
@@ -93,7 +106,7 @@
         {
           "q": "¿Se está siguiendo mi ubicación en todo momento?",
           "a": [
-            "No. En condiciones normales no recopilamos ninguna ubicación. Solo al pulsar [@subject_home_emergency_button] se toma <strong>una única lectura de ese momento</strong> y se transmite a la familia; esa información se borra al cabo de un día."
+            "No. En condiciones normales no recopilamos ninguna ubicación. Solo al pulsar [@subject_home_emergency_button] se toma <strong>una única lectura de ese momento</strong> y se transmite a la familia; esa ubicación se borra a medianoche de ese mismo día."
           ]
         }
       ]
@@ -112,7 +125,6 @@
       ]
     }
   ],
-
   "travel": {
     "heading": "Cuando viaja al extranjero",
     "items": [
@@ -133,7 +145,7 @@
       {
         "q": "¿Tengo que cambiar la hora del aviso durante el viaje?",
         "a": [
-          "No. La hora que fijó se aplica <strong>al lugar donde se encuentra ahora</strong>. Si la fijó a las 18:00, durante el viaje el aviso también se envía a las 18:00 hora local."
+          "No. La hora que fijó se aplica <strong>al lugar donde se encuentra ahora</strong>. Si la fijó a las 18:00, durante el viaje el aviso también se envía en torno a las 18:00 hora local."
         ]
       }
     ]

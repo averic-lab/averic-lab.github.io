@@ -84,7 +84,7 @@
     <tr>
       <td>Datos de bienestar (Persona protegida)</td>
       <td>Nivel de bater&iacute;a, hora de transmisi&oacute;n del heartbeat</td>
-      <td>Determinaci&oacute;n del estado de bienestar y env&iacute;o de alertas al protector</td>
+      <td>Determinaci&oacute;n del estado de bienestar y env&iacute;o de alertas al cuidador</td>
     </tr>
   </tbody>
 </table>
@@ -103,10 +103,10 @@
     <tr>
       <td>Datos de ubicaci&oacute;n (Persona protegida &mdash; opcional)</td>
       <td>Latitud, longitud, precisi&oacute;n y hora de captura</td>
-      <td>Transmisi&oacute;n &uacute;nica al protector o protectores cuando la persona protegida pulsa por s&iacute; misma el bot&oacute;n [&#128680; Necesito ayuda]. No se recopila durante las verificaciones peri&oacute;dicas de bienestar. Si se deniega el permiso de ubicaci&oacute;n o falla el GPS, la alerta de emergencia se env&iacute;a sin informaci&oacute;n de ubicaci&oacute;n.</td>
+      <td>Transmisi&oacute;n &uacute;nica al cuidador o cuidadores cuando el ser querido pulsa por s&iacute; misma el bot&oacute;n [&#128680; Necesito ayuda]. No se recopila durante las verificaciones peri&oacute;dicas de bienestar. Si se deniega el permiso de ubicaci&oacute;n o falla el GPS, la alerta de emergencia se env&iacute;a sin informaci&oacute;n de ubicaci&oacute;n.</td>
     </tr>
     <tr>
-      <td>Suscripci&oacute;n (Protector)</td>
+      <td>Suscripci&oacute;n (Cuidador)</td>
       <td>Recibo de compra dentro de la aplicaci&oacute;n (Apple/Google)</td>
       <td>Verificaci&oacute;n de suscripci&oacute;n y acceso al servicio</td>
     </tr>
@@ -130,11 +130,11 @@
 <h2>2. C&oacute;mo Utilizamos su Informaci&oacute;n</h2>
 <p>Utilizamos la informaci&oacute;n recopilada &uacute;nicamente para los siguientes fines:</p>
 <ol>
-  <li><strong>Servicio de verificaci&oacute;n de bienestar:</strong> Recopilar se&ntilde;ales de heartbeat del dispositivo de la persona protegida y notificar a los protectores sobre el estado de bienestar.</li>
-  <li><strong>Notificaciones de alerta:</strong> Enviar alertas escalonadas (Precauci&oacute;n &rarr; Advertencia &rarr; Urgente) a los protectores cuando no se recibe el heartbeat de una persona protegida.</li>
-  <li><strong>Gesti&oacute;n de solicitudes de ayuda de emergencia:</strong> Cuando la persona protegida pulsa por s&iacute; misma el bot&oacute;n de emergencia, se env&iacute;a inmediatamente una notificaci&oacute;n a todos los protectores conectados. Si el usuario ha consentido el uso compartido de su ubicaci&oacute;n, se adjunta a dicha notificaci&oacute;n la posici&oacute;n actual (latitud, longitud y precisi&oacute;n).</li>
-  <li><strong>Monitoreo del estado del dispositivo:</strong> Informar a los protectores sobre bater&iacute;a baja, cierre de la aplicaci&oacute;n u otras condiciones que puedan afectar las verificaciones de bienestar.</li>
-  <li><strong>Gesti&oacute;n de suscripciones:</strong> Verificar los recibos de compra dentro de la aplicaci&oacute;n y gestionar el acceso al servicio del protector.</li>
+  <li><strong>Servicio de verificaci&oacute;n de bienestar:</strong> Recopilar se&ntilde;ales de heartbeat del dispositivo del ser querido y notificar a los cuidadores sobre el estado de bienestar.</li>
+  <li><strong>Notificaciones de alerta:</strong> Enviar alertas escalonadas (Precauci&oacute;n &rarr; Advertencia &rarr; Urgente) a los cuidadores cuando no se recibe el heartbeat de un ser querido.</li>
+  <li><strong>Gesti&oacute;n de solicitudes de ayuda de emergencia:</strong> Cuando el ser querido pulsa por s&iacute; misma el bot&oacute;n de emergencia, se env&iacute;a inmediatamente una notificaci&oacute;n a todos los cuidadores conectados. Si el usuario ha consentido el uso compartido de su ubicaci&oacute;n, se adjunta a dicha notificaci&oacute;n la posici&oacute;n actual (latitud, longitud y precisi&oacute;n).</li>
+  <li><strong>Monitoreo del estado del dispositivo:</strong> Informar a los cuidadores sobre bater&iacute;a baja, cierre de la aplicaci&oacute;n u otras condiciones que puedan afectar las verificaciones de bienestar.</li>
+  <li><strong>Gesti&oacute;n de suscripciones:</strong> Verificar los recibos de compra dentro de la aplicaci&oacute;n y gestionar el acceso al servicio del cuidador.</li>
   <li><strong>Mejora del servicio:</strong> Diagn&oacute;stico de errores y mejora de la fiabilidad del servicio.</li>
 </ol>
 
@@ -157,12 +157,12 @@
     <tr>
       <td>Registros de notificaciones de alerta</td>
       <td>Solo el d&iacute;a actual</td>
-      <td>Se eliminan diariamente a medianoche (zona horaria local de la persona protegida)</td>
+      <td>Se eliminan diariamente a medianoche (zona horaria local del ser querido)</td>
     </tr>
     <tr>
       <td>Ubicaci&oacute;n adjunta a una solicitud de ayuda de emergencia</td>
       <td>Hasta 24 horas</td>
-      <td>Se elimina autom&aacute;ticamente a medianoche (zona horaria local de la persona protegida), junto con los registros de notificaciones</td>
+      <td>Se elimina autom&aacute;ticamente a medianoche (zona horaria local del ser querido), junto con los registros de notificaciones</td>
     </tr>
     <tr>
       <td>Informaci&oacute;n de suscripci&oacute;n</td>
@@ -180,8 +180,8 @@
 <h2>4. Compartici&oacute;n de Datos</h2>
 <p>No vendemos, intercambiamos ni alquilamos su informaci&oacute;n a terceros. Solo compartimos informaci&oacute;n en las siguientes circunstancias limitadas:</p>
 <ol>
-  <li><strong>Conexi&oacute;n protector-persona protegida:</strong> Cuando una persona protegida comparte su c&oacute;digo de invitaci&oacute;n con un protector, este recibe el estado de bienestar de la persona protegida (heartbeat recibido/no recibido, nivel de bater&iacute;a). No se comparte informaci&oacute;n personal, solo datos de bienestar a nivel de dispositivo.</li>
-  <li><strong>Compartici&oacute;n de ubicaci&oacute;n en una solicitud de ayuda de emergencia:</strong> Cuando la persona protegida pulsa por s&iacute; misma el bot&oacute;n [&#128680; Necesito ayuda] dentro de la aplicaci&oacute;n y ha consentido el uso compartido de su ubicaci&oacute;n, su posici&oacute;n actual (latitud, longitud y precisi&oacute;n) se transmite una sola vez a todos los protectores conectados. Si el permiso de ubicaci&oacute;n se deniega o no se logra obtener una se&ntilde;al GPS, la alerta de emergencia se entrega de todos modos, pero sin informaci&oacute;n de ubicaci&oacute;n.</li>
+  <li><strong>Conexi&oacute;n cuidador-ser querido:</strong> Cuando un ser querido comparte su c&oacute;digo de invitaci&oacute;n con un cuidador, este recibe el estado de bienestar del ser querido (heartbeat recibido/no recibido, nivel de bater&iacute;a). No se comparte informaci&oacute;n personal, solo datos de bienestar a nivel de dispositivo.</li>
+  <li><strong>Compartici&oacute;n de ubicaci&oacute;n en una solicitud de ayuda de emergencia:</strong> Cuando el ser querido pulsa por s&iacute; misma el bot&oacute;n [&#128680; Necesito ayuda] dentro de la aplicaci&oacute;n y ha consentido el uso compartido de su ubicaci&oacute;n, su posici&oacute;n actual (latitud, longitud y precisi&oacute;n) se transmite una sola vez a todos los cuidadores conectados. Si el permiso de ubicaci&oacute;n se deniega o no se logra obtener una se&ntilde;al GPS, la alerta de emergencia se entrega de todos modos, pero sin informaci&oacute;n de ubicaci&oacute;n.</li>
   <li><strong>Requisitos legales:</strong> Cuando lo exija la legislaci&oacute;n aplicable, la normativa vigente o un proceso legal v&aacute;lido.</li>
 </ol>
 
@@ -246,7 +246,7 @@
   <ul>
     <li>Cuenta de usuario e informaci&oacute;n del dispositivo</li>
     <li>Todos los registros de heartbeat</li>
-    <li>Registros de conexi&oacute;n protector-persona protegida</li>
+    <li>Registros de conexi&oacute;n cuidador-ser querido</li>
     <li>Informaci&oacute;n de suscripci&oacute;n</li>
     <li>Registros de notificaciones de alerta</li>
     <li>Configuraci&oacute;n de notificaciones</li>

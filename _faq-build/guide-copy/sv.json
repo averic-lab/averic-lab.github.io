@@ -20,10 +20,10 @@
   "steps": [
     {
       "h": "Tryck på [@gs_enable_button] i inställningarna",
-      "d": "Öppna fliken <b>@nav_settings</b> längst ned — knappen ligger allra överst. Du går från att bara se efter familjen till att <b>även skicka din egen välmåendesignal</b>."
+      "d": "Öppna fliken <b>@nav_settings</b> längst ned — knappen ligger allra överst. Du går från att bara se efter familjen till att <b>även skicka din egen incheckning</b>."
     },
     {
-      "h": "Bekräfta aktiveringen",
+      "h": "Tryck på [@gs_enable_confirm] i bekräftelsefönstret",
       "d": "@gs_enable_dialog_body"
     },
     {
@@ -50,14 +50,14 @@
       "h": "Fyll i ett telefonnummer (valfritt)",
       "d": "Så här ser personens kort ut på familjens startskärm. Numret är <b>valfritt</b>, och även ifyllt når det aldrig vår server — det stannar <b>bara i familjens telefon</b>.",
       "illus": "cards",
-      "d_after": "När du har ringt och själv förvissat dig om att allt står rätt till, tryck på <b>[@guardian_confirm_safety]</b>. Varningen hävs, läget återgår till normalt och <b>de övriga anhöriga som också håller ett öga</b> får en bekräftelse."
+      "d_after": "När du har ringt och själv förvissat dig om att allt står rätt till, tryck på <b>[@guardian_confirm_safety]</b>. Varningen hävs, läget återgår till normalt och <b>de övriga kontaktpersonerna</b> får en bekräftelse."
     },
     {
       "h": "Tryck på [@add_subject_connect] så är det klart",
       "d": "Knappen tänds så snart kod och namn är ifyllda. En tryckning kopplar ihop er, och kortet du såg ovan dyker upp på familjens startskärm."
     }
   ],
-  "note": "När kopplingen är gjord finns inget mer att göra. Anbu skickar välmåendesignalen <strong>av sig självt, varje dag på den inställda tiden</strong>, och hör av sig till familjen om tiden passerar utan signal. Kommer signalen sent eller ser stegen tomma ut, se <a href=\"faq.html\">vanliga frågor</a>.",
+  "note": "När kopplingen är gjord finns inget mer att göra. Anbu skickar incheckningen <strong>av sig självt, varje dag omkring den inställda tiden</strong>, och hör av sig till familjen om det går två timmar utan att den kommit fram. Kommer incheckningen sent eller ser stegen tomma ut, se <a href=\"faq.html\">vanliga frågor</a>.",
   "footer_home": "Hem",
   "footer_faq": "Vanliga frågor",
   "footer_privacy": "Integritetspolicy",

@@ -1,19 +1,17 @@
 {
   "lang_name": "Bahasa Indonesia",
-  "meta_title": "Ketika kabar keselamatan tidak sampai — Anbu",
+  "meta_title": "Ketika kabar tidak sampai — Anbu",
   "meta_desc": "Yang perlu diperiksa ketika kabar datang terlambat, atau langkah dan lokasi tidak ikut terkirim.",
   "page_eyebrow": "Pertanyaan umum",
-  "page_title": "Ketika kabar keselamatan tidak sampai",
+  "page_title": "Ketika kabar tidak sampai",
   "page_lead": "Kadang kabar datang terlambat, atau langkah dan lokasi tidak ikut terkirim. Dalam sebagian besar kasus, <strong>cukup mengaktifkan satu izin di ponsel pengirim</strong> untuk mengatasinya.",
   "mockup_caption": "Untuk penjelasan, ketiga pemberitahuan ditampilkan bersama dalam satu layar. Sebenarnya semuanya muncul satu per satu, hanya bila memang berlaku, dan hilang setelah diatasi.",
   "mockup_hint": "Lihat letaknya di layar",
   "back_to_answer": "Kembali ke penjelasan",
-
   "spot_all": "Seluruh layar",
   "spot_battery": "Kabar terlambat",
   "spot_activity": "Tidak ada langkah",
   "spot_location": "Tidak ada lokasi",
-
   "sections": [
     {
       "id": "battery",
@@ -23,14 +21,17 @@
         "lead": "Menyentuh pemberitahuan kuning langsung membuka jendela ini.",
         "title": "@stability_battery_dialog_title",
         "body": "@stability_battery_dialog_message",
-        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+        "buttons": [
+          "@common_later",
+          "@permission_hibernation_go_to_settings"
+        ]
       },
       "items": [
         {
-          "q": "Ponsel saya sering menerima notifikasi “💗 Perlu pemeriksaan keselamatan”. Sepertinya kabar baru terkirim saat saya membuka aplikasi.",
+          "q": "Ponsel saya sering menerima notifikasi “💗 Kirim kabar Anda hari ini”. Sepertinya kabar baru terkirim saat saya membuka aplikasi.",
           "q2": "Keluarga saya menerima peringatan <b>“@notifications_level_caution”</b> yang berbunyi <b>“@noti_caution_missing_body”</b>",
           "a": [
-            "Untuk menghemat baterai, Android memperlambat atau menghentikan aplikasi yang jarang dipakai. Anbu bangun sebentar sekali sehari pada waktu yang ditetapkan untuk mengirim kabar, sehingga bila pembatasan ini berlaku, <strong>momen tersebut terlewat dan tidak ada yang terkirim sampai ponsel digunakan lagi.</strong>",
+            "Untuk menghemat baterai, Android memperlambat atau menghentikan aplikasi yang jarang dipakai. Anbu berjalan sebentar sekali sehari sekitar waktu yang ditetapkan untuk mengirim kabar, sehingga bila pembatasan ini berlaku, <strong>waktu yang ditetapkan bisa terlewat dan kabar datang sangat terlambat.</strong> Notifikasi di atas muncul pada kasus seperti itu.",
             "Jika <strong>dua jam setelah waktu yang ditetapkan</strong> kabar belum juga datang, keluarga akan menerima peringatan di atas. Ini bisa terjadi meskipun pengirim baik-baik saja dan hanya pengirimannya yang tertunda.",
             "Di ponsel pengirim, buka aplikasi dan periksa bagian atas layar apakah ada pemberitahuan kuning <b>“@stability_battery_warning_short”</b>. Menyentuhnya langsung menuju layar pengaturan, dan setelah pembatasan dilepas sekali, pemberitahuan itu akan hilang."
           ]
@@ -51,13 +52,16 @@
         "lead": "Menyentuh pemberitahuan merah akan memunculkan <strong>permintaan izin dari Android sendiri</strong>. Cukup izinkan di sana.<br>Namun bila sebelumnya sudah beberapa kali ditolak, Android tidak lagi menampilkan permintaan itu. Saat itu jendela di bawah muncul sebagai gantinya.",
         "title": "@gs_activity_permission_settings_title",
         "body": "@gs_activity_permission_settings_body",
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
           "q": "Jumlah langkah anggota keluarga saya tidak muncul. Notifikasi “Hari ini berjalan N langkah” juga tidak pernah datang.",
           "a": [
-            "Bersama sinyal kabar, Anbu mengirimkan <strong>jumlah langkah hari itu</strong> agar keluarga tahu seberapa banyak bergerak. Jika izin dimatikan di ponsel pengirim, <strong>sinyal kabar tetap sampai, hanya jumlah langkahnya yang hilang.</strong>",
+            "Kabar harian dikirim bersama <strong>jumlah langkah hari itu</strong> agar keluarga tahu seberapa banyak bergerak. Jika izin dimatikan di ponsel pengirim, <strong>kabar tetap sampai, hanya jumlah langkahnya yang hilang.</strong>",
             "Di ponsel tersebut, buka aplikasi dan periksa di bawah kode keselamatan apakah ada pemberitahuan merah <b>“@gs_activity_permission_denied_warning”</b>. Menyentuhnya akan meminta izin kembali."
           ]
         },
@@ -77,10 +81,19 @@
         "lead": "Menyentuh pemberitahuan merah akan memunculkan <strong>permintaan izin dari Android sendiri</strong>. Cukup izinkan di sana.<br>Namun bila sebelumnya sudah beberapa kali ditolak, Android tidak lagi menampilkan permintaan itu. Saat itu jendela di bawah muncul sebagai gantinya.",
         "title": "@location_permission_settings_title",
         "variants": [
-          { "label": "Android", "body": "@location_permission_settings_body_android" },
-          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+          {
+            "label": "Android",
+            "body": "@location_permission_settings_body_android"
+          },
+          {
+            "label": "iPhone",
+            "body": "@location_permission_settings_body_ios"
+          }
         ],
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
@@ -93,7 +106,7 @@
         {
           "q": "Apakah lokasi saya dipantau sepanjang waktu?",
           "a": [
-            "Tidak. Dalam keadaan biasa kami sama sekali tidak mengumpulkan lokasi. Hanya ketika [@subject_home_emergency_button] ditekan, lokasi <strong>pada saat itu diambil satu kali</strong> lalu diteruskan ke keluarga; informasi tersebut dihapus setelah satu hari."
+            "Tidak. Dalam keadaan biasa kami sama sekali tidak mengumpulkan lokasi. Hanya ketika [@subject_home_emergency_button] ditekan, lokasi <strong>pada saat itu diambil satu kali</strong> lalu diteruskan ke keluarga; lokasi tersebut dihapus pada tengah malam hari itu."
           ]
         }
       ]
@@ -112,7 +125,6 @@
       ]
     }
   ],
-
   "travel": {
     "heading": "Saat Anda bepergian ke luar negeri",
     "items": [
@@ -133,7 +145,7 @@
       {
         "q": "Apakah saya perlu mengubah jam kabar selama bepergian?",
         "a": [
-          "Tidak. Jam yang Anda tetapkan berlaku <strong>menurut tempat Anda berada sekarang</strong>. Jika Anda menetapkan 18:00, selama bepergian kabar juga dikirim pukul 18:00 waktu setempat."
+          "Tidak. Jam yang Anda tetapkan berlaku <strong>menurut tempat Anda berada sekarang</strong>. Jika Anda menetapkan 18:00, selama bepergian kabar juga dikirim sekitar pukul 18:00 waktu setempat."
         ]
       }
     ]

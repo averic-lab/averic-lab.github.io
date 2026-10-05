@@ -8,12 +8,10 @@
   "mockup_caption": "Dla wyjaśnienia wszystkie trzy komunikaty pokazano na jednym ekranie. W rzeczywistości pojawiają się pojedynczo, tylko gdy dotyczą sytuacji, i znikają po rozwiązaniu problemu.",
   "mockup_hint": "Pokaż, gdzie to jest na ekranie",
   "back_to_answer": "Wróć do odpowiedzi",
-
   "spot_all": "Cały ekran",
   "spot_battery": "Znak życia się opóźnia",
   "spot_activity": "Brak kroków",
   "spot_location": "Brak lokalizacji",
-
   "sections": [
     {
       "id": "battery",
@@ -23,14 +21,17 @@
         "lead": "Dotknięcie żółtego komunikatu od razu otwiera to okno.",
         "title": "@stability_battery_dialog_title",
         "body": "@stability_battery_dialog_message",
-        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+        "buttons": [
+          "@common_later",
+          "@permission_hibernation_go_to_settings"
+        ]
       },
       "items": [
         {
-          "q": "Na moim telefonie często pojawia się powiadomienie „💗 Wymagane sprawdzenie”. Wygląda na to, że wysyłka następuje dopiero po otwarciu aplikacji.",
+          "q": "Na moim telefonie często pojawia się powiadomienie „💗 Wszystko w porządku?”. Wygląda na to, że wysyłka następuje dopiero po otwarciu aplikacji.",
           "q2": "Rodzina otrzymała powiadomienie <b>„@notifications_level_caution”</b> o treści <b>„@noti_caution_missing_body”</b>",
           "a": [
-            "Aby oszczędzać baterię, Android spowalnia lub zatrzymuje rzadko używane aplikacje. Anbu budzi się raz dziennie na chwilę o ustalonej godzinie, aby wysłać znak życia — przy takim ograniczeniu <strong>ten moment zostaje pominięty i nic nie zostaje wysłane, dopóki telefon nie zostanie ponownie użyty.</strong>",
+            "Aby oszczędzać baterię, Android spowalnia lub zatrzymuje rzadko używane aplikacje. Anbu uruchamia się raz dziennie na chwilę około ustalonej godziny, aby wysłać znak życia — przy takim ograniczeniu <strong>ustalona godzina może zostać pominięta, a znak życia dotrze z dużym opóźnieniem.</strong> Powyższe powiadomienie pojawia się właśnie wtedy.",
             "Jeśli w ciągu <strong>dwóch godzin po ustalonej godzinie</strong> nie nadejdzie żaden znak życia, rodzina otrzymuje powyższe powiadomienie. Może się to zdarzyć nawet wtedy, gdy z osobą wszystko jest w porządku, a opóźniła się jedynie wysyłka.",
             "Na telefonie osoby wysyłającej otwórz aplikację i sprawdź u góry ekranu, czy widnieje żółty komunikat <b>„@stability_battery_warning_short”</b>. Dotknięcie prowadzi wprost do ustawień, a po jednorazowym zniesieniu ograniczenia komunikat znika."
           ]
@@ -51,7 +52,10 @@
         "lead": "Dotknięcie czerwonego komunikatu wywołuje <strong>własne żądanie uprawnienia systemu Android</strong>. Wystarczy je tam zaakceptować.<br>Jeśli jednak wcześniej odmówiono kilkakrotnie, Android przestaje je pokazywać. Wtedy zamiast niego pojawia się okno poniżej.",
         "title": "@gs_activity_permission_settings_title",
         "body": "@gs_activity_permission_settings_body",
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
@@ -77,10 +81,19 @@
         "lead": "Dotknięcie czerwonego komunikatu wywołuje <strong>własne żądanie uprawnienia systemu Android</strong>. Wystarczy je tam zaakceptować.<br>Jeśli jednak wcześniej odmówiono kilkakrotnie, Android przestaje je pokazywać. Wtedy zamiast niego pojawia się okno poniżej.",
         "title": "@location_permission_settings_title",
         "variants": [
-          { "label": "Android", "body": "@location_permission_settings_body_android" },
-          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+          {
+            "label": "Android",
+            "body": "@location_permission_settings_body_android"
+          },
+          {
+            "label": "iPhone",
+            "body": "@location_permission_settings_body_ios"
+          }
         ],
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
@@ -93,7 +106,7 @@
         {
           "q": "Czy moja lokalizacja jest śledzona przez cały czas?",
           "a": [
-            "Nie. Na co dzień nie zbieramy żadnej lokalizacji. Dopiero po naciśnięciu [@subject_home_emergency_button] pobieramy <strong>jednorazowo lokalizację z tej chwili</strong> i przekazujemy ją rodzinie; te dane są usuwane po jednym dniu."
+            "Nie. Na co dzień nie zbieramy żadnej lokalizacji. Dopiero po naciśnięciu [@subject_home_emergency_button] pobieramy <strong>jednorazowo lokalizację z tej chwili</strong> i przekazujemy ją rodzinie; ta lokalizacja jest usuwana o północy tego samego dnia."
           ]
         }
       ]
@@ -112,7 +125,6 @@
       ]
     }
   ],
-
   "travel": {
     "heading": "Gdy wyjeżdżasz za granicę",
     "items": [
@@ -133,7 +145,7 @@
       {
         "q": "Czy w podróży muszę zmienić godzinę znaku życia?",
         "a": [
-          "Nie. Ustawiona godzina obowiązuje <strong>tam, gdzie teraz jesteś</strong>. Jeśli ustawiłeś 18:00, w podróży znak życia też zostanie wysłany o 18:00 czasu lokalnego."
+          "Nie. Ustawiona godzina obowiązuje <strong>tam, gdzie teraz jesteś</strong>. Jeśli ustawiłeś 18:00, w podróży znak życia też zostanie wysłany około 18:00 czasu lokalnego."
         ]
       }
     ]

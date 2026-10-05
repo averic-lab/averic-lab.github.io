@@ -20,10 +20,10 @@
   "steps": [
     {
       "h": "Ayarlarda [@gs_enable_button] düğmesine dokunun",
-      "d": "Alttaki <b>@nav_settings</b> sekmesini açın — düğme en üstte durur. Yalnızca aileyi gözetmekten, <b>kendi iyilik işaretinizi de göndermeye</b> geçersiniz."
+      "d": "Alttaki <b>@nav_settings</b> sekmesini açın — düğme en üstte durur. Yalnızca aileyi gözetmekten, <b>kendi haberinizi de göndermeye</b> geçersiniz."
     },
     {
-      "h": "Onay penceresinde etkinleştirin",
+      "h": "Onay penceresinde [@gs_enable_confirm] düğmesine dokunun",
       "d": "@gs_enable_dialog_body"
     },
     {
@@ -50,14 +50,14 @@
       "h": "Telefon numarası ekleyin (isteğe bağlı)",
       "d": "Bu kişinin kartı ailenin ana ekranında böyle görünür. Numara <b>isteğe bağlıdır</b>; girilse bile sunucumuza ulaşmaz, <b>yalnızca ailenin telefonunda</b> kalır.",
       "illus": "cards",
-      "d_after": "Arayıp iyi olduğunu bizzat doğruladıysanız <b>[@guardian_confirm_safety]</b> düğmesine dokunun. Uyarı kalkar, durum yeniden normale döner ve <b>birlikte gözeten diğer yakınlara</b> doğrulama bildirimi gider."
+      "d_after": "Arayıp iyi olduğunu bizzat doğruladıysanız <b>[@guardian_confirm_safety]</b> düğmesine dokunun. Uyarı kalkar, durum yeniden normale döner ve <b>diğer koruyuculara</b> doğrulama bildirimi gider."
     },
     {
       "h": "[@add_subject_connect] düğmesine dokunun, işlem tamam",
       "d": "Kod ve ad doldurulunca düğme renklenir. Dokunduğunuz anda bağlantı kurulur ve yukarıda gördüğünüz kart ailenin ana ekranında belirir."
     }
   ],
-  "note": "Bağlantı kurulduktan sonra yapılacak bir şey kalmaz. Anbu iyilik işaretini <strong>her gün belirlenen saatte kendiliğinden</strong> gönderir ve o saat işaretsiz geçerse aileye haber verir. İşaret geç geliyorsa ya da adım sayısı boş görünüyorsa <a href=\"faq.html\">sık sorulan sorular</a> sayfasına bakın.",
+  "note": "Bağlantı kurulduktan sonra yapılacak bir şey kalmaz. Anbu haberi <strong>her gün belirlenen saat civarında kendiliğinden</strong> gönderir ve o saatten iki saat geçtiği hâlde haber gelmediyse aileye bildirir. Haber geç geliyorsa ya da adım sayısı boş görünüyorsa <a href=\"faq.html\">sık sorulan sorular</a> sayfasına bakın.",
   "footer_home": "Ana sayfa",
   "footer_faq": "Sık sorulan sorular",
   "footer_privacy": "Gizlilik Politikası",

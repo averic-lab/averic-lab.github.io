@@ -8,12 +8,10 @@
   "mockup_caption": "Anlatım kolaylığı için üç uyarı burada tek ekranda toplanmıştır. Gerçekte yalnızca ilgili durumlarda birer birer görünür ve sorun giderildiğinde kaybolur.",
   "mockup_hint": "Ekranda nerede olduğunu gör",
   "back_to_answer": "Açıklamaya dön",
-
   "spot_all": "Tüm ekran",
   "spot_battery": "Haber gecikiyor",
   "spot_activity": "Adım yok",
   "spot_location": "Konum yok",
-
   "sections": [
     {
       "id": "battery",
@@ -23,14 +21,17 @@
         "lead": "Sarı uyarıya dokunmak bu pencereyi hemen açar.",
         "title": "@stability_battery_dialog_title",
         "body": "@stability_battery_dialog_message",
-        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+        "buttons": [
+          "@common_later",
+          "@permission_hibernation_go_to_settings"
+        ]
       },
       "items": [
         {
-          "q": "Telefonuma sık sık “💗 İyilik kontrolü gerekiyor” bildirimi geliyor. Sanki yalnızca uygulamayı açtığımda gönderiliyor.",
+          "q": "Telefonuma sık sık “💗 İyi olduğunuzu bildirin” bildirimi geliyor. Sanki yalnızca uygulamayı açtığımda gönderiliyor.",
           "q2": "Aileme <b>“@notifications_level_caution”</b> uyarısı ile <b>“@noti_caution_missing_body”</b> mesajı geldi.",
           "a": [
-            "Pil tasarrufu için Android, seyrek kullanılan uygulamaları yavaşlatır veya durdurur. Anbu, haberi göndermek üzere günde bir kez belirlenen saatte kısa süreliğine uyanır; bu kısıtlama devredeyse <strong>o an kaçırılır ve telefon yeniden kullanılana kadar hiçbir şey gönderilmez.</strong>",
+            "Pil tasarrufu için Android, seyrek kullanılan uygulamaları yavaşlatır veya durdurur. Anbu, haberi göndermek üzere günde bir kez belirlenen saat civarında kısa süreliğine çalışır; bu kısıtlama devredeyse <strong>belirlenen saat kaçırılabilir ve haber çok geç ulaşabilir.</strong> Yukarıdaki bildirim bu durumlarda gelir.",
             "Belirlenen saatten <strong>iki saat sonra da haber ulaşmazsa</strong> aileye yukarıdaki uyarı gider. Gönderen kişi gayet iyiyken yalnızca gönderim geciktiğinde de bu uyarı gidebilir.",
             "Gönderen kişinin telefonunda uygulamayı açın ve ekranın üst kısmında <b>“@stability_battery_warning_short”</b> sarı uyarısının olup olmadığına bakın. Dokunduğunuzda doğrudan ayarlara gider; kısıtlamayı bir kez kaldırdığınızda uyarı kaybolur."
           ]
@@ -51,13 +52,16 @@
         "lead": "Kırmızı uyarıya dokunmak <strong>Android'in kendi izin isteğini</strong> açar. Orada izin vermek yeterlidir.<br>Ancak daha önce birkaç kez reddettiyseniz Android bu isteği artık göstermez. O durumda bunun yerine aşağıdaki pencere görünür.",
         "title": "@gs_activity_permission_settings_title",
         "body": "@gs_activity_permission_settings_body",
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
           "q": "Yakınımın adım sayısı görünmüyor. “Bugün N adım yürüdünüz” bildirimi hiç gelmiyor.",
           "a": [
-            "Anbu, haber sinyaliyle birlikte <strong>o günün adım sayısını</strong> da gönderir; böylece aile ne kadar hareket edildiğini görebilir. Gönderen kişinin telefonunda izin kapalıysa <strong>haber sinyali yine ulaşır, yalnızca adım sayısı eksik kalır.</strong>",
+            "Her günkü haber, <strong>o günün adım sayısını</strong> da taşır; böylece aile ne kadar hareket edildiğini görebilir. Gönderen kişinin telefonunda izin kapalıysa <strong>haber yine ulaşır, yalnızca adım sayısı eksik kalır.</strong>",
             "O telefonda uygulamayı açın ve güvenlik kodunun altında <b>“@gs_activity_permission_denied_warning”</b> kırmızı uyarısının olup olmadığına bakın. Dokunduğunuzda izin yeniden istenir."
           ]
         },
@@ -77,10 +81,19 @@
         "lead": "Kırmızı uyarıya dokunmak <strong>Android'in kendi izin isteğini</strong> açar. Orada izin vermek yeterlidir.<br>Ancak daha önce birkaç kez reddettiyseniz Android bu isteği artık göstermez. O durumda bunun yerine aşağıdaki pencere görünür.",
         "title": "@location_permission_settings_title",
         "variants": [
-          { "label": "Android", "body": "@location_permission_settings_body_android" },
-          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+          {
+            "label": "Android",
+            "body": "@location_permission_settings_body_android"
+          },
+          {
+            "label": "iPhone",
+            "body": "@location_permission_settings_body_ios"
+          }
         ],
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
@@ -93,7 +106,7 @@
         {
           "q": "Konumum sürekli takip ediliyor mu?",
           "a": [
-            "Hayır. Normal koşullarda hiçbir konum toplamıyoruz. Yalnızca [@subject_home_emergency_button] düğmesine basıldığında <strong>o anki konum bir kez</strong> alınır ve aileye iletilir; bu bilgi bir gün sonra silinir."
+            "Hayır. Normal koşullarda hiçbir konum toplamıyoruz. Yalnızca [@subject_home_emergency_button] düğmesine basıldığında <strong>o anki konum bir kez</strong> alınır ve aileye iletilir; bu konum o günün gece yarısı silinir."
           ]
         }
       ]
@@ -112,7 +125,6 @@
       ]
     }
   ],
-
   "travel": {
     "heading": "Yurt dışına seyahat ederken",
     "items": [
@@ -133,7 +145,7 @@
       {
         "q": "Seyahatte haber saatini değiştirmem gerekir mi?",
         "a": [
-          "Hayır. Belirlediğiniz saat <strong>şu an bulunduğunuz yerin saatine</strong> göre uygulanır. 18:00 olarak ayarladıysanız seyahatte de haber yerel saatle 18:00'de gönderilir."
+          "Hayır. Belirlediğiniz saat <strong>şu an bulunduğunuz yerin saatine</strong> göre uygulanır. 18:00 olarak ayarladıysanız seyahatte de haber yerel saatle 18:00 civarında gönderilir."
         ]
       }
     ]

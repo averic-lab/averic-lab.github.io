@@ -4,7 +4,7 @@
   "meta_desc": "Que vérifier lorsque des nouvelles arrivent en retard, ou que les pas et la position ne suivent pas.",
   "page_eyebrow": "Questions fréquentes",
   "page_title": "Quand les nouvelles n'arrivent pas",
-  "page_lead": "Il arrive que des nouvelles arrivent en retard, ou que les pas et la position ne soient pas transmis. Dans la plupart des cas, <strong>activer une autorisation sur le téléphone de la personne qui envoie</strong> suffit à régler le problème.",
+  "page_lead": "Il arrive que des nouvelles arrivent en retard, ou que les pas et la position ne soient pas transmis. Dans la plupart des cas, <strong>activer une autorisation sur le téléphone de la personne qui donne de ses nouvelles</strong> suffit à régler le problème.",
   "mockup_caption": "Les trois messages sont réunis ici sur un même écran pour l'explication. En réalité, ils apparaissent un à un, uniquement lorsqu'ils s'appliquent, et disparaissent une fois le problème réglé.",
   "mockup_hint": "Voir où cela se trouve à l'écran",
   "back_to_answer": "Retour à la réponse",
@@ -27,16 +27,16 @@
       },
       "items": [
         {
-          "q": "Je reçois souvent la notification « 💗 Vérification requise » sur mon téléphone. On dirait que l'envoi n'a lieu qu'à l'ouverture de l'application.",
-          "q2": "Ma famille a reçu une alerte <b>« @notifications_level_caution »</b> indiquant <b>« @noti_caution_missing_body »</b>",
+          "q": "Je reçois souvent la notification « 💗 Donnez de vos nouvelles » sur mon téléphone. On dirait que mes nouvelles ne partent que lorsque j’ouvre l’application.",
+          "q2": "Ma famille a reçu une alerte <b>« @notifications_level_caution »</b> indiquant <b>« @noti_caution_missing_body »</b>",
           "a": [
-            "Pour économiser la batterie, Android ralentit ou arrête les applications peu utilisées. Anbu se réveille brièvement une fois par jour à l'heure définie pour envoyer les nouvelles ; si cette restriction s'applique, <strong>ce moment est manqué et rien n'est envoyé jusqu'à la prochaine utilisation du téléphone.</strong>",
-            "Si aucune nouvelle n'arrive <strong>deux heures après l'heure définie</strong>, la famille reçoit l'alerte ci-dessus. Cela peut se produire même si la personne va parfaitement bien et que seul l'envoi a été retardé.",
-            "Sur le téléphone de la personne qui envoie, ouvrez l'application et regardez en haut de l'écran si le message jaune <b>« @stability_battery_warning_short »</b> s'y trouve. Le toucher mène directement aux réglages ; une fois la restriction levée, le message disparaît."
+            "Pour économiser la batterie, Android ralentit ou arrête les applications peu utilisées. Anbu s’exécute brièvement une fois par jour, vers l’heure définie, pour transmettre les nouvelles ; si cette restriction s’applique, <strong>l’heure définie peut être manquée, et les nouvelles peuvent arriver bien plus tard.</strong> C’est dans ce cas que la notification ci-dessus apparaît.",
+            "Si les nouvelles ne sont toujours pas arrivées <strong>deux heures après l’heure définie</strong>, la famille reçoit l’alerte ci-dessus. Cela peut arriver même si la personne qui donne de ses nouvelles va parfaitement bien et que seul l’envoi a été retardé.",
+            "Sur le téléphone de la personne qui donne de ses nouvelles, ouvrez l'application et regardez en haut de l'écran si le message jaune <b>« @stability_battery_warning_short »</b> s'y trouve. Le toucher mène directement aux réglages ; une fois la restriction levée, le message disparaît."
           ]
         },
         {
-          "q": "Pourquoi ce message est-il le seul en jaune ?",
+          "q": "Pourquoi ce message est-il le seul en jaune ?",
           "a": [
             "Cela signifie que les nouvelles ne sont pas totalement interrompues, mais <strong>qu'elles peuvent être retardées</strong>. Les messages en rouge indiquent qu'une fonction est réellement bloquée."
           ]
@@ -55,14 +55,14 @@
       },
       "items": [
         {
-          "q": "Le nombre de pas de mon proche ne s'affiche pas. La notification « Vous avez marché N pas aujourd'hui » n'arrive jamais.",
+          "q": "Le nombre de pas de mon proche ne s’affiche pas. La notification « N pas aujourd’hui » n’arrive jamais.",
           "a": [
-            "En plus du signal de nouvelles, Anbu transmet <strong>le nombre de pas de la journée</strong> afin que la famille voie l'activité. Si l'autorisation est désactivée sur le téléphone de la personne qui envoie, <strong>le signal continue d'arriver, mais le nombre de pas manque.</strong>",
-            "Sur ce téléphone, ouvrez l'application et regardez sous le code de sécurité si le message rouge <b>« @gs_activity_permission_denied_warning »</b> s'y trouve. Le toucher redemande l'autorisation."
+            "Chaque jour, les nouvelles transmettent aussi <strong>le nombre de pas de la journée</strong>, pour que la famille voie combien la personne a bougé. Si l’autorisation de comptage des pas est désactivée sur le téléphone de la personne qui donne de ses nouvelles, <strong>les nouvelles arrivent toujours, mais sans le nombre de pas.</strong>",
+            "Sur ce téléphone, ouvrez l'application et regardez sous le code de sécurité si le message rouge <b>« @gs_activity_permission_denied_warning »</b> s'y trouve. Le toucher redemande l'autorisation."
           ]
         },
         {
-          "q": "Regardez-vous autre chose que les pas ?",
+          "q": "Regardez-vous autre chose que les pas ?",
           "a": [
             "Seul le nombre de pas est transmis. Nous ne vérifions ni les lieux visités, ni les applications utilisées."
           ]
@@ -87,13 +87,13 @@
           "q": "J'ai reçu une demande d'aide urgente, mais il n'y a pas de bouton [@notifications_view_location] sur l'alerte.",
           "a": [
             "L'autorisation de localisation est nécessaire <strong>pour transmettre la position actuelle</strong> lors de l'appui sur le bouton d'urgence. Sans elle, l'alerte parvient toujours à toute la famille, mais le lieu où se trouve la personne n'est pas joint.",
-            "Sur le téléphone de la personne qui envoie, ouvrez l'application et regardez sous le bouton [@subject_home_emergency_button] si un message rouge s'y trouve. Le toucher redemande l'autorisation."
+            "Sur le téléphone de la personne qui donne de ses nouvelles, ouvrez l'application et regardez sous le bouton [@subject_home_emergency_button] si un message rouge s'y trouve. Le toucher redemande l'autorisation."
           ]
         },
         {
-          "q": "Suivez-vous ma position en permanence ?",
+          "q": "Suivez-vous ma position en permanence ?",
           "a": [
-            "Non. En temps normal, nous ne collectons aucune position. Uniquement lorsque [@subject_home_emergency_button] est actionné, <strong>la position de cet instant est relevée une seule fois</strong> et transmise à la famille ; cette information est effacée au bout d'un jour."
+            "Non. En temps normal, nous ne collectons aucune position. Seulement lorsque l’on appuie sur [@subject_home_emergency_button], <strong>la position de cet instant est relevée une seule fois</strong> et transmise à la famille ; cette position est effacée à minuit le jour même."
           ]
         }
       ]
@@ -106,7 +106,7 @@
         {
           "q": "J'ai touché le message, mais l'écran des réglages ne s'ouvre pas correctement.",
           "a": [
-            "Le nom et l'emplacement de l'écran des réglages varient légèrement selon le fabricant. Ouvrez les Réglages, cherchez <b>Anbu</b> et consultez directement la rubrique des autorisations."
+            "Le nom et l’emplacement de l’écran des réglages varient légèrement selon le fabricant. Ouvrez l’application Paramètres, cherchez <b>Anbu</b> et consultez directement la rubrique des autorisations."
           ]
         }
       ]
@@ -117,23 +117,23 @@
     "heading": "Quand vous voyagez à l'étranger",
     "items": [
       {
-        "q": "Après mon arrivée à l'étranger, ma famille a reçu une alerte « @notifications_level_caution ».",
+        "q": "Après mon arrivée à l'étranger, ma famille a reçu une alerte « @notifications_level_caution ».",
         "a": [
-          "Les nouvelles sont envoyées selon l'<strong>heure locale</strong> affichée sur votre téléphone. Mais pendant le premier ou les deux premiers jours après votre arrivée dans un autre pays, la nouvelle heure n'a pas encore été transmise : les nouvelles sont donc encore attendues à l'heure du pays que vous avez quitté. À cause du décalage horaire, <strong>on dirait qu'aucune nouvelle n'est arrivée</strong> : votre famille peut recevoir une alerte, et votre propre téléphone peut afficher un rappel en pleine nuit.",
+          "Les nouvelles sont envoyées selon l'<strong>heure locale</strong> affichée sur votre téléphone. Mais pendant le premier ou les deux premiers jours après votre arrivée dans un autre pays, la nouvelle heure n'a pas encore été transmise : les nouvelles sont donc encore attendues à l'heure du pays que vous avez quitté. À cause du décalage horaire, <strong>on dirait qu'aucune nouvelle n'est arrivée</strong> : votre famille peut recevoir une alerte, et votre propre téléphone peut afficher un rappel en pleine nuit.",
           "Vous allez bien, c'est seulement l'heure qui est décalée. Dès que la première nouvelle part à l'heure locale, tout redevient normal de lui-même."
         ]
       },
       {
-        "q": "Puis-je l'éviter à l'avance ?",
+        "q": "Puis-je l'éviter à l'avance ?",
         "a": [
           "À votre arrivée, <strong>ouvrez une fois l'application Anbu.</strong> Dès que vous l'ouvrez, la nouvelle heure est transmise et les nouvelles suivent ensuite l'heure locale. Ouvrez-la aussi une fois à votre retour.",
-          "Si vous avez défini des horaires « Ne pas déranger », ouvrez aussi l'application une fois à votre arrivée. C'est ainsi que la plage où vous ne souhaitez pas recevoir d'alertes (par exemple de 22:00 à 7:00) s'aligne sur l'heure locale. Sinon, l'heure du pays de départ reste appliquée : des alertes peuvent sonner en pleine nuit ou rester silencieuses pendant la journée."
+          "Si vous avez défini une plage « Ne pas déranger », ouvrez aussi l’application une fois à votre arrivée. Ainsi, les heures où vous ne souhaitez pas recevoir d’alertes (par exemple de 22:00 à 7:00) s’alignent sur l’heure locale. Sinon, l’heure du pays de départ reste appliquée : des alertes peuvent sonner en pleine nuit, ou rester silencieuses en pleine journée."
         ]
       },
       {
-        "q": "Dois-je changer l'heure des nouvelles en voyage ?",
+        "q": "Dois-je changer l'heure des nouvelles en voyage ?",
         "a": [
-          "Non. L'heure définie s'applique <strong>à l'endroit où vous vous trouvez</strong>. Si vous avez choisi 18:00, les nouvelles partent aussi à 18:00 heure locale pendant votre voyage."
+          "Non. L’heure définie s’applique <strong>à l’endroit où vous vous trouvez</strong>. Si vous avez choisi 18:00, vos nouvelles partent aussi vers 18:00, heure locale, pendant votre voyage."
         ]
       }
     ]

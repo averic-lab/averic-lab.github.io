@@ -1,44 +1,45 @@
 {
   "lang_name": "Nederlands",
-  "meta_title": "Als het teken van welzijn niet aankomt — Anbu",
-  "meta_desc": "Wat u kunt nagaan als een teken te laat binnenkomt of stappen en locatie ontbreken.",
+  "meta_title": "Als de check-in niet aankomt — Anbu",
+  "meta_desc": "Wat u kunt nagaan als de check-in te laat binnenkomt of stappen en locatie ontbreken.",
   "page_eyebrow": "Veelgestelde vragen",
-  "page_title": "Als het teken van welzijn niet aankomt",
-  "page_lead": "Soms komt een teken te laat binnen, of ontbreken de stappen en de locatie. Meestal is het opgelost door <strong>op de telefoon van de verzender één toestemming aan te zetten</strong>.",
+  "page_title": "Als de check-in niet aankomt",
+  "page_lead": "Soms komt de check-in te laat binnen, of ontbreken de stappen en de locatie. Meestal is het opgelost door <strong>op de telefoon van de verzender één toestemming aan te zetten</strong>.",
   "mockup_caption": "Ter uitleg staan de drie meldingen hier samen op één scherm. In werkelijkheid verschijnen ze één voor één, alleen wanneer ze van toepassing zijn, en verdwijnen ze zodra het is opgelost.",
   "mockup_hint": "Laat zien waar dit staat",
   "back_to_answer": "Terug naar het antwoord",
-
   "spot_all": "Hele scherm",
-  "spot_battery": "Teken komt laat",
+  "spot_battery": "Check-in komt laat",
   "spot_activity": "Geen stappen",
   "spot_location": "Geen locatie",
-
   "sections": [
     {
       "id": "battery",
       "spot": "battery",
-      "heading": "Het teken komt te laat aan",
+      "heading": "De check-in komt te laat aan",
       "dialog": {
         "lead": "Op de gele melding tikken opent dit venster meteen.",
         "title": "@stability_battery_dialog_title",
         "body": "@stability_battery_dialog_message",
-        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+        "buttons": [
+          "@common_later",
+          "@permission_hibernation_go_to_settings"
+        ]
       },
       "items": [
         {
-          "q": "Ik krijg vaak de melding “💗 Welzijnscontrole nodig” op mijn telefoon. Het lijkt of er pas verzonden wordt als ik de app open.",
+          "q": "Ik krijg vaak de melding “💗 Gaat alles goed?” op mijn telefoon. Het lijkt of er pas verzonden wordt als ik de app open.",
           "q2": "Mijn familie kreeg een melding <b>“@notifications_level_caution”</b> met de tekst <b>“@noti_caution_missing_body”</b>",
           "a": [
-            "Om accu te sparen vertraagt of stopt Android apps die weinig gebruikt worden. Anbu wordt eenmaal per dag op het ingestelde tijdstip even wakker om het teken te versturen; geldt die beperking, dan <strong>wordt dat moment gemist en gebeurt er niets tot de telefoon weer gebruikt wordt.</strong>",
-            "Komt er <strong>twee uur na het ingestelde tijdstip</strong> nog geen teken binnen, dan krijgt de familie bovenstaande melding. Dat kan ook gebeuren terwijl het met de verzender prima gaat en alleen de verzending vertraagd was.",
+            "Om accu te sparen vertraagt of stopt Android apps die weinig gebruikt worden. Anbu wordt eenmaal per dag rond het ingestelde tijdstip even uitgevoerd om de check-in te versturen; geldt die beperking, dan <strong>kan dat tijdstip gemist worden en komt de check-in veel te laat aan.</strong> De melding hierboven verschijnt in zulke gevallen.",
+            "Komt er <strong>twee uur na het ingestelde tijdstip</strong> nog geen check-in binnen, dan krijgt de familie bovenstaande melding. Dat kan ook gebeuren terwijl het met de verzender prima gaat en alleen de verzending vertraagd was.",
             "Open op de telefoon van de verzender de app en kijk bovenaan of daar de gele melding <b>“@stability_battery_warning_short”</b> staat. Tikken brengt u direct naar de instellingen; zodra de beperking eenmaal is opgeheven, verdwijnt de melding."
           ]
         },
         {
           "q": "Waarom is alleen deze melding geel?",
           "a": [
-            "Het betekent dat de tekens niet helemaal gestopt zijn, maar <strong>vertraging kunnen oplopen</strong>. Meldingen in rood betekenen dat een functie werkelijk geblokkeerd is."
+            "Het betekent dat de check-ins niet helemaal gestopt zijn, maar <strong>vertraging kunnen oplopen</strong>. Meldingen in rood betekenen dat een functie werkelijk geblokkeerd is."
           ]
         }
       ]
@@ -51,13 +52,16 @@
         "lead": "Op de rode melding tikken roept <strong>het toestemmingsverzoek van Android zelf</strong> op. Daar toestaan is genoeg.<br>Hebt u echter al meerdere keren geweigerd, dan toont Android dat verzoek niet meer. Dan verschijnt in plaats daarvan het venster hieronder.",
         "title": "@gs_activity_permission_settings_title",
         "body": "@gs_activity_permission_settings_body",
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
           "q": "De stappen van mijn familielid worden niet getoond. De melding “Vandaag N stappen gelopen” komt nooit binnen.",
           "a": [
-            "Samen met het teken stuurt Anbu <strong>het aantal stappen van die dag</strong>, zodat de familie ziet hoeveel er bewogen is. Staat de toestemming uit op de telefoon van de verzender, dan <strong>komt het teken nog steeds aan, maar ontbreken de stappen.</strong>",
+            "De dagelijkse check-in brengt <strong>het aantal stappen van die dag</strong> mee, zodat de familie ziet hoeveel er bewogen is. Staat de toestemming uit op de telefoon van de verzender, dan <strong>komt de check-in nog steeds aan, maar ontbreken de stappen.</strong>",
             "Open op die telefoon de app en kijk onder de veiligheidscode of daar de rode melding <b>“@gs_activity_permission_denied_warning”</b> staat. Tikken vraagt de toestemming opnieuw aan."
           ]
         },
@@ -77,10 +81,19 @@
         "lead": "Op de rode melding tikken roept <strong>het toestemmingsverzoek van Android zelf</strong> op. Daar toestaan is genoeg.<br>Hebt u echter al meerdere keren geweigerd, dan toont Android dat verzoek niet meer. Dan verschijnt in plaats daarvan het venster hieronder.",
         "title": "@location_permission_settings_title",
         "variants": [
-          { "label": "Android", "body": "@location_permission_settings_body_android" },
-          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+          {
+            "label": "Android",
+            "body": "@location_permission_settings_body_android"
+          },
+          {
+            "label": "iPhone",
+            "body": "@location_permission_settings_body_ios"
+          }
         ],
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
@@ -93,7 +106,7 @@
         {
           "q": "Wordt mijn locatie voortdurend gevolgd?",
           "a": [
-            "Nee. In gewone omstandigheden verzamelen we helemaal geen locatie. Alleen bij het indrukken van [@subject_home_emergency_button] wordt <strong>eenmalig de locatie van dat moment</strong> opgehaald en aan de familie doorgegeven; die gegevens worden na een dag gewist."
+            "Nee. In gewone omstandigheden verzamelen we helemaal geen locatie. Alleen bij het indrukken van [@subject_home_emergency_button] wordt <strong>eenmalig de locatie van dat moment</strong> opgehaald en aan de familie doorgegeven; die locatie wordt om middernacht van diezelfde dag gewist."
           ]
         }
       ]
@@ -112,28 +125,27 @@
       ]
     }
   ],
-
   "travel": {
     "heading": "Als u naar het buitenland reist",
     "items": [
       {
         "q": "Na aankomst in het buitenland kreeg mijn familie een melding ‘@notifications_level_caution’.",
         "a": [
-          "Het teken wordt verstuurd volgens de <strong>lokale tijd</strong> op uw telefoon. Maar de eerste dag of twee na aankomst in een ander land is de nieuwe tijd nog niet doorgegeven, dus wordt het teken nog verwacht volgens de tijd van het land dat u verliet. Door het tijdsverschil <strong>lijkt het alsof het teken niet is aangekomen</strong>: uw familie kan een melding krijgen en ook uw eigen telefoon kan midden in de nacht een herinnering tonen.",
-          "Met u is alles in orde, alleen de tijd klopt niet. Zodra het eerste teken op lokale tijd wordt verstuurd, is alles vanzelf weer normaal."
+          "De check-in wordt verstuurd volgens de <strong>lokale tijd</strong> op uw telefoon. Maar de eerste dag of twee na aankomst in een ander land is de nieuwe tijd nog niet doorgegeven, dus wordt de check-in nog verwacht volgens de tijd van het land dat u verliet. Door het tijdsverschil <strong>lijkt het alsof de check-in niet is aangekomen</strong>: uw familie kan een melding krijgen en ook uw eigen telefoon kan midden in de nacht een herinnering tonen.",
+          "Met u is alles in orde, alleen de tijd klopt niet. Zodra de eerste check-in op lokale tijd wordt verstuurd, is alles vanzelf weer normaal."
         ]
       },
       {
         "q": "Kan ik dit vooraf voorkomen?",
         "a": [
-          "Open na aankomst <strong>de Anbu-app één keer.</strong> Zodra u de app opent, wordt de nieuwe tijd doorgegeven en volgt het teken vanaf dan de lokale tijd. Open de app ook één keer als u terug bent.",
+          "Open na aankomst <strong>de Anbu-app één keer.</strong> Zodra u de app opent, wordt de nieuwe tijd doorgegeven en volgt de check-in vanaf dan de lokale tijd. Open de app ook één keer als u terug bent.",
           "Hebt u ‘Niet storen’-tijden ingesteld, open de app dan ook één keer bij aankomst. Zo schuiven de uren waarin u geen meldingen wilt krijgen (bijvoorbeeld 22:00 tot 7:00) mee naar de lokale tijd. Doet u dat niet, dan blijft de tijd van het vertrekland gelden en kunnen meldingen midden in de nacht klinken of overdag stil blijven."
         ]
       },
       {
-        "q": "Moet ik de tijd van het teken op reis aanpassen?",
+        "q": "Moet ik de tijd van de check-in op reis aanpassen?",
         "a": [
-          "Nee. De ingestelde tijd geldt <strong>voor de plek waar u nu bent</strong>. Hebt u 18:00 ingesteld, dan wordt het teken op reis ook om 18:00 lokale tijd verstuurd."
+          "Nee. De ingestelde tijd geldt <strong>voor de plek waar u nu bent</strong>. Hebt u 18:00 ingesteld, dan wordt de check-in op reis ook rond 18:00 lokale tijd verstuurd."
         ]
       }
     ]

@@ -61,7 +61,7 @@
 
 <p>Anbu ("biz" veya "bizim") gizliliğinizi korumaya kararlıyız. Bu Gizlilik Politikası, Anbu mobil uygulamasını ("Hizmet") kullandığınızda bilgilerinizi nasıl topladığımızı, kullandığımızı, sakladığımızı ve koruduğumuzu açıklar. Hizmeti kullanarak bu politikada açıklanan uygulamaları kabul etmiş olursunuz.</p>
 
-<p>Anbu'yu <strong>gizlilik öncelikli bir yaklaşımla</strong> tasarladık. Adınız, telefon numaranız, e-posta adresiniz veya konumunuz gibi kişisel bilgileri toplamıyoruz. Hizmet, yalnızca cihaz düzeyi tanımlayıcıları ve sağlık kontrolü işlevi için gerekli minimum aktivite verileriyle (adım sayısı gibi) çalışır.</p>
+<p>Anbu'yu <strong>gizlilik öncelikli bir yaklaşımla</strong> tasarladık. Adınız, telefon numaranız, e-posta adresiniz veya konumunuz gibi kişisel bilgileri toplamıyoruz. Hizmet, yalnızca cihaz düzeyi tanımlayıcıları ve günlük haber işlevi için gerekli minimum aktivite verileriyle (adım sayısı gibi) çalışır.</p>
 
 <h2>1. Topladığımız Bilgiler</h2>
 
@@ -79,10 +79,10 @@
     <tr>
       <td>Push Jetonu</td>
       <td>Firebase Cloud Messaging (FCM) jetonu</td>
-      <td>Sağlık kontrolü bildirimleri ve uyarıların iletilmesi</td>
+      <td>Haber bildirimleri ve uyarıların iletilmesi</td>
     </tr>
     <tr>
-      <td>Sağlık Verileri (Korunan Kişi)</td>
+      <td>Sağlık Verileri (Yakın)</td>
       <td>Pil seviyesi, heartbeat iletim zamanı</td>
       <td>Sağlık durumunun belirlenmesi ve koruyucu uyarılarının gönderilmesi</td>
     </tr>
@@ -96,14 +96,14 @@
   </thead>
   <tbody>
     <tr>
-      <td>Adım Sayısı (Korunan Kişi)</td>
+      <td>Adım Sayısı (Yakın)</td>
       <td>Son heartbeat'ten bu yana atılan adımlar (steps_delta)</td>
       <td>Aktivite doğrulaması (izin reddedilirse toplanmaz)</td>
     </tr>
     <tr>
-      <td>Opsiyonel (Korunan Kişi)</td>
+      <td>Opsiyonel (Yakın)</td>
       <td>Konum verileri (enlem, boylam, doğruluk, yakalama zamanı)</td>
-      <td>Yalnızca korunan kişi [🚨 Yardıma ihtiyacım var] acil yardım talebi düğmesine kendisi bastığında koruyuculara tek seferlik iletilir. Olağan sağlık kontrollerinde toplanmaz. Konum izninin reddedilmesi veya GPS sinyalinin alınamaması durumunda acil uyarı konum bilgisi olmadan gönderilir.</td>
+      <td>Yalnızca yakın [🚨 Yardıma ihtiyacım var] acil yardım talebi düğmesine kendisi bastığında koruyuculara tek seferlik iletilir. Olağan günlük haberlerde toplanmaz. Konum izninin reddedilmesi veya GPS sinyalinin alınamaması durumunda acil uyarı konum bilgisi olmadan gönderilir.</td>
     </tr>
     <tr>
       <td>Abonelik (Koruyucu)</td>
@@ -121,7 +121,7 @@
 <h3>1.3 Toplamadığımız Bilgiler</h3>
 <ul>
   <li>Ad, telefon numarası, e-posta adresi veya kişisel olarak tanımlanabilir herhangi bir bilgi</li>
-  <li>Olağan sağlık kontrollerinde (heartbeat) konum verisi — arka planda hiçbir konum takibi yapmıyoruz</li>
+  <li>Olağan günlük haberlerde (heartbeat) konum verisi — arka planda hiçbir konum takibi yapmıyoruz</li>
   <li>Cihazınızda kayıtlı fotoğraflar, kişiler veya diğer veriler</li>
   <li>Arama kayıtları, kısa mesajlar veya tarama geçmişi</li>
   <li>Kart numaraları veya banka hesap bilgileri gibi ödeme yöntemi bilgileri &mdash; yalnızca Apple ve Google'ın ödeme sistemleri tarafından işlenir</li>
@@ -130,17 +130,17 @@
 <p><strong>Veri toplama yöntemleri:</strong></p>
 <ul>
   <li>Uygulamanın yüklenmesinin ardından otomatik kayıt (cihaz bilgileri, FCM jetonu)</li>
-  <li>Günlük sağlık kontrolü sırasında alınan adım sayısı (steps_delta, pil seviyesi)</li>
-  <li>Konum yalnızca korunan kişi acil yardım talebi düğmesine kendisi bastığında ve konum izni verilmiş ise tek seferlik toplanır (yalnızca ön planda; arka planda konum toplanmaz)</li>
+  <li>Günlük haber gönderilirken alınan adım sayısı (steps_delta, pil seviyesi)</li>
+  <li>Konum yalnızca yakın acil yardım talebi düğmesine kendisi bastığında ve konum izni verilmiş ise tek seferlik toplanır (yalnızca ön planda; arka planda konum toplanmaz)</li>
 </ul>
 
 <h2>2. Bilgilerinizi Nasıl Kullanırız</h2>
 <p>Toplanan bilgileri yalnızca aşağıdaki amaçlarla kullanırız:</p>
 <ol>
-  <li><strong>Sağlık Kontrolü Hizmeti:</strong> Korunan kişinin cihazından heartbeat sinyallerini toplayarak koruyuculara sağlık durumunu bildirmek.</li>
-  <li><strong>Uyarı Bildirimleri:</strong> Korunan kişinin heartbeat'i alınmadığında koruyuculara kademeli uyarılar (Dikkat &rarr; Uyarı &rarr; Acil) göndermek.</li>
-  <li><strong>Acil Yardım Taleplerinin Işlenmesi:</strong> Korunan kişi acil yardım düğmesine kendisi bastığında bağlantılı tüm koruyucuları derhal bilgilendiririz. Kullanıcı konum bilgisinin paylaşılmasına onay verdiyse, mevcut konum (enlem, boylam, doğruluk) bildirimle birlikte iletilir.</li>
-  <li><strong>Cihaz Durumu Izleme:</strong> Düşük pil, uygulamanın kapatılması veya sağlık kontrollerini etkileyebilecek diğer durumlar hakkında koruyucuları bilgilendirmek.</li>
+  <li><strong>Günlük Haber Hizmeti:</strong> Yakının cihazından heartbeat haberlerini toplayarak koruyuculara durumunu bildirmek.</li>
+  <li><strong>Uyarı Bildirimleri:</strong> Yakının heartbeat'i alınmadığında koruyuculara kademeli uyarılar (Dikkat &rarr; Uyarı &rarr; Acil) göndermek.</li>
+  <li><strong>Acil Yardım Taleplerinin Işlenmesi:</strong> Yakın acil yardım düğmesine kendisi bastığında bağlantılı tüm koruyucuları derhal bilgilendiririz. Kullanıcı konum bilgisinin paylaşılmasına onay verdiyse, mevcut konum (enlem, boylam, doğruluk) bildirimle birlikte iletilir.</li>
+  <li><strong>Cihaz Durumu Izleme:</strong> Düşük pil, uygulamanın kapatılması veya haberin gönderilmesini etkileyebilecek diğer durumlar hakkında koruyucuları bilgilendirmek.</li>
   <li><strong>Abonelik Yönetimi:</strong> Uygulama içi satın alma makbuzlarını doğrulamak ve koruyucu hizmet erişimini yönetmek.</li>
   <li><strong>Hizmet Iyileştirme:</strong> Hataları teşhis etmek ve hizmet güvenilirliğini artırmak.</li>
 </ol>
@@ -164,12 +164,12 @@
     <tr>
       <td>Uyarı bildirim kayıtları</td>
       <td>Yalnızca mevcut gün</td>
-      <td>Her gün gece yarısında silinir (korunan kişinin yerel saat dilimine göre)</td>
+      <td>Her gün gece yarısında silinir (yakının yerel saat dilimine göre)</td>
     </tr>
     <tr>
       <td>Acil yardım talebi konum verileri</td>
       <td>24 saate kadar</td>
-      <td>Korunan kişinin cihaz saat dilimine göre gece yarısında bildirim kayıtlarıyla birlikte otomatik olarak silinir</td>
+      <td>Yakının cihaz saat dilimine göre gece yarısında bildirim kayıtlarıyla birlikte otomatik olarak silinir</td>
     </tr>
     <tr>
       <td>Abonelik bilgileri</td>
@@ -187,8 +187,8 @@
 <h2>4. Veri Paylaşımı</h2>
 <p>Bilgilerinizi üçüncü taraflara satmayız, takas etmeyiz veya kiralamayız. Bilgileri yalnızca aşağıdaki sınırlı durumlarda paylaşıyoruz:</p>
 <ol>
-  <li><strong>Koruyucu-Korunan Kişi Bağlantısı:</strong> Korunan kişi davet kodunu bir koruyucuyla paylasitiginda, koruyucu korunan kişinin sağlık durumunu (heartbeat alınıp alınmadığı, pil seviyesi) alır. Kişisel bilgi paylaşılmaz; yalnızca cihaz düzeyinde sağlık verileri paylaşılır.</li>
-  <li><strong>Acil yardım talebinde konum paylaşımı:</strong> Korunan kişi uygulama içindeki [🚨 Yardıma ihtiyacım var] acil yardım talebi düğmesine kendisi bastığında ve konum bilgisinin paylaşılmasına onay verdiğinde, mevcut konumu (enlem, boylam, doğruluk) bağlantılı tüm koruyuculara tek seferlik iletilir. Konum izninin reddedilmesi veya GPS sinyalinin alınamaması durumunda acil bildirim konum bilgisi olmadan gönderilir.</li>
+  <li><strong>Koruyucu-Yakın Bağlantısı:</strong> Yakın davet kodunu bir koruyucuyla paylasitiginda, koruyucu yakının durumunu (heartbeat alınıp alınmadığı, pil seviyesi) alır. Kişisel bilgi paylaşılmaz; yalnızca cihaz düzeyinde sağlık verileri paylaşılır.</li>
+  <li><strong>Acil yardım talebinde konum paylaşımı:</strong> Yakın uygulama içindeki [🚨 Yardıma ihtiyacım var] acil yardım talebi düğmesine kendisi bastığında ve konum bilgisinin paylaşılmasına onay verdiğinde, mevcut konumu (enlem, boylam, doğruluk) bağlantılı tüm koruyuculara tek seferlik iletilir. Konum izninin reddedilmesi veya GPS sinyalinin alınamaması durumunda acil bildirim konum bilgisi olmadan gönderilir.</li>
   <li><strong>Yasal Gereklilikler:</strong> Yürürlükteki yasa, yönetmelik veya geçerli yasal süreç gerektirdiğinde.</li>
 </ol>
 
@@ -234,7 +234,7 @@
   <li>Veri taşınabilirliği</li>
   <li>Yerel veri koruma otoritenize şikayet başvurusu</li>
 </ul>
-<p>Işleme için yasal dayanağımız, <strong>meşru menfaat</strong> (tercih ettiğiniz sağlık kontrolü hizmetinin sağlanması) ve <strong>rızadır</strong> (adım sayımı gibi isteğe bağlı izinler için).</p>
+<p>Işleme için yasal dayanağımız, <strong>meşru menfaat</strong> (tercih ettiğiniz günlük haber hizmetinin sağlanması) ve <strong>rızadır</strong> (adım sayımı gibi isteğe bağlı izinler için).</p>
 
 <h3>Türkiye'deki Kullanıcılar Için (KVKK)</h3>
 <p>6698 Sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında aşağıdaki haklara sahipsiniz:</p>
@@ -267,7 +267,7 @@
   <ul>
     <li>Kullanıcı hesabı ve cihaz bilgileri</li>
     <li>Tüm heartbeat kayıtları</li>
-    <li>Koruyucu-korunan kişi bağlantı kayıtları</li>
+    <li>Koruyucu-yakın bağlantı kayıtları</li>
     <li>Abonelik bilgileri</li>
     <li>Uyarı bildirim kayıtları</li>
     <li>Bildirim ayarları</li>

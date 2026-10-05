@@ -1,44 +1,45 @@
 {
   "lang_name": "Italiano",
-  "meta_title": "Quando il segnale di benessere non arriva — Anbu",
-  "meta_desc": "Cosa controllare quando il segnale arriva in ritardo, o passi e posizione non lo accompagnano.",
+  "meta_title": "Quando il check-in non arriva — Anbu",
+  "meta_desc": "Cosa controllare quando il check-in arriva in ritardo, o passi e posizione non lo accompagnano.",
   "page_eyebrow": "Domande frequenti",
-  "page_title": "Quando il segnale di benessere non arriva",
-  "page_lead": "A volte il segnale arriva in ritardo, oppure passi e posizione non lo accompagnano. Nella maggior parte dei casi <strong>basta attivare un'autorizzazione sul telefono di chi invia</strong>.",
+  "page_title": "Quando il check-in non arriva",
+  "page_lead": "A volte il check-in arriva in ritardo, oppure passi e posizione non lo accompagnano. Nella maggior parte dei casi <strong>basta attivare un'autorizzazione sul telefono di chi invia</strong>.",
   "mockup_caption": "Per spiegarlo, qui i tre avvisi sono raccolti in un'unica schermata. In realtà compaiono uno alla volta, solo quando ricorrono, e scompaiono una volta risolti.",
   "mockup_hint": "Vedi dov'è sullo schermo",
   "back_to_answer": "Torna alla risposta",
-
   "spot_all": "Schermata intera",
-  "spot_battery": "Segnale in ritardo",
+  "spot_battery": "Check-in in ritardo",
   "spot_activity": "Nessun passo",
   "spot_location": "Nessuna posizione",
-
   "sections": [
     {
       "id": "battery",
       "spot": "battery",
-      "heading": "Il segnale arriva in ritardo",
+      "heading": "Il check-in arriva in ritardo",
       "dialog": {
         "lead": "Toccando l'avviso giallo si apre subito questa finestra.",
         "title": "@stability_battery_dialog_title",
         "body": "@stability_battery_dialog_message",
-        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+        "buttons": [
+          "@common_later",
+          "@permission_hibernation_go_to_settings"
+        ]
       },
       "items": [
         {
-          "q": "Ricevo spesso la notifica «💗 Serve una verifica di benessere» sul mio telefono. Sembra che l'invio avvenga solo quando apro l'app.",
+          "q": "Ricevo spesso la notifica «💗 Confermi che sta bene» sul mio telefono. Sembra che l'invio avvenga solo quando apro l'app.",
           "q2": "La mia famiglia ha ricevuto un avviso <b>«@notifications_level_caution»</b> con il testo <b>«@noti_caution_missing_body»</b>",
           "a": [
-            "Per risparmiare batteria, Android rallenta o ferma le app usate di rado. Anbu si sveglia brevemente una volta al giorno all'ora impostata per inviare il segnale: se scatta questa limitazione, <strong>quel momento viene mancato e non si invia nulla finché non si riprende a usare il telefono.</strong>",
-            "Se non arriva alcun segnale <strong>entro due ore dall'ora impostata</strong>, la famiglia riceve l'avviso qui sopra. Può accadere anche quando la persona sta benissimo e solo l'invio è stato ritardato.",
+            "Per risparmiare batteria, Android rallenta o ferma le app usate di rado. Anbu viene eseguita brevemente una volta al giorno, intorno all'ora impostata, per inviare il check-in: se scatta questa limitazione, <strong>l'ora impostata può essere mancata e il check-in arrivare con molto ritardo.</strong> La notifica qui sopra compare proprio in questi casi.",
+            "Se il check-in non arriva <strong>entro due ore dall'ora impostata</strong>, la famiglia riceve l'avviso qui sopra. Può accadere anche quando la persona sta benissimo e solo l'invio è stato ritardato.",
             "Sul telefono di chi invia, apra l'app e controlli in alto se compare l'avviso giallo <b>«@stability_battery_warning_short»</b>. Toccandolo si passa direttamente alle impostazioni; una volta rimossa la limitazione l'avviso scompare."
           ]
         },
         {
           "q": "Perché solo questo avviso è giallo?",
           "a": [
-            "Significa che il segnale non si è fermato del tutto, ma <strong>può subire ritardi</strong>. Gli avvisi in rosso indicano che una funzione è realmente bloccata."
+            "Significa che i check-in non si sono fermati del tutto, ma <strong>possono subire ritardi</strong>. Gli avvisi in rosso indicano che una funzione è realmente bloccata."
           ]
         }
       ]
@@ -51,13 +52,16 @@
         "lead": "Toccando l'avviso rosso compare <strong>la richiesta di autorizzazione di Android</strong>. Basta acconsentire lì.<br>Tuttavia, se in passato è stata rifiutata più volte, Android smette di mostrarla. In quel caso compare invece la finestra qui sotto.",
         "title": "@gs_activity_permission_settings_title",
         "body": "@gs_activity_permission_settings_body",
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
           "q": "I passi del mio familiare non vengono visualizzati. La notifica «Oggi ha camminato N passi» non arriva mai.",
           "a": [
-            "Insieme al segnale, Anbu invia <strong>i passi della giornata</strong> perché la famiglia veda quanto ci si è mossi. Se sul telefono di chi invia l'autorizzazione è disattivata, <strong>il segnale continua ad arrivare, ma i passi mancano.</strong>",
+            "Il check-in di ogni giorno porta con sé <strong>i passi della giornata</strong>, perché la famiglia veda quanto ci si è mossi. Se sul telefono di chi invia l'autorizzazione è disattivata, <strong>il check-in continua ad arrivare, ma i passi mancano.</strong>",
             "Su quel telefono apra l'app e controlli sotto il codice di sicurezza se compare l'avviso rosso <b>«@gs_activity_permission_denied_warning»</b>. Toccandolo l'autorizzazione viene richiesta di nuovo."
           ]
         },
@@ -77,10 +81,19 @@
         "lead": "Toccando l'avviso rosso compare <strong>la richiesta di autorizzazione di Android</strong>. Basta acconsentire lì.<br>Tuttavia, se in passato è stata rifiutata più volte, Android smette di mostrarla. In quel caso compare invece la finestra qui sotto.",
         "title": "@location_permission_settings_title",
         "variants": [
-          { "label": "Android", "body": "@location_permission_settings_body_android" },
-          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+          {
+            "label": "Android",
+            "body": "@location_permission_settings_body_android"
+          },
+          {
+            "label": "iPhone",
+            "body": "@location_permission_settings_body_ios"
+          }
         ],
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
@@ -93,7 +106,7 @@
         {
           "q": "La mia posizione viene seguita sempre?",
           "a": [
-            "No. In condizioni normali non raccogliamo alcuna posizione. Solo quando si preme [@subject_home_emergency_button] viene rilevata <strong>una sola volta la posizione di quel momento</strong> e trasmessa alla famiglia; quell'informazione viene cancellata dopo un giorno."
+            "No. In condizioni normali non raccogliamo alcuna posizione. Solo quando si preme [@subject_home_emergency_button] viene rilevata <strong>una sola volta la posizione di quel momento</strong> e trasmessa alla famiglia; quella posizione viene cancellata a mezzanotte dello stesso giorno."
           ]
         }
       ]
@@ -112,28 +125,27 @@
       ]
     }
   ],
-
   "travel": {
     "heading": "Quando viaggi all'estero",
     "items": [
       {
         "q": "Dopo l'arrivo all'estero, la mia famiglia ha ricevuto un avviso «@notifications_level_caution».",
         "a": [
-          "Il segnale viene inviato in base all'<strong>ora locale</strong> mostrata sul telefono. Nei primi uno o due giorni dopo l'arrivo in un altro Paese, però, la nuova ora non è ancora stata trasmessa, quindi il segnale è ancora atteso secondo l'ora del Paese da cui sei partito. A causa del fuso orario <strong>sembra che il segnale non sia arrivato</strong>: la famiglia può ricevere un avviso e anche il tuo telefono può mostrare un promemoria in piena notte.",
-          "Stai bene: è solo l'ora a non tornare. Appena parte il primo segnale in ora locale, tutto torna normale da solo."
+          "Il check-in viene inviato in base all'<strong>ora locale</strong> mostrata sul telefono. Nei primi uno o due giorni dopo l'arrivo in un altro Paese, però, la nuova ora non è ancora stata trasmessa, quindi il check-in è ancora atteso secondo l'ora del Paese da cui sei partito. A causa del fuso orario <strong>sembra che il check-in non sia arrivato</strong>: la famiglia può ricevere un avviso e anche il tuo telefono può mostrare un promemoria in piena notte.",
+          "Stai bene: è solo l'ora a non tornare. Appena parte il primo check-in in ora locale, tutto torna normale da solo."
         ]
       },
       {
         "q": "Posso evitarlo in anticipo?",
         "a": [
-          "Appena arrivi, <strong>apri una volta l'app Anbu.</strong> Nel momento in cui la apri, la nuova ora viene trasmessa e da lì in poi il segnale segue l'ora locale. Aprila una volta anche al ritorno.",
+          "Appena arrivi, <strong>apri una volta l'app Anbu.</strong> Nel momento in cui la apri, la nuova ora viene trasmessa e da lì in poi il check-in segue l'ora locale. Aprila una volta anche al ritorno.",
           "Se hai impostato gli orari «Non disturbare», apri l'app una volta anche all'arrivo. Così la fascia in cui hai scelto di non ricevere avvisi (per esempio dalle 22:00 alle 7:00) si adegua all'ora locale. Altrimenti resta valida l'ora del Paese di partenza e gli avvisi possono suonare in piena notte o restare muti di giorno."
         ]
       },
       {
-        "q": "Devo cambiare l'ora del segnale durante il viaggio?",
+        "q": "Devo cambiare l'ora del check-in durante il viaggio?",
         "a": [
-          "No. L'ora impostata vale <strong>per il luogo in cui ti trovi adesso</strong>. Se hai scelto le 18:00, anche in viaggio il segnale parte alle 18:00 ora locale."
+          "No. L'ora impostata vale <strong>per il luogo in cui ti trovi adesso</strong>. Se hai scelto le 18:00, anche in viaggio il check-in parte intorno alle 18:00 ora locale."
         ]
       }
     ]

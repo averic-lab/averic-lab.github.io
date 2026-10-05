@@ -61,7 +61,7 @@
 
 <p>Anbu ("wir", "uns" oder "unser") verpflichtet sich zum Schutz Ihrer Privatsphäre. Diese Datenschutzrichtlinie erläutert, wie wir Informationen erheben, verwenden, speichern und schützen, wenn Sie die mobile Anwendung Anbu (den "Dienst") nutzen. Durch die Nutzung des Dienstes stimmen Sie den in dieser Richtlinie beschriebenen Verfahren zu.</p>
 
-<p>Wir haben Anbu nach dem Grundsatz <strong>"Datenschutz durch Technikgestaltung" (Privacy by Design)</strong> entwickelt. Wir erheben keine personenbezogenen Daten wie Ihren Namen, Ihre Telefonnummer, E-Mail-Adresse oder Ihren Standort. Der Dienst arbeitet ausschließlich mit gerätebezogenen Kennungen und den für die Funktion der Wohlbefindensprüfung erforderlichen minimalen Aktivitätsdaten (z. B. Schrittzahl).</p>
+<p>Wir haben Anbu nach dem Grundsatz <strong>"Datenschutz durch Technikgestaltung" (Privacy by Design)</strong> entwickelt. Wir erheben keine personenbezogenen Daten wie Ihren Namen, Ihre Telefonnummer, E-Mail-Adresse oder Ihren Standort. Der Dienst arbeitet ausschließlich mit gerätebezogenen Kennungen und den für die Funktion des täglichen Lebenszeichens erforderlichen minimalen Aktivitätsdaten (z. B. Schrittzahl).</p>
 
 <h2>1. Von uns erhobene Daten</h2>
 
@@ -79,12 +79,12 @@
     <tr>
       <td>Push-Token</td>
       <td>Firebase Cloud Messaging (FCM)-Token</td>
-      <td>Zustellung von Wohlbefindensprüfungs-Benachrichtigungen und Warnungen</td>
+      <td>Zustellung von Benachrichtigungen zum Lebenszeichen und von Warnungen</td>
     </tr>
     <tr>
-      <td>Wohlbefindensdaten (Betreute Person)</td>
+      <td>Lebenszeichen-Daten (verbundene Person)</td>
       <td>Akkustand, Heartbeat-Übertragungszeitpunkt</td>
-      <td>Bestimmung des Wohlbefindensstatus und Versand von Betreuer-Warnungen</td>
+      <td>Bestimmung des Lebenszeichen-Status und Versand von Warnungen an Kontaktpersonen</td>
     </tr>
   </tbody>
 </table>
@@ -96,17 +96,17 @@
   </thead>
   <tbody>
     <tr>
-      <td>Schrittzahl (Betreute Person)</td>
+      <td>Schrittzahl (verbundene Person)</td>
       <td>Seit dem letzten Heartbeat zurückgelegte Schritte (steps_delta)</td>
       <td>Aktivitätsverifizierung (wird bei verweigerter Berechtigung nicht erhoben)</td>
     </tr>
     <tr>
-      <td>Standortdaten (Betreute Person, optional)</td>
+      <td>Standortdaten (verbundene Person, optional)</td>
       <td>Breitengrad, Längengrad, Genauigkeit, Erfassungszeitpunkt</td>
-      <td>Übermittlung an die verbundenen Betreuer ausschließlich dann, wenn die betreute Person die Schaltfläche [🚨 Ich brauche Hilfe] selbst betätigt. Bei der regulären Wohlbefindensprüfung (Heartbeat) findet keine Erhebung statt. Verweigert die Nutzerin oder der Nutzer die Standortberechtigung oder kann kein GPS-Signal ermittelt werden, wird die Notfallbenachrichtigung ohne Standort versandt.</td>
+      <td>Übermittlung an die Kontaktpersonen ausschließlich dann, wenn die verbundene Person die Schaltfläche [🚨 Ich brauche Hilfe] selbst betätigt. Beim regulären täglichen Lebenszeichen (Heartbeat) findet keine Erhebung statt. Verweigert die Nutzerin oder der Nutzer die Standortberechtigung oder kann kein GPS-Signal ermittelt werden, wird die Notfallbenachrichtigung ohne Standort versandt.</td>
     </tr>
     <tr>
-      <td>Abonnement (Betreuer)</td>
+      <td>Abonnement (Kontaktperson)</td>
       <td>In-App-Kaufbeleg (Apple/Google)</td>
       <td>Abonnementverifizierung und Dienstzugang</td>
     </tr>
@@ -121,7 +121,7 @@
 <h3>1.3 Daten, die wir NICHT erheben</h3>
 <ul>
   <li>Name, Telefonnummer, E-Mail-Adresse oder sonstige personenbezogene Daten</li>
-  <li>Standortdaten im Rahmen der regulären Wohlbefindensprüfung (Heartbeat); eine fortlaufende Standortverfolgung im Hintergrund findet zu keinem Zeitpunkt statt</li>
+  <li>Standortdaten im Rahmen des regulären täglichen Lebenszeichens (Heartbeat); eine fortlaufende Standortverfolgung im Hintergrund findet zu keinem Zeitpunkt statt</li>
   <li>Fotos, Kontakte oder sonstige auf Ihrem Gerät gespeicherte Daten</li>
   <li>Anrufprotokolle, Textnachrichten oder Browserverlauf</li>
   <li>Zahlungsmitteldaten wie Kartennummern oder Bankverbindungsdaten — diese werden ausschließlich von den Zahlungssystemen von Apple und Google verarbeitet</li>
@@ -129,18 +129,18 @@
 
 <h3>1.4 Erhebungsmethoden</h3>
 <ul>
-  <li>Geräte- und Wohlbefindensdaten werden bei der Heartbeat-Übertragung automatisch an unsere Server gesendet.</li>
-  <li>Standortdaten werden ausschließlich einmalig im Vordergrund erfasst, wenn die betreute Person die Schaltfläche zur Anforderung von Notfallhilfe selbst betätigt und die Standortberechtigung erteilt hat. Eine Erhebung von Standortdaten im Hintergrund erfolgt zu keinem Zeitpunkt.</li>
+  <li>Geräte- und Lebenszeichen-Daten werden bei der Heartbeat-Übertragung automatisch an unsere Server gesendet.</li>
+  <li>Standortdaten werden ausschließlich einmalig im Vordergrund erfasst, wenn die verbundene Person die Schaltfläche zur Anforderung von Notfallhilfe selbst betätigt und die Standortberechtigung erteilt hat. Eine Erhebung von Standortdaten im Hintergrund erfolgt zu keinem Zeitpunkt.</li>
 </ul>
 
 <h2>2. Verwendung Ihrer Daten</h2>
 <p>Wir verwenden die erhobenen Daten ausschließlich für folgende Zwecke:</p>
 <ol>
-  <li><strong>Wohlbefindensprüfungsdienst:</strong> Erfassung von Heartbeat-Signalen vom Gerät der betreuten Person und Benachrichtigung der Betreuer über den Wohlbefindensstatus.</li>
-  <li><strong>Warnbenachrichtigungen:</strong> Versand von stufenweisen Warnungen (Hinweis → Warnung → Dringend) an Betreuer, wenn kein Heartbeat einer betreuten Person empfangen wurde.</li>
-  <li><strong>Bearbeitung von Notfallhilfeersuchen:</strong> Wenn eine betreute Person die Schaltfläche [🚨 Ich brauche Hilfe] selbst betätigt, leiten wir die Benachrichtigung unverzüglich an alle verbundenen Betreuer weiter. Hat die Nutzerin oder der Nutzer der Übermittlung von Standortdaten zugestimmt, werden zusätzlich der aktuelle Standort (Breitengrad, Längengrad und Genauigkeit) übermittelt.</li>
-  <li><strong>Gerätestatusüberwachung:</strong> Information der Betreuer über niedrigen Akkustand, App-Beendigung oder andere Umstände, die die Wohlbefindensprüfung beeinträchtigen können.</li>
-  <li><strong>Abonnementverwaltung:</strong> Verifizierung von In-App-Kaufbelegen und Verwaltung des Dienstzugangs für Betreuer.</li>
+  <li><strong>Lebenszeichen-Dienst:</strong> Empfang der täglichen Lebenszeichen (Heartbeats) vom Gerät der verbundenen Person und Benachrichtigung ihrer Kontaktpersonen über den Lebenszeichen-Status.</li>
+  <li><strong>Warnbenachrichtigungen:</strong> Versand von stufenweisen Warnungen (Achtung → Warnung → Dringend) an Kontaktpersonen, wenn von einer verbundenen Person kein Heartbeat empfangen wurde.</li>
+  <li><strong>Bearbeitung von Notfallhilfeersuchen:</strong> Wenn eine verbundene Person die Schaltfläche [🚨 Ich brauche Hilfe] selbst betätigt, leiten wir die Benachrichtigung unverzüglich an alle ihre Kontaktpersonen weiter. Hat die Nutzerin oder der Nutzer der Übermittlung von Standortdaten zugestimmt, wird zusätzlich der aktuelle Standort (Breitengrad, Längengrad und Genauigkeit) übermittelt.</li>
+  <li><strong>Gerätestatusüberwachung:</strong> Information der Kontaktpersonen über niedrigen Akkustand, App-Beendigung oder andere Umstände, die das tägliche Lebenszeichen beeinträchtigen können.</li>
+  <li><strong>Abonnementverwaltung:</strong> Verifizierung von In-App-Kaufbelegen und Verwaltung des Dienstzugangs für Kontaktpersonen.</li>
   <li><strong>Dienstverbesserung:</strong> Fehlerdiagnose und Verbesserung der Dienstzuverlässigkeit.</li>
 </ol>
 
@@ -163,12 +163,12 @@
     <tr>
       <td>Warnbenachrichtigungseinträge</td>
       <td>Nur aktueller Tag</td>
-      <td>Tägliche Löschung um Mitternacht (lokale Zeitzone der betreuten Person)</td>
+      <td>Tägliche Löschung um Mitternacht (lokale Zeitzone der verbundenen Person)</td>
     </tr>
     <tr>
       <td>Standortdaten aus Notfallhilfeersuchen</td>
       <td>Bis zu 24 Stunden</td>
-      <td>Automatische Löschung gemeinsam mit den zugehörigen Benachrichtigungseinträgen um Mitternacht in der lokalen Zeitzone des Geräts der betreuten Person</td>
+      <td>Automatische Löschung gemeinsam mit den zugehörigen Benachrichtigungseinträgen um Mitternacht in der lokalen Zeitzone des Geräts der verbundenen Person</td>
     </tr>
     <tr>
       <td>Abonnementinformationen</td>
@@ -186,8 +186,8 @@
 <h2>4. Datenweitergabe</h2>
 <p>Wir verkaufen, handeln oder vermieten Ihre Daten nicht an Dritte. Wir geben Daten nur unter den folgenden eingeschränkten Umständen weiter:</p>
 <ol>
-  <li><strong>Betreuer-Betreute-Person-Verbindung:</strong> Wenn eine betreute Person ihren Einladungscode mit einem Betreuer teilt, erhält der Betreuer den Wohlbefindensstatus der betreuten Person (Heartbeat empfangen/nicht empfangen, Akkustand). Es werden keine personenbezogenen Daten weitergegeben — ausschließlich gerätebezogene Wohlbefindensdaten.</li>
-  <li><strong>Standortübermittlung bei Notfallhilfeersuchen:</strong> Betätigt die betreute Person die in der App enthaltene Schaltfläche [🚨 Ich brauche Hilfe] selbst und stimmt der Übermittlung von Standortdaten zu, so wird der aktuelle Standort (Breitengrad, Längengrad und Genauigkeit) einmalig an sämtliche verbundenen Betreuer übermittelt. Verweigert die Nutzerin oder der Nutzer die Standortberechtigung oder kann kein GPS-Signal ermittelt werden, wird die Notfallbenachrichtigung ohne Standort versandt.</li>
+  <li><strong>Verbindung zwischen Kontaktperson und verbundener Person:</strong> Wenn eine verbundene Person ihren Einladungscode mit einer Kontaktperson teilt, erhält die Kontaktperson den Lebenszeichen-Status der verbundenen Person (Heartbeat empfangen/nicht empfangen, Akkustand). Es werden keine personenbezogenen Daten weitergegeben — ausschließlich gerätebezogene Lebenszeichen-Daten.</li>
+  <li><strong>Standortübermittlung bei Notfallhilfeersuchen:</strong> Betätigt die verbundene Person die in der App enthaltene Schaltfläche [🚨 Ich brauche Hilfe] selbst und stimmt der Übermittlung von Standortdaten zu, so wird der aktuelle Standort (Breitengrad, Längengrad und Genauigkeit) einmalig an sämtliche ihrer Kontaktpersonen übermittelt. Verweigert die Nutzerin oder der Nutzer die Standortberechtigung oder kann kein GPS-Signal ermittelt werden, wird die Notfallbenachrichtigung ohne Standort versandt.</li>
   <li><strong>Gesetzliche Anforderungen:</strong> Soweit dies nach geltendem Recht, Vorschriften oder aufgrund eines gültigen Rechtsverfahrens erforderlich ist.</li>
 </ol>
 
@@ -233,7 +233,7 @@
   <li>Datenübertragbarkeit</li>
   <li>Beschwerde bei Ihrer zuständigen Datenschutzaufsichtsbehörde</li>
 </ul>
-<p>Unsere Rechtsgrundlage für die Verarbeitung ist das <strong>berechtigte Interesse</strong> (Bereitstellung des Wohlbefindensprüfungsdienstes, für den Sie sich entschieden haben) sowie die <strong>Einwilligung</strong> (für optionale Berechtigungen wie die Schrittzählung).</p>
+<p>Unsere Rechtsgrundlage für die Verarbeitung ist das <strong>berechtigte Interesse</strong> (Bereitstellung des Lebenszeichen-Dienstes, für den Sie sich entschieden haben) sowie die <strong>Einwilligung</strong> (für optionale Berechtigungen wie die Schrittzählung).</p>
 
 <h3>Für Nutzer in Kalifornien (CCPA)</h3>
 <p>Gemäß dem California Consumer Privacy Act haben Einwohner Kaliforniens das Recht:</p>
@@ -252,7 +252,7 @@
   <ul>
     <li>Benutzerkonto und Geräteinformationen</li>
     <li>Sämtliche Heartbeat-Protokolle</li>
-    <li>Betreuer-Betreute-Person-Verbindungseinträge</li>
+    <li>Verbindungseinträge zwischen Kontaktpersonen und verbundenen Personen</li>
     <li>Abonnementinformationen</li>
     <li>Warnbenachrichtigungseinträge</li>
     <li>Benachrichtigungseinstellungen</li>

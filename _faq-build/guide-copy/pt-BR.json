@@ -20,10 +20,10 @@
   "steps": [
     {
       "h": "Nas configurações, toque em [@gs_enable_button]",
-      "d": "Abra a aba <b>@nav_settings</b> na parte de baixo — o botão fica bem no topo. Você passa de apenas cuidar da família para <b>também enviar o próprio sinal</b>."
+      "d": "Abra a aba <b>@nav_settings</b> na parte de baixo — o botão fica bem no topo. Você passa de apenas cuidar da família para <b>também enviar o próprio check-in</b>."
     },
     {
-      "h": "Confirme a ativação",
+      "h": "Toque em [@gs_enable_confirm] na janela de confirmação",
       "d": "@gs_enable_dialog_body"
     },
     {
@@ -50,14 +50,14 @@
       "h": "Informe um telefone (opcional)",
       "d": "É assim que o cartão dessa pessoa aparece na tela inicial da família. O número é <b>opcional</b> e, mesmo preenchido, não chega ao nosso servidor: fica <b>apenas no telefone da família</b>.",
       "illus": "cards",
-      "d_after": "Depois de ligar e confirmar pessoalmente que está tudo bem, toque em <b>[@guardian_confirm_safety]</b>. O alerta é encerrado, o estado volta ao normal e <b>os outros familiares que acompanham</b> recebem um aviso de confirmação."
+      "d_after": "Depois de ligar e confirmar pessoalmente que está tudo bem, toque em <b>[@guardian_confirm_safety]</b>. O alerta é encerrado, o estado volta ao normal e <b>os outros cuidadores</b> recebem um aviso de confirmação."
     },
     {
       "h": "Toque em [@add_subject_connect] e pronto",
       "d": "O botão ganha cor assim que código e apelido estiverem preenchidos. Um toque conecta, e o cartão visto acima aparece na tela inicial da família."
     }
   ],
-  "note": "Depois de conectado não há mais nada a fazer. O Anbu envia o sinal <strong>sozinho, todo dia no horário definido</strong>, e avisa a família se esse horário passar sem sinal. Se o sinal atrasar ou os passos aparecerem vazios, veja as <a href=\"faq.html\">perguntas frequentes</a>.",
+  "note": "Depois de conectado não há mais nada a fazer. O Anbu envia o check-in <strong>sozinho, todo dia por volta do horário definido</strong>, e avisa a família se passarem duas horas desse horário sem que ele chegue. Se o check-in atrasar ou os passos aparecerem vazios, veja as <a href=\"faq.html\">perguntas frequentes</a>.",
   "footer_home": "Início",
   "footer_faq": "Perguntas frequentes",
   "footer_privacy": "Política de Privacidade",

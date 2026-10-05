@@ -20,10 +20,10 @@
   "steps": [
     {
       "h": "Tik in de instellingen op [@gs_enable_button]",
-      "d": "Open onderaan het tabblad <b>@nav_settings</b> — de knop staat helemaal bovenaan. U gaat van alleen op de familie letten naar <b>ook zelf een signaal sturen</b>."
+      "d": "Open onderaan het tabblad <b>@nav_settings</b> — de knop staat helemaal bovenaan. U gaat van alleen op de familie letten naar <b>ook zelf een check-in sturen</b>."
     },
     {
-      "h": "Bevestig de activering",
+      "h": "Tik in het bevestigingsvenster op [@gs_enable_confirm]",
       "d": "@gs_enable_dialog_body"
     },
     {
@@ -50,14 +50,14 @@
       "h": "Vul een telefoonnummer in (optioneel)",
       "d": "Zo ziet de kaart van deze persoon eruit op het beginscherm van de familie. Het nummer is <b>optioneel</b> en komt zelfs ingevuld niet op onze server terecht: het blijft <b>alleen op de telefoon van de familie</b>.",
       "illus": "cards",
-      "d_after": "Hebt u gebeld en zelf vastgesteld dat alles in orde is, tik dan op <b>[@guardian_confirm_safety]</b>. De waarschuwing vervalt, de weergave staat weer op normaal en <b>de andere meekijkende naasten</b> krijgen een bevestiging."
+      "d_after": "Hebt u gebeld en zelf vastgesteld dat alles in orde is, tik dan op <b>[@guardian_confirm_safety]</b>. De waarschuwing vervalt, de weergave staat weer op normaal en <b>de andere contactpersonen</b> krijgen een bevestiging."
     },
     {
       "h": "Tik op [@add_subject_connect] en klaar",
       "d": "De knop kleurt zodra code en naam zijn ingevuld. Eén tik verbindt, en de kaart van hierboven verschijnt op het beginscherm van de familie."
     }
   ],
-  "note": "Na het verbinden hoeft u niets meer te doen. Anbu stuurt het signaal <strong>vanzelf, elke dag op het ingestelde tijdstip</strong>, en waarschuwt de familie als dat tijdstip zonder signaal voorbijgaat. Komt het signaal laat of blijven de stappen leeg, kijk dan bij de <a href=\"faq.html\">veelgestelde vragen</a>.",
+  "note": "Na het verbinden hoeft u niets meer te doen. Anbu stuurt de check-in <strong>vanzelf, elke dag rond het ingestelde tijdstip</strong>, en waarschuwt de familie als er twee uur na dat tijdstip nog niets is aangekomen. Komt de check-in laat of blijven de stappen leeg, kijk dan bij de <a href=\"faq.html\">veelgestelde vragen</a>.",
   "footer_home": "Home",
   "footer_faq": "Veelgestelde vragen",
   "footer_privacy": "Privacybeleid",

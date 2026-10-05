@@ -20,10 +20,10 @@
   "steps": [
     {
       "h": "Tap [@gs_enable_button] in settings",
-      "d": "Open the <b>@nav_settings</b> tab at the bottom of the guardian screen — it sits right at the top. You go from only watching over your family to <b>sending your own check-in as well</b>."
+      "d": "Open the <b>@nav_settings</b> tab at the bottom of the guardian screen — it sits right at the top. You go from only watching over your family to <b>sending your own wellness check as well</b>."
     },
     {
-      "h": "Confirm to activate",
+      "h": "Tap [@gs_enable_confirm] in the confirmation window",
       "d": "@gs_enable_dialog_body"
     },
     {
@@ -57,7 +57,7 @@
       "d": "The button lights up once the code and nickname are filled in. Tapping it connects you, and the card you saw above appears on your family's home screen."
     }
   ],
-  "note": "Once connected there is nothing left to do. Anbu sends a check-in <strong>by itself, every day at the set time</strong>, and tells your family if that time passes with no signal. If the signal is late or the step count looks empty, see the <a href=\"faq.html\">FAQ</a>.",
+  "note": "Once connected there is nothing left to do. Anbu sends the wellness check <strong>on its own, every day around the set time</strong>, and lets your family know if none arrives within two hours of that time. If it's late or the step count looks empty, see the <a href=\"faq.html\">FAQ</a>.",
   "footer_home": "Home",
   "footer_faq": "Frequently asked",
   "footer_privacy": "Privacy Policy",

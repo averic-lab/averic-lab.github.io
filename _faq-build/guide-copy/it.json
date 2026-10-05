@@ -20,10 +20,10 @@
   "steps": [
     {
       "h": "Nelle impostazioni tocchi [@gs_enable_button]",
-      "d": "Apra la scheda <b>@nav_settings</b> in basso: il pulsante è proprio in cima. Si passa dal solo vegliare sulla famiglia all'<b>inviare anche il proprio segnale</b>."
+      "d": "Apra la scheda <b>@nav_settings</b> in basso: il pulsante è proprio in cima. Si passa dal solo vegliare sulla famiglia all'<b>inviare anche il proprio check-in</b>."
     },
     {
-      "h": "Confermi l'attivazione",
+      "h": "Tocchi [@gs_enable_confirm] nella finestra di conferma",
       "d": "@gs_enable_dialog_body"
     },
     {
@@ -50,14 +50,14 @@
       "h": "Aggiunga un numero (facoltativo)",
       "d": "Ecco come appare la scheda di questa persona nella schermata iniziale della famiglia. Il numero è <b>facoltativo</b> e, anche se inserito, non arriva sul nostro server: resta <b>solo sul telefono della famiglia</b>.",
       "illus": "cards",
-      "d_after": "Dopo aver chiamato e verificato di persona che va tutto bene, tocchi <b>[@guardian_confirm_safety]</b>. L'avviso viene revocato, lo stato torna normale e <b>gli altri familiari che vegliano</b> ricevono una conferma."
+      "d_after": "Dopo aver chiamato e verificato di persona che va tutto bene, tocchi <b>[@guardian_confirm_safety]</b>. L'avviso viene revocato, lo stato torna normale e <b>gli altri caregiver</b> ricevono una conferma."
     },
     {
       "h": "Tocchi [@add_subject_connect] ed è fatta",
       "d": "Il pulsante si accende quando codice e nome sono compilati. Toccandolo il collegamento è attivo e la scheda vista sopra compare sulla schermata iniziale della famiglia."
     }
   ],
-  "note": "Una volta collegati non resta altro da fare. Anbu invia il segnale <strong>da solo, ogni giorno all'ora stabilita</strong>, e avvisa la famiglia se quell'ora passa senza segnale. Se il segnale tarda o i passi risultano vuoti, consulti le <a href=\"faq.html\">domande frequenti</a>.",
+  "note": "Una volta collegati non resta altro da fare. Anbu invia il check-in <strong>da solo, ogni giorno intorno all'ora stabilita</strong>, e avvisa la famiglia se passano due ore da quell'ora senza che sia arrivato. Se il check-in tarda o i passi risultano vuoti, consulti le <a href=\"faq.html\">domande frequenti</a>.",
   "footer_home": "Home",
   "footer_faq": "Domande frequenti",
   "footer_privacy": "Informativa sulla privacy",

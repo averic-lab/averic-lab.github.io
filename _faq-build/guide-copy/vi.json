@@ -20,10 +20,10 @@
   "steps": [
     {
       "h": "Trong cài đặt, chạm [@gs_enable_button]",
-      "d": "Mở thẻ <b>@nav_settings</b> ở dưới màn hình — nút nằm ngay trên cùng. Bạn chuyển từ chỉ dõi theo gia đình sang <b>gửi cả tín hiệu của chính mình</b>."
+      "d": "Mở thẻ <b>@nav_settings</b> ở dưới màn hình — nút nằm ngay trên cùng. Bạn chuyển từ chỉ dõi theo gia đình sang <b>gửi cả tin bình an của chính mình</b>."
     },
     {
-      "h": "Xác nhận để bật",
+      "h": "Chạm [@gs_enable_confirm] trong cửa sổ xác nhận",
       "d": "@gs_enable_dialog_body"
     },
     {
@@ -50,14 +50,14 @@
       "h": "Nhập số điện thoại (tùy chọn)",
       "d": "Thẻ của người này trên màn hình chính của gia đình trông như thế này. Số điện thoại là <b>tùy chọn</b>, và dù có nhập thì nó cũng không được gửi lên máy chủ mà chỉ nằm <b>trong máy của gia đình</b>.",
       "illus": "cards",
-      "d_after": "Sau khi gọi và tự mình xác nhận mọi việc vẫn ổn, hãy chạm <b>[@guardian_confirm_safety]</b>. Cảnh báo được gỡ, trạng thái trở lại bình thường, và <b>những người thân khác cùng dõi theo</b> sẽ nhận được thông báo xác nhận."
+      "d_after": "Sau khi gọi và tự mình xác nhận mọi việc vẫn ổn, hãy chạm <b>[@guardian_confirm_safety]</b>. Cảnh báo được gỡ, trạng thái trở lại bình thường, và <b>những người chăm sóc khác</b> sẽ nhận được thông báo xác nhận."
     },
     {
       "h": "Chạm [@add_subject_connect] là xong",
       "d": "Nút sẽ sáng lên khi mã và tên gọi đã điền đủ. Chạm vào là kết nối, và thẻ vừa xem ở trên sẽ hiện trên màn hình chính của gia đình."
     }
   ],
-  "note": "Kết nối xong là không còn việc gì phải làm. Anbu <strong>tự gửi tín hiệu mỗi ngày vào giờ đã đặt</strong>, và báo cho gia đình nếu quá giờ đó mà không có tín hiệu. Nếu tín hiệu đến muộn hoặc số bước trống, hãy xem <a href=\"faq.html\">câu hỏi thường gặp</a>.",
+  "note": "Kết nối xong là không còn việc gì phải làm. Anbu <strong>tự gửi tin bình an mỗi ngày vào khoảng giờ đã đặt</strong>, và báo cho gia đình nếu quá hai giờ kể từ giờ đó mà tin vẫn chưa đến. Nếu tin đến muộn hoặc số bước trống, hãy xem <a href=\"faq.html\">câu hỏi thường gặp</a>.",
   "footer_home": "Trang chủ",
   "footer_faq": "Câu hỏi thường gặp",
   "footer_privacy": "Chính sách bảo mật",

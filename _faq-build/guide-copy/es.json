@@ -20,10 +20,10 @@
   "steps": [
     {
       "h": "En ajustes, pulse [@gs_enable_button]",
-      "d": "Abra la pestaña <b>@nav_settings</b> en la parte inferior: el botón está arriba del todo. Pasará de solo vigilar a su familia a <b>enviar también su propia señal</b>."
+      "d": "Abra la pestaña <b>@nav_settings</b> en la parte inferior: el botón está arriba del todo. Pasará de solo vigilar a su familia a <b>enviar también su propio aviso</b>."
     },
     {
-      "h": "Confirme la activación",
+      "h": "Pulse [@gs_enable_confirm] en la ventana de confirmación",
       "d": "@gs_enable_dialog_body"
     },
     {
@@ -50,14 +50,14 @@
       "h": "Añada un teléfono (opcional)",
       "d": "Así se ve la tarjeta de esta persona en la pantalla de inicio de la familia. El número es <b>opcional</b> y, aunque se rellene, no llega a nuestro servidor: se queda <b>solo en el teléfono de la familia</b>.",
       "illus": "cards",
-      "d_after": "Cuando haya llamado y comprobado en persona que todo está bien, pulse <b>[@guardian_confirm_safety]</b>. La alerta se retira, el estado vuelve a normal y <b>los demás familiares que vigilan</b> reciben un aviso de confirmación."
+      "d_after": "Cuando haya llamado y comprobado en persona que todo está bien, pulse <b>[@guardian_confirm_safety]</b>. La alerta se retira, el estado vuelve a normal y <b>los demás cuidadores</b> reciben un aviso de confirmación."
     },
     {
       "h": "Pulse [@add_subject_connect] y listo",
       "d": "El botón se ilumina cuando el código y el alias están rellenos. Al pulsarlo quedan conectados y la tarjeta que vio arriba aparece en la pantalla de inicio de la familia."
     }
   ],
-  "note": "Una vez conectados no queda nada por hacer. Anbu envía la señal <strong>por sí solo, cada día a la hora fijada</strong>, y avisa a la familia si esa hora pasa sin señal. Si la señal llega tarde o los pasos aparecen vacíos, consulte las <a href=\"faq.html\">preguntas frecuentes</a>.",
+  "note": "Una vez conectados no queda nada por hacer. Anbu envía el aviso <strong>por sí solo, cada día en torno a la hora fijada</strong>, y avisa a la familia si pasan dos horas desde esa hora sin que haya llegado. Si el aviso llega tarde o los pasos aparecen vacíos, consulte las <a href=\"faq.html\">preguntas frecuentes</a>.",
   "footer_home": "Inicio",
   "footer_faq": "Preguntas frecuentes",
   "footer_privacy": "Política de privacidad",

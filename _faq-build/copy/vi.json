@@ -8,12 +8,10 @@
   "mockup_caption": "Để dễ giải thích, ba thông báo được đặt chung trên một màn hình. Trên thực tế, chúng chỉ xuất hiện từng cái một khi đúng trường hợp và sẽ biến mất sau khi xử lý xong.",
   "mockup_hint": "Xem vị trí trên màn hình",
   "back_to_answer": "Quay lại phần giải thích",
-
   "spot_all": "Toàn màn hình",
   "spot_battery": "Tin báo đến muộn",
   "spot_activity": "Không có số bước",
   "spot_location": "Không có vị trí",
-
   "sections": [
     {
       "id": "battery",
@@ -23,14 +21,17 @@
         "lead": "Chạm vào thông báo màu vàng sẽ mở ngay cửa sổ này.",
         "title": "@stability_battery_dialog_title",
         "body": "@stability_battery_dialog_message",
-        "buttons": ["@common_later", "@permission_hibernation_go_to_settings"]
+        "buttons": [
+          "@common_later",
+          "@permission_hibernation_go_to_settings"
+        ]
       },
       "items": [
         {
-          "q": "Điện thoại của tôi thường xuyên nhận thông báo “💗 Cần xác nhận bình an”. Có vẻ chỉ khi mở ứng dụng thì tin báo mới được gửi.",
+          "q": "Điện thoại của tôi thường xuyên nhận thông báo “💗 Vui lòng báo bình an”. Có vẻ chỉ khi mở ứng dụng thì tin báo mới được gửi.",
           "q2": "Gia đình tôi nhận được cảnh báo <b>“@notifications_level_caution”</b> với nội dung <b>“@noti_caution_missing_body”</b>",
           "a": [
-            "Để tiết kiệm pin, Android làm chậm hoặc dừng các ứng dụng ít dùng. Anbu chỉ thức dậy trong chốc lát mỗi ngày một lần vào giờ đã đặt để gửi tin báo, nên nếu bị hạn chế này, <strong>khoảnh khắc đó sẽ bị bỏ lỡ và không có gì được gửi cho đến khi điện thoại được dùng lại.</strong>",
+            "Để tiết kiệm pin, Android làm chậm hoặc dừng các ứng dụng ít dùng. Anbu chỉ chạy trong chốc lát mỗi ngày một lần vào khoảng giờ đã đặt để gửi tin báo, nên nếu bị hạn chế này, <strong>giờ đã đặt có thể bị bỏ lỡ và tin báo đến rất muộn.</strong> Thông báo ở trên xuất hiện trong những trường hợp như vậy.",
             "Nếu <strong>quá hai giờ so với giờ đã đặt</strong> mà vẫn chưa có tin báo, gia đình sẽ nhận được cảnh báo ở trên. Điều này có thể xảy ra ngay cả khi người gửi hoàn toàn bình an và chỉ là việc gửi bị chậm.",
             "Trên điện thoại của người gửi, hãy mở ứng dụng và xem phía trên màn hình có thông báo màu vàng <b>“@stability_battery_warning_short”</b> hay không. Chạm vào đó sẽ đi thẳng đến màn hình cài đặt; sau khi gỡ bỏ hạn chế một lần, thông báo sẽ biến mất."
           ]
@@ -51,13 +52,16 @@
         "lead": "Chạm vào thông báo màu đỏ sẽ hiện <strong>yêu cầu cấp quyền của chính Android</strong>. Chỉ cần cho phép ở đó là xong.<br>Tuy nhiên, nếu trước đây đã từ chối nhiều lần, Android sẽ không hiện yêu cầu đó nữa. Khi ấy cửa sổ bên dưới sẽ xuất hiện thay thế.",
         "title": "@gs_activity_permission_settings_title",
         "body": "@gs_activity_permission_settings_body",
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
           "q": "Không thấy số bước của người thân. Thông báo “Hôm nay đã đi N bước” cũng không đến.",
           "a": [
-            "Cùng với tín hiệu bình an, Anbu gửi kèm <strong>số bước của ngày hôm đó</strong> để gia đình biết đã vận động bao nhiêu. Nếu quyền bị tắt trên điện thoại của người gửi, <strong>tín hiệu bình an vẫn đến bình thường, chỉ thiếu số bước.</strong>",
+            "Tin bình an mỗi ngày được gửi kèm <strong>số bước của ngày hôm đó</strong> để gia đình biết đã vận động bao nhiêu. Nếu quyền bị tắt trên điện thoại của người gửi, <strong>tin bình an vẫn đến bình thường, chỉ thiếu số bước.</strong>",
             "Trên điện thoại đó, hãy mở ứng dụng và xem bên dưới mã an toàn có thông báo màu đỏ <b>“@gs_activity_permission_denied_warning”</b> hay không. Chạm vào đó sẽ yêu cầu cấp quyền lại."
           ]
         },
@@ -77,10 +81,19 @@
         "lead": "Chạm vào thông báo màu đỏ sẽ hiện <strong>yêu cầu cấp quyền của chính Android</strong>. Chỉ cần cho phép ở đó là xong.<br>Tuy nhiên, nếu trước đây đã từ chối nhiều lần, Android sẽ không hiện yêu cầu đó nữa. Khi ấy cửa sổ bên dưới sẽ xuất hiện thay thế.",
         "title": "@location_permission_settings_title",
         "variants": [
-          { "label": "Android", "body": "@location_permission_settings_body_android" },
-          { "label": "iPhone", "body": "@location_permission_settings_body_ios" }
+          {
+            "label": "Android",
+            "body": "@location_permission_settings_body_android"
+          },
+          {
+            "label": "iPhone",
+            "body": "@location_permission_settings_body_ios"
+          }
         ],
-        "buttons": ["@common_cancel", "@gs_activity_permission_settings_go"]
+        "buttons": [
+          "@common_cancel",
+          "@gs_activity_permission_settings_go"
+        ]
       },
       "items": [
         {
@@ -93,7 +106,7 @@
         {
           "q": "Bình thường có theo dõi vị trí của tôi không?",
           "a": [
-            "Không. Bình thường chúng tôi hoàn toàn không thu thập vị trí. Chỉ khi nhấn [@subject_home_emergency_button], vị trí <strong>tại đúng thời điểm đó được lấy một lần</strong> và chuyển đến gia đình; thông tin này sẽ bị xóa sau một ngày."
+            "Không. Bình thường chúng tôi hoàn toàn không thu thập vị trí. Chỉ khi nhấn [@subject_home_emergency_button], vị trí <strong>tại đúng thời điểm đó được lấy một lần</strong> và chuyển đến gia đình; vị trí này sẽ bị xóa vào nửa đêm của ngày hôm đó."
           ]
         }
       ]
@@ -112,7 +125,6 @@
       ]
     }
   ],
-
   "travel": {
     "heading": "Khi bạn đi du lịch nước ngoài",
     "items": [
@@ -133,7 +145,7 @@
       {
         "q": "Khi đi du lịch, tôi có cần đổi giờ gửi tin báo không?",
         "a": [
-          "Không. Giờ đã đặt được áp dụng <strong>theo nơi bạn đang ở</strong>. Nếu bạn đặt 18:00 thì khi đi du lịch, tin báo cũng được gửi lúc 18:00 giờ địa phương."
+          "Không. Giờ đã đặt được áp dụng <strong>theo nơi bạn đang ở</strong>. Nếu bạn đặt 18:00 thì khi đi du lịch, tin báo cũng được gửi vào khoảng 18:00 giờ địa phương."
         ]
       }
     ]
