@@ -396,7 +396,7 @@
   "flow_lbl_guardian": "Aplikacja opiekuna",
   "shorts_more": "Więcej filmów",
   "shorts_title": "Anbu w krótkich filmach",
-  "shorts_lead": "Chwile, gdy wiadomość dociera — bez dzwonienia.",
+  "shorts_lead": "Chwile, gdy dociera znak życia — bez dzwonienia.",
   "shorts_back": "Wróć na stronę główną"
  },
  "zh-TW": {
@@ -596,7 +596,7 @@
   "flow_lbl_guardian": "App del cuidador",
   "shorts_more": "Ver más vídeos",
   "shorts_title": "Anbu en vídeos cortos",
-  "shorts_lead": "Momentos en los que llegan noticias, sin necesidad de llamar.",
+  "shorts_lead": "Momentos en los que llega un aviso, sin necesidad de llamar.",
   "shorts_back": "Volver al inicio"
  },
  "ja": {
@@ -796,7 +796,7 @@
   "flow_lbl_guardian": "App van de contactpersoon",
   "shorts_more": "Meer video’s",
   "shorts_title": "Anbu in korte video’s",
-  "shorts_lead": "Momenten waarop een teken van leven binnenkomt – zonder te bellen.",
+  "shorts_lead": "Momenten waarop een check-in binnenkomt – zonder te bellen.",
   "shorts_back": "Terug naar home"
  },
  "it": {
@@ -896,7 +896,7 @@
   "flow_lbl_guardian": "App del caregiver",
   "shorts_more": "Guarda altri video",
   "shorts_title": "Anbu in brevi video",
-  "shorts_lead": "Momenti in cui arrivano notizie, senza bisogno di chiamare.",
+  "shorts_lead": "Momenti in cui arriva un check-in, senza bisogno di chiamare.",
   "shorts_back": "Torna alla home"
  },
  "pt-BR": {
@@ -996,7 +996,7 @@
   "flow_lbl_guardian": "App do cuidador",
   "shorts_more": "Ver mais vídeos",
   "shorts_title": "Anbu em vídeos curtos",
-  "shorts_lead": "Momentos em que as notícias chegam, sem precisar ligar.",
+  "shorts_lead": "Momentos em que o check-in chega, sem precisar ligar.",
   "shorts_back": "Voltar ao início"
  },
  "tr": {
@@ -1296,7 +1296,7 @@
   "flow_lbl_guardian": "देखभाल करने वाले का ऐप",
   "shorts_more": "और वीडियो देखें",
   "shorts_title": "छोटे वीडियो में Anbu",
-  "shorts_lead": "वे पल जब बिना फ़ोन किए हालचाल पहुँच जाता है।",
+  "shorts_lead": "वे पल जब बिना फ़ोन किए खैरियत पहुँच जाती है।",
   "shorts_back": "होम पर वापस"
  },
  "vi": {
@@ -1396,7 +1396,7 @@
   "flow_lbl_guardian": "Ứng dụng của người chăm sóc",
   "shorts_more": "Xem thêm video",
   "shorts_title": "Anbu qua những video ngắn",
-  "shorts_lead": "Những khoảnh khắc lời hỏi thăm đến nơi mà không cần gọi điện.",
+  "shorts_lead": "Những khoảnh khắc tin bình an đến nơi mà không cần gọi điện.",
   "shorts_back": "Về trang chủ"
  },
  "id": {
@@ -1596,7 +1596,7 @@
   "flow_lbl_guardian": "แอปของผู้ดูแล",
   "shorts_more": "ดูวิดีโอเพิ่มเติม",
   "shorts_title": "Anbu ในวิดีโอสั้น",
-  "shorts_lead": "ช่วงเวลาที่ความห่วงใยส่งถึงกัน โดยไม่ต้องโทร",
+  "shorts_lead": "ช่วงเวลาที่การแจ้งว่าสบายดีส่งถึง โดยไม่ต้องโทร",
   "shorts_back": "กลับหน้าแรก"
  },
  "sv": {
@@ -1696,7 +1696,7 @@
   "flow_lbl_guardian": "Kontaktpersonens app",
   "shorts_more": "Fler videor",
   "shorts_title": "Anbu i korta videor",
-  "shorts_lead": "Stunder då ett livstecken kommer fram – utan att någon ringer.",
+  "shorts_lead": "Stunder då en incheckning kommer fram – utan att någon ringer.",
   "shorts_back": "Till startsidan"
  },
  "ar": {
@@ -1796,7 +1796,7 @@
   "flow_lbl_guardian": "تطبيق المرافق",
   "shorts_more": "شاهد المزيد من الفيديوهات",
   "shorts_title": "Anbu في مقاطع قصيرة",
-  "shorts_lead": "لحظات تصل فيها الطمأنينة، دون الحاجة إلى اتصال.",
+  "shorts_lead": "لحظات تصل فيها رسالة الاطمئنان، دون الحاجة إلى اتصال.",
   "shorts_back": "العودة إلى الرئيسية"
  },
  "ko": {
