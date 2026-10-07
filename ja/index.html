@@ -210,7 +210,7 @@
             <div class="phead">現在2人の安否を<br>見守っています。</div>
             <div class="psum">今日の安否まとめ</div>
             <div class="plegend"><span><i></i>安全: 1</span><span><i class="c"></i>注意: 1</span></div>
-            <div class="plist">見守り対象者リスト</div>
+            <div class="plist">見守られる方の一覧</div>
 
             <div class="cards">
               <div class="scard">
@@ -240,7 +240,7 @@
               </div>
             </div>
             <div class="dots"><i class="on"></i><i></i></div>
-            <div class="addbtn"><span class="circle">+</span><span class="t">見守り対象者を追加</span></div>
+            <div class="addbtn"><span class="circle">+</span><span class="t">見守られる方を追加</span></div>
           </div>
           <div class="pnav">
             <div class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/></svg>ホーム</div>
@@ -370,7 +370,7 @@
   <div class="made-inner">
     <div class="eyebrow">Anbu をつくりながら</div>
     <h2 class="section-title">守った<em>六つのこと</em></h2>
-    <p class="section-sub">スマホを使うことは、ずっと前から私たちの一日の一部になりました。歩く、スマホのロックを解く、画面をのぞく——そんな当たり前の瞬間が、そのまま「今日も元気に過ごしている」という証です。<br><br>Anbu はその日常の跡を読み取り、必要なことだけを見守り人へお伝えします。</p>
+    <p class="section-sub">スマホを使うことは、ずっと前から私たちの一日の一部になりました。歩く、スマホのロックを解く、画面をのぞく——そんな当たり前の瞬間が、そのまま「今日も元気に過ごしている」という証です。<br><br>Anbu はその日常の跡を読み取り、必要なことだけを見守る方へお伝えします。</p>
 
     <div class="made-grid">
       <div class="made-item reveal">
@@ -410,7 +410,7 @@
 <section class="levels">
   <div class="levels-inner">
     <div class="levels-copy">
-      <div class="eyebrow">見守り人アプリの通知</div>
+      <div class="eyebrow">見守る側アプリの通知</div>
       <h2 class="section-title">安否のお知らせは <em>こう届きます。</em></h2>
       <p class="section-sub">「正常」から「緊急」まで、5つの段階で状況を落ち着いてお伝えします。</p>
       <ul class="levels-list">
@@ -429,7 +429,7 @@
           <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
           <div class="ntitle">通知</div>
           <div class="nlist">
-            <div class="ncard nc-normal"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.2 14.2-4-4 1.4-1.4 2.6 2.6 5.6-5.6 1.4 1.4-7 7z"/></svg></span><b>正常</b><em>18:00</em></div><div class="nbody">見守り対象者の安否確認を正常に受信しました。</div></div>
+            <div class="ncard nc-normal"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.2 14.2-4-4 1.4-1.4 2.6 2.6 5.6-5.6 1.4 1.4-7 7z"/></svg></span><b>正常</b><em>18:00</em></div><div class="nbody">見守られる方の安否確認を正常に受信しました。</div></div>
             <div class="ncard nc-caution"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></span><b>注意</b><em>20:00</em></div><div class="nbody">本日予定の安否確認がまだ届いていません。直接ご確認ください。</div></div>
             <div class="ncard nc-warning"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 4.3 2.6 20.5h18.8L12 4.3zm1 12.7h-2v-2h2v2zm0-4h-2V9.5h2V13z"/></svg></span><b>警告</b><em>20:00</em></div><div class="nbody">安否確認が連続して届いていません。直接のご確認が必要です。</div></div>
             <div class="ncard nc-urgent"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></span><b>緊急</b><em>09:00</em></div><div class="nbody">3日間、安否確認がありません。至急ご確認ください。</div></div>
@@ -437,7 +437,7 @@
           </div>
         </div>
         <!-- 좌·우로 번갈아 튀어나오는 알림 카드 (.nscreen 바깥이라 잘리지 않는다) -->
-        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.2 14.2-4-4 1.4-1.4 2.6 2.6 5.6-5.6 1.4 1.4-7 7z"/></svg></span><b>正常</b><em>18:00</em></div><div class="nbody">見守り対象者の安否確認を正常に受信しました。</div></div>
+        <div class="npop np1 nc-normal"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.2 14.2-4-4 1.4-1.4 2.6 2.6 5.6-5.6 1.4 1.4-7 7z"/></svg></span><b>正常</b><em>18:00</em></div><div class="nbody">見守られる方の安否確認を正常に受信しました。</div></div>
         <div class="npop np2 nc-caution"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></span><b>注意</b><em>20:00</em></div><div class="nbody">本日予定の安否確認がまだ届いていません。直接ご確認ください。</div></div>
         <div class="npop np3 nc-warning"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 4.3 2.6 20.5h18.8L12 4.3zm1 12.7h-2v-2h2v2zm0-4h-2V9.5h2V13z"/></svg></span><b>警告</b><em>20:00</em></div><div class="nbody">安否確認が連続して届いていません。直接のご確認が必要です。</div></div>
         <div class="npop np4 nc-urgent"><div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></span><b>緊急</b><em>09:00</em></div><div class="nbody">3日間、安否確認がありません。至急ご確認ください。</div></div>
@@ -458,7 +458,7 @@
      클래스 접두사 k — .c/.f/.n/.p 는 히어로·알림·긴급 섹션이 이미 쓰고 있다. -->
 <section class="limit">
   <div class="limit-inner">
-    <div class="eyebrow">見守り対象者とつながる</div>
+    <div class="eyebrow">見守られる方とつながる</div>
     <h2 class="section-title"><em>5人まで</em>安否を確認できます。</h2>
 
     <div class="kflow" aria-hidden="true">
@@ -473,7 +473,7 @@
             <div class="kappbar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9.5 14.5 14.5 9.5"/><path d="M11 7 13 5a4 4 0 0 1 6 6l-2 2"/><path d="M13 17l-2 2a4 4 0 0 1-6-6l2-2"/></svg><span>接続管理</span></div>
             <div class="kpad">
               <div class="khead">
-                <span class="khl">つながっている見守り対象者 <b class="kswap"><i class="ka">3 / 5人</i><i class="kb">4 / 5人</i></b></span>
+                <span class="khl">つながっている見守られる方 <b class="kswap"><i class="ka">3 / 5人</i><i class="kb">4 / 5人</i></b></span>
                 <span class="kplus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg><em class="ktap ktapa"></em></span>
               </div>
               <div class="klist">
@@ -494,12 +494,12 @@
           <!-- 보호 대상자 연결(추가) 화면 -->
           <div class="kscr kadd">
             <div class="kbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
-            <div class="kappbar"><span class="kback">&#8249;</span><span>見守り対象者とつながる</span></div>
+            <div class="kappbar"><span class="kback">&#8249;</span><span>見守られる方とつながる</span></div>
             <div class="kpad">
-              <p class="kguide">つながりたい見守り対象者の固有コードと呼び名を入力してください。</p>
+              <p class="kguide">つながりたい見守られる方の固有コードと呼び名を入力してください。</p>
               <span class="klab">固有コード（7桁）</span>
               <div class="kfld"><em class="kv kv1">K7M-4PXR</em></div>
-              <span class="klab">見守り対象者の呼び名</span>
+              <span class="klab">見守られる方の呼び名</span>
               <div class="kfld"><em class="kv kv2">叔父</em></div>
               <span class="klab">電話番号（任意）</span>
               <div class="kfld"><em class="kv kv3">09012345678</em></div>
@@ -514,7 +514,7 @@
           </div>
 
         </div></div>
-        <span class="klbl">見守り人アプリ · 接続管理</span>
+        <span class="klbl">見守る側アプリ · 接続管理</span>
       </div>
 
       <span class="karrow" aria-hidden="true"></span>
@@ -529,7 +529,7 @@
             <div class="kdhead"><span class="ka">現在3人の安否を<br>見守っています。</span><span class="kb">現在4人の安否を<br>見守っています。</span></div>
             <div class="kdsum">今日の安否まとめ</div>
             <div class="kleg"><span><i></i>安全: <b class="kswap"><i class="ka">3</i><i class="kb">4</i></b></span></div>
-            <div class="kdlist">見守り対象者リスト</div>
+            <div class="kdlist">見守られる方の一覧</div>
             <div class="kview">
               <div class="ktrack">
                 <div class="kdcard"><div class="kdr"><span class="kdn">母<span class="kbat">92%</span></span><span class="kpill">安全</span></div><div class="kdact">活動量: 活発</div><div class="kplot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="t"></i></div><div class="kdlast">最終確認：2時間前</div></div>
@@ -539,7 +539,7 @@
               </div>
             </div>
             <div class="kdots"><i class="kt1"></i><i class="kt2"></i><i class="kt3"></i><i class="kt4"></i></div>
-            <div class="kaddbtn"><span class="kcircle">+</span><span>見守り対象者を追加</span></div>
+            <div class="kaddbtn"><span class="kcircle">+</span><span>見守られる方を追加</span></div>
           </div>
           <div class="knav">
             <div class="on"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/></svg>ホーム</div>
@@ -548,7 +548,7 @@
             <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5" stroke-linecap="round"/></svg>設定</div>
           </div>
         </div></div>
-        <span class="klbl">見守り人アプリ · ホーム画面</span>
+        <span class="klbl">見守る側アプリ · ホーム画面</span>
       </div>
     </div>
   </div>
@@ -583,21 +583,21 @@
               <div><b>安否の時刻を変更</b><i>毎日 18:00</i></div>
               <span class="fchev">&#8250;</span></div>
             <div class="frow"><span class="fbadge"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg></span>
-              <div><b>今すぐ「元気です」を送る</b><i>見守り人に「心配いらないよ」と伝えましょう</i></div></div>
+              <div><b>今すぐ「元気です」を送る</b><i>見守る方に「心配いらないよ」と伝えましょう</i></div></div>
             <div class="fsos"><span class="fbadge"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
-              <div><b>助けが必要です</b><i>見守り人に緊急事態を知らせます</i></div>
+              <div><b>助けが必要です</b><i>見守る方に緊急事態を知らせます</i></div>
               <em class="ftap tapa"></em></div>
           </div>
           <div class="fscrim"></div>
           <div class="fdlg">
             <b>緊急ヘルプ要請</b>
-            <p>すべての見守り人に緊急通知が送られます。<br>現在地もあわせて伝わります。<br>助けを求めますか？</p>
+            <p>すべての見守る方に緊急通知が送られます。<br>現在地もあわせて伝わります。<br>助けを求めますか？</p>
             <div class="fin">ひとことメッセージ（任意）</div>
             <div class="fbtns"><span>キャンセル</span><em>緊急要請を送る</em>
               <i class="ftap tapb"></i></div>
           </div>
         </div></div>
-        <span class="flbl">見守り対象者のアプリ</span>
+        <span class="flbl">見守られる側のアプリ</span>
       </div>
       <span class="farrow" aria-hidden="true"></span>
       <div class="fstep fs2">
@@ -608,12 +608,12 @@
             <div class="ftitle">通知</div>
             <div class="ncard nc-urgent">
               <div class="nrow"><span class="nic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></span><b>緊急</b><em>14:20</em></div>
-              <div class="nbody">見守り対象者がご自身で助けを求めました。至急ご確認ください。</div>
+              <div class="nbody">見守られる方がご自身で助けを求めました。至急ご確認ください。</div>
               <div class="fmap"><span>🗺️ 位置を見る</span><i class="ftap tapc"></i></div>
             </div>
           </div>
         </div></div>
-        <span class="flbl">見守り人のアプリ</span>
+        <span class="flbl">見守る側のアプリ</span>
       </div>
       <span class="farrow" aria-hidden="true"></span>
       <div class="fstep fs3">
@@ -629,12 +629,12 @@
             </svg>
           </div>
           <div class="fmapinfo">
-            <div><span>見守り対象者</span><b>母</b></div>
+            <div><span>見守られる方</span><b>母</b></div>
             <div><span>精度</span><b>12 m</b></div>
             <div class="ext">地図アプリで開く</div>
           </div>
         </div></div>
-        <span class="flbl">見守り人のアプリ</span>
+        <span class="flbl">見守る側のアプリ</span>
       </div>
     </div>
   </div>

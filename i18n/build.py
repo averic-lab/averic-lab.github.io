@@ -153,7 +153,8 @@ def app_tokens(code, app_all):
     """폰 목업에 넣을 앱 문구를 APP_* 토큰으로 만든다. 자리표시자는 여기서 채운다."""
     a = app_all[LANG_TO_STRINGS[code]]
     checking = a["guardian_checking_subjects"].replace("@count", "2")
-    last = a["guardian_last_check_hours"].replace("@hours", "2")
+    # 아랍어는 2가 쌍수형(ساعتين)이라 기본 키(3~10 형태)에 2를 넣으면 문법이 틀린다 — 3을 쓴다
+    last = a["guardian_last_check_hours"].replace("@hours", "3" if code == "ar" else "2")
     # 연결관리 카운터 — @max 는 앱의 기본 상한(users.max_subjects)과 같은 5
     count = a["connection_managed_count_value"].replace("@max", "5")
     return {
