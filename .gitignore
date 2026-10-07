@@ -5,3 +5,9 @@ __pycache__/
 # 영상에 섞어 넣은 결과물(media/shorts/*.mp4)만 공개한다.
 media/bgm/
 media/sfx/
+
+# 3D 앱 소개 편(anbu-3d)은 언어당 약 29MB 라 영상 파일을 저장소에 두지 않는다.
+# 유튜브에 먼저 올리고, 사이트(/{언어}/shorts.html)는 publish.json 의 youtube_id 로 재생한다 — 저장소엔 jpg 만.
+media/shorts/*/anbu-3d*.mp4
+# 시험 렌더 잔재
+media/shorts/*/anbu3d_*.mp4

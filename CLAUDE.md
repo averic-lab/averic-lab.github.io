@@ -502,5 +502,6 @@ git push        # → averic.co.kr 자동 반영
 ## 규칙
 
 - 응답·주석·커밋 메시지는 **한글**.
+- **번역(홈페이지 `i18n/translations.json`·`_faq-build/copy/*.json`·쇼츠 `_shorts-build`)을 새로 쓰거나 고치기 전에 앱 저장소 `.claude/translation_glossary.md`를 먼저 읽는다** — 안부·대상자·보호자 용어와 금지어의 유일한 기준(위 번역 규칙 7번 참조).
 - `test/`·`preview/`는 산출물 — 항상 `_beta-test-build/`의 스크립트를 고쳐 재빌드.
 - 배포는 사용자가 요청할 때만 `git push`.
