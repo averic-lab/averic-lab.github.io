@@ -149,12 +149,72 @@ def head_links(active, page="", codes=None):
     return "\n".join(lines)
 
 
-def app_tokens(code, app_all):
+# ── 앱이 문구를 조합하는 규칙 — 앱 코드와 같은 표를 쓴다(값만 번역 파일에 있고 조합은 코드에 있다) ──
+# 천 단위 구분자: 앱 NumberText.format = 서버 messages._THOUSANDS_SEP
+_DOT_LANGS = {"de", "es", "it", "nl", "pt", "tr", "id", "vi"}
+_SPACE_LANGS = {"fr", "ru", "pl", "sv"}
+
+
+def app_num(n, code):
+    lc = code.split("-")[0]
+    sep = "." if lc in _DOT_LANGS else "\u00a0" if lc in _SPACE_LANGS else ","
+    return f"{n:,}".replace(",", sep)
+
+
+def app_sep(code, ko_spaced=False):
+    """앱 labelSeparator() — "라벨: 값" 사이 구분자. 프랑스어 앞 공백은 줄바꿈 방지용 nbsp."""
+    lc = code.split("-")[0]
+    if lc == "ko":
+        return " : " if ko_spaced else ": "
+    if lc == "fr":
+        return "\u00a0: "
+    if lc in ("ja", "zh"):
+        return "："
+    return ": "
+
+
+def _dart_value(code, key):
+    """app-strings.json 추출 목록(앱 저장소와의 키 계약)에 없는 키를 번역 파일에서 직접 읽는다.
+    추출 목록에 넣으면 앱 저장소의 키 계약이 늘어나므로 홈 히어로에만 필요한 두 키는 여기서 읽는다."""
+    sys.path.insert(0, os.path.join(ROOT, "_faq-build"))
+    import extract_strings as ex
+    with open(os.path.join(ex.TRANS, f"{LANG_TO_STRINGS[code]}.dart"), encoding="utf-8") as f:
+        m = re.search(rf"'{re.escape(key)}'\s*:\s*{ex.VALUE_RE}", f.read())
+    if not m:
+        sys.exit(f"오류: {code} 앱 번역에 {key} 가 없습니다")
+    return ex.unescape(m.group(1) if m.group(1) is not None else m.group(2))
+
+
+_SERVER_MSG = None
+
+
+def _server_messages():
+    """히어로 푸시는 서버가 실제로 보내는 정상 안부 알림이다(push_auto_report, 걸음수 있음).
+    제목·본문이 앱 번역 파일이 아니라 서버 i18n/messages.py 에 있어 거기서 읽는다."""
+    global _SERVER_MSG
+    if _SERVER_MSG is None:
+        import importlib.util
+        path = os.path.join(os.path.dirname(ROOT), "anbucheck-server", "i18n", "messages.py")
+        if not os.path.exists(path):
+            sys.exit(f"오류: 서버 저장소가 없습니다 — {path}")
+        spec = importlib.util.spec_from_file_location("server_messages", path)
+        _SERVER_MSG = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(_SERVER_MSG)
+    return _SERVER_MSG
+
+
+def app_tokens(code, app_all, nick1):
     """폰 목업에 넣을 앱 문구를 APP_* 토큰으로 만든다. 자리표시자는 여기서 채운다."""
     a = app_all[LANG_TO_STRINGS[code]]
     checking = a["guardian_checking_subjects"].replace("@count", "2")
-    # 아랍어는 2가 쌍수형(ساعتين)이라 기본 키(3~10 형태)에 2를 넣으면 문법이 틀린다 — 3을 쓴다
-    last = a["guardian_last_check_hours"].replace("@hours", "3" if code == "ar" else "2")
+    # 아랍어는 앱처럼 복수형 키를 고른다(NumberText.trAr: 2 → _two "قبل ساعتين")
+    last = (_dart_value(code, "guardian_last_check_hours_two") if code == "ar"
+            else a["guardian_last_check_hours"]).replace("@hours", "2")
+    # 정상 안부 푸시 — 서버 push_auto_report 와 같은 조합: 제목 + "별칭 · 걸음수 본문"(decorate_body)
+    sm = _server_messages()
+    locale = LANG_TO_STRINGS[code][:2] + "_" + LANG_TO_STRINGS[code][3:].upper()
+    push_title = sm.MESSAGES[locale]["push_auto_report_title"]
+    push_body = f"{nick1} · {sm.get_steps_message(locale, 6240)}"
     # 연결관리 카운터 — @max 는 앱의 기본 상한(users.max_subjects)과 같은 5
     count = a["connection_managed_count_value"].replace("@max", "5")
     return {
@@ -165,7 +225,9 @@ def app_tokens(code, app_all):
         "APP_ST_CAUTION": a["guardian_status_caution"],
         "APP_ST_CONFIRMED": a["guardian_status_confirmed"],
         "APP_SUBJECT_LIST": a["guardian_subject_list"],
-        "APP_ACTIVITY": f'{a["guardian_activity_prefix"]}: {a["guardian_activity_active"]}',
+        "APP_ACTIVITY": a["guardian_activity_prefix"] + app_sep(code, ko_spaced=True) + a["guardian_activity_active"],
+        "APP_SEP": app_sep(code),
+        "APP_PEAK": app_num(6240, code),
         "APP_LAST_CHECK": last,
         "APP_STEPS": a["guardian_chart_y_axis_steps"],
         "APP_LAST_7": a["guardian_chart_x_axis_last_7_days"],
@@ -173,8 +235,9 @@ def app_tokens(code, app_all):
         "APP_SAFETY_NEEDED": a["guardian_safety_needed"],
         "APP_CALL_NOW": a["guardian_call_now"],
         "APP_CONFIRM_SAFETY": a["guardian_confirm_safety"],
-        "APP_PUSH_TITLE": a["notifications_level_caution"],
-        "APP_PUSH_BODY": a["noti_caution_missing_body"],
+        "APP_PUSH_TITLE": push_title,
+        "APP_PUSH_BODY": push_body,
+        "APP_PUSH_NOW": _dart_value(code, "onboarding_push_now"),
         "APP_NAV_HOME": a["nav_home"],
         "APP_NAV_CONNECTION": a["nav_connection"],
         "APP_NAV_NOTIFICATION": a["nav_notification"],
@@ -190,7 +253,7 @@ def app_tokens(code, app_all):
         "APP_NOTI_CAUTION": a["noti_caution_missing_body"],
         "APP_NOTI_WARNING": a["noti_warning_body"],
         "APP_NOTI_URGENT": a["noti_urgent_body"].replace("@days", "3"),
-        "APP_NOTI_STEPS": a["noti_steps_body"].replace("@steps", "3,482"),
+        "APP_NOTI_STEPS": a["noti_steps_body"].replace("@steps", app_num(3482, code)),
         # "도움이 필요해요" 섹션 — 긴급 요청 흐름
         "APP_SOS_BTN": a["subject_home_emergency_button"],
         "APP_SOS_DESC": a["subject_home_emergency_desc"],
@@ -370,7 +433,7 @@ def build_page(code, strings, template, app_all):
         "ASSET_VER": asset_ver(),
         "APP_STORE_URL": f"https://apps.apple.com/{APP_STORE_COUNTRY[code]}/app/id6762031850",
     }
-    repl.update(app_tokens(code, app_all))
+    repl.update(app_tokens(code, app_all, strings["nick1"]))
     repl.update(strings)
     repl["OG_TAGS"] = og_tags(f"{SITE}/{code}/", strings["og_title"], strings["og_desc"],
                               og_locale, strings["brand"], strings["tw_desc"])

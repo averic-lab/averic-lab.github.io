@@ -1,0 +1,37 @@
+// 자동 생성(gen_feature.py) — 직접 고치지 말 것
+window.F = {
+ "bcp": "tr",
+ "dir": "ltr",
+ "appbar": "Anbu Koruyucu",
+ "phead": "Şu an takip ettiğiniz<br>kişi sayısı: 2",
+ "psum": "Bugünün özeti",
+ "lg_ok": "Güvende: 1",
+ "lg_caution": "Dikkat: 1",
+ "plist": "Yakınlarınız",
+ "mom": "Anne",
+ "dad": "Baba",
+ "pill_ok": "✅ Güvende",
+ "pill_caution": "Dikkat",
+ "act": "Etkinlik: Hareketli",
+ "steps": "Adım",
+ "last7": "Son 7 gün",
+ "peak": "6.240",
+ "last": "Son haber: 2 sa önce",
+ "warn": "Kontrol gerekli",
+ "call": "Hemen ara",
+ "confirm": "Güvende olduğunu onayla",
+ "add": "Yakın ekle",
+ "now": "şimdi",
+ "nav": [
+  "Ana sayfa",
+  "Bağlantılar",
+  "Bildirimler",
+  "Ayarlar"
+ ],
+ "push_title": "✅ Bugün haber alındı",
+ "co_copy": "Kodu kopyala",
+ "co_share": "Kodu paylaş",
+ "co_copy_sm": "Kopyala",
+ "co_share_sm": "Paylaş",
+ "push_body": "Anne · Bugün 6.240 adım attı."
+};

@@ -114,7 +114,7 @@
           <div class="pbody">
             <div class="phead">{{APP_CHECKING}}</div>
             <div class="psum">{{APP_TODAY_SUMMARY}}</div>
-            <div class="plegend"><span><i></i>{{APP_ST_NORMAL}}: 1</span><span><i class="c"></i>{{APP_ST_CAUTION}}: 1</span></div>
+            <div class="plegend"><span><i></i>{{APP_ST_NORMAL}}{{APP_SEP}}1</span><span><i class="c"></i>{{APP_ST_CAUTION}}{{APP_SEP}}1</span></div>
             <div class="plist">{{APP_SUBJECT_LIST}}</div>
 
             <div class="cards">
@@ -123,7 +123,7 @@
                 <div class="r2"><span class="act">{{APP_ACTIVITY}}</span></div>
                 <div class="slot">
                   <div class="ghost">
-                    <div class="chd"><span>{{APP_STEPS}}</span><b class="peak">6,240</b></div>
+                    <div class="chd"><span>{{APP_STEPS}}</span><b class="peak">{{APP_PEAK}}</b></div>
                     <div class="plot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="today"></i></div>
                     <div class="xlab">{{APP_LAST_7}}</div>
                   </div>
@@ -157,7 +157,7 @@
 
         <!-- 화면 밖으로 떠오른 조각들 (.screen 바깥이라 잘리지 않는다) -->
         <div class="push">
-          <div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z"/></svg></span><span class="app">{{APP_NAME}}</span></div>
+          <div class="r"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,21 C2,15 5,5 12,8 C19,5 22,15 12,21 Z"/></svg></span><span class="app">{{APP_NAME}}</span><span class="now">{{APP_PUSH_NOW}}</span></div>
           <div class="ti">{{APP_PUSH_TITLE}}</div>
           <div class="bo">{{APP_PUSH_BODY}}</div>
         </div>
@@ -185,7 +185,7 @@
         </div>
 
         <div class="pop">
-          <div class="chd"><span>{{APP_STEPS}}</span><b class="peak">6,240</b></div>
+          <div class="chd"><span>{{APP_STEPS}}</span><b class="peak">{{APP_PEAK}}</b></div>
           <div class="plot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="today"></i></div>
           <div class="xlab">{{APP_LAST_7}}</div>
         </div>
@@ -428,7 +428,7 @@
           <div class="kpad">
             <div class="kdhead"><span class="ka">{{APP_CHECKING3}}</span><span class="kb">{{APP_CHECKING4}}</span></div>
             <div class="kdsum">{{APP_TODAY_SUMMARY}}</div>
-            <div class="kleg"><span><i></i>{{APP_ST_NORMAL}}: <b class="kswap"><i class="ka">3</i><i class="kb">4</i></b></span></div>
+            <div class="kleg"><span><i></i>{{APP_ST_NORMAL}}{{APP_SEP}}<b class="kswap"><i class="ka">3</i><i class="kb">4</i></b></span></div>
             <div class="kdlist">{{APP_SUBJECT_LIST}}</div>
             <div class="kview">
               <div class="ktrack">

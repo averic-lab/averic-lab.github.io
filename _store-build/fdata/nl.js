@@ -1,0 +1,37 @@
+// 자동 생성(gen_feature.py) — 직접 고치지 말 것
+window.F = {
+ "bcp": "nl",
+ "dir": "ltr",
+ "appbar": "Anbu Guardian",
+ "phead": "Naasten die u<br>nu volgt: 2",
+ "psum": "Overzicht van vandaag",
+ "lg_ok": "Alles goed: 1",
+ "lg_caution": "Let op: 1",
+ "plist": "Uw naasten",
+ "mom": "Mama",
+ "dad": "Papa",
+ "pill_ok": "✅ Alles goed",
+ "pill_caution": "Let op",
+ "act": "Activiteit: Actief",
+ "steps": "Stappen",
+ "last7": "Afgelopen 7 dagen",
+ "peak": "6.240",
+ "last": "Laatste check-in: 2 uur geleden",
+ "warn": "Ga na of alles goed is",
+ "call": "Nu bellen",
+ "confirm": "Veiligheid bevestigen",
+ "add": "Naaste toevoegen",
+ "now": "nu",
+ "nav": [
+  "Start",
+  "Verbindingen",
+  "Meldingen",
+  "Instellingen"
+ ],
+ "push_title": "✅ Check-in van vandaag ontvangen",
+ "co_copy": "Code kopiëren",
+ "co_share": "Code delen",
+ "co_copy_sm": "Kopiëren",
+ "co_share_sm": "Delen",
+ "push_body": "Mama · Vandaag 6.240 stappen gezet."
+};

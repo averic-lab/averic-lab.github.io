@@ -1,0 +1,61 @@
+/* Play 그래픽 이미지 1024×500 — 홈페이지 히어로(style.css 의 .pwrap/.phone/.push/.pop/.pop2/.codecard) 구성 그대로,
+   폰은 세워서(기울임 없이 Y축만 살짝 돌림) 금속 테두리에 두께를 준다. 배경·Anbu 글자 배치는 기존 Play 그래픽과 같다. */
+html, body { margin: 0; width: 1024px; height: 500px; overflow: hidden; background: #050b2a; }
+.fg { position: relative; width: 1024px; height: 500px; overflow: hidden; color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Apple SD Gothic Neo", "Pretendard", sans-serif; }
+.fg > * { position: absolute; }
+.bg { left: 0; top: 0; width: 1024px; height: 500px;
+  background:
+    radial-gradient(360px 150px at 740px 520px, rgba(40,235,255,.75), transparent 72%),
+    radial-gradient(620px 330px at 760px 520px, rgba(0,170,255,.42), transparent 72%),
+    radial-gradient(700px 520px at 880px 260px, rgba(40,90,230,.45), transparent 70%),
+    radial-gradient(500px 420px at 120px 120px, rgba(30,70,190,.35), transparent 70%),
+    linear-gradient(105deg, #040a26 0%, #081a55 42%, #0a2a7a 70%, #0a3591 100%); }
+#spark { left: 0; top: 0; }
+.floor { left: 420px; top: 452px; width: 640px; height: 60px; border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 40%, rgba(120,245,255,.55), rgba(0,190,255,.18) 45%, transparent 72%); filter: blur(6px); }
+.title { left: 62px; top: 40px; }
+.title b { display: block; font-size: 104px; font-weight: 700; letter-spacing: -1px; line-height: 1; color: #fff; text-shadow: 0 6px 30px rgba(0,30,90,.45); }
+.title i { display: block; margin-top: 26px; width: 290px; height: 3px; border-radius: 2px;
+  background: linear-gradient(90deg, rgba(60,230,255,0), #3ce6ff 18%, #8ff4ff 60%, rgba(60,230,255,.2));
+  box-shadow: 0 0 10px rgba(60,230,255,.9), 0 0 22px rgba(60,230,255,.5); }
+
+/* 폰 — 세워 둔다(홈페이지는 rotateX·rotateZ 로 눕혀 있다) */
+.stage2 { left: 556px; top: 26px; transform-origin: 0 0; transform: scale(.64); }
+.pwrap { margin: 0 !important; perspective: 1500px; perspective-origin: 40% 45%; }
+.pwrap *, .pwrap { animation: none !important; }
+.pwrap .phone { transform: rotateY(-21deg) rotateX(0deg) rotateZ(0deg);
+  padding: 11px; border-radius: 52px;
+  /* 앞면 테두리 — 차가운 은색(티타늄) 금속: 밝은 띠와 어두운 띠가 번갈아 반사 */
+  background: linear-gradient(150deg, #ffffff 0%, #e3e9f2 9%, #9fadc2 22%, #f4f7fb 36%, #c3ccd9 50%, #7f8ca2 66%, #e9eef5 82%, #aab6c7 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.9),
+    inset 0 1px 2px rgba(255,255,255,1),
+    inset 0 -2px 4px rgba(40,55,80,.45),
+    0 0 0 1px rgba(40,55,90,.6),
+    -40px 60px 120px -30px rgba(0,8,40,.85); }
+.pwrap .phone::before { content: ""; position: absolute; inset: 6px; border-radius: 46px; background: #03040a; z-index: 0;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.12), 0 0 0 1px rgba(90,105,135,.55); }
+.pwrap .phone::after { border-radius: 52px; z-index: 6;
+  background: linear-gradient(115deg, rgba(255,255,255,.26) 0%, rgba(255,255,255,0) 18%, rgba(255,255,255,0) 70%, rgba(255,255,255,.10) 100%); }
+.pwrap .screen { position: relative; z-index: 1; border-radius: 41px; }
+/* 옆면(두께) — 뒤로 겹친 레이어. 바깥쪽 가장자리만 보인다 */
+.pwrap .ext { position: absolute; inset: 0; transform-style: preserve-3d; z-index: -1; pointer-events: none; }
+.pwrap .ext i { position: absolute; inset: 0; border-radius: 52px;
+  background: linear-gradient(90deg, #6d7a90 0%, #dfe6ef 14%, #8794a9 40%, #f2f5f9 62%, #8a97ab 85%, #cdd6e2 100%); }
+
+/* 푸시 — 정상 안부 알림(실제 앱 아이콘). 걸음수는 차트의 오늘 막대(가장 높은 주황 막대 = 6,240)와 같다 */
+.push .ico-img { background: none; } .push .ico-img img { width: 100%; height: 100%; display: block; border-radius: 6px; }
+.push .now { margin-inline-start: auto; font-size: 10.5px; color: #9AA0AE; }
+
+/* 아랍어 — 구도 좌우 반전: 제목은 오른쪽, 폰은 왼쪽에서 제목 쪽(오른쪽)을 바라본다.
+   폰 화면 안쪽은 dir=rtl 로 앱(아랍어)과 같이 흐르고, 떠오른 조각들의 자리는 홈페이지 아랍어판과 같다. */
+[dir="rtl"] .bg, [dir="rtl"] #spark { transform: scaleX(-1); }
+[dir="rtl"] .floor { left: -36px; }
+[dir="rtl"] .title { left: auto; right: 62px; }
+[dir="rtl"] .title i { margin-inline-start: auto; transform: scaleX(-1); }
+[dir="rtl"] .stage2 { left: 236px; }
+[dir="rtl"] .pwrap { perspective-origin: 60% 45%; }
+[dir="rtl"] .pwrap .phone { transform: rotateY(21deg);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.9), inset 0 1px 2px rgba(255,255,255,1), inset 0 -2px 4px rgba(40,55,80,.45),
+    0 0 0 1px rgba(40,55,90,.6), 40px 60px 120px -30px rgba(0,8,40,.85); }

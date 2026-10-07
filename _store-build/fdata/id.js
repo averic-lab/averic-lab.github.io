@@ -1,0 +1,37 @@
+// 자동 생성(gen_feature.py) — 직접 고치지 말 것
+window.F = {
+ "bcp": "id",
+ "dir": "ltr",
+ "appbar": "Anbu Pendamping",
+ "phead": "Sedang memantau kabar<br>2 orang.",
+ "psum": "Ringkasan hari ini",
+ "lg_ok": "Aman: 1",
+ "lg_caution": "Perhatian: 1",
+ "plist": "Orang tersayang",
+ "mom": "Ibu",
+ "dad": "Ayah",
+ "pill_ok": "✅ Aman",
+ "pill_caution": "Perhatian",
+ "act": "Aktivitas: Aktif",
+ "steps": "Langkah",
+ "last7": "7 hari terakhir",
+ "peak": "6.240",
+ "last": "Kabar terakhir: 2 jam lalu",
+ "warn": "Perlu diperiksa",
+ "call": "Telepon sekarang",
+ "confirm": "Konfirmasi aman",
+ "add": "Tambah orang tersayang",
+ "now": "sekarang",
+ "nav": [
+  "Beranda",
+  "Koneksi",
+  "Notifikasi",
+  "Pengaturan"
+ ],
+ "push_title": "✅ Kabar hari ini diterima",
+ "co_copy": "Salin kode",
+ "co_share": "Bagikan kode",
+ "co_copy_sm": "Salin",
+ "co_share_sm": "Bagikan",
+ "push_body": "Ibu · Hari ini berjalan 6.240 langkah."
+};

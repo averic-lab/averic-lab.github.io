@@ -1,0 +1,98 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Play 그래픽 이미지 1024×500 — 홈페이지 히어로 구도 + 노을 그라데이션 배경</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="feature.css">
+<script>
+  // ?lang=xx → fdata/xx.js (gen_feature.py 가 앱·서버 번역에서 만든 글자)
+  const LANG = new URLSearchParams(location.search).get('lang') || 'ko';
+  document.write('<script src="fdata/' + LANG + '.js"><\/script>');
+</script>
+</head><body>
+<div class="fg">
+  <div class="bg"></div>
+  <svg id="spark" viewBox="0 0 1024 500" width="1024" height="500"></svg>
+  <div class="floor"></div>
+  <div class="title"><b>Anbu</b><i></i></div>
+
+  <!-- 홈페이지 히어로(ko/index.html)의 폰 + 떠오른 조각들을 그대로 옮긴 것. 글자는 한국어 -->
+  <div class="stage2"><div class="pwrap">
+   <div class="phone">
+    <div class="ext"></div>
+    <div class="screen">
+      <div class="statusbar"><span>9:41</span><span>&#9646;&#9646;&#9646;</span></div>
+      <div class="appbar" data-t="appbar"></div>
+      <div class="pbody">
+        <div class="phead" data-h="phead"></div>
+        <div class="psum" data-t="psum"></div>
+        <div class="plegend"><span><i></i><b data-t="lg_ok"></b></span><span><i class="c"></i><b data-t="lg_caution"></b></span></div>
+        <div class="plist" data-t="plist"></div>
+        <div class="cards">
+          <div class="scard">
+            <div class="r1"><span class="nm"><b data-t="mom"></b><span class="bat">85%</span></span><span class="pill" data-t="pill_ok"></span></div>
+            <div class="r2"><span class="act" data-t="act"></span></div>
+            <div class="slot"><div class="ghost"><div class="chd"><span data-t="steps"></span><b class="peak" data-t="peak"></b></div>
+              <div class="plot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="today"></i></div><div class="xlab" data-t="last7"></div></div><div class="glass"></div></div>
+            <div class="last" data-t="last"></div>
+          </div>
+          <div class="scard c2">
+            <div class="r1"><span class="nm" data-t="dad"></span><span class="pill" data-t="pill_caution"></span></div>
+            <div class="slot2"><div class="ghost2"><div class="warn" data-t="warn"></div><div class="pbtn" data-t="call"></div><div class="pbtn o" data-t="confirm"></div></div><div class="glass"></div></div>
+            <div class="last" data-t="last"></div>
+          </div>
+        </div>
+        <div class="dots"><i class="on"></i><i></i></div>
+        <div class="addbtn"><span class="circle">+</span><span class="t" data-t="add"></span></div>
+      </div>
+      <div class="pnav">
+        <div class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/></svg><span data-nav="0"></span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9.5 14.5 14.5 9.5"/><path d="M11 7 13 5a4 4 0 0 1 6 6l-2 2"/><path d="M13 17l-2 2a4 4 0 0 1-6-6l2-2"/></svg><span data-nav="1"></span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10.5 20a2 2 0 0 0 3 0"/></svg><span data-nav="2"></span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5" stroke-linecap="round"/></svg><span data-nav="3"></span></div>
+      </div>
+    </div>
+
+    <div class="push">
+      <div class="r"><span class="ico ico-img"><img src="app_icon.png" alt=""></span><span class="app">Anbu</span><span class="now" data-t="now"></span></div>
+      <div class="ti" data-t="push_title"></div>
+      <div class="bo" data-t="push_body"></div>
+    </div>
+
+    <div class="codecard">
+      <div class="cbg"><div class="c1"></div><div class="c2"></div></div>
+      <div class="in">
+        <div class="top"><span class="lb">SAFETY SHARE CODE</span>
+          <span class="cb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 3h9a2 2 0 0 1 2 2v9h-2V5H9zM5 7h9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/></svg></span>
+          <span class="cb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 7a2.6 2.6 0 1 0-2.5-3.2L9.3 6.6a2.6 2.6 0 1 0 0 4.3l5.2 2.6a2.6 2.6 0 1 0 .8-1.6L10.1 9.3a2.6 2.6 0 0 0 0-1.1l5.2-2.6c.45.27.98.42 1.7.4z"/></svg></span></div>
+        <div class="val">K7M-4PXR</div>
+      </div>
+      <span class="co co-copy"><span class="coline"></span><span class="coelbow"></span><span class="cohead"><span class="codot"></span><span class="cotext"><span class="lg" data-t="co_copy"></span><span class="sm" data-t="co_copy_sm"></span></span></span></span>
+      <span class="co co-share"><span class="coline"></span><span class="coelbow"></span><span class="cohead"><span class="codot"></span><span class="cotext"><span class="lg" data-t="co_share"></span><span class="sm" data-t="co_share_sm"></span></span></span></span>
+    </div>
+
+    <div class="pop"><div class="chd"><span data-t="steps"></span><b class="peak" data-t="peak"></b></div>
+      <div class="plot"><i></i><i></i><i></i><i></i><i></i><i></i><i class="today"></i></div><div class="xlab" data-t="last7"></div></div>
+
+    <div class="pop2"><div class="warn" data-t="warn"></div><div class="pbtn" data-t="call"></div><div class="pbtn o" data-t="confirm"></div></div>
+   </div>
+  </div></div>
+</div>
+<script>
+  document.documentElement.lang = F.bcp; document.documentElement.dir = F.dir;
+  document.querySelectorAll('[data-t]').forEach(e => e.textContent = F[e.dataset.t]);
+  document.querySelectorAll('[data-h]').forEach(e => e.innerHTML = F[e.dataset.h]);
+  document.querySelectorAll('[data-nav]').forEach(e => e.textContent = F.nav[+e.dataset.nav]);
+  // 금속 옆면: 같은 둥근 사각형을 뒤로 1px 남짓씩 36장 쌓는다(모서리까지 둥근 두께가 생긴다)
+  const ext = document.querySelector('.ext'); let o = '';
+  for (let i = 1; i <= 36; i++) { const k = i / 36; o += `<i style="transform: translateZ(${-i * 1.05}px); filter: brightness(${(1.08 - .55 * Math.sin(k * Math.PI) * .6 - k * .18).toFixed(3)})"></i>`; }   // 두께 약 38px(실제 폰 폭:두께 비율), 가운데가 어두운 둥근 옆면
+  ext.innerHTML = o;
+  // 반짝이 — 아래쪽 청록 빛 주변에 많이, 위쪽엔 드문드문. 시드 고정
+  let s = 5; const r = () => (s = (s * 16807) % 2147483647) / 2147483647; let g = '';
+  for (let i = 0; i < 70; i++) { const x = r() * 1024, y = 120 + r() * 380, near = Math.max(0, 1 - Math.hypot(x - 760, y - 470) / 420);
+    if (r() > near + .25) continue; const rr = .6 + r() * 1.6, op = .35 + r() * .6;
+    g += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rr.toFixed(2)}" fill="${r() > .5 ? '#9ff3ff' : '#ffffff'}" fill-opacity="${op.toFixed(2)}"/>`; }
+  for (let i = 0; i < 26; i++) { const x = r() * 1024, y = r() * 300; g += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(.4 + r() * .8).toFixed(2)}" fill="#fff" fill-opacity="${(.2 + r() * .4).toFixed(2)}"/>`; }
+  document.getElementById('spark').innerHTML = g;
+  document.body.dataset.ready = '1';
+</script>
+</body></html>

@@ -1,0 +1,37 @@
+// 자동 생성(gen_feature.py) — 직접 고치지 말 것
+window.F = {
+ "bcp": "fr",
+ "dir": "ltr",
+ "appbar": "Anbu Aidant",
+ "phead": "Proches suivis<br>en ce moment : 2",
+ "psum": "Les nouvelles du jour",
+ "lg_ok": "Tout va bien : 1",
+ "lg_caution": "Attention : 1",
+ "plist": "Mes proches",
+ "mom": "Maman",
+ "dad": "Papa",
+ "pill_ok": "✅ Tout va bien",
+ "pill_caution": "Attention",
+ "act": "Activité : Active",
+ "steps": "Pas",
+ "last7": "7 derniers jours",
+ "peak": "6 240",
+ "last": "Dernières nouvelles : il y a 2 h",
+ "warn": "Vérifiez que tout va bien",
+ "call": "Appeler",
+ "confirm": "Confirmer la sécurité",
+ "add": "Ajouter un proche",
+ "now": "maintenant",
+ "nav": [
+  "Accueil",
+  "Connexions",
+  "Alertes",
+  "Réglages"
+ ],
+ "push_title": "✅ Nouvelles du jour reçues",
+ "co_copy": "Copier le code",
+ "co_share": "Partager le code",
+ "co_copy_sm": "Copier",
+ "co_share_sm": "Partager",
+ "push_body": "Maman · 6 240 pas aujourd'hui."
+};

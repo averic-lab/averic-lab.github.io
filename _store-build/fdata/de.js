@@ -1,0 +1,37 @@
+// 자동 생성(gen_feature.py) — 직접 고치지 말 것
+window.F = {
+ "bcp": "de",
+ "dir": "ltr",
+ "appbar": "Anbu Guardian",
+ "phead": "Verbundene Personen<br>im Blick: 2",
+ "psum": "Heute im Überblick",
+ "lg_ok": "Alles gut: 1",
+ "lg_caution": "Achtung: 1",
+ "plist": "Verbundene Personen",
+ "mom": "Mama",
+ "dad": "Papa",
+ "pill_ok": "✅ Alles gut",
+ "pill_caution": "Achtung",
+ "act": "Aktivität: Aktiv",
+ "steps": "Schritte",
+ "last7": "Letzte 7 Tage",
+ "peak": "6.240",
+ "last": "Zuletzt: vor 2 Std.",
+ "warn": "Bitte nachsehen",
+ "call": "Jetzt anrufen",
+ "confirm": "Sicher bestätigt",
+ "add": "Person verbinden",
+ "now": "jetzt",
+ "nav": [
+  "Start",
+  "Verbindungen",
+  "Hinweise",
+  "Einstellungen"
+ ],
+ "push_title": "✅ Heutiges Lebenszeichen erhalten",
+ "co_copy": "Code kopieren",
+ "co_share": "Code teilen",
+ "co_copy_sm": "Kopieren",
+ "co_share_sm": "Teilen",
+ "push_body": "Mama · Heute 6.240 Schritte gegangen."
+};

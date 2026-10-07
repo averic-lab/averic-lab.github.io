@@ -1,0 +1,37 @@
+// 자동 생성(gen_feature.py) — 직접 고치지 말 것
+window.F = {
+ "bcp": "ko",
+ "dir": "ltr",
+ "appbar": "Anbu Guardian",
+ "phead": "현재 2명의 안부를<br>확인 중입니다.",
+ "psum": "오늘의 안부 요약",
+ "lg_ok": "안전: 1",
+ "lg_caution": "주의: 1",
+ "plist": "보호 대상자 리스트",
+ "mom": "엄마",
+ "dad": "아빠",
+ "pill_ok": "✅ 안전",
+ "pill_caution": "주의",
+ "act": "활동량 : 활동적",
+ "steps": "걸음수",
+ "last7": "지난 7일",
+ "peak": "6,240",
+ "last": "마지막 확인: 2시간 전",
+ "warn": "안전 확인이 필요합니다",
+ "call": "지금 바로 전화",
+ "confirm": "안전확인 완료",
+ "add": "새로운 보호 대상자 추가",
+ "now": "지금",
+ "nav": [
+  "홈",
+  "연결",
+  "알림",
+  "설정"
+ ],
+ "push_title": "✅ 오늘 안부 확인 완료",
+ "co_copy": "안전 코드 복사",
+ "co_share": "안전 코드 SNS 공유",
+ "co_copy_sm": "복사",
+ "co_share_sm": "공유",
+ "push_body": "엄마 · 오늘 6,240보를 걸으셨습니다."
+};

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>스토어 스크린샷</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="store.css">
+</head><body>
+<div class="set">
+  <div class="bg"></div><div class="dots-bg"></div>
+
+  <!-- ═══ 1·2 — 파노라마 한 쌍 ═══ -->
+  <div data-pair class="brand" style="left:30px; top:54px"><img src="app_icon.png" alt=""><span data-s="brand"></span></div>
+  <div data-pair class="tb" data-max="352" style="left:30px; top:112px; width:372px"><h1 class="h" style="font-size:40px" data-s="p1_h"></h1><p class="sub" data-s="p1_s"></p></div>
+  <div data-pair class="tb" data-max="318" style="left:468px; top:112px; width:372px"><h2 class="h" style="font-size:32px" data-s="p2_h"></h2><p class="o" data-s="p2_o"></p><p class="sub" style="font-size:15px" data-s="p2_s"></p></div>
+  <div data-pair class="pw" data-screen="dash1" style="left:196px; top:350px; transform:perspective(2200px) rotateY(-14deg) rotateX(3deg) rotate(-5deg) scale(1.3);"></div>
+  <div data-pair class="push float" data-build="push:daughter" style="left:24px; top:372px; width:290px; transform:scale(1.05); transform-origin:0 0;"></div>
+  <div data-pair class="bubble" style="left:560px; top:430px"><span class="av"></span><span class="t" data-s="bubble"></span></div>
+  <div data-pair class="push float" data-build="push:mom" style="left:520px; top:500px; width:290px; transform:scale(1.05); transform-origin:0 0;"></div>
+
+  <!-- ═══ 3 — 매일 도착 (푸시가 아니라 화면 꺼진 폰 + 7일 연속 도착) ═══ -->
+  <div class="tb" data-max="322" style="left:890px; top:112px; width:380px"><h2 class="h" style="font-size:36px" data-s="p3_h"></h2><p class="sub" data-s="p3_s"></p></div>
+  <svg class="callicon" style="left:862px; top:calc(318px + (var(--H) - 768px) * .25)" width="410" height="236" viewBox="0 0 410 236">
+    <defs><radialGradient id="gG" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#6BFF5E"/><stop offset="1" stop-color="#2BD92B"/></radialGradient></defs>
+    <g fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"><path d="M238.3 49.0 A112 112 0 0 1 238.3 187.0" stroke-opacity="0.95"/><path d="M61.7 187.0 A112 112 0 0 1 61.7 49.0" stroke-opacity="0.95"/><path d="M252.4 38.0 A130 130 0 0 1 252.4 198.0" stroke-opacity="0.6"/><path d="M47.6 198.0 A130 130 0 0 1 47.6 38.0" stroke-opacity="0.6"/><path d="M266.6 26.9 A148 148 0 0 1 266.6 209.1" stroke-opacity="0.3"/><path d="M33.4 209.1 A148 148 0 0 1 33.4 26.9" stroke-opacity="0.3"/></g>
+    <circle cx="150" cy="118" r="96" fill="url(#gG)"/>
+    <path transform="translate(92 60) scale(4.85)" fill="#fff" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+    <g stroke="#FF4D5E" stroke-width="17" stroke-linecap="round"><path d="M318 82 L382 154"/><path d="M382 82 L318 154"/></g>
+  </svg>
+  <div class="weekcard" data-build="week" style="left:884px; top:calc(578px + (var(--H) - 768px) * .55)"></div>
+
+  <!-- ═══ 4 — 단계별 알림 ═══ -->
+  <div class="tb" data-max="352" style="left:1320px; top:112px; width:380px"><h2 class="h" style="font-size:36px" data-s="p4_h"></h2><p class="sub" data-s="p4_s"></p></div>
+  <div class="pw" data-screen="notif" style="left:1420px; top:360px; transform:perspective(2200px) rotateY(-12deg) rotateX(3deg) rotate(-4deg) scale(1.1);"></div>
+  <div class="ncstack" style="left:1306px; top:372px">
+    <div class="ncw" data-build="nc:caution" style="margin-left:0; transform: rotate(-2deg)"></div>
+    <div class="ncw" data-build="nc:warning" style="margin-left:14px; transform: rotate(-1deg)"></div>
+    <div class="ncw" data-build="nc:urgent" style="margin-left:28px; transform: rotate(0deg)"></div>
+  </div>
+
+  <!-- ═══ 5 — 코드로 연결 ═══ -->
+  <div class="tb" data-max="352" style="left:1750px; top:112px; width:380px"><h2 class="h" style="font-size:36px" data-s="p5_h"></h2><p class="sub" data-s="p5_s"></p></div>
+  <div class="pw" data-screen="add" style="left:1744px; top:360px; transform:perspective(2200px) rotateY(12deg) rotateX(3deg) rotate(3deg) scale(1.15);"></div>
+  <div class="codechip" style="left:1756px; top:480px; transform: rotate(-2deg)"><small data-s="add_code_label"></small><b>K7M-4PXR</b></div>
+  <div class="codechip sm" style="left:1792px; top:650px; transform: rotate(1.5deg)"><small data-s="add_alias_label"></small><b data-k="mom"></b></div>
+
+  <!-- ═══ 6 — 한눈에 ═══ -->
+  <div class="tb" data-max="346" style="left:2180px; top:112px; width:380px"><h2 class="h" style="font-size:36px" data-s="p6_h"></h2><p class="sub" data-s="p6_s"></p></div>
+  <div class="fam" data-build="fam" style="left:2150px"></div>
+
+  <!-- ═══ 7 — 도움 요청과 위치 ═══ -->
+  <div class="tb" data-max="360" style="left:2610px; top:112px; width:390px"><h2 class="h" style="font-size:36px" data-s="p7_h"></h2><p class="sub" data-s="p7_s"></p></div>
+  <div class="pw" data-screen="sos" style="left:2610px; top:370px; transform:perspective(2200px) rotateY(12deg) rotateX(3deg) rotate(3deg) scale(1.1);"></div>
+  <div class="ncw" data-build="nc:sos" style="left:2600px; top:384px; transform: rotate(-1.5deg)"></div>
+  <div class="mapcard" style="left:2650px; top:548px; transform: rotate(2deg)">
+    <div class="mh"><i></i><span data-s="map_title"></span></div>
+    <svg viewBox="0 0 340 170"><rect width="340" height="170" fill="#E9EFE6"/>
+      <rect x="0" y="0" width="120" height="70" fill="#DCE7D8"/><rect x="190" y="90" width="150" height="80" fill="#D6E4EE"/>
+      <g stroke="#fff" stroke-width="12" fill="none" stroke-linecap="round"><path d="M-10 100 L350 70"/><path d="M130 -10 L170 180"/><path d="M-10 160 L350 150"/></g>
+      <g stroke="#fff" stroke-width="5" fill="none"><path d="M240 -10 L270 180"/><path d="M-10 40 L350 20"/></g>
+      <circle cx="170" cy="86" r="34" fill="rgba(229,57,53,.16)"/><circle cx="170" cy="86" r="14" fill="rgba(229,57,53,.3)"/>
+      <path d="M170 104 C158 90 154 82 154 74 A16 16 0 0 1 186 74 C186 82 182 90 170 104 Z" fill="#E53935"/><circle cx="170" cy="74" r="6" fill="#fff"/></svg>
+    <div class="mi"><span data-s="map_subject"></span><b data-k="mom"></b><span data-s="map_time"></span><b data-w="18:42"></b><span data-s="map_acc"></span><b>±18m</b></div>
+  </div>
+
+  <!-- ═══ 8 — 개인정보 · 무료 체험 ═══ -->
+  <div class="tb" data-maxsel=".langblk" style="left:3040px; top:112px; width:370px"><h2 class="h" style="font-size:36px" data-s="p8_h"></h2><p class="sub" data-s="p8_s"></p>
+    <div id="chips" style="margin-top:16px; display:flex; gap:10px"></div>
+    <div class="locchip" style="margin-top:8px; box-sizing:border-box"><span style="font-size:20px">📍</span><span data-s="p8_loc"></span></div></div>
+  <div class="langblk t-shadow" style="left:3040px; width:370px; bottom:28px; text-align:center">
+    <div style="font-size:24px; font-weight:800; letter-spacing:-.5px; margin-bottom:10px; color:#fff" data-s="p8_lang"></div>
+    <div class="greet" data-build="greet"></div>
+    <div class="endbrand"><img src="app_icon.png" alt=""><b>Anbu</b><span data-k="brand_sub"></span></div>
+  </div>
+</div>
+<script src="store.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => { document.getElementById('chips').innerHTML = S.p8_chips.map(t => `<div class="chip" style="flex:auto"><i>✕</i><s>${t}</s></div>`).join(''); });
+</script>
+</body></html>

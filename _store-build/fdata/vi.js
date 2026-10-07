@@ -1,0 +1,37 @@
+// 자동 생성(gen_feature.py) — 직접 고치지 말 것
+window.F = {
+ "bcp": "vi",
+ "dir": "ltr",
+ "appbar": "Anbu Guardian",
+ "phead": "Đang theo dõi bình an<br>của 2 người.",
+ "psum": "Tóm tắt hôm nay",
+ "lg_ok": "Bình an: 1",
+ "lg_caution": "Chú ý: 1",
+ "plist": "Danh sách người thân",
+ "mom": "Mẹ",
+ "dad": "Bố",
+ "pill_ok": "✅ Bình an",
+ "pill_caution": "Chú ý",
+ "act": "Mức hoạt động: Năng động",
+ "steps": "Số bước",
+ "last7": "7 ngày qua",
+ "peak": "6.240",
+ "last": "Lần cuối: 2 giờ trước",
+ "warn": "Cần kiểm tra",
+ "call": "Gọi ngay",
+ "confirm": "Xác nhận an toàn",
+ "add": "Thêm người thân",
+ "now": "bây giờ",
+ "nav": [
+  "Trang chủ",
+  "Kết nối",
+  "Thông báo",
+  "Cài đặt"
+ ],
+ "push_title": "✅ Đã nhận tin bình an hôm nay",
+ "co_copy": "Sao chép mã",
+ "co_share": "Chia sẻ mã",
+ "co_copy_sm": "Sao chép",
+ "co_share_sm": "Chia sẻ",
+ "push_body": "Mẹ · Hôm nay đã đi 6.240 bước."
+};

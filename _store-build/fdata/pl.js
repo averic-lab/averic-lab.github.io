@@ -1,0 +1,37 @@
+// 자동 생성(gen_feature.py) — 직접 고치지 말 것
+window.F = {
+ "bcp": "pl",
+ "dir": "ltr",
+ "appbar": "Anbu Opiekun",
+ "phead": "Podopieczni<br>pod opieką: 2",
+ "psum": "Podsumowanie dnia",
+ "lg_ok": "W porządku: 1",
+ "lg_caution": "Uwaga: 1",
+ "plist": "Podopieczni",
+ "mom": "Mama",
+ "dad": "Tata",
+ "pill_ok": "✅ W porządku",
+ "pill_caution": "Uwaga",
+ "act": "Aktywność: Wysoka",
+ "steps": "Kroki",
+ "last7": "Ostatnie 7 dni",
+ "peak": "6 240",
+ "last": "Ostatni znak życia: 2 godz. temu",
+ "warn": "Trzeba sprawdzić",
+ "call": "Zadzwoń",
+ "confirm": "Potwierdź bezpieczeństwo",
+ "add": "Dodaj podopiecznego",
+ "now": "teraz",
+ "nav": [
+  "Start",
+  "Połączenia",
+  "Alerty",
+  "Ustawienia"
+ ],
+ "push_title": "✅ Dzisiejszy znak życia otrzymany",
+ "co_copy": "Skopiuj kod",
+ "co_share": "Udostępnij kod",
+ "co_copy_sm": "Kopiuj",
+ "co_share_sm": "Udostępnij",
+ "push_body": "Mama · Liczba kroków dzisiaj: 6 240."
+};

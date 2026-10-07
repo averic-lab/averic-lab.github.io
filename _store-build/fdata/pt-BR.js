@@ -1,0 +1,37 @@
+// 자동 생성(gen_feature.py) — 직접 고치지 말 것
+window.F = {
+ "bcp": "pt-BR",
+ "dir": "ltr",
+ "appbar": "Anbu Cuidador",
+ "phead": "Pessoas que você<br>acompanha agora: 2",
+ "psum": "Resumo de hoje",
+ "lg_ok": "Tudo bem: 1",
+ "lg_caution": "Atenção: 1",
+ "plist": "Entes queridos",
+ "mom": "Mãe",
+ "dad": "Pai",
+ "pill_ok": "✅ Tudo bem",
+ "pill_caution": "Atenção",
+ "act": "Atividade: Ativa",
+ "steps": "Passos",
+ "last7": "Últimos 7 dias",
+ "peak": "6.240",
+ "last": "Último check-in: há 2 h",
+ "warn": "Confira se está tudo bem",
+ "call": "Ligar agora",
+ "confirm": "Confirmar segurança",
+ "add": "Adicionar ente querido",
+ "now": "agora",
+ "nav": [
+  "Início",
+  "Conexões",
+  "Alertas",
+  "Ajustes"
+ ],
+ "push_title": "✅ Check-in de hoje recebido",
+ "co_copy": "Copiar código",
+ "co_share": "Compartilhar código",
+ "co_copy_sm": "Copiar",
+ "co_share_sm": "Compartilhar",
+ "push_body": "Mãe · Seu ente querido caminhou 6.240 passos hoje."
+};

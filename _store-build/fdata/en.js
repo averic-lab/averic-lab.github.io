@@ -1,0 +1,37 @@
+// 자동 생성(gen_feature.py) — 직접 고치지 말 것
+window.F = {
+ "bcp": "en",
+ "dir": "ltr",
+ "appbar": "Anbu Guardian",
+ "phead": "Looking after<br>2 people right now.",
+ "psum": "Today's summary",
+ "lg_ok": "Safe: 1",
+ "lg_caution": "Caution: 1",
+ "plist": "Loved ones",
+ "mom": "Mom",
+ "dad": "Dad",
+ "pill_ok": "✅ Safe",
+ "pill_caution": "Caution",
+ "act": "Activity: Active",
+ "steps": "Steps",
+ "last7": "Last 7 days",
+ "peak": "6,240",
+ "last": "Last check: 2 hr ago",
+ "warn": "Safety check needed",
+ "call": "Call now",
+ "confirm": "Confirm safe",
+ "add": "Add a loved one",
+ "now": "now",
+ "nav": [
+  "Home",
+  "Connections",
+  "Alerts",
+  "Settings"
+ ],
+ "push_title": "✅ Today's wellness check received",
+ "co_copy": "Copy the code",
+ "co_share": "Share the code",
+ "co_copy_sm": "Copy",
+ "co_share_sm": "Share",
+ "push_body": "Mom · They walked 6,240 steps today."
+};

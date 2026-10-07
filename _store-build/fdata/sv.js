@@ -1,0 +1,37 @@
+// 자동 생성(gen_feature.py) — 직접 고치지 말 것
+window.F = {
+ "bcp": "sv",
+ "dir": "ltr",
+ "appbar": "Anbu Guardian",
+ "phead": "Närstående du<br>håller koll på: 2",
+ "psum": "Sammanfattning i dag",
+ "lg_ok": "Allt bra: 1",
+ "lg_caution": "Observera: 1",
+ "plist": "Dina närstående",
+ "mom": "Mamma",
+ "dad": "Pappa",
+ "pill_ok": "✅ Allt bra",
+ "pill_caution": "Observera",
+ "act": "Aktivitet: Aktiv",
+ "steps": "Steg",
+ "last7": "Senaste 7 dagarna",
+ "peak": "6 240",
+ "last": "Senaste incheckning: för 2 tim sedan",
+ "warn": "Behöver kontrolleras",
+ "call": "Ring nu",
+ "confirm": "Bekräfta säkerhet",
+ "add": "Lägg till närstående",
+ "now": "nu",
+ "nav": [
+  "Hem",
+  "Kopplingar",
+  "Aviseringar",
+  "Inställningar"
+ ],
+ "push_title": "✅ Dagens incheckning mottagen",
+ "co_copy": "Kopiera koden",
+ "co_share": "Dela koden",
+ "co_copy_sm": "Kopiera",
+ "co_share_sm": "Dela",
+ "push_body": "Mamma · 6 240 steg i dag."
+};

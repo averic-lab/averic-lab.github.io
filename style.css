@@ -550,6 +550,7 @@ em { font-style: normal; }
   display: flex; align-items: center; justify-content: center; }
 .push .ico svg { width: 12px; height: 12px; fill: currentColor; }
 .push .app { font-size: 10.5px; font-weight: 600; color: #757575; }
+.push .now { margin-inline-start: auto; font-size: 10.5px; color: #9AA0AE; }
 .push .ti { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
 .push .bo { font-size: 12.5px; color: #3F4948; line-height: 1.45; }
 

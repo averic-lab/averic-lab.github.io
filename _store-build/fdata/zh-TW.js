@@ -1,0 +1,37 @@
+// 자동 생성(gen_feature.py) — 직접 고치지 말 것
+window.F = {
+ "bcp": "zh-Hant",
+ "dir": "ltr",
+ "appbar": "Anbu 守護者",
+ "phead": "正在關照<br>2 人的平安。",
+ "psum": "今日平安概況",
+ "lg_ok": "安全：1",
+ "lg_caution": "注意：1",
+ "plist": "被守護者列表",
+ "mom": "媽媽",
+ "dad": "爸爸",
+ "pill_ok": "✅ 安全",
+ "pill_caution": "注意",
+ "act": "活動量：活躍",
+ "steps": "步數",
+ "last7": "最近7天",
+ "peak": "6,240",
+ "last": "上次確認：2小時前",
+ "warn": "需要確認安全",
+ "call": "立即撥打",
+ "confirm": "確認安全",
+ "add": "新增被守護者",
+ "now": "剛剛",
+ "nav": [
+  "首頁",
+  "連結",
+  "通知",
+  "設定"
+ ],
+ "push_title": "✅ 今日已報平安",
+ "co_copy": "複製安全碼",
+ "co_share": "分享到社群",
+ "co_copy_sm": "複製",
+ "co_share_sm": "分享",
+ "push_body": "媽媽 · 今天走了6,240步。"
+};
