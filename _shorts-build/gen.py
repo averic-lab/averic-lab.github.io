@@ -43,7 +43,7 @@ I_APP_KEYS = ["mode_select_title", "mode_select_subtitle", "mode_subject_title",
               "guardian_status_normal", "guardian_checking_subjects", "guardian_status_confirmed", "guardian_status_caution", "guardian_status_warning", "guardian_status_urgent",
               "guardian_safety_needed", "guardian_call_now", "guardian_confirm_safety", "guardian_safety_confirmed_name",
               "guardian_chart_x_axis_last_30_days", "guardian_last_check_days", "notifications_title", "notifications_today",
-              "notifications_level_health", "notifications_level_info", "noti_auto_report_body", "gs_enable_button"]
+              "notifications_level_health", "notifications_level_info", "noti_auto_report_body", "gs_enable_button", "nav_settings"]
 APP_KEYS += [k for k in I_APP_KEYS if k not in APP_KEYS]
 # 같은 편의 서버 푸시 문구(제목·본문) — 등급별 알림을 실제 형식대로 보여 준다
 I_SRV_KEYS = ["push_auto_report_title", "push_caution_title", "push_caution_missing_body", "push_warning_title",
@@ -62,6 +62,21 @@ def app_strings(lang_file):
         if not m:
             sys.exit(f"오류: {lang_file}.dart 에 {k} 가 없습니다")
         out[k] = ex.unescape(m.group(1) if m.group(1) is not None else m.group(2))
+    return out
+
+
+# 언어에 따라 없을 수 있는 키(단수형 _one, 아랍어 쌍수형 _two) — 없으면 빼고 넘긴다
+I_OPT_KEYS = ["guardian_last_check_days_one", "guardian_last_check_days_two"]
+
+
+def opt_app_strings(lang_file, keys):
+    with open(os.path.join(ex.TRANS, f"{lang_file}.dart"), encoding="utf-8") as f:
+        src = f.read()
+    out = {}
+    for k in keys:
+        m = re.search(rf"'{re.escape(k)}'\s*:\s*{ex.VALUE_RE}", src)
+        if m:
+            out[k] = ex.unescape(m.group(1) if m.group(1) is not None else m.group(2))
     return out
 
 
@@ -114,7 +129,7 @@ def lang_data(code, cfg, site_tr, msgs):
         "em_hint": a["emergency_message_hint"], "em_sent": a["emergency_sent_with_location"],
         "view_loc": a["notifications_view_location"], "map_title": a["emergency_map_title"],
         "push_em_title": msgs[locale]["push_emergency_title"],
-        "app": {k: a[k] for k in I_APP_KEYS},
+        "app": {**{k: a[k] for k in I_APP_KEYS}, **opt_app_strings(lf, I_OPT_KEYS)},
         "srv": {k: msgs[locale][k] for k in I_SRV_KEYS},
         "q1": q1.strip(), "q2": q2.strip(),
         # B — 부모 쪽 밤 11:40 과 그때 자녀 쪽 시각(실제 시간대로 계산), 보낸 메시지 21:12
