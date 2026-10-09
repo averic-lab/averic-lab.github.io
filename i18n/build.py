@@ -309,33 +309,6 @@ def media_name(code, vid):
     return vid if code == "ko" else f"{vid}-{code}"
 
 
-def _load_shorts():
-    """홈 해질녘에 넣을 숏폼(_shorts-build/shorts.json 의 home:true 편).
-
-    영상 파일이 전부 있는 언어만 돌려준다 — 파일 없이 목록에만 있으면 홈에 깨진 영상이 뜨므로
-    렌더가 끝난 언어만 자동으로 켜진다. 없는 언어는 ③ 문장을 그대로 보여 준다."""
-    path = os.path.join(ROOT, "_shorts-build", "shorts.json")
-    if not os.path.exists(path):
-        return {}
-    with open(path, encoding="utf-8") as f:
-        cfg = json.load(f)
-    home = [v for v in cfg["videos"] if v.get("home")]
-    have = lambda code, v: os.path.exists(os.path.join(ROOT, "media", "shorts", code, media_name(code, v["id"]) + ".mp4"))
-    # 영상 페이지(/{code}/shorts.html)는 그 언어로 렌더된 편 전부 — 최신 날짜가 위, 같은 날짜는 목록 순서
-    newest = sorted(cfg["videos"], key=lambda v: v["date"], reverse=True)
-    out = {}
-    for code, L in cfg["langs"].items():
-        entry = {"play": L["play"], "replay": L["replay"],
-                 "all": [(v["id"], L[v["title"]]) for v in newest if have(code, v) and v["title"] in L]}
-        if home and all(have(code, v) for v in home):
-            entry["videos"] = [(v["id"], L[v["title"]]) for v in home]
-        out[code] = entry
-    return out
-
-
-SHORTS = _load_shorts()
-
-
 PUBLISH_JSON = os.environ.get("PUBLISH_JSON") or os.path.expanduser(
     "~/Library/CloudStorage/GoogleDrive-anbucheck1018@gmail.com/내 드라이브/안부 쇼츠/publish.json")
 
@@ -362,6 +335,43 @@ def _load_youtube():
 
 
 YOUTUBE = _load_youtube()
+
+
+def _load_shorts():
+    """홈 해질녘에 넣을 숏폼(_shorts-build/shorts.json 의 home:true 편).
+
+    영상 파일이 전부 있는 언어만 돌려준다 — 파일 없이 목록에만 있으면 홈에 깨진 영상이 뜨므로
+    렌더가 끝난 언어만 자동으로 켜진다. 없는 언어는 ③ 문장을 그대로 보여 준다."""
+    path = os.path.join(ROOT, "_shorts-build", "shorts.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding="utf-8") as f:
+        cfg = json.load(f)
+    home = [v for v in cfg["videos"] if v.get("home")]
+    have = lambda code, v: os.path.exists(os.path.join(ROOT, "media", "shorts", code, media_name(code, v["id"]) + ".mp4"))
+    # 영상 페이지(/{code}/shorts.html)는 그 언어로 렌더된 편 전부 — 최신 날짜가 위, 같은 날짜는 목록 순서
+    newest = sorted(cfg["videos"], key=lambda v: v["date"], reverse=True)
+    # youtube_only: mp4 를 저장소에 두지 않고(언어당 약 29MB) 유튜브로만 재생하는 편. 공개(unlisted/public)된
+    # 언어에 포스터 jpg 가 있을 때만 영상 페이지에 나온다 — scheduled·private 이면 자동으로 빠진다.
+    yt_only = cfg.get("youtube_only", [])
+    out = {}
+    for code, L in cfg["langs"].items():
+        rows = [(v["date"], v["id"], L[v["title"]]) for v in newest if have(code, v) and v["title"] in L]
+        for v in yt_only:
+            jpg = os.path.join(ROOT, "media", "shorts", code, media_name(code, v["id"]) + ".jpg")
+            if (v["id"], code) in YOUTUBE and v["titles"].get(code) and os.path.exists(jpg):
+                rows.append((v["date"], v["id"], v["titles"][code]))
+        rows.sort(key=lambda r: r[0], reverse=True)  # 안정 정렬 — 같은 날짜는 위에서 만든 순서 유지
+        entry = {"play": L["play"], "replay": L["replay"], "all": [(i, t) for _, i, t in rows]}
+        if home and all(have(code, v) for v in home):
+            entry["videos"] = [(v["id"], L[v["title"]]) for v in home]
+        out[code] = entry
+    return out
+
+
+SHORTS = _load_shorts()
+
+
 
 _PLAY_SVG = '<svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>'
 _REPLAY_SVG = ('<svg class="i-replay" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7.5 6 12 10V7a5 5 0 1 1-5 5H5'

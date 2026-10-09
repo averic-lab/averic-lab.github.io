@@ -12,6 +12,9 @@
     {"id": "solo-trip", "page": "f.html", "title": "t_f", "date": "2026-09-25"},
     {"id": "lost-mom", "page": "g.html", "title": "t_g", "date": "2026-09-26"}
   ],
+  "youtube_only": [
+    {"id": "anbu-3d", "date": "2026-10-04", "titles": {"ko": "아무것도 하지 않아도, 매일 자동으로 안부는 도착합니다", "ja": "何もしなくても、毎日、自動で安否が届きます", "en": "No effort needed — a wellness check arrives automatically, every day", "zh-CN": "什么都不用做，平安每天自动送达", "zh-TW": "什麼都不用做，平安每天自動送達", "de": "Ganz ohne Zutun: Jeden Tag kommt automatisch ein Lebenszeichen an", "fr": "Rien à faire : des nouvelles arrivent automatiquement, chaque jour", "es": "Sin ningún esfuerzo: cada día llega un aviso, automáticamente", "it": "Senza alcuno sforzo: ogni giorno arriva un check-in, in automatico", "pt-BR": "Sem nenhum esforço: todo dia chega um check-in, automaticamente", "ru": "Ничего не нужно делать — отметка приходит каждый день автоматически", "nl": "Zonder enige moeite: elke dag komt er automatisch een check-in", "pl": "Nie trzeba nic robić — codziennie automatycznie przychodzi znak życia", "tr": "Hiçbir şey yapmanıza gerek kalmadan her gün otomatik olarak haber gelir", "vi": "Không cần làm gì, tin bình an vẫn tự động đến mỗi ngày", "th": "ไม่ต้องทำอะไรเลย การแจ้งว่าสบายดีก็มาถึงอัตโนมัติทุกวัน", "id": "Tanpa perlu melakukan apa pun, kabar tiba otomatis setiap hari", "sv": "Helt utan ansträngning: en incheckning kommer automatiskt varje dag", "hi": "बिना किसी मेहनत के, हर दिन अपने-आप खैरियत पहुँचती है", "ar": "دون أي عناء، يصل الاطمئنان تلقائياً كل يوم"}}
+  ],
   "langs": {
     "ko": {
       "t_a": "전화 안 받는 엄마", "t_b": "유학 간 딸", "play": "재생", "replay": "다시 보기",
