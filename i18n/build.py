@@ -314,13 +314,13 @@ PUBLISH_JSON = os.environ.get("PUBLISH_JSON") or os.path.expanduser(
 
 
 def _load_youtube():
-    """{(편id, 언어): youtube_id} — 유튜브에 공개(unlisted/public)된 편만.
+    """{(편id, 언어): youtube_id} — 유튜브에 올라간 편 전부(공개 여부와 무관, removed 제외).
 
-    영상 페이지(/{언어}/shorts.html)가 이 편들을 mp4 대신 유튜브로 재생한다(저장소 용량 때문).
-    홈 해질녘 두 편은 이 값을 쓰지 않고 자체 플레이어(mp4)를 유지한다.
+    홈 해질녘·영상 페이지(/{언어}/shorts.html)·사용설명이 이 편들을 mp4 대신 유튜브 플레이어로 재생한다.
+    private·scheduled 인 편은 공개 전까지 방문자에게는 재생되지 않는다(2026-10-09 사용자 지시로 포함).
     publish.json 은 공유 드라이브에 있어 이 Mac 이 아닌 곳에서는 못 읽는다 — 그때는 경고만 하고
     전부 mp4 로 빌드한다(깨지지는 않지만 유튜브로 바뀐 편이 mp4 로 되돌아가므로 조심할 것).
-    status 가 private/scheduled/removed 이거나 youtube_id 가 없으면 mp4 그대로다."""
+    status 가 removed 이거나 youtube_id 가 없으면 mp4 그대로다."""
     try:
         with open(PUBLISH_JSON, encoding="utf-8") as f:
             vids = json.load(f)["videos"]
@@ -329,7 +329,7 @@ def _load_youtube():
         return {}
     out = {}
     for v in vids.values():
-        if v.get("status") in ("unlisted", "public") and v.get("youtube_id"):
+        if v.get("status") != "removed" and v.get("youtube_id"):
             out[(v["id"], v["lang"])] = v["youtube_id"]
     return out
 
@@ -349,11 +349,14 @@ def _load_shorts():
         cfg = json.load(f)
     home = [v for v in cfg["videos"] if v.get("home")]
     have = lambda code, v: os.path.exists(os.path.join(ROOT, "media", "shorts", code, media_name(code, v["id"]) + ".mp4"))
+    # youtube_only 편도 home:true 면 홈에 나온다 — mp4 대신 유튜브 ID + 포스터 jpg 가 있어야 "있음"
+    yt_only = cfg.get("youtube_only", [])
+    yt_have = lambda code, v: ((v["id"], code) in YOUTUBE and bool(v["titles"].get(code)) and os.path.exists(
+        os.path.join(ROOT, "media", "shorts", code, media_name(code, v["id"]) + ".jpg")))
     # 영상 페이지(/{code}/shorts.html)는 그 언어로 렌더된 편 전부 — 최신 날짜가 위, 같은 날짜는 목록 순서
     newest = sorted(cfg["videos"], key=lambda v: v["date"], reverse=True)
     # youtube_only: mp4 를 저장소에 두지 않고(언어당 약 29MB) 유튜브로만 재생하는 편. 공개(unlisted/public)된
     # 언어에 포스터 jpg 가 있을 때만 영상 페이지에 나온다 — scheduled·private 이면 자동으로 빠진다.
-    yt_only = cfg.get("youtube_only", [])
     out = {}
     for code, L in cfg["langs"].items():
         rows = [(v["date"], v["id"], L[v["title"]]) for v in newest if have(code, v) and v["title"] in L]
@@ -363,8 +366,11 @@ def _load_shorts():
                 rows.append((v["date"], v["id"], v["titles"][code]))
         rows.sort(key=lambda r: r[0], reverse=True)  # 안정 정렬 — 같은 날짜는 위에서 만든 순서 유지
         entry = {"play": L["play"], "replay": L["replay"], "all": [(i, t) for _, i, t in rows]}
-        if home and all(have(code, v) for v in home):
-            entry["videos"] = [(v["id"], L[v["title"]]) for v in home]
+        # 홈 목록 = 일반 편 + 유튜브 전용 편(home:true), 날짜 오래된 순이 아니라 shorts.json 기록 순서(일반 → 전용)
+        yhome = [v for v in yt_only if v.get("home")]
+        if (home or yhome) and all(have(code, v) for v in home) and all(yt_have(code, v) for v in yhome):
+            entry["videos"] = ([(v["id"], L[v["title"]]) for v in home]
+                               + [(v["id"], v["titles"][code]) for v in yhome])
         out[code] = entry
     return out
 
@@ -409,11 +415,28 @@ def dawn_tail(code, strings):
     cfg = SHORTS.get(code)
     if not cfg or not cfg.get("videos"):
         return f'<p class="q3 reveal">{strings["dawn_q3_html"]}</p>'
-    figs = video_figs(code, cfg["videos"], cfg["play"], cfg["replay"])
+    figs = video_figs(code, cfg["videos"], cfg["play"], cfg["replay"], youtube=True)
     more = (f'\n    <a class="shorts-more" href="/{code}/shorts.html">{strings["shorts_more"]}'
             '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" '
             'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>')
     return f'<div class="dawn-shorts vlist">\n{figs}\n    </div>{more}'
+
+
+def guide_video(code, vid="how-to-use"):
+    """사용설명 페이지(/{언어}/guide.html)에 넣는 영상 한 편. 유튜브에 올라가 있으면 유튜브, 아니면 mp4.
+    제목·버튼 문구는 숏폼 문구(shorts.json langs)를 쓴다. 그 언어에 파일도 유튜브 ID 도 없으면 빈 문자열."""
+    path = os.path.join(ROOT, "_shorts-build", "shorts.json")
+    with open(path, encoding="utf-8") as f:
+        cfg = json.load(f)
+    v = next((x for x in cfg["videos"] if x["id"] == vid), None)
+    L = cfg["langs"].get(code)
+    if not v or not L or v["title"] not in L:
+        return ""
+    base = os.path.join(ROOT, "media", "shorts", code, media_name(code, vid))
+    if (vid, code) not in YOUTUBE and not os.path.exists(base + ".mp4"):
+        return ""
+    figs = video_figs(code, [(vid, L[v["title"]])], L["play"], L["replay"], "    ", youtube=True)
+    return f'<div class="vlist guide-video">\n{figs}\n  </div>'
 
 
 def asset_ver():

@@ -753,6 +753,7 @@ em { font-style: normal; }
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;
   max-width: 560px; margin: 8px auto 0;
 }
+/* @video-css:start — _faq-build/build_guide.py 가 이 구간을 사용설명 페이지에 그대로 복사한다 */
 .vlist .vbox { position: relative; margin: 0; }
 .vlist video, .vlist .vposter, .vlist .vframe {
   display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; cursor: pointer;
@@ -786,6 +787,7 @@ em { font-style: normal; }
 .vlist .vbox.is-loading::after { opacity: 1; }
 @keyframes vspin { to { transform: rotate(360deg); } }
 .vlist figcaption { margin-top: 12px; font-size: 15px; opacity: 0.85; word-break: keep-all; }
+/* @video-css:end */
 
 /* 휴대폰에서는 한 편씩 위아래로 — 나란히 두면 영상 속 글자가 읽히지 않는다 */
 @media (max-width: 600px) {

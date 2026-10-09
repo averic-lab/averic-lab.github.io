@@ -18,6 +18,8 @@ import os
 import re
 import sys
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "i18n"))
+from build import guide_video  # noqa: E402  (영상 마크업·유튜브 판정은 랜딩 빌더가 단일 출처)
 from common import (SITE, og_tags, META, ORDER, ROOT, LANG_TO_STRINGS, css, esc, head_links,
                     interpolate, load, load_copy, switcher)
 
@@ -45,6 +47,15 @@ NAV = [
      'c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32'
      'a.49.49 0 0 0-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z'),
 ]
+
+
+def _slice(path, start, end):
+    """style.css / site.js 의 마커 구간을 그대로 가져온다 — 영상 플레이어 규칙을 두 벌로 만들지 않으려는 것."""
+    with open(os.path.join(ROOT, path), encoding="utf-8") as f:
+        text = f.read()
+    a = text.index(start)
+    a = text.index("\n", a) + 1
+    return text[a:text.index(end, a)]
 
 
 def fill(text, app, where):
@@ -127,6 +138,10 @@ def build(code, copy, app):
         "CSS_MOCKUP": css("mockup.css"),
         "CSS_GUIDE_MOCKUP": css("guide-mockup.css"),
         "CSS_FOOTER": css("footer.css"),
+        "CSS_VIDEO": _slice("style.css", "@video-css:start", "/* @video-css:end"),
+        "JS_VIDEO": _slice("site.js", "@video-js:start", "// @video-js:end"),
+        "GUIDE_VIDEO": guide_video(code),
+        "INTRO_CLS": " has-video" if guide_video(code) else "",
         "BRAND": esc(app["app_name"]),   # 한국어만 "안부", 나머지 "Anbu"
         "HTML_LANG": bcp,
         "DIR_ATTR": ' dir="rtl"' if direction == "rtl" else "",

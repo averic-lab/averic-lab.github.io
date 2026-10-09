@@ -114,6 +114,17 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
   .connect,.fld,.hero .code,.hero .cbtn{transition:none}}
 
 {{CSS_FOOTER}}
+
+/* 사용법 영상 — 규칙 본체는 style.css 의 @video-css 구간(빌드가 복사) */
+{{CSS_VIDEO}}
+.guide-video{max-width:260px;margin:22px 0 0}
+.guide-video .vbox{background:transparent}
+/* 넓은 화면에서는 영상을 문구 오른쪽에 둔다 — 아래로 쌓으면 오른쪽이 텅 빈다 */
+@media(min-width:900px){
+  .intro.has-video{display:grid;grid-template-columns:minmax(0,1fr) 260px;column-gap:56px;grid-template-rows:auto auto 1fr;align-items:start}
+  .intro.has-video>:not(.guide-video){grid-column:1}
+  .intro.has-video>.guide-video{grid-column:2;grid-row:1/span 3;margin-top:0}
+}
 </style>
 </head>
 <body>
@@ -124,10 +135,11 @@ h1{font-family:var(--serif);font-size:clamp(29px,5vw,44px);line-height:1.22;
 </div></header>
 
 <div class="wrap">
-  <div class="intro">
+  <div class="intro{{INTRO_CLS}}">
     <p class="eyebrow">{{EYEBROW}}</p>
     <h1>{{TITLE}}</h1>
     <p class="lead">{{LEAD}}</p>
+  {{GUIDE_VIDEO}}
   </div>
 
   <div class="cols">
@@ -705,6 +717,11 @@ if ('IntersectionObserver' in window) {
 }
 
 go(0, false);
+</script>
+<script>
+(function () {
+{{JS_VIDEO}}
+})();
 </script>
 </body>
 </html>

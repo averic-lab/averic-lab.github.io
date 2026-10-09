@@ -159,6 +159,7 @@
   // ----- 숏폼 영상 (홈 해질녘 ③ 자리 + 영상 페이지 /{언어}/shorts.html, i18n/build.py) -----
   // 가운데 버튼: 재생 → 재생 중 숨김 → 끝나면 다시 보기. 영상을 탭하면 일시정지.
   // 한 편을 재생하면 다른 편은 멈춘다.
+  // @video-js:start — _faq-build/build_guide.py 가 ~ end 구간을 사용설명 페이지에 그대로 복사한다
   var vboxes = Array.prototype.slice.call(document.querySelectorAll('.vlist .vbox'));
   // 유튜브로 재생하는 편(.vyt): 포스터+버튼만 있다가 누르면 iframe 을 만든다. 다른 편이 시작되면 포스터로 되돌린다.
   function stopOthers(box) {
@@ -223,4 +224,5 @@
     v.addEventListener('pause', function () { box.classList.remove('is-playing'); if (!v.ended) label('play'); });
     v.addEventListener('ended', function () { box.classList.remove('is-playing'); box.classList.add('is-ended'); label('replay'); });
   });
+  // @video-js:end
 })();

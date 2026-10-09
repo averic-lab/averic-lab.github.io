@@ -599,6 +599,50 @@ footer a{color:var(--ink-soft);text-decoration:none}
 footer a:hover{text-decoration:underline}
 footer .copy{margin-left:auto}
 [dir="rtl"] footer .copy{margin-left:0;margin-right:auto}
+
+/* 사용법 영상 — 규칙 본체는 style.css 의 @video-css 구간(빌드가 복사) */
+.vlist .vbox { position: relative; margin: 0; }
+.vlist video, .vlist .vposter, .vlist .vframe {
+  display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; cursor: pointer;
+  border-radius: 18px; background: #0a0e2a;
+  box-shadow: 0 18px 44px -14px rgba(20, 14, 44, 0.75), 0 0 0 1px rgba(255, 248, 240, 0.14);
+}
+.vlist .vbtn {
+  position: absolute; left: 50%; top: calc(50% - 16px); width: 64px; height: 64px; margin: -32px 0 0 -32px;
+  border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, 0.55); cursor: pointer; padding: 0;
+  background: rgba(20, 14, 44, 0.42); color: #fff;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity .25s ease, transform .25s ease;
+}
+.vlist .vframe { border: 0; cursor: auto; }
+.vlist .vbox.vyt.is-yt .vbtn { display: none; }
+.vlist .vbtn:hover { transform: scale(1.06); }
+.vlist .vbtn svg { width: 30px; height: 30px; fill: currentColor; }
+.vlist .vbtn .i-replay { display: none; }
+.vlist .vbox.is-ended .vbtn .i-play { display: none; }
+.vlist .vbox.is-ended .vbtn .i-replay { display: block; }
+.vlist .vbox.is-playing .vbtn { opacity: 0; pointer-events: none; }
+.vlist .vbox.is-loading .vbtn { opacity: 0; pointer-events: none; }
+.vlist .vbox::after {
+  content: ""; position: absolute; left: 50%; top: calc(50% - 16px);
+  width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.22); border-top-color: #fff;
+  opacity: 0; pointer-events: none; transition: opacity .2s ease;
+  animation: vspin .9s linear infinite;
+}
+.vlist .vbox.is-loading::after { opacity: 1; }
+@keyframes vspin { to { transform: rotate(360deg); } }
+.vlist figcaption { margin-top: 12px; font-size: 15px; opacity: 0.85; word-break: keep-all; }
+
+.guide-video{max-width:260px;margin:22px 0 0}
+.guide-video .vbox{background:transparent}
+/* 넓은 화면에서는 영상을 문구 오른쪽에 둔다 — 아래로 쌓으면 오른쪽이 텅 빈다 */
+@media(min-width:900px){
+  .intro.has-video{display:grid;grid-template-columns:minmax(0,1fr) 260px;column-gap:56px;grid-template-rows:auto auto 1fr;align-items:start}
+  .intro.has-video>:not(.guide-video){grid-column:1}
+  .intro.has-video>.guide-video{grid-column:2;grid-row:1/span 3;margin-top:0}
+}
 </style>
 </head>
 <body>
@@ -609,10 +653,13 @@ footer .copy{margin-left:auto}
 </div></header>
 
 <div class="wrap">
-  <div class="intro">
+  <div class="intro has-video">
     <p class="eyebrow">Cara pakai</p>
     <h1>Terhubung dengan keluarga lewat kode keamanan</h1>
     <p class="lead">Anbu menghubungkan orang dengan satu <strong>kode keamanan</strong>. Anda membuat kode di ponsel sendiri lalu memberitahukannya; keluarga memasukkannya di ponsel mereka.</p>
+  <div class="vlist guide-video">
+    <figure class="vbox vyt" data-yt="5YS-OJ6qmS8" data-hl="id" data-title="Cara memakai Anbu"><img class="vposter" src="/media/shorts/id/how-to-use-id.jpg" alt="" loading="lazy"><button type="button" class="vbtn" aria-label="Putar: Cara memakai Anbu" data-play="Putar: Cara memakai Anbu" data-replay="Tonton lagi: Cara memakai Anbu"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg><svg class="i-replay" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7.5 6 12 10V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg></button><figcaption>Cara memakai Anbu</figcaption></figure>
+  </div>
   </div>
 
   <div class="cols">
@@ -1259,6 +1306,75 @@ if ('IntersectionObserver' in window) {
 }
 
 go(0, false);
+</script>
+<script>
+(function () {
+  var vboxes = Array.prototype.slice.call(document.querySelectorAll('.vlist .vbox'));
+  // 유튜브로 재생하는 편(.vyt): 포스터+버튼만 있다가 누르면 iframe 을 만든다. 다른 편이 시작되면 포스터로 되돌린다.
+  function stopOthers(box) {
+    vboxes.forEach(function (o) {
+      if (o === box) return;
+      var ov = o.querySelector('video');
+      if (ov) ov.pause();
+      else if (o.classList.contains('is-yt')) resetYt(o);
+    });
+  }
+  function resetYt(box) {
+    var f = box.querySelector('.vframe');
+    if (f) f.parentNode.removeChild(f);
+    box.querySelector('.vposter').style.display = '';
+    box.classList.remove('is-yt');
+  }
+  function startYt(box) {
+    stopOthers(box);
+    var f = document.createElement('iframe');
+    f.className = 'vframe';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.getAttribute('data-yt') +
+      '?autoplay=1&playsinline=1&rel=0&hl=' + box.getAttribute('data-hl');
+    f.title = box.getAttribute('data-title') || '';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.setAttribute('allowfullscreen', '');
+    box.querySelector('.vposter').style.display = 'none';
+    box.insertBefore(f, box.firstChild);
+    box.classList.add('is-yt');
+  }
+  vboxes.forEach(function (box) {
+    if (box.classList.contains('vyt')) {
+      var yb = box.querySelector('.vbtn');
+      yb.addEventListener('click', function () { startYt(box); });
+      box.querySelector('.vposter').addEventListener('click', function () { startYt(box); });
+      return;
+    }
+    var v = box.querySelector('video'), btn = box.querySelector('.vbtn');
+    function label(key) { btn.setAttribute('aria-label', btn.getAttribute('data-' + key)); }
+    function start() {
+      stopOthers(box);
+      if (v.ended) v.currentTime = 0;
+      if (v.readyState < 3) loading(true);
+      var p = v.play();
+      if (p && p.catch) p.catch(function () { loading(false); });
+    }
+    // 로딩 표시: 포스터를 받는 동안 + 재생을 눌렀는데 아직 첫 프레임이 없거나 버퍼링 중일 때
+    function loading(on) { box.classList.toggle('is-loading', on); }
+    var poster = v.getAttribute('poster');
+    if (poster) {
+      var img = new Image();
+      img.onload = img.onerror = function () { if (v.paused || v.readyState >= 3) loading(false); };
+      img.src = poster;
+      if (!img.complete) loading(true);
+    }
+    v.addEventListener('waiting', function () { loading(true); });
+    v.addEventListener('playing', function () { loading(false); });
+    v.addEventListener('pause', function () { loading(false); });
+    v.addEventListener('error', function () { loading(false); });
+    btn.addEventListener('click', start);
+    v.addEventListener('click', function () { if (v.paused) start(); else v.pause(); });
+    v.addEventListener('play', function () { box.classList.add('is-playing'); box.classList.remove('is-ended'); });
+    v.addEventListener('pause', function () { box.classList.remove('is-playing'); if (!v.ended) label('play'); });
+    v.addEventListener('ended', function () { box.classList.remove('is-playing'); box.classList.add('is-ended'); label('replay'); });
+  });
+  
+})();
 </script>
 </body>
 </html>
