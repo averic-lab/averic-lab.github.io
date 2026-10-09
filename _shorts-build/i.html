@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>숏폼 I — 안부 앱 사용법 (튜토리얼 모션 그래픽)</title>
+<link rel="stylesheet" href="shorts.css">
+<style>
+  /* 설치부터 알림 등급까지 한 번에 따라가는 사용법 영상(약 59초).
+     타임라인은 "박 번호"(Techno Fest Vibes 124.00 BPM — 원곡 43.110초 = 영상 박 0 → audio.py bgm_start.
+     마디 첫 박은 원곡 박 위상 2라 영상 박 2·6·10…이 마디 첫 박이다(앱 아이콘 10·스토어 14·모드 22·권한 34·전화 확인 118·맺음 130).
+     원곡 107.95초의 구간 시작 크래시가 엔딩 시작(영상 박 134)에 떨어진다 — bgm_start 43.110).
+     여행 문장을 읽을 시간을 주려고 내용 박 4~8 을 영상 박 4~10 으로 늘린다(remap) — 장면 코드는 '내용 박'으로 쓰고, 효과음은 영상 시각으로 바꿔 둔다.
+     앱 화면은 실제 앱의 배치·색·문구(앱/서버 번역)를 그대로 그린다. 스토어 화면·권한 팝업은 특정 OS 를 흉내 내지 않은 일반형.
+     모든 움직임은 render(ms)의 함수다 — CSS animation·Math.random·setTimeout 금지(README 규칙). */
+  .v { background: #0b1033; }
+  .bg { position: absolute; inset: 0; }
+  .cam { position: absolute; left: 0; top: 0; width: 540px; height: 960px; transform-origin: 0 0; z-index: 5; }
+  canvas { position: absolute; left: 0; top: 0; width: 540px; height: 960px; pointer-events: none; }
+  #cf { z-index: 12; }
+  .flash { position: absolute; inset: 0; z-index: 40; background: #fff; opacity: 0; pointer-events: none; }
+  .x { position: absolute; transform-origin: 50% 50%; will-change: transform; }
+
+  /* 자막 — 카메라 밖(고정). 안전 영역: 위 77 · 오른쪽 475 */
+  /* 자막 뒤 어두운 띠 — 카메라가 앱 화면(흰 바탕)을 크게 당겨도 흰 자막이 읽히게 */
+  .capbg { position: absolute; z-index: 19; left: 0; right: 0; top: 0; height: 290px; pointer-events: none;
+    background: linear-gradient(180deg, rgba(6,9,30,.62) 0%, rgba(6,9,30,.45) 55%, rgba(6,9,30,0) 100%); }
+  .cap2 { position: absolute; z-index: 20; left: 22px; width: 450px; top: 96px; text-align: center; color: #fff;
+    font-size: 30px; font-weight: 800; line-height: 1.32; letter-spacing: -.6px; word-break: keep-all;
+    text-shadow: 0 3px 0 rgba(0,0,0,.25), 0 2px 18px rgba(0,0,0,.45); transform-origin: 50% 0; }
+  .cap2 em { font-style: normal; color: #ffd166; }
+  .cap2 small { display: block; margin-top: 6px; font-size: 18px; font-weight: 600; color: #e6e9f8; letter-spacing: -.3px; }
+  :lang(ja) .cap2, :lang(zh) .cap2 { word-break: normal; line-break: strict; }
+
+  /* 폰 — 안쪽 화면은 앱 색·문구 그대로 */
+  .ph { position: absolute; width: 310px; height: 528px; border-radius: 42px; background: #15171c; padding: 8px; box-sizing: border-box;
+    box-shadow: 0 26px 60px -14px rgba(0,0,0,.65), inset 0 0 0 2px #2c3038; }
+  .ph::before { content: ""; position: absolute; top: 15px; left: 50%; width: 64px; height: 7px; margin-left: -32px; border-radius: 4px; background: #2c3038; z-index: 3; }
+  .sc { position: relative; width: 100%; height: 100%; border-radius: 34px; background: #F7F9F8; overflow: hidden; color: #1a1c1c;
+    box-sizing: border-box; padding: 34px 16px 16px; }
+  .lab { position: absolute; z-index: 4; padding: 6px 14px; border-radius: 16px; background: #fff; color: #15171c; font-size: 15px; font-weight: 800; white-space: nowrap; }
+  .ic { display: inline-block; vertical-align: middle; flex: none; }
+
+  /* 스토어(일반형) */
+  .stor { position: absolute; width: 380px; border-radius: 26px; background: #fff; color: #1a1c1c; padding: 16px; box-sizing: border-box; box-shadow: 0 24px 60px -16px rgba(0,0,0,.6); }
+  .sbox { display: flex; align-items: center; gap: 10px; height: 52px; padding: 0 16px; border-radius: 26px; background: #EEF0F5; font-size: 22px; font-weight: 700; }
+  .sbox .q { min-width: 4px; }
+  .sbox .caret { width: 2px; height: 26px; background: #4355B9; }
+  .res { display: flex; align-items: center; gap: 12px; margin-top: 16px; padding: 12px; border-radius: 18px; background: #F7F8FB; }
+  .res img { width: 66px; height: 66px; border-radius: 16px; }
+  .res .nm { font-size: 21px; font-weight: 800; }
+  .res .sb { font-size: 12.5px; color: #6b7080; margin-top: 2px; line-height: 1.3; }
+  .ibtn { position: relative; margin-inline-start: auto; flex: none; width: 76px; height: 38px; border-radius: 19px; background: #4355B9; color: #fff;
+    display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; }
+  .ibtn .rg { position: absolute; inset: -1px; }
+
+  /* 모드 선택 */
+  .brd { font-size: 13px; font-weight: 800; color: #00897B; letter-spacing: .5px; }
+  .h1 { font-size: 21px; font-weight: 800; letter-spacing: -.5px; margin-top: 8px; line-height: 1.25; }
+  .sub { font-size: 12px; color: #6b7080; margin-top: 4px; line-height: 1.35; }
+  .mc { position: relative; margin-top: 12px; padding: 12px 14px; border-radius: 18px; }
+  .mc .bd { display: inline-block; padding: 2px 9px; border-radius: 10px; font-size: 11px; font-weight: 800; color: #fff; }
+  .mc .t1 { font-size: 15.5px; font-weight: 800; margin-top: 6px; line-height: 1.25; }
+  .mc .d1 { font-size: 11.5px; color: #4a5060; margin-top: 3px; line-height: 1.35; }
+  .mc .b1 { display: inline-block; margin-top: 8px; padding: 6px 14px; border-radius: 14px; font-size: 13px; font-weight: 800; color: #fff; }
+
+  /* 권한 */
+  .pc { position: relative; display: flex; gap: 10px; align-items: flex-start; margin-top: 10px; padding: 11px 12px; border-radius: 16px; background: #fff; }
+  .pc .ci { width: 34px; height: 34px; border-radius: 50%; background: #E0F2F1; display: flex; align-items: center; justify-content: center; flex: none; }
+  .pc .pt { font-size: 14px; font-weight: 800; }
+  .pc .pd { font-size: 11.5px; color: #4a5060; margin-top: 2px; line-height: 1.35; }
+  .pc .ok { position: absolute; inset-inline-end: 10px; top: 10px; width: 22px; height: 22px; border-radius: 50%; background: #00897B; display: flex; align-items: center; justify-content: center; }
+  .btmb { position: absolute; left: 16px; right: 16px; bottom: 18px; height: 46px; border-radius: 16px; background: #009688; color: #fff;
+    display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; }
+  .dim { position: absolute; inset: 0; background: rgba(10,12,20,.5); }
+  .dlg { position: absolute; left: 26px; right: 26px; top: 150px; border-radius: 22px; background: #fff; padding: 18px 16px 10px; text-align: center; }
+  .dlg .q { font-size: 15.5px; font-weight: 800; margin-top: 8px; line-height: 1.35; }
+  .dlg .o { margin-top: 10px; padding: 10px 6px; border-radius: 14px; font-size: 14px; font-weight: 800; }
+  .dlg .o.p { background: #E0F2F1; color: #00695C; }
+  .dlg .o.n { color: #8a8f9c; font-weight: 600; margin-top: 2px; }
+
+  /* 보내는 분 홈 — 안전 코드 카드 */
+  .hrow { display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 800; color: #00897B; }
+  .t2 { font-size: 15px; font-weight: 800; margin: 14px 0 10px; }
+  .cc { position: relative; border-radius: 16px; padding: 14px; background: linear-gradient(135deg, #123C63, #1D6FA5); color: #fff; overflow: hidden; }
+  .cc::before { content: ""; position: absolute; right: -30px; top: -40px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,.07); }
+  .cc .r { display: flex; align-items: center; gap: 8px; }
+  .cc .lb { flex: 1; font-size: 10.5px; font-weight: 700; letter-spacing: 1.3px; opacity: .8; }
+  .cc .cb { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.18); display: flex; align-items: center; justify-content: center; }
+  .cc .cv { font-size: 34px; font-weight: 800; letter-spacing: 3px; margin-top: 10px; }
+  .ghost { margin-top: 12px; border-radius: 16px; background: #fff; padding: 14px; }
+  .ghost i { display: block; height: 10px; border-radius: 5px; background: #E4E7EE; margin-bottom: 8px; }
+  .em { margin-top: 12px; border-radius: 16px; background: #FFEBEE; color: #B71C1C; padding: 14px; font-size: 15px; font-weight: 800; text-align: center; }
+  .toast { position: absolute; left: 30px; right: 30px; bottom: 26px; padding: 11px; border-radius: 14px; background: #2b2f38; color: #fff; font-size: 13.5px; font-weight: 700; text-align: center; }
+  .bub { position: absolute; width: 230px; padding: 12px 14px; border-radius: 18px 18px 18px 4px; background: #fff; color: #1a1c1c; font-size: 13px; line-height: 1.45; box-shadow: 0 16px 34px -10px rgba(0,0,0,.5); white-space: pre-line; }
+
+  /* 보호자 연결 */
+  .ttl { display: flex; align-items: center; gap: 6px; font-size: 18px; font-weight: 800; }
+  .flb { font-size: 12.5px; font-weight: 700; color: #6b7080; margin: 16px 0 6px; }
+  .fin { position: relative; height: 46px; padding: 0 14px; border-radius: 14px; background: #fff; border: 1.5px solid #D8DCE8; font-size: 20px; font-weight: 800;
+    display: flex; align-items: center; letter-spacing: 1px; }
+  .fin.on { border-color: #4355B9; }
+  .fin .caret { width: 2px; height: 24px; background: #4355B9; margin-inline-start: 2px; }
+  .finfo { display: flex; gap: 6px; align-items: flex-start; margin-top: 6px; padding: 6px 8px; border-radius: 10px; font-size: 11.5px; line-height: 1.4; color: #6b7080; font-weight: 600; }
+  .finfo svg { flex: none; margin-top: 1px; }
+  .cbtn { position: relative; margin-top: 14px; height: 48px; border-radius: 16px; background: #4355B9; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; overflow: hidden; }
+  .cbtn .okb { position: absolute; inset: 0; background: #2E7D32; display: flex; align-items: center; justify-content: center; font-size: 13.5px; padding: 0 10px; text-align: center; line-height: 1.25; }
+
+  /* 대시보드 */
+  .gh { font-size: 17px; font-weight: 800; color: #2B3A8F; letter-spacing: -.3px; }
+  .gl { font-size: 15.5px; font-weight: 800; margin-top: 12px; line-height: 1.3; }
+  .gs { font-size: 11px; color: #6b7080; margin-top: 10px; font-weight: 700; }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 5px; }
+  .lg { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: #6b7080; white-space: nowrap; }
+  .lg i { width: 6px; height: 6px; border-radius: 50%; }
+  .car { position: relative; height: 186px; margin-top: 8px; }
+  .dc.dc2 { position: absolute; top: 0; width: 236px; height: 186px; margin: 0; box-sizing: border-box; display: flex; flex-direction: column; }
+  .dc.dc2 .ch { flex: 1; height: auto; }
+  .dc.dc2 .alr { margin-top: auto; }
+  .pdots { display: flex; justify-content: center; gap: 6px; margin-top: 10px; }
+  .pdots i { height: 6px; width: 6px; border-radius: 3px; background: #4355B9; }
+  .swipe { position: absolute; top: 300px; left: 215px; width: 0; height: 0; opacity: 0; z-index: 5; }
+  .swipe .f { position: absolute; width: 36px; height: 36px; margin: -18px 0 0 -18px; border-radius: 50%; background: rgba(255,255,255,.9); box-shadow: 0 4px 14px rgba(0,0,0,.35); }
+  .callc { position: absolute; left: 14px; right: 14px; top: 96px; border-radius: 24px; background: #1d2230; color: #fff; padding: 20px 16px; text-align: center; z-index: 4;
+    box-shadow: 0 18px 40px -12px rgba(0,0,0,.6); }
+  .callc .ring { width: 60px; height: 60px; margin: 0 auto; border-radius: 50%; background: #2E7D32; display: flex; align-items: center; justify-content: center; }
+  .callc .cn { font-size: 22px; font-weight: 800; margin-top: 10px; }
+  .callc .cs { font-size: 13px; color: #b9c0d0; margin-top: 4px; }
+  .say { position: absolute; left: 40px; right: 40px; top: 262px; padding: 11px 14px; border-radius: 18px 18px 18px 4px; background: #fff; color: #1a1c1c; font-size: 15px; font-weight: 700;
+    text-align: center; z-index: 5; box-shadow: 0 12px 28px -8px rgba(0,0,0,.45); }
+  .calc { display: inline-flex; align-items: center; gap: 10px; vertical-align: middle; }
+  .calc svg { position: relative; top: -2px; }
+  .chip { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 10px; font-size: 11.5px; font-weight: 800; color: #fff; white-space: nowrap; }
+  .glist { font-size: 13px; font-weight: 800; margin-top: 14px; }
+  .dc { position: relative; margin-top: 8px; border-radius: 18px; background: #fff; padding: 12px 12px 12px 16px; overflow: hidden; }
+  .dc .bl { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; }
+  .dc .tint { position: absolute; inset: 0; opacity: 0; }
+  .dc .r1 { position: relative; display: flex; align-items: center; gap: 8px; }
+  .dc .nm { font-size: 18px; font-weight: 800; }
+  .dc .pill { margin-inline-start: auto; padding: 3px 10px; border-radius: 11px; font-size: 12px; font-weight: 800; white-space: nowrap; }
+  .dc .lc { position: relative; font-size: 11.5px; color: #6b7080; margin-top: 4px; }
+  .dc .ac { position: relative; font-size: 11.5px; color: #3f4948; margin-top: 2px; font-weight: 700; }
+  .dc .ch { position: relative; height: 70px; margin-top: 8px; display: flex; align-items: flex-end; gap: 7px; padding-inline-end: 40px; }
+  .dc .ch i { flex: 1; border-radius: 4px 4px 2px 2px; background: #1A237E; height: 0; }
+  .dc .ch i.td { background: #FB8C00; }
+  .cal { position: absolute; inset-inline-end: 0; top: -2px; width: 32px; height: 32px; }
+  .cal b { position: absolute; left: 0; right: 0; top: 13px; text-align: center; font-size: 9.5px; font-weight: 900; color: #6b7080; }
+  .alr { position: relative; display: none; margin-top: 8px; }
+  .alr .at { display: flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 800; }
+  .alr .bs { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+  .alr .bs span { padding: 9px 4px; border-radius: 12px; font-size: 12.5px; font-weight: 800; text-align: center; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 5px; }
+
+  /* 30일 창 */
+  .sheet { position: absolute; left: 0; right: 0; bottom: 0; height: 300px; border-radius: 24px 24px 0 0; background: #fff; padding: 16px; box-sizing: border-box; box-shadow: 0 -10px 30px rgba(0,0,0,.18); }
+  .sheet .shd { display: flex; align-items: center; font-size: 17px; font-weight: 800; }
+  .sheet .shd span { margin-inline-start: auto; }
+  .sheet .lb2 { font-size: 11.5px; color: #6b7080; margin-top: 6px; font-weight: 700; }
+  .sheet .c30 { position: absolute; left: 16px; right: 16px; bottom: 34px; height: 180px; display: flex; align-items: flex-end; gap: 2px; }
+  .sheet .c30 i { flex: 1; border-radius: 2px 2px 1px 1px; background: #1A237E; height: 0; }
+  .sheet .c30 i.td { background: #FB8C00; }
+  .sheet .xl { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font-size: 12px; font-weight: 800; color: #4355B9; }
+
+  /* 알림 목록 */
+  .nh { display: flex; align-items: center; gap: 6px; font-size: 18px; font-weight: 800; }
+  .ntd { font-size: 12.5px; font-weight: 800; color: #4355B9; margin-top: 12px; }
+  .nc { position: relative; margin-top: 10px; border-radius: 16px; background: #fff; padding: 12px; }
+  .nc .nr { display: flex; align-items: center; gap: 6px; }
+  .nc .tm { margin-inline-start: auto; font-size: 11px; color: #9AA0AE; }
+  .nc .nb { font-size: 13.5px; margin-top: 7px; line-height: 1.4; font-weight: 600; }
+
+  /* 푸시 배너(앱 실제 형식: 제목 = 서버 push_*_title, 본문 = "별칭 · 본문") */
+  .pb { position: absolute; width: 330px; border-radius: 22px; background: rgba(255,255,255,.97); color: #1a1c1c; padding: 11px 14px 12px; box-sizing: border-box;
+    box-shadow: 0 18px 40px -10px rgba(0,0,0,.55); }
+  .pb .r { display: flex; align-items: center; gap: 7px; }
+  .pb .r img { width: 22px; height: 22px; border-radius: 6px; }
+  .pb .an { font-size: 11.5px; font-weight: 700; color: #757575; }
+  .pb .nw { margin-inline-start: auto; font-size: 11px; color: #9AA0AE; }
+  .pb .pt { font-size: 15.5px; font-weight: 800; margin-top: 5px; }
+  .pb .pbd { font-size: 13px; color: #3F4948; line-height: 1.42; margin-top: 2px; }
+
+  /* 정렬 장면 — 작은 카드 */
+  .mini { position: absolute; width: 92px; height: 150px; border-radius: 16px; background: #fff; color: #1a1c1c; padding: 10px 8px 8px 12px; box-sizing: border-box; overflow: hidden;
+    box-shadow: 0 14px 30px -10px rgba(0,0,0,.5); }
+  .mini .bl { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; }
+  .mini .nm { font-size: 16px; font-weight: 800; white-space: nowrap; }
+  .mini .pill { display: inline-block; margin-top: 6px; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 800; white-space: nowrap; }
+  .mini .ch { position: absolute; left: 12px; right: 8px; bottom: 10px; height: 52px; display: flex; align-items: flex-end; gap: 3px; }
+  .mini .ch i { flex: 1; border-radius: 2px; background: #1A237E; }
+  .dots { position: absolute; display: flex; gap: 8px; }
+  .dots i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,.35); }
+  .dots i.on { background: #fff; width: 22px; border-radius: 5px; }
+
+  /* 손가락 탭 */
+  .tap { position: absolute; width: 0; height: 0; z-index: 30; }
+  .tap .f { position: absolute; width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%; background: rgba(255,255,255,.88); box-shadow: 0 4px 14px rgba(0,0,0,.35); }
+  .tap .rp { position: absolute; width: 80px; height: 80px; margin: -40px 0 0 -40px; border-radius: 50%; border: 4px solid #fff; }
+
+  /* 엔딩 — 앱 소개 편(h)과 같은 공통 엔딩 */
+  .end { z-index: 30; }
+</style></head>
+<body>
+<div class="v">
+  <div class="bg" id="bgA"></div>
+  <div class="bg" id="bgB"></div>
+  <div class="cam"></div>
+  <div class="capbg"></div>
+  <canvas id="cf" width="1080" height="1920"></canvas>
+  <div class="flash"></div>
+</div>
+<script src="engine.js"></script>
+<script>
+  // ── 박 그리드 ────────────────────────────────────────────────────────
+  const B = 0.48384;                                     // 1박 — Techno Fest Vibes 실측 0.48387초(124.00 BPM)
+  // 영상 박 ↔ 내용 박. ① 내용 4~8 을 영상 4~10 으로 늘린다(여행 문장)
+  //                    ② 내용 64.3 에서 8박 멈추고(HOLD) 그동안 연락처 입력을 영상 시각(window.INS = 멈춤 안 박)으로 그린다.
+  //                       8박(2마디)이라 뒤쪽 장면의 마디 첫 박 위치가 그대로다.
+  const HOLD_C = 64.3, HOLD_V = 8;
+  const toVideo = c => c < 4 ? c : c < 8 ? 4 + (c - 4) * 1.5 : c < HOLD_C ? c + 2 : c + 2 + HOLD_V;
+  const toContent = v => { if (v < 4) return v; if (v < 10) return 4 + (v - 4) / 1.5; const w = v - 2; return w < HOLD_C ? w : w < HOLD_C + HOLD_V ? HOLD_C : w - HOLD_V; };
+  const insAt = v => { const w = v - 2; return v >= 10 && w >= HOLD_C && w < HOLD_C + HOLD_V ? w - HOLD_C : null; };
+  window.INS = null;
+  window.DURATION = toVideo(133.5) * B;                  // 영상 박 143.5 = 69.4초
+  window.CRF = 28;
+  const IC = {"elderly": "M11.5 3.5c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm7.03 7.5c-1.57.01-2.94-.9-3.6-2.21l-.79-1.67c-.17-.35-.44-.65-.8-.85a2 2 0 0 0-1.94-.03v-.01l-4.39 2.5C6.39 9.08 6 9.74 6 10.46V13c0 .55.45 1 1 1s1-.45 1-1v-2.54l1.5-.85C9.18 10.71 9 11.85 9 13v5.33L7 21c-.33.44-.24 1.07.2 1.4.44.33 1.07.24 1.4-.2l2.04-2.72c.23-.31.37-.69.4-1.08l.18-2.94L13 18v4c0 .55.45 1 1 1s1-.45 1-1v-4.87c0-.41-.13-.81-.36-1.15l-1.6-2.29v-.01c-.11-1.16.07-2.32.46-3.4a6.02 6.02 0 0 0 3.51 2.52v.2c0 .28.22.5.5.5s.49-.22.49-.5v-.5c0-.28.22-.5.5-.5s.5.22.5.5v10c0 .28.22.5.5.5s.5-.22.5-.5v-10c0-.82-.66-1.51-1.47-1.5z", "person": "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v1c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-1c0-2.66-5.33-4-8-4z", "luggage": "M17 6h-2V3c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v3H7c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2 0 .55.45 1 1 1s1-.45 1-1h6c0 .55.45 1 1 1s1-.45 1-1c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM8.75 18c-.41 0-.75-.34-.75-.75v-7.5c0-.41.34-.75.75-.75s.75.34.75.75v7.5c0 .41-.34.75-.75.75zM12 18c-.41 0-.75-.34-.75-.75v-7.5c0-.41.34-.75.75-.75s.75.34.75.75v7.5c0 .41-.34.75-.75.75zm1.5-12h-3V3.5h3V6zm1.75 12c-.41 0-.75-.34-.75-.75v-7.5c0-.41.34-.75.75-.75s.75.34.75.75v7.5c0 .41-.34.75-.75.75z", "flight": "M21 14.58c0-.36-.19-.69-.49-.89L13 9V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-7.51 4.69a1.05 1.05 0 0 0 .87 1.89L10 13.5V19l-1.8 1.35a.48.48 0 0 0-.2.4v.59c0 .33.32.57.64.48L11.5 21l2.86.82c.32.09.64-.15.64-.48v-.59a.48.48 0 0 0-.2-.4L13 19v-5.5l6.64 2.08c.68.21 1.36-.3 1.36-1z", "search": "M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z", "share": "M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z", "notifications": "M12 22c1.1 0 2-.9 2-2h-4a2 2 0 0 0 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-1.29 1.29c-.63.63-.19 1.71.7 1.71h13.17c.89 0 1.34-1.08.71-1.71L18 16z", "directions_walk": "M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9 7.24 21.81c-.13.61.35 1.19.98 1.19h.08c.47 0 .87-.32.98-.78L10.9 15l2.1 2v5c0 .55.45 1 1 1s1-.45 1-1v-5.64c0-.55-.22-1.07-.62-1.45L12.9 13.5l.6-3a7.321 7.321 0 0 0 4.36 2.41c.6.09 1.14-.39 1.14-1 0-.49-.36-.9-.85-.98-1.52-.25-2.78-1.15-3.45-2.33l-1-1.6a2.145 2.145 0 0 0-2.65-.84L7.22 7.78A2.01 2.01 0 0 0 6 9.63V12c0 .55.45 1 1 1s1-.45 1-1V9.6l1.8-.7", "location_on": "M12 2c-4.2 0-8 3.22-8 8.2 0 3.18 2.45 6.92 7.34 11.23.38.33.95.33 1.33 0C17.55 17.12 20 13.38 20 10.2 20 5.22 16.2 2 12 2zm0 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z", "check_circle": "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM9.29 16.29 5.7 12.7a.996.996 0 1 1 1.41-1.41L10 14.17l6.88-6.88a.996.996 0 1 1 1.41 1.41l-7.59 7.59a.996.996 0 0 1-1.41 0z", "error": "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 11c-.55 0-1-.45-1-1V8c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1zm1 4h-2v-2h2v2z", "warning_amber": "M12 5.99 19.53 19H4.47L12 5.99M2.74 18c-.77 1.33.19 3 1.73 3h15.06c1.54 0 2.5-1.67 1.73-3L13.73 4.99c-.77-1.33-2.69-1.33-3.46 0L2.74 18zM11 11v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zm0 5h2v2h-2z", "info": "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1zm1-8h-2V7h2v2z", "calendar_month": "M17 2c-.55 0-1 .45-1 1v1H8V3c0-.55-.45-1-1-1s-1 .45-1 1v1H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-1V3c0-.55-.45-1-1-1zm2 18H5V10h14v10zm-8-7c0-.55.45-1 1-1s1 .45 1 1-.45 1-1 1-1-.45-1-1zm-4 0c0-.55.45-1 1-1s1 .45 1 1-.45 1-1 1-1-.45-1-1zm8 0c0-.55.45-1 1-1s1 .45 1 1-.45 1-1 1-1-.45-1-1zm-4 4c0-.55.45-1 1-1s1 .45 1 1-.45 1-1 1-1-.45-1-1zm-4 0c0-.55.45-1 1-1s1 .45 1 1-.45 1-1 1-1-.45-1-1zm8 0c0-.55.45-1 1-1s1 .45 1 1-.45 1-1 1-1-.45-1-1z", "phone": "m19.23 15.26-2.54-.29a1.99 1.99 0 0 0-1.64.57l-1.84 1.84a15.045 15.045 0 0 1-6.59-6.59l1.85-1.85c.43-.43.64-1.03.57-1.64l-.29-2.52a2.001 2.001 0 0 0-1.99-1.77H5.03c-1.13 0-2.07.94-2 2.07.53 8.54 7.36 15.36 15.89 15.89 1.13.07 2.07-.87 2.07-2v-1.73c.01-1.01-.75-1.86-1.76-1.98z", "home": "M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z", "link": "M17 7h-3c-.55 0-1 .45-1 1s.45 1 1 1h3c1.65 0 3 1.35 3 3s-1.35 3-3 3h-3c-.55 0-1 .45-1 1s.45 1 1 1h3c2.76 0 5-2.24 5-5s-2.24-5-5-5zm-9 5c0 .55.45 1 1 1h6c.55 0 1-.45 1-1s-.45-1-1-1H9c-.55 0-1 .45-1 1zm2 3H7c-1.65 0-3-1.35-3-3s1.35-3 3-3h3c.55 0 1-.45 1-1s-.45-1-1-1H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h3c.55 0 1-.45 1-1s-.45-1-1-1z", "settings": "M19.5 12c0-.23-.01-.45-.03-.68l1.86-1.41c.4-.3.51-.86.26-1.3l-1.87-3.23a.987.987 0 0 0-1.25-.42l-2.15.91c-.37-.26-.76-.49-1.17-.68l-.29-2.31c-.06-.5-.49-.88-.99-.88h-3.73c-.51 0-.94.38-1 .88l-.29 2.31c-.41.19-.8.42-1.17.68l-2.15-.91c-.46-.2-1-.02-1.25.42L2.41 8.62c-.25.44-.14.99.26 1.3l1.86 1.41a7.343 7.343 0 0 0 0 1.35l-1.86 1.41c-.4.3-.51.86-.26 1.3l1.87 3.23c.25.44.79.62 1.25.42l2.15-.91c.37.26.76.49 1.17.68l.29 2.31c.06.5.49.88.99.88h3.73c.5 0 .93-.38.99-.88l.29-2.31c.41-.19.8-.42 1.17-.68l2.15.91c.46.2 1 .02 1.25-.42l1.87-3.23c.25-.44.14-.99-.26-1.3l-1.86-1.41c.03-.23.04-.45.04-.68zm-7.46 3.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z", "favorite": "M13.35 20.13c-.76.69-1.93.69-2.69-.01l-.11-.1C5.3 15.27 1.87 12.16 2 8.28c.06-1.7.93-3.33 2.34-4.29 2.64-1.8 5.9-.96 7.66 1.1 1.76-2.06 5.02-2.91 7.66-1.1 1.41.96 2.28 2.59 2.34 4.29.14 3.88-3.3 6.99-8.55 11.76l-.1.09z", "touch_app": "M8.79 9.24V5.5a2.5 2.5 0 0 1 5 0v3.74c1.21-.81 2-2.18 2-3.74 0-2.49-2.01-4.5-4.5-4.5s-4.5 2.01-4.5 4.5c0 1.56.79 2.93 2 3.74zm5.5 2.47c-.28-.14-.58-.21-.89-.21h-.61v-6c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v10.74l-3.44-.72c-.37-.08-.76.04-1.03.31-.43.44-.43 1.14 0 1.58l4.01 4.01c.38.37.89.58 1.42.58h6.1c1 0 1.84-.73 1.98-1.72l.63-4.47c.12-.85-.32-1.69-1.09-2.07l-4.08-2.03z", "apartment": "M17 11V5c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v2H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h5c.55 0 1-.45 1-1v-3h2v3c0 .55.45 1 1 1h5c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2h-2zM7 19H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm4 4H9v-2h2v2zm0-4H9V9h2v2zm0-4H9V5h2v2zm4 8h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm4 12h-2v-2h2v2zm0-4h-2v-2h2v2z", "download": "M16.59 9H15V4c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v5H7.41c-.89 0-1.34 1.08-.71 1.71l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.63-.63.19-1.71-.7-1.71zM5 19c0 .55.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1H6c-.55 0-1 .45-1 1z", "arrow_forward": "M5 13h11.17l-4.88 4.88c-.39.39-.39 1.03 0 1.42.39.39 1.02.39 1.41 0l6.59-6.59a.996.996 0 0 0 0-1.41l-6.58-6.6a.996.996 0 1 0-1.41 1.41L16.17 11H5c-.55 0-1 .45-1 1s.45 1 1 1z", "smartphone": "M17 1.01 7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z", "shield": "m11.3 2.26-6 2.25C4.52 4.81 4 5.55 4 6.39v4.7c0 4.83 3.13 9.37 7.43 10.75.37.12.77.12 1.14 0 4.3-1.38 7.43-5.91 7.43-10.75v-4.7a2 2 0 0 0-1.3-1.87l-6-2.25c-.45-.18-.95-.18-1.4-.01z", "close": "M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59 7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12 5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z", "content_copy": "M15 20H5V7c0-.55-.45-1-1-1s-1 .45-1 1v13c0 1.1.9 2 2 2h10c.55 0 1-.45 1-1s-.45-1-1-1zm5-4V4c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2zm-2 0H9V4h9v12z"};
+  const ICON_SRC = '../_store-build/app_icon.png';
+  const A_ = L.app, S_ = L.srv;
+  const C = { navy: '#0b1033', yellow: '#ffd166', teal: '#009688', indigo: '#4355B9', normal: '#00685E', caution: '#F59E0B', warning: '#E65100', urgent: '#E53935' };
+  const cam = document.querySelector('.cam'), V = document.querySelector('.v');
+  const clamp = (x, a = 0, b = 1) => Math.min(Math.max(x, a), b);
+  const eio = p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+  const spring = e => e <= 0 ? 0 : e >= 1 ? 1 : 1 - Math.exp(-5 * e) * Math.cos(e * 11);
+  const bounce = e => { const n = 7.5625, d = 2.75; if (e < 1 / d) return n * e * e; if (e < 2 / d) return n * (e -= 1.5 / d) * e + .75;
+    if (e < 2.5 / d) return n * (e -= 2.25 / d) * e + .9375; return n * (e -= 2.625 / d) * e + .984375; };
+  const kick = t => Math.exp(-((t / B) % 1) * 6);
+  const svg = (name, size, fill) => `<svg class="ic" viewBox="0 0 24 24" width="${size}" height="${size}" fill="${fill}"><path d="${IC[name]}"/></svg>`;
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
+  // ── 요소·등장 레지스트리(앱 소개 편 h.html 과 같은 방식, 박 단위) ─────────
+  const mk = (parent, cls, css, html = '') => { const d = document.createElement('div'); d.className = cls; d.style.cssText = css; d.innerHTML = html; parent.appendChild(d); return d; };
+  const REG = [], SHAKE = [], TICK = [];
+  const show = (el, a, z, kind, o = {}) => { REG.push({ el, a: a * B, z: z * B, kind, o }); if (o.amp) SHAKE.push({ t: a * B, amp: o.amp }); el.style.opacity = 0; return el; };
+  const AN = {
+    pop:   p => ({ o: clamp(p / .06), s: .6 + .4 * spring(clamp(p / .45)) }),
+    rise:  p => ({ o: clamp(p / .1), y: 120 * (1 - spring(clamp(p / .5))) }),
+    up:    p => ({ o: clamp(p / .2), y: 26 * (1 - eio(clamp(p / .35))) }),
+    drop:  p => ({ o: clamp(p / .05), y: -220 * (1 - bounce(clamp(p / .55))) }),
+    down:  p => ({ o: clamp(p / .1), y: -90 * (1 - spring(clamp(p / .45))) }),
+    sl:    p => ({ o: clamp(p / .05), x: -480 * (1 - spring(clamp(p / .5))) }),
+    sr:    p => ({ o: clamp(p / .05), x: 480 * (1 - spring(clamp(p / .5))) }),
+    slam:  p => { const e = clamp(p / .2); return { o: clamp(p / .05), s: 1 + 1.3 * (1 - e) ** 2, r: -5 * (1 - e) }; },
+    fade:  p => ({ o: clamp(p / .2) }),
+    cut:   p => ({ o: 1 }),
+  };
+  function applyReg(t) {
+    for (const r of REG) {
+      const el = r.el, o = r.o, p = t - r.a;
+      if (p < 0 || t > r.z + .2) { el.style.opacity = 0; continue; }
+      const f = { o: 1, x: 0, y: 0, s: 1, r: 0, ...AN[r.kind](p) };
+      if (o.idle) { const i = o.idle(t, p); for (const k of ['x', 'y', 'r']) if (i[k] != null) f[k] += i[k]; if (i.s != null) f.s *= i.s; }
+      if (t > r.z) {
+        const q = clamp((t - r.z) / .2);
+        if (o.exit === 'L') f.x -= 600 * q * q; else if (o.exit === 'R') f.x += 600 * q * q;
+        else if (o.exit === 'U') f.y -= 300 * q * q; else if (o.exit === 'D') f.y += 300 * q * q;
+        else if (o.exit === 'cut') f.o = 0;
+        else { f.o *= 1 - q; f.s *= 1 + .06 * q; }
+      }
+      el.style.opacity = f.o.toFixed(3);
+      el.style.transform = `translate(${f.x.toFixed(1)}px,${f.y.toFixed(1)}px) rotate(${f.r.toFixed(2)}deg) scale(${(f.s * (o.s0 || 1)).toFixed(4)})`;
+    }
+  }
+
+  // 자막 — 카메라 밖(고정)
+  const cap = (html, small, a, z) => { const d = mk(V, 'cap2', '', html + (small ? `<small>${small}</small>` : '')); show(d, a, z, 'up'); return d; };
+  // 폰 — 내용 공간(카메라 안)의 (cx) 를 가운데로, 위 240
+  const phone = (cx = 247, top = 240) => { const p = mk(cam, 'x ph', `left:${cx - 155}px;top:${top}px`); const sc = mk(p, 'sc', ''); return [p, sc]; };
+  const pushHTML = (title, body) => `<div class="r"><img src="${ICON_SRC}"><span class="an">${esc(L.app_name)}</span><span class="nw">${esc(L.now)}</span></div>
+    <div class="pt">${esc(title)}</div><div class="pbd">${esc(body)}</div>`;
+  const deco = (alias, body) => `${alias} · ${body}`;           // 서버 decorate_body 와 같은 형식
+
+  // ── 탭(손가락) — 대상 요소의 중심을 내용 좌표로 재서 그 자리에서 누른다 ─────
+  const TAPS = [];
+  const tap = (el, beat) => { const d = mk(cam, 'tap', '', '<i class="rp"></i><i class="f"></i>'); TAPS.push({ el, d, t: beat * B }); };
+  const posIn = (el, dy = 0) => { let x = el.offsetWidth / 2, y = el.offsetHeight / 2 + dy, e = el; while (e && e !== cam) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; } return [x, y]; };
+  function placeTaps() { TAPS.forEach(T => { const [x, y] = posIn(T.el); T.d.style.left = x + 'px'; T.d.style.top = y + 'px'; }); }
+  function drawTaps(t) {
+    TAPS.forEach(T => {
+      const d = t - T.t, f = T.d.children[1], rp = T.d.children[0];
+      if (d < -.35 || d > .55 || window.INS !== null) { T.d.style.opacity = 0; return; }   // 멈춤 구간엔 손가락을 숨긴다
+      T.d.style.opacity = 1;
+      const fin = clamp((d + .35) / .2), press = d >= 0 && d < .16 ? 1 - .25 * Math.sin(d / .16 * Math.PI) : 1;
+      f.style.opacity = (d < .3 ? fin : clamp(1 - (d - .3) / .25)).toFixed(3);
+      f.style.transform = `scale(${(press * (.8 + .2 * fin)).toFixed(3)})`;
+      const q = clamp(d / .45); rp.style.opacity = d < 0 ? 0 : (1 - q).toFixed(3); rp.style.transform = `scale(${(.3 + .9 * q).toFixed(3)})`;
+    });
+  }
+
+  // ── 터짐(앱 소개 편과 같은 시드 고정 컨페티) — 화면 좌표 ───────────────
+  const mulberry = a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  const PAL = ['#ffd166', '#ff5f7a', '#fff8f0', '#5eead4', '#ff8a95', '#8ea0ff'];
+  const BURSTS = [];
+  const CFG = { small: { n: 16, sp: [160, 380], ring: [120], rays: 8, sz: [6, 11], life: .9 }, mid: { n: 34, sp: [220, 560], ring: [160, 240], rays: 12, sz: [7, 13], life: 1.1 },
+                big: { n: 80, sp: [260, 820], ring: [220, 340, 470], rays: 18, sz: [8, 16], life: 1.5 }, wave: { n: 0, sp: [0, 0], ring: [110, 190], rays: 0, sz: [0, 0], life: .8 } };
+  function burst(beat, x, y, kind = 'small', pal = PAL) {
+    const c = CFG[kind], rnd = mulberry(Math.round(beat * 1000) + Math.round(x) * 7 + Math.round(y) * 13 + kind.length), ps = [];
+    for (let i = 0; i < c.n; i++) ps.push({ a: rnd() * 6.2832, v: c.sp[0] + rnd() * (c.sp[1] - c.sp[0]), sh: Math.floor(rnd() * 4), col: pal[Math.floor(rnd() * pal.length)],
+      sz: c.sz[0] + rnd() * (c.sz[1] - c.sz[0]), rot: rnd() * 6.28, rv: (rnd() - .5) * 14, life: c.life * (.7 + .5 * rnd()) });
+    BURSTS.push({ t0: beat * B, x, y, c, ps, pal, seed: rnd() * 6.28, dur: c.life * 1.3 });
+    if (kind === 'big') SHAKE.push({ t: beat * B, amp: 8 }); else if (kind === 'mid') SHAKE.push({ t: beat * B, amp: 3.5 });
+  }
+  const HEARTP = new Path2D('M0,26 C-36,4 -26,-26 0,-14 C26,-26 36,4 0,26 Z');
+  function drawBursts(ctx, t) {
+    ctx.setTransform(2, 0, 0, 2, 0, 0); ctx.clearRect(0, 0, 540, 960);
+    for (const b of BURSTS) {
+      const tau = t - b.t0; if (tau < 0 || tau > b.dur) continue;
+      b.c.ring.forEach((R, i) => { const q = clamp((tau - i * .07) / .55); if (q <= 0 || q >= 1) return; const e = 1 - (1 - q) ** 3;
+        ctx.globalAlpha = 1 - q; ctx.lineWidth = 3 + 13 * (1 - q); ctx.strokeStyle = b.pal[i % b.pal.length]; ctx.beginPath(); ctx.arc(b.x, b.y, R * e, 0, 6.2832); ctx.stroke(); });
+      if (b.c.rays && tau < .38) { const q = tau / .38; ctx.lineCap = 'round'; ctx.globalAlpha = 1 - q;
+        for (let k = 0; k < b.c.rays; k++) { const a = k / b.c.rays * 6.2832 + b.seed, r0 = 30 + q * 180, r1 = r0 + 60 * (1 - q);
+          ctx.strokeStyle = b.pal[k % b.pal.length]; ctx.lineWidth = 6 * (1 - q) + 1.5; ctx.beginPath(); ctx.moveTo(b.x + Math.cos(a) * r0, b.y + Math.sin(a) * r0); ctx.lineTo(b.x + Math.cos(a) * r1, b.y + Math.sin(a) * r1); ctx.stroke(); } }
+      for (const p of b.ps) { if (tau > p.life) continue; const d = (1 - Math.exp(-3 * tau)) / 3;
+        const px = b.x + Math.cos(p.a) * p.v * d, py = b.y + Math.sin(p.a) * p.v * d + 0.5 * 760 * tau * tau;
+        ctx.globalAlpha = tau > p.life - .3 ? clamp((p.life - tau) / .3) : 1; ctx.fillStyle = p.col; ctx.save(); ctx.translate(px, py); ctx.rotate(p.rot + p.rv * tau);
+        if (p.sh === 0) ctx.fillRect(-p.sz / 2, -p.sz / 3, p.sz, p.sz * .66); else if (p.sh === 1) { ctx.beginPath(); ctx.arc(0, 0, p.sz / 2, 0, 6.2832); ctx.fill(); }
+        else if (p.sh === 2) { ctx.scale(p.sz / 40, p.sz / 40); ctx.fill(HEARTP); }
+        else { ctx.beginPath(); for (let k = 0; k < 10; k++) { const rr = k % 2 ? p.sz * .22 : p.sz * .55, aa = k / 10 * 6.2832; ctx.lineTo(Math.cos(aa) * rr, Math.sin(aa) * rr); } ctx.closePath(); ctx.fill(); }
+        ctx.restore(); }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // ── 걸음수(고령자 1천 보대 — README) ─────────────────────────────────
+  const WEEK = [1320, 1645, 1210, 1890, 1405, 1730, 1482];
+  const M30 = [1510, 1380, 1720, 1265, 1840, 1455, 1190, 1620, 1735, 1345, 1580, 1910, 1280, 1460, 1695, 1375, 1820, 1240, 1530, 1665,
+               1410, 1785, 1305, 1590, 1320, 1645, 1210, 1890, 1405, 1730].concat([]).slice(0, 29).concat([1482]);
+  const TODAY = WEEK[6];
+  const actLabel = avg => avg >= 6000 ? L.act_very : avg >= 3000 ? L.act : L.act_need;   // 앱과 같은 7일 평균 기준(engine.js setWeek)
+  const ALIAS = L.i_mom;
+
+  // ════ 1 소개 (박 0–12) ══════════════════════════════════════════════
+  const INTRO_Y = 470;
+  const circ = (cx, name, a) => show(mk(cam, 'x', `left:${cx - 62}px;top:${INTRO_Y - 62}px;width:124px;height:124px;border-radius:50%;background:rgba(255,255,255,.1);
+    box-shadow:inset 0 0 0 3px rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center`, svg(name, 72, '#fff')), a, 8, 'pop', { exit: 'fade', idle: t => ({ y: -6 * kick(t) }) });
+  circ(117, 'apartment', 0); circ(247, 'elderly', 2); circ(377, 'luggage', 4);
+  const plane = show(mk(cam, 'x', 'left:0;top:320px', svg('flight', 64, '#ffd166')), 4.1, 7.9, 'fade');
+  TICK.push(t => { const q = clamp((t - 4.1 * B) / (3.8 * B)); plane.style.left = (-60 + 640 * eio(q)) + 'px'; plane.style.top = (330 - 60 * Math.sin(q * Math.PI)) + 'px'; plane.style.rotate = '90deg'; });
+  const appIcon = show(mk(cam, 'x', `left:${247 - 80}px;top:${INTRO_Y - 80}px;width:160px;height:160px`, `<img src="${ICON_SRC}" style="width:160px;height:160px;border-radius:38px;box-shadow:0 20px 50px -10px rgba(0,0,0,.6)">`),
+    8, 12, 'slam', { amp: 8, idle: t => ({ s: 1 + .05 * kick(t) }) });
+  const iconName = show(mk(cam, 'x', `left:47px;top:${INTRO_Y + 100}px;width:400px;text-align:center;font-size:40px;font-weight:900;color:#fff`, esc(L.app_name)), 8.6, 12, 'pop');
+  const capA = cap(L.i_a1 + '<br><em class="l2">' + L.i_a2 + '</em>', '', 0, 4);
+  TICK.push(t => { const l2 = capA.querySelector('.l2'), q = clamp((t - 2 * B) / .3); l2.style.opacity = q; l2.style.display = 'inline-block'; l2.style.transform = `translateY(${(1 - eio(q)) * 18}px)`; });
+  cap(L.i_a3, '', 4, 8); cap(L.i_a4, '', 8, 12);
+  burst(0, 112, INTRO_Y, 'small'); burst(2, 247, INTRO_Y, 'small'); burst(4, 382, INTRO_Y, 'small'); burst(8, 247, INTRO_Y, 'big'); burst(10, 247, INTRO_Y, 'wave');
+
+  // ════ 2 스토어 (박 12–20) ═══════════════════════════════════════════
+  const st = show(mk(cam, 'x stor', 'left:57px;top:300px', `
+    <div class="sbox">${svg('search', 26, '#6b7080')}<span class="q"></span><i class="caret"></i></div>
+    <div class="res"><img src="${ICON_SRC}"><div style="min-width:0"><div class="nm">${esc(L.app_name)}</div><div class="sb">${esc(L.brand_sub)}</div></div>
+      <div class="ibtn"><span class="bt">${esc(L.i_install)}</span><svg class="rg" viewBox="0 0 78 40"><rect x="2" y="2" width="74" height="36" rx="18" fill="none" stroke="#ffd166" stroke-width="4" pathLength="100" stroke-dasharray="0 100"/></svg></div></div>`), 12, 20, 'pop', { exit: 'fade' });
+  const res = st.querySelector('.res'), ib = st.querySelector('.ibtn'), ibT = ib.querySelector('.bt'), ring = ib.querySelector('rect');
+  TICK.push(t => {
+    const n = clamp(Math.floor((t - 12.6 * B) / (.3 * B)) + 1, 0, L.i_search.length);
+    st.querySelector('.q').textContent = L.i_search.slice(0, Math.max(0, n));
+    st.querySelector('.caret').style.opacity = (Math.floor(t * 3) % 2 && n < L.i_search.length) || t < 14 * B ? 1 : 0;
+    const rq = clamp((t - 14.6 * B) / .35); res.style.opacity = rq; res.style.transform = `translateY(${(1 - eio(rq)) * 26}px)`;
+    const pr = clamp((t - 16.2 * B) / (1.8 * B)); ring.setAttribute('stroke-dasharray', `${(pr * 100).toFixed(1)} 100`);
+    ring.style.opacity = t > 16.2 * B && t < 18.1 * B ? 1 : 0;
+    const done = t >= 18 * B; ibT.textContent = done ? L.i_open : L.i_install;
+    ib.style.background = t > 16 * B && !done ? '#9aa3d1' : '#4355B9';
+  });
+  tap(ib, 16); tap(ib, 19);
+  cap(L.i_b1, '', 12, 20);
+  burst(18, 380, 470, 'small');
+
+  // ════ 3 모드 선택 (박 20–32) — 안드로이드(가운데) → 아이폰(오른쪽 +600) ══════
+  const [pA, sA] = phone(247);
+  sA.innerHTML = `<div class="brd">${esc(L.app_name)}</div><div class="h1">${esc(A_.mode_select_title)}</div><div class="sub">${esc(A_.mode_select_subtitle)}</div>
+    <div class="mc m1" style="background:#E0F2F1"><span class="bd" style="background:#00897B">${esc(A_.mode_subject_badge)}</span><div class="t1">${esc(A_.mode_subject_title)}</div>
+      <div class="d1">${esc(A_.mode_subject_desc)}</div><span class="b1" style="background:#00897B">${esc(A_.mode_subject_button)}</span></div>
+    <div class="mc m2" style="background:#E8EAF6"><span class="bd" style="background:#4355B9">${esc(A_.mode_guardian_badge)}</span><div class="t1">${esc(A_.mode_guardian_title)}</div>
+      <div class="d1">${esc(A_.mode_guardian_desc)}</div><span class="b1" style="background:#4355B9">${esc(A_.mode_guardian_button)}</span></div>`;
+  show(pA, 20, 26.5, 'pop', { exit: 'cut' });
+  const m1 = sA.querySelector('.m1'), m2 = sA.querySelector('.m2');
+  TICK.push(t => { const h1 = t > 22 * B && t < 24 * B, h2 = t > 24 * B && t < 26 * B;
+    m1.style.boxShadow = h1 ? `0 0 0 ${3 + 2 * kick(t)}px #00897B` : 'none'; m2.style.boxShadow = h2 ? `0 0 0 ${3 + 2 * kick(t)}px #4355B9` : 'none'; });
+  tap(m1.querySelector('.b1'), 22.6); tap(m2.querySelector('.b1'), 24.6);
+  cap(L.i_c1, '', 20, 26);
+  // 아이폰: 모드 선택 없이 보호자 권한 화면으로
+  const [pI, sI] = phone(847);
+  sI.innerHTML = `<div class="h1" style="margin-top:4px">${esc(A_.permission_title).replace(/\n/g, '<br>')}</div>
+    <div class="pc"><span class="ci">${svg('notifications', 20, '#00897B')}</span><div><div class="pt">${esc(A_.permission_notification)}</div><div class="pd">${esc(A_.permission_notification_guardian_desc)}</div></div></div>
+    <div class="skip" style="position:absolute;left:14px;right:14px;top:210px;border:2.5px dashed #b9bfcc;border-radius:18px;padding:14px;color:#9aa0ae;font-size:14px;font-weight:800;text-align:center;background:#fff">
+      ${esc(A_.mode_select_title)}<div style="font-size:42px;line-height:1;color:#E53935;margin-top:4px">✕</div></div>
+    <div class="gbadge" style="position:absolute;left:0;right:0;top:350px;text-align:center"><span style="display:inline-block;padding:7px 18px;border-radius:16px;background:#4355B9;color:#fff;font-size:16px;font-weight:800">${esc(A_.mode_guardian_badge)}</span></div>`;
+  show(pI, 20, 32, 'cut', { exit: 'cut' });
+  const skipEl = sI.querySelector('.skip'), gb = sI.querySelector('.gbadge');
+  TICK.push(t => { const q = clamp((t - 27.6 * B) / (1.2 * B)); skipEl.style.opacity = t < 27 * B ? 0 : (q < .3 ? clamp((t - 27 * B) / .2) : 1 - clamp((q - .3) / .7));
+    skipEl.style.transform = `translateX(${(eio(clamp((q - .3) / .7)) * 320).toFixed(1)}px) rotate(${(q * 8).toFixed(1)}deg)`;
+    const g = clamp((t - 28.8 * B) / .3); gb.style.opacity = g; gb.style.transform = `scale(${(1 + 1.2 * (1 - g) ** 2).toFixed(3)})`; });
+  cap(L.i_c2, L.i_c2s.replace('@btn', A_.gs_enable_button), 26, 32);
+
+  // ════ 4 권한 (박 32–51) ═════════════════════════════════════════════
+  const [pP, sP] = phone(247);
+  const pcard = (icon, k, d) => `<div class="pc"><span class="ci">${svg(icon, 20, '#00897B')}</span><div><div class="pt">${esc(A_[k])}</div><div class="pd">${esc(A_[d])}</div></div><span class="ok" style="opacity:0">${svg('check_circle', 22, '#fff')}</span></div>`;
+  sP.innerHTML = `<div class="h1" style="margin-top:4px">${esc(A_.permission_title).replace(/\n/g, '<br>')}</div>
+    ${pcard('notifications', 'permission_notification', 'permission_notification_subject_desc')}
+    ${pcard('directions_walk', 'permission_activity', 'permission_activity_desc')}
+    ${pcard('location_on', 'permission_location', 'permission_location_desc')}
+    <div class="btmb">${esc(A_.common_confirm)}</div><div class="dim" style="opacity:0"></div>`;
+  show(pP, 32, 51, 'pop', { exit: 'fade' });
+  const pcs = sP.querySelectorAll('.pc'), dim = sP.querySelector('.dim'), okB = sP.querySelector('.btmb');
+  tap(okB, 34);
+  cap(L.i_d1.replace('@ok', A_.common_confirm), '', 32, 35);
+  const DLG = [[35, 'notifications', 'permission_notification', L.i_allow, L.i_deny], [39, 'directions_walk', 'permission_activity', L.i_allow, L.i_deny],
+               [43, 'location_on', 'permission_location', L.i_allow_use, L.i_deny]];
+  DLG.forEach(([b, icon, k, yes, no], i) => {
+    const d = mk(sP, 'dlg', '', `${svg(icon, 30, '#00897B')}<div class="q">${esc(L.i_pq.replace('@perm', A_[k]))}</div><div class="o p">${esc(yes)}</div><div class="o n">${esc(no)}</div>`);
+    show(d, b, b + 2.6, 'pop', { exit: 'fade' });
+    tap(d.querySelector('.o.p'), b + 2.1);
+    burst(b + 2.3, 247, 360 + i * 70, 'small');
+  });
+  TICK.push(t => {
+    let dm = 0; DLG.forEach(([b]) => { if (t > b * B && t < (b + 2.8) * B) dm = Math.max(dm, clamp((t - b * B) / .2) * (1 - clamp((t - (b + 2.6) * B) / .2))); });
+    dim.style.opacity = dm.toFixed(3);
+    pcs.forEach((c, i) => { const g = clamp((t - (DLG[i][0] + 2.4) * B) / .25); c.querySelector('.ok').style.opacity = g; c.querySelector('.ok').style.transform = `scale(${(1 + (1 - g)).toFixed(2)})`;
+      const on = t > DLG[i][0] * B && t < (DLG[i][0] + 3.2) * B; c.style.boxShadow = on ? '0 0 0 3px #00897B' : 'none'; });
+  });
+  cap(L.i_d2, '', 35, 39); cap(L.i_d3, '', 39, 43); cap(L.i_d4, '', 43, 47); cap(L.i_d5, '', 47, 51).dataset.fs = 24;
+
+  // ════ 5 안전 코드 (박 51–59) — 보내는 분 ═══════════════════════════════
+  const [pS, sS] = phone(247);
+  sS.innerHTML = `<div class="hrow"><span style="color:#1a1c1c;font-size:20px">☰</span><span>${esc(L.app_name)}</span></div>
+    <div class="t2">${esc(A_.subject_home_share_title)}</div>
+    <div class="cc"><div class="r"><span class="lb">SAFETY SHARE CODE</span><span class="cb b-copy">${svg('content_copy', 18, '#fff')}</span><span class="cb b-share">${svg('share', 18, '#fff')}</span></div>
+      <div class="cv">K7M-4PXR</div></div>
+    <div class="ghost"><i style="width:40%"></i><i style="width:75%"></i><i style="width:55%;margin:0"></i></div>
+    <div class="em">${esc(L.em_btn)}</div>
+    <div class="toast" style="opacity:0;top:212px;bottom:auto">${esc(A_.subject_home_code_copied)}</div>`;
+  show(pS, 51, 59, 'pop', { exit: 'fade' });
+  const toast = sS.querySelector('.toast');
+  tap(sS.querySelector('.b-copy'), 53); tap(sS.querySelector('.b-share'), 55.5);
+  const bub = show(mk(cam, 'x bub', 'left:150px;top:390px', esc(A_.subject_home_share_text.replace('@code', 'K7M-4PXR'))), 56, 59, 'fade', { exit: 'U' });
+  TICK.push(t => { toast.style.opacity = (clamp((t - 53.3 * B) / .2) * (1 - clamp((t - 55.2 * B) / .2))).toFixed(3);
+    const q = clamp((t - 56 * B) / (2 * B)); bub.style.left = (210 - 60 * eio(q)) + 'px'; bub.style.top = (360 - 110 * eio(q)) + 'px'; });
+  cap(L.i_e1, '', 51, 59);
+
+  // ════ 6 연결 (박 59–67) — 지켜보는 분 ═════════════════════════════════
+  const [pC, sC] = phone(247);
+  sC.innerHTML = `<div class="ttl">${esc(L.as_title)}</div>
+    <div class="flb">${esc(L.as_code)}</div><div class="fin f-code"><span class="val"></span><i class="caret"></i></div>
+    <div class="flb">${esc(L.as_alias)}</div><div class="fin f-ali"><span class="val"></span><i class="caret"></i></div>
+    <div class="flb">${esc(A_.add_subject_phone_label)}</div><div class="fin f-ph"><span class="val"></span><i class="caret"></i></div>
+    <div class="finfo">${svg('info', 15, '#6b7080')}<span>${esc(A_.add_subject_phone_info)}</span></div>
+    <div class="cbtn"><span>${esc(L.as_connect)}</span><span class="okb" style="opacity:0">✓&nbsp;${esc(L.as_success)}</span></div>`;
+  show(pC, 59, 67, 'pop', { exit: 'fade' });
+  const fCode = sC.querySelector('.f-code'), fAli = sC.querySelector('.f-ali'), fPh = sC.querySelector('.f-ph'), fInfo = sC.querySelector('.finfo'), okb = sC.querySelector('.okb');
+  const PHONE = A_.add_subject_phone_hint;                   // 앱 입력칸 힌트 번호(언어별 예시 번호)
+  TICK.push(t => {
+    const CODE = 'K7M-4PXR', n1 = clamp(Math.floor((t - 60 * B) / (.25 * B)) + 1, 0, CODE.length), n2 = clamp(Math.floor((t - 62.6 * B) / (.4 * B)) + 1, 0, ALIAS.length);
+    fCode.querySelector('.val').textContent = CODE.slice(0, t < 60 * B ? 0 : n1); fAli.querySelector('.val').textContent = [...ALIAS].slice(0, t < 62.6 * B ? 0 : n2).join('');
+    const on1 = t < 62.4 * B, blink = Math.floor(t * 3) % 2;
+    const ins = window.INS, inPh = ins !== null, aliOn = !on1 && t < 64.3 * B && !inPh;
+    fCode.classList.toggle('on', on1); fAli.classList.toggle('on', aliOn); fPh.classList.toggle('on', inPh);
+    fCode.querySelector('.caret').style.opacity = on1 && blink ? 1 : 0; fAli.querySelector('.caret').style.opacity = aliOn && blink ? 1 : 0;
+    // 연락처: 멈춤 구간에서 한 글자씩(영상 시각), 그 뒤엔 다 찬 상태
+    const n3 = inPh ? clamp(Math.floor((ins - .8) / .27) + 1, 0, PHONE.length) : t >= 64.3 * B ? PHONE.length : 0;
+    fPh.querySelector('.val').textContent = PHONE.slice(0, n3);
+    fPh.querySelector('.caret').style.opacity = inPh && Math.floor(ins * B * 3) % 2 ? 1 : 0;
+    const hi = inPh ? clamp((ins - 4) / .4) * (1 - clamp((ins - 7.6) / .4)) : 0;
+    fInfo.style.background = `rgba(67,85,185,${(.12 * hi).toFixed(3)})`; fInfo.style.color = hi > .5 ? '#2B3A8F' : '#6b7080';
+    okb.style.opacity = clamp((t - 65.2 * B) / .2);
+  });
+  tap(sC.querySelector('.cbtn'), 64.5);
+  const capF1 = cap(L.i_f1, '', 59, 67);
+  const capPh = mk(V, 'cap2', 'opacity:0', L.i_f2);              // 멈춤 구간 자막(영상 시각으로 직접 그린다)
+  burst(65, 247, 520, 'mid');
+
+  // ════ 7~8 대시보드 · 30일 (박 67–78) ════════════════════════════════
+  const card = (cls = '') => `<div class="dc ${cls}"><span class="tint"></span><span class="bl"></span>
+      <div class="r1"><span class="nm">${esc(ALIAS)}</span><span class="pill"></span></div>
+      <div class="ac">${esc(actLabel(WEEK.reduce((a, b) => a + b) / 7))}</div>
+      <div class="ch">${WEEK.map((_, i) => `<i${i === 6 ? ' class="td"' : ''}></i>`).join('')}<span class="cal">${svg('calendar_month', 32, '#6b7080')}<b>30</b></span></div>
+      <div class="alr"><div class="at"></div><div class="bs"><span class="b-call">${svg('phone', 14, '#fff')} ${esc(A_.guardian_call_now)}</span><span class="b-ok">${esc(A_.guardian_confirm_safety)}</span></div></div><div class="lc"></div></div>`;
+  const dashHTML = (chips) => `<div class="gh">${esc(L.guardian_title)}</div><div class="gl">${L.phead}</div>
+    <div class="gs">${esc(L.psum)}</div><div class="chips">${chips}</div><div class="glist">${esc(L.plist)}</div>${card()}`;
+  const chipN = (lv, n = 1) => `<span class="lg"><i style="background:${C[lv]}"></i>${esc(A_['guardian_status_' + lv])}${L.sep || ': '}${fmtNum(n)}</span>`;   // 앱 _LegendDot
+  const [pD, sD] = phone(247);
+  sD.innerHTML = dashHTML(chipN('normal')) + `<div class="sheet" style="opacity:0"><div class="shd">${esc(ALIAS)}<span>${svg('close', 22, '#6b7080')}</span></div>
+      <div class="lb2">${esc(L.steps)}</div><div class="c30">${M30.map((_, i) => `<i${i === 29 ? ' class="td"' : ''}></i>`).join('')}</div><div class="xl">${esc(A_.guardian_chart_x_axis_last_30_days)}</div></div>`;
+  show(pD, 67, 78, 'pop', { exit: 'fade' });
+  const dcD = sD.querySelector('.dc'), sheet = sD.querySelector('.sheet');
+  show(dcD, 67.6, 78, 'drop', { amp: 4 });
+  tap(dcD.querySelector('.cal'), 73);
+  const setLevel = (root, lv, days) => {
+    root.querySelector('.bl').style.background = C[lv];
+    root.style.background = { normal: '#F4FAF4', caution: '#FFFBDC', warning: '#FFECD1', urgent: '#FFF3F5' }[lv];   // 앱 연한 상태색 바탕(흰 위 60%)
+    root.querySelector('.tint').style.opacity = 0;
+    const pill = root.querySelector('.pill'); pill.textContent = lv === 'normal' ? A_.guardian_status_confirmed : A_['guardian_status_' + lv];
+    pill.style.background = C[lv] + '1f'; pill.style.color = C[lv];                       // 앱: 상태색 12% 바탕 + 상태색 글자
+    root.querySelector('.lc').textContent = days ? A_.guardian_last_check_days.replace('@days', fmtNum(days)) : L.last_now;
+    const alr = root.querySelector('.alr'), normal = lv === 'normal'; alr.style.display = normal ? 'none' : 'block';
+    ['.ac', '.ch'].forEach(q => { root.querySelector(q).style.display = normal ? '' : 'none'; });   // 앱: 경고 상태는 차트 대신 안내 + 버튼(마지막 확인은 버튼 아래)
+    if (!normal) { alr.querySelector('.at').innerHTML = `${svg('info', 16, C[lv])}<span style="color:${C[lv]};flex:1">${esc(A_.guardian_safety_needed)}</span><span class="cal" style="position:relative;inset:auto;top:0">${svg('calendar_month', 28, '#6b7080')}<b style="top:11px;font-size:8.5px">30</b></span>`;
+      const bc = alr.querySelector('.b-call'), bo = alr.querySelector('.b-ok'); bc.style.background = C[lv]; bc.style.color = '#fff'; bo.style.boxShadow = `inset 0 0 0 1.5px ${C[lv]}4d`; bo.style.color = C[lv]; }
+  };
+  setLevel(dcD, 'normal', 0);
+  TICK.push(t => {
+    dcD.querySelectorAll('.ch i').forEach((b, i) => { b.style.height = (WEEK[i] / Math.max(...WEEK) * 100 * eio(clamp((t - (68.4 + i * .3) * B) / .3))).toFixed(1) + '%'; });
+    const sq = clamp((t - 73.4 * B) / .35); sheet.style.opacity = t > 73.4 * B ? 1 : 0; sheet.style.transform = `translateY(${((1 - spring(sq)) * 300).toFixed(1)}px)`;
+    const mx = Math.max(...M30); sheet.querySelectorAll('.c30 i').forEach((b, i) => { b.style.height = (M30[i] / mx * 100 * eio(clamp((t - (74 + i * .08) * B) / .25))).toFixed(1) + '%'; });
+  });
+  cap(L.i_g1, '', 67, 72); cap(L.i_h1.replace('@cal', `<span class="calc">${svg('calendar_month', 36, '#ffd166')}<em>30</em></span>`), '', 72, 78);
+
+  // ════ 9 정상 (박 78–86) ═══════════════════════════════════════════
+  const [pN, sN] = phone(247);
+  const tm = fmtTime(wall(18, 7));
+  const nCard = (lv, label, icon, body) => `<div class="nc"><div class="nr"><span class="chip" style="background:${lv}">${svg(icon, 13, '#fff')} ${esc(label)}</span><span class="tm">${esc(tm)}</span></div><div class="nb">${esc(body)}</div></div>`;
+  sN.innerHTML = `<div class="nh">${svg('notifications', 22, '#1a1c1c')} ${esc(A_.notifications_title)}</div><div class="ntd">${esc(A_.notifications_today)}</div>
+    ${nCard('#43A047', A_.notifications_level_health, 'check_circle', A_.noti_auto_report_body)}${nCard('#4355B9', A_.notifications_level_info, 'directions_walk', L.steps_tpl.replace('@steps', fmtNum(TODAY)))}`;
+  const [pN0, sN0] = phone(247); sN0.innerHTML = dashHTML(chipN('normal')); setLevel(sN0.querySelector('.dc'), 'normal', 0);
+  sN0.querySelectorAll('.ch i').forEach((b, i) => { b.style.height = (WEEK[i] / Math.max(...WEEK) * 100).toFixed(1) + '%'; });
+  show(pN0, 78, 81, 'cut', { exit: 'cut' });
+  show(pN, 81, 86, 'sr', { exit: 'fade' });
+  sN.querySelectorAll('.nc').forEach((c, i) => show(c, 81.6 + i, 86, 'rise'));
+  const pbN = show(mk(cam, 'x pb', 'left:82px;top:250px', pushHTML(S_.push_auto_report_title, deco(ALIAS, L.steps_tpl.replace('@steps', fmtNum(TODAY))))), 78.5, 81.2, 'down', { exit: 'fade' });
+  cap(L.i_j1, L.i_j1s, 78, 86);
+
+  // ════ 10 주의 · 경고 · 긴급 (박 86–101) ══════════════════════════════
+  const [pL, sL] = phone(247);
+  sL.innerHTML = dashHTML('<span class="chips-l"></span>');
+  show(pL, 86, 101, 'pop', { exit: 'fade' });
+  const dcL = sL.querySelector('.dc'), chipsL = sL.querySelector('.chips');
+  dcL.querySelectorAll('.ch i').forEach((b, i) => { b.style.height = (WEEK[i] / Math.max(...WEEK) * 100).toFixed(1) + '%'; });
+  const LV = [[87.4, 'caution', 1], [92, 'warning', 2], [96.4, 'urgent', 3]];
+  let lastLv = '';
+  TICK.push(t => {
+    let cur = ['normal', 0]; LV.forEach(([b, lv, d]) => { if (t >= b * B) cur = [lv, d]; });
+    if (cur[0] !== lastLv) { setLevel(dcL, cur[0], cur[1]); chipsL.innerHTML = chipN(cur[0]); lastLv = cur[0]; }
+    const lb = LV.slice().reverse().find(([b]) => t >= b * B), d = lb ? t - lb[0] * B : 9;
+    dcL.style.transform = `scale(${(1 + .07 * Math.exp(-d * 6) * Math.cos(d * 20)).toFixed(4)})`;
+    dcL.style.boxShadow = cur[0] === 'urgent' ? `0 0 0 ${(2 + 3 * (.5 + .5 * Math.sin(t * 9))).toFixed(1)}px rgba(229,57,53,.55)` : 'none';
+  });
+  const pTop = 250;
+  show(mk(cam, 'x pb', `left:82px;top:${pTop}px`, pushHTML(S_.push_caution_title, deco(ALIAS, S_.push_caution_missing_body))), 86.6, 90.6, 'down', { exit: 'fade' });
+  show(mk(cam, 'x pb', `left:82px;top:${pTop}px`, pushHTML(S_.push_warning_title, deco(ALIAS, S_.push_warning_body))), 91.2, 95.2, 'down', { exit: 'fade' });
+  show(mk(cam, 'x pb', `left:82px;top:${pTop}px`, pushHTML(S_.push_urgent_title, deco(ALIAS, S_.push_urgent_body.replace('{days}', fmtNum(3))))), 95.6, 101, 'down', { exit: 'fade' });
+  show(mk(cam, 'x pb', `left:82px;top:${pTop + 98}px`, pushHTML(S_.push_emergency_title, deco(ALIAS, S_.push_emergency_body))), 98, 101, 'down', { exit: 'fade' });
+  cap(L.i_k1, L.i_k1s, 86, 91); cap(L.i_k2, '', 91, 95.5); cap(L.i_k3, '', 95.5, 101);
+  burst(87.4, 247, 560, 'wave', ['#F59E0B', '#ffd166']); burst(92, 247, 560, 'wave', ['#E65100', '#ff8a3d']); burst(96.4, 247, 560, 'mid', ['#E53935', '#ff8a95', '#fff']);
+
+  // ════ 11 등급순 정렬 (박 101–108) — 실제 대시보드: 위험한 카드가 맨 앞, 좌우로 한 장씩 넘긴다 ════
+  // 앱 guardian_dashboard_page.dart: 카드 높이 고정, 페이지 폭 = 카드 폭 + 간격(다음 카드가 살짝 보인다), 점 인디케이터(현재 20·나머지 6)
+  const SUBS = [[ALIAS, 'urgent', 3], [L.i_gma, 'warning', 2], [L.i_aunt, 'caution', 1], [L.i_dad, 'normal', 0]];   // 앱이 정렬한 순서
+  const [pR, sR] = phone(247);
+  sR.innerHTML = `<div class="gh">${esc(L.guardian_title)}</div><div class="gl">${esc(A_.guardian_checking_subjects.replace('@count', fmtNum(4))).replace(/\n/g, '<br>')}</div>
+    <div class="gs">${esc(L.psum)}</div><div class="chips">${['normal', 'caution', 'warning', 'urgent'].map(lv => chipN(lv)).join('')}</div>
+    <div class="glist">${esc(L.plist)}</div><div class="car"></div><div class="pdots">${SUBS.map(() => '<i></i>').join('')}</div>
+    <div class="swipe"><i class="f"></i></div>`;
+  show(pR, 101, 120, 'pop', { exit: 'fade' });
+  const car = sR.querySelector('.car'), pdots = [...sR.querySelectorAll('.pdots i')], swipe = sR.querySelector('.swipe');
+  const CW = 236, STEP = CW + 8;
+  const cards = SUBS.map(([nm, lv, days]) => { const d = document.createElement('div'); d.innerHTML = card('dc2').replace(esc(ALIAS), esc(nm)); const el = d.firstElementChild; car.appendChild(el);
+    setLevel(el, lv, days); el.querySelectorAll('.ch i').forEach((b, i) => { b.style.height = (WEEK[i] / Math.max(...WEEK) * 100).toFixed(1) + '%'; }); return el; });
+  const SW = [102.8, 104.3, 105.8], BACK = 108.2;          // 끝까지 넘긴 뒤 맨 앞(엄마)으로 다시
+  TICK.push(t => {
+    const page = SW.reduce((a, b) => a + eio(clamp((t - b * B) / .5)), 0) - 3 * eio(clamp((t - BACK * B) / .7));
+    cards.forEach((el, i) => { el.style.left = ((i - page) * STEP).toFixed(1) + 'px'; });
+    pdots.forEach((d, i) => { const on = clamp(1 - Math.abs(page - i)); d.style.width = (6 + 14 * on).toFixed(1) + 'px'; d.style.opacity = (.2 + .8 * on).toFixed(3); });
+    let sw = null, back = false; SW.concat([BACK]).forEach(b => { const d = t - b * B; if (d > -.15 && d < .75) { sw = d; back = b === BACK; } });
+    if (sw === null) { swipe.style.opacity = 0; return; }
+    const q = clamp((sw + .15) / .8); swipe.style.opacity = (Math.min(q / .2, 1, (1 - q) / .2)).toFixed(3);
+    const e = eio(clamp(sw / (back ? .7 : .5))); swipe.style.left = (back ? 40 + 185 * e : 215 - 165 * e).toFixed(1) + 'px';
+  });
+  const order = ['urgent', 'warning', 'caution', 'normal'].map(lv => A_['guardian_status_' + lv]).join(' → ');
+  cap(L.i_l1, order, 101, 108);
+
+  // ════ 11-2 전화로 확인 → [안전확인 완료] (박 108–120) ══════════════════════
+  // 앱 confirmSafety: 경고 클리어 → 카드가 바로 '안전'으로 + "엄마의 안전이 확인되었습니다." (마지막 확인은 그대로 3일 전)
+  const mom = cards[0], callBtn = mom.querySelector('.b-call'), okBtn = mom.querySelector('.b-ok');
+  const callEl = mk(sR, 'callc', '', `<div class="ring">${svg('phone', 30, '#fff')}</div><div class="cn">${esc(ALIAS)}</div><div class="cs"><span>${esc(L.i_calling)}</span> · <b>0:00</b></div>`);
+  const sayEl = mk(sR, 'say', '', esc(L.i_mom_says));
+  const okToast = mk(sR, 'toast', 'top:410px;bottom:auto;opacity:0', esc(A_.guardian_safety_confirmed_name.replace('@name', ALIAS)));
+  show(callEl, 111.4, 114.6, 'pop', { exit: 'fade' }); show(sayEl, 112.6, 114.6, 'pop', { exit: 'fade' });
+  tap(callBtn, 111); tap(okBtn, 117);
+  const MOMW = [1320, 1645, 1210, 1890, 0, 0, 0];             // 최근 3일은 안부가 없어 빈 막대(앱: 0 = 연회색 짧은 막대)
+  const chipsR = sR.querySelector('.chips'); let cleared = false;
+  TICK.push(t => {
+    const ring = callEl.querySelector('.ring'); ring.style.boxShadow = `0 0 0 ${(6 + 10 * ((t * 1.6) % 1)).toFixed(1)}px rgba(46,125,50,${(.45 * (1 - (t * 1.6) % 1)).toFixed(2)})`;
+    callEl.querySelector('b').textContent = '0:' + String(Math.max(0, Math.floor((t - 111.4 * B) * 3))).padStart(2, '0');   // 통화 시간이 흐른다(빨리 감기)
+    const done = t >= 117.3 * B;
+    if (done !== cleared) { cleared = done;
+      setLevel(mom, done ? 'normal' : 'urgent', 3);
+      if (done) mom.querySelectorAll('.ch i').forEach((b, i) => { const v = MOMW[i]; b.style.height = v ? (v / Math.max(...MOMW) * 100).toFixed(1) + '%' : '5%'; b.style.background = v ? '' : '#E0E0E0'; });
+      chipsR.innerHTML = done ? [['normal', 2], ['caution', 1], ['warning', 1]].map(([lv, n]) => chipN(lv, n)).join('') : ['normal', 'caution', 'warning', 'urgent'].map(lv => chipN(lv)).join(''); }
+    const g = clamp((t - 117.3 * B) / .25); mom.style.transform = `scale(${(1 + .05 * Math.sin(g * Math.PI)).toFixed(4)})`;
+    okToast.style.opacity = (clamp((t - 117.5 * B) / .2) * (1 - clamp((t - 119.6 * B) / .2))).toFixed(3);
+  });
+  cap(L.i_n1, '', 109, 114.6); cap(L.i_n2.replace('@ok', A_.guardian_confirm_safety), '', 115, 120);
+  burst(117.3, 247, 560, 'small', ['#43A047', '#a5d6a7', '#fff']);
+
+  // ════ 12 맺음 (박 120–124) — "이상, 안부 앱 소개 및 사용 설명이었습니다." ═══════
+  show(mk(cam, 'x', `left:${247 - 52}px;top:300px;width:104px;height:104px`, `<img src="${ICON_SRC}" style="width:104px;height:104px;border-radius:26px;box-shadow:0 16px 40px -10px rgba(0,0,0,.6)">`),
+    120, 124, 'pop', { exit: 'cut', idle: t => ({ s: 1 + .04 * kick(t) }) });
+  show(mk(cam, 'x', 'left:22px;top:440px;width:450px;text-align:center;color:#fff;font-size:33px;font-weight:800;line-height:1.38;letter-spacing:-.6px;word-break:keep-all',
+    L.i_m1), 120.5, 124, 'slam', { amp: 5, exit: 'cut' });
+  burst(120.5, 247, 352, 'mid');
+
+  // ════ 13 엔딩 (박 124–133.5) — 앱 소개 편과 같은 공통 엔딩. 곡의 구간 시작 크래시와 같은 박 ═══
+  mountEnding(124 * B, L.q1, L.q2);
+  const endEl = document.querySelector('.end'), eq1 = endEl.querySelector('.q1'), eq2 = endEl.querySelector('.q2'), ebr = endEl.querySelector('.brand');
+  endEl.dataset.t = (124 * B).toFixed(3); eq1.dataset.t = (125 * B).toFixed(3); eq2.dataset.t = (127.5 * B).toFixed(3); ebr.dataset.t = (130 * B).toFixed(3);
+  const EP = ['#ffd166', '#ff8a95', '#fff8f0', '#ffc4a3', '#e54b5e'];
+  burst(124, 247, 400, 'big', EP); burst(130, 247, 530, 'big', EP); burst(132, 247, 530, 'mid', EP);
+
+  // ── 배경 · 카메라 ──────────────────────────────────────────────────
+  const SCENES = [[0, '#0b1033'], [12, '#1f2a6e'], [20, '#13294a'], [32, '#0f3b3a'], [51, '#00695C'], [59, '#2f3c9e'], [67, '#1f2a6e'],
+                  [78, '#0b5a52'], [86, '#7a5600'], [91, '#8a3a00'], [95.5, '#7a1020'], [101, '#161a42'], [120, '#0b1033']];
+  const sceneAt = t => { let i = 0; SCENES.forEach(([b], k) => { if (t >= b * B - 1e-6) i = k; }); return i; };
+  // 카메라 키프레임 [박, x, y, 배율] — 내용 좌표 (x,y)를 화면 (247,480)에 둔다. 같은 박이 두 번 나오면 컷
+  const at = (el, dy = 0) => () => posIn(el, dy);
+  let KF = [];
+  const buildKF = () => {
+    const carP = at(car)(), callP = at(callBtn)(), okP = at(okBtn)(), ic = at(st.querySelector('.res img'))(), cal = at(dcD.querySelector('.cal'))(), code = at(sS.querySelector('.cc'))(), form = at(fCode, 40)(), dash = at(dcD)();
+    KF = [[0, 247, 470, 1.1], [7.6, 247, 470, 1.02], [8, 247, 480, .96], [11.6, 247, 480, 1.04],
+      [12, 247, 420, 1.12], [14.4, 247, 420, 1.12], [15.2, 247, 470, 1.04], [18.6, 247, 470, 1.04], [19.8, ic[0], ic[1], 2.4],
+      [20, 247, 520, .9], [21, 247, 500, 1.04], [25.8, 247, 500, 1.04], [26.8, 847, 500, 1.04], [31.6, 847, 500, 1.12],
+      [32, 247, 520, .94], [34.6, 247, 520, 1.0], [35.4, 247, 470, 1.14], [46.6, 247, 470, 1.14], [47.4, 247, 500, .98],
+      [51, 247, 500, .96], [52, code[0], code[1] + 40, 1.3], [55.8, code[0], code[1] + 40, 1.3], [56.6, 247, 470, 1.0],
+      [59, 247, 520, .94], [60, form[0], form[1], 1.28], [64, form[0], form[1], 1.28], [64.8, 247, 500, 1.04],
+      [67, 247, 500, .96], [68.6, dash[0], dash[1], 1.16], [71.8, dash[0], dash[1], 1.16], [72.8, cal[0], cal[1], 1.6], [73.4, cal[0], cal[1], 1.6], [74.2, 247, 520, 1.02],
+      [78, 247, 480, 1.0], [80.6, 247, 480, 1.04], [81, 247, 480, 1.0], [82, 247, 470, 1.1], [85.6, 247, 470, 1.12],
+      [86, 247, 500, 1.0], [100.6, 247, 500, 1.06], [101, 247, 500, .94], [102.2, carP[0] + 6, carP[1] - 55, 1.12], [107.8, carP[0] + 6, carP[1] - 55, 1.15], [108.9, carP[0] + 6, carP[1] - 55, 1.1],
+      [110.2, callP[0], callP[1] - 95, 1.22], [111.2, callP[0], callP[1] - 95, 1.22], [112, 247, 440, 1.1], [114.4, 247, 440, 1.1],
+      [115.4, okP[0], okP[1] - 105, 1.22], [117.8, okP[0], okP[1] - 105, 1.22], [118.6, carP[0] + 6, carP[1] - 40, 1.12], [119.9, carP[0] + 6, carP[1] - 40, 1.14],
+      [120, 247, 470, .92], [121, 247, 470, 1.0], [123.8, 247, 470, 1.06], [124, 247, 480, 1]];
+  };
+  const PUNCH = [8, 12, 20, 26.8, 32, 51, 59, 67, 78, 86, 87.4, 92, 96.4, 101, 104, 111, 117.3, 120.5];
+  function camAt(t) {
+    const b = t / B; let i = 0; while (i < KF.length - 1 && KF[i + 1][0] <= b) i++;
+    const k0 = KF[i], k1 = KF[Math.min(i + 1, KF.length - 1)];
+    const q = k1[0] > k0[0] ? eio(clamp((b - k0[0]) / (k1[0] - k0[0]))) : 0;
+    const L3 = j => k0[j] + (k1[j] - k0[j]) * q;
+    let s = L3(3); for (const p of PUNCH) { const d = t - p * B; if (d >= 0 && d < .6) s *= 1 + .05 * Math.exp(-d * 8); }
+    return [L3(1), L3(2), s];
+  }
+
+  // ── 채우기 · 글자 맞춤 ──────────────────────────────────────────────
+  fillText();
+  const FIT = () => {
+    document.querySelectorAll('.cap2').forEach(e => { let s = +(e.dataset.fs || 30), g = 0; e.style.fontSize = s + 'px'; while ((e.scrollWidth > e.clientWidth + 1 || e.offsetHeight > 136) && s > 14 && g++ < 60) { s -= 1; e.style.fontSize = s + 'px'; } });
+    document.querySelectorAll('.chip, .pill, .lab, .ibtn, .b1').forEach(e => { let s = parseFloat(getComputedStyle(e).fontSize), g = 0; while (e.scrollWidth > e.clientWidth + 1 && s > 8 && g++ < 30) { s -= .5; e.style.fontSize = s + 'px'; } });
+  };
+  const SETUP = () => { FIT(); placeTaps(); buildKF(); };
+  SETUP(); document.fonts.ready.then(SETUP);
+
+  // ── 효과음(초) — 탭·타이핑·팝업·알림. 크기 기준은 audio.py(-22 LUFS, 효과음 +3~6dB) ──
+  const s = b => +(toVideo(b) * B).toFixed(3);           // 효과음은 영상 시각
+  window.SFX = [
+    { t: s(12.6), file: '6_타이핑/phone-soft-typing-on-a-digital-keyboard.mp3', len: 1.3, rel: 3.7 },
+    { t: s(16), file: '4_탭_클릭/select-click.mp3' }, { t: s(18), file: '5_완료_확인/confirmation-tone.mp3', rel: 3.5 }, { t: s(19), file: '4_탭_클릭/select-click.mp3' },
+    { t: s(22.6), file: '4_탭_클릭/select-click.mp3' }, { t: s(24.6), file: '4_탭_클릭/select-click.mp3' }, { t: s(26.6), file: '2_슬라이드_전환/fast-small-sweep-transition.mp3', rel: 3.7 },
+    { t: s(34), file: '4_탭_클릭/select-click.mp3' },
+    { t: s(35), file: '1_푸시알림/dry-pop-up-notification-alert.mp3', rel: 3.5 }, { t: s(37.1), file: '4_탭_클릭/select-click.mp3' },
+    { t: s(39), file: '1_푸시알림/dry-pop-up-notification-alert.mp3', rel: 3.5 }, { t: s(41.1), file: '4_탭_클릭/select-click.mp3' },
+    { t: s(43), file: '1_푸시알림/dry-pop-up-notification-alert.mp3', rel: 3.5 }, { t: s(45.1), file: '4_탭_클릭/select-click.mp3' },
+    { t: s(53), file: '4_탭_클릭/select-click.mp3', rel: 3 }, { t: s(53.4), file: '1_푸시알림/bubble-pop-up-alert-notification.mp3', rel: 3.7 },
+    { t: s(55.5), file: '4_탭_클릭/select-click.mp3', rel: 3.8 }, { t: s(56), file: '2_슬라이드_전환/fast-small-sweep-transition.mp3', rel: 3.7 },
+    { t: s(60), file: '6_타이핑/phone-soft-typing-on-a-digital-keyboard.mp3', len: 1.1, rel: 4.1 },
+    { t: +((HOLD_C + 2 + .8) * B).toFixed(3), file: '6_타이핑/phone-soft-typing-on-a-digital-keyboard.mp3', len: 1.4, rel: 4.4 },   // 연락처 입력(멈춤 구간)
+    { t: s(62.6), file: '6_타이핑/phone-soft-typing-on-a-digital-keyboard.mp3', len: 0.7, rel: 3.7 },
+    { t: s(64.5), file: '4_탭_클릭/select-click.mp3', rel: 2 }, { t: s(65.2), file: '5_완료_확인/confirmation-tone.mp3', rel: 3.5 },
+    { t: s(67.6), file: '1_푸시알림/bubble-pop-up-alert-notification.mp3', rel: 3.7 },
+    { t: s(73), file: '4_탭_클릭/select-click.mp3', rel: 3 }, { t: s(73.4), file: '2_슬라이드_전환/fast-small-sweep-transition.mp3', rel: 3.7 },
+    { t: s(78.5), file: '1_푸시알림/positive-notification.mp3', duck: true },
+    { t: s(86.6), file: '1_푸시알림/interface-hint-notification.mp3', rel: 3.4, duck: true },
+    { t: s(91.2), file: '1_푸시알림/bell-notification.mp3', rel: 4.2, duck: true },
+    { t: s(95.6), file: '1_푸시알림/bell-notification.mp3', rel: 5.4, duck: true },
+    { t: s(98), file: '1_푸시알림/bell-notification.mp3', rel: 4.8, duck: true },
+    { t: s(102.8), file: '2_슬라이드_전환/fast-small-sweep-transition.mp3', rel: 3.7 }, { t: s(104.3), file: '2_슬라이드_전환/fast-small-sweep-transition.mp3', rel: 3.7 },
+    { t: s(105.8), file: '2_슬라이드_전환/fast-small-sweep-transition.mp3', rel: 3.7 },
+    { t: s(108.2), file: '2_슬라이드_전환/fast-small-sweep-transition.mp3', rel: 3.7 },
+    { t: s(111), file: '4_탭_클릭/select-click.mp3', rel: 3 }, { t: s(111.4), file: '1_푸시알림/interface-hint-notification.mp3', rel: 3.4 },
+    { t: s(112.6), file: '1_푸시알림/bubble-pop-up-alert-notification.mp3', rel: 3.7 },
+    { t: s(117), file: '4_탭_클릭/select-click.mp3', rel: 2.5 }, { t: s(117.3), file: '5_완료_확인/confirmation-tone.mp3', rel: 3.5 },
+    { t: s(120.5), file: '5_완료_확인/correct-answer-tone.mp3', rel: 3.5 },
+    { t: s(130), file: '3_페이지_넘김/page-forward-single-chime.mp3' },
+  ];
+
+  const bgA = document.getElementById('bgA'), bgB = document.getElementById('bgB'), flashEl = document.querySelector('.flash');
+  const cf = document.getElementById('cf').getContext('2d');
+  const FLASH = [[8, .6], [12, .25], [20, .2], [32, .2], [51, .2], [59, .2], [67, .2], [78, .25], [87.4, .3], [92, .35], [96.4, .5], [101, .25], [117.3, .2], [120, .3], [124, .5], [130, .4]];
+  window.extra = t => {
+    const i = sceneAt(t), t0 = SCENES[i][0] * B, e = 1 - Math.pow(1 - clamp((t - t0) / .35), 3);
+    bgA.style.background = SCENES[Math.max(i - 1, 0)][1]; bgB.style.background = SCENES[i][1];
+    bgB.style.clipPath = i === 0 ? 'none' : `circle(${(e * 1000).toFixed(0)}px at 50% 50%)`;
+    applyReg(t); TICK.forEach(f => f(t)); drawTaps(t);
+    let [x, y, sc] = camAt(t), sx = 0, sy = 0;
+    const ins = window.INS;
+    if (ins !== null) { const w = eio(clamp(ins / .8)) * (1 - eio(clamp((ins - 7.2) / .8))), [px, py] = posIn(fPh, -40);
+      x += (px - x) * w; y += (py - y) * w; sc += (1.12 - sc) * w;
+      capPh.style.opacity = (clamp(ins / .4) * (1 - clamp((ins - 7.6) / .4))).toFixed(3);
+      capF1.style.opacity = Math.max(1 - clamp(ins / .3), clamp((ins - 7.6) / .4)).toFixed(3); }
+    else capPh.style.opacity = 0;
+    for (const S of SHAKE) { const d = t - S.t; if (d >= 0 && d < .5) { const a = S.amp * Math.exp(-d * 9); sx += a * Math.sin(d * 72); sy += a * Math.cos(d * 83); } }
+    cam.style.transform = `translate(${(247 - x * sc + sx).toFixed(2)}px,${(480 - y * sc + sy).toFixed(2)}px) scale(${sc.toFixed(4)})`;
+    let fl = 0; FLASH.forEach(([b, a]) => { const d = t - b * B; if (d >= 0) fl += a * Math.exp(-d * 13); }); flashEl.style.opacity = Math.min(fl, .9).toFixed(3);
+    drawBursts(cf, t);
+  };
+  // 영상 시각 → 내용 시각(여행 문장 구간만 늘린다). 엔진의 data-t(엔딩)도 내용 시각으로 돈다
+  const R0 = window.render; window.render = ms => { const v = ms / 1000 / B; window.INS = insAt(v); R0(toContent(v) * B * 1000); };
+</script>
+</body></html>

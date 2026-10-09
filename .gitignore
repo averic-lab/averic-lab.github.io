@@ -11,3 +11,5 @@ media/sfx/
 media/shorts/*/anbu-3d*.mp4
 # 시험 렌더 잔재
 media/shorts/*/anbu3d_*.mp4
+# 배경음악 고르기용 후보 원본(Mixkit) — 위 media/bgm/ 과 같은 이유로 커밋 금지
+media/shorts/*/bgm-후보/

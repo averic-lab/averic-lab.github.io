@@ -32,6 +32,22 @@ APP_KEYS = ["app_name", "app_guardian_title", "guardian_today_summary", "guardia
             "subject_home_emergency_confirm_title", "subject_home_emergency_confirm_body",
             "subject_home_emergency_confirm_send", "common_cancel", "emergency_message_hint",
             "emergency_sent_with_location", "notifications_view_location", "emergency_map_title"]
+# 사용법 튜토리얼 편(i.html) — 모드 선택·권한·안전 코드·대시보드·알림 화면을 앱 문구 그대로 그린다.
+# 페이지는 L.app.<키> 로 읽는다(다른 편의 평평한 키와 섞이지 않게).
+I_APP_KEYS = ["mode_select_title", "mode_select_subtitle", "mode_subject_title", "mode_subject_desc",
+              "mode_subject_button", "mode_guardian_title", "mode_guardian_desc", "mode_guardian_button",
+              "mode_subject_badge", "mode_guardian_badge",
+              "permission_title", "permission_notification", "permission_notification_subject_desc", "permission_notification_guardian_desc",
+              "permission_activity", "permission_activity_desc", "permission_location", "permission_location_desc", "add_subject_phone_label", "add_subject_phone_info", "add_subject_phone_hint",
+              "common_confirm", "subject_home_share_title", "subject_home_code_copied", "subject_home_share_text",
+              "guardian_status_normal", "guardian_checking_subjects", "guardian_status_confirmed", "guardian_status_caution", "guardian_status_warning", "guardian_status_urgent",
+              "guardian_safety_needed", "guardian_call_now", "guardian_confirm_safety", "guardian_safety_confirmed_name",
+              "guardian_chart_x_axis_last_30_days", "guardian_last_check_days", "notifications_title", "notifications_today",
+              "notifications_level_health", "notifications_level_info", "noti_auto_report_body", "gs_enable_button"]
+APP_KEYS += [k for k in I_APP_KEYS if k not in APP_KEYS]
+# 같은 편의 서버 푸시 문구(제목·본문) — 등급별 알림을 실제 형식대로 보여 준다
+I_SRV_KEYS = ["push_auto_report_title", "push_caution_title", "push_caution_missing_body", "push_warning_title",
+              "push_warning_body", "push_urgent_title", "push_urgent_body", "push_emergency_title", "push_emergency_body"]
 SERVER_MESSAGES = os.path.join(os.path.dirname(ROOT), "anbucheck-server", "i18n", "messages.py")
 MEDIA = os.path.join(ROOT, "media", "shorts")
 PREVIEW = os.path.join(ROOT, "preview", "shorts")
@@ -98,6 +114,8 @@ def lang_data(code, cfg, site_tr, msgs):
         "em_hint": a["emergency_message_hint"], "em_sent": a["emergency_sent_with_location"],
         "view_loc": a["notifications_view_location"], "map_title": a["emergency_map_title"],
         "push_em_title": msgs[locale]["push_emergency_title"],
+        "app": {k: a[k] for k in I_APP_KEYS},
+        "srv": {k: msgs[locale][k] for k in I_SRV_KEYS},
         "q1": q1.strip(), "q2": q2.strip(),
         # B — 부모 쪽 밤 11:40 과 그때 자녀 쪽 시각(실제 시간대로 계산), 보낸 메시지 21:12
         "b_now": utc_iso(s["home_tz"], 23, 40), "b_sent": utc_iso(s["home_tz"], 21, 12),

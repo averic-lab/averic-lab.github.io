@@ -10,7 +10,8 @@
     {"id": "busy-couple", "page": "d.html", "title": "t_d", "date": "2026-09-24"},
     {"id": "neighbor-friends", "page": "e.html", "title": "t_e", "date": "2026-09-24"},
     {"id": "solo-trip", "page": "f.html", "title": "t_f", "date": "2026-09-25"},
-    {"id": "lost-mom", "page": "g.html", "title": "t_g", "date": "2026-09-26"}
+    {"id": "lost-mom", "page": "g.html", "title": "t_g", "date": "2026-09-26"},
+    {"id": "how-to-use", "page": "i.html", "title": "t_i", "date": "2026-10-09", "audio": {"bgm": "techno-fest-vibes.mp3", "bgm_start": 43.110}}
   ],
   "youtube_only": [
     {"id": "anbu-3d", "date": "2026-10-04", "titles": {"ko": "아무것도 하지 않아도, 매일 자동으로 안부는 도착합니다", "ja": "何もしなくても、毎日、自動で安否が届きます", "en": "No effort needed — a wellness check arrives automatically, every day", "zh-CN": "什么都不用做，平安每天自动送达", "zh-TW": "什麼都不用做，平安每天自動送達", "de": "Ganz ohne Zutun: Jeden Tag kommt automatisch ein Lebenszeichen an", "fr": "Rien à faire : des nouvelles arrivent automatiquement, chaque jour", "es": "Sin ningún esfuerzo: cada día llega un aviso, automáticamente", "it": "Senza alcuno sforzo: ogni giorno arriva un check-in, in automatico", "pt-BR": "Sem nenhum esforço: todo dia chega um check-in, automaticamente", "ru": "Ничего не нужно делать — отметка приходит каждый день автоматически", "nl": "Zonder enige moeite: elke dag komt er automatisch een check-in", "pl": "Nie trzeba nic robić — codziennie automatycznie przychodzi znak życia", "tr": "Hiçbir şey yapmanıza gerek kalmadan her gün otomatik olarak haber gelir", "vi": "Không cần làm gì, tin bình an vẫn tự động đến mỗi ngày", "th": "ไม่ต้องทำอะไรเลย การแจ้งว่าสบายดีก็มาถึงอัตโนมัติทุกวัน", "id": "Tanpa perlu melakukan apa pun, kabar tiba otomatis setiap hari", "sv": "Helt utan ansträngning: en incheckning kommer automatiskt varje dag", "hi": "बिना किसी मेहनत के, हर दिन अपने-आप खैरियत पहुँचती है", "ar": "دون أي عناء، يصل الاطمئنان تلقائياً كل يوم"}}
@@ -65,7 +66,20 @@
       "p_j1": "20개 언어", "p_j2": "그 나라 시각 그대로",
       "p_k1": "도움이 필요할 때", "p_k2": "버튼 한 번,", "p_k3": "그 순간의 위치만",
       "p_l1": "보내는 분", "p_l2": "무료", "p_l3": "지켜보는 분", "p_l4": "3개월 무료 체험", "p_l5": "이후 연 $9.99", "p_l6": "점심 한 끼 정도예요",
-      "p_alias": "엄마"
+      "p_alias": "엄마",
+      "t_i": "안부 앱 사용법", "i_a1": "혼자 사는 청년도,", "i_a2": "혼자 계신 부모님도",
+      "i_a3": "낯선 곳으로 여행을 떠나면<br><em>가족은 늘 걱정하죠</em>", "i_a4": "하루 한 번, 안부가<br><em>가족에게 자동으로</em>", "i_b1": "스토어에서 <em>‘Anbu’</em> 검색<br>→ 설치",
+      "i_search": "Anbu", "i_install": "설치", "i_open": "열기",
+      "i_c1": "안드로이드는<br><em>보내는 쪽·받는 쪽</em> 선택", "i_c2": "아이폰은<br><em>보호자</em>로 바로 시작", "i_c2s": "내 안부는 설정 → ‘@btn’",
+      "i_and": "안드로이드", "i_ios": "아이폰", "i_d1": "<em>[@ok]</em>을 누르면<br>권한 창이 차례로 떠요",
+      "i_d2": "<em>알림</em> —<br>안부 알림을 받기 위해", "i_d3": "<em>신체 활동</em> —<br>걸음수로 하루 활동 확인", "i_d4": "<em>위치</em> —<br>도움 요청 때만, 그 순간 한 번",
+      "i_d5": "걸음수·위치는 보내는 분(안드로이드)만<br>보호자는 알림만 허용하면 돼요", "i_pq": "‘@perm’을 허용할까요?", "i_allow": "허용",
+      "i_deny": "허용 안 함", "i_allow_use": "앱 사용 중에만 허용", "i_e1": "<em>보내는 분</em>: 안전 코드를<br>복사하거나 공유",
+      "i_f1": "<em>지켜보는 분</em>: 코드와 별칭<br>입력 → 연결하기", "i_f2": "전화번호는 넣지 않아도 되지만,<br>넣어 두면 <em>바로 전화</em>할 수 있어요", "i_g1": "대시보드에<br><em>카드</em>가 생겨요", "i_h1": "@cal 버튼 →<br>지난 30일 걸음수",
+      "i_j1": "매일 하루 한 번<br><em>안부 도착</em>", "i_j1s": "알림 목록엔 ‘정상’", "i_k1": "<em>주의</em> — 안부가 안 오거나<br>활동 기록이 없는 날",
+      "i_k1s": "예약 시각 2시간 뒤 확인", "i_k2": "<em>경고</em> — 그런 날이<br>2번 이어지면", "i_k3": "<em>긴급</em> — 3번 이상 이어지거나<br>‘도움이 필요해요’를 누르면 즉시",
+      "i_l1": "위험한 카드가<br><em>맨 앞</em>에 와요", "i_m1": "이상, 안부 앱 소개 및<br>사용 설명이었습니다.", "i_n1": "이럴 땐 <em>전화</em>로<br>직접 안부를 확인하세요", "i_n2": "안부가 확인되면<br><em>[@ok]</em>를 눌러 주세요", "i_calling": "통화 중", "i_mom_says": "응, 나 괜찮아~", "i_mom": "엄마", "i_dad": "아빠",
+      "i_aunt": "이모", "i_gma": "할머니"
     },
     "en": {
       "t_a": "Mom isn't picking up", "t_b": "Our daughter abroad", "play": "Play", "replay": "Replay",
