@@ -78,11 +78,32 @@
     d.className = 'tg ' + cls; d.textContent = t; d.dir = 'auto'; d.style.fontSize = fs + 'px'; box.appendChild(d);
     return { d, x, y, r, fs };
   });
+  // 긴 언어(#ImprescindiblesDeViaje …)는 정해진 자리에 두면 스티커끼리·앱 아이콘과 겹친다. 그래서:
+  //   ① 긴 스티커는 덜 기울인다(길이 300을 12° 기울이면 위아래로 60px 을 차지한다) ② 자리가 막히면 주변으로 조금씩 옮겨 빈자리를 찾는다
+  //   ③ 그래도 안 되면 전체를 같은 비율로 줄인다. 겹침은 회전한 모양의 외곽 상자로 판정한다(한국어 배치는 그대로 1.0).
+  const hit = (a, b, m = 3) => a.l < b.r - m && b.l < a.r - m && a.t < b.b - m && b.t < a.b - m;
   function place() {
-    els.forEach(E => { let fs = E.fs; E.d.style.fontSize = fs + 'px';
-      while (E.d.offsetWidth > MAXW && fs > 14) { fs -= 1; E.d.style.fontSize = fs + 'px'; }
-      E.d.style.left = (E.x - E.d.offsetWidth / 2).toFixed(1) + 'px'; E.d.style.top = (E.y - E.d.offsetHeight / 2).toFixed(1) + 'px';
-      E.d.style.transform = `rotate(${E.r}deg)`; });
+    const ic = document.querySelector('.icon').getBoundingClientRect(), ICON = { l: ic.left + 6, r: ic.right - 6, t: ic.top + 6, b: ic.bottom - 6 };
+    const OFF = [[0, 0]]; for (let rad = 14; rad <= 150; rad += 14) for (let a = 0; a < 16; a++) OFF.push([Math.round(rad * Math.cos(a * Math.PI / 8)), Math.round(rad * .8 * Math.sin(a * Math.PI / 8))]);
+    let ok = false, k = 1;
+    for (; k >= .55 && !ok; k -= .03) {
+      ok = true; const done = [];
+      for (const E of els) {
+        let fs = Math.round(E.fs * k); E.d.style.fontSize = fs + 'px'; E.d.style.transform = 'none';
+        while (E.d.offsetWidth > MAXW && fs > 12) { fs -= 1; E.d.style.fontSize = fs + 'px'; }
+        const w = E.d.offsetWidth, h = E.d.offsetHeight, lim = Math.asin(Math.min(1, 34 / w)) * 180 / Math.PI;
+        const r = Math.sign(E.r) * Math.min(Math.abs(E.r), lim), rr = Math.abs(r) * Math.PI / 180;
+        const W = w * Math.cos(rr) + h * Math.sin(rr), H = w * Math.sin(rr) + h * Math.cos(rr);
+        let spot = null;
+        for (const [dx, dy] of OFF) { const cx = E.x + dx, cy = E.y + dy, q = { l: cx - W / 2, r: cx + W / 2, t: cy - H / 2, b: cy + H / 2 };
+          if (q.l < 12 || q.r > 528 || q.t < 12 || q.b > 948 || hit(q, ICON) || done.some(d => hit(q, d))) continue;
+          spot = [cx, cy, q]; break; }
+        if (!spot) { ok = false; break; }
+        done.push(spot[2]);
+        E.d.style.left = (spot[0] - w / 2).toFixed(1) + 'px'; E.d.style.top = (spot[1] - h / 2).toFixed(1) + 'px'; E.d.style.transform = `rotate(${r.toFixed(1)}deg)`;
+      }
+      document.documentElement.dataset.scale = k.toFixed(2); document.documentElement.dataset.ok = ok ? '1' : '0';
+    }
   }
   place(); document.fonts.ready.then(place);
   document.documentElement.lang = L.bcp || 'ko'; if (L.dir === 'rtl') document.documentElement.dir = 'rtl';

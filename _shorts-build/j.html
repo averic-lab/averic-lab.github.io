@@ -114,8 +114,8 @@
   .lk { position: absolute; inset: 0; padding-top: 46px; text-align: center; color: #fff; }
   .lk .lt { font-size: 44px; font-weight: 300; letter-spacing: -1px; line-height: 1.1; }
   .lk .ld { margin-top: 4px; font-size: 13px; opacity: .75; }
-  .lk .ln { display: inline-block; margin-top: 30px; padding: 7px 12px; border-radius: 12px; background: rgba(255,255,255,.1); font-size: 12px;
-    color: #c9cfe6; white-space: nowrap; }
+  .lk .ln { display: inline-block; max-width: 124px; box-sizing: border-box; white-space: normal; line-height: 1.3; margin-top: 30px; padding: 7px 12px; border-radius: 12px; background: rgba(255,255,255,.1); font-size: 12px;
+    color: #c9cfe6; }
   .wp { display: inline-block; padding: 9px 16px; border-radius: 22px; font-size: 19px; font-weight: 800; color: #fff; white-space: nowrap;
     background: rgba(255,95,122,.18); border: 1.5px solid rgba(255,95,122,.62); }
 
@@ -145,7 +145,7 @@
   .mct { font-size: 13px; font-weight: 800; color: #c9cfe6; margin-bottom: 14px; }
   .mcf { display: flex; justify-content: center; margin-bottom: 26px; }
   .frm { position: absolute; inset: 0; padding: 54px 16px 0; color: #1a1c1c; }
-  .frm .flb { font-size: 11px; font-weight: 800; color: #5b6276; margin-bottom: 5px; white-space: nowrap; overflow: hidden; }
+  .frm .flb { font-size: 11px; font-weight: 800; color: #5b6276; margin-bottom: 5px; line-height: 1.25; }   /* 긴 언어는 두 줄(앱 문구 as_code) */
   .frm .inp { box-sizing: border-box; height: 36px; border-radius: 9px; background: #fff; box-shadow: inset 0 0 0 1.5px #c9cfe6;
     padding: 0 10px; display: flex; align-items: center; font-size: 15px; font-weight: 800; letter-spacing: 1px; margin-bottom: 14px; white-space: nowrap; }
   .frm .cbtn { margin-top: 18px; height: 40px; border-radius: 12px; background: #4355B9; color: #fff; display: flex; align-items: center;
@@ -160,7 +160,7 @@
   .clab { position: relative; height: 22px; margin-bottom: 8px; text-align: center; font-size: 15px; font-weight: 800; color: #9aa3cf; }
   .clab span { position: absolute; left: 0; right: 0; }
 
-  .roll { font-size: 62px; font-weight: 900; color: #ffd166; line-height: 1; font-variant-numeric: tabular-nums;
+  .roll { direction: ltr; unicode-bidi: isolate; font-size: 62px; font-weight: 900; color: #ffd166; line-height: 1; font-variant-numeric: tabular-nums;
     text-shadow: 0 4px 0 rgba(120,40,0,.35), 0 12px 28px rgba(0,0,0,.35); }
   .rc { display: inline-block; height: 1em; overflow: hidden; vertical-align: top; }
   .rs { display: block; }
@@ -178,7 +178,7 @@
   .bp { font-size: 24px; font-weight: 900; color: #fff; font-variant-numeric: tabular-nums; }
   .circ2 { width: 50px; height: 50px; border-radius: 50%; background: #fff8f0; display: flex; align-items: center; justify-content: center;
     box-shadow: 0 6px 0 rgba(0,0,0,.2); }
-  .nxt { text-align: center; color: #fff; font-size: 17px; font-weight: 800; white-space: nowrap; }
+  .nxt { width: 220px; margin-left: -60px; text-align: center; color: #fff; font-size: 17px; font-weight: 800; white-space: nowrap; }   /* 시계(100)보다 넓게 가운데 */
 
   .sos2 { box-sizing: border-box; width: 310px; height: 76px; border-radius: 38px; background: #fff; color: #e0263f; display: flex;
     align-items: center; justify-content: center; gap: 10px; font-size: 26px; font-weight: 900; white-space: nowrap; box-shadow: 0 10px 0 rgba(0,0,0,.25); }
@@ -233,6 +233,7 @@
   window.SFX = [];                                       // 효과음 없음 — 모든 소리는 음악 박자로만
 
   const LANG = (L.bcp || 'ko').slice(0, 2).toLowerCase();
+  const PCT = new Intl.NumberFormat((L.bcp || 'ko') + '-u-nu-latn', { style: 'percent', maximumFractionDigits: 0 });   // 숫자는 서버·앱처럼 늘 0–9(아랍어도)   // tr %12, fr·de·ru·sv 12 %
   const C = { cream: '#fff8f0', navy: '#10163f', amber: '#ffc23d', gold: '#ffd166', coral: '#ff7a8f', red: '#ff3b4e',
               teal: '#14b8a6', mint: '#5eead4', indigo: '#5b6cff', sky: '#8ea0ff' };
   const stage = document.querySelector('.stg');
@@ -354,10 +355,17 @@
           if (!part) return;
           if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
           const box = WRAPW ? document.createElement('span') : frag; if (WRAPW) { box.className = 'w'; frag.appendChild(box); }
+          // 문장부호는 혼자 한 단위가 되지 않는다 — 쪼개 두면 줄바꿈이 그 앞에서 일어나 쉼표·물음표·닫는 따옴표가 줄 머리로 간다
+          //   (2026-10-10 아랍어·힌디어 실측). 여는 부호(“ « ‘ ¿ ¡ 「)는 뒤 단어에, 나머지는 앞 단어에 붙인다.
+          let prev = null, pre = '';
           for (const s of segr.segment(part)) {
-            if (/^\s+$/.test(s.segment)) { box.appendChild(document.createTextNode(s.segment)); continue; }
-            const sp = document.createElement('span'); sp.className = 'u'; sp.textContent = s.segment; sp._d = dl; sp._i = seg.n++; box.appendChild(sp); units.push(sp);
+            if (/^\s+$/.test(s.segment)) { box.appendChild(document.createTextNode(s.segment)); prev = null; continue; }
+            const punct = KG === 'word' ? !s.isWordLike : /^[\p{P}]+$/u.test(s.segment);
+            if (punct && /^[\p{Ps}\p{Pi}¿¡]+$/u.test(s.segment)) { pre += s.segment; continue; }
+            if (punct && prev) { prev.textContent += s.segment; continue; }
+            const sp = document.createElement('span'); sp.className = 'u'; sp.textContent = pre + s.segment; pre = ''; sp._d = dl; sp._i = seg.n++; box.appendChild(sp); units.push(sp); prev = sp;
           }
+          if (pre) { if (prev) prev.textContent += pre; else { const sp = document.createElement('span'); sp.className = 'u'; sp.textContent = pre; sp._d = dl; sp._i = seg.n++; box.appendChild(sp); units.push(sp); } }
         });
         node.replaceChild(frag, ch);
       } else if (ch.nodeType === 1 && ch.tagName !== 'BR') {
@@ -372,37 +380,75 @@
   // 칸마다 [시작 박, 멈춤 박, 글자] 계획을 갖고, 그 사이에는 글자가 빠르게 넘어간다. 한 줄의 글이 바뀔 수도 있다(지연 → 해결).
   // 칸 단위: 글자(grapheme). 아랍어·태국어·힌디어는 글자를 떼면 모양이 깨지므로 단어 단위(칸 폭은 그 단어에 맞춘다).
   const FLG = /^(ar|th|hi)$/.test(LANG) ? 'word' : 'grapheme';
-  const segF = s => [...new Intl.Segmenter(L.bcp, { granularity: FLG }).segment(s)].map(x => x.segment);
-  const FL = [], POOLSET = new Set('0123456789');
+  //   ⚠️ 글자 칸이 18px 보다 작아지는 줄(긴 언어)은 자동으로 단어 칸으로 바꾼다 — 'Study abroad'(12자)만 돼도 칸이 11px 라 못 읽는다.
+  //   단어 칸은 폭이 단어마다 달라 넘어가는 동안 줄이 흔들리므로, 글꼴이 정해진 뒤 lockFlaps 가 '멈출 단어'의 폭으로 고정한다.
+  const segG = s => [...new Intl.Segmenter(L.bcp, { granularity: 'grapheme' }).segment(s)].map(x => x.segment);
+  const segF = s => FLG === 'word' ? segW(s) : segG(s);
+  // 단어 칸: 쉼표·하이픈·물음표 같은 문장부호는 칸 하나를 따로 차지하지 않고 앞 단어에 붙는다(여는 따옴표는 뒤 단어에). 공백은 칸 사이 간격이 대신한다
+  //   ⚠️ 띄어쓰기 없이 이어진 단어(태국어)는 붙이지 않는다 — 하이픈처럼 '잇는' 부호 뒤에서만 붙인다(अपने-आप, Vor-Ort-Termin)
+  const segW = s => { const out = []; let pre = '', gap = true, join = false;
+    for (const x of new Intl.Segmenter(L.bcp, { granularity: 'word' }).segment(s)) {
+      if (!x.segment.trim()) { gap = true; join = false; continue; }
+      if (x.isWordLike) { if (out.length && join) out[out.length - 1] += pre + x.segment; else out.push(pre + x.segment); pre = ''; gap = false; join = false; }
+      else if (out.length && !gap) { out[out.length - 1] += x.segment; join = /^[-‐‑–’'·:.,\/]$/.test(x.segment); } else pre += x.segment; }
+    if (pre) { if (out.length) out[out.length - 1] += pre; else out.push(pre); }
+    return out; };
+  const FL = [], FLROWS = [], POOLSET = new Set('0123456789'), POOLWSET = new Set();
   function flapRow(parent, phases, o = {}) {
-    const us = phases.map(([s]) => segF(s));
-    us.forEach(u => u.forEach(c => { if (c.trim()) POOLSET.add(c); }));
-    const n = Math.max(...us.map(u => u.length)), gap = 3;
+    let mode = o.chars ? 'grapheme' : FLG, us = phases.map(([s]) => mode === 'word' ? segW(s) : segG(s)), gap = 3;
+    let n = Math.max(...us.map(u => u.length));
     const row = document.createElement('span'); row.className = 'flr'; parent.appendChild(row);
+    if (L.dir === 'rtl' && !/[\u0590-\u08FF]/.test(phases.map(p => p[0]).join(''))) row.style.direction = 'ltr';   // K7M-4PXR 가 거꾸로 서지 않게
     let w = o.w || 28;
-    if (o.maxW && FLG === 'grapheme') w = Math.min(w, Math.floor((o.maxW - gap * (n - 1)) / n));
+    if (o.maxW && mode === 'grapheme') { w = Math.min(w, Math.floor((o.maxW - gap * (n - 1)) / n));
+      // 단어 칸 전환: 원래 작은 칸(시계 17)은 그 폭보다 줄어들 때만
+      if (w < Math.min(18, o.w || 28) && !o.chars) { mode = 'word'; us = phases.map(([s]) => segW(s)); n = Math.max(...us.map(u => u.length)); w = Math.min(o.w || 28, 26); } }
+    us.forEach(u => u.forEach(c => { if (c.trim()) (mode === 'word' ? POOLWSET : POOLSET).add(c); }));
     const h = o.h || Math.round(Math.max(w, 20) * 1.5), fs = o.fs || Math.round(w * .8);
     const tiles = [];
     for (let i = 0; i < n; i++) {
       const d = document.createElement('span'); d.className = 'fl';
-      if (FLG === 'grapheme') d.style.width = w + 'px'; else d.style.padding = '0 6px';
+      if (mode === 'grapheme') d.style.width = w + 'px'; else { d.style.padding = '0 6px'; d.style.overflow = 'hidden'; }
       d.style.height = h + 'px'; d.style.fontSize = fs + 'px';
       const b = document.createElement('b'); d.appendChild(b); row.appendChild(d);
       const plan = phases.map(([, beat, cyc = .8], k) => ({ a: beat * B, s: (beat + cyc + i * (o.stag ?? .06)) * B, ch: us[k][i] ?? ' ' }));
-      const T = { d, b, plan, seed: FL.length };
+      const T = { d, b, plan, seed: FL.length, mode };
       tiles.push(T); FL.push(T);
     }
-    row._tiles = tiles; return row;
+    row._tiles = tiles; row._mode = mode; row._us = us; row._maxW = o.maxW; row._fs = fs; FLROWS.push(row); return row;
   }
-  let POOL = [];
+  // 단어 칸 폭 고정 — 각 칸을 그 자리에 멈출 단어들 중 가장 넓은 것 + 여백으로. 줄이 maxW 를 넘으면 글자를 줄인다
+  function lockFlaps() {
+    // 단계(이유 → 해결)마다 따로 맞춘다 — 두 문장 중 넓은 쪽에 칸을 맞추면 줄 전체가 작아져 못 읽는다(2026-10-10 독일어 실측)
+    FLROWS.filter(r => r._mode === 'word').forEach(r => {
+      r._tiles.forEach(T => { T.wp = []; T.fsp = []; });
+      r._us.forEach((u, k) => {
+        let fs = r._fs;
+        for (let guard = 0; guard < 30; guard++) {
+          let total = 0, cnt = 0;
+          r._tiles.forEach((T, i) => { const word = u[i]; if (!word) { T.wp[k] = 0; return; }
+            T.d.style.display = ''; T.d.style.fontSize = fs + 'px'; T.d.style.width = 'auto'; T.b.textContent = word;
+            T.wp[k] = T.d.offsetWidth; total += T.wp[k]; cnt++; });
+          total += 3 * Math.max(cnt - 1, 0);
+          if (!r._maxW || total <= r._maxW || fs <= 10) break;
+          fs -= 1;
+        }
+        r._tiles.forEach(T => { T.fsp[k] = fs; });
+      });
+      r._tiles.forEach(T => { T.b.textContent = ''; T._c = null; T._k = -1; });
+    });
+  }
+  let POOL = [], POOLW = [];
   function drawFlaps(t) {
     for (const T of FL) {
       let ph = null, k = -1;
       T.plan.forEach((p, j) => { if (t >= p.a) { ph = p; k = j; } });
+      if (T.wp) { const kk = Math.max(k, 0); if (T._k !== kk) { T._k = kk; const w = T.wp[kk];
+        if (!w) T.d.style.display = 'none'; else { T.d.style.display = ''; T.d.style.width = w + 'px'; T.d.style.fontSize = T.fsp[kk] + 'px'; } } }
       if (!ph) { if (T._c !== '') { T.b.textContent = ''; T._c = ''; } T.d.style.transform = ''; continue; }
       const blank = ph.ch === ' ' && (k === 0 || T.plan[k - 1].ch === ' ');
       if (t < ph.s && !blank) {
-        const step = Math.floor(t / .055), c = POOL[hsh(T.seed + k * 97, step) % POOL.length];
+        const P = T.mode === 'word' && POOLW.length ? POOLW : POOL, step = Math.floor(t / .055), c = P[hsh(T.seed + k * 97, step) % P.length];
         if (T._c !== c) { T.b.textContent = c; T._c = c; }
         T.d.style.transform = `scaleY(${(.82 + .18 * ((t / .055) % 1)).toFixed(3)})`; T.d.style.color = '#c99a36';
       } else {
@@ -486,23 +532,37 @@
   }
 
   // ── 장면 구성 ────────────────────────────────────────────────────────
-  const CX = 270, H1 = 136, H2 = 192;                    // 화면 정가운데. 내용은 좌우 65px 안쪽(65–475) — 왼쪽은 네이버 클립의 잘림, 오른쪽은 틱톡·릴스 UI
+  const CX = 270, H1 = 136, H2 = 192;
+  // 아랍어(오른쪽→왼쪽): 순서가 뜻을 갖는 배치만 좌우를 뒤집는다 — 내 폰↔엄마 폰, 여기↔집 시계, 여행지↔집(사선 분할·지구본), 달력·걸음수 차트의 요일 순서.
+  //   안내판 줄(flex)은 문서 방향(dir=rtl)을 따라 저절로 뒤집힌다. 활주로·관제탑 같은 풍경은 그대로 둔다.
+  const RTL = L.dir === 'rtl', MX = (left, w = 0) => RTL ? 540 - left - w : left, MI = i => RTL ? 6 - i : i, SLR = k => RTL ? (k === 'sl' ? 'sr' : 'sl') : k;                    // 화면 정가운데. 내용은 좌우 65px 안쪽(65–475) — 왼쪽은 네이버 클립의 잘림, 오른쪽은 틱톡·릴스 UI
 
   // 1 출발 안내판 (박 8–16 = 영상 0–3.9초) — 첫 프레임부터 움직인다: 안내판은 막 튀어나오는 중, 칸은 이미 돌고 있고,
   //   질문은 첫 0.2초 안에 올라온다. 줄은 박 9·10·11 에 정착(기간·게이트·탑승등은 그 반 박 뒤), 아래 활주로는 박자에 맞춰 가속한다.
   //   게이트 코드는 글자·숫자뿐이라 번역 키가 없다. 실제 항공사·공항을 흉내 내지 않는다.
   const b0 = mk('box fids', 'left:65px;top:304px;width:410px');
   const LAMPS = [];
+  // 언어마다 폭을 나눈다 — 기간 칸은 그 언어 글자의 실제 폭만큼, 남는 폭은 전부 목적지에. 목적지가 긴 언어(10자 넘음)는
+  //   장식인 게이트 코드를 빼고 그 자리를 목적지에 준다(2026-10-10: 고정 폭이면 nl 'Studie in het buitenland'가 10px 였다).
+  //   줄 안쪽 386 = 아이콘 24 + 목적지 + 기간 + (게이트 51) + 탑승등 11 + 사이 간격 8.
+  const FW = (() => { const c = document.createElement('canvas').getContext('2d');
+    return (t, fs) => { c.font = `800 ${fs}px -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif`; return c.measureText(t).width; }; })();
+  const wordW = (t, fs) => segW(t).reduce((a, x) => a + FW(x, fs) + 12 + 3, -3);
+  const gW = (t, w) => { const n = segG(t).length; return n * w + 3 * (n - 1); };
+  const CJK = /^(ko|ja|zh)$/.test(LANG), BRD = [['plane', 'j_s1', 'j_s1d', 'A12'], ['work', 'j_s2', 'j_s2d', 'B07'], ['school', 'j_s3', 'j_s3d', 'C21']];
+  const GATE = BRD.every(([, k]) => segG(L[k]).length <= 10);
+  const DURW = Math.min(112, Math.max(...BRD.map(([, , kd]) => CJK ? gW(L[kd], 24) : Math.min(gW(L[kd], 24), wordW(L[kd], 19))))) + 2;
+  const DSTW = 386 - 24 - 11 - (GATE ? 51 + 8 : 0) - 8 * 3 - DURW - 4;
   { const hd = mk('fhd', '', `<span class="bi2">${svg(ICON.plane, 22, C.navy)}</span>`, b0);
-    flapRow(hd, [[L.j_board, 7.5, .75]], { w: 34, stag: .1, maxW: 150 });
+    flapRow(hd, [[L.j_board, 7.5, .75]], { w: 34, stag: .1, maxW: 190 });
     const sp = document.createElement('span'); sp.style.flex = '1'; hd.appendChild(sp);
-    flapRow(hd, [[fmtTime(wall(8, 40)), 7.5, 1]], { w: 17, fs: 14, h: 28, stag: .06, maxW: 150 }).classList.add('clk');
-    [['plane', 'j_s1', 'j_s1d', 'A12'], ['work', 'j_s2', 'j_s2d', 'B07'], ['school', 'j_s3', 'j_s3d', 'C21']].forEach(([ic, k, kd, gate], r) => {
+    flapRow(hd, [[fmtTime(wall(8, 40)), 7.5, 1]], { w: 17, fs: 14, h: 28, stag: .06, maxW: 140 }).classList.add('clk');
+    BRD.forEach(([ic, k, kd, gate], r) => {
       const row = mk('dprow', '', `<span class="bi">${svg(ICON[ic], 22, '#e9ecf6')}</span>`, b0);
-      flapRow(row, [[L[k], 7.5, 1.5 + r]], { w: 28, stag: .07, maxW: 172 }).classList.add('dst');
+      flapRow(row, [[L[k], 7.5, 1.5 + r]], { w: 28, stag: .07, maxW: DSTW }).classList.add('dst');
       const sp2 = document.createElement('span'); sp2.style.flex = '1'; row.appendChild(sp2);
-      flapRow(row, [[L[kd], 7.5, 2 + r]], { w: 24, stag: .07, maxW: 96 });
-      flapRow(row, [[gate, 7.5, 2 + r]], { w: 15, fs: 12, h: 26, stag: .05 }).classList.add('gt');
+      flapRow(row, [[L[kd], 7.5, 2 + r]], { w: 24, stag: .07, maxW: DURW });
+      if (GATE) flapRow(row, [[gate, 7.5, 2 + r]], { w: 15, fs: 12, h: 26, stag: .05, chars: true }).classList.add('gt');
       const lp = document.createElement('i'); lp.className = 'lamp'; row.appendChild(lp); LAMPS.push([lp, (9.5 + r) * B]);
     }); }
   // 퇴장은 아래로 — 기수가 들리면 세상은 아래로 내려간다(위로 빼면 헤드라인과 겹친다)
@@ -521,11 +581,11 @@
   const cal = mk('box gls', 'left:65px;top:318px;width:410px;height:330px',
     `<div class="calh">${svg(ICON.phone, 18, C.amber)}<span data-k="j_cal"></span></div>`);
   const CALX = c => 16 + c * 54.4, CHECK = new Set([1, 2, 3, 5, 8, 13]), DAYB = d => 17 + (d - 1) * .25;   // 하루 = 16분음표
-  for (let c = 0; c < 7; c++) { const w = mk('cwd', `left:${CALX(c)}px;top:52px`, '', cal); w.textContent = WD(c); }
-  const DAYS = Array.from({ length: 21 }, (_, k) => { const d = k + 1, el = mk('cday', `left:${CALX(k % 7) + 2}px;top:${78 + Math.floor(k / 7) * 76}px`,
+  for (let c = 0; c < 7; c++) { const w = mk('cwd', `left:${CALX(MI(c))}px;top:52px`, '', cal); w.textContent = WD(c); }
+  const DAYS = Array.from({ length: 21 }, (_, k) => { const d = k + 1, el = mk('cday', `left:${CALX(MI(k % 7)) + 2}px;top:${78 + Math.floor(k / 7) * 76}px`,
       `<b>${fmtNum(d)}</b>${CHECK.has(d) ? `<i class="ck">${svg(ICON.check, 22, '#fff')}</i>`
         : '<svg class="cx" viewBox="0 0 24 24" width="32" height="32"><path d="M6 6L18 18"/><path d="M18 6L6 18"/></svg>'}`, cal);
-    if (CHECK.has(d)) burst(DAYB(d), 65 + CALX(k % 7) + 27, 318 + 78 + Math.floor(k / 7) * 76 + 41, 'soft', { pal: ['#5eead4', '#fff8f0', '#ffd166'] });
+    if (CHECK.has(d)) burst(DAYB(d), 65 + CALX(MI(k % 7)) + 27, 318 + 78 + Math.floor(k / 7) * 76 + 41, 'soft', { pal: ['#5eead4', '#fff8f0', '#ffd166'] });
     return { d, el, mk: el.querySelector('.ck, .cx'), t: DAYB(d) * B }; });
   show(cal, 16, 24, 'rise', { exit: 'L' });
   TICK.push(t => { if (t < 16 * B || t > 24.3 * B) return;
@@ -573,7 +633,7 @@
       <path d="${arcD(0, 8, 60)}" stroke="#23295a" stroke-width="13" fill="none" stroke-linecap="round"/>
       <path d="${arcD(8, 23.95, 60)}" stroke="${C.amber}" stroke-width="13" fill="none" stroke-linecap="round"/>${ticks}
       <g class="hand"><line y2="-66" stroke="#fff" stroke-width="5" stroke-linecap="round"/><circle r="8" fill="#fff"/></g></svg>`; };
-  const dials = [[65, 'j_here'], [295, 'j_home']].map(([left, k], i) => {
+  const dials = [[MX(65, 180), 'j_here'], [MX(295, 180), 'j_home']].map(([left, k], i) => {
     const d = mk('box', `left:${left}px;top:332px;width:180px;height:180px`, dialSVG());
     const flb = mk('dlab', `left:${left}px;top:530px`, `<b data-k="${k}"></b><span><em class="ic"></em><em class="tm"></em></span>`);
     flb.querySelectorAll('em').forEach(e => { e.style.fontStyle = 'normal'; });
@@ -596,24 +656,27 @@
 
   // 5 집의 걱정 (박 40–52) — 밤, 새 알림 없는 엄마 폰. 걱정 문장이 박마다 떨어져 쌓인다
   headB([['j_h4a', 0, .95], ['j_h4b', 2]], 40.5, 52, 44, { hl: C.coral });
-  const ph4 = phone('left:325px;top:326px;width:150px;height:330px',
+  const ph4 = phone(`left:${MX(325, 150)}px;top:326px;width:150px;height:330px`,
     `<div class="lk"><div class="lt">${fmtShort(wall(23, 40))}</div><div class="ld">${fmtDate(wall(23, 40))}</div><div class="ln"></div></div>`);
   ph4.querySelector('.ln').textContent = L.j_nonoti;
-  show(ph4, 40, 52, 'sr', { idle: t => ({ s: 1 + .015 * Math.exp(-((t / BAR) % 1) * 4) }) });
-  show(tx('j_momphone', 300, 15, '#c9cfe6', 'left:325px;width:150px;text-shadow:none;font-weight:700'), 41, 52, 'fade');
+  show(ph4, 40, 52, SLR('sr'), { idle: t => ({ s: 1 + .015 * Math.exp(-((t / BAR) % 1) * 4) }) });
+  show(tx('j_momphone', 300, 15, '#c9cfe6', `left:${MX(325, 150)}px;width:150px;text-shadow:none;font-weight:700`), 41, 52, 'fade');
   const WK = ['j_w1', 'j_w2', 'j_w3', 'j_w4', 'j_w5'];
   [690, 630, 570, 510, 450].forEach((top, i) => {
     const b = 44 + i, rot = [-3, 2.5, -2, 3.5, -1.5][i];
-    show(mk('box wpw', `left:68px;top:${top}px;width:248px`, `<span class="wp" data-k="${WK[i]}"></span>`), b, 52, 'drop',
+    show(mk('box wpw', `left:${MX(68, 248)}px;top:${top}px;width:248px`, `<span class="wp" data-k="${WK[i]}"></span>`), b, 52, 'drop',
       { r0: rot, exit: 'D', idle: t => t > 49.5 * B ? { r: Math.sin(t * 38 + i) * 1.6, x: Math.sin(t * 29 + i * 2) * 1.5 } : {} });
-    burst(b, 190, top + 20, 'soft', { pal: ['#ff7a8f', '#ffb3c0', '#fff8f0'] });
+    burst(b, MX(190), top + 20, 'soft', { pal: ['#ff7a8f', '#ffb3c0', '#fff8f0'] });
   });
 
   // 6 지연 (박 52–57) — 세 가지 이유가 빨간 "지연"으로 멈춘다. 정적 직전 글리치
+  // 상태 칸('지연'/'해결')이 긴 언어(vi 'Đã giải quyết' 등)는 줄이 넘친다 — 글자 칸 줄의 폭을 상태 칸 실제 폭만큼 줄인다
+  const TXW = (() => { const c = document.createElement('canvas').getContext('2d'); c.font = '900 19px -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif'; return s => c.measureText(s).width; })();
+  const ROWMAX = 386 - 8 - (Math.max(TXW(L.j_late), TXW(L.j_ok)) + 24) - 16;   // 안내판 안쪽 386 − 간격 − 상태 칸(글자+좌우 여백 24)
   const b1 = mk('box board', 'left:65px;top:340px;width:410px');
   [['j_r1', 52], ['j_r2', 52.5], ['j_r3', 53]].forEach(([k, b]) => {
     const row = document.createElement('div'); row.className = 'brow'; b1.appendChild(row);
-    flapRow(row, [[L[k], b, .5]], { w: 30, stag: .05, maxW: 250 });
+    flapRow(row, [[L[k], b, .5]], { w: 30, stag: .05, maxW: Math.min(250, ROWMAX) });
     const sp = document.createElement('span'); sp.style.flex = '1'; row.appendChild(sp);
     statusTile(row, b + 1.5);
   });
@@ -651,7 +714,7 @@
   const SWEEP = [];
   [['j_r1', 'j_f1', 69], ['j_r2', 'j_f2', 70.5], ['j_r3', 'j_f3', 72]].forEach(([k1, k2, fb], i) => {
     const row = document.createElement('div'); row.className = 'brow'; b2.appendChild(row);
-    flapRow(row, [[L[k1], 68, 0], [L[k2], fb, .5]], { w: 26, stag: .04, maxW: 290 });
+    flapRow(row, [[L[k1], 68, 0], [L[k2], fb, .5]], { w: 26, stag: .04, maxW: Math.min(290, ROWMAX) });
     const sp = document.createElement('span'); sp.style.flex = '1'; row.appendChild(sp);
     statusTile(row, 68, fb + 1);
     const sw = document.createElement('i'); sw.className = 'sw'; row.appendChild(sw); SWEEP.push([sw, (fb + 1) * B]);
@@ -701,16 +764,17 @@
   show(tag('j_step2', 'key', C.amber), 100.5, 108.5, 'pop');
   headB([['j_h10']], 101.5, 108.5, 42, { hl: C.amber, tag: 1 });
   const CODE = 'K7M-4PXR';
-  const phL = phone('left:65px;top:326px;width:190px;height:360px', `<div class="mc"><div class="mct"></div><div class="mcf"></div><img class="aicon" src="img/app-icon.png" width="52" height="52" style="margin:0 auto" alt=""></div>`);
+  const phL = phone(`left:${MX(65, 190)}px;top:326px;width:190px;height:360px`, `<div class="mc"><div class="mct"></div><div class="mcf"></div><img class="aicon" src="img/app-icon.png" width="52" height="52" style="margin:0 auto" alt=""></div>`);
   phL.querySelector('.mct').textContent = L.j_mycode;
-  const codeRow = flapRow(phL.querySelector('.mcf'), [[CODE, 102, .9]], { w: 20, fs: 17, h: 32, stag: .12 });
-  const phR = phone('left:285px;top:326px;width:190px;height:360px',
+  const codeRow = flapRow(phL.querySelector('.mcf'), [[CODE, 102, .9]], { w: 20, fs: 17, h: 32, stag: .12, chars: true });   // 한 글자씩 날아가므로 늘 글자 칸
+  const phR = phone(`left:${MX(285, 190)}px;top:326px;width:190px;height:360px`,
     `<div class="frm"><div class="flb lb1"></div><div class="inp"><span class="typ"></span></div><div class="flb lb2"></div><div class="inp al"></div><div class="cbtn"></div></div>`, true);
   phR.querySelector('.lb1').textContent = L.as_code; phR.querySelector('.lb2').textContent = L.as_alias;
+  { const ci = phR.querySelector('.typ').parentNode; ci.style.direction = 'ltr'; ci.style.textAlign = 'left'; }   // 코드는 아랍어에서도 왼쪽→오른쪽(날아오는 칸이 왼쪽부터 꽂힌다)
   phR.querySelector('.al').textContent = L.j_alias; phR.querySelector('.cbtn').textContent = L.as_connect;
-  show(phL, 101, 110, 'sl'); show(phR, 101.5, 110, 'sr');
-  show(tx('j_myphone', 300, 16, '#c9cfe6', 'left:65px;width:190px;text-shadow:none;font-weight:700'), 101.5, 110, 'fade');
-  show(tx('j_momphone', 300, 16, '#c9cfe6', 'left:285px;width:190px;text-shadow:none;font-weight:700'), 102, 110, 'fade');
+  show(phL, 101, 110, SLR('sl')); show(phR, 101.5, 110, SLR('sr'));
+  show(tx('j_myphone', 300, 16, '#c9cfe6', `left:${MX(65, 190)}px;width:190px;text-shadow:none;font-weight:700`), 101.5, 110, 'fade');
+  show(tx('j_momphone', 300, 16, '#c9cfe6', `left:${MX(285, 190)}px;width:190px;text-shadow:none;font-weight:700`), 102, 110, 'fade');
   show(tx('j_n10', 716, 20, C.cream, 'font-weight:700'), 103, 108, 'fade');
   const FLY = [...CODE].map((ch, i) => { const f = mk('box fly', 'left:0;top:0;width:20px;height:28px;font-size:16px'); f.textContent = ch; f.style.opacity = 0; return { f, i, a: (105 + i * .25) * B }; });
   let FLYPOS = null;                                     // 레이아웃이 정해진 뒤 출발·도착 좌표를 잰다(아래 measure)
@@ -769,7 +833,7 @@
   headB([['j_h12a', 0, .91], ['j_h12b', 1.5]], 128.5, 140, 44, { hl: C.gold });
   const WEEK = [6412, 7038, 5876, 19264, 22517, 17903, 21386], WMAX = Math.max(...WEEK);
   const ch = mk('box gls', 'left:65px;top:300px;width:410px;height:236px');
-  WEEK.forEach((v, i) => { mk('bar2' + (i === 6 ? ' tr' : ''), `left:${30 + i * 52 + 7}px`, '', ch); const w = mk('wd', `left:${30 + i * 52}px`, '', ch); w.textContent = WD(i); });
+  WEEK.forEach((v, i) => { mk('bar2' + (i === 6 ? ' tr' : ''), `left:${30 + MI(i) * 52 + 7}px`, '', ch); const w = mk('wd', `left:${30 + MI(i) * 52}px`, '', ch); w.textContent = WD(i); });
   const mkr = mk('mk', `left:${30 + 3 * 52 - 6}px;top:8px`, `${svg(ICON.plane, 12, C.navy)}<span data-k="j_left"></span>`, ch);
   show(ch, 128, 140, 'rise');
   TICK.push(t => { if (t < 128 * B || t > 140.3 * B) return;
@@ -798,7 +862,7 @@
     const lv = Math.round(100 - 88 * ease3(clamp((t - 140.5 * B) / (2.5 * B))));
     const fill = phB.querySelector('.bt i'); fill.style.height = (lv / 100 * 100).toFixed(1) + 'px';
     fill.style.background = lv < 20 ? C.red : lv < 50 ? C.amber : C.mint;
-    phB.querySelector('.bp').textContent = fmtNum(lv) + '%';
+    phB.querySelector('.bp').textContent = PCT.format(lv / 100);
     const d = t - 145.5 * B, scr = phB.querySelector('.scr');      // 꺼짐 — 화면이 가로줄로 접혔다가 점으로 사라진다
     scr.style.transform = d < 0 ? '' : d < .14 ? `scaleY(${(1 - .98 * d / .14).toFixed(3)})` : d < .26 ? `scale(${(1 - (d - .14) / .12).toFixed(3)},.02)` : 'scale(0)';
     scr.style.filter = d > 0 && d < .26 ? 'brightness(2.4)' : ''; });
@@ -831,19 +895,21 @@
   const spl = mk('box split', 'left:0;top:0;width:540px;height:960px', '<i class="sa"></i><i class="sb"></i>');
   show(spl, 166, 177, 'fade');
   TICK.push(t => { if (t < 166 * B || t > 177.3 * B) return; const e = ease3(clamp((t - 166 * B) / .5));
-    spl.querySelector('.sb').style.clipPath = `polygon(${(330 + 560 * (1 - e)).toFixed(1)}px 0, 540px 0, 540px 960px, ${(190 + 560 * (1 - e)).toFixed(1)}px 960px)`; });
+    const a = 560 * (1 - e); spl.querySelector('.sb').style.clipPath = RTL
+      ? `polygon(0 0, ${(210 - a).toFixed(1)}px 0, ${(350 - a).toFixed(1)}px 960px, 0 960px)`
+      : `polygon(${(330 + a).toFixed(1)}px 0, 540px 0, 540px 960px, ${(190 + a).toFixed(1)}px 960px)`; });
   headB([['j_h15a', 0, .91], ['j_h15b', 1.5]], 166.5, 177, 44, { hl: C.gold });
-  show(mk('box', 'left:65px;top:300px', `<span class="glab" style="background:${C.amber};color:${C.navy}" data-k="j_trip"></span>`), 167, 177, 'pop');
-  show(mk('box', 'left:285px;top:300px;width:190px;text-align:center', `<span class="glab" style="background:${C.mint};color:${C.navy}" data-k="j_home"></span>`), 167.5, 177, 'pop');
-  const pL = phone('left:65px;top:362px;width:190px;height:290px', `<div class="lk"><img class="aicon" src="img/app-icon.png" width="56" height="56" style="margin:0 auto" alt=""></div>`);
-  const pR = phone('left:285px;top:362px;width:190px;height:290px', `<div class="lk"><img class="aicon" src="img/app-icon.png" width="56" height="56" style="margin:0 auto" alt=""></div>`, true);
-  show(pL, 166.5, 177, 'sl'); show(pR, 167, 177, 'sr');
-  show(tx('j_myphone', 336, 15, '#e9ecf6', 'left:65px;width:190px;text-shadow:none;font-weight:700'), 168, 177, 'fade');
-  show(tx('j_momphone', 336, 15, '#e9ecf6', 'left:285px;width:190px;text-shadow:none;font-weight:700'), 168, 177, 'fade');
-  show(pushEl(L.push_title, pushBody(L.mom, 1736), 'left:65px;top:458px', 'mini'), 170, 177, 'pop');
-  show(pushEl(L.push_title, pushBody(L.j_alias, WEEK[6]), 'left:285px;top:504px', 'mini'), 170.5, 177, 'pop');
+  show(mk('box', `left:${MX(65, 190)}px;top:300px;width:190px;text-align:${RTL ? 'right' : 'left'}`, `<span class="glab" style="background:${C.amber};color:${C.navy}" data-k="j_trip"></span>`), 167, 177, 'pop');
+  show(mk('box', `left:${MX(285, 190)}px;top:300px;width:190px;text-align:center`, `<span class="glab" style="background:${C.mint};color:${C.navy}" data-k="j_home"></span>`), 167.5, 177, 'pop');
+  const pL = phone(`left:${MX(65, 190)}px;top:362px;width:190px;height:290px`, `<div class="lk"><img class="aicon" src="img/app-icon.png" width="56" height="56" style="margin:0 auto" alt=""></div>`);
+  const pR = phone(`left:${MX(285, 190)}px;top:362px;width:190px;height:290px`, `<div class="lk"><img class="aicon" src="img/app-icon.png" width="56" height="56" style="margin:0 auto" alt=""></div>`, true);
+  show(pL, 166.5, 177, SLR('sl')); show(pR, 167, 177, SLR('sr'));
+  show(tx('j_myphone', 336, 15, '#e9ecf6', `left:${MX(65, 190)}px;width:190px;text-shadow:none;font-weight:700`), 168, 177, 'fade');
+  show(tx('j_momphone', 336, 15, '#e9ecf6', `left:${MX(285, 190)}px;width:190px;text-shadow:none;font-weight:700`), 168, 177, 'fade');
+  show(pushEl(L.push_title, pushBody(L.mom, 1736), `left:${MX(65, 190)}px;top:458px`, 'mini'), 170, 177, 'pop');
+  show(pushEl(L.push_title, pushBody(L.j_alias, WEEK[6]), `left:${MX(285, 190)}px;top:504px`, 'mini'), 170.5, 177, 'pop');
   show(tx('j_n15', 690, 19, '#e9ecf6', 'font-weight:700;text-shadow:0 2px 10px rgba(0,0,0,.4)'), 171, 177, 'fade');
-  burst(170, 160, 494, 'small', { pal: GOLD }); burst(170.5, 380, 540, 'small', { pal: ['#5eead4', '#fff8f0', '#ffd166'] });
+  burst(170, MX(160), 494, 'small', { pal: GOLD }); burst(170.5, MX(380), 540, 'small', { pal: ['#5eead4', '#fff8f0', '#ffd166'] });
 
   // 19 엔딩 (박 177–194) — 이 편의 문장 세 줄, 로고는 곡의 마지막 타격(박 188)에서 터진다
   mountEnding(VT(177), L.j_q1, L.j_q2);
@@ -885,7 +951,7 @@
   const sph = (lon, lat) => { const a = lon * Math.PI / 180, b = lat * Math.PI / 180; return [Math.cos(b) * Math.sin(a), -Math.sin(b), Math.cos(b) * Math.cos(a)]; };
   const roty = (p, yaw, pit) => { let [x, y, z] = p; const cy = Math.cos(yaw), sy = Math.sin(yaw); [x, z] = [x * cy + z * sy, -x * sy + z * cy];
     const cp = Math.cos(pit), sp = Math.sin(pit); [y, z] = [y * cp - z * sp, y * sp + z * cp]; return [x, y, z]; };
-  const GH = sph(-48, 22), GD = sph(58, 30);             // 대륙을 그리지 않는 추상 지구본 — 언어마다 "집"이 달라도 거짓 그림이 되지 않는다
+  const GH = sph(RTL ? 48 : -48, 22), GD = sph(RTL ? -58 : 58, 30);             // 대륙을 그리지 않는 추상 지구본 — 언어마다 "집"이 달라도 거짓 그림이 되지 않는다
   const slerp = (a, b, s) => { const d = Math.acos(clamp(a[0] * b[0] + a[1] * b[1] + a[2] * b[2], -1, 1)), sd = Math.sin(d);
     const k0 = Math.sin((1 - s) * d) / sd, k1 = Math.sin(s * d) / sd; return [a[0] * k0 + b[0] * k1, a[1] * k0 + b[1] * k1, a[2] * k0 + b[2] * k1]; };
   const fx = document.getElementById('fx').getContext('2d');
@@ -960,7 +1026,7 @@
   function globe(t) {
     const bt = t / B, ap = clamp((bt - 109.8) / 1.2), zq = clamp((bt - 114) / 2);
     // 장면 가운데(박 113)에서 집(왼쪽)·여행지(오른쪽)가 좌우 대칭이 되게 — 두 경도(-48, 58)의 중간이 정면
-    const yaw = -5 * Math.PI / 180 + .22 * (.5 - clamp((bt - 110) / 6)), pit = .32, cx = CX, cy = 500, R = 192 * (.7 + .3 * ease3(ap));
+    const yaw = (RTL ? -1 : 1) * (-5 * Math.PI / 180 + .22 * (.5 - clamp((bt - 110) / 6))), pit = .32, cx = CX, cy = 500, R = 192 * (.7 + .3 * ease3(ap));
     const pd = roty(GD, yaw, pit), sx0 = cx + pd[0] * R, sy0 = cy + pd[1] * R, S = 1 + 6 * zq * zq * zq;
     const P = p => [sx0 + (cx + p[0] * R - sx0) * S, sy0 + (cy + p[1] * R - sy0) * S];
     const A = ap * (1 - zq);
@@ -1051,13 +1117,15 @@
     el.style.top = (z0 + (zh - el.offsetHeight) / 2).toFixed(1) + 'px';
   }
   function FIT() {
+    lockFlaps();
     document.querySelectorAll('.t.hb').forEach(fitHead);
     document.querySelectorAll('.t:not(.hb)').forEach(e => fitTo(e, Math.min(e.clientWidth, 400)));
     document.querySelectorAll('.tag, .okchip, .wp, .pill2, .glab, .sos2 span, .lgd, .roll').forEach(e => fitTo(e, 400, scrollW));
     document.querySelectorAll('.wpw .wp').forEach(e => fitTo(e, 250, scrollW));
     // 블록·라벨 글자는 상자 폭이 아니라 글자 자체의 폭(max-content)으로 잰다 — block 요소의 scrollWidth 는 늘 상자 폭이라 끝없이 줄어든다
     document.querySelectorAll('.blk span, .cblk span').forEach(e => fitTo(e, e.parentNode.clientWidth - 40));
-    document.querySelectorAll('.dlab b, .dlab span, .nxt, .mct, .calh, .frm .flb, .frm .cbtn').forEach(e => fitTo(e, (e.parentNode.clientWidth || 180) - 12));
+    document.querySelectorAll('.dlab b, .dlab span, .mct, .calh, .frm .cbtn').forEach(e => fitTo(e, (e.parentNode.clientWidth || 180) - 12));
+    document.querySelectorAll('.nxt').forEach(e => fitTo(e, 210));
     pushFix.forEach(r => { const el = r.el, s = r.o.s0 || 1, h = el.offsetHeight, top = parseFloat(el.style.top);
       const vb = top + .55 * h + .45 * h * s; if (vb > 762) el.style.top = (top - (vb - 762)).toFixed(1) + 'px'; });
   }
@@ -1066,6 +1134,7 @@
     FLYPOS = codeRow._tiles.map((T, i) => { const r = T.d.getBoundingClientRect(); return [r.left, r.top, ir.left + 10 + i * cw, ir.top + 4]; });
   }
 
+  window.__flaps = () => FLROWS.map(r => ({ m: r._mode, us: r._us.map(u => u.join(r._mode === 'word' ? ' ' : '')), fs: r._mode === 'word' ? (r._tiles[0] && r._tiles[0].fsp) : [r._fs] }));   // 검사용
   window.__hits = () => ({
     reg: REG.map(r => [r.beat, r.kind, (r.el.className + ' ' + (r.el.textContent || '').trim()).slice(0, 40)]),
     exit: REG.map(r => [r.z / B, (r.el.className + ' ' + (r.el.textContent || '').trim()).slice(0, 40)]),
@@ -1074,7 +1143,7 @@
     flap: FL.map(T => T.plan.map(p => p.s / B)) });
   fillText();
   REG.forEach(r => { if (r.kind === 'kin') splitUnits(r.el); });
-  POOL = [...POOLSET];
+  POOL = [...POOLSET]; POOLW = [...POOLWSET];
   FIT(); measureFly();
   document.fonts.ready.then(() => { FIT(); measureFly(); });
 
