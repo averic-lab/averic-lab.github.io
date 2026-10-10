@@ -11,7 +11,8 @@
     {"id": "neighbor-friends", "page": "e.html", "title": "t_e", "date": "2026-09-24"},
     {"id": "solo-trip", "page": "f.html", "title": "t_f", "date": "2026-09-25"},
     {"id": "lost-mom", "page": "g.html", "title": "t_g", "date": "2026-09-26"},
-    {"id": "how-to-use", "page": "i.html", "title": "t_i", "date": "2026-10-09", "audio": {"bgm": "techno-fest-vibes.mp3", "bgm_start": 43.110}}
+    {"id": "how-to-use", "page": "i.html", "title": "t_i", "date": "2026-10-09", "audio": {"bgm": "techno-fest-vibes.mp3", "bgm_start": 43.110}},
+    {"id": "before-departure", "page": "j.html", "title": "t_j", "date": "2026-10-10", "audio": {"bgm": "take-this-higher.mp3", "bgm_start": 3.879, "fade_in": 0.05}}
   ],
   "youtube_only": [
     {"id": "anbu-3d", "date": "2026-10-04", "home": true, "titles": {"ko": "아무것도 하지 않아도, 매일 자동으로 안부는 도착합니다", "ja": "何もしなくても、毎日、自動で安否が届きます", "en": "No effort needed — a wellness check arrives automatically, every day", "zh-CN": "什么都不用做，平安每天自动送达", "zh-TW": "什麼都不用做，平安每天自動送達", "de": "Ganz ohne Zutun: Jeden Tag kommt automatisch ein Lebenszeichen an", "fr": "Rien à faire : des nouvelles arrivent automatiquement, chaque jour", "es": "Sin ningún esfuerzo: cada día llega un aviso, automáticamente", "it": "Senza alcuno sforzo: ogni giorno arriva un check-in, in automatico", "pt-BR": "Sem nenhum esforço: todo dia chega um check-in, automaticamente", "ru": "Ничего не нужно делать — отметка приходит каждый день автоматически", "nl": "Zonder enige moeite: elke dag komt er automatisch een check-in", "pl": "Nie trzeba nic robić — codziennie automatycznie przychodzi znak życia", "tr": "Hiçbir şey yapmanıza gerek kalmadan her gün otomatik olarak haber gelir", "vi": "Không cần làm gì, tin bình an vẫn tự động đến mỗi ngày", "th": "ไม่ต้องทำอะไรเลย การแจ้งว่าสบายดีก็มาถึงอัตโนมัติทุกวัน", "id": "Tanpa perlu melakukan apa pun, kabar tiba otomatis setiap hari", "sv": "Helt utan ansträngning: en incheckning kommer automatiskt varje dag", "hi": "बिना किसी मेहनत के, हर दिन अपने-आप खैरियत पहुँचती है", "ar": "دون أي عناء، يصل الاطمئنان تلقائياً كل يوم"}}
@@ -79,7 +80,30 @@
       "i_j1": "매일 하루 한 번<br><em>안부 도착</em>", "i_j1s": "알림 목록엔 ‘@lv’", "i_k1": "<em>@lv</em> — 안부가 안 오거나<br>활동 기록이 없는 날",
       "i_k1s": "예약 시각 2시간 뒤 확인", "i_k2": "<em>@lv</em> — 그런 날이<br>2번 이어지면", "i_k3": "<em>@lv</em> — 3번 이상 이어지거나<br>‘@em’를 누르면 즉시",
       "i_l1": "위험한 카드가<br><em>맨 앞</em>에 와요", "i_m1": "이상, 안부 앱 소개 및<br>사용 설명이었습니다.", "i_n1": "이럴 땐 <em>전화</em>로<br>직접 안부를 확인하세요", "i_n2": "안부가 확인되면<br><em>[@ok]</em>를 눌러 주세요", "i_calling": "통화 중", "i_mom_says": "응, 나 괜찮아~", "i_mom": "엄마", "i_dad": "아빠",
-      "i_aunt": "이모", "i_gma": "할머니"
+      "i_aunt": "이모", "i_gma": "할머니",
+      "t_j": "떠나기 전 필수품", "j_board": "출발", "j_s1": "여행", "j_s1d": "7일", "j_s2": "장기 출장", "j_s2d": "6개월", "j_s3": "유학", "j_s3d": "2년",
+      "j_h0a": "멀리 떠나 있는 동안,", "j_h0b": "매일 안부 전화, <em>가능할까요?</em>",
+      "j_h1a": "출발하기 전까지는<br>‘자주 연락해야지’ 다짐해도,", "j_h1b": "며칠 지나면 <em>흐지부지</em>", "j_cal": "안부 연락",
+      "j_h2a": "빽빽한 일정 속에", "j_h2b": "전화할 <em>틈이 없고</em>",
+      "j_b1": "회의", "j_b2": "이동", "j_b3": "현장 점검", "j_b4": "미팅", "j_b5": "보고서", "j_b6": "저녁 미팅", "j_bcall": "안부 전화",
+      "j_h3a": "서로 깨어 있는 시간이", "j_h3b": "자꾸 <em>엇갈리고</em>", "j_here": "여기", "j_home": "집", "j_awake": "깨어 있는 시간",
+      "j_h4a": "연락이 뜸해질수록", "j_h4b": "집에서는 <em>걱정</em>이 쌓입니다", "j_nonoti": "새 알림 없음",
+      "j_w1": "잘 도착했을까?", "j_w2": "밥은 챙겨 먹을까?", "j_w3": "아프진 않을까?", "j_w4": "무슨 일 있는 건 아니겠지?", "j_w5": "전화해도 될까…",
+      "j_r1": "작심삼일", "j_r2": "빽빽한 일정", "j_r3": "시차", "j_late": "지연", "j_ok": "해결",
+      "j_h5": "그래서 떠나기 전,", "j_h6": "이것 하나만 챙기세요",
+      "j_f1": "잊어도 매일 자동으로", "j_f2": "앱을 열지 않아도", "j_f3": "편할 때 확인하면 끝",
+      "j_h7a": "매일 전화하지 않아도,", "j_h7b": "안부는 <em>매일</em> 전해집니다",
+      "j_h8a": "걱정이 쌓이던 자리에", "j_h8b": "매일 <em>안심</em>이 도착합니다", "j_arrive": "안부 도착",
+      "j_step1": "떠나기 전 ①", "j_h9": "가족 폰에 <em>먼저</em> 설치", "j_n9": "옆에 있을 때 해 드리면 쉬워요", "j_momphone": "엄마의 휴대폰",
+      "j_step2": "떠나기 전 ②", "j_h10": "내 안전 코드로 <em>미리</em> 연결", "j_n10": "회원가입 없이 · 안드로이드도 아이폰도", "j_myphone": "내 휴대폰", "j_mycode": "내 안전 코드",
+      "j_go": "준비 끝, 출발!", "j_trip": "여행지",
+      "j_step3": "도착 후 ③", "j_h11a": "도착하면,", "j_h11b": "앱을 <em>한 번만</em> 열어 주세요", "j_h11c": "안부 시각이 여행지에 맞춰집니다", "j_home_t": "집 시각", "j_local_t": "여행지 시각",
+      "j_h12a": "매일 정해진 시각 무렵,", "j_h12b": "오늘 걸은 걸음까지 <em>집으로</em>", "j_left": "출발",
+      "j_h13a": "배터리가 다 돼 연락이 끊겨도", "j_h13b": "<em>‘방전 추정’</em>으로 알려 줘요", "j_next": "다음 날", "j_n13": "마지막 안부 때 배터리가 20% 미만이었다면",
+      "j_h14a": "낯선 곳에서 도움이 필요할 땐", "j_h14b": "버튼 하나로 <em>위치까지</em>",
+      "j_h15a": "집에 계신 부모님 안부도", "j_h15b": "여행지에서 <em>받아 보세요</em>", "j_n15": "부모님 폰에서도 안전 코드를 만들어 서로 연결하면",
+      "j_q1": "떠나는 사람의 안전을 위해서도,<br>기다리는 가족의 마음을 위해서도,", "j_q2": "안부는 <em>미리 챙겨야 할 필수품</em>입니다.",
+      "j_alias": "딸", "j_tags": "#여행필수템|#해외여행|#해외출장|#유학|#1인가구|#혼자|#안전확인|#어학연수|#출국준비|#안부|#안심|#해외살이|#가족걱정"
     },
     "en": {
       "t_a": "Mom isn't picking up", "t_b": "Our daughter abroad", "play": "Play", "replay": "Replay",

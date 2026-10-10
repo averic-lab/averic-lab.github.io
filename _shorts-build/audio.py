@@ -92,7 +92,7 @@ def render_bed(cfg, dur, ducks, path):
                 f"clip(({e + RELEASE:.3f}-t)/{RELEASE},0,1)))")
     vol = f"pow(10,({base:.2f}-{DUCK_DB}*{duck})/20)"
     af = (f"aresample=48000,aformat=channel_layouts=stereo,"
-          f"afade=t=in:st=0:d={FADE_IN},afade=t=out:st={dur - FADE_OUT:.3f}:d={FADE_OUT},"
+          f"afade=t=in:st=0:d={float(cfg.get('fade_in', FADE_IN))},afade=t=out:st={dur - FADE_OUT:.3f}:d={FADE_OUT},"
           f"volume='{vol}':eval=frame,apad,atrim=0:{dur}")
     run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-ss", str(start), "-t", str(dur), "-i", bgm,
          "-af", af, "-c:a", "pcm_s16le", path])
