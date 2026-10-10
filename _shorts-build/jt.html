@@ -82,12 +82,23 @@
   //   ① 긴 스티커는 덜 기울인다(길이 300을 12° 기울이면 위아래로 60px 을 차지한다) ② 자리가 막히면 주변으로 조금씩 옮겨 빈자리를 찾는다
   //   ③ 그래도 안 되면 전체를 같은 비율로 줄인다. 겹침은 회전한 모양의 외곽 상자로 판정한다(한국어 배치는 그대로 1.0).
   const hit = (a, b, m = 3) => a.l < b.r - m && b.l < a.r - m && a.t < b.b - m && b.t < a.b - m;
+  // 외곽 상자 판정만으로는 회전한 모서리끼리의 겹침을 놓친다(아이콘 상자를 줄여 둔 탓에 영어·독일어 스티커가 아이콘 그림을 최대 12px 가렸다).
+  //   그래서 회전한 실제 사각형끼리 분리축으로 한 번 더 잰다 — 스티커 몸통은 아이콘(흰 테두리 6px 포함)·다른 스티커 몸통과 닿으면 안 된다.
+  //   기존 판정은 그대로 두고 조건만 더하므로, 이미 맞던 배치(한국어)는 바뀌지 않는다.
+  const rect = (cx, cy, w, h, deg, pad = 0) => { const a = deg * Math.PI / 180, c = Math.cos(a), s = Math.sin(a);
+    return [[-1, -1], [1, -1], [1, 1], [-1, 1]].map(([u, v]) => { const x = u * (w / 2 + pad), y = v * (h / 2 + pad); return [cx + c * x - s * y, cy + s * x + c * y]; }); };
+  const touch = (A, B) => { for (const P of [A, B]) for (let i = 0; i < 4; i++) {
+      const [x1, y1] = P[i], [x2, y2] = P[(i + 1) % 4], nx = y2 - y1, ny = x1 - x2;
+      const pa = A.map(([x, y]) => x * nx + y * ny), pb = B.map(([x, y]) => x * nx + y * ny);
+      if (Math.max(...pa) <= Math.min(...pb) || Math.max(...pb) <= Math.min(...pa)) return false; }
+    return true; };
   function place() {
     const ic = document.querySelector('.icon').getBoundingClientRect(), ICON = { l: ic.left + 6, r: ic.right - 6, t: ic.top + 6, b: ic.bottom - 6 };
+    const ie = document.querySelector('.icon'), IPOLY = rect(ie.offsetLeft + ie.offsetWidth / 2, ie.offsetTop + ie.offsetHeight / 2, ie.offsetWidth, ie.offsetHeight, 7, 6);
     const OFF = [[0, 0]]; for (let rad = 14; rad <= 150; rad += 14) for (let a = 0; a < 16; a++) OFF.push([Math.round(rad * Math.cos(a * Math.PI / 8)), Math.round(rad * .8 * Math.sin(a * Math.PI / 8))]);
     let ok = false, k = 1;
     for (; k >= .55 && !ok; k -= .03) {
-      ok = true; const done = [];
+      ok = true; const done = [], polys = [];
       for (const E of els) {
         let fs = Math.round(E.fs * k); E.d.style.fontSize = fs + 'px'; E.d.style.transform = 'none';
         while (E.d.offsetWidth > MAXW && fs > 12) { fs -= 1; E.d.style.fontSize = fs + 'px'; }
@@ -97,9 +108,11 @@
         let spot = null;
         for (const [dx, dy] of OFF) { const cx = E.x + dx, cy = E.y + dy, q = { l: cx - W / 2, r: cx + W / 2, t: cy - H / 2, b: cy + H / 2 };
           if (q.l < 12 || q.r > 528 || q.t < 12 || q.b > 948 || hit(q, ICON) || done.some(d => hit(q, d))) continue;
-          spot = [cx, cy, q]; break; }
+          const P = rect(cx, cy, w + 1, h + 1, r);
+          if (touch(P, IPOLY) || polys.some(o => touch(P, o))) continue;
+          spot = [cx, cy, q, P]; break; }
         if (!spot) { ok = false; break; }
-        done.push(spot[2]);
+        done.push(spot[2]); polys.push(spot[3]);
         E.d.style.left = (spot[0] - w / 2).toFixed(1) + 'px'; E.d.style.top = (spot[1] - h / 2).toFixed(1) + 'px'; E.d.style.transform = `rotate(${r.toFixed(1)}deg)`;
       }
       document.documentElement.dataset.scale = k.toFixed(2); document.documentElement.dataset.ok = ok ? '1' : '0';
