@@ -847,15 +847,16 @@
   TICK.push(t => { if (t < 132.8 * B || t > 140.3 * B) return;
     RC.forEach((c, j) => { const d = +c.dataset.d, q = clamp((t - 133 * B) / ((1.1 + .28 * j) * B)), pos = (10 + d) * ease3(q);
       c.firstChild.style.transform = `translateY(${(-pos).toFixed(3)}em)`; }); });
-  show(tx('steps', 618, 17, '#fff3ea', 'font-weight:800;text-shadow:none'), 133.5, 140, 'fade');
+  const stepsT = tx('steps', 618, 17, '#fff3ea', 'font-weight:800;text-shadow:none');
+  show(stepsT, 133.5, 140, 'fade');
   const push14 = pushEl(L.push_title, pushBody(L.j_alias, WEEK[6]), `left:${CX - 170}px;top:654px`);
   show(push14, 136, 140, 'rise', { s0: 1.15 });
-  burst(134.5, CX, 584, 'mid', { pal: GOLD }); burst(136, CX, 700, 'small', { pal: GOLD });
+  burst(134.5, CX, 584, 'mid', { pal: GOLD }); const bRoll = BURSTS[BURSTS.length - 1]; burst(136, CX, 700, 'small', { pal: GOLD }); const bP14 = BURSTS[BURSTS.length - 1];
 
   // 16 배터리 (박 140–154) — 배터리 12%로 안부 → 배터리 부족 알림 → 꺼짐 → 다음 날 → 방전 추정 알림
   headB([['j_h13a', 0, .82], ['j_h13b', 1.5]], 140.5, 154, 44, { hl: C.gold });
   const phB = phone(`left:${CX - 85}px;top:300px;width:170px;height:276px`, `<div class="batt"><div class="bt"><i></i></div><div class="bp">100%</div></div>`);
-  show(phB, 140, 154, 'pop');
+  show(phB, 140, 154, 'pop', { idle: () => { const q = battLay(); return { s: q.f, y: q.py }; } });
   show(mk('box circ2', 'left:112px;top:344px', svg(ICON.map, 28, '#3d4a7a')), 141, 145, 'pop', { idle: t => ({ y: -4 * Math.sin(t * 6) }) });
   show(mk('box circ2', 'left:378px;top:398px', svg(ICON.camera, 28, '#3d4a7a')), 141.5, 145, 'pop', { idle: t => ({ y: -4 * Math.sin(t * 6 + 1) }) });
   TICK.push(t => { if (t < 140 * B || t > 154.3 * B) return;
@@ -870,15 +871,28 @@
   show(push15a, 143.5, 148.5, 'rise', { s0: 1.12, exit: 'D' });
   const clk = mk('box', `left:${CX - 50}px;top:366px;width:100px;height:140px`,
     `<svg viewBox="-40 -40 80 80" width="100" height="100"><circle r="36" fill="#fff8f0"/><g class="hh"><line y2="-18" stroke="${C.navy}" stroke-width="5" stroke-linecap="round"/></g><g class="mh"><line y2="-28" stroke="${C.navy}" stroke-width="3" stroke-linecap="round"/></g><circle r="4" fill="${C.red}"/></svg><div class="nxt" data-k="j_next"></div>`);
-  show(clk, 146, 154, 'pop');
+  show(clk, 146, 154, 'pop', { idle: () => { const q = battLay(); return { s: q.f, y: q.cy }; } });
   TICK.push(t => { if (t < 146 * B || t > 154.3 * B) return; const sp = clamp((t - 146 * B) / (2.5 * B));
     clk.querySelector('.mh').setAttribute('transform', `rotate(${(ease3(sp) * 360 * 6).toFixed(1)})`);
     clk.querySelector('.hh').setAttribute('transform', `rotate(${(ease3(sp) * 180).toFixed(1)})`); });
   const push15b = pushEl(L.jsrv.push_battery_dead_title, `${L.j_alias} · ${L.jsrv.push_battery_dead_body.replace('{battery_level}', fmtNum(12))}`, `left:${CX - 170}px;top:600px`);
   show(push15b, 149, 154, 'rise', { s0: 1.12 });
   show(tx('j_n13', 740, 17, '#c9cfe6', 'font-weight:700;text-shadow:none'), 150, 154, 'fade');
-  burst(143, CX, 438, 'wave', { pal: [C.amber, '#fff8f0', C.gold] });
-  burst(143.5, CX, 646, 'small'); burst(149, CX, 656, 'mid');
+  burst(143, CX, 438, 'wave', { pal: [C.amber, '#fff8f0', C.gold] }); const bW = BURSTS[BURSTS.length - 1];
+  burst(143.5, CX, 646, 'small'); const bA = BURSTS[BURSTS.length - 1]; burst(149, CX, 656, 'mid'); const bB = BURSTS[BURSTS.length - 1];
+  // 다국어: '방전 추정' 알림 본문이 3~4줄로 길어지는 언어(영어·독일어·태국어 …)는 카드 아래 각주(j_n13, top 744)와 3~22px 겹쳤다(2026-10-11).
+  //   카드가 길면 두 카드를 그만큼 올리고, 폰·시계를 폰 윗변 기준으로 같은 비율로 줄여 자리를 만든다. 2줄 카드(한국어·중국어)는 계산이 0이라 그대로다.
+  //   카드는 s0 1.12 로 늘어난 채 보이고 기준점이 55% 라 화면상 위·아래 끝은 top − .066h · top + 1.054h. 폰·시계 기준점(55%)은 폰 윗변에서 151.8 · 143.
+  let BL = null;
+  const battLay = () => {
+    if (BL) return BL;
+    const h = push15b.offsetHeight, dy = Math.max(0, 600 + 1.054 * h - 732), top = 600 - dy;
+    const f = Math.min(1, (top - .066 * h - 16 - 300) / 276);
+    if (dy > 0) { push15a.style.top = push15b.style.top = top.toFixed(1) + 'px'; bA.y -= dy; bB.y -= dy; }
+    if (f < 1) bW.y = 300 + 138 * f;
+    return BL = { f, dy, py: -151.8 * (1 - f), cy: -143 * (1 - f) };
+  };
+  window.__batt = battLay;
 
   // 17 긴급 (박 154–166) — 낯선 골목, 핀, 버튼 한 번, 레이더, 엄마 폰에 긴급 알림
   headB([['j_h14a', 0, .82], ['j_h14b', 1.5]], 154.5, 166, 44, { hl: C.coral });
@@ -1128,6 +1142,9 @@
     document.querySelectorAll('.nxt').forEach(e => fitTo(e, 210));
     pushFix.forEach(r => { const el = r.el, s = r.o.s0 || 1, h = el.offsetHeight, top = parseFloat(el.style.top);
       const vb = top + .55 * h + .45 * h * s; if (vb > 762) el.style.top = (top - (vb - 762)).toFixed(1) + 'px'; });
+    // 걸음수 장면: 위 처리로 카드가 올라가면(스페인어·포르투갈어 3줄) 숫자·'걸음수' 라벨도 같이 올린다 — 안 그러면 라벨이 카드 밑에 가린다(2026-10-11)
+    { const d = Math.max(0, 654 - parseFloat(push14.style.top));
+      roll.style.top = (552 - d).toFixed(1) + 'px'; stepsT.style.top = (618 - d).toFixed(1) + 'px'; bRoll.y = 584 - d; bP14.y = 700 - d; }
   }
   function measureFly() {   // 날아가는 코드 칸: 왼쪽 폰의 플랩 칸 → 오른쪽 폰 입력 칸(글자 폭만큼씩)
     const typ = phR.querySelector('.inp'), ir = typ.getBoundingClientRect(), cw = 13;
