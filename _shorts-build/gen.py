@@ -48,6 +48,9 @@ APP_KEYS += [k for k in I_APP_KEYS if k not in APP_KEYS]
 # 같은 편의 서버 푸시 문구(제목·본문) — 등급별 알림을 실제 형식대로 보여 준다
 I_SRV_KEYS = ["push_auto_report_title", "push_caution_title", "push_caution_missing_body", "push_warning_title",
               "push_warning_body", "push_urgent_title", "push_urgent_body", "push_emergency_title", "push_emergency_body"]
+# 떠나기 전 필수품 편(j.html) — 안부 확인·배터리·긴급 푸시를 실제 서버 문구로(본문 앞에 별칭을 붙이는 형식도 서버와 같다)
+J_SRV_KEYS = ["push_auto_report_title", "push_auto_report_body", "push_battery_low_title", "push_battery_low_body",
+              "push_battery_dead_title", "push_battery_dead_body", "push_emergency_title", "push_emergency_body"]
 SERVER_MESSAGES = os.path.join(os.path.dirname(ROOT), "anbucheck-server", "i18n", "messages.py")
 MEDIA = os.path.join(ROOT, "media", "shorts")
 PREVIEW = os.path.join(ROOT, "preview", "shorts")
@@ -131,6 +134,7 @@ def lang_data(code, cfg, site_tr, msgs):
         "push_em_title": msgs[locale]["push_emergency_title"],
         "app": {**{k: a[k] for k in I_APP_KEYS}, **opt_app_strings(lf, I_OPT_KEYS)},
         "srv": {k: msgs[locale][k] for k in I_SRV_KEYS},
+        "jsrv": {k: msgs[locale][k] for k in J_SRV_KEYS},
         "q1": q1.strip(), "q2": q2.strip(),
         # B — 부모 쪽 밤 11:40 과 그때 자녀 쪽 시각(실제 시간대로 계산), 보낸 메시지 21:12
         "b_now": utc_iso(s["home_tz"], 23, 40), "b_sent": utc_iso(s["home_tz"], 21, 12),
@@ -145,6 +149,14 @@ def media_name(code, vid):
 
 def rendered(code, vid):
     return os.path.exists(os.path.join(MEDIA, code, f"{media_name(code, vid)}.mp4"))
+
+
+def listed(code, v):
+    """검토 페이지(preview/shorts)에 올릴 편. 2026-10-10 이후 편은 유튜브에 올라간 언어만 —
+    사이트 어디에도 미리 나오지 않게 한다(i18n/build.py 의 YOUTUBE_GATE_FROM). 그 전까지 원본은 공유 드라이브에 있다."""
+    if not rendered(code, v["id"]):
+        return False
+    return not site.waits_youtube(v) or (v["id"], code) in site.YOUTUBE
 
 
 PAGE_HEAD = """<!doctype html>
@@ -199,7 +211,7 @@ def gen_preview(cfg):
     ko = cfg["langs"]["ko"]
     items = []
     for code in site.ORDER:
-        n = sum(rendered(code, v["id"]) for v in cfg["videos"])
+        n = sum(listed(code, v) for v in cfg["videos"])
         label = site.META[code][4]
         cls = "folder" + ("" if n else " empty")
         items.append(f'    <a class="{cls}" href="{code}/">{FOLDER_SVG}<div><b>{html.escape(label)}</b>'
@@ -219,7 +231,7 @@ def gen_preview(cfg):
         L = cfg["langs"][code]
         figs = []
         for v in sorted(cfg["videos"], key=lambda v: v["date"], reverse=True):
-            if not rendered(code, v["id"]):
+            if not listed(code, v):
                 continue
             src = f"../../../media/shorts/{code}/{media_name(code, v['id'])}"
             local = html.escape(L[v["title"]])

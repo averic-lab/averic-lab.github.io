@@ -336,6 +336,27 @@ def _load_youtube():
 
 YOUTUBE = _load_youtube()
 
+# ⚠️ 2026-10-10 사용자 지시 — 이날부터 만드는 숏폼은 **유튜브에 올라가기 전까지 사이트 어디에도 나오지 않는다**
+# (홈 해질녘·영상 페이지·사용설명·검토 페이지 preview/shorts). 날짜 기준이라 새 편에 따로 표시하지 않아도
+# 자동으로 걸린다. "올라갔다" = publish.json 에 그 (편, 언어)의 youtube_id 가 있음(removed 제외).
+# 올라간 편은 유튜브 플레이어로 재생하므로 mp4 가 저장소에 없어도 되고, 포스터 jpg 만 있으면 된다.
+# publish.json 을 못 읽으면 YOUTUBE 가 비어 이 편들은 전부 빠진다 — 안전한 쪽(미리 공개되지 않음)이다.
+# 예외가 필요하면 shorts.json 의 그 편에 "after_youtube": false 를 쓴다(이전 편은 날짜로 자동 제외).
+YOUTUBE_GATE_FROM = "2026-10-10"
+
+
+def waits_youtube(v):
+    """이 편이 '유튜브 업로드 뒤에만 사이트에 나오는' 편인가."""
+    return v.get("after_youtube", v.get("date", "") >= YOUTUBE_GATE_FROM)
+
+
+def site_has(code, v):
+    """그 언어로 사이트에 내놓을 수 있는가. 일반 편은 mp4 가 있으면, 게이트 편은 유튜브에 올라갔고 포스터가 있으면."""
+    base = os.path.join(ROOT, "media", "shorts", code, media_name(code, v["id"]))
+    if waits_youtube(v):
+        return (v["id"], code) in YOUTUBE and os.path.exists(base + ".jpg")
+    return os.path.exists(base + ".mp4")
+
 
 def _load_shorts():
     """홈 해질녘에 넣을 숏폼(_shorts-build/shorts.json 의 home:true 편).
@@ -348,7 +369,7 @@ def _load_shorts():
     with open(path, encoding="utf-8") as f:
         cfg = json.load(f)
     home = [v for v in cfg["videos"] if v.get("home")]
-    have = lambda code, v: os.path.exists(os.path.join(ROOT, "media", "shorts", code, media_name(code, v["id"]) + ".mp4"))
+    have = site_has   # 게이트 편(유튜브 업로드 전)은 mp4 가 있어도 빠진다 — 위 YOUTUBE_GATE_FROM
     # youtube_only 편도 home:true 면 홈에 나온다 — mp4 대신 유튜브 ID + 포스터 jpg 가 있어야 "있음"
     yt_only = cfg.get("youtube_only", [])
     yt_have = lambda code, v: ((v["id"], code) in YOUTUBE and bool(v["titles"].get(code)) and os.path.exists(
@@ -434,6 +455,8 @@ def guide_video(code, vid="how-to-use"):
         return ""
     base = os.path.join(ROOT, "media", "shorts", code, media_name(code, vid))
     if (vid, code) not in YOUTUBE and not os.path.exists(base + ".mp4"):
+        return ""
+    if waits_youtube(v) and (vid, code) not in YOUTUBE:   # 게이트 편은 유튜브에 올라간 언어만
         return ""
     figs = video_figs(code, [(vid, L[v["title"]])], L["play"], L["replay"], "    ", youtube=True)
     return f'<div class="vlist guide-video">\n{figs}\n  </div>'
