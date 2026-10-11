@@ -217,6 +217,7 @@ VIDEOS=neighbor-friends ./render_all.sh ko             # 그 편만(쉼표로 �
 
 > **2026-10-11 변경 — 아래 본문의 "공유 드라이브" 경로는 모두 `~/Documents/SNS Uploads/`로 읽는다.** 구글 드라이브 데스크톱을 삭제했고 `안부 쇼츠`를 그 폴더로 옮겼다(`videos/<언어>/`, `upload.json`, `publish.json` 구조 그대로).
 > 업로드·공개는 Aside 가 하고, 그 Aside 를 **Claude Code 가 `aside-publish` 스킬(앱 저장소 `.claude/skills/aside-publish/`)로 지시**한다. 제목·설명·해시태그·태그·클립 설명은 **제작 쪽이 `upload.json`에 최종본으로 쓰고**(`metadata_final` 승인 후) Aside 는 그대로 입력만 한다 — 아래의 「2026-10-03부터 규칙」 불릿(설명=내용만, tags=[])은 폐기됐다. 규칙은 앱 저장소 `copy-rules.md`.
+> **파일 위치(2026-10-11)**: 유튜브용 고화질 mp4(CRF 18)는 `_shorts-build/.mix/hq/<파일명>.mp4`(커밋 안 됨, 모든 언어 한 폴더), `SNS Uploads/`에는 `upload.json`·`publish.json`·1080×1920 썸네일 jpg(`videos/<언어>/`)만 둔다. `media/shorts/` 의 mp4 는 홈페이지용 저화질 사본이라 업로드 원본이 아니다.
 > 새 영상은 썸네일 포함 업로드가 끝나면 **바로 공개**한다. 빌드는 `i18n/build.py` 가 `~/Documents/SNS Uploads/publish.json` 을 읽는다.
 
 ## (이전 기록) 공유 드라이브 (2026-09-26)
