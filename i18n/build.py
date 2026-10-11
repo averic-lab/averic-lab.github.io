@@ -309,8 +309,9 @@ def media_name(code, vid):
     return vid if code == "ko" else f"{vid}-{code}"
 
 
-PUBLISH_JSON = os.environ.get("PUBLISH_JSON") or os.path.expanduser(
-    "~/Library/CloudStorage/GoogleDrive-anbucheck1018@gmail.com/내 드라이브/안부 쇼츠/publish.json")
+# 2026-10-11: 구글 드라이브 데스크톱을 삭제하고 '안부 쇼츠'를 ~/Documents/SNS Uploads 로 옮겼다.
+# publish.json 은 그 폴더의 로컬 파일이며 Aside 가 직접 쓴다(예전 CloudStorage 경로는 더 이상 없다).
+PUBLISH_JSON = os.environ.get("PUBLISH_JSON") or os.path.expanduser("~/Documents/SNS Uploads/publish.json")
 
 
 def _load_youtube():
@@ -318,7 +319,7 @@ def _load_youtube():
 
     홈 해질녘·영상 페이지(/{언어}/shorts.html)·사용설명이 이 편들을 mp4 대신 유튜브 플레이어로 재생한다.
     private·scheduled 인 편은 공개 전까지 방문자에게는 재생되지 않는다(2026-10-09 사용자 지시로 포함).
-    publish.json 은 공유 드라이브에 있어 이 Mac 이 아닌 곳에서는 못 읽는다 — 그때는 경고만 하고
+    publish.json 은 이 Mac 의 ~/Documents/SNS Uploads/ 에 있어 다른 곳에서는 못 읽는다 — 그때는 경고만 하고
     전부 mp4 로 빌드한다(깨지지는 않지만 유튜브로 바뀐 편이 mp4 로 되돌아가므로 조심할 것).
     status 가 removed 이거나 youtube_id 가 없으면 mp4 그대로다."""
     try:
