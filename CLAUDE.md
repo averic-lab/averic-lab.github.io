@@ -94,7 +94,7 @@ Search Console 「적절한 표준 태그가 포함된 대체 페이지 12건」
 - **유튜브 전달**: 새 편·다국어판을 만들면 `~/Documents/SNS Uploads/videos/<언어>/`(2026-10-11 구글 드라이브 삭제 후 이전)에 mp4·jpg를 복사하고 `upload.json`에 항목을 추가한다(제목·설명·해시태그·태그·클립 설명을 최종본으로 쓰고 사용자 승인 후 `metadata_final`; 규칙은 앱 저장소 `aside-publish/copy-rules.md`). 규칙은 `_shorts-build/README.md` 「유튜브 전달」. 홈페이지 영상은 공개된 유튜브 영상으로 바꿀 예정이다(미구현).
 - **영상 페이지는 유튜브로 재생한다** (2026-10-02): `/{언어}/shorts.html` 은 `~/Documents/SNS Uploads/publish.json` 에서 공개(`unlisted`/`public`)된 편을 mp4 대신 유튜브로 재생하고(누를 때 iframe 생성), 공개 전인 편은 mp4 자체 플레이어 그대로다. **홈 두 편은 mp4 자체 플레이어 유지.** 저장소 용량 증가를 막는 것이 목적이며, 로컬 원본 mp4 는 지우지 않는다.
   - 새 영상을 만들면 publish.json 의 공개 여부를 확인하고 공개돼 있으면 `python3 i18n/build.py` 로 반영한다.
-  - ⚠️ **수정할 때마다 푸시하지 말고 커밋만** 해 두었다가 페이지의 다른 수정이 있을 때 같이 푸시한다.
+  - **푸시 규칙 (2026-10-11 사용자 지시로 변경 — 예전의 "커밋만, 푸시는 다른 수정과 함께"는 폐기)**: 유튜브 공개된 편의 `shorts.html` 반영은 **빌드 → 커밋 → 푸시까지 자동으로** 한다(SNS 업로드의 마지막 단계). 예전 규칙의 이유(mp4 로 저장소 용량이 커짐)는 mp4 를 커밋하지 않으므로 해소됐다 — 커밋은 `shorts.html` 과 540px 포스터 jpg 뿐이다. 앱 저장소 `.claude/skills/aside-publish/SKILL.md` §6-1.
   - ⚠️ publish.json 은 이 Mac 의 `~/Documents/SNS Uploads/publish.json`(2026-10-11 드라이브 삭제 후 이전, `PUBLISH_JSON` 환경변수로 변경 가능)에서만 읽힌다. 못 읽으면 경고 후 전부 mp4 로 빌드된다.
   - 썸네일 `media/shorts/<언어>/<파일명>.jpg` 는 항상 mp4 와 같은 이름(위 규칙)으로 남긴다(유튜브 재생 편의 포스터). 상세는 `_shorts-build/README.md`.
 - 기본 컨트롤 대신 **가운데 버튼 하나**(재생 → 재생 중 숨김 → 끝나면 다시 보기). 영상을 탭하면 일시정지,
