@@ -6,12 +6,18 @@
 <script>
   // ?lang=xx → fdata/xx.js (gen_feature.py 가 앱·서버 번역에서 만든 글자)
   const LANG = new URLSearchParams(location.search).get('lang') || 'ko';
+  // ?h=576 → 세로를 늘린 판(App Store 헤더·검색 결과). 구도는 그대로 두고 위아래 여백(--dy)만 더한다. 기본 500 = Play 그래픽
+  const H = +(new URLSearchParams(location.search).get('h') || 500);
+  // ?w=1166 → 가로를 넓힌 판(21:9 헤더). 구도는 가운데로 두고 좌우 여백(--dx)만 더한다
+  const W = +(new URLSearchParams(location.search).get('w') || 1024);
+  document.documentElement.style.setProperty('--W', W + 'px'); document.documentElement.style.setProperty('--dx', (W - 1024) / 2 + 'px');
+  document.documentElement.style.setProperty('--H', H + 'px'); document.documentElement.style.setProperty('--dy', (H - 500) / 2 + 'px');
   document.write('<script src="fdata/' + LANG + '.js"><\/script>');
 </script>
 </head><body>
 <div class="fg">
   <div class="bg"></div>
-  <svg id="spark" viewBox="0 0 1024 500" width="1024" height="500"></svg>
+  <svg id="spark" viewBox="0 0 1024 500" width="1024" height="500" style="overflow:visible"></svg>
   <div class="floor"></div>
   <div class="title"><b>Anbu</b><i></i></div>
 
@@ -88,11 +94,20 @@
   ext.innerHTML = o;
   // 반짝이 — 아래쪽 청록 빛 주변에 많이, 위쪽엔 드문드문. 시드 고정
   let s = 5; const r = () => (s = (s * 16807) % 2147483647) / 2147483647; let g = '';
-  for (let i = 0; i < 70; i++) { const x = r() * 1024, y = 120 + r() * 380, near = Math.max(0, 1 - Math.hypot(x - 760, y - 470) / 420);
+  for (let i = 0; i < 70; i++) { const x = r() * W, y = 120 + r() * 380, near = Math.max(0, 1 - Math.hypot(x - 760 - (W - 1024) / 2, y - 470) / 420);
     if (r() > near + .25) continue; const rr = .6 + r() * 1.6, op = .35 + r() * .6;
     g += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rr.toFixed(2)}" fill="${r() > .5 ? '#9ff3ff' : '#ffffff'}" fill-opacity="${op.toFixed(2)}"/>`; }
-  for (let i = 0; i < 26; i++) { const x = r() * 1024, y = r() * 300; g += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(.4 + r() * .8).toFixed(2)}" fill="#fff" fill-opacity="${(.2 + r() * .4).toFixed(2)}"/>`; }
+  for (let i = 0; i < 26; i++) { const x = r() * W, y = r() * 300; g += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(.4 + r() * .8).toFixed(2)}" fill="#fff" fill-opacity="${(.2 + r() * .4).toFixed(2)}"/>`; }
   document.getElementById('spark').innerHTML = g;
+  // 영상: window.__setT(t) — T(6초) 주기, 모든 사인파의 횟수가 정수라 처음과 끝이 이어진다. translate 는 기존 transform 과 겹쳐 적용된다
+  const T = 6, TAU = Math.PI * 2, circles = [...document.querySelectorAll('#spark circle')];
+  const fl = (sel, amp, ph, k) => { const e = document.querySelector(sel); return t => { if (e) e.style.translate = `0 ${(amp * Math.sin(TAU * (k * t / T + ph))).toFixed(2)}px`; }; };
+  const motions = [fl('.pwrap .phone', 5, 0, 1), fl('.push', 7, .25, 1), fl('.pop', 6, .5, 1), fl('.pop2', 6, .75, 1), fl('.codecard', 5, .1, 1), fl('.co-copy', 4, .6, 2), fl('.co-share', 4, .9, 2)];
+  window.__setT = t => {
+    motions.forEach(m => m(t));
+    circles.forEach((c, i) => { c.style.opacity = (.55 + .45 * Math.sin(TAU * ((1 + i % 2) * t / T + i * .37))).toFixed(3); });
+    const f = document.querySelector('.floor'); if (f) f.style.opacity = (.85 + .15 * Math.sin(TAU * t / T)).toFixed(3);
+  };
   document.body.dataset.ready = '1';
 </script>
 </body></html>
