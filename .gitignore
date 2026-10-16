@@ -13,3 +13,6 @@ media/shorts/*/anbu-3d*.mp4
 media/shorts/*/anbu3d_*.mp4
 # 배경음악 고르기용 후보 원본(Mixkit) — 위 media/bgm/ 과 같은 이유로 커밋 금지
 media/shorts/*/bgm-후보/
+
+# 삶의 선 쇼츠(life-line, 세로판·가로판) — 영상 파일은 저장소에 두지 않는다(언어당 약 150MB). 유튜브에 올린 뒤 사이트는 youtube_id 로 재생한다.
+media/shorts/*/life-line*.mp4
