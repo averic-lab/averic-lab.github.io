@@ -1,0 +1,582 @@
+{
+ "ko": {
+  "caps": {
+   "c1": "오늘 하루도\n무사히 지나갔습니다.",
+   "c2": "그런데 가끔,\n내일이 불안해집니다.",
+   "c3": "이런 하루가 반복되고 있습니다.",
+   "c4": "아프지 않고 지나간 하루가\n영원할 거라 믿지 않습니다.",
+   "c5": "누구에게나 시작이 있고,\n언젠가는 끝이 있습니다.",
+   "c6": "머리로는 알면서도,\n혼자 있는 밤엔 문득 겁이 납니다.",
+   "c7": "잘나가는 친구, 행복해 보이는 주변인…\n수많은 사람과 스치며 살아가지만",
+   "c8": "서로 다른 길을 걸어도\n도착하는 곳은 같습니다.",
+   "c9": "그 끝의 이름은\n[d]죽음[/d]입니다.",
+   "c10": "가장 두려운 건 끝이 아니라\n아무도 모르게 지나간 하루",
+   "c11": "그래서 [a]안부[/a]는 매일\n조용히 전해져야 합니다.",
+   "c12": "혼자 보낸 하루도\n나를 걱정하는\n누군가에게 닿습니다.",
+   "c13": "걸음 수는 단지 숫자가 아닙니다.\n오늘을 무사히 보냈다는 작은 흔적입니다.",
+   "c14": "하루, 또 하루.",
+   "c15": "계절이 바뀌어도\n[a]안부[/a]는 이어집니다.",
+   "c16": "그러다 어느 날부터\n안부가 도착하지 않으면",
+   "c17": "그 사람에게\n알림이 갑니다."
+  },
+  "ending": {
+   "head": "끝은 막을 수 없어도,\n[a]안부[/a]는 매일 누군가에게는\n전달되어야 합니다.",
+   "head_w": "끝은 막을 수 없어도,\n[a]안부[/a]는 매일 누군가에게는 전달되어야 합니다."
+  },
+  "caps_w": {
+   "c12": "혼자 보낸 하루도\n나를 걱정하는 누군가에게 닿습니다."
+  },
+  "store_w": "Google Play에서 “Anbu” 검색"
+ },
+ "en": {
+  "caps": {
+   "c1": "Another day\npassed safely.",
+   "c2": "And yet, now and then,\ntomorrow makes me uneasy.",
+   "c3": "Days like this keep repeating.",
+   "c4": "I don't believe a painless day\nwill last forever.",
+   "c5": "Everyone has a beginning,\nand someday, an end.",
+   "c6": "I know it in my head,\nbut alone at night, fear creeps in.",
+   "c7": "Successful friends, people who seem happy…\nWe pass so many people as we live, but",
+   "c8": "Even on different paths,\nwe arrive at the same place.",
+   "c9": "Its name\nis [d]death[/d].",
+   "c10": "What frightens me most isn't the end,\nbut a day that passed unnoticed",
+   "c11": "That's why a [a]wellness check[/a]\nshould arrive quietly, every day.",
+   "c12": "Even a day spent alone\nreaches someone\nwho worries about me.",
+   "c13": "Steps are more than a number.\nThey're a small trace of a day that passed safely.",
+   "c14": "One day, then another.",
+   "c15": "Even as seasons change,\nthe [a]wellness check[/a] continues.",
+   "c16": "Then, from one day on,\nif the wellness check stops arriving",
+   "c17": "A notification\ngoes to that person."
+  },
+  "ending": {
+   "head": "Even if the end can't be stopped,\na [a]wellness check[/a] should reach someone\nevery single day.",
+   "head_w": "Even if the end can't be stopped,\na [a]wellness check[/a] should reach someone every day."
+  },
+  "caps_w": {
+   "c12": "Even a day spent alone\nreaches someone who worries about me."
+  },
+  "store_w": "Search “Anbu” on Google Play"
+ },
+ "ja": {
+  "caps": {
+   "c1": "今日も一日\n無事に過ぎました。",
+   "c2": "けれど、ときどき\n明日が不安になります。",
+   "c3": "こんな毎日が繰り返されています。",
+   "c4": "痛みなく過ぎた一日が\n永遠に続くとは思えません。",
+   "c5": "誰にでも始まりがあり、\nいつかは終わりがあります。",
+   "c6": "頭ではわかっていても、\n一人きりの夜はふと怖くなります。",
+   "c7": "活躍する友人、幸せそうな周りの人…\nたくさんの人とすれ違いながら生きていますが",
+   "c8": "それぞれ違う道を歩いても\nたどり着く場所は同じです。",
+   "c9": "その終わりの名は\n[d]死[/d]です。",
+   "c10": "いちばん怖いのは終わりではなく\n誰にも知られず過ぎた一日",
+   "c11": "だから[a]安否[/a]は毎日\n静かに届けられなければなりません。",
+   "c12": "一人で過ごした一日も\n私を気にかけてくれる\n誰かに届きます。",
+   "c13": "歩数はただの数字ではありません。\n今日を無事に過ごしたという小さな跡です。",
+   "c14": "一日、また一日。",
+   "c15": "季節が変わっても\n[a]安否[/a]は続きます。",
+   "c16": "そしてある日から、\n安否が届かなくなれば",
+   "c17": "その人に\n通知が届きます。"
+  },
+  "ending": {
+   "head": "終わりは止められなくても、\n[a]安否[/a]は毎日、誰かに\n届けられなければなりません。",
+   "head_w": "終わりは止められなくても、\n[a]安否[/a]は毎日、誰かに届けられなければなりません。"
+  },
+  "caps_w": {
+   "c12": "一人で過ごした一日も\n私を気にかけてくれる誰かに届きます。"
+  },
+  "store_w": "Google Playで「Anbu」を検索"
+ },
+ "zh-CN": {
+  "caps": {
+   "c1": "今天一天\n也平安度过了。",
+   "c2": "可是偶尔，\n会对明天感到不安。",
+   "c3": "这样的日子一直在重复。",
+   "c4": "没有病痛地度过的每一天，\n我不相信会永远如此。",
+   "c5": "每个人都有开始，\n也终有结束。",
+   "c6": "道理都懂，\n独处的夜里却会突然害怕。",
+   "c7": "混得好的朋友、看起来很幸福的身边人……\n我们一路与许多人擦肩而过，但",
+   "c8": "即使走着不同的路，\n终点也是同一个。",
+   "c9": "那个终点的名字\n是[d]死亡[/d]。",
+   "c10": "最可怕的不是结束，\n而是无人知晓地过去的一天",
+   "c11": "所以[a]报平安[/a]要每天\n安静地送达。",
+   "c12": "独自度过的一天，\n也会传到\n牵挂我的人那里。",
+   "c13": "步数不只是数字，\n它是平安度过今天的一点痕迹。",
+   "c14": "一天，又一天。",
+   "c15": "即使季节更替，\n[a]报平安[/a]也不会中断。",
+   "c16": "然后从某一天起，\n如果收不到平安消息",
+   "c17": "那个人\n会收到通知。"
+  },
+  "ending": {
+   "head": "终点无法阻止，\n但[a]报平安[/a]每天\n都应送到某个人那里。",
+   "head_w": "终点无法阻止，\n但[a]报平安[/a]每天都应送到某个人那里。"
+  },
+  "caps_w": {
+   "c12": "独自度过的一天，\n也会传到牵挂我的人那里。"
+  },
+  "store_w": "在 Google Play 搜索“Anbu”"
+ },
+ "zh-TW": {
+  "caps": {
+   "c1": "今天一天\n也平安度過了。",
+   "c2": "可是偶爾，\n會對明天感到不安。",
+   "c3": "這樣的日子一直在重複。",
+   "c4": "沒有病痛地度過的每一天，\n我不相信會永遠如此。",
+   "c5": "每個人都有開始，\n也終有結束。",
+   "c6": "道理都懂，\n獨處的夜裡卻會突然害怕。",
+   "c7": "混得好的朋友、看起來很幸福的身邊人……\n我們一路與許多人擦肩而過，但",
+   "c8": "即使走著不同的路，\n終點也是同一個。",
+   "c9": "那個終點的名字\n是[d]死亡[/d]。",
+   "c10": "最可怕的不是結束，\n而是無人知曉地過去的一天",
+   "c11": "所以[a]報平安[/a]要每天\n安靜地送達。",
+   "c12": "獨自度過的一天，\n也會傳到\n牽掛我的人那裡。",
+   "c13": "步數不只是數字，\n它是平安度過今天的一點痕跡。",
+   "c14": "一天，又一天。",
+   "c15": "即使季節更替，\n[a]報平安[/a]也不會中斷。",
+   "c16": "然後從某一天起，\n如果收不到平安訊息",
+   "c17": "那個人\n會收到通知。"
+  },
+  "ending": {
+   "head": "終點無法阻止，\n但[a]報平安[/a]每天\n都應送到某個人那裡。",
+   "head_w": "終點無法阻止，\n但[a]報平安[/a]每天都應送到某個人那裡。"
+  },
+  "caps_w": {
+   "c12": "獨自度過的一天，\n也會傳到牽掛我的人那裡。"
+  },
+  "store_w": "在 Google Play 搜尋「Anbu」"
+ },
+ "de": {
+  "caps": {
+   "c1": "Auch dieser Tag\nist gut vergangen.",
+   "c2": "Und doch macht mir\nmanchmal das Morgen Angst.",
+   "c3": "Solche Tage wiederholen sich.",
+   "c4": "Ich glaube nicht, dass ein Tag ohne Schmerzen\newig so weitergeht.",
+   "c5": "Jeder hat einen Anfang\nund irgendwann ein Ende.",
+   "c6": "Der Kopf weiß es,\ndoch nachts, allein, packt mich plötzlich die Angst.",
+   "c7": "Erfolgreiche Freunde, scheinbar glückliche Menschen …\nWir begegnen im Leben unzähligen Menschen, doch",
+   "c8": "Auch auf verschiedenen Wegen\nkommen wir am selben Ort an.",
+   "c9": "Sein Name\nist [d]Tod[/d].",
+   "c10": "Am meisten fürchte ich nicht das Ende,\nsondern einen Tag, der unbemerkt verging",
+   "c11": "Darum muss ein [a]Lebenszeichen[/a]\njeden Tag leise ankommen.",
+   "c12": "Auch ein Tag in Einsamkeit\nerreicht jemanden,\nder sich um mich sorgt.",
+   "c13": "Schritte sind mehr als eine Zahl.\nSie sind eine kleine Spur eines Tages, der gut verging.",
+   "c14": "Ein Tag, noch ein Tag.",
+   "c15": "Auch wenn sich die Jahreszeiten ändern,\nkommt das [a]Lebenszeichen[/a] weiter an.",
+   "c16": "Und wenn ab einem Tag\nüber Anbu kein Lebenszeichen mehr ankommt",
+   "c17": "Diese Person\nbekommt eine Benachrichtigung."
+  },
+  "ending": {
+   "head": "Auch wenn sich das Ende nicht aufhalten lässt:\nJeden Tag soll ein [a]Lebenszeichen[/a]\nbei jemandem ankommen.",
+   "head_w": "Auch wenn sich das Ende nicht aufhalten lässt:\nJeden Tag soll ein [a]Lebenszeichen[/a]\nbei jemandem ankommen."
+  },
+  "caps_w": {
+   "c12": "Auch ein Tag in Einsamkeit erreicht jemanden,\nder sich um mich sorgt."
+  },
+  "store_w": "Im Google Play Store nach „Anbu“ suchen"
+ },
+ "fr": {
+  "caps": {
+   "c1": "Cette journée aussi\nest passée sans encombre.",
+   "c2": "Mais parfois,\nle lendemain m'inquiète.",
+   "c3": "Ces journées se répètent.",
+   "c4": "Je ne crois pas qu'une journée sans douleur\ndurera éternellement.",
+   "c5": "Chacun a un début\net, un jour, une fin.",
+   "c6": "Je le sais bien,\nmais la nuit, dans la solitude, la peur me saisit soudain.",
+   "c7": "Des amis qui réussissent, des gens qui semblent heureux…\nNous croisons tant de monde au fil de la vie, mais",
+   "c8": "Même par des chemins différents,\non arrive au même endroit.",
+   "c9": "Son nom,\nc'est la [d]mort[/d].",
+   "c10": "Ce qui fait le plus peur, ce n'est pas la fin,\nmais une journée passée sans que personne le sache",
+   "c11": "Voilà pourquoi des [a]nouvelles[/a]\ndoivent arriver chaque jour, en silence.",
+   "c12": "Une journée de solitude\natteint quand même\nquelqu'un qui s'inquiète pour moi.",
+   "c13": "Les pas ne sont pas qu'un chiffre.\nC'est la petite trace d'une journée bien passée.",
+   "c14": "Un jour, puis un autre.",
+   "c15": "Même quand les saisons changent,\nles [a]nouvelles[/a] continuent d'arriver.",
+   "c16": "Et si, à partir d'un certain jour,\nles nouvelles n'arrivent plus",
+   "c17": "Cette personne\nreçoit une notification."
+  },
+  "ending": {
+   "head": "Même si l'on ne peut pas arrêter la fin,\ndes [a]nouvelles[/a] doivent chaque jour\narriver à quelqu'un.",
+   "head_w": "Même si l'on ne peut pas arrêter la fin,\ndes [a]nouvelles[/a] doivent chaque jour\narriver à quelqu'un."
+  },
+  "caps_w": {
+   "c12": "Une journée de solitude atteint quand même\nquelqu'un qui s'inquiète pour moi."
+  },
+  "store_w": "Rechercher « Anbu » sur Google Play"
+ },
+ "es": {
+  "caps": {
+   "c1": "Este día también\npasó sin sobresaltos.",
+   "c2": "Pero a veces,\nel mañana me inquieta.",
+   "c3": "Días así se repiten.",
+   "c4": "No creo que un día sin dolor\nvaya a durar para siempre.",
+   "c5": "Todos tenemos un principio\ny, algún día, un final.",
+   "c6": "Lo sé con la cabeza,\npero en las noches de soledad me da miedo de pronto.",
+   "c7": "Amigos que triunfan, gente que parece feliz…\nNos cruzamos con mucha gente al vivir, pero",
+   "c8": "Aunque caminemos por rumbos distintos,\nllegamos al mismo lugar.",
+   "c9": "Su nombre\nes [d]muerte[/d].",
+   "c10": "Lo que más asusta no es el final,\nsino un día que pasó sin que nadie lo supiera",
+   "c11": "Por eso el [a]aviso[/a] debe llegar\ncada día, en silencio.",
+   "c12": "Un día pasado en soledad\nllega igualmente a alguien\nque se preocupa por mí.",
+   "c13": "Los pasos no son solo un número.\nSon la pequeña huella de un día que pasó bien.",
+   "c14": "Un día, y otro más.",
+   "c15": "Aunque cambien las estaciones,\nel [a]aviso[/a] continúa.",
+   "c16": "Y si, a partir de un día,\nel aviso deja de llegar",
+   "c17": "A esa persona\nle llega una notificación."
+  },
+  "ending": {
+   "head": "Aunque no se pueda detener el final,\ncada día un [a]aviso[/a]\ndebe llegar a alguien.",
+   "head_w": "Aunque no se pueda detener el final,\ncada día un [a]aviso[/a] debe llegar a alguien."
+  },
+  "caps_w": {
+   "c12": "Un día pasado en soledad llega igualmente\na alguien que se preocupa por mí."
+  },
+  "store_w": "Busca «Anbu» en Google Play"
+ },
+ "it": {
+  "caps": {
+   "c1": "Anche oggi\nè passato senza intoppi.",
+   "c2": "Eppure, a volte,\nil domani mi mette ansia.",
+   "c3": "Giornate così si ripetono.",
+   "c4": "Non credo che un giorno senza dolore\ndurerà per sempre.",
+   "c5": "Tutti hanno un inizio\ne, prima o poi, una fine.",
+   "c6": "Lo so con la testa,\nma nelle notti di solitudine la paura arriva all'improvviso.",
+   "c7": "Amici di successo, persone che sembrano felici…\nViviamo sfiorando tante persone, ma",
+   "c8": "Anche per strade diverse\nsi arriva allo stesso posto.",
+   "c9": "Il suo nome\nè [d]morte[/d].",
+   "c10": "La cosa più spaventosa non è la fine,\nma un giorno passato senza che nessuno lo sappia",
+   "c11": "Ecco perché il [a]check-in[/a]\ndeve arrivare ogni giorno, in silenzio.",
+   "c12": "Anche un giorno trascorso nella solitudine\nraggiunge qualcuno\nche si preoccupa per me.",
+   "c13": "I passi non sono solo un numero.\nSono la piccola traccia di una giornata passata bene.",
+   "c14": "Un giorno, e poi un altro.",
+   "c15": "Anche se cambiano le stagioni,\nil [a]check-in[/a] continua.",
+   "c16": "E se, da un certo giorno,\nil check-in smette di arrivare",
+   "c17": "A quella persona\narriva una notifica."
+  },
+  "ending": {
+   "head": "Anche se la fine non si può fermare,\nogni giorno un [a]check-in[/a]\ndeve arrivare a qualcuno.",
+   "head_w": "Anche se la fine non si può fermare,\nogni giorno un [a]check-in[/a] deve arrivare a qualcuno."
+  },
+  "caps_w": {
+   "c12": "Anche un giorno trascorso nella solitudine\nraggiunge qualcuno che si preoccupa per me."
+  },
+  "store_w": "Cerca «Anbu» su Google Play"
+ },
+ "pt-BR": {
+  "caps": {
+   "c1": "Este dia também\npassou em paz.",
+   "c2": "Mas, às vezes,\no amanhã me causa ansiedade.",
+   "c3": "Dias assim se repetem.",
+   "c4": "Não acredito que um dia sem dor\nvá durar para sempre.",
+   "c5": "Todos têm um começo\ne, um dia, um fim.",
+   "c6": "Na cabeça eu sei,\nmas nas noites de solidão o medo vem de repente.",
+   "c7": "Amigos bem-sucedidos, pessoas que parecem felizes…\nVivemos cruzando com muita gente, mas",
+   "c8": "Mesmo por caminhos diferentes,\nchegamos ao mesmo lugar.",
+   "c9": "O nome desse fim\né [d]morte[/d].",
+   "c10": "O que mais assusta não é o fim,\nmas um dia que passou sem ninguém saber",
+   "c11": "Por isso o [a]check-in[/a] precisa\nchegar todo dia, em silêncio.",
+   "c12": "Um dia passado na solidão\nchega a alguém\nque se preocupa comigo.",
+   "c13": "Passos não são só um número.\nSão um pequeno vestígio de um dia que passou bem.",
+   "c14": "Um dia, e mais um.",
+   "c15": "Mesmo que as estações mudem,\no [a]check-in[/a] continua.",
+   "c16": "E se, a partir de um dia,\no check-in deixar de chegar",
+   "c17": "Essa pessoa\nrecebe uma notificação."
+  },
+  "ending": {
+   "head": "Mesmo que o fim não possa ser impedido,\ntodo dia um [a]check-in[/a]\nprecisa chegar a alguém.",
+   "head_w": "Mesmo que o fim não possa ser impedido,\ntodo dia um [a]check-in[/a] precisa chegar a alguém."
+  },
+  "caps_w": {
+   "c12": "Um dia passado na solidão\nchega a alguém que se preocupa comigo."
+  },
+  "store_w": "Pesquise “Anbu” no Google Play"
+ },
+ "ru": {
+  "caps": {
+   "c1": "Этот день\nтоже прошёл благополучно.",
+   "c2": "Но иногда\nзавтрашний день тревожит.",
+   "c3": "Такие дни повторяются.",
+   "c4": "Я не верю, что день без боли\nбудет длиться вечно.",
+   "c5": "У каждого есть начало\nи когда-нибудь будет конец.",
+   "c6": "Разумом я это знаю,\nно в ночном одиночестве вдруг становится страшно.",
+   "c7": "Успешные друзья, люди, которые кажутся счастливыми…\nМы проходим мимо множества людей, но",
+   "c8": "Даже разными дорогами\nмы приходим в одно и то же место.",
+   "c9": "Имя этому концу —\n[d]смерть[/d].",
+   "c10": "Страшнее всего не конец,\nа день, прошедший никем не замеченным",
+   "c11": "Поэтому [a]отметка[/a] должна\nприходить каждый день, тихо.",
+   "c12": "День, проведённый в одиночестве,\nдойдёт до человека,\nкоторый переживает за меня.",
+   "c13": "Шаги — не просто число.\nЭто маленький след благополучно прожитого дня.",
+   "c14": "День за днём.",
+   "c15": "Даже когда меняются времена года,\n[a]отметка[/a] продолжает приходить.",
+   "c16": "И если с какого-то дня\nотметка перестанет приходить",
+   "c17": "Этому человеку\nпридёт уведомление."
+  },
+  "ending": {
+   "head": "Даже если конец нельзя остановить,\nкаждый день [a]отметка[/a]\nдолжна доходить до кого-то.",
+   "head_w": "Даже если конец нельзя остановить,\nкаждый день [a]отметка[/a]\nдолжна доходить до кого-то."
+  },
+  "caps_w": {
+   "c12": "День, проведённый в одиночестве,\nдойдёт до человека, который переживает за меня."
+  },
+  "store_w": "Найдите «Anbu» в Google Play"
+ },
+ "nl": {
+  "caps": {
+   "c1": "Ook vandaag\nis veilig voorbijgegaan.",
+   "c2": "Maar soms\nmaakt morgen me onrustig.",
+   "c3": "Zulke dagen blijven zich herhalen.",
+   "c4": "Ik geloof niet dat een dag zonder pijn\neeuwig zo blijft.",
+   "c5": "Iedereen heeft een begin\nen ooit een einde.",
+   "c6": "Mijn hoofd weet het,\nmaar 's nachts, in de eenzaamheid, overvalt de angst me plotseling.",
+   "c7": "Succesvolle vrienden, mensen die gelukkig lijken…\nWe lopen langs zoveel mensen heen, maar",
+   "c8": "Ook al nemen we verschillende wegen,\nwe komen op dezelfde plek uit.",
+   "c9": "De naam daarvan\nis [d]de dood[/d].",
+   "c10": "Wat het engst is, is niet het einde,\nmaar een dag die ongemerkt voorbijging",
+   "c11": "Daarom moet een [a]check-in[/a]\nelke dag stilletjes aankomen.",
+   "c12": "Ook een dag in eenzaamheid\nbereikt iemand\ndie zich zorgen om me maakt.",
+   "c13": "Stappen zijn meer dan een getal.\nHet is een klein spoor van een goed doorgebrachte dag.",
+   "c14": "Dag na dag.",
+   "c15": "Ook als de seizoenen veranderen,\ngaat de [a]check-in[/a] door.",
+   "c16": "En als er vanaf een bepaalde dag\ngeen check-in meer aankomt",
+   "c17": "Die persoon\nkrijgt een melding."
+  },
+  "ending": {
+   "head": "Ook al valt het einde niet te stoppen,\nelke dag moet een [a]check-in[/a]\nbij iemand aankomen.",
+   "head_w": "Ook al valt het einde niet te stoppen,\nelke dag moet een [a]check-in[/a] bij iemand aankomen."
+  },
+  "caps_w": {
+   "c12": "Ook een dag in eenzaamheid bereikt iemand\ndie zich zorgen om me maakt."
+  },
+  "store_w": "Zoek “Anbu” in Google Play"
+ },
+ "pl": {
+  "caps": {
+   "c1": "Ten dzień również\nminął bezpiecznie.",
+   "c2": "Ale czasem\njutro budzi we mnie niepokój.",
+   "c3": "Takie dni się powtarzają.",
+   "c4": "Nie wierzę, że dzień bez bólu\nbędzie trwał wiecznie.",
+   "c5": "Każdy ma początek\ni kiedyś koniec.",
+   "c6": "Głową to wiem,\nale w samotną noc nagle ogarnia mnie strach.",
+   "c7": "Odnoszący sukcesy przyjaciele, ludzie, którzy wydają się szczęśliwi…\nMijamy tylu ludzi, ale",
+   "c8": "Nawet różnymi drogami\ndochodzimy w to samo miejsce.",
+   "c9": "Ten koniec nazywa się\n[d]śmierć[/d].",
+   "c10": "Najbardziej przeraża nie koniec,\nale dzień, który minął, a nikt się nie dowiedział",
+   "c11": "Dlatego [a]znak życia[/a] powinien\ndocierać każdego dnia, po cichu.",
+   "c12": "Dzień spędzony w samotności\ndociera do kogoś,\nkto martwi się o mnie.",
+   "c13": "Kroki to nie tylko liczba.\nTo mały ślad dnia, który minął bezpiecznie.",
+   "c14": "Dzień po dniu.",
+   "c15": "Nawet gdy zmieniają się pory roku,\n[a]znak życia[/a] nadal dociera.",
+   "c16": "A jeśli od pewnego dnia\nprzez aplikację Anbu nie dociera znak życia",
+   "c17": "Ta osoba\notrzymuje powiadomienie."
+  },
+  "ending": {
+   "head": "Choć końca nie da się powstrzymać,\ncodziennie [a]znak życia[/a]\npowinien dotrzeć do kogoś.",
+   "head_w": "Choć końca nie da się powstrzymać,\ncodziennie [a]znak życia[/a] powinien dotrzeć do kogoś."
+  },
+  "caps_w": {
+   "c12": "Dzień spędzony w samotności dociera do kogoś,\nkto martwi się o mnie."
+  },
+  "store_w": "Wyszukaj „Anbu” w Google Play"
+ },
+ "sv": {
+  "caps": {
+   "c1": "Även den här dagen\ngick lugnt förbi.",
+   "c2": "Men ibland\nkänns morgondagen oroande.",
+   "c3": "Sådana dagar upprepar sig.",
+   "c4": "Jag tror inte att en dag utan smärta\nvarar för evigt.",
+   "c5": "Alla har en början\noch någon gång ett slut.",
+   "c6": "Förnuftet vet det,\nmen i ensamma nätter blir jag plötsligt rädd.",
+   "c7": "Framgångsrika vänner, människor som verkar lyckliga…\nVi passerar så många människor, men",
+   "c8": "Även på olika vägar\nkommer vi fram till samma plats.",
+   "c9": "Slutets namn\när [d]döden[/d].",
+   "c10": "Det mest skrämmande är inte slutet,\nutan en dag som gick förbi obemärkt",
+   "c11": "Därför måste en [a]incheckning[/a]\nanlända varje dag, tyst.",
+   "c12": "Även en dag i ensamhet\nnår någon\nsom oroar sig för mig.",
+   "c13": "Steg är mer än en siffra.\nDe är ett litet spår av en dag som gick bra.",
+   "c14": "Dag efter dag.",
+   "c15": "Även när årstiderna växlar\nfortsätter [a]incheckningen[/a].",
+   "c16": "Och om det från en viss dag\ninte kommer någon incheckning längre",
+   "c17": "Den personen\nfår en avisering."
+  },
+  "ending": {
+   "head": "Även om slutet inte går att stoppa,\nska en [a]incheckning[/a] varje dag\nnå någon.",
+   "head_w": "Även om slutet inte går att stoppa,\nska en [a]incheckning[/a] varje dag nå någon."
+  },
+  "caps_w": {
+   "c12": "Även en dag i ensamhet når någon\nsom oroar sig för mig."
+  },
+  "store_w": "Sök efter ”Anbu” i Google Play"
+ },
+ "tr": {
+  "caps": {
+   "c1": "Bu gün de\nsağ salim geçti.",
+   "c2": "Ama bazen\nyarın beni endişelendiriyor.",
+   "c3": "Böyle günler tekrar edip duruyor.",
+   "c4": "Acısız geçen bir günün\nsonsuza dek böyle süreceğine inanmıyorum.",
+   "c5": "Herkesin bir başlangıcı vardır\nve bir gün bir sonu.",
+   "c6": "Aklım biliyor,\nama yalnız gecelerde birden korku basıyor.",
+   "c7": "Başarılı arkadaşlar, mutlu görünen insanlar…\nÇok sayıda insanın yanından geçerek yaşıyoruz, ama",
+   "c8": "Farklı yollardan yürüsek de\nvardığımız yer aynı.",
+   "c9": "O sonun adı\n[d]ölüm[/d].",
+   "c10": "En korkutucu olan son değil,\nkimsenin bilmeden geçen bir gün",
+   "c11": "Bu yüzden [a]haber[/a]\nher gün sessizce ulaşmalı.",
+   "c12": "Yalnız geçen bir gün bile\nbeni merak eden\nbirine ulaşır.",
+   "c13": "Adımlar yalnızca bir sayı değil.\nBugünün sağ salim geçtiğinin küçük bir izi.",
+   "c14": "Gün be gün.",
+   "c15": "Mevsimler değişse de\n[a]haber[/a] kesilmez.",
+   "c16": "Ve bir günden sonra\nhaber ulaşmazsa",
+   "c17": "O kişiye\nbir bildirim gider."
+  },
+  "ending": {
+   "head": "Son durdurulamasa da,\nher gün birine [a]haber[/a]\nulaşmalı.",
+   "head_w": "Son durdurulamasa da,\nher gün birine [a]haber[/a] ulaşmalı."
+  },
+  "caps_w": {
+   "c12": "Yalnız geçen bir gün bile\nbeni merak eden birine ulaşır."
+  },
+  "store_w": "Google Play'de “Anbu” arayın"
+ },
+ "ar": {
+  "caps": {
+   "c1": "مرّ هذا اليوم أيضًا\nبسلام.",
+   "c2": "لكن أحيانًا\nيقلقني الغد.",
+   "c3": "أيام كهذه تتكرر.",
+   "c4": "لا أصدّق أن يومًا يمرّ بلا ألم\nسيدوم إلى الأبد.",
+   "c5": "لكل إنسان بداية،\nوله يومًا ما نهاية.",
+   "c6": "عقلي يعرف ذلك،\nلكن في ليالي الوحدة يخطفني الخوف فجأة.",
+   "c7": "أصدقاء ناجحون، وأناس يبدون سعداء…\nنمرّ بين كثير من الناس ونحن نعيش، لكن",
+   "c8": "حتى لو سلكنا طرقًا مختلفة،\nفالمكان الذي نصل إليه واحد.",
+   "c9": "واسم تلك النهاية\nهو [d]الموت[/d].",
+   "c10": "أكثر ما يخيف ليس النهاية،\nبل يوم مرّ دون أن يعلم به أحد",
+   "c11": "لذلك يجب أن تصل [a]رسالة الاطمئنان[/a]\nكل يوم بهدوء.",
+   "c12": "حتى يوم قضيته في الوحدة\nيصل إلى شخص\nيقلق عليّ.",
+   "c13": "الخطوات ليست مجرد رقم.\nإنها أثر صغير ليوم مرّ بسلام.",
+   "c14": "يومًا بعد يوم.",
+   "c15": "حتى لو تبدّلت الفصول،\nتستمر [a]رسالة الاطمئنان[/a].",
+   "c16": "ثم إذا توقفت رسالة الاطمئنان\nعن الوصول منذ يوم ما",
+   "c17": "يصل إلى ذلك الشخص\nإشعار."
+  },
+  "ending": {
+   "head": "حتى لو لم يمكن إيقاف النهاية،\nيجب أن تصل [a]رسالة الاطمئنان[/a]\nكل يوم إلى شخص ما.",
+   "head_w": "حتى لو لم يمكن إيقاف النهاية،\nيجب أن تصل [a]رسالة الاطمئنان[/a] كل يوم إلى شخص ما."
+  },
+  "caps_w": {
+   "c12": "حتى يوم قضيته في الوحدة\nيصل إلى شخص يقلق عليّ."
+  },
+  "store_w": "ابحث عن ”Anbu“ في Google Play"
+ },
+ "hi": {
+  "caps": {
+   "c1": "आज का दिन भी\nसकुशल बीत गया।",
+   "c2": "लेकिन कभी-कभी\nकल की चिंता होने लगती है।",
+   "c3": "ऐसे दिन बार-बार दोहराए जा रहे हैं।",
+   "c4": "दर्द के बिना बीता दिन\nहमेशा ऐसा ही रहेगा, इस पर यक़ीन नहीं।",
+   "c5": "हर किसी की एक शुरुआत होती है,\nऔर कभी न कभी एक अंत।",
+   "c6": "यह बात समझ में आती है,\nफिर भी अकेली रातों में अचानक डर लगने लगता है।",
+   "c7": "कामयाब दोस्त, खुश दिखते आसपास के लोग…\nहम बहुत से लोगों से गुज़रते हुए जीते हैं, लेकिन",
+   "c8": "रास्ते अलग-अलग हों,\nफिर भी पहुँचते सब एक ही जगह हैं।",
+   "c9": "उस अंत का नाम है\n[d]मृत्यु[/d]।",
+   "c10": "सबसे डरावना अंत नहीं,\nबल्कि वह दिन है जो किसी को पता चले बिना बीत गया",
+   "c11": "इसीलिए [a]खैरियत की सूचना[/a] हर दिन\nचुपचाप पहुँचनी चाहिए।",
+   "c12": "अकेले बिताया एक दिन भी\nकिसी ऐसे व्यक्ति तक पहुँचता है\nजिसे मेरी फ़िक्र है।",
+   "c13": "क़दमों की गिनती सिर्फ़ एक संख्या नहीं है।\nयह आज का दिन सकुशल बीतने का छोटा-सा निशान है।",
+   "c14": "एक दिन, फिर एक और दिन।",
+   "c15": "मौसम बदल जाएँ,\nफिर भी [a]खैरियत की सूचना[/a] आती रहती है।",
+   "c16": "फिर अगर किसी दिन से\nखैरियत की सूचना आनी बंद हो जाए",
+   "c17": "उस व्यक्ति को\nनोटिफ़िकेशन जाता है।"
+  },
+  "ending": {
+   "head": "अंत को रोका नहीं जा सकता,\nफिर भी हर दिन किसी तक\n[a]खैरियत की सूचना[/a] पहुँचनी चाहिए।",
+   "head_w": "अंत को रोका नहीं जा सकता,\nफिर भी हर दिन किसी तक [a]खैरियत की सूचना[/a] पहुँचनी चाहिए।"
+  },
+  "caps_w": {
+   "c12": "अकेले बिताया एक दिन भी किसी ऐसे व्यक्ति तक\nपहुँचता है जिसे मेरी फ़िक्र है।"
+  },
+  "store_w": "Google Play पर “Anbu” खोजें"
+ },
+ "vi": {
+  "caps": {
+   "c1": "Hôm nay cũng\nbình yên trôi qua.",
+   "c2": "Nhưng thỉnh thoảng,\nngày mai khiến tôi bất an.",
+   "c3": "Những ngày như thế cứ lặp đi lặp lại.",
+   "c4": "Tôi không tin rằng một ngày trôi qua không đau ốm\nsẽ kéo dài mãi mãi.",
+   "c5": "Ai cũng có một khởi đầu\nvà một ngày nào đó sẽ có kết thúc.",
+   "c6": "Lý trí thì biết,\nnhưng những đêm một mình, tôi chợt thấy sợ.",
+   "c7": "Những người bạn thành đạt, những người xung quanh trông thật hạnh phúc…\nTa sống và lướt qua biết bao người, nhưng",
+   "c8": "Dù đi trên những con đường khác nhau,\nnơi đến vẫn là một.",
+   "c9": "Tên của điểm kết thúc ấy\nlà [d]cái chết[/d].",
+   "c10": "Điều đáng sợ nhất không phải là kết thúc,\nmà là một ngày trôi qua mà không ai hay biết",
+   "c11": "Vì vậy [a]tin bình an[/a] phải\nđến mỗi ngày một cách lặng lẽ.",
+   "c12": "Ngay cả một ngày ở một mình\ncũng đến được với\nngười đang lo cho tôi.",
+   "c13": "Số bước chân không chỉ là con số.\nĐó là dấu vết nhỏ của một ngày bình yên trôi qua.",
+   "c14": "Hết ngày này đến ngày khác.",
+   "c15": "Dù mùa có đổi thay,\n[a]tin bình an[/a] vẫn tiếp nối.",
+   "c16": "Rồi nếu từ một ngày nào đó\ntin bình an không đến nữa",
+   "c17": "Người ấy\nsẽ nhận được thông báo."
+  },
+  "ending": {
+   "head": "Dù không thể ngăn được kết thúc,\nmỗi ngày [a]tin bình an[/a]\nvẫn cần đến với một ai đó.",
+   "head_w": "Dù không thể ngăn được kết thúc,\nmỗi ngày [a]tin bình an[/a] vẫn cần đến với một ai đó."
+  },
+  "caps_w": {
+   "c12": "Ngay cả một ngày ở một mình\ncũng đến được với người đang lo cho tôi."
+  },
+  "store_w": "Tìm “Anbu” trên Google Play"
+ },
+ "th": {
+  "caps": {
+   "c1": "วันนี้ก็\nผ่านไปอย่างปลอดภัย",
+   "c2": "แต่บางครั้ง\nพรุ่งนี้ก็ทำให้ไม่สบายใจ",
+   "c3": "วันแบบนี้เกิดขึ้นซ้ำแล้วซ้ำเล่า",
+   "c4": "ฉันไม่เชื่อว่าวันที่ผ่านไปโดยไม่เจ็บป่วย\nจะเป็นอย่างนี้ตลอดไป",
+   "c5": "ทุกคนมีจุดเริ่มต้น\nและสักวันก็มีจุดจบ",
+   "c6": "ในหัวก็รู้ดี\nแต่ยามค่ำคืนที่อยู่ลำพัง ก็กลัวขึ้นมาอย่างกะทันหัน",
+   "c7": "เพื่อนที่ประสบความสำเร็จ คนรอบตัวที่ดูมีความสุข…\nเราใช้ชีวิตเดินสวนกับผู้คนมากมาย แต่",
+   "c8": "แม้เดินกันคนละทาง\nปลายทางก็เป็นที่เดียวกัน",
+   "c9": "จุดจบนั้นมีชื่อว่า\n[d]ความตาย[/d]",
+   "c10": "สิ่งที่น่ากลัวที่สุดไม่ใช่จุดจบ\nแต่คือวันที่ผ่านไปโดยไม่มีใครรู้",
+   "c11": "เพราะฉะนั้น [a]การแจ้งว่าสบายดี[/a]\nต้องส่งถึงกันทุกวันอย่างเงียบ ๆ",
+   "c12": "แม้วันที่อยู่ลำพัง\nก็ยังส่งถึงใครสักคน\nที่เป็นห่วงฉัน",
+   "c13": "จำนวนก้าวไม่ใช่แค่ตัวเลข\nแต่เป็นร่องรอยเล็ก ๆ ของวันที่ผ่านไปอย่างปลอดภัย",
+   "c14": "วันแล้ววันเล่า",
+   "c15": "แม้ฤดูกาลจะเปลี่ยน\n[a]การแจ้งว่าสบายดี[/a]ก็ยังคงมาถึง",
+   "c16": "แล้วถ้าตั้งแต่วันหนึ่ง\nการแจ้งว่าสบายดีไม่มาถึงอีก",
+   "c17": "คนคนนั้น\nจะได้รับการแจ้งเตือน"
+  },
+  "ending": {
+   "head": "แม้จุดจบจะหยุดไม่ได้\nแต่ [a]การแจ้งว่าสบายดี[/a]\nควรส่งถึงใครสักคนทุกวัน",
+   "head_w": "แม้จุดจบจะหยุดไม่ได้\nแต่ [a]การแจ้งว่าสบายดี[/a] ควรส่งถึงใครสักคนทุกวัน"
+  },
+  "caps_w": {
+   "c12": "แม้วันที่อยู่ลำพังก็ยังส่งถึง\nใครสักคนที่เป็นห่วงฉัน"
+  },
+  "store_w": "ค้นหา “Anbu” ใน Google Play"
+ },
+ "id": {
+  "caps": {
+   "c1": "Hari ini pun\nberlalu dengan selamat.",
+   "c2": "Namun kadang,\nbesok membuatku cemas.",
+   "c3": "Hari-hari seperti ini terus berulang.",
+   "c4": "Aku tidak percaya hari tanpa rasa sakit\nakan bertahan selamanya.",
+   "c5": "Setiap orang punya awal\ndan suatu hari akan punya akhir.",
+   "c6": "Kepala memang tahu,\ntetapi di malam yang sepi, tiba-tiba rasa takut datang.",
+   "c7": "Teman yang sukses, orang di sekitar yang tampak bahagia…\nKita hidup berpapasan dengan banyak orang, tetapi",
+   "c8": "Meski menempuh jalan yang berbeda,\ntempat tujuannya sama.",
+   "c9": "Nama akhir itu\nadalah [d]kematian[/d].",
+   "c10": "Yang paling menakutkan bukan akhirnya,\nmelainkan hari yang berlalu tanpa ada yang tahu",
+   "c11": "Karena itu, [a]kabar[/a] harus\nsampai setiap hari dengan tenang.",
+   "c12": "Hari yang dilalui sendirian pun\nsampai kepada seseorang\nyang mengkhawatirkanku.",
+   "c13": "Langkah bukan sekadar angka.\nItu jejak kecil dari hari yang berlalu dengan selamat.",
+   "c14": "Hari demi hari.",
+   "c15": "Meski musim berganti,\n[a]kabar[/a] terus berlanjut.",
+   "c16": "Lalu jika sejak suatu hari\nkabar tidak datang lagi",
+   "c17": "Orang itu\nakan menerima notifikasi."
+  },
+  "ending": {
+   "head": "Meski akhir tak bisa dicegah,\n[a]kabar[/a] harus sampai kepada seseorang\nsetiap hari.",
+   "head_w": "Meski akhir tak bisa dicegah,\n[a]kabar[/a] harus sampai kepada seseorang setiap hari."
+  },
+  "caps_w": {
+   "c12": "Hari yang dilalui sendirian pun sampai kepada seseorang\nyang mengkhawatirkanku."
+  },
+  "store_w": "Cari “Anbu” di Google Play"
+ }
+}

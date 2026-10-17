@@ -51,3 +51,8 @@ node rshot.mjs cues cues.json && python3 mix.py out_video.mp4 out.mp4
 - 자막은 같고 **줄 수가 많은 것만 줄바꿈을 따로 둔다**: `line_text.json` 의 `caps_w`(c12), `ending.head_w`. 엔딩 스토어 문구는 `store_w`("Google Play에서 “Anbu” 검색") — 세로판은 "App Store · Google Play". 가로판 자막 y 는 432(c9 만 345), 아래 끝 498(플레이어 컨트롤 막대 위).
 - 렌더: `FMT=wide CRF=18 node rshot.mjs video out_wide.mp4` (약 35분, 세로판과 픽셀 수가 같다) → `python3 mix.py out_wide.mp4 out.mp4`(소리는 세로판과 같은 큐).
 - ⚠️ 부분 렌더·이어 붙이기(위 절)는 가로판에도 같은 방식으로 쓸 수 있다(키프레임은 가로판 mp4 에서 새로 뽑는다).
+
+## 세로판 개정(2026-10-17) · 가로판 문구 보존
+세로판은 사용자 확정 개정안(c1~c14·엔딩 다듬기, c11 "전해져야"·c15 "계속됩니다"·c16 "도착하지 않으면"은 이전 문구 유지)과 19개 언어 재번역을 `line_text.json` 에 담았다.
+이미 올라간 가로판 20편의 문구는 `line_text_wide.json`(개정 전) 이다 — 가로판을 다시 만들 때는 `TEXT=line_text_wide.json python3 gen_line_strings.py …` 로 strings.json 을 만든다.
+렌더는 `FAST=1`(CDP 무손실 PNG, `optimizeForSpeed`) + `PRESET=medium` + 4개 동시(`pipeline_v.sh`)로 150프레임 74초 → 약 7초(총 10배 이상).
