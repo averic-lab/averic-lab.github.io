@@ -8,6 +8,7 @@
 """
 import hashlib
 import html
+import datetime
 import json
 import os
 import re
@@ -314,6 +315,12 @@ def media_name(code, vid):
 PUBLISH_JSON = os.environ.get("PUBLISH_JSON") or os.path.expanduser("~/Documents/SNS Uploads/publish.json")
 
 
+def _build_now():
+    """공개 시각 판정에 쓰는 '지금'. 시험할 때만 BUILD_NOW(ISO, 예: 2026-10-18T21:00:00+09:00)로 덮어쓴다."""
+    v = os.environ.get("BUILD_NOW")
+    return datetime.datetime.fromisoformat(v) if v else datetime.datetime.now(datetime.timezone.utc)
+
+
 def _load_youtube():
     """{(편id, 언어): youtube_id} — 유튜브에 올라간 편 전부(공개 여부와 무관, removed 제외).
 
@@ -329,9 +336,21 @@ def _load_youtube():
         print(f"  ⚠ publish.json 을 읽지 못함({e.__class__.__name__}) — 영상 페이지는 전부 mp4 로 빌드: {PUBLISH_JSON}")
         return {}
     out = {}
+    now = _build_now()
     for v in vids.values():
-        if v.get("status") != "removed" and v.get("youtube_id"):
-            out[(v["id"], v["lang"])] = v["youtube_id"]
+        if v.get("status") == "removed" or not v.get("youtube_id"):
+            continue
+        # 2026-10-17: 예약(scheduled) 상태이고 공개 시각(publish_at)이 아직 안 지난 편은 사이트에 내놓지 않는다.
+        # 공개 전에 넣으면 방문자가 눌러도 재생되지 않는 영상이 페이지에 먼저 뜬다. 공개 시각이 지난 뒤 다시 빌드하면
+        # 자동으로 포함된다(publish.json 의 status 는 Aside 가 고치지 않으면 scheduled 로 남아 있으므로 시각으로 판단한다).
+        pa = v.get("publish_at")
+        if v.get("status") == "scheduled" and pa:
+            try:
+                if datetime.datetime.fromisoformat(pa) > now:
+                    continue
+            except ValueError:
+                pass
+        out[(v["id"], v["lang"])] = v["youtube_id"]
     return out
 
 

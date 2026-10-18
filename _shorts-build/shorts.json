@@ -15,7 +15,29 @@
     {"id": "before-departure", "page": "j.html", "title": "t_j", "date": "2026-10-10", "audio": {"bgm": "take-this-higher.mp3", "bgm_start": 3.879, "fade_in": 0.05}}
   ],
   "youtube_only": [
-    {"id": "anbu-3d", "date": "2026-10-04", "home": true, "titles": {"ko": "아무것도 하지 않아도, 매일 자동으로 안부는 도착합니다", "ja": "何もしなくても、毎日、自動で安否が届きます", "en": "No effort needed — a wellness check arrives automatically, every day", "zh-CN": "什么都不用做，平安每天自动送达", "zh-TW": "什麼都不用做，平安每天自動送達", "de": "Ganz ohne Zutun: Jeden Tag kommt automatisch ein Lebenszeichen an", "fr": "Rien à faire : des nouvelles arrivent automatiquement, chaque jour", "es": "Sin ningún esfuerzo: cada día llega un aviso, automáticamente", "it": "Senza alcuno sforzo: ogni giorno arriva un check-in, in automatico", "pt-BR": "Sem nenhum esforço: todo dia chega um check-in, automaticamente", "ru": "Ничего не нужно делать — отметка приходит каждый день автоматически", "nl": "Zonder enige moeite: elke dag komt er automatisch een check-in", "pl": "Nie trzeba nic robić — codziennie automatycznie przychodzi znak życia", "tr": "Hiçbir şey yapmanıza gerek kalmadan her gün otomatik olarak haber gelir", "vi": "Không cần làm gì, tin bình an vẫn tự động đến mỗi ngày", "th": "ไม่ต้องทำอะไรเลย การแจ้งว่าสบายดีก็มาถึงอัตโนมัติทุกวัน", "id": "Tanpa perlu melakukan apa pun, kabar tiba otomatis setiap hari", "sv": "Helt utan ansträngning: en incheckning kommer automatiskt varje dag", "hi": "बिना किसी मेहनत के, हर दिन अपने-आप खैरियत पहुँचती है", "ar": "دون أي عناء، يصل الاطمئنان تلقائياً كل يوم"}}
+    {"id": "anbu-3d", "date": "2026-10-04", "home": true, "titles": {"ko": "아무것도 하지 않아도, 매일 자동으로 안부는 도착합니다", "ja": "何もしなくても、毎日、自動で安否が届きます", "en": "No effort needed — a wellness check arrives automatically, every day", "zh-CN": "什么都不用做，平安每天自动送达", "zh-TW": "什麼都不用做，平安每天自動送達", "de": "Ganz ohne Zutun: Jeden Tag kommt automatisch ein Lebenszeichen an", "fr": "Rien à faire : des nouvelles arrivent automatiquement, chaque jour", "es": "Sin ningún esfuerzo: cada día llega un aviso, automáticamente", "it": "Senza alcuno sforzo: ogni giorno arriva un check-in, in automatico", "pt-BR": "Sem nenhum esforço: todo dia chega um check-in, automaticamente", "ru": "Ничего не нужно делать — отметка приходит каждый день автоматически", "nl": "Zonder enige moeite: elke dag komt er automatisch een check-in", "pl": "Nie trzeba nic robić — codziennie automatycznie przychodzi znak życia", "tr": "Hiçbir şey yapmanıza gerek kalmadan her gün otomatik olarak haber gelir", "vi": "Không cần làm gì, tin bình an vẫn tự động đến mỗi ngày", "th": "ไม่ต้องทำอะไรเลย การแจ้งว่าสบายดีก็มาถึงอัตโนมัติทุกวัน", "id": "Tanpa perlu melakukan apa pun, kabar tiba otomatis setiap hari", "sv": "Helt utan ansträngning: en incheckning kommer automatiskt varje dag", "hi": "बिना किसी मेहनत के, हर दिन अपने-आप खैरियत पहुँचती है", "ar": "دون أي عناء، يصل الاطمئنان تلقائياً كل يوم"}},
+    {"id": "life-line", "date": "2026-10-17", "titles": {
+        "ko": "혼자 살아간다는건..",
+        "en": "What it means to live alone…",
+        "ja": "一人で生きるということ…",
+        "zh-CN": "一个人生活意味着…",
+        "zh-TW": "一個人生活意味著…",
+        "de": "Allein zu leben heißt …",
+        "fr": "Vivre seul, c'est…",
+        "es": "Vivir en soledad es…",
+        "it": "Vivere da soli significa…",
+        "pt-BR": "Viver sozinho é…",
+        "ru": "Жить в одиночестве — это…",
+        "nl": "Alleen leven betekent…",
+        "pl": "Żyć samotnie to…",
+        "tr": "Yalnız yaşamak…",
+        "vi": "Sống một mình là…",
+        "th": "การใช้ชีวิตอยู่คนเดียวคือ…",
+        "id": "Hidup sendiri itu…",
+        "sv": "Att leva ensam är…",
+        "hi": "अकेले जीना…",
+        "ar": "أن تعيش وحدك يعني…"
+    }}
   ],
   "langs": {
     "ko": {
