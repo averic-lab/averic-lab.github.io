@@ -57,11 +57,11 @@
 <body>
 
 <h1>Polityka prywatności</h1>
-<p class="date">Data wejścia w życie: 27 kwietnia 2026 r. | Ostatnia aktualizacja: 17 września 2026 r.</p>
+<p class="date">Data wejścia w życie: 27 kwietnia 2026 r. | Ostatnia aktualizacja: 24 października 2026 r.</p>
 
 <p>Anbu ("my", "nas" lub "nasz") zobowiązuje się do ochrony Twojej prywatności. Niniejsza Polityka prywatności wyjaśnia, w jaki sposób zbieramy, wykorzystujemy, przechowujemy i chronimy informacje podczas korzystania z aplikacji mobilnej Anbu ("Usługa"). Korzystając z Usługi, wyrażasz zgodę na praktyki opisane w niniejszej polityce.</p>
 
-<p>Anbu zostało zaprojektowane zgodnie z zasada <strong>prywatności na pierwszym miejscu</strong>. Nie zbieramy danych osobowych, takich jak imię i nazwisko, numer telefonu, adres e-mail ani lokalizacja. Usługa działa wyłącznie na podstawie identyfikatorów urządzeń oraz minimalnych danych o aktywności (takich jak liczba kroków), niezbędnych do funkcji kontroli samopoczucia.</p>
+<p>Anbu zostało zaprojektowane zgodnie z zasada <strong>prywatności na pierwszym miejscu</strong>. Nie zbieramy danych osobowych, takich jak imię i nazwisko, numer telefonu ani adres e-mail. Lokalizacja jest zbierana tylko wtedy, gdy podopieczny naciśnie przycisk pomocy w nagłych wypadkach (zob. niżej). Usługa działa wyłącznie na podstawie identyfikatorów urządzeń oraz minimalnych danych o aktywności (takich jak liczba kroków), niezbędnych do funkcji kontroli samopoczucia.</p>
 
 <h2>1. Informacje, które zbieramy</h2>
 
@@ -132,6 +132,18 @@
   <li>Automatyczna rejestracja po zainstalowaniu aplikacji (informacje o urządzeniu, token FCM)</li>
   <li>Liczba kroków podczas codziennej kontroli samopoczucia (steps_delta, poziom baterii)</li>
   <li>Lokalizacja jest pobierana wyłącznie jednorazowo w momencie samodzielnego naciśnięcia przycisku pilnej prośby o pomoc, pod warunkiem, że uprawnienie do lokalizacji zostało udzielone (tylko w trybie pierwszoplanowym; nie zbieramy lokalizacji w tle)</li>
+</ul>
+
+<h3>Informacje dodatkowe (24 października 2026 r.)</h3>
+<ul>
+  <li><strong>Reklamy (Google AdMob):</strong> Użytkownicy bez płatnej subskrypcji widzą reklamy banerowe. Pakiet SDK Google Mobile Ads zbiera identyfikator reklamowy, adres IP (używany do określenia przybliżonej lokalizacji), dane o interakcjach z reklamami oraz dane o awariach i wydajności. Reklamy spersonalizowane są wyświetlane tylko za Twoją zgodą (w iOS przez funkcję przejrzystości śledzenia przez aplikacje; w EOG, Wielkiej Brytanii i Szwajcarii przez formularz zgody, który można zmienić w menu Ustawienia &gt; Zgoda na reklamy). Kroki, znaki życia, lokalizacja, przezwiska i wiadomości alarmowe nigdy nie są udostępniane sieciom reklamowym.</li>
+  <li><strong>Przezwiska:</strong> Przezwisko nadane podopiecznemu przez opiekuna (np. „Mama”) jest przechowywane na naszym serwerze, aby powiadomienia push pokazywały, kogo dotyczą. Jest usuwane po rozłączeniu lub usunięciu konta.</li>
+  <li><strong>Wiadomość alarmowa:</strong> Po naciśnięciu „Potrzebuję pomocy” można dodać krótką wiadomość (do 100 znaków). Trafia ona do połączonych opiekunów i jest usuwana wraz z lokalizacją alarmową o północy w strefie czasowej podopiecznego (w ciągu 24 godzin).</li>
+  <li><strong>Sygnał aktywności:</strong> Aby uniknąć fałszywych alarmów, podczas wysyłania znaku życia aplikacja sprawdza, czy są oznaki aktywności: dzisiejsze kroki, czy telefon jest w tej chwili używany (w Androidzie — włączony ekran; w iOS — odblokowany) oraz w iOS, czy tego dnia otwarto aplikację Anbu. Wysyłany jest tylko jeden wynik tak/nie. Historia odblokowań lub ekranu, częstotliwość używania telefonu ani korzystanie z innych aplikacji nie są rejestrowane.</li>
+  <li><strong>Liczba kroków:</strong> Z każdym znakiem życia wysyłana jest suma kroków z danego dnia (od północy) oraz suma z poprzedniego dnia, jeśli nie udało się jej wysłać. Połączeni opiekunowie widzą dzienną liczbę kroków.</li>
+  <li><strong>Lokalizacja:</strong> Lokalizacja jest zbierana tylko po naciśnięciu „Potrzebuję pomocy” — nigdy podczas zwykłych znaków życia ani w tle.</li>
+  <li><strong>Ustawienie języka:</strong> Przechowywane, aby wysyłać powiadomienia w Twoim języku.</li>
+  <li><strong>Identyfikator urządzenia w iOS:</strong> W iOS losowo wygenerowany identyfikator urządzenia jest przechowywany w pęku kluczy, aby to samo urządzenie zostało rozpoznane po ponownej instalacji aplikacji. Nie zawiera danych osobowych i nie służy do śledzenia.</li>
 </ul>
 
 <h2>2. W jaki sposób wykorzystujemy Twoje informacje</h2>
@@ -214,6 +226,11 @@
       <td>Google LLC (Google Play)</td>
       <td>Zakupy w aplikacji</td>
       <td><a href="https://policies.google.com/privacy">Prywatność Google</a></td>
+    </tr>
+      <tr>
+      <td>Google LLC (AdMob)</td>
+      <td>Reklamy banerowe</td>
+      <td><a href="https://policies.google.com/technologies/partner-sites">Jak Google wykorzystuje dane z aplikacji</a></td>
     </tr>
   </tbody>
 </table>

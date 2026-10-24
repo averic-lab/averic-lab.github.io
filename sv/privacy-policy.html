@@ -57,11 +57,11 @@
 <body>
 
 <h1>Integritetspolicy</h1>
-<p class="date">Ikrafttr&auml;dande: 27 april 2026 | Senast uppdaterad: 17 september 2026</p>
+<p class="date">Ikrafttr&auml;dande: 27 april 2026 | Senast uppdaterad: 24 oktober 2026</p>
 
 <p>Anbu ("vi", "oss" eller "v&aring;r") &auml;r engagerade i att skydda din integritet. Denna integritetspolicy f&ouml;rklarar hur vi samlar in, anv&auml;nder, lagrar och skyddar information n&auml;r du anv&auml;nder mobilapplikationen Anbu ("Tj&auml;nsten"). Genom att anv&auml;nda Tj&auml;nsten godk&auml;nner du de rutiner som beskrivs i denna policy.</p>
 
-<p>Vi har utformat Anbu med ett <strong>integritetsfokuserat tillv&auml;gag&aring;ngss&auml;tt</strong>. Vi samlar inte in personuppgifter s&aring;som ditt namn, telefonnummer, e-postadress eller plats. Tj&auml;nsten fungerar enbart med enhetsidentifierare och minimala aktivitetsdata (som antal steg) som &auml;r n&ouml;dv&auml;ndiga f&ouml;r h&auml;lsokontrollfunktionen.</p>
+<p>Vi har utformat Anbu med ett <strong>integritetsfokuserat tillv&auml;gag&aring;ngss&auml;tt</strong>. Vi samlar inte in personuppgifter såsom ditt namn, telefonnummer eller e-postadress. Plats samlas in endast när den närstående trycker på nödhjälpsknappen (se nedan). Tj&auml;nsten fungerar enbart med enhetsidentifierare och minimala aktivitetsdata (som antal steg) som &auml;r n&ouml;dv&auml;ndiga f&ouml;r h&auml;lsokontrollfunktionen.</p>
 
 <h2>1. Information vi samlar in</h2>
 
@@ -131,6 +131,18 @@
 <ul>
   <li>Enhets- och h&auml;lsodata skickas automatiskt till v&aring;ra servrar vid varje heartbeat-&ouml;verf&ouml;ring.</li>
   <li>Platsdata samlas in en enda g&aring;ng i f&ouml;rgrunden, och endast n&auml;r den n&auml;rst&aring;ende sj&auml;lv trycker p&aring; knappen f&ouml;r n&ouml;dhj&auml;lp och platsbeh&ouml;righet har beviljats. Platsdata samlas aldrig in i bakgrunden.</li>
+</ul>
+
+<h3>Ytterligare information (24 oktober 2026)</h3>
+<ul>
+  <li><strong>Annonser (Google AdMob):</strong> Användare utan betald prenumeration ser bannerannonser. Google Mobile Ads SDK samlar in annons-ID, IP-adress (används för att uppskatta ungefärlig plats), data om interaktion med annonser samt krasch- och prestandadata. Anpassade annonser visas endast med ditt samtycke (Transparens för appspårning på iOS; ett samtyckesformulär i EES, Storbritannien och Schweiz, som du kan ändra under Inställningar &gt; Samtycke till annonser). Steg, incheckningar, plats, smeknamn och nödmeddelanden delas aldrig med annonsnätverk.</li>
+  <li><strong>Smeknamn:</strong> Smeknamnet som en kontaktperson ger en ansluten person (t.ex. ”Mamma”) sparas på vår server så att pushnotiser kan visa vems notis det är. Det raderas när anslutningen tas bort eller kontot raderas.</li>
+  <li><strong>Nödmeddelande:</strong> När personen trycker på ”Jag behöver hjälp” kan ett kort meddelande (högst 100 tecken) läggas till. Det levereras till anslutna kontaktpersoner och raderas tillsammans med nödplatsen vid midnatt i personens tidszon (inom 24 timmar).</li>
+  <li><strong>Aktivitetssignal:</strong> För att undvika falsklarm kontrollerar appen när en incheckning skickas om det finns tecken på aktivitet: dagens steg, om telefonen används just då (skärmen på i Android; upplåst i iOS) och i iOS om Anbu-appen har öppnats den dagen. Endast ett enda ja/nej-resultat skickas. Upplåsnings- eller skärmhistorik, hur ofta telefonen används och användning av andra appar registreras inte.</li>
+  <li><strong>Antal steg:</strong> Dagens totala antal steg (från midnatt) skickas med varje incheckning, tillsammans med föregående dags summa om den inte kunde skickas. Anslutna kontaktpersoner kan se det dagliga antalet steg.</li>
+  <li><strong>Plats:</strong> Plats samlas in endast när personen trycker på ”Jag behöver hjälp” – aldrig vid vanliga incheckningar eller i bakgrunden.</li>
+  <li><strong>Språkinställning:</strong> Sparas så att notiser skickas på ditt språk.</li>
+  <li><strong>Enhets-ID i iOS:</strong> I iOS sparas ett slumpmässigt genererat enhets-ID i nyckelringen så att samma enhet kan kännas igen efter att appen installerats om. Det innehåller inga personuppgifter och används inte för spårning.</li>
 </ul>
 
 <h2>2. Hur vi anv&auml;nder din information</h2>
@@ -213,6 +225,11 @@
       <td>Google LLC (Google Play)</td>
       <td>K&ouml;p i appen</td>
       <td><a href="https://policies.google.com/privacy">Google integritet</a></td>
+    </tr>
+      <tr>
+      <td>Google LLC (AdMob)</td>
+      <td>Bannerannonser</td>
+      <td><a href="https://policies.google.com/technologies/partner-sites">Hur Google använder data från appar</a></td>
     </tr>
   </tbody>
 </table>

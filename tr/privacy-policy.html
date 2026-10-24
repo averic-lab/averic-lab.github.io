@@ -57,11 +57,11 @@
 <body>
 
 <h1>Gizlilik Politikası</h1>
-<p class="date">Yürürlük tarihi: 27 Nisan 2026 | Son güncelleme: 17 Eylül 2026</p>
+<p class="date">Yürürlük tarihi: 27 Nisan 2026 | Son güncelleme: 24 Ekim 2026</p>
 
 <p>Anbu ("biz" veya "bizim") gizliliğinizi korumaya kararlıyız. Bu Gizlilik Politikası, Anbu mobil uygulamasını ("Hizmet") kullandığınızda bilgilerinizi nasıl topladığımızı, kullandığımızı, sakladığımızı ve koruduğumuzu açıklar. Hizmeti kullanarak bu politikada açıklanan uygulamaları kabul etmiş olursunuz.</p>
 
-<p>Anbu'yu <strong>gizlilik öncelikli bir yaklaşımla</strong> tasarladık. Adınız, telefon numaranız, e-posta adresiniz veya konumunuz gibi kişisel bilgileri toplamıyoruz. Hizmet, yalnızca cihaz düzeyi tanımlayıcıları ve günlük haber işlevi için gerekli minimum aktivite verileriyle (adım sayısı gibi) çalışır.</p>
+<p>Anbu'yu <strong>gizlilik öncelikli bir yaklaşımla</strong> tasarladık. Adınız, telefon numaranız veya e-posta adresiniz gibi kişisel bilgileri toplamıyoruz. Konum yalnızca yakınınız acil yardım düğmesine dokunduğunda toplanır (aşağıya bakın). Hizmet, yalnızca cihaz düzeyi tanımlayıcıları ve günlük haber işlevi için gerekli minimum aktivite verileriyle (adım sayısı gibi) çalışır.</p>
 
 <h2>1. Topladığımız Bilgiler</h2>
 
@@ -132,6 +132,18 @@
   <li>Uygulamanın yüklenmesinin ardından otomatik kayıt (cihaz bilgileri, FCM jetonu)</li>
   <li>Günlük haber gönderilirken alınan adım sayısı (steps_delta, pil seviyesi)</li>
   <li>Konum yalnızca yakın acil yardım talebi düğmesine kendisi bastığında ve konum izni verilmiş ise tek seferlik toplanır (yalnızca ön planda; arka planda konum toplanmaz)</li>
+</ul>
+
+<h3>Ek Bilgiler (24 Ekim 2026)</h3>
+<ul>
+  <li><strong>Reklam (Google AdMob):</strong> Ücretli aboneliği olmayan kullanıcılar banner reklamlar görür. Google Mobile Ads SDK; reklam kimliğini, IP adresini (yaklaşık konumu tahmin etmek için kullanılır), reklam etkileşim verilerini ve çökme ile performans verilerini toplar. Kişiselleştirilmiş reklamlar yalnızca izninizle gösterilir (iOS’ta Uygulama İzleme Şeffaflığı; AEA, Birleşik Krallık ve İsviçre’de, Ayarlar &gt; Reklam izni bölümünden değiştirebileceğiniz bir izin formu). Adımlar, haber kayıtları, konum, takma adlar ve acil durum mesajları hiçbir zaman reklam ağlarıyla paylaşılmaz.</li>
+  <li><strong>Takma adlar:</strong> Koruyucunun bağlı yakınına verdiği takma ad (ör. “Annem”), anlık bildirimlerde bildirimin kime ait olduğunu göstermek için sunucumuzda saklanır. Bağlantı kaldırıldığında veya hesap silindiğinde silinir.</li>
+  <li><strong>Acil durum mesajı:</strong> “Yardıma ihtiyacım var” düğmesine dokunurken kısa bir mesaj (en fazla 100 karakter) eklenebilir. Mesaj bağlı koruyuculara iletilir ve acil durum konumuyla birlikte kişinin saat dilimine göre gece yarısı (24 saat içinde) silinir.</li>
+  <li><strong>Etkinlik sinyali:</strong> Yanlış uyarıları önlemek için haber gönderilirken uygulama herhangi bir etkinlik belirtisi olup olmadığını kontrol eder: günün adımları, telefonun o anda kullanılıp kullanılmadığı (Android’de ekran açık; iOS’ta kilit açık) ve iOS’ta Anbu uygulamasının o gün açılıp açılmadığı. Yalnızca tek bir evet/hayır sonucu gönderilir. Kilit açma veya ekran geçmişi, telefonun ne sıklıkla kullanıldığı ve diğer uygulamaların kullanımı kaydedilmez.</li>
+  <li><strong>Adım sayısı:</strong> Her haberle birlikte günün toplam adım sayısı (gece yarısından itibaren) ve gönderilemediyse bir önceki günün toplamı gönderilir. Bağlı koruyucular günlük adım sayılarını görebilir.</li>
+  <li><strong>Konum:</strong> Konum yalnızca “Yardıma ihtiyacım var” düğmesine dokunulduğunda toplanır; günlük haberlerde veya arka planda asla toplanmaz.</li>
+  <li><strong>Dil ayarı:</strong> Bildirimleri dilinizde göndermek için saklanır.</li>
+  <li><strong>iOS cihaz kimliği:</strong> iOS’ta, uygulama yeniden yüklendikten sonra aynı cihazın tanınabilmesi için rastgele oluşturulan bir cihaz kimliği Anahtar Zinciri’nde saklanır. Kişisel bilgi içermez ve izleme için kullanılmaz.</li>
 </ul>
 
 <h2>2. Bilgilerinizi Nasıl Kullanırız</h2>
@@ -214,6 +226,11 @@
       <td>Google LLC (Google Play)</td>
       <td>Uygulama içi satın almalar</td>
       <td><a href="https://policies.google.com/privacy">Google Gizliliği</a></td>
+    </tr>
+      <tr>
+      <td>Google LLC (AdMob)</td>
+      <td>Banner reklamlar</td>
+      <td><a href="https://policies.google.com/technologies/partner-sites">Google’ın uygulama verilerini nasıl kullandığı</a></td>
     </tr>
   </tbody>
 </table>

@@ -57,11 +57,11 @@
 <body>
 
 <h1>Datenschutzrichtlinie</h1>
-<p class="date">Gültig ab: 27. April 2026 | Letzte Aktualisierung: 17. September 2026</p>
+<p class="date">Gültig ab: 27. April 2026 | Letzte Aktualisierung: 24. Oktober 2026</p>
 
 <p>Anbu ("wir", "uns" oder "unser") verpflichtet sich zum Schutz Ihrer Privatsphäre. Diese Datenschutzrichtlinie erläutert, wie wir Informationen erheben, verwenden, speichern und schützen, wenn Sie die mobile Anwendung Anbu (den "Dienst") nutzen. Durch die Nutzung des Dienstes stimmen Sie den in dieser Richtlinie beschriebenen Verfahren zu.</p>
 
-<p>Wir haben Anbu nach dem Grundsatz <strong>"Datenschutz durch Technikgestaltung" (Privacy by Design)</strong> entwickelt. Wir erheben keine personenbezogenen Daten wie Ihren Namen, Ihre Telefonnummer, E-Mail-Adresse oder Ihren Standort. Der Dienst arbeitet ausschließlich mit gerätebezogenen Kennungen und den für die Funktion des täglichen Lebenszeichens erforderlichen minimalen Aktivitätsdaten (z. B. Schrittzahl).</p>
+<p>Wir haben Anbu nach dem Grundsatz <strong>"Datenschutz durch Technikgestaltung" (Privacy by Design)</strong> entwickelt. Wir erheben keine personenbezogenen Daten wie Ihren Namen, Ihre Telefonnummer oder E-Mail-Adresse. Den Standort erheben wir nur, wenn die verbundene Person die Notfall-Schaltfläche antippt (siehe unten). Der Dienst arbeitet ausschließlich mit gerätebezogenen Kennungen und den für die Funktion des täglichen Lebenszeichens erforderlichen minimalen Aktivitätsdaten (z. B. Schrittzahl).</p>
 
 <h2>1. Von uns erhobene Daten</h2>
 
@@ -131,6 +131,18 @@
 <ul>
   <li>Geräte- und Lebenszeichen-Daten werden bei der Heartbeat-Übertragung automatisch an unsere Server gesendet.</li>
   <li>Standortdaten werden ausschließlich einmalig im Vordergrund erfasst, wenn die verbundene Person die Schaltfläche zur Anforderung von Notfallhilfe selbst betätigt und die Standortberechtigung erteilt hat. Eine Erhebung von Standortdaten im Hintergrund erfolgt zu keinem Zeitpunkt.</li>
+</ul>
+
+<h3>Ergänzende Informationen (24. Oktober 2026)</h3>
+<ul>
+  <li><strong>Werbung (Google AdMob):</strong> Nutzer ohne kostenpflichtiges Abonnement sehen Bannerwerbung. Das Google Mobile Ads SDK erhebt die Werbe-ID, die IP-Adresse (zur Schätzung des ungefähren Standorts), Daten zur Interaktion mit Anzeigen sowie Absturz- und Leistungsdaten. Personalisierte Werbung wird nur mit Ihrer Einwilligung angezeigt (unter iOS über App-Tracking-Transparenz; im EWR, im Vereinigten Königreich und in der Schweiz über ein Einwilligungsformular, das Sie unter „Einstellungen“ &gt; „Werbe-Einwilligung“ ändern können). Schritte, Lebenszeichen, Standort, Spitznamen und Notfallnachrichten werden niemals an Werbenetzwerke weitergegeben.</li>
+  <li><strong>Spitznamen:</strong> Der Spitzname, den eine Kontaktperson einer verbundenen Person gibt (z. B. „Mama“), wird auf unserem Server gespeichert, damit Push-Benachrichtigungen zeigen können, von wem sie stammen. Er wird gelöscht, wenn die Verbindung aufgehoben oder das Konto gelöscht wird.</li>
+  <li><strong>Notfallnachricht:</strong> Beim Antippen von „Ich brauche Hilfe“ kann eine kurze Nachricht (bis zu 100 Zeichen) hinzugefügt werden. Sie wird an die verbundenen Kontaktpersonen übermittelt und zusammen mit dem Notfallstandort um Mitternacht in der Zeitzone der Person gelöscht (innerhalb von 24 Stunden).</li>
+  <li><strong>Aktivitätssignal:</strong> Um Fehlalarme zu vermeiden, prüft die App beim Senden eines Lebenszeichens, ob es Anzeichen von Aktivität gibt: die heutigen Schritte, ob das Telefon in diesem Moment genutzt wird (unter Android: Bildschirm an; unter iOS: entsperrt) und unter iOS, ob die Anbu-App an diesem Tag geöffnet wurde. Übermittelt wird nur ein einziges Ja/Nein-Ergebnis. Entsperr- oder Bildschirmverläufe, die Nutzungshäufigkeit des Telefons und die Nutzung anderer Apps werden nicht erfasst.</li>
+  <li><strong>Schrittzahl:</strong> Mit jedem Lebenszeichen wird die Schrittzahl des Tages (ab Mitternacht) gesendet, zusammen mit der Summe des Vortags, falls diese nicht gesendet werden konnte. Verbundene Kontaktpersonen können die täglichen Schrittzahlen sehen.</li>
+  <li><strong>Standort:</strong> Der Standort wird nur erhoben, wenn „Ich brauche Hilfe“ angetippt wird – niemals bei regulären Lebenszeichen oder im Hintergrund.</li>
+  <li><strong>Spracheinstellung:</strong> Wird gespeichert, damit Benachrichtigungen in Ihrer Sprache gesendet werden.</li>
+  <li><strong>Gerätekennung unter iOS:</strong> Unter iOS wird eine zufällig erzeugte Gerätekennung im Schlüsselbund gespeichert, damit dasselbe Gerät nach einer Neuinstallation der App wiedererkannt wird. Sie enthält keine personenbezogenen Daten und wird nicht für Tracking verwendet.</li>
 </ul>
 
 <h2>2. Verwendung Ihrer Daten</h2>
@@ -213,6 +225,11 @@
       <td>Google LLC (Google Play)</td>
       <td>In-App-Käufe</td>
       <td><a href="https://policies.google.com/privacy">Google-Datenschutz</a></td>
+    </tr>
+      <tr>
+      <td>Google LLC (AdMob)</td>
+      <td>Bannerwerbung</td>
+      <td><a href="https://policies.google.com/technologies/partner-sites">Wie Google Daten aus Apps verwendet</a></td>
     </tr>
   </tbody>
 </table>
