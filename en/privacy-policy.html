@@ -57,11 +57,11 @@
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="date">Effective Date: April 27, 2026 | Last Updated: September 17, 2026</p>
+<p class="date">Effective Date: April 27, 2026 | Last Updated: October 24, 2026</p>
 
 <p>Anbu ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and protect information when you use the Anbu mobile application (the "Service"). By using the Service, you agree to the practices described in this policy.</p>
 
-<p>We designed Anbu with a <strong>privacy-first approach</strong>. We do not collect personal information such as your name, phone number, email address, or location. The Service operates using only device-level identifiers and minimal activity data (such as step count) necessary for wellness check functionality.</p>
+<p>We designed Anbu with a <strong>privacy-first approach</strong>. We do not collect personal information such as your name, phone number, or email address. Location is collected only when the subject taps the emergency help button, as described below. The Service operates using device-level identifiers and minimal activity data (such as step count) necessary for wellness check functionality.</p>
 
 <h2>1. Information We Collect</h2>
 
@@ -73,7 +73,7 @@
   <tbody>
     <tr>
       <td>Device Information</td>
-      <td>Device identifier (device_id), platform (Android/iOS), OS version, timezone</td>
+      <td>Device identifier (device_id), platform (Android/iOS), OS version, timezone, language setting</td>
       <td>Service operation and device identification</td>
     </tr>
     <tr>
@@ -83,11 +83,21 @@
     </tr>
     <tr>
       <td>Wellness Data (Subject)</td>
-      <td>Battery level, heartbeat transmission time</td>
+      <td>Battery level, heartbeat transmission time, activity signal</td>
       <td>Determining wellness status and sending guardian alerts</td>
+    </tr>
+    <tr>
+      <td>Advertising (Google AdMob)</td>
+      <td>Advertising identifier, IP address (used to estimate approximate location), ad interaction data, and crash and performance data, collected by the Google Mobile Ads SDK</td>
+      <td>Showing banner ads to users without a paid subscription. Personalized ads are shown only with your consent (App Tracking Transparency on iOS; a consent form in the EEA, UK and Switzerland).</td>
     </tr>
   </tbody>
 </table>
+
+<div class="highlight">
+  <p><strong>Activity Signal</strong></p>
+  <p>To avoid false alerts, when a wellness check is sent the app checks whether there is any sign that the subject is active: steps today, whether the phone is in use at that moment (screen on, on Android; unlocked, on iOS), and on iOS whether the Anbu app was opened that day. Only a single yes/no result ("activity detected") is sent. We do not record unlock or screen history, how often the phone is used, or the use of any other app.</p>
+</div>
 
 <h3>1.2 Information Collected with Your Permission</h3>
 <table>
@@ -97,7 +107,7 @@
   <tbody>
     <tr>
       <td>Step Count (Subject)</td>
-      <td>Steps taken since last heartbeat (steps_delta)</td>
+      <td>Total steps for the current day (from midnight), and the previous day's total if it could not be sent</td>
       <td>Activity verification (not collected if permission is denied)</td>
     </tr>
     <tr>
@@ -110,6 +120,16 @@
       <td>In-app purchase receipt (Apple/Google)</td>
       <td>Subscription verification and service access</td>
     </tr>
+    <tr>
+      <td>Nickname (Guardian)</td>
+      <td>The nickname a guardian gives a connected person (e.g., "Mom")</td>
+      <td>Showing whose notification it is in push notifications. Stored on our server and deleted when the connection is removed.</td>
+    </tr>
+    <tr>
+      <td>Emergency Message (Subject, Optional)</td>
+      <td>A short message (up to 100 characters) the subject may type when tapping the emergency help button</td>
+      <td>Delivered to connected guardians with the emergency alert</td>
+    </tr>
   </tbody>
 </table>
 
@@ -120,7 +140,7 @@
 
 <h3>1.3 Information We Do NOT Collect</h3>
 <ul>
-  <li>Name, phone number, email address, or any personally identifiable information</li>
+  <li>Name, phone number, or email address (a phone number a guardian enters for the call button is stored only on that guardian's device)</li>
   <li>Location data during routine wellness checks (heartbeat) — we never perform background location tracking</li>
   <li>Photos, contacts, or other data stored on your device</li>
   <li>Call logs, text messages, or browsing history</li>
@@ -134,6 +154,7 @@
   <li><strong>Alert Notifications:</strong> Sending step-by-step alerts (Caution → Warning → Urgent) to guardians when a subject's heartbeat is not received.</li>
   <li><strong>Emergency Help Request Handling:</strong> When the subject directly taps the emergency help button, an immediate notification is sent to all connected guardians. If the user consents to location sharing, the current location (latitude, longitude, and accuracy) is included with the alert.</li>
   <li><strong>Device Status Monitoring:</strong> Informing guardians of low battery, app termination, or other conditions that may affect wellness checks.</li>
+  <li><strong>Advertising:</strong> Showing banner ads through Google AdMob to users without a paid subscription. Wellness data is never used for advertising.</li>
   <li><strong>Subscription Management:</strong> Verifying in-app purchase receipts and managing guardian service access.</li>
   <li><strong>Service Improvement:</strong> Diagnosing errors and improving service reliability.</li>
 </ol>
@@ -160,7 +181,12 @@
       <td>Deleted daily at midnight (subject's local timezone)</td>
     </tr>
     <tr>
-      <td>Emergency help request location data</td>
+      <td>Nicknames</td>
+      <td>Until the connection is removed or account deletion</td>
+      <td>Deleted together with the guardian-subject connection</td>
+    </tr>
+    <tr>
+      <td>Emergency help request location data and message</td>
       <td>Up to 24 hours</td>
       <td>Automatically deleted along with notification records at midnight in the subject's device timezone</td>
     </tr>
@@ -180,8 +206,9 @@
 <h2>4. Data Sharing</h2>
 <p>We do not sell, trade, or rent your information to third parties. We share information only in the following limited circumstances:</p>
 <ol>
-  <li><strong>Guardian-Subject Connection:</strong> When a subject shares their invite code with a guardian, the guardian receives the subject's wellness status (heartbeat received/missed, battery level). No personal information is shared — only device-level wellness data.</li>
+  <li><strong>Guardian-Subject Connection:</strong> When a subject shares their invite code with a guardian, the guardian receives the subject's wellness status (heartbeat received/missed, battery level, daily step count). No personal information is shared — only device-level wellness data.</li>
   <li><strong>Location Sharing During Emergency Help Requests:</strong> When the subject directly taps the [🚨] emergency help button in the app and consents to location sharing, the current location (latitude, longitude, and accuracy) is provided one time to all connected guardians. If location permission is denied or a GPS signal is unavailable, only the emergency alert is delivered without any location data.</li>
+  <li><strong>Advertising:</strong> The Google Mobile Ads SDK collects the advertising data described in Section 1.1 to show ads. We do not share wellness data (steps, check-ins, location, nicknames or emergency messages) with advertising networks.</li>
   <li><strong>Legal Requirements:</strong> When required by applicable law, regulation, or valid legal process.</li>
 </ol>
 
@@ -208,6 +235,11 @@
       <td>In-app purchases</td>
       <td><a href="https://policies.google.com/privacy">Google Privacy</a></td>
     </tr>
+    <tr>
+      <td>Google LLC (AdMob)</td>
+      <td>Banner advertising</td>
+      <td><a href="https://policies.google.com/technologies/partner-sites">How Google uses data from apps</a></td>
+    </tr>
   </tbody>
 </table>
 
@@ -215,7 +247,7 @@
 <p>You have the following rights regarding your data:</p>
 <ol>
   <li><strong>Delete Your Account:</strong> You can delete your account and all associated data at any time through the "Delete Account" option in the app settings. Deletion is immediate and irreversible.</li>
-  <li><strong>Revoke Permissions:</strong> You can revoke notification or motion permissions at any time through your device settings.</li>
+  <li><strong>Revoke Permissions:</strong> You can revoke notification, motion, location or tracking permissions at any time through your device settings. Users in the EEA, UK and Switzerland can change their ad consent in the app under Settings &gt; Ad consent settings.</li>
   <li><strong>Request Data Access:</strong> You can request information about the data we hold about you by contacting us at the email below.</li>
 </ol>
 
@@ -227,7 +259,7 @@
   <li>Data portability</li>
   <li>Lodge a complaint with your local data protection authority</li>
 </ul>
-<p>Our legal basis for processing is <strong>legitimate interest</strong> (providing the wellness check service you opted into) and <strong>consent</strong> (for optional permissions like step counting).</p>
+<p>Our legal basis for processing is <strong>legitimate interest</strong> (providing the wellness check service you opted into) and <strong>consent</strong> (for optional permissions like step counting, and for personalized ads).</p>
 
 <h3>For Users in California (CCPA)</h3>
 <p>Under the California Consumer Privacy Act, California residents have the right to:</p>
@@ -270,8 +302,9 @@
   <li>Invite code</li>
   <li>Heartbeat schedule time</li>
   <li>Last heartbeat transmission time</li>
+  <li>Nicknames and phone numbers a guardian enters for connected people</li>
 </ul>
-<p>This data is deleted when you uninstall the app or delete your account.</p>
+<p>This data is deleted when you uninstall the app or delete your account. On iOS, a randomly generated device identifier is also kept in the Keychain so the same device can be recognized after the app is reinstalled. It contains no personal information and is not used for tracking.</p>
 
 <h2>9. International Data Transfers</h2>
 <p>Our servers may be located outside your country of residence. By using the Service, you consent to the transfer of your information to servers in other jurisdictions. We ensure that appropriate safeguards are in place to protect your data in accordance with this Privacy Policy.</p>
