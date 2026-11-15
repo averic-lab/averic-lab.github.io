@@ -107,6 +107,8 @@ window.addEventListener('DOMContentLoaded', () => {
     lock: () => `<div class="lockscr"><div class="d">${new Intl.DateTimeFormat(LOC, { month: 'long', day: 'numeric', weekday: 'long', timeZone: 'UTC' }).format(new Date(Date.UTC(2026, 8, 19, 18, 3)))}</div><div class="tm">${fmtShort(18, 3)}</div></div>`,
     notif: () => `${sb}<div class="appbar">${S.n_title}</div><div class="pbody npad"><div class="plist">${S.n_today}</div>
       ${nc('normal', L.mom, S.b_auto, 18, 2)}${nc('normal', S.dad, S.b_auto, 17, 48)}${nc('normal', L.daughter, S.b_auto, 17, 35)}</div>`,
+    notif3: () => `${sb}<div class="appbar">${S.n_title}</div><div class="pbody npad"><div class="plist">${S.n_today}</div>
+      ${nc('caution', S.dad, S.b_caution, 19, 5)}${nc('normal', L.mom, S.b_auto, 18, 2)}${nc('normal', L.daughter, S.b_auto, 17, 35)}</div>`,   // Duo 1·2 — 대시보드(아빠 주의 · 엄마 안전)와 맞춘 알림 목록
     sos: () => `${sb}<div class="appbar">${S.n_title}</div><div class="pbody npad"><div class="plist">${S.n_today}</div>
       ${nc('urgent', L.mom, S.b_sos, 18, 42, `<div class="loc">${S.view_loc}</div>`)}${nc('normal', S.dad, S.b_auto, 17, 48)}</div>`,
     add: () => `${sb}<div class="appbar">${S.add_title}</div><div class="pbody apad">
@@ -117,6 +119,20 @@ window.addEventListener('DOMContentLoaded', () => {
       <div class="cbtn">${S.add_connect}</div></div>`,
   };
   document.querySelectorAll('.pw[data-screen]').forEach(pw => {
+    if (pw.classList.contains('fold-pw')) {   // 접은 iPhone Duo — 겉 화면 하나
+      pw.innerHTML = `<div class="fold"><div class="slab"><i class="spine"></i><div class="bz"><div class="screen app">${DUOSCREEN[pw.dataset.screen]()}</div><i class="cam"></i></div><i class="sbtn s1"></i><i class="sbtn s2"></i></div></div>`; return;
+    }
+    if (pw.dataset.screen.includes('+')) {   // iPhone Duo 펼침 — 두 화면이 주름을 사이에 두고 V자(.dark 면 다크 모드)
+      const [a, c] = pw.dataset.screen.split('+'), dk = pw.classList.contains('dark') ? ' dark' : '';
+      const sc = (k, cls) => window.DUOSCREEN && DUOSCREEN[k]
+        ? `<div class="screen app ${cls}${dk}">${DUOSCREEN[k]()}</div>`
+        : `<div class="screen ${cls}${dk}">${SCREEN[k]()}</div>`;
+      if (pw.classList.contains('flat-pw')) {   // 펼친 Duo 를 비스듬히(접힌 모습 없이 한 장의 넓은 화면)
+        pw.innerHTML = `<div class="flat"><div class="slab"><div class="bz">${sc(a, 'l')}${sc(c, 'r')}${pw.dataset.overlay ? `<div class="ovl">${DUOSCREEN[pw.dataset.overlay]()}</div>` : ''}</div><i class="sbtn"></i></div></div>`; return;
+      }
+      pw.innerHTML = `<div class="duo"><div class="half l"><div class="bz">${sc(a, 'l')}</div></div><div class="half r"><div class="bz">${sc(c, 'r')}</div><i class="sbtn s1"></i><i class="sbtn s2"></i></div></div><div class="duoshadow"></div>`;
+      return;
+    }
     pw.innerHTML = `<div class="phone"><i class="btn l1"></i><i class="btn l2"></i><i class="btn r1"></i>${pw.classList.contains('side') ? '<i class="edge"></i><i class="edgeb"></i>' : ''}<i class="island"></i><div class="screen">${SCREEN[pw.dataset.screen]()}</div></div>`;
   });
   document.querySelectorAll('[data-build]').forEach(el => {
@@ -150,6 +166,11 @@ window.addEventListener('DOMContentLoaded', () => {
   if (L.dir === 'rtl') document.querySelectorAll('[data-pair]').forEach(el => {
     const x = parseFloat(el.style.left); el.style.left = 'auto'; el.style.right = (8 * 430 - 860 + x) + 'px'; el.style.transformOrigin = '100% 0';
     el.style.transform = el.style.transform.replace(/rotateY\((-?[\d.]+)deg\)/, (m, a) => `rotateY(${-a}deg)`).replace(/rotate\((-?[\d.]+)deg\)/, (m, a) => `rotate(${-a}deg)`);
+  });
+  // 듀오 5번(연결 화면): 글자가 오른쪽에서 시작하므로 기기와 코드·별칭 카드도 좌우를 맞바꾼다
+  if (L.dir === 'rtl') document.querySelectorAll('#s5 .pw, #s5 .codechip').forEach(el => {
+    const r = el.getBoundingClientRect(); el.style.left = (669 - r.right) + 'px';
+    el.style.transform = (el.style.transform || '').replace(/rotate\((-?[\d.]+)deg\)/, (m, a) => `rotate(${-a}deg)`);
   });
   // 글자가 길어지는 언어(독일어·러시아어 등): 문구 상자가 아래 그림을 침범하면 글자를 줄인다
   const fit = () => document.querySelectorAll('.tb').forEach(tb => {

@@ -31,7 +31,15 @@ const duration = await page.evaluate(() => window.DURATION);
 // 페이지가 window.CRF 로 화질을 낮출 수 있다 — 컨페티가 가득한 모션 그래픽(h.html)은 18 이면 편당 16MB 라 저장소에 20개 언어를 쌓을 수 없다
 const crf = process.env.CRF || await page.evaluate(() => window.CRF || 18);   // 환경변수 CRF=18 로 유튜브용 고화질 원본을 따로 만든다(저장소 사본과 별개)
 
-const shot = async ms => { await page.evaluate(m => window.render(m), ms); return page.screenshot({ type: 'png' }); };
+// 캡처: CDP Page.captureScreenshot(optimizeForSpeed) — PNG 압축만 빠르게 해 결과는 page.screenshot 과 픽셀까지 같다(무손실,
+// 2026-10-17 삶의 선 편에서 PSNR inf 로 확인). 150프레임 74초 → 22초. 예전 방식이 필요하면 SLOWSHOT=1.
+const cdp = await page.context().newCDPSession(page);
+const shot = async ms => {
+  await page.evaluate(m => window.render(m), ms);
+  if (process.env.SLOWSHOT) return page.screenshot({ type: 'png' });
+  const r = await cdp.send('Page.captureScreenshot', { format: 'png', optimizeForSpeed: true, clip: { x: 0, y: 0, width: 540, height: 960, scale: 2 } });
+  return Buffer.from(r.data, 'base64');
+};
 
 if (rest[0] === '--cues') {
   // 효과음 신호와 영상 길이 — audio.py 가 읽는다. 타임라인은 언어와 무관하므로 한 번만 뽑으면 된다.

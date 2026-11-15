@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>Duo 스토어 스크린샷</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="store.css">
+<link rel="stylesheet" href="duo.css">
+<link rel="stylesheet" href="duo_app.css">
+<script>
+  (function () { const q = k => (location.search.match(new RegExp('[?&]' + k + '=([\\w.-]+)')) || [])[1];
+    document.documentElement.style.setProperty('--H', (q('h') || 951) + 'px');
+    document.write('<script src="duo_app/' + (q('lang') || 'ko') + '.js"><\/script>');
+    document.addEventListener('DOMContentLoaded', () => { const e = document.getElementById(q('s')); if (e) e.classList.add('on'); }); })();
+</script>
+</head><body>
+
+<!-- ═══ 1·2 — 파노라마 한 쌍: 펼친 Duo 의 주름이 두 장의 경계(x=669)에 온다. 2번에서는 3번과 겹치는 설명 문장(p2_s)을 뺀다 ═══ -->
+<section class="sl pano" id="s12"><div class="bgx" style="--k:0"></div><div class="dotsx"></div>
+  <div class="brand"><img src="app_icon.png" alt=""><span data-s="brand"></span></div>
+  <div class="tb" data-max="380" style="left:34px; top:104px; width:600px"><h1 class="h" style="font-size:52px" data-s="p1_h"></h1><p class="sub" data-s="p1_s"></p></div>
+  <div class="tb" data-max="380" style="left:703px; top:104px; width:600px"><h2 class="h" style="font-size:44px" data-s="p2_h"></h2><p class="o" data-s="p2_o"></p></div>
+  <div class="pw duo-pw" data-screen="dash+notif" style="left:289px; top:388px; --hw:380px; --hh:543px; --pz:.7697"></div>
+  <div class="push float" data-build="push:mom" style="left:22px; top:700px; width:300px; transform:scale(1.1); transform-origin:0 0;"></div>
+  <div class="bubble dadb" style="left:1032px; top:560px"><span class="av"></span><span class="t" data-s="bubble"></span></div>
+</section>
+
+<!-- ═══ 3 — 매일 도착 ═══ -->
+<section class="sl" id="s3"><div class="bgx" style="--k:2"></div><div class="dotsx"></div>
+  <div class="tb" data-max="340" style="left:34px; top:104px; width:600px"><h2 class="h" style="font-size:46px" data-s="p3_h"></h2><p class="sub" data-s="p3_s"></p></div>
+  <!-- 저녁 6시 — 엄마의 안부(오후 6:02)와 걸음수가 앱을 열지 않아도 도착한 화면(다크 모드) + 7일 연속 도착 -->
+  <div class="pw flat-pw dark" data-screen="dash1+notif1" data-overlay="chart30" style="left:44px; top:372px; --pz:.5594"></div>
+  <div class="grp" style="left:84px; top:735px; transform:scale(1.3); z-index:5"><div class="weekcard" data-build="week" style="left:0; top:0"></div></div>
+</section>
+
+<!-- ═══ 4 — 단계별 알림 ═══ -->
+<section class="sl" id="s4"><div class="bgx" style="--k:3"></div><div class="dotsx"></div>
+  <div class="tb" data-max="330" style="left:34px; top:104px; width:600px"><h2 class="h" style="font-size:46px" data-s="p4_h"></h2><p class="sub" data-s="p4_s"></p></div>
+  <div class="pw duo-pw" data-screen="dashC+notifC" style="left:34px; top:560px; --hw:300px; --hh:430px; --pz:.6015"></div>
+  <div class="grp" style="left:22px; top:330px; transform:scale(1.12); transform-origin:0 0; z-index:5">
+    <div class="ncstack" style="left:0; top:0">
+      <div class="ncw" data-build="nc:caution" style="transform:rotate(-2deg)"></div>
+      <div class="ncw" data-build="nc:warning" style="margin-left:14px; transform:rotate(-1deg)"></div>
+      <div class="ncw" data-build="nc:urgent" style="margin-left:28px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 5 — 코드로 연결: 왼쪽 연결 화면 | 오른쪽 대시보드 ═══ -->
+<section class="sl" id="s5"><div class="bgx" style="--k:4"></div><div class="dotsx"></div>
+  <div class="tb" data-max="330" style="left:34px; top:104px; width:600px"><h2 class="h" style="font-size:46px" data-s="p5_h"></h2><p class="sub" data-s="p5_s"></p></div>
+  <div class="pw fold-pw" data-screen="add" style="left:306px; top:392px; --fw:340px; --fh:470px; --pz:.6524"></div>
+  <div class="codechip" style="left:16px; top:548px; width:300px; transform:rotate(-3deg); z-index:5"><small data-s="add_code_label"></small><b style="font-size:34px; letter-spacing:4px">K7M-4PXR</b></div>
+  <div class="codechip sm" style="left:30px; top:700px; width:250px; transform:rotate(2deg); z-index:5"><small data-s="add_alias_label"></small><b data-k="mom"></b></div>
+</section>
+
+<!-- ═══ 6 — 한눈에 ═══ -->
+<section class="sl" id="s6"><div class="bgx" style="--k:5"></div><div class="dotsx"></div>
+  <div class="tb" data-max="340" style="left:34px; top:104px; width:600px"><h2 class="h" style="font-size:46px" data-s="p6_h"></h2><p class="sub" data-s="p6_s"></p></div>
+  <div class="grp" style="left:20px; top:370px; transform:scale(1.42);"><div class="fam" data-build="fam" style="left:0; top:0"></div></div>
+</section>
+
+<!-- ═══ 7 — 도움 요청과 위치 ═══ -->
+<section class="sl" id="s7"><div class="bgx" style="--k:6"></div><div class="dotsx"></div>
+  <div class="tb" data-max="360" style="left:34px; top:104px; width:600px"><h2 class="h" style="font-size:46px" data-s="p7_h"></h2><p class="sub" data-s="p7_s"></p></div>
+  <div class="pw duo-pw" data-screen="dashU+notifS" style="left:34px; top:590px; --hw:300px; --hh:430px; --pz:.6015"></div>
+  <div class="grp" style="left:24px; top:372px; transform:scale(1.28); z-index:5"><div class="ncw" data-build="nc:sos" style="left:0; top:0; transform:rotate(-1.5deg)"></div></div>
+  <div class="grp" style="left:300px; top:520px; transform:scale(1.0) rotate(2deg); z-index:5"><div class="mapcard" style="left:0; top:0">
+    <div class="mh"><i></i><span data-s="map_title"></span></div>
+    <svg viewBox="0 0 340 170"><rect width="340" height="170" fill="#E9EFE6"/>
+      <rect x="0" y="0" width="120" height="70" fill="#DCE7D8"/><rect x="190" y="90" width="150" height="80" fill="#D6E4EE"/>
+      <g stroke="#fff" stroke-width="12" fill="none" stroke-linecap="round"><path d="M-10 100 L350 70"/><path d="M130 -10 L170 180"/><path d="M-10 160 L350 150"/></g>
+      <g stroke="#fff" stroke-width="5" fill="none"><path d="M240 -10 L270 180"/><path d="M-10 40 L350 20"/></g>
+      <circle cx="170" cy="86" r="34" fill="rgba(229,57,53,.16)"/><circle cx="170" cy="86" r="14" fill="rgba(229,57,53,.3)"/>
+      <path d="M170 104 C158 90 154 82 154 74 A16 16 0 0 1 186 74 C186 82 182 90 170 104 Z" fill="#E53935"/><circle cx="170" cy="74" r="6" fill="#fff"/></svg>
+    <div class="mi"><span data-s="map_subject"></span><b data-k="mom"></b><span data-s="map_time"></span><b data-w="18:42"></b><span data-s="map_acc"></span><b>±18m</b></div>
+  </div></div>
+</section>
+
+<!-- ═══ 8 — 개인정보 · 20개 언어 ═══ -->
+<section class="sl" id="s8"><div class="bgx" style="--k:7"></div><div class="dotsx"></div>
+  <div class="tb" data-maxsel=".langblk" style="left:34px; top:104px; width:600px"><h2 class="h" style="font-size:46px" data-s="p8_h"></h2><p class="sub" data-s="p8_s"></p>
+    <div id="chips" style="margin-top:22px; display:flex; gap:12px"></div>
+    <div class="locchip" style="margin-top:12px; box-sizing:border-box; font-size:18px"><span style="font-size:22px">📍</span><span data-s="p8_loc"></span></div></div>
+  <div class="langblk t-shadow" style="left:34px; width:600px; bottom:56px; text-align:center">
+    <div style="font-size:30px; font-weight:800; letter-spacing:-.5px; margin-bottom:14px; color:#fff" data-s="p8_lang"></div>
+    <div class="greet" data-build="greet"></div>
+    <div class="endbrand"><img src="app_icon.png" alt=""><b>Anbu</b><span data-k="brand_sub"></span></div>
+  </div>
+</section>
+
+<script src="duo_screens.js"></script>
+<script src="store.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dadb .av').forEach(e => { e.textContent = Array.from(S.dad)[0]; });
+    const c = document.getElementById('chips'); if (c) c.innerHTML = S.p8_chips.map(t => `<div class="chip" style="flex:auto"><i>✕</i><s>${t}</s></div>`).join('');
+  });
+</script>
+</body></html>

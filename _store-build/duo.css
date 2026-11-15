@@ -1,0 +1,105 @@
+/* iPhone Duo 스토어 스크린샷 — 일반 폰 스크린샷(store.html)과 같은 구성 9장.
+   속 화면 669×951 @3x = 2007×2853. 겉 화면은 같은 구성을 669×973 으로 그린 뒤 1398×2034 로 줄인다(비율이 거의 같다).
+   1·2 번은 한 장의 파노라마(1338 폭)를 반으로 자른다 — 펼친 Duo 의 주름이 두 장의 경계에 온다. */
+html, body { margin: 0; background: #0b0e28; }
+body { width: auto !important; height: auto !important; overflow: hidden; }
+.sl { display: none; position: relative; overflow: hidden; width: 669px; height: var(--H); color: #fff8f0; --acc: #FFB547;
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif; }
+.sl.pano { width: 1338px; }
+.sl.on { display: block; }
+.sl > * { position: absolute; }
+/* 배경 — 일반 폰 파노라마와 같은 하루의 흐름(남색 밤 → 해질녘)을 9장 폭으로 늘린다 */
+.sl .bgx { top: 0; height: 100%; width: 6021px; left: calc(var(--k) * -669px);
+  background:
+    radial-gradient(800px 800px at 467px 187px, rgba(88,104,230,.34), transparent 70%),
+    radial-gradient(960px 960px at 1213px 900px, rgba(255,181,71,.12), transparent 70%),
+    linear-gradient(90deg, #0a0d27 0%, #11164a 25%, #1f2766 45%, #3a2f78 62%, #5d3f80 78%, #9a5a7c 90%, #cf7a68 100%); }
+.sl .dotsx { inset: 0; background-image: radial-gradient(rgba(255,255,255,.07) 1.2px, transparent 1.4px); background-size: 26px 26px;
+  -webkit-mask-image: linear-gradient(180deg, #000, transparent 55%); mask-image: linear-gradient(180deg, #000, transparent 55%); }
+.sl .brand { left: 34px; top: 40px; font-size: 22px; } .sl .brand img { width: 40px; height: 40px; border-radius: 11px; }
+.sl .tb .sub { font-size: 21px; } .sl .tb .o { font-size: 28px; }
+.grp { transform-origin: 0 0; } .grp > * { position: absolute; }
+
+/* ── 펼친 iPhone Duo — 두 반쪽이 주름에서 만나 V 자로 살짝 접힌 정면 모습 ── */
+.pw.duo-pw { --hw: 300px; --hh: 422px; z-index: 2; width: calc(var(--hw) * 2); height: var(--hh); }
+/* 3D 로 기울인 요소는 브라우저가 낮은 해상도로 그려 글자가 흐려진다 — 2배로 그린 뒤 1/2 로 줄여 선명하게(3배는 축소 때 막대 가장자리가 울퉁불퉁해진다) */
+.pw.duo-pw .duo { zoom: var(--zz, 2); transform: scale(calc(1 / var(--zz, 2))); transform-origin: 0 0; }
+.duo { position: relative; width: calc(var(--hw) * 2); height: var(--hh); perspective: 1700px; perspective-origin: 50% 45%; transform-style: preserve-3d; }
+.duo .half { position: absolute; top: 0; width: var(--hw); height: 100%; box-sizing: border-box; padding: 4px;
+  /* 테두리 — anbu-3d 엔딩의 흰 크롬: 밝은 은백색 띠 + 둘레로 번지는 흰빛 */
+  padding: 5px;
+  background: linear-gradient(var(--sd, 100deg), #ffffff 0%, #dfe4ee 16%, #f9fafd 32%, #b5bccb 50%, #ffffff 64%, #d3d9e4 80%, #ffffff 100%);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.95), 0 0 7px 1px rgba(255,255,255,.9), 0 0 22px 4px rgba(215,226,255,.6), 0 0 70px 12px rgba(140,160,255,.32); }
+.duo .half.l { left: 0; border-radius: 40px 4px 4px 40px; transform-origin: 100% 50%; transform: rotateY(15deg); }
+.duo .half.r { --sd: 80deg; left: var(--hw); border-radius: 4px 40px 40px 4px; transform-origin: 0 50%; transform: rotateY(-15deg); }
+.duo .bz { position: relative; width: 100%; height: 100%; box-sizing: border-box; background: #050507; overflow: hidden; }
+.duo .half.l .bz { border-radius: 36px 2px 2px 36px; padding: 9px 0 9px 9px; }
+.duo .half.r .bz { border-radius: 2px 36px 36px 2px; padding: 9px 9px 9px 0; }
+.duo .screen { width: 100%; height: 100%; border-radius: 0; zoom: var(--z, 1); }
+.duo .half.l .screen { border-radius: 28px 0 0 28px; } .duo .half.r .screen { border-radius: 0 28px 28px 0; }
+/* 주름 — 화면이 접히는 선을 아주 옅게, 반쪽마다 주름 쪽으로 살짝 어둡게(빛이 비스듬히 닿는다) */
+.duo .half .bz::after { content: ""; position: absolute; top: 0; bottom: 0; width: 46%; pointer-events: none; z-index: 3; }
+.duo .half.l .bz::after { right: 0; background: linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,.10)); }
+.duo .half.r .bz::after { left: 0; background: linear-gradient(90deg, rgba(0,0,0,.06), rgba(0,0,0,0)); }
+.duo .half .bz::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 4;
+  background: linear-gradient(118deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 26%, rgba(255,255,255,0) 72%, rgba(255,255,255,.06) 100%); }
+.duo .sbtn { position: absolute; right: -4px; width: 4px; border-radius: 0 3px 3px 0; background: linear-gradient(180deg, #ffffff, #c9d0dc 50%, #ffffff); box-shadow: 0 0 8px rgba(255,255,255,.8); }
+.duo .sbtn.s1 { top: 70px; height: 46px; } .duo .sbtn.s2 { top: 126px; height: 70px; }
+.duoshadow { position: absolute; left: 6%; right: 6%; bottom: -26px; height: 40px; border-radius: 50%; background: rgba(0,0,0,.55); filter: blur(22px); z-index: -1; }
+/* 두 화면에 상태 표시줄이 하나만 보이게 — 시각은 왼쪽, 배터리는 오른쪽 */
+.duo .half.l .statusbar span:last-child, .duo .half.r .statusbar span:first-child { visibility: hidden; }
+
+/* ── 다크 모드 화면(앱의 다크 테마와 같은 계열) ── */
+.screen.dark { background: #121416; color: #E4E6E8; }
+.screen.dark .statusbar, .screen.dark .appbar, .screen.dark .phead, .screen.dark .plist { color: #E4E6E8; }
+.screen.dark .psum, .screen.dark .scard .last, .screen.dark .chd span { color: #9AA0A6; }
+.screen.dark .plegend, .screen.dark .scard .act, .screen.dark .addbtn .t { color: #C4C8CC; }
+.screen.dark .scard { background: #1B2A22 !important; border-left-color: #4CAF50; }
+.screen.dark .scard.c2 { background: #2E2A14 !important; border-left-color: #F59E0B; }
+.screen.dark .scard .pill { background: rgba(76,175,80,.18); color: #81C784; }
+.screen.dark .ghost { background: #1E2124 !important; border-color: #2C3035 !important; }
+.screen.dark .plot i { background: rgba(140,155,255,.75); } .screen.dark .plot i.today { background: #FB8C00; }
+.screen.dark .n-steps { color: #AFC0FF; }
+.screen.dark .addbtn { border-color: rgba(200,200,200,.25); } .screen.dark .addbtn .circle { background: #24282C; color: #C4C8CC; }
+.screen.dark .nc { color: #E4E6E8; } .screen.dark .nc.normal { background: #1C2E21; } .screen.dark .nc .tm { color: #9FB0FF; }
+.screen.dark .nc.urgent { background: #3A1E21; } .screen.dark .nc.caution { background: #34301A; }
+
+
+/* ── 펼친 Duo 를 비스듬히 본 모습(접힌 부분 없이 한 장의 넓은 화면) — 왼쪽이 가깝고 오른쪽이 멀어진다 ── */
+.pw.flat-pw { --fw: 560px; --fh: 402px; z-index: 2; width: var(--fw); height: var(--fh); }
+.pw.flat-pw .flat { zoom: var(--zz, 2); transform: scale(calc(1 / var(--zz, 2))); transform-origin: 0 0; }   /* 3D 글자 흐림 방지(위 .duo 와 같은 이유) */
+.flat .slab { position: relative; width: var(--fw); height: var(--fh); box-sizing: border-box; padding: 5px; border-radius: 32px;
+  transform-origin: 0 50%; transform: perspective(1400px) rotateY(20deg) rotateX(5deg);
+  background: linear-gradient(100deg, #ffffff 0%, #dfe4ee 16%, #f9fafd 32%, #b5bccb 50%, #ffffff 64%, #d3d9e4 80%, #ffffff 100%);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.95), 0 0 7px 1px rgba(255,255,255,.9), 0 0 22px 4px rgba(215,226,255,.6), 0 0 70px 12px rgba(140,160,255,.32), 0 40px 70px -20px rgba(0,0,0,.7); }
+.flat .bz { width: 100%; height: 100%; box-sizing: border-box; padding: 9px; border-radius: 27px; background: #050507; display: flex; overflow: hidden; position: relative; }
+.flat .bz::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 8; border-radius: 27px;
+  background: linear-gradient(115deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,0) 75%, rgba(255,255,255,.05) 100%); }
+.flat .screen { flex: 1; min-width: 0; height: 100%; overflow: hidden; }
+.flat .screen.l { border-radius: 19px 0 0 19px; } .flat .screen.r { border-radius: 0 19px 19px 0; }
+.flat .half-l .statusbar span:last-child { visibility: hidden; }
+.flat .sbtn { position: absolute; right: -4px; top: 60px; width: 4px; height: 70px; border-radius: 0 3px 3px 0; background: linear-gradient(180deg, #ffffff, #c9d0dc 50%, #ffffff); box-shadow: 0 0 8px rgba(255,255,255,.8); }
+
+/* ── 접은 iPhone Duo(세로, 겉 화면) — 정면. 왼쪽 가장자리에 힌지 등뼈, 오른쪽 위 펀치홀 카메라 ── */
+.pw.fold-pw { --fw: 352px; --fh: 540px; z-index: 2; width: var(--fw); height: var(--fh); }
+.pw.fold-pw .fold { zoom: var(--zz, 2); transform: scale(calc(1 / var(--zz, 2))); transform-origin: 0 0; }
+.fold .slab { position: relative; width: var(--fw); height: var(--fh); box-sizing: border-box; padding: 5px 5px 5px 13px; border-radius: 30px 34px 34px 30px;
+  background: linear-gradient(100deg, #ffffff 0%, #dfe4ee 16%, #f9fafd 32%, #b5bccb 50%, #ffffff 64%, #d3d9e4 80%, #ffffff 100%);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.95), 0 0 7px 1px rgba(255,255,255,.9), 0 0 22px 4px rgba(215,226,255,.6), 0 0 70px 12px rgba(140,160,255,.32), 0 40px 70px -20px rgba(0,0,0,.7); }
+.fold .spine { position: absolute; left: 0; top: 0; bottom: 0; width: 12px; border-radius: 30px 0 0 30px;
+  background: linear-gradient(90deg, #aab2c2 0%, #ffffff 30%, #e7ebf2 55%, #b9c0cd 80%, #f4f6fa 100%);
+  box-shadow: inset -1px 0 0 rgba(0,0,0,.18); }
+.fold .spine::before, .fold .spine::after { content: ""; position: absolute; left: 3px; right: 3px; height: 1.5px; background: rgba(90,100,120,.35); }
+.fold .spine::before { top: 22%; } .fold .spine::after { bottom: 22%; }
+.fold .bz { width: 100%; height: 100%; box-sizing: border-box; padding: 9px; border-radius: 22px 29px 29px 22px; background: #050507; position: relative; overflow: hidden; }
+.fold .bz::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 8; border-radius: inherit;
+  background: linear-gradient(115deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,0) 75%, rgba(255,255,255,.05) 100%); }
+.fold .screen { width: 100%; height: 100%; border-radius: 14px 21px 21px 14px; overflow: hidden; }
+.fold .cam { position: absolute; z-index: 9; right: 24px; top: 17px; width: 9px; height: 9px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, #2a3350 0 2px, #050507 2.6px); box-shadow: 0 0 0 1.5px #050507; }
+.fold .sbtn { position: absolute; right: -4px; width: 4px; border-radius: 0 3px 3px 0; background: linear-gradient(180deg, #ffffff, #c9d0dc 50%, #ffffff); box-shadow: 0 0 8px rgba(255,255,255,.8); }
+.fold .sbtn.s1 { top: 92px; height: 46px; } .fold .sbtn.s2 { top: 150px; height: 70px; }
+
+/* 오른쪽→왼쪽 언어: 6배 확대한 기기 층이 문서 방향 때문에 왼쪽으로 밀려 화면 밖으로 나가므로 기기 껍데기는 항상 왼쪽→오른쪽.
+   앱 화면(.pane·대화상자) 안쪽은 아랍어 방향을 유지한다. */
+.pw.duo-pw, .pw.fold-pw, .pw.flat-pw { direction: ltr; }
+html[dir="rtl"] .pw .pane, html[dir="rtl"] .pw .dlgpane { direction: rtl; }

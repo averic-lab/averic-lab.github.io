@@ -1,0 +1,243 @@
+{
+ "_doc": "앱·서버 번역 파일에 없는 문구. names=보호자가 붙인 별칭(엄마·아빠·동생), now=OS 알림의 '지금'(shorts.json now 와 같음), head=엔딩(\\n 은 원하는 줄바꿈), dl=다운로드, store=스토어 검색 줄(ko 외는 shorts.json store 재사용, “Anbu” 부분이 분홍 강조), title=편 제목(사이트·유튜브). '안부' 용어는 shorts.json brand_sub 를 따른다.",
+ "ko": {
+  "names": {
+   "mom": "엄마",
+   "dad": "아빠",
+   "sib": "동생"
+  },
+  "now": "지금",
+  "dl": "다운로드",
+  "head": "아무것도 하지 않아도,\n매일 자동으로 안부는 도착합니다.",
+  "store": "App Store · Google Play에서 “Anbu” 검색",
+  "title": "아무것도 하지 않아도, 안부는 도착합니다"
+ },
+ "en": {
+  "names": {
+   "mom": "Mom",
+   "dad": "Dad",
+   "sib": "Sis"
+  },
+  "now": "now",
+  "dl": "Download",
+  "head": "No effort needed —\na wellness check arrives automatically, every day.",
+  "store": "Search “Anbu” in your app store",
+  "title": "No effort needed — the wellness check still arrives"
+ },
+ "ja": {
+  "names": {
+   "mom": "お母さん",
+   "dad": "お父さん",
+   "sib": "妹"
+  },
+  "now": "今",
+  "dl": "ダウンロード",
+  "head": "何もしなくても、\n毎日、自動で安否が届きます。",
+  "store": "ストアで「Anbu」を検索",
+  "title": "何もしなくても、安否は届きます"
+ },
+ "zh-CN": {
+  "names": {
+   "mom": "妈妈",
+   "dad": "爸爸",
+   "sib": "妹妹"
+  },
+  "now": "现在",
+  "dl": "下载",
+  "head": "什么都不用做，\n平安每天自动送达。",
+  "store": "在应用商店搜索“Anbu”",
+  "title": "什么都不用做，平安也会送达"
+ },
+ "zh-TW": {
+  "names": {
+   "mom": "媽媽",
+   "dad": "爸爸",
+   "sib": "妹妹"
+  },
+  "now": "現在",
+  "dl": "下載",
+  "head": "什麼都不用做，\n平安每天自動送達。",
+  "store": "在 App 商店搜尋「Anbu」",
+  "title": "什麼都不用做，平安也會送達"
+ },
+ "de": {
+  "names": {
+   "mom": "Mama",
+   "dad": "Papa",
+   "sib": "Schwester"
+  },
+  "now": "jetzt",
+  "dl": "Download",
+  "head": "Ganz ohne Zutun:\nJeden Tag kommt automatisch ein Lebenszeichen an.",
+  "store": "Im Store nach „Anbu“ suchen",
+  "title": "Ganz ohne Zutun – das Lebenszeichen kommt an"
+ },
+ "fr": {
+  "names": {
+   "mom": "Maman",
+   "dad": "Papa",
+   "sib": "Petite sœur"
+  },
+  "now": "maintenant",
+  "dl": "Télécharger",
+  "head": "Rien à faire :\ndes nouvelles arrivent automatiquement, chaque jour.",
+  "store": "Cherchez « Anbu » dans votre store",
+  "title": "Rien à faire : les nouvelles arrivent"
+ },
+ "es": {
+  "names": {
+   "mom": "Mamá",
+   "dad": "Papá",
+   "sib": "Hermanita"
+  },
+  "now": "ahora",
+  "dl": "Descargar",
+  "head": "Sin ningún esfuerzo:\ncada día llega un aviso, automáticamente.",
+  "store": "Busca «Anbu» en tu tienda de apps",
+  "title": "Sin ningún esfuerzo: el aviso llega"
+ },
+ "it": {
+  "names": {
+   "mom": "Mamma",
+   "dad": "Papà",
+   "sib": "Sorellina"
+  },
+  "now": "ora",
+  "dl": "Scarica",
+  "head": "Senza alcuno sforzo:\nogni giorno arriva un check-in, in automatico.",
+  "store": "Cerca «Anbu» nello store",
+  "title": "Senza alcuno sforzo, il check-in arriva"
+ },
+ "pt-BR": {
+  "names": {
+   "mom": "Mãe",
+   "dad": "Pai",
+   "sib": "Irmãzinha"
+  },
+  "now": "agora",
+  "dl": "Baixar",
+  "head": "Sem nenhum esforço:\ntodo dia chega um check-in, automaticamente.",
+  "store": "Procure “Anbu” na loja de apps",
+  "title": "Sem nenhum esforço, o check-in chega"
+ },
+ "ru": {
+  "names": {
+   "mom": "Мама",
+   "dad": "Папа",
+   "sib": "Сестрёнка"
+  },
+  "now": "сейчас",
+  "dl": "Скачать",
+  "head": "Ничего не нужно делать —\nотметка приходит каждый день автоматически.",
+  "store": "Найдите «Anbu» в магазине приложений",
+  "title": "Ничего не нужно делать — отметка всё равно придёт"
+ },
+ "nl": {
+  "names": {
+   "mom": "Mama",
+   "dad": "Papa",
+   "sib": "Zusje"
+  },
+  "now": "nu",
+  "dl": "Downloaden",
+  "head": "Zonder enige moeite:\nelke dag komt er automatisch een check-in.",
+  "store": "Zoek „Anbu” in je app store",
+  "title": "Zonder enige moeite komt de check-in"
+ },
+ "pl": {
+  "names": {
+   "mom": "Mama",
+   "dad": "Tata",
+   "sib": "Siostra"
+  },
+  "now": "teraz",
+  "dl": "Pobierz",
+  "head": "Nie trzeba nic robić —\ncodziennie automatycznie przychodzi znak życia.",
+  "store": "Wyszukaj „Anbu” w sklepie z aplikacjami",
+  "title": "Nie trzeba nic robić — znak życia i tak przychodzi"
+ },
+ "tr": {
+  "names": {
+   "mom": "Annem",
+   "dad": "Babam",
+   "sib": "Kardeşim"
+  },
+  "now": "şimdi",
+  "dl": "İndir",
+  "head": "Hiçbir şey yapmanıza gerek kalmadan\nher gün otomatik olarak haber gelir.",
+  "store": "Mağazada “Anbu” aratın",
+  "title": "Hiçbir şey yapmanıza gerek kalmadan haber gelir"
+ },
+ "vi": {
+  "names": {
+   "mom": "Mẹ",
+   "dad": "Bố",
+   "sib": "Em gái"
+  },
+  "now": "bây giờ",
+  "dl": "Tải về",
+  "head": "Không cần làm gì,\ntin bình an vẫn tự động đến mỗi ngày.",
+  "store": "Tìm “Anbu” trên kho ứng dụng",
+  "title": "Không cần làm gì, tin bình an vẫn đến"
+ },
+ "th": {
+  "names": {
+   "mom": "แม่",
+   "dad": "พ่อ",
+   "sib": "น้อง"
+  },
+  "now": "ตอนนี้",
+  "dl": "ดาวน์โหลด",
+  "head": "ไม่ต้องทำอะไรเลย\nการแจ้งว่าสบายดีก็มาถึงอัตโนมัติทุกวัน",
+  "store": "ค้นหา “Anbu” ในสโตร์",
+  "title": "ไม่ต้องทำอะไรเลย การแจ้งว่าสบายดีก็มาถึง"
+ },
+ "id": {
+  "names": {
+   "mom": "Ibu",
+   "dad": "Ayah",
+   "sib": "Adik"
+  },
+  "now": "sekarang",
+  "dl": "Unduh",
+  "head": "Tanpa perlu melakukan apa pun,\nkabar tiba otomatis setiap hari.",
+  "store": "Cari “Anbu” di toko aplikasi",
+  "title": "Tanpa perlu melakukan apa pun, kabar tetap tiba"
+ },
+ "sv": {
+  "names": {
+   "mom": "Mamma",
+   "dad": "Pappa",
+   "sib": "Lillasyster"
+  },
+  "now": "nu",
+  "dl": "Ladda ner",
+  "head": "Helt utan ansträngning:\nen incheckning kommer automatiskt varje dag.",
+  "store": "Sök efter ”Anbu” i appbutiken",
+  "title": "Helt utan ansträngning kommer incheckningen fram"
+ },
+ "hi": {
+  "names": {
+   "mom": "माँ",
+   "dad": "पापा",
+   "sib": "छोटी बहन"
+  },
+  "now": "अभी",
+  "dl": "डाउनलोड करें",
+  "head": "बिना किसी मेहनत के,\nहर दिन अपने-आप खैरियत पहुँचती है।",
+  "store": "ऐप स्टोर में “Anbu” खोजें",
+  "title": "बिना किसी मेहनत के, खैरियत पहुँच जाती है"
+ },
+ "ar": {
+  "names": {
+   "mom": "ماما",
+   "dad": "بابا",
+   "sib": "أختي"
+  },
+  "now": "الآن",
+  "dl": "تنزيل",
+  "head": "دون أي عناء،\nيصل الاطمئنان تلقائياً كل يوم.",
+  "store": "ابحث عن ”Anbu“ في متجر التطبيقات",
+  "title": "دون أي عناء، يصل الاطمئنان"
+ }
+}

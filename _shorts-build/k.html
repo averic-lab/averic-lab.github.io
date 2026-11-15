@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>숏폼 K — 엄마가 전화를 못 받은 이유 (손 그림 톤)</title>
+<!-- 손 그림 톤: 크림색 종이 위에 삐뚤한 크레용 선이 천천히 그려진다. 같은 소재(a.html 전화 안 받는 엄마)의 뒷이야기.
+     모든 움직임은 시간 t 의 함수(window.extra) — 벽시계·CSS animation·Math.random 을 쓰지 않는다.
+     선의 '떨림(boil)'은 흔들림 필터의 seed 를 1/8초마다 바꿔 손으로 다시 그린 것처럼 보이게 한다.
+     걸음수는 폰이 세는 값이라 엄마는 폰을 주머니에 넣고 다닌다(폰을 두고 나가면 걸음수가 쌓이지 않아 앞뒤가 안 맞는다). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&display=block">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="shorts.css">
+<style>
+  .v { background: #FBF5E9; color: #3b2a20; }
+  #art { position: absolute; inset: 0; width: 540px; height: 960px; }
+  .hk-cap { position: absolute; left: 65px; right: 65px; top: 104px; text-align: center;
+    font: 700 35px/1.3 'Gaegu', -apple-system, sans-serif; letter-spacing: -0.3px; color: #3b2a20;
+    word-break: keep-all; overflow-wrap: break-word; }
+  /* 알림 카드 — 앱 알림처럼 깔끔하게, 종이에 얹은 듯 살짝 기울인다 */
+  .hk-push { position: absolute; left: 70px; width: 400px; top: 404px; z-index: 6;
+    --base: rotate(-1.6deg); background: #fff; border: 2.5px solid #5a3e2b; border-radius: 20px;
+    padding: 14px 18px 15px; box-shadow: 5px 6px 0 rgba(90,62,43,.18); color: #1A1C1C;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
+  .hk-push .r { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #5f6470; font-weight: 600; }
+  .hk-push .r img { width: 24px; height: 24px; border-radius: 6px; }
+  .hk-push .r .nw { margin-inline-start: auto; font-weight: 500; font-size: 13px; color: #9AA0AE; }
+  .hk-push .ti { margin-top: 8px; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; }
+  .hk-push .bo { margin-top: 4px; font-size: 16.5px; line-height: 1.4; color: #3d4250; }
+  svg text { font-family: 'Gaegu', -apple-system, sans-serif; font-weight: 700; }
+</style></head>
+<body><div class="v">
+
+<svg id="art" viewBox="0 0 540 960" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="wob" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence id="wobT" type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="1"/>
+      <feDisplacementMap in="SourceGraphic" scale="4.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="paper"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/>
+      <feColorMatrix values="0 0 0 0 .35  0 0 0 0 .25  0 0 0 0 .15  0 0 0 .07 0"/></filter>
+    <radialGradient id="glow"><stop offset="0" stop-color="#F6B25A" stop-opacity=".55"/><stop offset="1" stop-color="#F6B25A" stop-opacity="0"/></radialGradient>
+    <clipPath id="win"><rect x="152" y="332" width="236" height="226"/></clipPath>
+  </defs>
+  <rect width="540" height="960" fill="#FBF5E9"/>
+  <rect width="540" height="960" filter="url(#paper)"/>
+
+  <g transform="translate(270 515) scale(1.12) translate(-270 -515)">
+  <g filter="url(#wob)" fill="none" stroke="#5a3e2b" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- ① 창가: 해·화분·찻잔 -->
+    <g id="s1">
+      <g clip-path="url(#win)"><g id="sun"><circle cx="300" cy="460" r="34" fill="#F6C445" stroke="#C98F2A"/>
+        <g stroke="#E0A93A" stroke-width="3"><path d="M300 410 v-14"/><path d="M336 425 l10 -10"/><path d="M350 460 h14"/><path d="M264 425 l-10 -10"/><path d="M250 460 h-14"/></g></g></g>
+      <path class="dr" pathLength="1" d="M152 332 H388 V558 H152 Z"/>
+      <path class="dr" pathLength="1" d="M270 332 V558 M152 445 H388"/>
+      <path class="dr" pathLength="1" d="M120 560 H420" stroke-width="5"/>
+      <g id="pot"><path class="dr fl" pathLength="1" d="M168 512 H232 L222 558 H178 Z" fill="#E8963C"/>
+        <path class="dr" pathLength="1" d="M200 512 C198 490 200 478 204 462 M200 500 C186 494 178 484 176 470 M201 496 C214 490 222 480 226 466" stroke="#4f7a45"/>
+        <path class="fl" d="M176 470 c-10 -2 -14 -12 -10 -18 c8 2 12 10 10 18 Z M226 466 c10 -2 14 -12 10 -18 c-8 2 -12 10 -10 18 Z M204 462 c-6 -8 -4 -18 2 -20 c4 8 2 16 -2 20 Z" fill="#7BAF6E" stroke="#4f7a45" stroke-width="2.4"/></g>
+      <g id="cup"><path class="dr fl" pathLength="1" d="M310 528 H360 C358 548 350 558 335 558 C320 558 312 548 310 528 Z" fill="#F3E1C7"/>
+        <path class="dr" pathLength="1" d="M360 534 C374 534 374 550 358 550"/>
+        <path id="steam1" d="M326 518 c-6 -8 6 -14 0 -22 c-6 -8 6 -14 0 -22" stroke="#b39a86" stroke-width="2.6"/>
+        <path id="steam2" d="M344 518 c-6 -8 6 -14 0 -22 c-6 -8 6 -14 0 -22" stroke="#b39a86" stroke-width="2.6"/></g>
+    </g>
+
+    <!-- ② 발자국이 시장으로, 걸음수가 올라간다 -->
+    <g id="s2">
+      <path id="trail" d="M110 700 C170 690 170 620 230 600 C300 578 300 520 360 500 C390 490 400 470 400 450" stroke="none"/>
+      <g id="feet" stroke="none" fill="#8a6a52"></g>
+      <g id="stall" transform="translate(-30 0)">
+        <path class="dr fl" pathLength="1" d="M330 360 H470 L462 396 H338 Z" fill="#F2D7B6"/>
+        <path class="fl" d="M346 360 L340 396 H356 L362 360 Z M378 360 L374 396 H390 L394 360 Z M410 360 L408 396 H424 L426 360 Z M442 360 L442 396 H458 L458 360 Z" fill="#D9604C" stroke="none"/>
+        <path class="dr" pathLength="1" d="M340 396 V440 M460 396 V440 M330 440 H470"/>
+        <path class="dr fl" pathLength="1" d="M362 440 C364 426 396 426 398 440 Z" fill="#D8B27C"/>
+        <g class="fl"><circle cx="372" cy="430" r="7" fill="#D9483B" stroke-width="2.4"/><circle cx="386" cy="428" r="7" fill="#E46B4A" stroke-width="2.4"/><circle cx="379" cy="420" r="6.5" fill="#D9483B" stroke-width="2.4"/></g>
+        <path class="dr fl" pathLength="1" d="M412 440 C414 428 446 428 448 440 Z" fill="#9CC46E"/>
+      </g>
+      <g id="cnt" transform="translate(150 410)">
+        <ellipse cx="-38" cy="-12" rx="9" ry="14" fill="#8a6a52" stroke="none" transform="rotate(-12 -38 -12)"/>
+        <text id="cntN" x="-18" y="0" font-size="46" fill="#3b2a20" stroke="none">0</text>
+      </g>
+    </g>
+
+    <!-- ③ 시장 소음 속 주머니에서 울리는 전화기 -->
+    <g id="s3">
+      <g id="noise" stroke="#9b8574" stroke-width="2.8"></g>
+      <g id="pocket">
+        <g id="pphone"><path class="fl" d="M232 392 H308 C314 392 316 396 316 402 V470 H224 V402 C224 396 226 392 232 392 Z" fill="#3f4656" stroke="#2d2a33"/>
+          <path d="M240 404 H300 V460 H240 Z" fill="#9fd0e8" stroke="none" opacity=".85"/></g>
+        <path class="dr fl" pathLength="1" d="M160 438 H380 C382 520 372 600 270 612 C168 600 158 520 160 438 Z" fill="#D9B48F"/>
+        <path class="dr" pathLength="1" d="M176 452 H364 C364 520 356 584 270 596 C184 584 176 520 176 452" stroke-dasharray="7 9" stroke-width="2.4"/>
+      </g>
+      <g id="rings" stroke="#E0A93A" stroke-width="3.2"></g>
+    </g>
+
+    <!-- ④ 멀리 있는 딸의 폰, 부재중, 엉킨 걱정 낙서 / ⑤ 알림 / ⑥ 발자국 선이 이어진다 -->
+    <g id="s4">
+      <g id="glowg" stroke="none"><circle cx="270" cy="510" r="230" fill="url(#glow)"/></g>
+      <g id="scrib" stroke="#D9483B" stroke-width="2.6" opacity=".9"></g>
+      <g id="dphone">
+        <path class="dr fl" pathLength="1" d="M214 372 H326 C336 372 340 378 340 388 V632 C340 642 336 648 326 648 H214 C204 648 200 642 200 632 V388 C200 378 204 372 214 372 Z" fill="#ffffff"/>
+        <path class="dr" pathLength="1" d="M252 388 H288"/>
+        <g id="miss"><path class="fl" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#5a3e2b" stroke="none" transform="translate(226 482) scale(2.6)"/>
+          <circle class="fl" cx="300" cy="482" r="18" fill="#D9483B" stroke="#a8302a" stroke-width="2.4"/>
+          <text id="missN" x="300" y="491" text-anchor="middle" font-size="26" fill="#fff" stroke="none">3</text></g>
+      </g>
+    </g>
+
+    <g id="s6">
+      <g id="home6"><path class="dr fl" pathLength="1" d="M96 640 H136 L130 676 H102 Z" fill="#E8963C"/>
+        <path class="dr" pathLength="1" d="M116 640 C114 626 116 618 120 608" stroke="#4f7a45"/></g>
+      <path id="link" class="dr" pathLength="1" d="M136 662 C210 650 220 560 290 560 C350 560 330 470 392 446" stroke="#E0A93A" stroke-width="4.2" stroke-dasharray="1 1"/>
+      <g id="feet6" stroke="none" fill="#8a6a52"></g>
+      <g id="ph6"><path class="dr fl" pathLength="1" d="M384 358 H430 C436 358 438 362 438 368 V448 C438 454 436 458 430 458 H384 C378 458 376 454 376 448 V368 C376 362 378 358 384 358 Z" fill="#fff"/>
+        <path id="tick" class="dr" pathLength="1" d="M394 410 L404 422 L424 394" stroke="#4f9a5a" stroke-width="5"/></g>
+    </g>
+  </g>
+  </g>
+</svg>
+
+<p class="hk-cap" data-t="0.2,4.3" data-fx="up" data-h="k1"></p>
+<p class="hk-cap" data-t="4.7,9.5" data-fx="up" data-h="k2"></p>
+<p class="hk-cap" data-t="9.9,13.5" data-fx="up" data-h="k3"></p>
+<p class="hk-cap" data-t="13.9,17.6" data-fx="up" data-h="k4"></p>
+<p class="hk-cap" data-t="17.9,22.4" data-fx="up" data-h="k5"></p>
+<p class="hk-cap" data-t="22.8,27.3" data-fx="up" data-h="k6"></p>
+
+<div class="hk-push" data-t="17.8,23.0" data-fx="down">
+  <div class="r"><img src="img/app-icon.png" alt=""><span data-k="app_name"></span><span class="nw" data-k="now"></span></div>
+  <div class="ti" data-k="push_title"></div>
+  <div class="bo" id="pbody"></div>
+</div>
+
+</div>
+<script src="engine.js"></script>
+<script>
+  const END = 27.6;
+  window.DURATION = END + 6.8;                 // 공통 엔딩 6.8초(문장 2줄 → 로고 +4.0초)
+  // 효과음 — 알림이 뜰 때만(README 「소리」). 엔딩 로고 차임은 모든 편 공통.
+  window.SFX = [
+    { t: 17.8, file: '1_푸시알림/positive-notification.mp3', duck: true },
+    { t: END + 4.0, file: '3_페이지_넘김/page-forward-single-chime.mp3' },
+  ];
+  fillText();
+  const STEPS = 1482;                          // 고령자 1천 보대(README — 딱 1,000 은 피한다)
+  document.getElementById('pbody').textContent = pushBody(L.mom, STEPS);
+  mountEnding(END, L.k_q1, L.k_q2);
+  // 엔딩 로고는 실제 앱 아이콘(README — 하트 도형을 앱 아이콘으로 쓰지 않는다)
+  document.querySelector('.end .brand svg').outerHTML = '<img src="img/app-icon.png" width="72" height="72" style="display:block;margin:0 auto 12px;border-radius:16px" alt="">';
+
+  const $ = id => document.getElementById(id);
+  const NS = 'http://www.w3.org/2000/svg';
+  const mk = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
+  const cl = (x, a = 0, b = 1) => Math.min(Math.max(x, a), b);
+  const lin = (t, a, d) => cl((t - a) / d);
+  const ez = p => 1 - Math.pow(1 - cl(p), 3);
+  let seed = 9; const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let x = Math.imul(seed ^ seed >>> 15, 1 | seed); x = x + Math.imul(x ^ x >>> 7, 61 | x) ^ x; return ((x ^ x >>> 14) >>> 0) / 4294967296; };
+
+  // 장면 창: [등장, 퇴장] — 0.45초 교차
+  const SCN = { s1: [-1, 4.6], s2: [4.4, 9.9], s3: [9.7, 13.9], s4: [13.6, 23.0], s6: [22.8, END + 0.2] };
+  const vis = (t, [a, b]) => Math.min(ez((t - a) / 0.45), 1 - ez((t - b) / 0.45));
+
+  // 선이 그려지는 효과 — 장면마다 class="dr" 경로를 차례로(순서대로 0.32초 간격, 하나 0.8초)
+  const drawSets = {};
+  for (const id of Object.keys(SCN)) drawSets[id] = Array.from($(id).querySelectorAll('.dr'));
+  const drawStart = { s1: 0.15, s2: 4.6, s3: 9.8, s4: 13.7, s6: 22.9 };
+  function drawScene(id, t) {
+    drawSets[id].forEach((p, i) => {
+      const k = p.id === 'link' ? lin(t, 23.6, 2.8) : p.id === 'tick' ? ez(lin(t, 26.4, 0.5)) : ez(lin(t, drawStart[id] + i * 0.32, 0.8));
+      p.style.strokeDasharray = '1 1';
+      p.style.strokeDashoffset = 1 - k;
+      // 채움은 선이 거의 다 그려진 뒤 크레용처럼 번진다
+      if (p.classList.contains('fl')) p.style.fillOpacity = ez(lin(t, drawStart[id] + i * 0.32 + 0.55, 0.5));
+    });
+    $(id).querySelectorAll('.fl:not(.dr)').forEach(e => { e.style.fillOpacity = ez(lin(t, drawStart[id] + 0.9, 0.6)); e.style.strokeOpacity = ez(lin(t, drawStart[id] + 0.9, 0.6)); });
+  }
+
+  // ② 발자국 — 경로를 따라 좌우 번갈아
+  const trail = $('trail'), TL = trail.getTotalLength(), FEET = [];
+  for (let i = 0; i < 16; i++) {
+    const s = (i + 0.5) / 16 * TL, p = trail.getPointAtLength(s), q = trail.getPointAtLength(Math.min(s + 2, TL));
+    const ang = Math.atan2(q.y - p.y, q.x - p.x), side = i % 2 ? 1 : -1;
+    const x = p.x + Math.cos(ang + Math.PI / 2) * 7 * side, y = p.y + Math.sin(ang + Math.PI / 2) * 7 * side;
+    FEET.push(mk('ellipse', { cx: x.toFixed(1), cy: y.toFixed(1), rx: 4.6, ry: 7.2, transform: `rotate(${(ang * 180 / Math.PI + 90).toFixed(1)} ${x.toFixed(1)} ${y.toFixed(1)})` }, $('feet')));
+  }
+  const link = $('link'), LL = link.getTotalLength(), FEET6 = [];
+  for (let i = 0; i < 12; i++) {
+    const s = (i + 0.6) / 12.5 * LL, p = link.getPointAtLength(s), q = link.getPointAtLength(Math.min(s + 2, LL));
+    const ang = Math.atan2(q.y - p.y, q.x - p.x), side = i % 2 ? 1 : -1;
+    const x = p.x + Math.cos(ang + Math.PI / 2) * 11 * side, y = p.y + Math.sin(ang + Math.PI / 2) * 11 * side;
+    FEET6.push(mk('ellipse', { cx: x.toFixed(1), cy: y.toFixed(1), rx: 3.6, ry: 5.8, transform: `rotate(${(ang * 180 / Math.PI + 90).toFixed(1)} ${x.toFixed(1)} ${y.toFixed(1)})` }, $('feet6')));
+  }
+
+  // ③ 소음 낙서(지그재그·음표) — 고정 난수
+  seed = 21; const NOISE = [];
+  for (let i = 0; i < 14; i++) {
+    const cx = 100 + rnd() * 330, cy = 330 + rnd() * 330;
+    if (Math.abs(cx - 270) < 110 && cy > 380 && cy < 630) { i--; continue; }   // 주머니 위는 비운다
+    let d = `M${cx.toFixed(0)} ${cy.toFixed(0)}`;
+    if (i % 3 === 2) d += ' m-6 0 a6 5 0 1 0 12 0 a6 5 0 1 0 -12 0 m12 0 v-26 l14 6';   // 음표
+    else for (let k = 0; k < 4; k++) d += ` l${(9 + rnd() * 6).toFixed(0)} ${(k % 2 ? 10 : -10)}`;
+    NOISE.push(mk('path', { d, pathLength: 1, 'stroke-dasharray': '1 1', 'stroke-dashoffset': 1 }, $('noise')));
+  }
+  const RINGS = [0, 1, 2].map(() => mk('path', { d: '' }, $('rings')));
+
+  // ④ 걱정 낙서 — 폰 둘레를 엉키며 도는 고리들
+  seed = 77; const SCRIB = [];
+  for (let n = 0; n < 8; n++) {
+    const cx = 270 + (rnd() - 0.5) * 70, cy = 510 + (rnd() - 0.5) * 90, sx = 0.76 + rnd() * 0.14;
+    let a = rnd() * 6.28; const pts = [];
+    for (let k = 0; k < 18; k++) { a += 0.55 + rnd() * 0.3; const r = 105 + rnd() * 55; pts.push([cx + Math.cos(a) * r * sx, cy + Math.sin(a) * r]); }
+    let d = `M${pts[0][0].toFixed(0)} ${pts[0][1].toFixed(0)}`;
+    for (let k = 1; k < pts.length - 1; k++) { const m = [(pts[k][0] + pts[k + 1][0]) / 2, (pts[k][1] + pts[k + 1][1]) / 2]; d += ` Q${pts[k][0].toFixed(0)} ${pts[k][1].toFixed(0)} ${m[0].toFixed(0)} ${m[1].toFixed(0)}`; }
+    SCRIB.push(mk('path', { d, pathLength: 1, 'stroke-dasharray': '1 1', 'stroke-dashoffset': 1 }, $('scrib')));
+  }
+
+  window.extra = t => {
+    $('wobT').setAttribute('seed', 1 + (Math.floor(t * 8) % 6));      // 손 그림 떨림(boil)
+    for (const id in SCN) { const o = vis(t, SCN[id]); $(id).style.opacity = o.toFixed(3); if (o > 0) drawScene(id, t); }
+
+    // ① 해가 떠오르고 김이 오른다
+    $('sun').setAttribute('transform', `translate(0 ${(-58 * ez(lin(t, 0.4, 3.0))).toFixed(1)})`);
+    ['steam1', 'steam2'].forEach((s, i) => { const k = (t * 0.9 + i * 0.5) % 1; $(s).setAttribute('transform', `translate(0 ${(-k * 14).toFixed(1)})`); $(s).style.opacity = (Math.sin(k * Math.PI) * ez(lin(t, 1.6, 0.6))).toFixed(2); });
+
+    // ② 발자국 한 걸음씩 + 걸음수
+    const fk = lin(t, 5.0, 3.6);
+    FEET.forEach((f, i) => { f.style.opacity = ez((fk * FEET.length - i) / 1.2).toFixed(2); });
+    $('cntN').textContent = fmtNum(Math.round(STEPS * ez(fk)));
+
+    // ③ 전화기 떨림·벨 파동 — 소음 낙서가 커질수록 파동이 묻힌다
+    const nk = lin(t, 10.3, 2.4);
+    NOISE.forEach((p, i) => { p.style.strokeDashoffset = 1 - ez((nk * NOISE.length - i * 0.6) / 2); });
+    const shake = t > 9.9 && t < 13.6 ? Math.sin(t * 2 * Math.PI * 9) * 3.4 : 0;
+    $('pphone').setAttribute('transform', `rotate(${shake.toFixed(2)} 270 470) translate(0 ${(-30 * ez(lin(t, 9.9, 0.6))).toFixed(1)})`);
+    RINGS.forEach((r, i) => {
+      const ph = ((t - 10.0) / 0.9 + i / 3) % 1, rr = 30 + ph * 70;
+      r.setAttribute('d', `M${(270 - rr).toFixed(0)} ${(380 - rr * 0.35).toFixed(0)} A${rr.toFixed(0)} ${rr.toFixed(0)} 0 0 1 ${(270 + rr).toFixed(0)} ${(380 - rr * 0.35).toFixed(0)}`);
+      r.style.opacity = t < 10.0 ? 0 : ((1 - ph) * (1 - 0.75 * nk)).toFixed(2);
+    });
+
+    // ④ 엉키는 걱정 낙서 → ⑤ 알림이 오면 한 줄씩 풀려 사라진다
+    SCRIB.forEach((p, i) => {
+      const grow = ez(lin(t, 14.2 + i * 0.42, 1.4)), undo = ez(lin(t, 18.4 + (SCRIB.length - 1 - i) * 0.22, 0.9));
+      p.style.strokeDashoffset = (1 - grow * (1 - undo)).toFixed(3);
+    });
+    $('glowg').style.opacity = ez(lin(t, 18.2, 1.6)).toFixed(2);
+    $('miss').style.opacity = (ez(lin(t, 14.4, 0.5)) * (1 - ez(lin(t, 17.8, 0.5)))).toFixed(2);
+
+    // ⑥ 발자국 선이 딸의 폰까지 이어지고 체크
+    const lk = lin(t, 23.6, 2.8);
+    FEET6.forEach((f, i) => { f.style.opacity = ez((lk * FEET6.length - i) / 1.2).toFixed(2); });
+  };
+</script>
+</body></html>
