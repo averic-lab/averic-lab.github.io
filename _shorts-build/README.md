@@ -56,7 +56,8 @@ VIDEOS=neighbor-friends ./render_all.sh ko             # 그 편만(쉼표로 �
 4. ⚠️⚠️ **단 2026-10-10 이후 날짜의 편은 유튜브에 올라가기 전까지 사이트 어디에도 나오지 않는다**(사용자 지시).
    `i18n/build.py` 의 `YOUTUBE_GATE_FROM` 이 날짜로 자동으로 거른다 — 홈 해질녘·영상 페이지·사용설명·검토 페이지 전부.
    publish.json 에 그 (편, 언어)의 youtube_id 가 생기면 다음 빌드에서 **그 언어만** 유튜브 플레이어로 나타난다(포스터 jpg 필요, mp4 불필요).
-   그 전에는 mp4·jpg 를 커밋하지 않는다(링크가 없어도 URL 로 받을 수 있다). 예외는 그 편에 `"after_youtube": false`.
+   그 전에는 jpg 를 커밋하지 않는다(링크가 없어도 URL 로 받을 수 있다). 예외는 그 편에 `"after_youtube": false`.
+   ⚠️ **새 편의 mp4 는 유튜브 뒤에도 커밋하지 않는다**(2026-11-15 사용자 결정) — `.gitignore` 의 `media/shorts/*/*.mp4` 가 막는다. 유튜브로 재생하므로 필요 없다. 이전에 커밋된 mp4(홈 해질녘 등)는 계속 추적된다. `after_youtube: false` 편만 `git add -f`.
 
 ## 소리 (배경음악 · 효과음)
 

@@ -2,17 +2,13 @@ __pycache__/
 
 # 숏폼 음원 원본(Mixkit) — 라이선스가 파일 단독 재배포를 금지한다.
 # media/ 는 그대로 공개되는 폴더라 커밋하면 averic.co.kr 에서 내려받을 수 있게 된다.
-# 영상에 섞어 넣은 결과물(media/shorts/*.mp4)만 공개한다.
 media/bgm/
 media/sfx/
 
-# 3D 앱 소개 편(anbu-3d)은 언어당 약 29MB 라 영상 파일을 저장소에 두지 않는다.
-# 유튜브에 먼저 올리고, 사이트(/{언어}/shorts.html)는 publish.json 의 youtube_id 로 재생한다 — 저장소엔 jpg 만.
-media/shorts/*/anbu-3d*.mp4
-# 시험 렌더 잔재
-media/shorts/*/anbu3d_*.mp4
+# 쇼츠 mp4 는 저장소에 두지 않는다(2026-11-15 사용자 결정). 새 편은 유튜브에 먼저 올리고
+# 사이트(/{언어}/shorts.html)는 publish.json 의 youtube_id 로 재생한다 — 저장소엔 포스터 jpg 만.
+# 이 규칙 이전에 커밋된 mp4(홈 해질녘 두 편 등)는 계속 추적되며 다시 렌더하면 그대로 커밋된다.
+# 유튜브 전에 사이트에 보여야 하는 편("after_youtube": false)만 git add -f 로 넣는다.
+media/shorts/*/*.mp4
 # 배경음악 고르기용 후보 원본(Mixkit) — 위 media/bgm/ 과 같은 이유로 커밋 금지
 media/shorts/*/bgm-후보/
-
-# 삶의 선 쇼츠(life-line, 세로판·가로판) — 영상 파일은 저장소에 두지 않는다(언어당 약 150MB). 유튜브에 올린 뒤 사이트는 youtube_id 로 재생한다.
-media/shorts/*/life-line*.mp4
