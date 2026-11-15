@@ -1,0 +1,12 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Ignore the output video from Git but not videos you import into src/.
+out
+
+# 음원 원본은 라이선스상 커밋 금지 (../README.md 「소리」)
+public/*.mp3
+public/*.wav
+public/*.m4a

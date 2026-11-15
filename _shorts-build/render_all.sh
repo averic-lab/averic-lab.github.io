@@ -17,6 +17,8 @@ for l in sys.argv[1].split():
     for v in cfg["videos"]:
         if only and v["id"] not in only:
             continue
+        if v.get("engine") == "remotion":   # Remotion 편은 remotion/ 에서 렌더한다(remotion/CLAUDE.md)
+            continue
         print(l, v["page"], v["id"])
 PY
 )
@@ -29,9 +31,9 @@ render_one() {
   echo "완료 $lang/$id"
 }
 export -f render_one
-echo "$JOBS" | xargs -P 4 -L 1 bash -c 'render_one "$0" "$1" "$2"'
+[ -n "$JOBS" ] && echo "$JOBS" | xargs -P 4 -L 1 bash -c 'render_one "$0" "$1" "$2"'
 # 소리 — 모든 편(편에서 "audio": false 만 제외). 배경음악 공통 + 편마다 효과음. 영상은 다시 인코딩하지 않는다.
-for id in $(python3 -c 'import json,os;o=[x for x in os.environ.get("VIDEOS","").split(",") if x];print(" ".join(v["id"] for v in json.load(open("shorts.json"))["videos"] if v.get("audio") is not False and (not o or v["id"] in o)))'); do
+for id in $(python3 -c 'import json,os;o=[x for x in os.environ.get("VIDEOS","").split(",") if x];print(" ".join(v["id"] for v in json.load(open("shorts.json"))["videos"] if v.get("audio") is not False and v.get("engine") != "remotion" and (not o or v["id"] in o)))'); do
   python3 audio.py "$id" $LANGS
 done
 python3 gen.py
