@@ -38,6 +38,28 @@
         "sv": "Att leva ensam är…",
         "hi": "अकेले जीना…",
         "ar": "أن تعيش وحدك يعني…"
+    }},
+    {"id": "before-departure-3d", "date": "2026-11-17", "titles": {
+        "ko": "떠나기 전 이것 하나만 챙기세요",
+        "en": "Pack this before you go",
+        "ja": "出発前の必需品",
+        "zh-CN": "出发前的必需品",
+        "zh-TW": "出發前的必需品",
+        "de": "Vor der Abreise unverzichtbar",
+        "fr": "L’indispensable avant de partir",
+        "es": "Lo imprescindible antes de partir",
+        "it": "L’indispensabile prima di partire",
+        "pt-BR": "Indispensável antes de viajar",
+        "ru": "Что важно взять перед отъездом",
+        "nl": "Onmisbaar vóór vertrek",
+        "pl": "Niezbędnik przed wyjazdem",
+        "tr": "Yola çıkmadan önce olmazsa olmaz",
+        "vi": "Món cần có trước khi đi xa",
+        "th": "ของจำเป็นก่อนเดินทาง",
+        "id": "Wajib dibawa sebelum berangkat",
+        "sv": "Ett måste före avresan",
+        "hi": "जाने से पहले ज़रूरी",
+        "ar": "ضروري قبل السفر"
     }}
   ],
   "langs": {
