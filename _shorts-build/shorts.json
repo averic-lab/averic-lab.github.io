@@ -60,7 +60,8 @@
         "sv": "Ett måste före avresan",
         "hi": "जाने से पहले ज़रूरी",
         "ar": "ضروري قبل السفر"
-    }}
+    }},
+    {"id": "disaster-72h", "date": "2026-11-20", "titles": {"ko": "72시간 생존배낭, 가족의 안부는요?", "en": "72-hour survival kit — but what about your family?", "ja": "72時間の非常用持ち出し袋、家族の安否は？", "zh-CN": "72小时应急包，家人平安吗？", "zh-TW": "72小時緊急避難包，家人平安嗎？", "de": "Notgepäck für 72 Stunden – und Ihre Familie?", "fr": "Un kit de survie pour 72 heures — et vos proches ?", "es": "Mochila de emergencia para 72 horas, ¿y tu familia?", "it": "Kit di emergenza per 72 ore, e la tua famiglia?", "pt-BR": "Kit de emergência para 72 horas — e a sua família?", "ru": "Тревожный чемоданчик на 72 часа — а как же близкие?", "nl": "Een noodpakket voor 72 uur – en je familie?", "pl": "Plecak ewakuacyjny na 72 godziny, a co z bliskimi?", "tr": "72 saatlik deprem çantası, peki ya aileniz?", "vi": "Túi khẩn cấp 72 giờ, còn gia đình bạn thì sao?", "th": "กระเป๋าฉุกเฉิน 72 ชั่วโมง แล้วครอบครัวล่ะ?", "id": "Tas siaga 72 jam, bagaimana dengan keluarga?", "sv": "Krisväska för 72 timmar – och din familj?", "hi": "72 घंटे की इमरजेंसी किट, पर परिवार का क्या?", "ar": "حقيبة طوارئ لـ72 ساعة، فماذا عن عائلتك؟"}}
   ],
   "langs": {
     "ko": {
