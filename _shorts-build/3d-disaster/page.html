@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Oswald:wght@400;500;700&family=Anton&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=Inter:wght@400;600;800&family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js"}}</script>
+<style>html,body{margin:0;background:#000}canvas{width:auto;height:96vh;display:block;margin:0 auto}</style></head><body>
+<canvas id="c"></canvas>
+<script type="module">
+// 공통 세로 페이지: ?seg=s1&s=64  →  segs/s1/style.js 를 불러 1080×1920 으로 돌린다.
+import * as THREE from 'three'; window.THREE = THREE;
+const q = new URLSearchParams(location.search), seg = q.get('seg');
+const load = (s) => new Promise((ok, no) => { const e = document.createElement('script'); e.src = s + '?v=' + Date.now(); e.onload = ok; e.onerror = () => no(new Error('load ' + s)); document.head.appendChild(e); });
+await load('lib/stage.js'); await load('lib/sound.js'); await load('lib/caption.js'); await load('lib/common.js');
+await load(`segs/${seg}/style.js`);
+const style = window.STYLES[window.STYLES.length - 1];
+// 한글은 쓰는 글자를 미리 불러야 렌더에 빠지지 않는다
+const text = (style.koText || '') + ' 가나다라마바사아자차카타파하 0123456789,.·!?‘’';
+const specs = (style.fonts || []).concat(['900 80px "Noto Sans KR"', '700 60px "Noto Sans KR"', '400 40px "Noto Sans KR"']);
+await Promise.all(specs.map((f) => document.fonts.load(f, text).catch(() => null)));
+await document.fonts.ready;
+const S = await K.run(document.getElementById('c'), style, { samples: +(q.get('s') || 64), width: 1080, height: 1920 });
+window.S = S; window.seek = (t) => S.seek(t); window.DURATION = style.duration;
+// 효과음만(음악·배경 없음) 오프라인 렌더 → Float32 인터리브 base64
+window.renderSfx = async () => {
+  const r = await SOUND.renderOffline((k) => style.sound && style.sound(k), style.duration, 48000, { voiceover: false });
+  const u8 = new Uint8Array(r.inter.buffer); let s = ''; for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000));
+  return { b64: btoa(s), peak: r.peak };
+};
+window.READY = true;
+</script></body></html>
