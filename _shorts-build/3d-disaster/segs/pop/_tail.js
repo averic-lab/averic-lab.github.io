@@ -100,9 +100,10 @@
         for (let j = 0; j < h; j += 6) { ctx.fillStyle = 'rgba(0,0,0,0.07)'; ctx.fillRect(0, j, w, 3); }
         const cx = w / 2, iy = (CD / 2 + ICON.z) * CPX, s = ICON.s * CPX;
         ctx.fillStyle = 'rgba(8,24,25,0.55)'; ctx.beginPath(); ctx.roundRect(cx - s / 2 - 8, iy - s / 2 - 8, s + 16, s + 16, s * 0.24); ctx.fill();   // 아이콘 홈
+        const BR = ANBU.S().brand;   // 한국어 '안부', 그 밖 'Anbu'
         ctx.font = `900 ${1.05 * CPX}px "Noto Sans KR"`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.fillText('안부', cx + 6, (CD / 2 + 1.25) * CPX + 8);
-        ctx.fillStyle = '#f1e2bf'; ctx.fillText('안부', cx, (CD / 2 + 1.25) * CPX);
+        ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.fillText(BR, cx + 6, (CD / 2 + 1.25) * CPX + 8);
+        ctx.fillStyle = '#f1e2bf'; ctx.fillText(BR, cx, (CD / 2 + 1.25) * CPX);
       });
       coverTex.center.set(0.5, 0.5); coverTex.rotation = Math.PI;   // 덮개가 등뼈를 축으로 뒤집히므로 그림을 180° 돌려 둔다
       const cover = new THREE.Group(); book.add(cover);

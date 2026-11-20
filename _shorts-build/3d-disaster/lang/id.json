@@ -1,0 +1,84 @@
+{
+ "lang": "id",
+ "tags": [
+  "Serangan siber terhadap fasilitas energi",
+  "Gempa besar, lalu tsunami",
+  "Gletser runtuh, banjir menerjang desa",
+  "Jaringan dibobol, layanan publik lumpuh",
+  "Tanpa listrik dan pemanas: musim dingin di masa perang",
+  "Tas siaga untuk bertahan 72 jam setelah bencana"
+ ],
+ "alert": {
+  "title": "Peringatan Darurat",
+  "intro": "Akibat serangan peretasan dari luar, sistem publik berikut tidak berfungsi:",
+  "items": [
+   "Layanan pemerintah daring",
+   "Panggilan darurat 112",
+   "Kendali lampu lalu lintas",
+   "Sistem rumah sakit pemerintah"
+  ],
+  "outro": "Tunggu informasi selanjutnya."
+ },
+ "phone4": [
+  "Tidak dapat",
+  "terhubung"
+ ],
+ "end": [
+  "Orang tersayang selalu bilang,",
+  "“Aku baik-baik saja.”",
+  "Tapi apakah mereka",
+  "benar-benar baik-baik saja?",
+  ""
+ ],
+ "store": [
+  "Cari “",
+  "Anbu",
+  "” di toko aplikasi"
+ ],
+ "alias": [
+  "Ibu",
+  "Ayah"
+ ],
+ "brand": "Anbu",
+ "now": "sekarang",
+ "app": {
+  "title": "Anbu Pendamping",
+  "checking": "Sedang memantau kabar\n2 orang.",
+  "summary": "Ringkasan hari ini",
+  "legendSafe": "Aman: 1",
+  "legendCaution": "Perhatian: 1",
+  "list": "Orang tersayang",
+  "pillSafe": "✅ Aman",
+  "pillCaution": "Perhatian",
+  "activity": "Aktivitas: Aktif",
+  "steps": "Langkah",
+  "last7": "7 hari terakhir",
+  "lastCheck": "Kabar terakhir: 2 jam lalu",
+  "add": "Tambah orang tersayang",
+  "nav": [
+   "Beranda",
+   "Koneksi",
+   "Notifikasi",
+   "Pengaturan"
+  ],
+  "safetyNeeded": "Perlu diperiksa",
+  "callNow": "Telepon sekarang",
+  "confirmSafety": "Konfirmasi aman",
+  "viewLoc": "🗺️ Lihat lokasi",
+  "mapTitle": "Lokasi darurat",
+  "subjLabel": "Orang tersayang",
+  "capturedLabel": "Dicatat pukul",
+  "accLabel": "Akurasi",
+  "openExternal": "Buka di aplikasi peta",
+  "stepsBody": "Hari ini berjalan 6.240 langkah."
+ },
+ "srv": {
+  "autoTitle": "✅ Kabar hari ini diterima",
+  "emTitle": "🚨 Minta bantuan darurat",
+  "emBody": "Orang tersayang Anda meminta bantuan. Segera periksa."
+ },
+ "steps": "6.240",
+ "battery": "85%",
+ "captured": "2026-11-20 21:42",
+ "accuracy": "±20m"
+}

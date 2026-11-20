@@ -1,0 +1,84 @@
+{
+ "lang": "fr",
+ "tags": [
+  "Cyberattaque contre des sites énergétiques",
+  "Un séisme majeur, puis un tsunami",
+  "Un glacier s’effondre, un village sous les eaux",
+  "Réseaux piratés, services publics à l’arrêt",
+  "Sans électricité ni chauffage : l’hiver en guerre",
+  "Un sac d’urgence pour tenir 72 heures"
+ ],
+ "alert": {
+  "title": "Alerte d’urgence",
+  "intro": "À la suite d’une attaque informatique extérieure, les systèmes publics suivants sont hors service :",
+  "items": [
+   "Démarches administratives en ligne",
+   "Appels au 112",
+   "Gestion des feux de circulation",
+   "Informatique des hôpitaux publics"
+  ],
+  "outro": "Attendez de nouvelles consignes."
+ },
+ "phone4": [
+  "Connexion",
+  "impossible"
+ ],
+ "end": [
+  "Nos proches disent toujours",
+  "« Je vais bien. »",
+  "Mais vont-ils",
+  "vraiment bien ?",
+  ""
+ ],
+ "store": [
+  "Cherchez « ",
+  "Anbu",
+  " » dans votre store"
+ ],
+ "alias": [
+  "Maman",
+  "Papa"
+ ],
+ "brand": "Anbu",
+ "now": "maintenant",
+ "app": {
+  "title": "Anbu Aidant",
+  "checking": "Proches suivis\nen ce moment : 2",
+  "summary": "Les nouvelles du jour",
+  "legendSafe": "Tout va bien : 1",
+  "legendCaution": "Attention : 1",
+  "list": "Mes proches",
+  "pillSafe": "✅ Tout va bien",
+  "pillCaution": "Attention",
+  "activity": "Activité : Active",
+  "steps": "Pas",
+  "last7": "7 derniers jours",
+  "lastCheck": "Dernières nouvelles : il y a 2 h",
+  "add": "Ajouter un proche",
+  "nav": [
+   "Accueil",
+   "Connexions",
+   "Alertes",
+   "Réglages"
+  ],
+  "safetyNeeded": "Vérifiez que tout va bien",
+  "callNow": "Appeler",
+  "confirmSafety": "Confirmer la sécurité",
+  "viewLoc": "🗺️ Voir la position",
+  "mapTitle": "Position d'urgence",
+  "subjLabel": "Proche",
+  "capturedLabel": "Relevée à",
+  "accLabel": "Précision",
+  "openExternal": "Ouvrir dans une app de cartes",
+  "stepsBody": "6 240 pas aujourd'hui."
+ },
+ "srv": {
+  "autoTitle": "✅ Nouvelles du jour reçues",
+  "emTitle": "🚨 Demande d'aide urgente",
+  "emBody": "Votre proche a demandé de l'aide. Veuillez vérifier immédiatement."
+ },
+ "steps": "6 240",
+ "battery": "85 %",
+ "captured": "2026-11-20 21:42",
+ "accuracy": "±20m"
+}

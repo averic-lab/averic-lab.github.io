@@ -30,17 +30,12 @@
 - e1 painted: s0 의 BRUSH·SURFACE 필터를 복사(붓 반경 `BRUSH_R=5` — 글자 가독성 때문에 s0 의 8보다 작게), 배경을 새벽 남보라·호박빛으로. 책장 넘김(page.png)은 뺐다. 매끈한 스튜디오판은 `out/e1_v3a_phone.js.bak`·`out/e1_v3b_studio.mp4`.
 - 조립: pop→e1 교차 0.45초.
 
-## 다국어·업로드 체크리스트 (2026-11-20 시작 — 사용자: "다국어 영상 → 유튜브·네이버 클립 업로드 → 홈페이지 반영")
-한국어 3차+4차 사용자 승인("좋다", 2026-11-20). 이어 갈 때 이 목록부터.
-- [x] 음악 `media/bgm/no-turning-back.mp3` + `LICENSE-증빙.md` 행(아티스트는 Mixkit 페이지에서 확인 필요)
-- [x] e2 대상자 이름 지수 → 아빠(e1 긴급 카드와 일치) — 한국어 e2 재렌더·재조립 필요
-- [ ] 한국어 소스 커밋(mp4·음원·land.json 제외)
-- [ ] 다국어 장치: 3d-departure 의 `lib/i18n.js`·`page.html?lang=`·`render.mjs`(LANGID → out/<lang>/)·`assemble`·`make_lang.sh` 를 가져온다. 화면 글자 = 앱/서버 번역(`../data/<lang>.js` 의 app·srv·jsrv) + 새 문구 `lang/d72.json`(꼬리표 6·배낭 꼬리표·재난 문자·phone4·엔딩 5칸·스토어 문구)
-- [ ] 새 문구 번역: 용어집 → 검색(나라별 긴급 번호·재난 문자 일반 명칭) → 어드바이저
-- [ ] 숫자·시각 언어별(Intl), 아랍어 RTL(카드·배너·e2 화면 오른쪽 정렬), 글꼴(일·중 = JP/SC/TC 가 KR 보다 앞)
-- [ ] e2 언어별 나라 도착(LON0/LAT0·범위·경로 표, 한국 장식은 ko 만) — US·JP·BR·SA 정지 화면으로 먼저 증명, 커지면 사용자에게 묻기
-- [ ] 관문: de·ru·ar·th·hi·ja·zh-TW 16샘플 정지 화면(가장 빽빽한 순간)
-- [ ] 19개 언어 렌더(한 번에 Metal 1개, 언어별 done 마커) → `../.mix/hq/disaster-72h-<lang>.mp4` + 썸네일 `SNS Uploads/videos/<lang>/`
-- [ ] 업로드 문구 초안(aside-publish copy-rules) → **사용자 승인** → metadata_final, 공개 방식(즉시/예약) 사용자 결정
-- [ ] 유튜브 20편 + 네이버 클립(한국어) — aside-publish
-- [ ] 공개 뒤 홈페이지: shorts.json(youtube_only)·포스터 540×960·i18n/build.py → 페이지·포스터만 커밋
+## 다국어·업로드 — 완료 (2026-11-20)
+한국어 3차+4차 승인("좋다") → 19개 언어 렌더 → 20편 업로드·공개 → 홈페이지 반영까지 끝났다.
+- 다국어 장치: `page.html?lang=` → `lang/<lang>.json`(`tools/gen_strings.py` 가 앱 dart·서버 messages.py·`../data/<lang>.js` + 새 문구 `lang/new.json` 으로 만든다). 글꼴 setter 를 고쳐 JP/SC/TC/Thai/Devanagari/Arabic 을 KR 앞에 둔다. 아랍어는 `ctx.direction='rtl'` + 배치 반전.
+- e2 도착지: `tools/gen_land.py <world-atlas 폴더>` → `segs/e2/land/<lang>.json`(28MB, **커밋 안 함** — 다시 만들 수 있다). 도시 표는 그 파일 `CITY`.
+- 렌더: `tools/run_all.sh`(언어별 done 마커, Metal 1개씩) → `tools/make_lang.sh <lang>` 가 pop·e1·e2·e3 → 조립 → `../.mix/hq/disaster-72h-<lang>.mp4` + 썸네일(`SNS Uploads/videos/<lang>/`). s0·효과음은 공용. 20편 모두 91.25초, -22.0 LUFS.
+- 업로드(유튜브 20편 공개 + 네이버 클립 한국어): ID 는 `SNS Uploads/publish.json` 의 `disaster-72h/<lang>`. 한국어 `uxJt1OQqO1M`.
+- 인스타 릴스 `Df8tDIrsbME`·스레드 `Df81480iQYG`(한국어, 해시태그만).
+- 홈페이지: averic-lab `c4bafb7`(20개 언어 shorts.html + 포스터).
+- ⚠️ 튀르키예어 유튜브 태그 칸에서 `ı` 가 `I` 로 바뀌어 들어갔다(`yalnIz yaşamak` 등). 제목·설명은 정상. 고치려면 Aside 로 태그만 다시 입력.

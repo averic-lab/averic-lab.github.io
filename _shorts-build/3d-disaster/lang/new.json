@@ -1,0 +1,129 @@
+{
+  "_doc": "「72시간」 영상에만 있는 새 문구(앱·서버 번역에 없는 것). 화면의 앱 문구는 앱·서버 번역에서 가져온다(tools/gen_strings.py). tags = 팝업북 꼬리표 5개 + 생존배낭 꼬리표, alert = 긴급 재난 문자(items 2번째 = 그 나라의 실제 긴급 번호 — 2026-11-20 검색 확인), phone4 = 팝업북 휴대폰 화면 두 줄, end = 엔딩 첫 카드 5칸(0·1 = 첫 문장 두 줄, 2·4 = 굵은 잉크, 3 = 구리 박 강조, 빈 칸 허용), alias = 엄마·아빠(별칭).",
+  "ko": {
+    "tags": ["에너지 시설을 노린 사이버 공격", "강진, 그리고 쓰나미", "무너진 빙하, 마을을 덮친 홍수", "통신망 침투, 멈춰 버린 공공 서비스", "끊긴 전기와 난방, 전쟁 속의 겨울", "재난 후 72시간을 버티는 생존배낭"],
+    "alert": { "title": "긴급 재난 문자", "intro": "외부 해킹 공격으로 다음 공공 시스템이 중단되었습니다.", "items": ["정부 민원 전산망", "119 신고 접수", "교통 신호 관제", "공공 병원 전산"], "outro": "추가 안내 시까지 대기하십시오." },
+    "phone4": ["서비스에", "연결할 수 없습니다"],
+    "end": ["가족들은 늘", "“난 괜찮아”라고 말합니다.", "하지만", "정말 괜찮은", "걸까요?"],
+    "store": ["스토어에서 안부 ‘", "Anbu", "’ 검색"],
+    "alias": ["엄마", "아빠"]
+  },
+  "en": {
+    "tags": ["Cyberattack on energy facilities", "A major earthquake, then a tsunami", "A glacier collapses, a flood hits a village", "Networks breached, public services down", "No power, no heat: winter in wartime", "A 72-hour survival kit for after a disaster"],
+    "alert": { "title": "Emergency Alert", "intro": "Due to an external hacking attack, the following public systems are down.", "items": ["Government online services", "911 dispatch", "Traffic signal control", "Public hospital systems"], "outro": "Stand by for further instructions." },
+    "phone4": ["Can’t connect", "to service"],
+    "end": ["Our loved ones always say", "“I’m fine.”", "But are they", "really okay?", ""],
+    "alias": ["Mom", "Dad"]
+  },
+  "ja": {
+    "tags": ["エネルギー施設を狙ったサイバー攻撃", "大地震、そして津波", "崩れた氷河、村をのみ込む洪水", "通信網への侵入、止まった公共サービス", "途絶えた電気と暖房、戦時下の冬", "災害後の72時間をしのぐ非常用持ち出し袋"],
+    "alert": { "title": "緊急速報", "intro": "外部からのハッキング攻撃により、次の公共システムが停止しています。", "items": ["行政手続きシステム", "119番通報", "交通信号の制御", "公立病院のシステム"], "outro": "続報があるまで待機してください。" },
+    "phone4": ["サービスに", "接続できません"],
+    "end": ["家族はいつも", "「大丈夫だよ」と言います。", "でも", "本当に大丈夫", "なのでしょうか？"],
+    "alias": ["お母さん", "お父さん"]
+  },
+  "zh-CN": {
+    "tags": ["针对能源设施的网络攻击", "强震，随后是海啸", "冰川崩塌，洪水吞没村庄", "通信网络被入侵，公共服务停摆", "断电断暖，战火中的冬天", "撑过灾后72小时的应急包"],
+    "alert": { "title": "紧急预警信息", "intro": "因外部黑客攻击，以下公共系统已中断。", "items": ["政务服务平台", "119·120 报警受理", "交通信号控制", "公立医院信息系统"], "outro": "请等待进一步通知。" },
+    "phone4": ["无法连接", "到服务"],
+    "end": ["家人总是说", "“我没事。”", "但是", "真的没事", "吗？"],
+    "alias": ["妈妈", "爸爸"]
+  },
+  "zh-TW": {
+    "tags": ["鎖定能源設施的網路攻擊", "強震，接著是海嘯", "冰川崩塌，洪水吞沒村莊", "通訊網路遭入侵，公共服務停擺", "斷電斷暖，戰火中的冬天", "撐過災後72小時的緊急避難包"],
+    "alert": { "title": "緊急警報訊息", "intro": "因外部駭客攻擊，下列公共系統已中斷。", "items": ["政府線上服務", "119 報案受理", "交通號誌控制", "公立醫院資訊系統"], "outro": "請等候進一步通知。" },
+    "phone4": ["無法連線", "到服務"],
+    "end": ["家人總是說", "「我沒事。」", "但是", "真的沒事", "嗎？"],
+    "alias": ["媽媽", "爸爸"]
+  },
+  "de": {
+    "tags": ["Cyberangriff auf Energieanlagen", "Starkes Erdbeben, dann ein Tsunami", "Gletscher bricht ab, Flut trifft ein Dorf", "Netze gehackt, Behördendienste stehen still", "Ohne Strom und Heizung: Winter im Krieg", "Notgepäck für 72 Stunden nach einer Katastrophe"],
+    "alert": { "title": "Notfallwarnung", "intro": "Durch einen Hackerangriff von außen sind folgende öffentliche Systeme ausgefallen:", "items": ["Online-Behördendienste", "Notruf 112", "Ampelsteuerung", "IT öffentlicher Kliniken"], "outro": "Warten Sie auf weitere Anweisungen." },
+    "phone4": ["Keine Verbindung", "zum Dienst"],
+    "end": ["Unsere Liebsten sagen immer", "„Mir geht’s gut.“", "Aber geht es ihnen", "wirklich gut?", ""]
+  },
+  "fr": {
+    "tags": ["Cyberattaque contre des sites énergétiques", "Un séisme majeur, puis un tsunami", "Un glacier s’effondre, un village sous les eaux", "Réseaux piratés, services publics à l’arrêt", "Sans électricité ni chauffage : l’hiver en guerre", "Un sac d’urgence pour tenir 72 heures"],
+    "alert": { "title": "Alerte d’urgence", "intro": "À la suite d’une attaque informatique extérieure, les systèmes publics suivants sont hors service :", "items": ["Démarches administratives en ligne", "Appels au 112", "Gestion des feux de circulation", "Informatique des hôpitaux publics"], "outro": "Attendez de nouvelles consignes." },
+    "phone4": ["Connexion", "impossible"],
+    "end": ["Nos proches disent toujours", "« Je vais bien. »", "Mais vont-ils", "vraiment bien ?", ""]
+  },
+  "es": {
+    "tags": ["Ciberataque contra instalaciones energéticas", "Un gran terremoto y después un tsunami", "Se derrumba un glaciar y la riada arrasa un pueblo", "Redes infiltradas, servicios públicos paralizados", "Sin luz ni calefacción: invierno en guerra", "Una mochila de emergencia para resistir 72 horas"],
+    "alert": { "title": "Alerta de emergencia", "intro": "Debido a un ataque informático externo, estos sistemas públicos han dejado de funcionar:", "items": ["Trámites públicos en línea", "Llamadas al 112", "Control de semáforos", "Sistemas de hospitales públicos"], "outro": "Espere nuevas instrucciones." },
+    "phone4": ["No se puede", "conectar"],
+    "end": ["Nuestros seres queridos siempre dicen", "«Estoy bien».", "Pero ¿de verdad", "están bien?", ""]
+  },
+  "it": {
+    "tags": ["Attacco informatico contro impianti energetici", "Un forte terremoto, poi lo tsunami", "Un ghiacciaio crolla, l’alluvione travolge un paese", "Reti violate, servizi pubblici fermi", "Senza luce né riscaldamento: l’inverno in guerra", "Uno zaino d’emergenza per resistere 72 ore"],
+    "alert": { "title": "Allerta di emergenza", "intro": "A causa di un attacco informatico esterno, questi sistemi pubblici sono fuori servizio:", "items": ["Servizi pubblici online", "Chiamate al 112", "Controllo dei semafori", "Sistemi degli ospedali pubblici"], "outro": "Attendere ulteriori istruzioni." },
+    "phone4": ["Impossibile", "connettersi"],
+    "end": ["I nostri cari dicono sempre", "«Sto bene».", "Ma stanno", "davvero bene?", ""]
+  },
+  "nl": {
+    "tags": ["Cyberaanval op energievoorzieningen", "Zware aardbeving, daarna een tsunami", "Gletsjer stort in, overstroming treft een dorp", "Netwerken gehackt, publieke diensten plat", "Geen stroom, geen verwarming: winter in oorlogstijd", "Een noodpakket om 72 uur door te komen"],
+    "alert": { "title": "Noodwaarschuwing", "intro": "Door een hackaanval van buitenaf liggen deze publieke systemen plat:", "items": ["Digitale overheidsdiensten", "Meldkamer 112", "Verkeerslichtregeling", "Ziekenhuissystemen"], "outro": "Wacht op verdere instructies." },
+    "phone4": ["Geen", "verbinding"],
+    "end": ["Onze dierbaren zeggen altijd", "„Het gaat goed met me.”", "Maar gaat het", "echt goed met ze?", ""]
+  },
+  "pt-BR": {
+    "tags": ["Ataque cibernético a instalações de energia", "Um forte terremoto, depois um tsunami", "Geleira desaba, enchente arrasa um vilarejo", "Redes invadidas, serviços públicos parados", "Sem luz nem aquecimento: o inverno na guerra", "Uma mochila de emergência para 72 horas"],
+    "alert": { "title": "Alerta de emergência", "intro": "Devido a um ataque hacker externo, estes sistemas públicos estão fora do ar:", "items": ["Serviços públicos on-line", "Chamadas ao 192 e 193", "Controle de semáforos", "Sistemas de hospitais públicos"], "outro": "Aguarde novas orientações." },
+    "phone4": ["Não foi possível", "conectar"],
+    "end": ["Nossa família sempre diz", "“Estou bem.”", "Mas será que estão", "bem de verdade?", ""]
+  },
+  "ru": {
+    "tags": ["Кибератака на энергообъекты", "Сильное землетрясение, а затем цунами", "Обрушился ледник, наводнение накрыло деревню", "Взлом сетей, госуслуги остановлены", "Без света и тепла: зима во время войны", "Тревожный чемоданчик на 72 часа после бедствия"],
+    "alert": { "title": "Экстренное оповещение", "intro": "Из-за внешней хакерской атаки не работают следующие государственные системы:", "items": ["Портал госуслуг", "Вызовы по номеру 112", "Управление светофорами", "Системы госбольниц"], "outro": "Ожидайте дальнейших указаний." },
+    "phone4": ["Нет", "подключения"],
+    "end": ["Наши близкие всегда говорят:", "«У меня всё хорошо».", "Но правда ли", "у них всё хорошо?", ""]
+  },
+  "ar": {
+    "tags": ["هجوم سيبراني على منشآت الطاقة", "زلزال قوي ثم تسونامي", "انهيار نهر جليدي وفيضان يجتاح قرية", "اختراق الشبكات وتوقف الخدمات العامة", "بلا كهرباء ولا تدفئة: شتاء في زمن الحرب", "حقيبة طوارئ للصمود 72 ساعة بعد الكارثة"],
+    "alert": { "title": "تنبيه طوارئ", "intro": "بسبب هجوم اختراق خارجي، توقفت الأنظمة العامة التالية:", "items": ["الخدمات الحكومية الإلكترونية", "بلاغات الطوارئ 911", "التحكم بإشارات المرور", "أنظمة المستشفيات الحكومية"], "outro": "يُرجى انتظار التعليمات التالية." },
+    "phone4": ["تعذّر", "الاتصال"],
+    "end": ["أحبّتنا يقولون دائمًا", "«أنا بخير».", "لكن", "هل هم بخير حقًا؟", ""]
+  },
+  "tr": {
+    "tags": ["Enerji tesislerine siber saldırı", "Büyük deprem, ardından tsunami", "Buzul çöktü, sel köyü vurdu", "Ağlara sızıldı, kamu hizmetleri durdu", "Elektrik yok, ısınma yok: savaşta kış", "Afetten sonra 72 saat için deprem çantası"],
+    "alert": { "title": "Acil Durum Uyarısı", "intro": "Dışarıdan yapılan bir siber saldırı nedeniyle şu kamu sistemleri çalışmıyor:", "items": ["Kamu çevrim içi hizmetleri", "112 Acil Çağrı", "Trafik sinyal kontrolü", "Devlet hastanesi sistemleri"], "outro": "Yeni duyurulara kadar bekleyin." },
+    "phone4": ["Bağlantı", "kurulamıyor"],
+    "end": ["Sevdiklerimiz hep", "“Ben iyiyim” der.", "Ama gerçekten", "iyiler mi?", ""]
+  },
+  "pl": {
+    "tags": ["Cyberatak na obiekty energetyczne", "Silne trzęsienie ziemi, a potem tsunami", "Lodowiec runął, powódź zalała wieś", "Włamanie do sieci, usługi publiczne stoją", "Bez prądu i ogrzewania: zima w czasie wojny", "Plecak ewakuacyjny na 72 godziny po katastrofie"],
+    "alert": { "title": "Ostrzeżenie alarmowe", "intro": "W wyniku zewnętrznego ataku hakerskiego nie działają następujące systemy publiczne:", "items": ["Usługi urzędowe online", "Numer alarmowy 112", "Sterowanie sygnalizacją świetlną", "Systemy szpitali publicznych"], "outro": "Czekaj na dalsze komunikaty." },
+    "phone4": ["Brak", "połączenia"],
+    "end": ["Nasi bliscy zawsze mówią:", "„Wszystko u mnie dobrze”.", "Ale czy naprawdę", "wszystko u nich dobrze?", ""]
+  },
+  "vi": {
+    "tags": ["Tấn công mạng nhắm vào cơ sở năng lượng", "Động đất mạnh, rồi sóng thần", "Sông băng sụp đổ, lũ cuốn qua ngôi làng", "Mạng lưới bị xâm nhập, dịch vụ công tê liệt", "Mất điện, mất sưởi: mùa đông thời chiến", "Túi khẩn cấp giúp cầm cự 72 giờ sau thảm họa"],
+    "alert": { "title": "Cảnh báo khẩn cấp", "intro": "Do bị tin tặc tấn công từ bên ngoài, các hệ thống công sau đã ngừng hoạt động:", "items": ["Cổng dịch vụ công", "Tổng đài 114, 115", "Điều khiển đèn giao thông", "Hệ thống bệnh viện công"], "outro": "Vui lòng chờ thông báo tiếp theo." },
+    "phone4": ["Không thể", "kết nối"],
+    "end": ["Người thân luôn nói", "“Tôi ổn mà.”", "Nhưng", "họ có thật sự ổn không?", ""]
+  },
+  "th": {
+    "tags": ["การโจมตีทางไซเบอร์ต่อโรงงานพลังงาน", "แผ่นดินไหวรุนแรง ตามด้วยสึนามิ", "ธารน้ำแข็งถล่ม น้ำท่วมกลืนหมู่บ้าน", "เครือข่ายถูกเจาะ บริการสาธารณะหยุดชะงัก", "ไร้ไฟฟ้าและความอบอุ่น ฤดูหนาวในยามสงคราม", "กระเป๋าฉุกเฉินสำหรับ 72 ชั่วโมงหลังภัยพิบัติ"],
+    "alert": { "title": "การแจ้งเตือนเหตุฉุกเฉิน", "intro": "เนื่องจากการโจมตีของแฮกเกอร์จากภายนอก ระบบสาธารณะต่อไปนี้หยุดทำงาน", "items": ["บริการภาครัฐออนไลน์", "สายด่วน 191 และ 1669", "ระบบควบคุมไฟจราจร", "ระบบโรงพยาบาลรัฐ"], "outro": "โปรดรอประกาศเพิ่มเติม" },
+    "phone4": ["ไม่สามารถ", "เชื่อมต่อได้"],
+    "end": ["คนในครอบครัวมักพูดว่า", "“ฉันสบายดี”", "แต่", "เขาสบายดีจริง ๆ", "หรือเปล่า?"]
+  },
+  "sv": {
+    "tags": ["Cyberattack mot energianläggningar", "Kraftig jordbävning, sedan en tsunami", "En glaciär rasar, översvämning drabbar en by", "Nätverk hackade, samhällstjänster ligger nere", "Utan el och värme: vinter i krig", "En krisväska för 72 timmar efter en katastrof"],
+    "alert": { "title": "Nödvarning", "intro": "På grund av en hackerattack utifrån ligger följande offentliga system nere:", "items": ["Myndigheternas e-tjänster", "Larmnumret 112", "Trafiksignalstyrning", "Offentliga sjukhusens system"], "outro": "Invänta vidare information." },
+    "phone4": ["Kan inte", "ansluta"],
+    "end": ["Våra nära säger alltid", "”Jag mår bra.”", "Men mår de", "verkligen bra?", ""]
+  },
+  "hi": {
+    "tags": ["ऊर्जा संयंत्रों पर साइबर हमला", "भीषण भूकंप, फिर सुनामी", "ग्लेशियर टूटा, बाढ़ ने गाँव को घेरा", "नेटवर्क में सेंध, सार्वजनिक सेवाएँ ठप", "न बिजली, न गर्मी: युद्ध के बीच सर्दी", "आपदा के बाद 72 घंटे के लिए आपातकालीन किट"],
+    "alert": { "title": "आपातकालीन चेतावनी", "intro": "बाहरी हैकिंग हमले के कारण ये सार्वजनिक प्रणालियाँ बंद हैं:", "items": ["सरकारी ऑनलाइन सेवाएँ", "112 आपातकालीन कॉल", "ट्रैफ़िक सिग्नल नियंत्रण", "सरकारी अस्पताल प्रणाली"], "outro": "आगे के निर्देशों की प्रतीक्षा करें।" },
+    "phone4": ["कनेक्ट नहीं", "हो सका"],
+    "end": ["हमारे अपने हमेशा कहते हैं,", "“मैं ठीक हूँ।”", "लेकिन", "क्या वे सच में ठीक हैं?", ""]
+  },
+  "id": {
+    "tags": ["Serangan siber terhadap fasilitas energi", "Gempa besar, lalu tsunami", "Gletser runtuh, banjir menerjang desa", "Jaringan dibobol, layanan publik lumpuh", "Tanpa listrik dan pemanas: musim dingin di masa perang", "Tas siaga untuk bertahan 72 jam setelah bencana"],
+    "alert": { "title": "Peringatan Darurat", "intro": "Akibat serangan peretasan dari luar, sistem publik berikut tidak berfungsi:", "items": ["Layanan pemerintah daring", "Panggilan darurat 112", "Kendali lampu lalu lintas", "Sistem rumah sakit pemerintah"], "outro": "Tunggu informasi selanjutnya." },
+    "phone4": ["Tidak dapat", "terhubung"],
+    "end": ["Orang tersayang selalu bilang,", "“Aku baik-baik saja.”", "Tapi apakah mereka", "benar-benar baik-baik saja?", ""]
+  }
+}

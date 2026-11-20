@@ -1,0 +1,84 @@
+{
+ "lang": "de",
+ "tags": [
+  "Cyberangriff auf Energieanlagen",
+  "Starkes Erdbeben, dann ein Tsunami",
+  "Gletscher bricht ab, Flut trifft ein Dorf",
+  "Netze gehackt, Behördendienste stehen still",
+  "Ohne Strom und Heizung: Winter im Krieg",
+  "Notgepäck für 72 Stunden nach einer Katastrophe"
+ ],
+ "alert": {
+  "title": "Notfallwarnung",
+  "intro": "Durch einen Hackerangriff von außen sind folgende öffentliche Systeme ausgefallen:",
+  "items": [
+   "Online-Behördendienste",
+   "Notruf 112",
+   "Ampelsteuerung",
+   "IT öffentlicher Kliniken"
+  ],
+  "outro": "Warten Sie auf weitere Anweisungen."
+ },
+ "phone4": [
+  "Keine Verbindung",
+  "zum Dienst"
+ ],
+ "end": [
+  "Unsere Liebsten sagen immer",
+  "„Mir geht’s gut.“",
+  "Aber geht es ihnen",
+  "wirklich gut?",
+  ""
+ ],
+ "store": [
+  "Im Store nach „",
+  "Anbu",
+  "“ suchen"
+ ],
+ "alias": [
+  "Mama",
+  "Papa"
+ ],
+ "brand": "Anbu",
+ "now": "jetzt",
+ "app": {
+  "title": "Anbu Guardian",
+  "checking": "Verbundene Personen\nim Blick: 2",
+  "summary": "Heute im Überblick",
+  "legendSafe": "Alles gut: 1",
+  "legendCaution": "Achtung: 1",
+  "list": "Verbundene Personen",
+  "pillSafe": "✅ Alles gut",
+  "pillCaution": "Achtung",
+  "activity": "Aktivität: Aktiv",
+  "steps": "Schritte",
+  "last7": "Letzte 7 Tage",
+  "lastCheck": "Zuletzt: vor 2 Std.",
+  "add": "Person verbinden",
+  "nav": [
+   "Start",
+   "Verbindungen",
+   "Hinweise",
+   "Einstellungen"
+  ],
+  "safetyNeeded": "Bitte nachsehen",
+  "callNow": "Jetzt anrufen",
+  "confirmSafety": "Sicher bestätigt",
+  "viewLoc": "🗺️ Standort anzeigen",
+  "mapTitle": "Standort im Notfall",
+  "subjLabel": "Verbundene Person",
+  "capturedLabel": "Erfasst um",
+  "accLabel": "Genauigkeit",
+  "openExternal": "In Karten-App öffnen",
+  "stepsBody": "Heute 6.240 Schritte gegangen."
+ },
+ "srv": {
+  "autoTitle": "✅ Heutiges Lebenszeichen erhalten",
+  "emTitle": "🚨 Hilferuf",
+  "emBody": "Über die App wurde direkt um Hilfe gebeten. Bitte prüfen Sie sofort, ob alles in Ordnung ist."
+ },
+ "steps": "6.240",
+ "battery": "85 %",
+ "captured": "2026-11-20 21:42",
+ "accuracy": "±20m"
+}

@@ -7,6 +7,7 @@
 // 이 파일이 원본이다. `python3 _build.py` 가 style.js 로 복사한다(옛 장난감 블록판은 out/e1_v2_toyblocks_*.bak).
 {
   const DUR = 12.8;
+  const S72 = ANBU.S(), AP = S72.app, RTL = ANBU.RTL(), RX = (x) => (RTL ? -x : x);   // 언어별 화면 문구(앱·서버 번역) / 아랍어는 좌우 반전
   const DEBUG = false;
   const PAL = ANBU.PAL;
   // 폰(세계 단위 1 = 약 2cm). 특정 회사 제품처럼 보이지 않게: 균일한 얇은 베젤, 가운데 작은 펀치홀, 오른쪽 버튼 두 개
@@ -102,6 +103,8 @@
       gl_FragColor = vec4(c, 1.0);
     }`;
 
+  const PUSH_BODY = S72.alias[0] + ' · ' + S72.app.stepsBody;   // 홈페이지 목업과 같은 모양: 별칭 · 걸음수 문장(앱 noti_steps_body)
+  const SOS_BODY = S72.alias[1] + ' · ' + S72.srv.emBody;       // 별칭 · 서버 push_emergency_body
   const STEPS7 = [0.44, 0.67, 0.52, 0.8, 0.61, 0.73, 0.96];
 
   // 카드 하나의 자세(화면 좌표). 위로 떠올라 지나쳤다가 내려앉는다(스프링), 착지 뒤엔 아주 느리게 숨 쉰다
@@ -220,11 +223,11 @@
         let cur = '10px sans-serif', ls = '0px';
         Object.defineProperty(c, 'font', { configurable: true, get: () => cur, set: (v) => { cur = v; fd.set.call(c, v.replace(/([\d.]+)px/, (m, n) => (n * TS) + 'px')); } });
         Object.defineProperty(c, 'letterSpacing', { configurable: true, get: () => ls, set: (v) => { ls = v; ld.set.call(c, (parseFloat(v) * TS) + 'px'); } });
-        c.fillText = (str, x, y) => { c.save(); c.setTransform(1, 0, 0, 1, 0, 0); proto.fillText.call(c, str, x * TS, y * TS); c.restore(); };
+        c.fillText = (str, x, y) => { c.save(); c.setTransform(1, 0, 0, 1, 0, 0); let X = x * TS; if (RTL) { X = c.canvas.width - X; const al = c.textAlign; c.textAlign = al === 'left' ? 'right' : al === 'right' ? 'left' : al; } proto.fillText.call(c, str, X, y * TS); c.restore(); };
         c.measureText = (str) => ({ width: proto.measureText.call(c, str).width / TS });
         return c;
       };
-      const tex = (w, h, draw) => K.canvasTex(Math.round(w * TS), Math.round(h * TS), (c) => { c.scale(TS, TS); draw(worldText(c)); });
+      const tex = (w, h, draw) => K.canvasTex(Math.round(w * TS), Math.round(h * TS), (c) => { if (RTL) { c.translate(Math.round(w * TS), 0); c.scale(-1, 1); } c.scale(TS, TS); draw(worldText(c)); });
       const fitFont = (c, s, wt, size, maxW) => { c.font = `${wt} ${size}px "Noto Sans KR"`; const m = c.measureText(s).width; if (m > maxW) c.font = `${wt} ${size * maxW / m}px "Noto Sans KR"`; };
       // 캔버스는 세계단위로 그린다(c.scale(TS)) — 글꼴 크기도 세계단위
       const head = (c, w, timeTxt = '지금') => {
@@ -248,25 +251,25 @@
         const c = CARDS.push;
         const t1 = tex(c.w, c.h, (x) => {
           x.fillStyle = '#ffffff'; x.fillRect(0, 0, c.w, c.h);
-          x.textBaseline = 'middle'; x.textAlign = 'left'; x.font = '600 0.2px "Noto Sans KR"'; x.fillStyle = '#757575'; x.fillText('안부', 0.68, 0.33);
-          x.textAlign = 'right'; x.fillStyle = '#9AA0AE'; x.fillText('지금', c.w - 0.28, 0.33);
-          x.textAlign = 'left'; fitFont(x, '✅ 오늘 안부 확인 완료', 800, 0.37, c.w - 0.5); x.fillStyle = '#1A1C1C'; x.fillText('✅ 오늘 안부 확인 완료', 0.26, 0.73);
-          fitFont(x, '엄마 · 오늘 6,240보를 걸으셨습니다.', 500, 0.28, c.w - 0.5); x.fillStyle = '#3F4948'; x.fillText('엄마 · 오늘 6,240보를 걸으셨습니다.', 0.26, 1.1);
+          x.textBaseline = 'middle'; x.textAlign = 'left'; x.font = '600 0.2px "Noto Sans KR"'; x.fillStyle = '#757575'; x.fillText(S72.brand, 0.68, 0.33);
+          x.textAlign = 'right'; x.fillStyle = '#9AA0AE'; x.fillText(S72.now, c.w - 0.28, 0.33);
+          x.textAlign = 'left'; fitFont(x, S72.srv.autoTitle, 800, 0.37, c.w - 0.5); x.fillStyle = '#1A1C1C'; x.fillText(S72.srv.autoTitle, 0.26, 0.73);
+          fitFont(x, PUSH_BODY, 500, 0.28, c.w - 0.5); x.fillStyle = '#3F4948'; x.fillText(PUSH_BODY, 0.26, 1.1);
         });
         const k = group('push', 0.06, 0.22, t1);
-        addPart(k, slab(0.32, 0.32, 0.075, 0.04, 0.01), iconMat(), -c.w / 2 + 0.42, c.h / 2 - 0.33, 0);
+        addPart(k, slab(0.32, 0.32, 0.075, 0.04, 0.01), iconMat(), RX(-c.w / 2 + 0.42), c.h / 2 - 0.33, 0);
       }
       // 2) 걸음수 카드 — 숫자가 굴러 올라가고 막대가 솟는다
       const stepsTex = (() => {
         const c = CARDS.steps, t = K.canvasTex(Math.round(c.w * TS), Math.round(c.h * TS), null);
         const x = worldText(t.ctx);
         t.paint = (n) => {
-          x.setTransform(TS, 0, 0, TS, 0, 0);
+          if (RTL) x.setTransform(-TS, 0, 0, TS, Math.round(c.w * TS), 0); else x.setTransform(TS, 0, 0, TS, 0, 0);
           x.fillStyle = '#ffffff'; x.fillRect(0, 0, c.w, c.h);
-          x.textBaseline = 'alphabetic'; x.textAlign = 'left'; x.font = '700 0.25px "Noto Sans KR"'; x.fillStyle = '#757575'; x.fillText('걸음수', 0.26, 0.5);
-          x.textAlign = 'right'; x.font = '800 0.52px "Noto Sans KR"'; x.fillStyle = '#1A237E'; x.fillText(n.toLocaleString('en-US'), c.w - 0.24, 0.56);
+          x.textBaseline = 'alphabetic'; x.textAlign = 'left'; x.font = '700 0.25px "Noto Sans KR"'; x.fillStyle = '#757575'; x.fillText(AP.steps, 0.26, 0.5);
+          x.textAlign = 'right'; x.font = '800 0.52px "Noto Sans KR"'; x.fillStyle = '#1A237E'; x.fillText(ANBU.num(n), c.w - 0.24, 0.56);
           x.fillStyle = '#EEF0F6'; x.fillRect(0.26, 1.98, c.w - 0.52, 0.012);   // 바닥선
-          x.textAlign = 'right'; x.font = '500 0.2px "Noto Sans KR"'; x.fillStyle = '#757575'; x.fillText('지난 7일', c.w - 0.24, 2.18);
+          x.textAlign = 'right'; x.font = '500 0.2px "Noto Sans KR"'; x.fillStyle = '#757575'; x.fillText(AP.last7, c.w - 0.24, 2.18);
           t.needsUpdate = true;
         };
         t.paint(0); t.key = 0; return t;
@@ -287,16 +290,16 @@
         const t3 = tex(c.w, c.h, (x) => {
           x.fillStyle = '#FFF8DA'; x.fillRect(0, 0, c.w, c.h);
           x.fillStyle = '#F59E0B'; x.fillRect(0, 0, 0.09, c.h);
-          x.textBaseline = 'middle'; x.textAlign = 'left'; x.font = '800 0.31px "Noto Sans KR"'; x.fillStyle = '#1A1C1C'; x.fillText('아빠', 0.3, 0.38);
-          x.font = '700 0.21px "Noto Sans KR"'; const pw = x.measureText('주의').width + 0.3;
+          x.textBaseline = 'middle'; x.textAlign = 'left'; x.font = '800 0.31px "Noto Sans KR"'; x.fillStyle = '#1A1C1C'; x.fillText(S72.alias[1], 0.3, 0.38);
+          x.font = '700 0.21px "Noto Sans KR"'; const pw = x.measureText(AP.pillCaution).width + 0.3;
           x.fillStyle = 'rgba(245,158,11,0.18)'; x.beginPath(); x.roundRect(c.w - 0.26 - pw, 0.22, pw, 0.34, 0.17); x.fill();
-          x.fillStyle = '#C77700'; x.textAlign = 'center'; x.fillText('주의', c.w - 0.26 - pw / 2, 0.395);
-          x.textAlign = 'left'; fitFont(x, '⚠ 안전 확인이 필요합니다', 800, 0.29, c.w - 0.55); x.fillStyle = '#C77700'; x.fillText('⚠ 안전 확인이 필요합니다', 0.3, 0.9);
+          x.fillStyle = '#C77700'; x.textAlign = 'center'; x.fillText(AP.pillCaution, c.w - 0.26 - pw / 2, 0.395);
+          x.textAlign = 'left'; fitFont(x, '⚠ ' + AP.safetyNeeded, 800, 0.29, c.w - 0.55); x.fillStyle = '#C77700'; x.fillText('⚠ ' + AP.safetyNeeded, 0.3, 0.9);
         });
         const k = group('caution', 0.06, 0.2, t3);
         const bw = c.w - 0.6;
-        const b1 = tex(bw, 0.56, (x) => { x.fillStyle = '#F59E0B'; x.fillRect(0, 0, bw, 0.56); x.textAlign = 'center'; x.textBaseline = 'middle'; x.font = '700 0.26px "Noto Sans KR"'; x.fillStyle = '#ffffff'; x.fillText('지금 바로 전화', bw / 2, 0.29); });
-        const b2 = tex(bw, 0.52, (x) => { x.fillStyle = '#FFF8DA'; x.fillRect(0, 0, bw, 0.52); x.strokeStyle = 'rgba(245,158,11,0.55)'; x.lineWidth = 0.025; x.beginPath(); x.roundRect(0.02, 0.02, bw - 0.04, 0.48, 0.13); x.stroke(); x.textAlign = 'center'; x.textBaseline = 'middle'; x.font = '700 0.25px "Noto Sans KR"'; x.fillStyle = '#D98400'; x.fillText('안전확인 완료', bw / 2, 0.27); });
+        const b1 = tex(bw, 0.56, (x) => { x.fillStyle = '#F59E0B'; x.fillRect(0, 0, bw, 0.56); x.textAlign = 'center'; x.textBaseline = 'middle'; x.font = '700 0.26px "Noto Sans KR"'; x.fillStyle = '#ffffff'; fitFont(x, AP.callNow, 700, 0.26, bw - 0.25); x.fillText(AP.callNow, bw / 2, 0.29); });
+        const b2 = tex(bw, 0.52, (x) => { x.fillStyle = '#FFF8DA'; x.fillRect(0, 0, bw, 0.52); x.strokeStyle = 'rgba(245,158,11,0.55)'; x.lineWidth = 0.025; x.beginPath(); x.roundRect(0.02, 0.02, bw - 0.04, 0.48, 0.13); x.stroke(); x.textAlign = 'center'; x.textBaseline = 'middle'; x.font = '700 0.25px "Noto Sans KR"'; x.fillStyle = '#D98400'; fitFont(x, AP.confirmSafety, 700, 0.25, bw - 0.25); x.fillText(AP.confirmSafety, bw / 2, 0.27); });
         addPart(k, slab(bw, 0.56, 0.13, 0.05, 0.012), cardMat(b1, { emissiveIntensity: 0.62 }), 0.03, c.h / 2 - 1.5, 0);
         addPart(k, slab(bw, 0.52, 0.13, 0.03, 0.01), cardMat(b2, { emissiveIntensity: 0.58 }), 0.03, c.h / 2 - 2.12, 0);
       }
@@ -315,7 +318,7 @@
           x.fillStyle = '#3a6f9c'; x.fillRect(0, 0, 256, 256); x.fillStyle = '#ffffff'; x.translate(128, 128); x.scale(4.2, 4.2); x.translate(-12, -12);
           x.fill(new Path2D(copy ? 'M9 3h9a2 2 0 0 1 2 2v9h-2V5H9zM5 7h9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z' : 'M17 7a2.6 2.6 0 1 0-2.5-3.2L9.3 6.6a2.6 2.6 0 1 0 0 4.3l5.2 2.6a2.6 2.6 0 1 0 .8-1.6L10.1 9.3a2.6 2.6 0 0 0 0-1.1l5.2-2.6c.45.27.98.42 1.7.4z'));
         });
-        [[true, c.w / 2 - 1.05], [false, c.w / 2 - 0.5]].forEach(([cp, x]) => {
+        [[true, RX(c.w / 2 - 1.05)], [false, RX(c.w / 2 - 0.5)]].forEach(([cp, x]) => {
           const m = addPart(k, new THREE.CylinderGeometry(0.2, 0.2, 0.05, 40).rotateX(Math.PI / 2).translate(0, 0, 0.025), new THREE.MeshStandardMaterial({ map: btnTex(cp), emissiveMap: btnTex(cp), emissive: '#ffffff', emissiveIntensity: 0.55, roughness: 0.5, envMap: studio, envMapIntensity: 0.3 }), x, c.h / 2 - 0.42, 0);
           m.geometry.attributes.uv && fixDiscUV(m.geometry);
         });
@@ -326,20 +329,21 @@
         const t5 = tex(c.w, c.h, (x) => {
           x.fillStyle = '#FFF4F3'; x.fillRect(0, 0, c.w, c.h);
           x.strokeStyle = '#E5484D'; x.lineWidth = 0.07; x.beginPath(); x.roundRect(0.035, 0.035, c.w - 0.07, c.h - 0.07, 0.2); x.stroke();
-          x.textBaseline = 'middle'; x.textAlign = 'left'; x.font = '600 0.2px "Noto Sans KR"'; x.fillStyle = '#757575'; x.fillText('안부', 0.68, 0.36);
-          x.textAlign = 'right'; x.fillStyle = '#9AA0AE'; x.fillText('지금', c.w - 0.3, 0.36);
-          x.textAlign = 'left'; fitFont(x, '🚨 긴급 도움 요청', 900, 0.42, c.w - 0.55); x.fillStyle = '#C62828'; x.fillText('🚨 긴급 도움 요청', 0.28, 0.83);
-          x.fillStyle = '#3F4948'; fitFont(x, '아빠 · 보호 대상자가 직접', 600, 0.29, c.w - 0.55); x.fillText('아빠 · 보호 대상자가 직접', 0.28, 1.28);
-          fitFont(x, '도움을 요청했습니다.', 600, 0.29, c.w - 0.55); x.fillText('도움을 요청했습니다.', 0.28, 1.64);
-          fitFont(x, '즉시 확인해 주세요.', 600, 0.29, c.w - 0.55); x.fillText('즉시 확인해 주세요.', 0.28, 2.0);   // 서버 push_emergency_body 그대로
+          x.textBaseline = 'middle'; x.textAlign = 'left'; x.font = '600 0.2px "Noto Sans KR"'; x.fillStyle = '#757575'; x.fillText(S72.brand, 0.68, 0.36);
+          x.textAlign = 'right'; x.fillStyle = '#9AA0AE'; x.fillText(S72.now, c.w - 0.3, 0.36);
+          x.textAlign = 'left'; fitFont(x, S72.srv.emTitle, 900, 0.42, c.w - 0.55); x.fillStyle = '#C62828'; x.fillText(S72.srv.emTitle, 0.28, 0.83);
+          // 본문 = 별칭 · 서버 push_emergency_body 그대로. 세 줄 안에 들어가게 낱말 단위로 나누고, 안 들어가면 글자를 줄인다
+          x.fillStyle = '#3F4948'; let fs = 0.29, rows;
+          for (;;) { x.font = `600 ${fs}px "Noto Sans KR"`; rows = ANBU.wrap(x, SOS_BODY, c.w - 0.55); if (rows.length <= 3 || fs <= 0.21) break; fs -= 0.01; }
+          rows.slice(0, 3).forEach((r, i) => x.fillText(r, 0.28, 1.28 + 0.36 * i * (fs / 0.29)));
         });
         const k = group('sos', 0.07, 0.22, t5, { emissiveIntensity: 0.62 });
-        addPart(k, slab(0.32, 0.32, 0.075, 0.04, 0.01), iconMat(), -c.w / 2 + 0.44, c.h / 2 - 0.36, 0);
+        addPart(k, slab(0.32, 0.32, 0.075, 0.04, 0.01), iconMat(), RX(-c.w / 2 + 0.44), c.h / 2 - 0.36, 0);
       }
       // 6) 위치 보기 단추
       {
         const c = CARDS.btn;
-        const t6 = tex(c.w, c.h, (x) => { x.fillStyle = '#4355B9'; x.fillRect(0, 0, c.w, c.h); x.textAlign = 'center'; x.textBaseline = 'middle'; fitFont(x, '🗺️ 위치 보기', 800, 0.36, c.w - 0.4); x.fillStyle = '#ffffff'; x.fillText('🗺️ 위치 보기', c.w / 2, c.h / 2 + 0.02); });
+        const t6 = tex(c.w, c.h, (x) => { x.fillStyle = '#4355B9'; x.fillRect(0, 0, c.w, c.h); x.textAlign = 'center'; x.textBaseline = 'middle'; fitFont(x, AP.viewLoc, 800, 0.36, c.w - 0.4); x.fillStyle = '#ffffff'; x.fillText(AP.viewLoc, c.w / 2, c.h / 2 + 0.02); });
         group('btn', 0.14, 0.24, t6, { emissiveIntensity: 0.72, color: '#cccccc' });
       }
       function fixDiscUV(g) { const p = g.attributes.position, uv = g.attributes.uv; for (let i = 0; i < p.count; i++) uv.setXY(i, p.getX(i) / 0.4 + 0.5, p.getY(i) / 0.4 + 0.5); uv.needsUpdate = true; }
@@ -492,52 +496,59 @@
       // ---- 화면 UI(보호자 대시보드). 390pt 폭. 값은 홈페이지 목업(style.css)과 앱 위젯을 따른다
       function paintDash(c) {
         c.fillStyle = '#F7F9F8'; c.fillRect(0, 0, 390, HPT);
-        const T_ = (s, x, y, f, col, al = 'left') => { c.font = f; c.fillStyle = col; c.textAlign = al; c.fillText(s, x, y); };
+        if (RTL) { c.translate(390, 0); c.scale(-1, 1); }   // 아랍어: 화면 전체를 좌우 반전(글자는 T_ 가 바로 세워 찍는다)
+        // 글자: maxW(pt)를 넘으면 글꼴을 줄인다
+        const T_ = (s, x, y, f, col, al = 'left', maxW = 0) => {
+          c.font = f; c.fillStyle = col;
+          if (maxW) { const w = c.measureText(s).width; if (w > maxW) c.font = f.replace(/([\d.]+)px/, (m, n) => (n * maxW / w) + 'px'); }
+          if (RTL) { c.save(); c.translate(x, y); c.scale(-1, 1); c.textAlign = al === 'left' ? 'right' : al === 'right' ? 'left' : al; c.fillText(s, 0, 0); c.restore(); }
+          else { c.textAlign = al; c.fillText(s, x, y); }
+        };
         c.textBaseline = 'middle';
         T_('9:41', 34, 25, '600 15px "Noto Sans KR"', '#1A1C1C');
         c.beginPath(); c.arc(195, 24, 7.5, 0, 7); c.fillStyle = '#050608'; c.fill();
         c.fillStyle = '#1A1C1C'; [0, 1, 2, 3].forEach((i) => { c.beginPath(); c.roundRect(300 + i * 6, 30 - i * 3, 4, 5 + i * 3, 1); c.fill(); });
         c.beginPath(); c.roundRect(330, 19, 26, 12, 3.5); c.lineWidth = 1.4; c.strokeStyle = '#1A1C1C'; c.stroke(); c.beginPath(); c.roundRect(332.5, 21.5, 17, 7, 2); c.fill();
-        T_('Anbu Guardian', 195, 64, '700 19px "Noto Sans KR"', '#1A1C1C', 'center');
-        T_('현재 2명의 안부를', 22, 110, '700 25.5px "Noto Sans KR"', '#1A1C1C'); T_('확인 중입니다.', 22, 144, '700 25.5px "Noto Sans KR"', '#1A1C1C');
-        T_('오늘의 안부 요약', 22, 180, '500 13.5px "Noto Sans KR"', '#757575');
-        c.fillStyle = '#00685E'; c.beginPath(); c.arc(27, 204, 4.6, 0, 7); c.fill(); T_('안전: 1', 36, 204, '600 13.5px "Noto Sans KR"', '#3F4948');
-        c.fillStyle = '#F59E0B'; c.beginPath(); c.arc(97, 204, 4.6, 0, 7); c.fill(); T_('주의: 1', 106, 204, '600 13.5px "Noto Sans KR"', '#3F4948');
-        T_('보호 대상자 리스트', 22, 238, '700 16.5px "Noto Sans KR"', '#1A1C1C');
+        T_(AP.title, 195, 64, '700 19px "Noto Sans KR"', '#1A1C1C', 'center', 300);
+        { const [h1, h2 = ''] = AP.checking.split('\n'); T_(h1, 22, 110, '700 25.5px "Noto Sans KR"', '#1A1C1C', 'left', 346); T_(h2, 22, 144, '700 25.5px "Noto Sans KR"', '#1A1C1C', 'left', 346); }
+        T_(AP.summary, 22, 180, '500 13.5px "Noto Sans KR"', '#757575');
+        c.fillStyle = '#00685E'; c.beginPath(); c.arc(27, 204, 4.6, 0, 7); c.fill(); T_(AP.legendSafe, 36, 204, '600 13.5px "Noto Sans KR"', '#3F4948', 'left', 52);
+        c.fillStyle = '#F59E0B'; c.beginPath(); c.arc(97, 204, 4.6, 0, 7); c.fill(); T_(AP.legendCaution, 106, 204, '600 13.5px "Noto Sans KR"', '#3F4948', 'left', 80);
+        T_(AP.list, 22, 238, '700 16.5px "Noto Sans KR"', '#1A1C1C', 'left', 346);
         // 대상자 카드 1(엄마, 안전)
         const card = (x, w, bg, bd) => { c.save(); c.beginPath(); c.roundRect(x, 256, w, 276, 18); c.clip(); c.fillStyle = bg; c.fillRect(x, 256, w, 276); c.fillStyle = bd; c.fillRect(x, 256, 4.5, 276); c.restore(); };
         card(20, 322, '#EEF6EF', '#00685E');
-        T_('엄마', 40, 284, '700 18px "Noto Sans KR"', '#1A1C1C'); T_('85%', 80, 285, '600 12px "Noto Sans KR"', '#2E7D32');
-        c.font = '600 12px "Noto Sans KR"'; const pw = c.measureText('✅ 안전').width + 18;
-        c.fillStyle = 'rgba(0,104,94,0.12)'; c.beginPath(); c.roundRect(326 - pw, 273, pw, 22, 11); c.fill(); T_('✅ 안전', 326 - pw / 2, 284.5, '600 12px "Noto Sans KR"', '#00685E', 'center');
-        T_('활동량 : 활동적', 40, 309, '400 13.5px "Noto Sans KR"', '#3F4948');
+        c.font = '700 18px "Noto Sans KR"'; const mw = Math.min(150, c.measureText(S72.alias[0]).width); T_(S72.alias[0], 40, 284, '700 18px "Noto Sans KR"', '#1A1C1C', 'left', 150); T_(S72.battery, 40 + mw + 8, 285, '600 12px "Noto Sans KR"', '#2E7D32');
+        c.font = '600 12px "Noto Sans KR"'; const pw = Math.min(110, c.measureText(AP.pillSafe).width) + 18;
+        c.fillStyle = 'rgba(0,104,94,0.12)'; c.beginPath(); c.roundRect(326 - pw, 273, pw, 22, 11); c.fill(); T_(AP.pillSafe, 326 - pw / 2, 284.5, '600 12px "Noto Sans KR"', '#00685E', 'center', 110);
+        T_(AP.activity, 40, 309, '400 13.5px "Noto Sans KR"', '#3F4948');
         // 걸음수 그래프(흐린 유리 아래) — 떠오른 카드의 원래 자리
         c.save(); c.beginPath(); c.roundRect(36, 324, 290, 150, 14); c.clip(); c.fillStyle = 'rgba(255,255,255,0.65)'; c.fillRect(36, 324, 290, 150);
         c.filter = 'blur(7px)';
-        T_('걸음수', 50, 346, '700 12px "Noto Sans KR"', '#757575'); T_('6,240', 312, 346, '800 20px "Noto Sans KR"', '#1A237E', 'right');
+        T_(AP.steps, 50, 346, '700 12px "Noto Sans KR"', '#757575', 'left', 150); T_(S72.steps, 312, 346, '800 20px "Noto Sans KR"', '#1A237E', 'right');
         STEPS7.forEach((v, i) => { c.fillStyle = i === 6 ? '#FB8C00' : 'rgba(26,35,126,0.7)'; const h = 72 * v; c.fillRect(54 + i * 37.5, 440 - h, 26, h); });
         c.filter = 'none'; c.fillStyle = 'rgba(247,249,248,0.35)'; c.fillRect(36, 324, 290, 150); c.restore();
-        T_('지난 7일', 312, 460, '400 11px "Noto Sans KR"', '#9e9e9e', 'right');
-        T_('마지막 확인: 2시간 전', 40, 506, '400 13px "Noto Sans KR"', '#757575');
+        T_(AP.last7, 312, 460, '400 11px "Noto Sans KR"', '#9e9e9e', 'right');
+        T_(AP.lastCheck, 40, 506, '400 13px "Noto Sans KR"', '#757575', 'left', 290);
         // 대상자 카드 2(아빠, 주의) — 오른쪽에 살짝 보인다
         card(351, 322, '#FFF7D6', '#F59E0B');
-        T_('아빠', 371, 284, '700 18px "Noto Sans KR"', '#1A1C1C');
+        T_(S72.alias[1], 371, 284, '700 18px "Noto Sans KR"', '#1A1C1C');
         c.save(); c.beginPath(); c.roundRect(366, 324, 290, 150, 14); c.clip(); c.filter = 'blur(6px)'; c.fillStyle = '#F59E0B'; c.fillRect(366, 380, 290, 30); c.fillStyle = 'rgba(245,158,11,0.35)'; c.fillRect(366, 420, 290, 28); c.restore();
         // 쪽 표시
         c.fillStyle = '#4355B9'; c.beginPath(); c.roundRect(181, 549, 20, 6, 3); c.fill(); c.fillStyle = 'rgba(67,85,185,0.2)'; c.beginPath(); c.arc(209, 552, 3, 0, 7); c.fill();
         // 새 대상자 추가
         c.save(); c.setLineDash([6, 5]); c.strokeStyle = 'rgba(117,117,117,0.55)'; c.lineWidth = 1.6; c.beginPath(); c.roundRect(20, 572, 350, 126, 16); c.stroke(); c.restore();
         c.fillStyle = '#EFF1F0'; c.beginPath(); c.arc(195, 616, 21, 0, 7); c.fill(); T_('+', 195, 615, '400 24px "Noto Sans KR"', '#3F4948', 'center');
-        T_('새로운 보호 대상자 추가', 195, 664, '500 14.5px "Noto Sans KR"', '#3F4948', 'center');
+        T_(AP.add, 195, 664, '500 14.5px "Noto Sans KR"', '#3F4948', 'center', 320);
         // 아래 탭
         c.fillStyle = '#ffffff'; c.fillRect(0, HPT - 78, 390, 78); c.fillStyle = '#E8EAF0'; c.fillRect(0, HPT - 78, 390, 1.2);
         const icons = ['M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z', 'M9.5 14.5 14.5 9.5M11 7 13 5a4 4 0 0 1 6 6l-2 2M13 17l-2 2a4 4 0 0 1-6-6l2-2', 'M18 9a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6M10.5 20a2 2 0 0 0 3 0', null];
-        ['홈', '연결', '알림', '설정'].forEach((s, i) => {
+        AP.nav.forEach((s, i) => {
           const cx = 48.75 + 97.5 * i, col = i === 0 ? '#4355B9' : '#9AA0AE';
           c.save(); c.translate(cx - 10, HPT - 64); c.scale(20 / 24, 20 / 24); c.strokeStyle = c.fillStyle = col; c.lineWidth = 2.2; c.lineCap = c.lineJoin = 'round';
           if (i === 0) c.fill(new Path2D(icons[0])); else if (icons[i]) c.stroke(new Path2D(icons[i])); else { c.beginPath(); c.arc(12, 12, 3.4, 0, 7); c.stroke(); for (let a = 0; a < 8; a++) { const q = a * Math.PI / 4; c.beginPath(); c.moveTo(12 + 6.5 * Math.cos(q), 12 + 6.5 * Math.sin(q)); c.lineTo(12 + 9 * Math.cos(q), 12 + 9 * Math.sin(q)); c.stroke(); } }
           c.restore();
-          T_(s, cx, HPT - 30, '600 12px "Noto Sans KR"', col, 'center');
+          T_(s, cx, HPT - 30, '600 12px "Noto Sans KR"', col, 'center', 90);
         });
       }
 

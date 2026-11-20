@@ -5,6 +5,10 @@
 import json, os, subprocess, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'out')
+# 언어: LANGID=de python3 tools/assemble72.py … → 글자가 있는 장면(pop·e1·e2·e3)은 out/<lang>/, 글자 없는 s0·모든 효과음은 out/ 공용(언어 무관)
+LANG = os.environ.get('LANGID', 'ko')
+LOUT = OUT if LANG == 'ko' else os.path.join(OUT, LANG)
+SHARED = {'s0'}
 BGM = '/Users/macmini/Project/Anbu/averic-lab/media/bgm'
 MUSIC_A, A_START = os.path.join(BGM, 'no-turning-back.mp3'), 22.0      # Mixkit "No Turning Back" — 쌓여 올라가는 구간부터
 SEGS = ['s0', 'pop', 'e1', 'e2', 'e3']
@@ -20,7 +24,7 @@ def dur(f): return float(subprocess.run(['ffprobe', '-v', 'error', '-show_entrie
 
 SFXK = {'e1': 1.4}                 # 장면별 효과음 추가 배율(e1 폰 장면 효과음이 옛 블록판보다 2.5dB 작다)
 PAD = {'e3': 1.0}                  # 끝 장면 마지막 프레임을 더 붙들어 둔다(스토어 검색 화면 정지 2초 이상)
-D = [dur(os.path.join(OUT, s + '.mp4')) + PAD.get(s, 0) for s in SEGS]
+D = [dur(os.path.join(OUT if s in SHARED else LOUT, s + '.mp4')) + PAD.get(s, 0) for s in SEGS]
 starts = [0.0]
 for i in range(1, len(SEGS)): starts.append(starts[-1] + D[i - 1] - XF[i - 1])
 total = starts[-1] + D[-1]
@@ -29,7 +33,7 @@ print('장면 시작:', ', '.join(f'{s}={t:.2f}' for s, t in zip(SEGS, starts)),
 # 1) 영상
 inp, fl = [], []
 for i, s in enumerate(SEGS):
-    inp += ['-i', os.path.join(OUT, s + '.mp4')]
+    inp += ['-i', os.path.join(OUT if s in SHARED else LOUT, s + '.mp4')]
     pad = f',tpad=stop_mode=clone:stop_duration={PAD[s]}' if s in PAD else ''
     fl.append(f'[{i}:v]fps=30,format=yuv420p,setpts=PTS-STARTPTS{pad}[v{i}]')
 prev = 'v0'
@@ -47,7 +51,7 @@ for i, s in enumerate(SEGS):
     inp += ['-i', w]; ms = int(round(starts[i] * 1000))
     am.append(f'[{k}:a]aformat=sample_rates=48000:channel_layouts=stereo,volume={sv * SFXK.get(s, 1):.3f},adelay={ms}|{ms}[e{i}]'); labels.append(f'[e{i}]'); k += 1
 am.append(''.join(labels) + f'amix=inputs={len(labels)}:normalize=0:duration=longest,atrim=0:{total:.4f}[mix]')
-tmp, vid, final = os.path.join(OUT, '_mix.wav'), os.path.join(OUT, '_video.mp4'), os.path.join(OUT, 'disaster-72h.mp4')
+tmp, vid, final = os.path.join(LOUT, '_mix.wav'), os.path.join(LOUT, '_video.mp4'), os.path.join(LOUT, 'disaster-72h.mp4')
 run(['ffmpeg', '-y', '-loglevel', 'error'] + inp + ['-filter_complex', ';'.join(fl + am), '-map', f'[{prev}]', '-c:v', 'libx264', '-crf', '18', '-pix_fmt', 'yuv420p', '-an', vid, '-map', '[mix]', tmp])
 st = run(['ffmpeg', '-hide_banner', '-i', tmp, '-af', 'loudnorm=I=-22:TP=-1.5:LRA=11:print_format=json', '-f', 'null', '-'])
 m = json.loads(st[st.rindex('{'):st.rindex('}') + 1])

@@ -1,0 +1,84 @@
+{
+ "lang": "nl",
+ "tags": [
+  "Cyberaanval op energievoorzieningen",
+  "Zware aardbeving, daarna een tsunami",
+  "Gletsjer stort in, overstroming treft een dorp",
+  "Netwerken gehackt, publieke diensten plat",
+  "Geen stroom, geen verwarming: winter in oorlogstijd",
+  "Een noodpakket om 72 uur door te komen"
+ ],
+ "alert": {
+  "title": "Noodwaarschuwing",
+  "intro": "Door een hackaanval van buitenaf liggen deze publieke systemen plat:",
+  "items": [
+   "Digitale overheidsdiensten",
+   "Meldkamer 112",
+   "Verkeerslichtregeling",
+   "Ziekenhuissystemen"
+  ],
+  "outro": "Wacht op verdere instructies."
+ },
+ "phone4": [
+  "Geen",
+  "verbinding"
+ ],
+ "end": [
+  "Onze dierbaren zeggen altijd",
+  "„Het gaat goed met me.”",
+  "Maar gaat het",
+  "echt goed met ze?",
+  ""
+ ],
+ "store": [
+  "Zoek „",
+  "Anbu",
+  "” in je app store"
+ ],
+ "alias": [
+  "Mama",
+  "Papa"
+ ],
+ "brand": "Anbu",
+ "now": "nu",
+ "app": {
+  "title": "Anbu Guardian",
+  "checking": "Naasten die u\nnu volgt: 2",
+  "summary": "Overzicht van vandaag",
+  "legendSafe": "Alles goed: 1",
+  "legendCaution": "Let op: 1",
+  "list": "Uw naasten",
+  "pillSafe": "✅ Alles goed",
+  "pillCaution": "Let op",
+  "activity": "Activiteit: Actief",
+  "steps": "Stappen",
+  "last7": "Afgelopen 7 dagen",
+  "lastCheck": "Laatste check-in: 2 uur geleden",
+  "add": "Naaste toevoegen",
+  "nav": [
+   "Start",
+   "Verbindingen",
+   "Meldingen",
+   "Instellingen"
+  ],
+  "safetyNeeded": "Ga na of alles goed is",
+  "callNow": "Nu bellen",
+  "confirmSafety": "Veiligheid bevestigen",
+  "viewLoc": "🗺️ Locatie bekijken",
+  "mapTitle": "Locatie van de noodmelding",
+  "subjLabel": "Naaste",
+  "capturedLabel": "Vastgelegd om",
+  "accLabel": "Nauwkeurigheid",
+  "openExternal": "Openen in een kaarten-app",
+  "stepsBody": "Vandaag 6.240 stappen gezet."
+ },
+ "srv": {
+  "autoTitle": "✅ Check-in van vandaag ontvangen",
+  "emTitle": "🚨 Dringend hulpverzoek",
+  "emBody": "Uw naaste heeft om hulp gevraagd. Ga direct na of alles goed is."
+ },
+ "steps": "6.240",
+ "battery": "85%",
+ "captured": "2026-11-20 21:42",
+ "accuracy": "±20m"
+}

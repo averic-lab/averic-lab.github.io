@@ -1,0 +1,84 @@
+{
+ "lang": "it",
+ "tags": [
+  "Attacco informatico contro impianti energetici",
+  "Un forte terremoto, poi lo tsunami",
+  "Un ghiacciaio crolla, l’alluvione travolge un paese",
+  "Reti violate, servizi pubblici fermi",
+  "Senza luce né riscaldamento: l’inverno in guerra",
+  "Uno zaino d’emergenza per resistere 72 ore"
+ ],
+ "alert": {
+  "title": "Allerta di emergenza",
+  "intro": "A causa di un attacco informatico esterno, questi sistemi pubblici sono fuori servizio:",
+  "items": [
+   "Servizi pubblici online",
+   "Chiamate al 112",
+   "Controllo dei semafori",
+   "Sistemi degli ospedali pubblici"
+  ],
+  "outro": "Attendere ulteriori istruzioni."
+ },
+ "phone4": [
+  "Impossibile",
+  "connettersi"
+ ],
+ "end": [
+  "I nostri cari dicono sempre",
+  "«Sto bene».",
+  "Ma stanno",
+  "davvero bene?",
+  ""
+ ],
+ "store": [
+  "Cerca «",
+  "Anbu",
+  "» nello store"
+ ],
+ "alias": [
+  "Mamma",
+  "Papà"
+ ],
+ "brand": "Anbu",
+ "now": "ora",
+ "app": {
+  "title": "Anbu Caregiver",
+  "checking": "Persone che sta seguendo\nin questo momento: 2",
+  "summary": "Riepilogo di oggi",
+  "legendSafe": "Tutto bene: 1",
+  "legendCaution": "Attenzione: 1",
+  "list": "Persone care",
+  "pillSafe": "✅ Tutto bene",
+  "pillCaution": "Attenzione",
+  "activity": "Attività: Attiva",
+  "steps": "Passi",
+  "last7": "Ultimi 7 giorni",
+  "lastCheck": "Ultimo check-in: 2 h fa",
+  "add": "Aggiungi una persona cara",
+  "nav": [
+   "Home",
+   "Collegamenti",
+   "Avvisi",
+   "Impostazioni"
+  ],
+  "safetyNeeded": "Verifichi come sta",
+  "callNow": "Chiama ora",
+  "confirmSafety": "Conferma sicurezza",
+  "viewLoc": "🗺️ Vedi posizione",
+  "mapTitle": "Posizione dell'emergenza",
+  "subjLabel": "Persona cara",
+  "capturedLabel": "Rilevata alle",
+  "accLabel": "Precisione",
+  "openExternal": "Apri in un'app di mappe",
+  "stepsBody": "Oggi la persona cara ha fatto 6.240 passi."
+ },
+ "srv": {
+  "autoTitle": "✅ Check-in di oggi ricevuto",
+  "emTitle": "🚨 Richiesta di aiuto urgente",
+  "emBody": "La persona cara ha chiesto aiuto. Verifichi subito."
+ },
+ "steps": "6.240",
+ "battery": "85%",
+ "captured": "2026-11-20 21:42",
+ "accuracy": "±20m"
+}

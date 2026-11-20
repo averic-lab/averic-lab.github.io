@@ -1,0 +1,84 @@
+{
+ "lang": "pl",
+ "tags": [
+  "Cyberatak na obiekty energetyczne",
+  "Silne trzęsienie ziemi, a potem tsunami",
+  "Lodowiec runął, powódź zalała wieś",
+  "Włamanie do sieci, usługi publiczne stoją",
+  "Bez prądu i ogrzewania: zima w czasie wojny",
+  "Plecak ewakuacyjny na 72 godziny po katastrofie"
+ ],
+ "alert": {
+  "title": "Ostrzeżenie alarmowe",
+  "intro": "W wyniku zewnętrznego ataku hakerskiego nie działają następujące systemy publiczne:",
+  "items": [
+   "Usługi urzędowe online",
+   "Numer alarmowy 112",
+   "Sterowanie sygnalizacją świetlną",
+   "Systemy szpitali publicznych"
+  ],
+  "outro": "Czekaj na dalsze komunikaty."
+ },
+ "phone4": [
+  "Brak",
+  "połączenia"
+ ],
+ "end": [
+  "Nasi bliscy zawsze mówią:",
+  "„Wszystko u mnie dobrze”.",
+  "Ale czy naprawdę",
+  "wszystko u nich dobrze?",
+  ""
+ ],
+ "store": [
+  "Wyszukaj „",
+  "Anbu",
+  "” w sklepie z aplikacjami"
+ ],
+ "alias": [
+  "Mama",
+  "Tata"
+ ],
+ "brand": "Anbu",
+ "now": "teraz",
+ "app": {
+  "title": "Anbu Opiekun",
+  "checking": "Podopieczni\npod opieką: 2",
+  "summary": "Podsumowanie dnia",
+  "legendSafe": "W porządku: 1",
+  "legendCaution": "Uwaga: 1",
+  "list": "Podopieczni",
+  "pillSafe": "✅ W porządku",
+  "pillCaution": "Uwaga",
+  "activity": "Aktywność: Wysoka",
+  "steps": "Kroki",
+  "last7": "Ostatnie 7 dni",
+  "lastCheck": "Ostatni znak życia: 2 godz. temu",
+  "add": "Dodaj podopiecznego",
+  "nav": [
+   "Start",
+   "Połączenia",
+   "Alerty",
+   "Ustawienia"
+  ],
+  "safetyNeeded": "Trzeba sprawdzić",
+  "callNow": "Zadzwoń",
+  "confirmSafety": "Potwierdź bezpieczeństwo",
+  "viewLoc": "🗺️ Pokaż lokalizację",
+  "mapTitle": "Lokalizacja wezwania",
+  "subjLabel": "Podopieczny",
+  "capturedLabel": "Ustalona o",
+  "accLabel": "Dokładność",
+  "openExternal": "Otwórz w aplikacji z mapami",
+  "stepsBody": "Liczba kroków dzisiaj: 6 240."
+ },
+ "srv": {
+  "autoTitle": "✅ Dzisiejszy znak życia otrzymany",
+  "emTitle": "🚨 Prośba o pilną pomoc",
+  "emBody": "Podopieczny poprosił o pomoc. Sprawdź natychmiast."
+ },
+ "steps": "6 240",
+ "battery": "85%",
+ "captured": "2026-11-20 21:42",
+ "accuracy": "±20m"
+}

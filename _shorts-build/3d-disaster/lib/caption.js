@@ -19,7 +19,18 @@
         ctx.font = `900 ${size0}px "Noto Sans KR"`;
         const widest = lines.length ? Math.max(...lines.map((l) => lineW(ctx, l))) : 1;
         const size = Math.floor(size0 * Math.min(1, maxW / widest)), lh = size * 1.28;
-        const ts = (typeof c.tagSize === 'function' ? c.tagSize(ctx) : c.tagSize) || 38, tagStep = Math.round(ts * 74 / 38);   // 꼬리표 크기(px). 알약 높이·간격이 같이 커진다
+        const ts = (typeof c.tagSize === 'function' ? c.tagSize(ctx) : c.tagSize) || 38;   // 꼬리표 크기(px). 알약 높이·간격이 같이 커진다
+        // tagWrap: 820px 에 안 들어가는 긴 꼬리표는 두 줄 알약으로(글자를 줄이지 않는다 — 다국어)
+        let tagRows = c.tag ? [c.tag] : [];
+        if (c.tag && c.tagWrap) {
+          ctx.font = `800 ${ts}px "Noto Sans KR"`;
+          if (ctx.measureText(c.tag).width + ts * 44 / 38 > 800 && window.ANBU) {
+            const toks = ANBU.tokens(c.tag); let best = null;
+            for (let i = 1; i < toks.length; i++) { const a = toks.slice(0, i).join('').trim(), b = toks.slice(i).join('').trim(), w = Math.max(ctx.measureText(a).width, ctx.measureText(b).width); if (!best || w < best.w) best = { a, b, w }; }
+            if (best) tagRows = [best.a, best.b];
+          }
+        }
+        const tagStep = Math.round(ts * 74 / 38) + (tagRows.length - 1) * Math.round(ts * 1.25);
         const blockH = lh * lines.length + (c.tag ? tagStep : 0);
         const top = c.pos === 'bottom' ? 1536 - 40 - blockH : 154 + 46;
         // 글자 뒤 어둠(장면이 밝아도 읽히게) — 화면 위쪽에 넓고 부드럽게
@@ -33,14 +44,15 @@
         let y = top;
         if (c.tag) {
           const k = eo((t - c.a) / 0.2) * out;
-          const ph = Math.round(ts * 56 / 38);
+          const LHt = Math.round(ts * 1.25), ph = Math.round(ts * 56 / 38) + (tagRows.length - 1) * LHt;
           ctx.save(); ctx.globalAlpha = k; ctx.font = `800 ${ts}px "Noto Sans KR"`;
-          const tw = ctx.measureText(c.tag).width + ts * 44 / 38;
+          const tw = Math.max(...tagRows.map((r) => ctx.measureText(r).width)) + ts * 44 / 38;
           ctx.translate(W / 2, y + ph / 2 - 2 - (1 - k) * 14);
           ctx.shadowColor = 'rgba(0,0,0,0.45)'; ctx.shadowBlur = 16; ctx.shadowOffsetY = 4;
-          ctx.fillStyle = AMBER; ctx.beginPath(); ctx.roundRect(-tw / 2, -ph / 2, tw, ph, ph / 2); ctx.fill();
+          ctx.fillStyle = AMBER; ctx.beginPath(); ctx.roundRect(-tw / 2, -ph / 2, tw, ph, Math.round(ts * 56 / 38) / 2); ctx.fill();
           ctx.shadowColor = 'transparent';
-          ctx.fillStyle = '#101216'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(c.tag, 0, 2);
+          ctx.fillStyle = '#101216'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          tagRows.forEach((r, i) => ctx.fillText(r, 0, 2 + (i - (tagRows.length - 1) / 2) * LHt));
           ctx.restore(); y += tagStep;
         }
         lines.forEach((parts, i) => {

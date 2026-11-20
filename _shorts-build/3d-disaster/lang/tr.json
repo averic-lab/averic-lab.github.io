@@ -1,0 +1,84 @@
+{
+ "lang": "tr",
+ "tags": [
+  "Enerji tesislerine siber saldırı",
+  "Büyük deprem, ardından tsunami",
+  "Buzul çöktü, sel köyü vurdu",
+  "Ağlara sızıldı, kamu hizmetleri durdu",
+  "Elektrik yok, ısınma yok: savaşta kış",
+  "Afetten sonra 72 saat için deprem çantası"
+ ],
+ "alert": {
+  "title": "Acil Durum Uyarısı",
+  "intro": "Dışarıdan yapılan bir siber saldırı nedeniyle şu kamu sistemleri çalışmıyor:",
+  "items": [
+   "Kamu çevrim içi hizmetleri",
+   "112 Acil Çağrı",
+   "Trafik sinyal kontrolü",
+   "Devlet hastanesi sistemleri"
+  ],
+  "outro": "Yeni duyurulara kadar bekleyin."
+ },
+ "phone4": [
+  "Bağlantı",
+  "kurulamıyor"
+ ],
+ "end": [
+  "Sevdiklerimiz hep",
+  "“Ben iyiyim” der.",
+  "Ama gerçekten",
+  "iyiler mi?",
+  ""
+ ],
+ "store": [
+  "Mağazada “",
+  "Anbu",
+  "” aratın"
+ ],
+ "alias": [
+  "Anne",
+  "Babam"
+ ],
+ "brand": "Anbu",
+ "now": "şimdi",
+ "app": {
+  "title": "Anbu Koruyucu",
+  "checking": "Şu an takip ettiğiniz\nkişi sayısı: 2",
+  "summary": "Bugünün özeti",
+  "legendSafe": "Güvende: 1",
+  "legendCaution": "Dikkat: 1",
+  "list": "Yakınlarınız",
+  "pillSafe": "✅ Güvende",
+  "pillCaution": "Dikkat",
+  "activity": "Etkinlik: Hareketli",
+  "steps": "Adım",
+  "last7": "Son 7 gün",
+  "lastCheck": "Son haber: 2 sa önce",
+  "add": "Yakın ekle",
+  "nav": [
+   "Ana sayfa",
+   "Bağlantılar",
+   "Bildirimler",
+   "Ayarlar"
+  ],
+  "safetyNeeded": "Kontrol gerekli",
+  "callNow": "Hemen ara",
+  "confirmSafety": "Güvende olduğunu onayla",
+  "viewLoc": "🗺️ Konumu göster",
+  "mapTitle": "Acil durum konumu",
+  "subjLabel": "Yakın",
+  "capturedLabel": "Alındığı saat",
+  "accLabel": "Doğruluk",
+  "openExternal": "Harita uygulamasında aç",
+  "stepsBody": "Bugün 6.240 adım attı."
+ },
+ "srv": {
+  "autoTitle": "✅ Bugün haber alındı",
+  "emTitle": "🚨 Acil yardım talebi",
+  "emBody": "Yakınınız yardım istedi. Lütfen hemen kontrol edin."
+ },
+ "steps": "6.240",
+ "battery": "%85",
+ "captured": "2026-11-20 21:42",
+ "accuracy": "±20m"
+}

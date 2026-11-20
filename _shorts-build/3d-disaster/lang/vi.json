@@ -1,0 +1,84 @@
+{
+ "lang": "vi",
+ "tags": [
+  "Tấn công mạng nhắm vào cơ sở năng lượng",
+  "Động đất mạnh, rồi sóng thần",
+  "Sông băng sụp đổ, lũ cuốn qua ngôi làng",
+  "Mạng lưới bị xâm nhập, dịch vụ công tê liệt",
+  "Mất điện, mất sưởi: mùa đông thời chiến",
+  "Túi khẩn cấp giúp cầm cự 72 giờ sau thảm họa"
+ ],
+ "alert": {
+  "title": "Cảnh báo khẩn cấp",
+  "intro": "Do bị tin tặc tấn công từ bên ngoài, các hệ thống công sau đã ngừng hoạt động:",
+  "items": [
+   "Cổng dịch vụ công",
+   "Tổng đài 114, 115",
+   "Điều khiển đèn giao thông",
+   "Hệ thống bệnh viện công"
+  ],
+  "outro": "Vui lòng chờ thông báo tiếp theo."
+ },
+ "phone4": [
+  "Không thể",
+  "kết nối"
+ ],
+ "end": [
+  "Người thân luôn nói",
+  "“Tôi ổn mà.”",
+  "Nhưng",
+  "họ có thật sự ổn không?",
+  ""
+ ],
+ "store": [
+  "Tìm “",
+  "Anbu",
+  "” trên kho ứng dụng"
+ ],
+ "alias": [
+  "Mẹ",
+  "Bố"
+ ],
+ "brand": "Anbu",
+ "now": "bây giờ",
+ "app": {
+  "title": "Anbu Guardian",
+  "checking": "Đang theo dõi bình an\ncủa 2 người.",
+  "summary": "Tóm tắt hôm nay",
+  "legendSafe": "Bình an: 1",
+  "legendCaution": "Chú ý: 1",
+  "list": "Danh sách người thân",
+  "pillSafe": "✅ Bình an",
+  "pillCaution": "Chú ý",
+  "activity": "Mức hoạt động: Năng động",
+  "steps": "Số bước",
+  "last7": "7 ngày qua",
+  "lastCheck": "Lần cuối: 2 giờ trước",
+  "add": "Thêm người thân",
+  "nav": [
+   "Trang chủ",
+   "Kết nối",
+   "Thông báo",
+   "Cài đặt"
+  ],
+  "safetyNeeded": "Cần kiểm tra",
+  "callNow": "Gọi ngay",
+  "confirmSafety": "Xác nhận an toàn",
+  "viewLoc": "🗺️ Xem vị trí",
+  "mapTitle": "Vị trí khẩn cấp",
+  "subjLabel": "Người thân",
+  "capturedLabel": "Ghi nhận lúc",
+  "accLabel": "Độ chính xác",
+  "openExternal": "Mở bằng ứng dụng bản đồ",
+  "stepsBody": "Hôm nay đã đi 6.240 bước."
+ },
+ "srv": {
+  "autoTitle": "✅ Đã nhận tin bình an hôm nay",
+  "emTitle": "🚨 Yêu cầu trợ giúp khẩn cấp",
+  "emBody": "Người thân của bạn đã yêu cầu trợ giúp. Vui lòng kiểm tra ngay."
+ },
+ "steps": "6.240",
+ "battery": "85%",
+ "captured": "2026-11-20 21:42",
+ "accuracy": "±20m"
+}

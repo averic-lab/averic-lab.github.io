@@ -1,0 +1,84 @@
+{
+ "lang": "en",
+ "tags": [
+  "Cyberattack on energy facilities",
+  "A major earthquake, then a tsunami",
+  "A glacier collapses, a flood hits a village",
+  "Networks breached, public services down",
+  "No power, no heat: winter in wartime",
+  "A 72-hour survival kit for after a disaster"
+ ],
+ "alert": {
+  "title": "Emergency Alert",
+  "intro": "Due to an external hacking attack, the following public systems are down.",
+  "items": [
+   "Government online services",
+   "911 dispatch",
+   "Traffic signal control",
+   "Public hospital systems"
+  ],
+  "outro": "Stand by for further instructions."
+ },
+ "phone4": [
+  "Can’t connect",
+  "to service"
+ ],
+ "end": [
+  "Our loved ones always say",
+  "“I’m fine.”",
+  "But are they",
+  "really okay?",
+  ""
+ ],
+ "store": [
+  "Search “",
+  "Anbu",
+  "” in your app store"
+ ],
+ "alias": [
+  "Mom",
+  "Dad"
+ ],
+ "brand": "Anbu",
+ "now": "now",
+ "app": {
+  "title": "Anbu Guardian",
+  "checking": "Looking after\n2 people right now.",
+  "summary": "Today's summary",
+  "legendSafe": "Safe: 1",
+  "legendCaution": "Caution: 1",
+  "list": "Loved ones",
+  "pillSafe": "✅ Safe",
+  "pillCaution": "Caution",
+  "activity": "Activity: Active",
+  "steps": "Steps",
+  "last7": "Last 7 days",
+  "lastCheck": "Last check: 2 hr ago",
+  "add": "Add a loved one",
+  "nav": [
+   "Home",
+   "Connections",
+   "Alerts",
+   "Settings"
+  ],
+  "safetyNeeded": "Safety check needed",
+  "callNow": "Call now",
+  "confirmSafety": "Confirm safe",
+  "viewLoc": "🗺️ View location",
+  "mapTitle": "Emergency location",
+  "subjLabel": "Loved one",
+  "capturedLabel": "Recorded at",
+  "accLabel": "Accuracy",
+  "openExternal": "Open in a maps app",
+  "stepsBody": "They walked 6,240 steps today."
+ },
+ "srv": {
+  "autoTitle": "✅ Today's wellness check received",
+  "emTitle": "🚨 Emergency help request",
+  "emBody": "Your loved one has asked for help. Please check on them right away."
+ },
+ "steps": "6,240",
+ "battery": "85%",
+ "captured": "2026-11-20 21:42",
+ "accuracy": "±20m"
+}

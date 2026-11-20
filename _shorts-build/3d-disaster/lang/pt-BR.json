@@ -1,0 +1,84 @@
+{
+ "lang": "pt-BR",
+ "tags": [
+  "Ataque cibernético a instalações de energia",
+  "Um forte terremoto, depois um tsunami",
+  "Geleira desaba, enchente arrasa um vilarejo",
+  "Redes invadidas, serviços públicos parados",
+  "Sem luz nem aquecimento: o inverno na guerra",
+  "Uma mochila de emergência para 72 horas"
+ ],
+ "alert": {
+  "title": "Alerta de emergência",
+  "intro": "Devido a um ataque hacker externo, estes sistemas públicos estão fora do ar:",
+  "items": [
+   "Serviços públicos on-line",
+   "Chamadas ao 192 e 193",
+   "Controle de semáforos",
+   "Sistemas de hospitais públicos"
+  ],
+  "outro": "Aguarde novas orientações."
+ },
+ "phone4": [
+  "Não foi possível",
+  "conectar"
+ ],
+ "end": [
+  "Nossa família sempre diz",
+  "“Estou bem.”",
+  "Mas será que estão",
+  "bem de verdade?",
+  ""
+ ],
+ "store": [
+  "Procure “",
+  "Anbu",
+  "” na loja de apps"
+ ],
+ "alias": [
+  "Mãe",
+  "Pai"
+ ],
+ "brand": "Anbu",
+ "now": "agora",
+ "app": {
+  "title": "Anbu Cuidador",
+  "checking": "Pessoas que você\nacompanha agora: 2",
+  "summary": "Resumo de hoje",
+  "legendSafe": "Tudo bem: 1",
+  "legendCaution": "Atenção: 1",
+  "list": "Entes queridos",
+  "pillSafe": "✅ Tudo bem",
+  "pillCaution": "Atenção",
+  "activity": "Atividade: Ativa",
+  "steps": "Passos",
+  "last7": "Últimos 7 dias",
+  "lastCheck": "Último check-in: há 2 h",
+  "add": "Adicionar ente querido",
+  "nav": [
+   "Início",
+   "Conexões",
+   "Alertas",
+   "Ajustes"
+  ],
+  "safetyNeeded": "Confira se está tudo bem",
+  "callNow": "Ligar agora",
+  "confirmSafety": "Confirmar segurança",
+  "viewLoc": "🗺️ Ver localização",
+  "mapTitle": "Local da emergência",
+  "subjLabel": "Ente querido",
+  "capturedLabel": "Registrada às",
+  "accLabel": "Precisão",
+  "openExternal": "Abrir em um app de mapas",
+  "stepsBody": "Seu ente querido caminhou 6.240 passos hoje."
+ },
+ "srv": {
+  "autoTitle": "✅ Check-in de hoje recebido",
+  "emTitle": "🚨 Pedido de ajuda urgente",
+  "emBody": "Seu ente querido pediu ajuda. Verifique imediatamente."
+ },
+ "steps": "6.240",
+ "battery": "85%",
+ "captured": "2026-11-20 21:42",
+ "accuracy": "±20m"
+}

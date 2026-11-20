@@ -10,6 +10,8 @@
     snow: '#f3f6f8', ice: '#bfe3ef', ice2: '#7fbfd6', rock: '#5b6170', rock2: '#474d5c', valley: '#6f9a5c', water: '#3d7fb0', water2: '#2a5f8c', rroof: '#c9563c',
     dark: '#0e1422', sil: '#070a12', sil2: '#151d2e', fire: '#ff8a3a', orange: '#e8742c', ink: '#1a1c1c' };
   const PAGE_W = 5.6, PAGE_D = 6.4;
+  // 인쇄 글자 크기 맞추기: 폭(세계 단위) 안에 들어가도록 줄인다(언어마다 길이가 다르다)
+  const fitTxt = (str, size, maxW, wt = 900) => { const m = document.createElement('canvas').getContext('2d'); m.font = `${wt} 100px "Noto Sans KR"`; const w = m.measureText(str).width / 100; return Math.min(size, maxW / Math.max(w, 0.01)); };
   const TURN = 1.25;
   // 장 넘김 시각: 0 = 인트로 그림 페이지가 넘어가며 ① 도시가 선다
   const TURNS = [0.9, 7.2, 13.4, 19.6, 25.6, 31.6, 38.6];
@@ -202,7 +204,7 @@
           a.lamp('#dfe9f5', (c) => c.roundRect(-0.8, 0.12, 1.6, 2.7, 0.1));
           a.disc('#c9d3df', 0, 2.0, 0.42); a.line('#7a8696', 0.08, (c) => { for (let k = 0; k < 4; k++) { c.moveTo(-0.24 + k * 0.16, 1.82); c.lineTo(-0.24 + k * 0.16, 1.88 + k * 0.1); } });
           a.line('#e5484d', 0.1, (c) => { c.moveTo(-0.32, 1.7); c.lineTo(0.32, 2.3); });
-          a.txt('서비스에', 0, 1.12, 0.23, '#2a2f38', 900); a.txt('연결할 수 없습니다', 0, 0.8, 0.2, '#2a2f38', 900);
+          a.txt(S72.phone4[0], 0, 1.12, fitTxt(S72.phone4[0], 0.23, 1.7), '#2a2f38', 900); a.txt(S72.phone4[1], 0, 0.8, fitTxt(S72.phone4[1], 0.2, 1.7), '#2a2f38', 900);
           a.box('#c9d3df', -0.45, 0.32, 0.9, 0.22, 0.11);
         } },
       ],
@@ -297,23 +299,23 @@
 
   // 자막(CAP) — 장이 놓인 뒤 나온다
   // 3차 피드백: 설명 자막은 모두 뺐다(영상만으로 이해되게). 꼬리표만 남기고 글자를 키웠다(모든 꼬리표 같은 크기 — 가장 긴 것이 820px 안에)
+  const S72 = ANBU.S();   // 언어별 화면 문구(lang/<lang>.json)
   const TAGS = [
-    { a: 2.45, b: 6.95, tag: '에너지 시설을 노린 사이버 공격' },
-    { a: 8.6, b: 13.15, tag: '강진, 그리고 쓰나미' },
-    { a: 14.8, b: 19.35, tag: '무너진 빙하, 마을을 덮친 홍수' },
-    { a: 21.0, b: 25.35, tag: '통신망 침투, 멈춰 버린 공공 서비스' },
-    { a: 27.0, b: 31.35, tag: '끊긴 전기와 난방, 전쟁 속의 겨울' },
+    { a: 2.45, b: 6.95, tag: S72.tags[0] },
+    { a: 8.6, b: 13.15, tag: S72.tags[1] },
+    { a: 14.8, b: 19.35, tag: S72.tags[2] },
+    { a: 21.0, b: 25.35, tag: S72.tags[3] },
+    { a: 27.0, b: 31.35, tag: S72.tags[4] },
   ];
   // 글꼴이 다 불린 뒤(첫 그리기 때) 한 번 잰다: 가장 긴 꼬리표 + 알약 여백이 820px 안에
   let tagPx = 0;
-  const TAG_SIZE = (ctx) => { if (!tagPx) { ctx.save(); ctx.font = '800 100px "Noto Sans KR"'; const w = Math.max(...TAGS.map((c) => ctx.measureText(c.tag).width)); ctx.restore(); tagPx = Math.min(64, Math.floor(100 * 800 / (w + 116))); } return tagPx; };
-  const CAPS = TAGS.map((c) => ({ ...c, lines: [], tagSize: TAG_SIZE, shade: 0.75 }));
+  const TAG_SIZE = (ctx) => { if (S72.lang !== 'ko') return 46; if (!tagPx) { ctx.save(); ctx.font = '800 100px "Noto Sans KR"'; const w = Math.max(...TAGS.concat([{ tag: S72.tags[5] }]).map((c) => ctx.measureText(c.tag).width)); ctx.restore(); tagPx = Math.min(64, Math.floor(100 * 800 / (w + 116))); } return tagPx; };
+  const CAPS = TAGS.map((c) => ({ ...c, lines: [], tagSize: TAG_SIZE, tagWrap: S72.lang !== 'ko', shade: 0.75 }));
   // 3차 피드백 ②: 생존배낭 장에 짧은 설명 꼬리표 하나(다른 꼬리표와 같은 모양·크기)
-  CAPS.push({ a: 40.45, b: 45.25, tag: '재난 후 72시간을 버티는 생존배낭', lines: [], tagSize: TAG_SIZE, shade: 0.6, pos: 'bottom' });
+  CAPS.push({ a: 40.45, b: 45.25, tag: S72.tags[5], lines: [], tagSize: TAG_SIZE, tagWrap: S72.lang !== 'ko', shade: 0.6, pos: 'bottom' });
   // 3차 피드백 ①: 사람들 장(⑥)에 긴급 재난 문자 — 경보음과 함께 화면 위쪽에 내려온다(특정 나라의 경보 화면을 흉내 내지 않은 일반형)
   const ALERT = {
-    a: 33.55, b: 38.95, title: '긴급 재난 문자',
-    body: ['외부 해킹 공격으로 다음 공공 시스템이 중단되었습니다.', '· 정부 민원 전산망  · 119 신고 접수', '· 교통 신호 관제  · 공공 병원 전산', '추가 안내 시까지 대기하십시오.'],
+    a: 33.55, b: 38.95, title: S72.alert.title,
   };
   // 경보음 구간(울림 0.5초 / 쉼 0.14초 × 3) — 소리와 사람들 손의 휴대폰 붉은 깜박임이 같은 시계를 쓴다
   const ALARM = Array.from({ length: 3 }, (_, i) => ALERT.a + 0.05 + i * 0.64);
@@ -323,12 +325,17 @@
     if (t < ALERT.a - 0.01 || t > ALERT.b + 0.01) return;
     const eo = (x) => 1 - Math.pow(1 - K.clamp(x), 3);
     const kin = eo((t - ALERT.a) / 0.38), kout = K.clamp((ALERT.b - t) / 0.3), vis = Math.min(kin, kout);
-    const X = 130, Wd = 820, PAD = 40, R = 34, FT = 40, FB = 38, LH = 54;
-    // 본문은 낱말 단위로 줄을 바꾼다
-    ctx.save(); ctx.font = `500 ${FB}px "Noto Sans KR"`;
-    const lines = [];
-    for (const para of ALERT.body) { let cur = ''; for (const w of para.split(' ')) { const nx = cur ? cur + ' ' + w : w; if (ctx.measureText(nx).width > Wd - 2 * PAD && cur) { lines.push(cur); cur = w; } else cur = nx; } lines.push(cur); }
-    ctx.restore();
+    const X = 130, Wd = 820, PAD = 40, R = 34, FT = 40, RTL = ANBU.RTL();
+    // 본문: 머리말(낱말 단위 줄바꿈) → 멈춘 시스템(한 줄에 둘, 안 들어가면 하나씩) → 끝말. 줄이 많으면 글자를 조금 줄인다
+    const A = S72.alert, MAXW = Wd - 2 * PAD;
+    const build = (fb) => {
+      ctx.font = `500 ${fb}px "Noto Sans KR"`;
+      const out = ANBU.wrap(ctx, A.intro, MAXW), it = A.items.map((x) => '· ' + x);
+      for (let i = 0; i < it.length; i += 2) { const pair = it[i + 1] ? it[i] + '  ' + it[i + 1] : it[i]; if (ctx.measureText(pair).width <= MAXW) out.push(pair); else { out.push(it[i]); if (it[i + 1]) out.push(it[i + 1]); } }
+      return out.concat(ANBU.wrap(ctx, A.outro, MAXW));
+    };
+    ctx.save(); let FB = 38, lines = build(FB); while (lines.length > 6 && FB > 31) { FB -= 1; lines = build(FB); } ctx.restore();
+    const LH = Math.round(FB * 1.42);
     const Hh = 30 + 64 + 16 + lines.length * LH + 30;
     const y = 170 - (1 - vis) * (Hh + 190);
     const ring = alarmOn(t) ? 1 : 0, pulse = ring ? 0.6 + 0.4 * Math.sin((t - ALERT.a) * 30) : 0;
@@ -341,13 +348,16 @@
     ctx.strokeStyle = `rgba(255,90,78,${0.5 + 0.5 * pulse})`; ctx.lineWidth = 3; ctx.beginPath(); ctx.roundRect(X + 1.5, y + 1.5, Wd - 3, Hh - 3, R - 1.5); ctx.stroke();
     // 머리: 붉은 경고 원 + '긴급 재난 문자' + '지금'
     const hy = y + 30 + 32;
-    ctx.fillStyle = '#e5484d'; ctx.beginPath(); ctx.arc(X + PAD + 24, hy, 24, 0, 7); ctx.fill();
-    ctx.fillStyle = '#ffffff'; ctx.font = '900 32px "Noto Sans KR"'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('!', X + PAD + 24, hy + 1);
-    ctx.textAlign = 'left'; ctx.font = `800 ${FT}px "Noto Sans KR"`; ctx.fillStyle = '#ff7b70'; ctx.fillText(ALERT.title, X + PAD + 62, hy + 1);
-    ctx.textAlign = 'right'; ctx.font = '500 30px "Noto Sans KR"'; ctx.fillStyle = 'rgba(255,255,255,0.55)'; ctx.fillText('지금', X + Wd - PAD, hy + 1);
+    // 아랍어(오른쪽에서 왼쪽)는 머리·본문을 거울처럼 오른쪽 기준으로
+    const L0 = RTL ? X + Wd - PAD : X + PAD, L1 = RTL ? X + PAD : X + Wd - PAD, dir = RTL ? -1 : 1;
+    ctx.fillStyle = '#e5484d'; ctx.beginPath(); ctx.arc(L0 + dir * 24, hy, 24, 0, 7); ctx.fill();
+    ctx.fillStyle = '#ffffff'; ctx.font = '900 32px "Noto Sans KR"'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('!', L0 + dir * 24, hy + 1);
+    ctx.font = `800 ${FT}px "Noto Sans KR"`; const tsz = Math.min(FT, Math.floor(FT * (Wd - 2 * PAD - 62 - 110) / Math.max(1, ctx.measureText(ALERT.title).width)));
+    ctx.textAlign = RTL ? 'right' : 'left'; ctx.font = `800 ${tsz}px "Noto Sans KR"`; ctx.fillStyle = '#ff7b70'; ctx.fillText(ALERT.title, L0 + dir * 62, hy + 1);
+    ctx.textAlign = RTL ? 'left' : 'right'; ctx.font = '500 30px "Noto Sans KR"'; ctx.fillStyle = 'rgba(255,255,255,0.55)'; ctx.fillText(S72.now, L1, hy + 1);
     // 본문
-    ctx.textAlign = 'left'; ctx.font = `500 ${FB}px "Noto Sans KR"`; ctx.fillStyle = '#f1f1f3';
-    lines.forEach((l, i) => ctx.fillText(l, X + PAD, y + 30 + 64 + 16 + LH * (i + 0.5)));
+    ctx.textAlign = RTL ? 'right' : 'left'; ctx.font = `500 ${FB}px "Noto Sans KR"`; ctx.fillStyle = '#f1f1f3';
+    lines.forEach((l, i) => ctx.fillText(l, L0, y + 30 + 64 + 16 + LH * (i + 0.5)));
     ctx.restore();
   }
-  const KO_TEXT = CAPS.map((c) => (c.tag || '') + c.lines.join('')).join('') + ALERT.title + ALERT.body.join('') + '지금!서비스에연결할수없습니다鮮魚津波避難場所72HOURS?';
+  const KO_TEXT = CAPS.map((c) => (c.tag || '') + c.lines.join('')).join('') + ALERT.title + S72.alert.intro + S72.alert.items.join('') + S72.alert.outro + '지금!서비스에연결할수없습니다鮮魚津波避難場所72HOURS?';

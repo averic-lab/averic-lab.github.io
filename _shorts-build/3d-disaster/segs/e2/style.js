@@ -5,7 +5,14 @@
   // 지구 = 실제 3D 구(그림 텍스처) + 점점 촘촘한 그림 지도 층(구면 조각 2장 → 평면 2장)을 고도에 따라 겹쳐 바꾼다.
   // 육지 윤곽: Natural Earth(world-atlas 50m/10m)를 경위도 링으로 바꾼 segs/e2/land.json. 지명·글자는 그리지 않는다.
   const DURATION = 9;
-  const LON0 = 127.02, LAT0 = 37.535;          // 위치 표시가 있는 곳(특정 주소가 아닌 한반도 중서부 큰 도시의 아파트 동네)
+  const S72 = ANBU.S(), AP = S72.app, RTL = ANBU.RTL();   // 언어별 앱 문구(lang/<lang>.json)
+  // 위치 표시가 있는 곳(특정 주소가 아닌 큰 도시의 아파트 동네). 한국어 = 한반도 중서부, 그 밖 = 그 언어 나라의 큰 도시
+  // (사용자 승인 2026-11-18). 표는 tools/gen_land.py 의 CITY 와 같아야 한다 — 그 스크립트가 segs/e2/land/<lang>.json(윤곽)을 만든다
+  const CITY = { ko: [127.02, 37.535], en: [-73.95, 40.73], ja: [139.70, 35.68], 'zh-CN': [116.40, 39.90], 'zh-TW': [121.53, 25.04], de: [13.40, 52.52], fr: [2.35, 48.86],
+    es: [-3.70, 40.42], it: [12.50, 41.90], nl: [4.90, 52.37], 'pt-BR': [-46.63, -23.55], ru: [37.62, 55.75], ar: [46.68, 24.71], tr: [28.98, 41.01], pl: [21.01, 52.23],
+    vi: [105.85, 21.03], th: [100.50, 13.76], sv: [18.07, 59.33], hi: [77.21, 28.61], id: [106.85, -6.20] };
+  const LANG = window.LANG || 'ko', IS_KO = LANG === 'ko';
+  const [LON0, LAT0] = CITY[LANG] || CITY.ko;
   const R_EARTH = 6371000;
   // 고도(지구 반지름 단위) 시간표 — 로그로 보간해 줌 속도가 일정하게 느껴진다
   const ZK = [[0, 6.6], [1.2, 2.5], [2.45, 0.42], [3.3, 0.075], [3.95, 0.0135], [4.75, 0.0026], [5.45, 0.00058], [6.05, 0.00034], [9, 0.0003]];
@@ -13,7 +20,9 @@
   const PULSE0 = 4.35, PULSE = 0.85;            // 위치 표시 맥박
   const CLOUD_T = 3.72;                         // 구름을 뚫는 순간(소리)
   // 한 줄기 큰 강(경위도) — 한반도 지도와 도시 지도가 같은 강을 그려 층이 바뀌어도 이어진다
-  const RIVER = [[126.5, 37.66], [126.68, 37.6], [126.82, 37.566], [126.92, 37.536], [127.0, 37.516], [127.08, 37.521], [127.16, 37.544], [127.26, 37.558], [127.4, 37.548], [127.7, 37.5]];
+  // 다른 나라는 같은 강 모양을 그 도시로 옮겨 쓴다(동네 지도는 특정 장소가 아니다)
+  const RIVER_KO = [[126.5, 37.66], [126.68, 37.6], [126.82, 37.566], [126.92, 37.536], [127.0, 37.516], [127.08, 37.521], [127.16, 37.544], [127.26, 37.558], [127.4, 37.548], [127.7, 37.5]];
+  const RIVER = RIVER_KO.map(([lo, la]) => [LON0 + (lo - 127.02) * Math.cos(37.535 * Math.PI / 180) / Math.cos(LAT0 * Math.PI / 180), LAT0 + (la - 37.535)]);
   // 앱 화면(오버레이) 배치 — 휴대폰과 그 안의 「긴급 위치」 페이지
   const PH = { x: 160, y: 250, w: 760, h: 1430, r: 88, bez: 18 };
   const MAPWIN = { y0: 418, y1: 1210 };         // 지도 창(투명 — 아래 그림 지도가 보인다)
@@ -144,6 +153,7 @@
         return m;
       };
       const LAND = await (await fetch('segs/e2/land.json')).json();
+      if (!IS_KO) Object.assign(LAND, await (await fetch(`segs/e2/land/${LANG}.json`)).json());   // asia(넓은 지역 50m)·korea(나라 10m)를 그 나라 것으로
       const D2R = Math.PI / 180;
 
       // ---- 구면 좌표: 경위도 → 단위 방향. 동·북 방향(접평면)
@@ -223,10 +233,10 @@
         ctx.strokeStyle = 'rgba(40,60,40,0.35)'; ctx.lineWidth = Math.max(1, size * 0.18); ringsPath(ctx, rings, X, Y); ctx.stroke();
       });
       const GLOBE_T = equiCanvas(4096, 2048, -180, 180, -90, 90, LAND.globe, 12, 26000);
-      const A1 = [95, 160, 5, 60], A2 = [121, 134.5, 31, 44];
+      const A1 = IS_KO ? [95, 160, 5, 60] : LAND.geo.a1, A2 = IS_KO ? [121, 134.5, 31, 44] : LAND.geo.a2;
       const koreaExtra = (ctx, X, Y, rr) => {
         // 동쪽 산줄기(진한 초록), 도시 덩어리(베이지 회색), 큰 강 — 도시 지도와 같은 자리
-        for (let i = 0; i < 260; i++) { const lat = rr.range(35.2, 39.5), lon = 128.2 + (39.5 - lat) * 0.32 + rr.gauss() * 0.35; ctx.fillStyle = rr.pick(['#3f6a36', '#4a7a3c', '#365e30']); ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.ellipse(X(lon), Y(lat), rr.range(8, 20), rr.range(14, 30), 1.1, 0, 7); ctx.fill(); }
+        if (IS_KO) for (let i = 0; i < 260; i++) { const lat = rr.range(35.2, 39.5), lon = 128.2 + (39.5 - lat) * 0.32 + rr.gauss() * 0.35; ctx.fillStyle = rr.pick(['#3f6a36', '#4a7a3c', '#365e30']); ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.ellipse(X(lon), Y(lat), rr.range(8, 20), rr.range(14, 30), 1.1, 0, 7); ctx.fill(); }
         ctx.globalAlpha = 1;
         const pxPerM = (X(LON0 + 1) - X(LON0)) / (111320 * Math.cos(LAT0 * D2R));
         ctx.beginPath(); for (let k = 0; k <= 72; k++) { const a = k / 72 * Math.PI * 2, rM = urbanR(Math.cos(a), Math.sin(a)); ctx.lineTo(X(LON0) + Math.cos(a) * rM * pxPerM, Y(LAT0) - Math.sin(a) * rM * pxPerM); }
@@ -403,7 +413,7 @@
       return {
         update(t) {
           const h = hAt(t), k = K.ease.inOut(K.seg(t, 0, 2.3));
-          const lon = K.lerp(104, LON0, k), lat = K.lerp(16, LAT0, k);
+          const lon = K.lerp(LON0 - 23.02, LON0, k), lat = K.lerp(LAT0 - 21.535, LAT0, k);
           const G = dirOf(lon, lat), N = northOf(lon, lat), U = G;
           const tilt = 0.46 * K.smooth(4.9, 6.15, t), look = -0.045 * K.smooth(APP, APP + 0.75, t) * h;
           const pos = G.clone().addScaledVector(U, h * Math.cos(tilt)).addScaledVector(N, -h * Math.sin(tilt));
@@ -464,26 +474,30 @@
           ctx.fillStyle = '#1a1c1c'; for (let i = 0; i < 4; i++) ctx.fillRect(x1 - 150 + i * 12, PH.y + 62 - 8 - i * 5, 8, 8 + i * 5);
           ctx.strokeStyle = '#1a1c1c'; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.roundRect(x1 - 92, PH.y + 42, 44, 22, 6); ctx.stroke(); ctx.fillRect(x1 - 88, PH.y + 46, 30, 14); ctx.fillRect(x1 - 46, PH.y + 48, 4, 10);
           ctx.strokeStyle = '#1a1c1c'; ctx.lineWidth = 5; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.beginPath(); ctx.moveTo(x0 + 66, MAPWIN.y0 - 66); ctx.lineTo(x0 + 48, MAPWIN.y0 - 48); ctx.lineTo(x0 + 66, MAPWIN.y0 - 30); ctx.stroke();
-          ctx.font = '700 40px "Noto Sans KR"'; ctx.textAlign = 'center'; ctx.fillText('긴급 위치', (x0 + x1) / 2, MAPWIN.y0 - 48);
+          ctx.font = '700 40px "Noto Sans KR"'; { const w = ctx.measureText(AP.mapTitle).width, lim = x1 - x0 - 220; if (w > lim) ctx.font = `700 ${Math.floor(40 * lim / w)}px "Noto Sans KR"`; } ctx.textAlign = 'center'; ctx.fillText(AP.mapTitle, (x0 + x1) / 2, MAPWIN.y0 - 48);
           const sh = ctx.createLinearGradient(0, MAPWIN.y0, 0, MAPWIN.y0 + 26); sh.addColorStop(0, 'rgba(10,12,30,0.28)'); sh.addColorStop(1, 'rgba(10,12,30,0)'); ctx.fillStyle = sh; ctx.fillRect(x0, MAPWIN.y0, x1 - x0, 26);
           // 정보 카드(아래에서 올라온다)
           const up = (1 - K.ease.out(K.seg(t, APP + 0.25, APP + 0.85))) * 300;
           ctx.translate(0, up);
           ctx.fillStyle = '#f7f8fc'; ctx.fillRect(x0, MAPWIN.y1, x1 - x0, PH.y + PH.h - MAPWIN.y1);
-          const rows = [['대상자', '아빠'], ['수집 시각', '오후 9:42'], ['정확도', '약 20m']];
+          // 앱 「긴급 위치」 아래 카드와 같은 값: 대상자 별칭 / 수집 시각(앱 형식 YYYY-MM-DD HH:mm) / 정확도(앱 형식 ±Nm)
+          const rows = [[AP.subjLabel, S72.alias[1]], [AP.capturedLabel, S72.captured], [AP.accLabel, S72.accuracy]];
+          ctx.font = '400 34px "Noto Sans KR"'; const lbW = Math.min(300, Math.max(200, ...rows.map((r) => ctx.measureText(r[0]).width + 36)));
           rows.forEach(([lb, val], i) => {
             const ra = K.ease.out(K.seg(t, APP + 0.6 + i * 0.14, APP + 0.95 + i * 0.14)); ctx.globalAlpha = ui * ra;
-            const y = MAPWIN.y1 + 78 + i * 70;
-            ctx.textAlign = 'left'; ctx.font = '400 34px "Noto Sans KR"'; ctx.fillStyle = '#6b7080'; ctx.fillText(lb, x0 + 52, y);
-            ctx.font = '700 36px "Noto Sans KR"'; ctx.fillStyle = '#1a1c1c'; ctx.fillText(val, x0 + 252, y);
+            const y = MAPWIN.y1 + 78 + i * 70, L0 = RTL ? x1 - 52 : x0 + 52, V0 = RTL ? x1 - 52 - lbW : x0 + 52 + lbW, room = x1 - x0 - 104 - lbW;
+            ctx.textAlign = RTL ? 'right' : 'left'; ctx.font = '400 34px "Noto Sans KR"'; ctx.fillStyle = '#6b7080';
+            { const w = ctx.measureText(lb).width; if (w > lbW - 24) ctx.font = `400 ${Math.floor(34 * (lbW - 24) / w)}px "Noto Sans KR"`; } ctx.fillText(lb, L0, y);
+            ctx.font = '700 36px "Noto Sans KR"'; { const w = ctx.measureText(val).width; if (w > room) ctx.font = `700 ${Math.floor(36 * room / w)}px "Noto Sans KR"`; }
+            ctx.fillStyle = '#1a1c1c'; if (RTL && !/[\u0600-\u06ff]/.test(val)) { ctx.save(); ctx.direction = 'ltr'; ctx.textAlign = 'right'; ctx.fillText(val, V0, y); ctx.restore(); } else ctx.fillText(val, V0, y);   // 아랍어 화면의 날짜·숫자는 왼→오 순서 그대로
           });
           const ba = K.ease.outBack(K.seg(t, APP + 1.05, APP + 1.45)); ctx.globalAlpha = ui * K.clamp(ba);
           const bx = x0 + 44, bw = x1 - x0 - 88, byy = MAPWIN.y1 + 300, bh = 104;
           ctx.save(); ctx.translate(bx + bw / 2, byy + bh / 2); ctx.scale(0.9 + 0.1 * ba, 0.9 + 0.1 * ba);
           ctx.fillStyle = '#4355B9'; ctx.beginPath(); ctx.roundRect(-bw / 2, -bh / 2, bw, bh, bh / 2); ctx.fill();
-          ctx.font = '700 36px "Noto Sans KR"'; const lw = ctx.measureText('외부 지도 앱으로 열기').width, gx = -(lw + 58) / 2;
+          ctx.font = '700 36px "Noto Sans KR"'; { const w = ctx.measureText(AP.openExternal).width, lim = bw - 150; if (w > lim) ctx.font = `700 ${Math.floor(36 * lim / w)}px "Noto Sans KR"`; } const lw = ctx.measureText(AP.openExternal).width, gx = -(lw + 58) / 2;
           ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 3.5; ctx.lineJoin = 'round'; ctx.beginPath(); ctx.moveTo(gx, -14); ctx.lineTo(gx + 13, -19); ctx.lineTo(gx + 26, -14); ctx.lineTo(gx + 39, -19); ctx.lineTo(gx + 39, 17); ctx.lineTo(gx + 26, 22); ctx.lineTo(gx + 13, 17); ctx.lineTo(gx, 22); ctx.closePath(); ctx.moveTo(gx + 13, -19); ctx.lineTo(gx + 13, 17); ctx.moveTo(gx + 26, -14); ctx.lineTo(gx + 26, 22); ctx.stroke();
-          ctx.fillStyle = '#ffffff'; ctx.textAlign = 'left'; ctx.fillText('외부 지도 앱으로 열기', gx + 58, 2);
+          ctx.fillStyle = '#ffffff'; ctx.textAlign = 'left'; { const d0 = ctx.direction; ctx.direction = 'ltr'; ctx.textAlign = 'left'; ctx.direction = d0; } if (RTL) { ctx.textAlign = 'right'; ctx.fillText(AP.openExternal, gx + 58 + lw, 2); } else ctx.fillText(AP.openExternal, gx + 58, 2);
           ctx.restore();
           ctx.restore();
           // 지도 위 붉은 핀(선명하게) + 맥박

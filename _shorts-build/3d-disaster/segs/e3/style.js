@@ -6,17 +6,18 @@
 (function () {
   const B = 60 / 122.989, bt = (n) => n * B;   // 원본 부품의 박자(초) 그대로
   const LINES = [
-    { text: '가족들은 늘', w: 700, ch: 'ink1' },
-    { text: '“난 괜찮아”라고 말합니다.', w: 700, ch: 'ink1' },
-    { text: '하지만', w: 900, ch: 'ink2' },
-    { text: '정말 괜찮은', w: 900, ch: 'foil' },
-    { text: '걸까요?', w: 900, ch: 'ink2' },
+    // 언어별(lang/<lang>.json end): 0·1 = 첫 문장 두 줄, 2·4 = 굵은 잉크, 3 = 구리 박 강조(빈 칸 허용)
+    { text: ANBU.S().end[0], w: 700, ch: 'ink1' },
+    { text: ANBU.S().end[1], w: 700, ch: 'ink1' },
+    { text: ANBU.S().end[2], w: 900, ch: 'ink2' },
+    { text: ANBU.S().end[3], w: 900, ch: 'foil' },
+    { text: ANBU.S().end[4], w: 900, ch: 'ink2' },
   ];
-  const BRAND = '안부';
+  const BRAND = ANBU.S().brand;   // 한국어 '안부', 그 밖 'Anbu'
   const CARD1_BRAND = false;
   const CARD1_DY = CARD1_BRAND ? 0 : 1.85;   // 박 줄이 내려간 만큼 박 찍기 카메라도 내린다   // 3차 피드백: 첫 카드에서 아이콘·'안부'를 뺐다(아이콘은 마지막 카드에만)
   const TAG = 'https://averic.co.kr';   // 스토어 검색 문구 아래 줄(홈페이지 주소)
-  const STORE = ['스토어에서 안부 ‘', 'Anbu', '’ 검색'];   // 'Anbu' 만 호박색 잉크
+  const STORE = ANBU.RTL() ? ANBU.S().store.slice().reverse() : ANBU.S().store;   // 'Anbu' 만 호박색 잉크(가운데 조각). 아랍어는 오른쪽부터 읽으므로 조각 순서를 뒤집어 왼쪽부터 찍는다
   const AMBER = '#ffa024';
   const C2W = 9, C2H = 8.2, Y2 = -(16 / 2 + 0.9 + C2H / 2);   // 두 번째 카드(첫 카드 아래)
   const ART2_W = 2304, ART2_H = Math.round(ART2_W * C2H / C2W);
@@ -45,9 +46,9 @@
     const width = (txt, wgt, px, ls) => { m.font = `${wgt} ${px}px "Noto Sans KR"`; m.letterSpacing = (ls || 0) + 'px'; return m.measureText(txt).width; };
     const LS = -0.02;   // 1·2줄 자간(em)
     let em12 = Math.min(0.74 * U, 1000 * (CARD1_BRAND ? 7.3 : 8.0) * U / Math.max(width(LINES[0].text, 700, 1000, LS * 1000), width(LINES[1].text, 700, 1000, LS * 1000)));
-    const em3 = 0.98 * U;
-    let em4 = Math.min(0.82 * U, 1000 * 7.4 * U / width(LINES[3].text, 900, 1000));
-    const em5 = 0.8 * U;
+    const em3 = Math.min(0.98 * U, 1000 * 7.6 * U / Math.max(1, width(LINES[2].text, 900, 1000)));   // 긴 언어는 폭에 맞춰 줄인다
+    let em4 = Math.min(0.82 * U, 1000 * 7.4 * U / Math.max(1, width(LINES[3].text, 900, 1000)));
+    const em5 = Math.min(0.8 * U, 1000 * 7.6 * U / Math.max(1, width(LINES[4].text, 900, 1000)));
     const ys = CARD1_BRAND ? [5.55, 4.6, 2.65, 1.15, -0.3] : [5.4, 4.35, 1.6, -0.75, -3.1];
     const ems = [em12, em12, em3, em4, em5];
     const tile = { s: 1.75, cx: -1.3, cy: -2.95 };
@@ -85,12 +86,25 @@
     const emT = Math.min(0.62 * U2, 1000 * 6.2 * U2 / width(TAG, 700, 1000));
     const tile = { s: 1.45 }, emB = 0.98 * U2, brandW = width(BRAND, 900, emB) / U2, gap = 0.3, tot = tile.s + gap + brandW, x0 = -tot / 2;
     const ys = { lock: 2.0, store: 0.15, tag: -1.8 };
+    // 다국어: 한 줄로는 글자가 너무 작아지는 긴 스토어 문구는 두 줄로(‘Anbu’ 강조는 그대로). 아랍어는 한 줄 유지
+    let rows = null, emR = 0;
+    if (ANBU.S().lang !== 'ko' && emS < 0.62 * U2 && !ANBU.RTL()) {
+      const toks = []; STORE.forEach((p, i) => ANBU.tokens(p).forEach((t) => toks.push({ s: t, hl: i === 1 })));
+      const W2 = (arr, em) => arr.reduce((a, t) => a + width(t.s, 900, em), 0);
+      let best = null;
+      for (let i = 1; i < toks.length; i++) { const a = toks.slice(0, i), b = toks.slice(i), w = Math.max(W2(a, 1000), W2(b, 1000)); if (!best || w < best.w) best = { a, b, w }; }
+      if (best) {
+        const trim = (arr) => { arr = arr.map((t) => ({ ...t })); arr[0].s = arr[0].s.replace(/^ /, ''); arr[arr.length - 1].s = arr[arr.length - 1].s.replace(/ $/, ''); return arr; };
+        rows = [trim(best.a), trim(best.b)]; emR = Math.min(0.78 * U2, 1000 * 7.6 * U2 / Math.max(W2(rows[0], 1000), W2(rows[1], 1000)));
+        ys.store = 0.6; ys.store2 = -0.45; ys.tag = -1.95;
+      }
+    }
     tile.cx = x0 + tile.s / 2; tile.cy = ys.lock;
     const brand = { x: x0 + tile.s + gap + brandW / 2, y: ys.lock, em: emB, w: brandW };
     const parts = STORE.map((s) => width(s, 900, emS) / U2);
     m.font = `900 ${emS}px "Noto Sans KR"`; const ms = m.measureText(STORE.join(''));
     m.font = `700 ${emT}px "Noto Sans KR"`; const mtg = m.measureText(TAG);
-    return { U2, emS, emT, tile, brand, ys, parts, wS: parts.reduce((a, b) => a + b, 0), wT: mtg.width / U2,
+    return { U2, emS, emT, tile, brand, ys, parts, rows, emR, wS: parts.reduce((a, b) => a + b, 0), wT: mtg.width / U2,
       inkS: [ms.actualBoundingBoxAscent / U2, ms.actualBoundingBoxDescent / U2], inkT: [mtg.actualBoundingBoxAscent / U2, mtg.actualBoundingBoxDescent / U2] };
   }
   function drawArt2(ctx, layer, L) {
@@ -102,7 +116,16 @@
       ctx.font = `700 ${L.emT}px "Noto Sans KR"`; ctx.fillText(TAG, bx(0), by(L.ys.tag));
       const s = L.tile.s * U2; ctx.save(); ctx.fillStyle = '#999'; ctx.beginPath(); ctx.roundRect(bx(L.tile.cx) - s / 2, by(L.tile.cy) - s / 2, s, s, s * 0.23); ctx.fill(); ctx.restore();
     }
-    ctx.textAlign = 'left'; ctx.font = `900 ${L.emS}px "Noto Sans KR"`;
+    ctx.textAlign = 'left';
+    if (L.rows) {   // 두 줄
+      ctx.font = `900 ${L.emR}px "Noto Sans KR"`;
+      L.rows.forEach((row, r) => {
+        const w = row.reduce((a, t) => a + ctx.measureText(t.s).width, 0) / U2; let x = -w / 2;
+        row.forEach((t) => { if (t.hl === (layer === 'foil') && layer !== 'ink2') ctx.fillText(t.s, bx(x), by(r ? L.ys.store2 : L.ys.store)); x += ctx.measureText(t.s).width / U2; });
+      });
+      return;
+    }
+    ctx.font = `900 ${L.emS}px "Noto Sans KR"`;
     let x = -L.wS / 2;
     STORE.forEach((part, i) => { if ((i === 1) === (layer === 'foil') && layer !== 'ink2') ctx.fillText(part, bx(x), by(L.ys.store)); x += L.parts[i]; });
   }

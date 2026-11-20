@@ -14,5 +14,22 @@
       const img = new Image(); img.onload = () => { const tex = new THREE.Texture(img); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 8; tex.needsUpdate = true; ok(tex); }; img.src = 'lib/app-icon.png';
     }),
     loadIconImage: () => new Promise((ok) => { const img = new Image(); img.onload = () => ok(img); img.src = 'lib/app-icon.png'; }),
+    // 다국어: 화면 문구(page.html 이 lang/<lang>.json 을 window.S72 로 넣는다). 한국어도 같은 경로를 쓴다
+    S: () => window.S72,
+    RTL: () => !!window.RTL,
+    // 줄 바꾸기: 띄어쓰기 언어 = 단어, 일·중·태 = Intl.Segmenter 단어(문장부호가 줄 머리에 오지 않게)
+    tokens(text) {
+      const lang = window.LANG || 'ko', NO_START = /^[、。，．,.!?！？：；:;）」』】〉》”’・ー〜…%％]/;
+      if (/^(ja|zh|th)/.test(lang)) { const out = []; for (const { segment } of new Intl.Segmenter(lang, { granularity: 'word' }).segment(text)) { if (out.length && NO_START.test(segment)) out[out.length - 1] += segment; else out.push(segment); } return out; }
+      return text.split(' ').map((w, i) => (i ? ' ' : '') + w);
+    },
+    wrap(ctx, text, maxW) {
+      const rows = []; let cur = '';
+      for (const t of ANBU.tokens(text)) { const nx = cur + t; if (ctx.measureText(nx.trim()).width > maxW && cur.trim()) { rows.push(cur.trim()); cur = t.replace(/^ /, ''); } else cur = nx; }
+      if (cur.trim()) rows.push(cur.trim());
+      return rows;
+    },
+    // 천 단위(앱 NumberText 와 같은 표)
+    num(n) { const l = window.LANG || 'ko', s = n.toLocaleString('en-US'); if (/^(de|es|it|nl|pt|tr|id|vi)/.test(l)) return s.replace(/,/g, '.'); if (/^(fr|ru|pl|sv)/.test(l)) return s.replace(/,/g, '\u00a0'); return s; },
   };
 })();

@@ -1,0 +1,84 @@
+{
+ "lang": "es",
+ "tags": [
+  "Ciberataque contra instalaciones energéticas",
+  "Un gran terremoto y después un tsunami",
+  "Se derrumba un glaciar y la riada arrasa un pueblo",
+  "Redes infiltradas, servicios públicos paralizados",
+  "Sin luz ni calefacción: invierno en guerra",
+  "Una mochila de emergencia para resistir 72 horas"
+ ],
+ "alert": {
+  "title": "Alerta de emergencia",
+  "intro": "Debido a un ataque informático externo, estos sistemas públicos han dejado de funcionar:",
+  "items": [
+   "Trámites públicos en línea",
+   "Llamadas al 112",
+   "Control de semáforos",
+   "Sistemas de hospitales públicos"
+  ],
+  "outro": "Espere nuevas instrucciones."
+ },
+ "phone4": [
+  "No se puede",
+  "conectar"
+ ],
+ "end": [
+  "Nuestros seres queridos siempre dicen",
+  "«Estoy bien».",
+  "Pero ¿de verdad",
+  "están bien?",
+  ""
+ ],
+ "store": [
+  "Busca «",
+  "Anbu",
+  "» en tu tienda de apps"
+ ],
+ "alias": [
+  "Mamá",
+  "Papá"
+ ],
+ "brand": "Anbu",
+ "now": "ahora",
+ "app": {
+  "title": "Anbu Cuidador",
+  "checking": "Personas a su cuidado\nahora mismo: 2",
+  "summary": "Resumen de hoy",
+  "legendSafe": "Todo bien: 1",
+  "legendCaution": "Precaución: 1",
+  "list": "Sus seres queridos",
+  "pillSafe": "✅ Todo bien",
+  "pillCaution": "Precaución",
+  "activity": "Actividad: Activa",
+  "steps": "Pasos",
+  "last7": "Últimos 7 días",
+  "lastCheck": "Último aviso: hace 2 h",
+  "add": "Añadir un ser querido",
+  "nav": [
+   "Inicio",
+   "Conexiones",
+   "Alertas",
+   "Ajustes"
+  ],
+  "safetyNeeded": "Compruebe cómo está",
+  "callNow": "Llamar ahora",
+  "confirmSafety": "Confirmar seguridad",
+  "viewLoc": "🗺️ Ver ubicación",
+  "mapTitle": "Ubicación de la emergencia",
+  "subjLabel": "Ser querido",
+  "capturedLabel": "Registrada a las",
+  "accLabel": "Precisión",
+  "openExternal": "Abrir en una app de mapas",
+  "stepsBody": "Su ser querido ha caminado hoy 6.240 pasos."
+ },
+ "srv": {
+  "autoTitle": "✅ Aviso de hoy recibido",
+  "emTitle": "🚨 Petición de ayuda urgente",
+  "emBody": "Su ser querido ha pedido ayuda. Compruébelo de inmediato."
+ },
+ "steps": "6.240",
+ "battery": "85 %",
+ "captured": "2026-11-20 21:42",
+ "accuracy": "±20m"
+}

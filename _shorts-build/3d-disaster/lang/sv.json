@@ -1,0 +1,84 @@
+{
+ "lang": "sv",
+ "tags": [
+  "Cyberattack mot energianläggningar",
+  "Kraftig jordbävning, sedan en tsunami",
+  "En glaciär rasar, översvämning drabbar en by",
+  "Nätverk hackade, samhällstjänster ligger nere",
+  "Utan el och värme: vinter i krig",
+  "En krisväska för 72 timmar efter en katastrof"
+ ],
+ "alert": {
+  "title": "Nödvarning",
+  "intro": "På grund av en hackerattack utifrån ligger följande offentliga system nere:",
+  "items": [
+   "Myndigheternas e-tjänster",
+   "Larmnumret 112",
+   "Trafiksignalstyrning",
+   "Offentliga sjukhusens system"
+  ],
+  "outro": "Invänta vidare information."
+ },
+ "phone4": [
+  "Kan inte",
+  "ansluta"
+ ],
+ "end": [
+  "Våra nära säger alltid",
+  "”Jag mår bra.”",
+  "Men mår de",
+  "verkligen bra?",
+  ""
+ ],
+ "store": [
+  "Sök efter ”",
+  "Anbu",
+  "” i appbutiken"
+ ],
+ "alias": [
+  "Mamma",
+  "Pappa"
+ ],
+ "brand": "Anbu",
+ "now": "nu",
+ "app": {
+  "title": "Anbu Guardian",
+  "checking": "Närstående du\nhåller koll på: 2",
+  "summary": "Sammanfattning i dag",
+  "legendSafe": "Allt bra: 1",
+  "legendCaution": "Observera: 1",
+  "list": "Dina närstående",
+  "pillSafe": "✅ Allt bra",
+  "pillCaution": "Observera",
+  "activity": "Aktivitet: Aktiv",
+  "steps": "Steg",
+  "last7": "Senaste 7 dagarna",
+  "lastCheck": "Senaste incheckning: för 2 tim sedan",
+  "add": "Lägg till närstående",
+  "nav": [
+   "Hem",
+   "Kopplingar",
+   "Aviseringar",
+   "Inställningar"
+  ],
+  "safetyNeeded": "Behöver kontrolleras",
+  "callNow": "Ring nu",
+  "confirmSafety": "Bekräfta säkerhet",
+  "viewLoc": "🗺️ Visa plats",
+  "mapTitle": "Plats vid nödsituation",
+  "subjLabel": "Närstående",
+  "capturedLabel": "Registrerad kl.",
+  "accLabel": "Noggrannhet",
+  "openExternal": "Öppna i en kartapp",
+  "stepsBody": "6 240 steg i dag."
+ },
+ "srv": {
+  "autoTitle": "✅ Dagens incheckning mottagen",
+  "emTitle": "🚨 Akut hjälpbegäran",
+  "emBody": "Din närstående har bett om hjälp. Kontrollera omedelbart."
+ },
+ "steps": "6 240",
+ "battery": "85 %",
+ "captured": "2026-11-20 21:42",
+ "accuracy": "±20m"
+}
