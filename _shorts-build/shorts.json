@@ -6,13 +6,13 @@
     {"id": "mom-call", "page": "a.html", "title": "t_a", "date": "2026-09-19"},
     {"id": "app-intro", "page": "h.html", "title": "t_p", "date": "2026-10-02", "home": true, "audio": {"bgm": "motivating-mornings.mp3", "bgm_start": 4.395}},
     {"id": "daughter-abroad", "page": "b.html", "title": "t_b", "date": "2026-09-19"},
-    {"id": "living-alone", "page": "c.html", "title": "t_c", "date": "2026-09-24"},
+    {"id": "living-alone", "page": "c.html", "title": "t_c", "date": "2026-09-24", "hidden": true},
     {"id": "busy-couple", "page": "d.html", "title": "t_d", "date": "2026-09-24"},
     {"id": "neighbor-friends", "page": "e.html", "title": "t_e", "date": "2026-09-24"},
     {"id": "solo-trip", "page": "f.html", "title": "t_f", "date": "2026-09-25"},
     {"id": "lost-mom", "page": "g.html", "title": "t_g", "date": "2026-09-26"},
     {"id": "how-to-use", "page": "i.html", "title": "t_i", "date": "2026-10-09", "audio": {"bgm": "techno-fest-vibes.mp3", "bgm_start": 43.110}},
-    {"id": "before-departure", "page": "j.html", "title": "t_j", "date": "2026-10-10", "audio": {"bgm": "take-this-higher.mp3", "bgm_start": 3.879, "fade_in": 0.05}},
+    {"id": "before-departure", "page": "j.html", "title": "t_j", "date": "2026-10-10", "hidden": true, "audio": {"bgm": "take-this-higher.mp3", "bgm_start": 3.879, "fade_in": 0.05}},
     {"id": "mom-day", "page": "k.html", "title": "t_k", "date": "2026-10-18"}
   ],
   "youtube_only": [

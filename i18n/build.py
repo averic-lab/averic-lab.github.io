@@ -388,6 +388,10 @@ def _load_shorts():
         return {}
     with open(path, encoding="utf-8") as f:
         cfg = json.load(f)
+    # "hidden": true — 같은 주제의 새 편으로 대체돼 유튜브에서 비공개로 돌린 편. 홈·영상 페이지 어디에도 내지 않는다
+    # (2026-11-23: 떠나기 전 필수품 2D → 3D 판, 자취 3년차 2D → 3D 판). 파일은 지우지 않는다.
+    cfg["videos"] = [v for v in cfg["videos"] if not v.get("hidden")]
+    cfg["youtube_only"] = [v for v in cfg.get("youtube_only", []) if not v.get("hidden")]
     home = [v for v in cfg["videos"] if v.get("home")]
     have = site_has   # 게이트 편(유튜브 업로드 전)은 mp4 가 있어도 빠진다 — 위 YOUTUBE_GATE_FROM
     # youtube_only 편도 home:true 면 홈에 나온다 — mp4 대신 유튜브 ID + 포스터 jpg 가 있어야 "있음"
