@@ -340,16 +340,8 @@ def _load_youtube():
     for v in vids.values():
         if v.get("status") == "removed" or not v.get("youtube_id"):
             continue
-        # 2026-10-17: 예약(scheduled) 상태이고 공개 시각(publish_at)이 아직 안 지난 편은 사이트에 내놓지 않는다.
-        # 공개 전에 넣으면 방문자가 눌러도 재생되지 않는 영상이 페이지에 먼저 뜬다. 공개 시각이 지난 뒤 다시 빌드하면
-        # 자동으로 포함된다(publish.json 의 status 는 Aside 가 고치지 않으면 scheduled 로 남아 있으므로 시각으로 판단한다).
-        pa = v.get("publish_at")
-        if v.get("status") == "scheduled" and pa:
-            try:
-                if datetime.datetime.fromisoformat(pa) > now:
-                    continue
-            except ValueError:
-                pass
+        # 2026-11-26 사용자 지시: youtube_id 가 있으면 공개·예약·비공개와 상관없이 사이트에 내놓는다.
+        # (2026-10-17 에 넣었던 "예약 편은 publish_at 이 지나야 포함" 조건은 없앴다 — 다시 넣지 말 것.)
         out[(v["id"], v["lang"])] = v["youtube_id"]
     return out
 
