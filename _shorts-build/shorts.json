@@ -62,7 +62,8 @@
         "ar": "ضروري قبل السفر"
     }},
     {"id": "disaster-72h", "date": "2026-11-20", "titles": {"ko": "72시간 생존배낭, 가족의 안부는요?", "en": "72-hour survival kit — but what about your family?", "ja": "72時間の非常用持ち出し袋、家族の安否は？", "zh-CN": "72小时应急包，家人平安吗？", "zh-TW": "72小時緊急避難包，家人平安嗎？", "de": "Notgepäck für 72 Stunden – und Ihre Familie?", "fr": "Un kit de survie pour 72 heures — et vos proches ?", "es": "Mochila de emergencia para 72 horas, ¿y tu familia?", "it": "Kit di emergenza per 72 ore, e la tua famiglia?", "pt-BR": "Kit de emergência para 72 horas — e a sua família?", "ru": "Тревожный чемоданчик на 72 часа — а как же близкие?", "nl": "Een noodpakket voor 72 uur – en je familie?", "pl": "Plecak ewakuacyjny na 72 godziny, a co z bliskimi?", "tr": "72 saatlik deprem çantası, peki ya aileniz?", "vi": "Túi khẩn cấp 72 giờ, còn gia đình bạn thì sao?", "th": "กระเป๋าฉุกเฉิน 72 ชั่วโมง แล้วครอบครัวล่ะ?", "id": "Tas siaga 72 jam, bagaimana dengan keluarga?", "sv": "Krisväska för 72 timmar – och din familj?", "hi": "72 घंटे की इमरजेंसी किट, पर परिवार का क्या?", "ar": "حقيبة طوارئ لـ72 ساعة، فماذا عن عائلتك؟"}},
-    {"id": "living-alone-3d", "date": "2026-11-23", "titles": {"ko": "자취 3년차 동생, 연락 없던 날 언니가 먼저 알았다"}}
+    {"id": "living-alone-3d", "date": "2026-11-23", "titles": {"ko": "자취 3년차 동생, 연락 없던 날 언니가 먼저 알았다"}},
+    {"id": "app-intro-3d", "date": "2026-11-26", "titles": {"ko": "주변에 혼자 사는 분들, 요즘 많죠?"}}
   ],
   "langs": {
     "ko": {
@@ -100,8 +101,8 @@
       "g_msg": "여기 어딘지 모르겠어", "g_alias": "엄마",
       "g_mom": "엄마의 휴대폰", "g_daughter": "딸의 휴대폰",
       "t_p": "안부 앱 소개",
-      "p_a1": "혼자 지내는", "p_a2": "소중한 사람,", "p_a3": "매일 걱정되시죠?",
-      "p_b1": "전화는 부담스럽고", "p_b2": "찾아가긴 어렵고",
+      "p_a1_3d": "주변에<br>혼자 사는 분들,", "p_a2_3d": "요즘 많죠?", "p_a1": "혼자 지내는", "p_a2": "소중한 사람,", "p_a3": "매일 걱정되시죠?",
+      "p_b0_3d": "잘 지내는지…", "p_b1_3d": "전화는 매번 부담스럽고", "p_b2_3d": "찾아가긴 정말 쉽지 않고", "p_b1": "전화는 부담스럽고", "p_b2": "찾아가긴 어렵고",
       "p_c1": "앱을 열지 않아도,", "p_c2": "매일", "p_c3": "자동으로",
       "p_d1": "폰이 절전 상태에<br>들어가도,", "p_d2": "앱이 꺼져 있어도,", "p_d3": "폰이 재부팅되어도,", "p_d4": "통신이 끊겨도",
       "p_d5": "안부는<br>멈추지 않아요", "p_d6": "폰 전원이 완전히 꺼진 경우는 제외",

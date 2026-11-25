@@ -1,0 +1,49 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Oswald:wght@400;500;700&family=Anton&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=Inter:wght@400;600;800&family=Fredoka:wght@500;700&family=Noto+Serif+KR:wght@700;900&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js"}}</script>
+<style>html,body{margin:0;background:#000}canvas{width:auto;height:96vh;display:block;margin:0 auto}</style></head><body>
+<canvas id="c"></canvas>
+<script type="module">
+// 공통 세로 페이지: ?seg=s1&s=64  →  segs/s1/style.js 를 불러 1080×1920 으로 돌린다.
+import * as THREE from 'three'; window.THREE = THREE;
+const q = new URLSearchParams(location.search), seg = q.get('seg');
+const load = (s) => new Promise((ok, no) => { const e = document.createElement('script'); e.src = s + '?v=' + Date.now(); e.onload = ok; e.onerror = () => no(new Error('load ' + s)); document.head.appendChild(e); });
+// ---- 언어(?lang=, 기본 ko). 화면 문구 = lang/<lang>.json(tools/gen_strings.py 가 앱·서버 번역 + lang/new.json 으로 만든다)
+const LANG = q.get('lang') || 'ko';
+window.S72 = await (await fetch(`lang/${LANG}.json?v=` + Date.now())).json();
+window.LANG = LANG; window.RTL = LANG === 'ar';
+// 글꼴: 한국어는 Noto Sans KR 하나. 그 밖의 언어는 그 문자 글꼴을 KR 보다 앞에 둔다(일·중 한자가 한국식 글자꼴로 나오지 않게).
+// 장면 코드는 '"Noto Sans KR"' 을 그대로 쓰고, 캔버스 font 설정에서 언어별 글꼴 목록으로 바꿔 끼운다.
+const GF = { ja: 'Noto+Sans+JP', 'zh-CN': 'Noto+Sans+SC', 'zh-TW': 'Noto+Sans+TC', th: 'Noto+Sans+Thai', hi: 'Noto+Sans+Devanagari', ar: 'Noto+Sans+Arabic' };
+const FAM = { ja: 'Noto Sans JP', 'zh-CN': 'Noto Sans SC', 'zh-TW': 'Noto Sans TC', th: 'Noto Sans Thai', hi: 'Noto Sans Devanagari', ar: 'Noto Sans Arabic' }[LANG];
+const STACK = LANG === 'ko' ? '"Noto Sans KR"' : [FAM, 'Noto Sans', 'Noto Sans KR'].filter(Boolean).map((f) => `"${f}"`).join(',');
+window.FONT_STACK = STACK;
+if (LANG !== 'ko') {
+  const need = ['Noto+Sans', GF[LANG]].filter(Boolean); const l = document.createElement('link'); l.rel = 'stylesheet';
+  l.href = 'https://fonts.googleapis.com/css2?' + need.map((f) => `family=${f}:wght@400;500;600;700;800;900`).join('&') + '&display=swap';
+  document.head.appendChild(l); await new Promise((ok) => { l.onload = ok; l.onerror = ok; });
+  const P = CanvasRenderingContext2D.prototype, fd = Object.getOwnPropertyDescriptor(P, 'font');
+  Object.defineProperty(P, 'font', { configurable: true, get() { return fd.get.call(this); }, set(v) { fd.set.call(this, String(v).replace(/"Noto Sans KR"/g, STACK)); } });
+  if (window.RTL) { const gc = HTMLCanvasElement.prototype.getContext; HTMLCanvasElement.prototype.getContext = function (t, o) { const c = gc.call(this, t, o); if (t === '2d' && c && !c.__rtl) { c.direction = 'rtl'; c.__rtl = true; } return c; }; }
+}
+const allS = (o) => Object.values(o).map((v) => (v && typeof v === 'object' ? allS(v) : String(v))).join(' ');
+await load('lib/stage.js'); await load('lib/sound.js'); await load('lib/caption.js'); await load('lib/common.js'); await load('lib/painted.js'); await load('lib/hero.js'); await load('lib/oil.js'); await load('lib/kine.js');
+await load(`segs/${seg}/style.js`);
+const style = window.STYLES[window.STYLES.length - 1];
+// 쓰는 글자를 미리 불러야 렌더에 빠지지 않는다
+const text = (style.koText || '') + ' 가나다라마바사아자차카타파하 0123456789,.·!?‘’±' + allS(window.S72);
+const specs = (style.fonts || []).concat(['900 80px "Noto Sans KR"', '700 60px "Noto Sans KR"', '400 40px "Noto Sans KR"']);
+if (LANG !== 'ko') for (const w of [400, 500, 600, 700, 800, 900]) specs.push(`${w} 80px ${STACK}`);
+await Promise.all(specs.map((f) => document.fonts.load(f, text).catch(() => null)));
+await document.fonts.ready;
+window.GUIDE = q.get('guide') === '1';
+const S = await K.run(document.getElementById('c'), style, { samples: +(q.get('s') || 64), width: 1080, height: 1920 });
+window.S = S; window.seek = (t) => S.seek(t); window.DURATION = style.duration;
+// 효과음만(음악·배경 없음) 오프라인 렌더 → Float32 인터리브 base64
+window.renderSfx = async () => {
+  const r = await SOUND.renderOffline((k) => style.sound && style.sound(k), style.duration, 48000, { voiceover: false });
+  const u8 = new Uint8Array(r.inter.buffer); let s = ''; for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000));
+  return { b64: btoa(s), peak: r.peak };
+};
+window.READY = true;
+</script></body></html>
